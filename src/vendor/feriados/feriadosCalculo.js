@@ -1,0 +1,2820 @@
+/**
+ * Vendorizado de feriados_calculo.js (projeto de feriados enviado pelo
+ * usuário). Conteúdo e dados idênticos ao original — a única mudança é de
+ * módulo: os scripts originais compartilhavam escopo global no navegador
+ * (várias tags <script> soltas); aqui viram import/export ES para funcionar
+ * com o bundler. Nenhuma regra de cálculo de feriado foi alterada.
+ */
+import './dateutils.js';
+import {
+  JANEIRO, FEVEREIRO, MARCO, ABRIL, MAIO, JUNHO, JULHO, AGOSTO, SETEMBRO, OUTUBRO, NOVEMBRO, DEZEMBRO,
+  DOMINGO, SEGUNDA_FEIRA, TERCA_FEIRA, QUARTA_FEIRA, QUINTA_FEIRA, SEXTA_FEIRA, SABADO,
+} from './dateutils.js';
+
+/*
+
+Municípios sem lista de feriados disponível em fácil acesso:
+
+RJ / Vassouras
+RJ / São João de Meriti
+RR / Uiramutã
+SP / Araçatuba
+
+*/
+
+/**
+ * Calculates Easter in the Gregorian/Western (Catholic and Protestant) calendar 
+ * based on the algorithm by Oudin (1940) from http://www.tondering.dk/claus/cal/easter.php
+ */
+function calcularDomingoDePascoa(ano) {
+  var f = Math.floor,
+    // Golden Number - 1
+    G = ano % 19,
+    C = f(ano / 100),
+    // related to Epact
+    H = (C - f(C / 4) - f((8 * C + 13) / 25) + 19 * G + 15) % 30,
+    // number of days from 21 March to the Paschal full moon
+    I = H - f(H / 28) * (1 - f(29 / (H + 1)) * f((21 - G) / 11)),
+    // weekday for the Paschal full moon
+    J = (ano + f(ano / 4) + I + 2 - C + f(C / 4)) % 7,
+    // number of days from 21 March to the Sunday on or before the Paschal full moon
+    L = I - J,
+    mes = 3 + f((L + 40) / 44),
+    dia = L + 28 - 31 * f(mes / 4);
+
+  return new Date(ano, mes - 1, dia);
+}
+
+function calcularQuintaFeiraSanta(ano) {
+  return calcularDomingoDePascoa(ano).addDays(-3);
+}
+
+function calcularSextaFeiraSanta(ano) {
+  return calcularDomingoDePascoa(ano).addDays(-2);
+}
+
+function calcularSegundaFeiraDoBrilho(ano) {
+  return calcularDomingoDePascoa(ano).addDays(1);
+}
+
+function calcularTercaFeiraDeCarnaval(ano) {
+  return calcularDomingoDePascoa(ano).addDays(-47);
+}
+
+function calcularQuartaFeiraDeCinzas(ano) {
+  return calcularDomingoDePascoa(ano).addDays(-46);
+}
+
+function calcularQuintaFeiraDeCorpusChristi(ano) {
+  return calcularDomingoDePascoa(ano).addDays(60);
+}
+
+function calcularSagradoCoracaoDeJesus(ano) {
+  return calcularQuintaFeiraDeCorpusChristi(ano).addDays(8);
+}
+
+function calcularDomingoDePentecostes(ano) {
+  return calcularDomingoDePascoa(ano).addDays(49);
+}
+
+function calcularNossaSenhoraDaPenha(ano) {
+  return calcularDomingoDePascoa(ano).addDays(8);
+}
+
+function calcularAscensaoDoSenhor(ano) {
+  return calcularDomingoDePascoa(ano).addDays(39);
+}
+
+function calcularJubileuNossaSenhoraDasDores(ano) {
+  return calcularDomingoDePascoa(ano).addDays(-9);
+}
+
+function calcularFestaDeSaoBeneditoEmAparecida(ano) {
+  return calcularSextaFeiraSanta(ano).addDays(10);
+}
+
+function calcularDiaDeSaoBeneditoEmTaubateEAngra(ano) {
+  return calcularSextaFeiraSanta(ano).addDays(3);
+}
+
+function calcularDiaDaFestaDeSantaAna(ano) {
+  // https://pt.wikipedia.org/wiki/Festa_de_Sant%27Ana_de_Caic%C3%B3
+  // O dia de Sant'Ana é 26 de julho,
+  // porém, o dia da festa na cidade é sempre a última quinta-feira de julho.
+  var ultimoDiaJulho = new Date(ano, JULHO, 31);
+  var dia = ultimoDiaJulho;
+  while (dia.getDay() != QUINTA_FEIRA) {
+    dia = dia.addDays(-1);
+  }
+  return dia;
+}
+
+function calcularDiaDoComercio(ano) {
+  var primeiroDiaOutubro = new Date(ano, OUTUBRO, 1);
+  var primeiraSegundaFeiraOutubro = primeiroDiaOutubro.getNextWeekday(SEGUNDA_FEIRA);
+  var terceiraSegundaFeiraOutubro = primeiraSegundaFeiraOutubro.addDays(14);
+  return terceiraSegundaFeiraOutubro;
+}
+
+function calcularDiaDaBiblia(ano) {
+  var primeiroDiaDezembro = new Date(ano, DEZEMBRO, 1);
+  var primeiroDomingoDezembro = primeiroDiaDezembro.getNextWeekday(DOMINGO);
+  var segundoDomingoDezembro = primeiroDomingoDezembro.addDays(7);
+  return segundoDomingoDezembro;
+}
+
+function calcularOitavaDaFestaDoDivinoEspiritoSanto(ano) {
+  return calcularDomingoDePentecostes(ano).addDays(1);
+}
+
+function deslocarFeriadoEstadualDoAcre(feriado) {
+  /*
+  Por meio da lei estadual nº 2.247/2009, os feriados estaduais que caírem entre as terças e quintas-feiras
+  são comemorados, por adiamento, nas sextas-feiras, à exceção do feriado alusivo ao aniversário do estado do Acre.
+  */
+  return function (ano) {
+    var obj = feriado(ano);
+    switch (obj.data.getDay()) {
+      case TERCA_FEIRA:
+      case QUARTA_FEIRA:
+      case QUINTA_FEIRA:
+        obj.data = obj.data.getNextWeekday(SEXTA_FEIRA);
+        return obj;
+      default:
+        return obj;
+    }
+  }
+}
+
+function deslocarFeriadoEstadualDeSantaCatarina(feriado) {
+  /*
+  Caso o dia 11 de agosto e o 25 de novembro coincidirem com dias úteis da semana,
+  os feriados e os eventos alusivos às datas são transferidos para o domingo subsequente.
+  Lei 13.408, de 15 de julho de 2005, Santa Catarina.
+  */
+  return function (ano) {
+    var obj = feriado(ano);
+    if (obj.data.getDay() != SABADO) {
+      obj.data = obj.data.getNextWeekday(DOMINGO);
+    }
+    return obj;
+  }
+}
+
+// feriado fixo
+function ff(mes, dia, desc, anoInicioVigencia) {
+  return function (ano) {
+    return { data: new Date(ano, mes, dia), descricao: desc, anoInicioVigencia: anoInicioVigencia };
+  }
+}
+// feriado móvel
+function fm(funcCalcDia, desc, anoInicioVigencia) {
+  return function (ano) {
+    return { data: funcCalcDia(ano), descricao: desc, anoInicioVigencia: anoInicioVigencia };
+  }
+}
+// feriados mais comuns
+const aniversarioDaCidade = function (mes, dia) { return ff(mes, dia, "Aniversário da cidade") };
+const emancipacaoDoMunicipio = function (mes, dia, anoInicioVigencia) { return ff(mes, dia, "Emancipação política do município", anoInicioVigencia) };
+const tercaFeiraDeCarnaval = fm(calcularTercaFeiraDeCarnaval, "Terça-feira de Carnaval");
+const diaDeSaoSebastiao = ff(JANEIRO, 20, "Dia de São Sebastião");
+const diaDeSaoJose = ff(MARCO, 19, "Dia de São José");
+const diaDeSaoJorge = ff(ABRIL, 23, "Dia de São Jorge");
+const diaDaSantaCruzDeMaio = ff(MAIO, 3, "Festa da Cruz de Maio");
+const diaDeNossaSenhoraDeCaravaggio = ff(MAIO, 26, "Dia de Nossa Senhora de Caravaggio");
+const diaDeCorpusChristi = fm(calcularQuintaFeiraDeCorpusChristi, "Quinta-feira de Corpus-Christi");
+const diaDeCorpusChristiAnoInicial = function (anoInicialVigencia) { return fm(calcularQuintaFeiraDeCorpusChristi, "Quinta-feira de Corpus-Christi", anoInicialVigencia); };
+const diaDeCorpusChristiFacultativoServidores = fm(calcularQuintaFeiraDeCorpusChristi, "Corpus-Christi<br/>(ponto facultativo para servidores públicos)");
+const diaDoSagradoCoracaoDeJesus = fm(calcularSagradoCoracaoDeJesus, "Sagrado Coração de Jesus");
+const diaDeAscensaoDoSenhor = fm(calcularAscensaoDoSenhor, "Ascensão do Senhor");
+const diaDeJubileuDeNsaSraDasDores = fm(calcularJubileuNossaSenhoraDasDores, "Jubileu de Nossa Senhora das Dores");
+const diaDaFestaDeSaoBeneditoEmAparecida = fm(calcularFestaDeSaoBeneditoEmAparecida, "Festa de São Benedito");
+const diaDeSaoBeneditoEmTaubateEAngra = fm(calcularDiaDeSaoBeneditoEmTaubateEAngra, "Festa de São Benedito");
+const diaDeSantoAntonio = ff(JUNHO, 13, "Dia de Santo Antônio");
+const diaDeSaoJoao = ff(JUNHO, 24, "Dia de São João");
+const diaDeSaoPedro = ff(JUNHO, 29, "Dia de São Pedro");
+const diaDeSantAnna = ff(JULHO, 26, "Dia de Sant'Anna");
+const diaDeNossaSenhoraDaConceicao = ff(DEZEMBRO, 8, "Dia de Nossa Senhora da Conceição");
+const diaDaReformaLuterana = ff(OUTUBRO, 31, "Dia da Reforma Luterana");
+// Várias cidades têm os dias de suas padroeiras celebrados nos dias de 
+// Assunção de Nossa Senhora (15/08) e 
+// Natividade de Nossa Senhora (08/09), 
+// mas com nomes diferentes.
+
+const feriadosNacionais = [
+  ff(JANEIRO, 1, "Ano Novo"),
+  fm(calcularTercaFeiraDeCarnaval, "Terça-feira de Carnaval (feriado a depender do lugar)"),
+  fm(calcularSextaFeiraSanta, "Sexta-feira santa (Paixão de Cristo)"),
+  ff(ABRIL, 21, "Tiradentes"),
+  ff(MAIO, 1, "Dia do Trabalho"),
+  ff(SETEMBRO, 7, "Independência do Brasil"),
+  ff(OUTUBRO, 12, "Dia de Nossa Senhora Aparecida"),
+  ff(OUTUBRO, 28, "Dia do Servidor Público (ponto facultativo para eles)"),
+  ff(NOVEMBRO, 2, "Finados"),
+  ff(NOVEMBRO, 15, "Proclamação da República"),
+  // Dia da Consciência Negra agora é feriado nacional, PL 3268 / 2021
+  ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2024),
+  ff(DEZEMBRO, 25, "Natal")
+];
+
+// os estados estão em ordem alfabética considerando o nome por extenso
+const estados = [
+  {
+    acronimo: "AC",
+    nome: "Acre",
+    feriadosEstaduais: [
+      deslocarFeriadoEstadualDoAcre(ff(JANEIRO, 23, "Dia do evangélico")),
+      deslocarFeriadoEstadualDoAcre(ff(MARCO, 8, "Dia Internacional da Mulher")),
+      ff(JUNHO, 15, "Aniversário do estado"),
+      deslocarFeriadoEstadualDoAcre(ff(SETEMBRO, 5, "Dia da Amazônia")),
+      deslocarFeriadoEstadualDoAcre(ff(NOVEMBRO, 17, "Assinatura do Tratado de Petrópolis")),
+    ],
+    cidades: [
+      {
+        nome: "Cruzeiro do Sul",
+        feriados: [
+          // https://www.cruzeirodosul.ac.gov.br/paginas/feriados-2025
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Glória"),
+          ff(SETEMBRO, 27, "Dia da Marcha para Jesus"),
+          aniversarioDaCidade(SETEMBRO, 28)
+        ]
+      },
+      {
+        nome: "Marechal Thaumaturgo",
+        feriados: [
+          // https://www.marechalthaumaturgo.ac.gov.br/paginas/feriados-2024
+          fm(calcularQuintaFeiraSanta, "Quinta-feira de Endoenças"),
+          ff(JUNHO, 27, "Dia de Nossa Senhora do Perpétuo Socorro"),
+          ff(DEZEMBRO, 21, "Aniversário do Município de Manoel Urbano")
+        ]
+      },
+      {
+        nome: "Rio Branco",
+        feriados: [
+          aniversarioDaCidade(DEZEMBRO, 28)
+        ]
+      },
+      {
+        nome: "Sena Madureira",
+        feriados: [
+          // https://www.senamadureira.ac.gov.br/product-page/decreto-n-029-2025-calend%C3%A1rio-de-feriados-e-pontos-facultativos-2025
+          ff(ABRIL, 8, "Dia da Morte do Padre Paolino Maria Baldassari"),
+          aniversarioDaCidade(SETEMBRO, 25),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "AL",
+    nome: "Alagoas",
+    feriadosEstaduais: [
+      // Dia da Consciência Negra -> Lei nº 5.724 de 01/08/1995 - Estadual - Alagoas
+      ff(JUNHO, 24, "Dia de São João"),
+      ff(JUNHO, 29, "Dia de São Pedro"),
+      ff(SETEMBRO, 16, "Emancipação política de Alagoas"),
+      ff(NOVEMBRO, 20, "Morte de Zumbi dos Palmares", 1995),
+    ],
+    cidades: [
+      {
+        nome: "Arapiraca",
+        feriados: [
+          ff(FEVEREIRO, 2, "Dia de Nossa Senhora do Bom Conselho"),
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(OUTUBRO, 30)
+        ]
+      },
+      {
+        nome: "Maceió",
+        feriados: [
+          diaDeCorpusChristi,
+          ff(AGOSTO, 27, "Dia de Nossa Senhora dos Prazeres"),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Maragogi",
+        feriados: [
+          // https://diario.maragogi.al.gov.br/documento/view/10113
+          ff(MARCO, 21, "Dia de São Bento"),
+          emancipacaoDoMunicipio(ABRIL, 24),
+          diaDeSantoAntonio
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "AP",
+    nome: "Amapá",
+    feriadosEstaduais: [
+      // https://g1.globo.com/ap/amapa/noticia/2025/01/02/amapa-tera-mais-de-10-feriados-nacionais-e-estaduais-em-2025-veja-lista.ghtml
+      // Dia de São Tiago e Dia do Evangélico não são feriados estaduais,
+      // apesar de algumas prefeituras mencionarem erroneamente como tal.
+      // Dia da Consciência Negra -> Lei nº 1.169 de 27/12/2007 - Estadual - Amapá
+      ff(MARCO, 19, "Dia de São José"),
+      ff(MAIO, 15, "Dia de Cabralzinho"),
+      ff(SETEMBRO, 13, "Criação do Território Federal"),
+      ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2008)
+    ],
+    cidades: [
+      {
+        nome: "Macapá",
+        feriados: [
+          aniversarioDaCidade(FEVEREIRO, 4)
+        ]
+      },
+      {
+        nome: "Oiapoque",
+        feriados: [
+          // https://www.oiapoque.ap.leg.br/transparencia/atos-da-presidencia/atos/atos-2023/atos/ato-da-presidencia-no-003-2024-gab-pres-cvmo-de-18-de-janeiro-de-2024/ato-da-presidencia-003-calendario-feriados-2024.pdf
+          // https://www.tjap.jus.br/portal/noticias/1o-de-dezembro-123-anos-da-assinatura-do-laudo-suico-uma-historia-de-lutas-e-conquistas-do-povo-do-amapaense.html
+          ff(ABRIL, 19, "Dia do Índio"),
+          aniversarioDaCidade(MAIO, 23),
+          ff(JULHO, 28, "Dia do Agricultor"),
+          ff(AGOSTO, 15, "Dia de Nossa Senhora das Graças"),
+          ff(DEZEMBRO, 1, "Dia do Laudo Suíço")
+        ]
+      },
+      {
+        nome: "Santana",
+        feriados: [
+          // https://portal.mpap.mp.br/calendario/
+          diaDeSantAnna,
+          aniversarioDaCidade(DEZEMBRO, 17)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "AM",
+    nome: "Amazonas",
+    feriadosEstaduais: [
+      // Dia da Consicência Negra -> Lei Ordinária nº 84, de 08 de julho de 2010 - SAPL
+      ff(SETEMBRO, 5, "Elevação do Amazonas à categoria de província"),
+      ff(DEZEMBRO, 8, "Dia de Nossa Senhora da Conceição"),
+      ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2010)
+    ],
+    cidades: [
+      {
+        nome: "Itacoatiara",
+        feriados: [
+          // https://www.instagram.com/p/DFIPbnJqAxm/?img_index=3
+          aniversarioDaCidade(ABRIL, 25),
+          diaDeSaoPedro,
+          ff(NOVEMBRO, 1, "Dia de Nossa Senhora do Rosário"),
+        ]
+      },
+      {
+        nome: "Manaus",
+        feriados: [
+          tercaFeiraDeCarnaval,
+          aniversarioDaCidade(OUTUBRO, 24)
+        ]
+      },
+      {
+        nome: "Parintins",
+        feriados: [
+          // https://www.calendariox.com.br/feriados-parintins-am.html
+          ff(MAIO, 14, "Sagração do Primeiro Bispo de Parintins"),
+          ff(JULHO, 16, "Dia de Nossa Senhora do Carmo"),
+          aniversarioDaCidade(OUTUBRO, 15)
+        ]
+      },
+      {
+        nome: "São Gabriel da Cachoeira",
+        feriados: [
+          // https://www.saogabrieldacachoeira.am.leg.br/leis/lei-organica-municipal/Lei%20Organica%20APROVADA.pdf/at_download/file
+          aniversarioDaCidade(SETEMBRO, 3),
+          ff(SETEMBRO, 29, "Dia de São Gabriel Arcanjo")
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "BA",
+    nome: "Bahia",
+    feriadosEstaduais: [
+      ff(JULHO, 2, "Independência da Bahia"),
+    ],
+    cidades: [
+      {
+        nome: "Barreiras",
+        feriados: [
+          // https://prefeitura.barreiras.mtransparente.com.br/admin/data/ATOOFICIAL070222121303.pdf?captcha
+          aniversarioDaCidade(MAIO, 26),
+          diaDeSaoJoao,
+          ff(AGOSTO, 2, "Dia do Evangélico")
+        ]
+      },
+      {
+        nome: "Camaçari",
+        feriados: [
+          // https://arquivos.camacari.ba.gov.br/legislacao/Lei%202809.pdf
+          ff(JANEIRO, 7, "Dia de São Tomaz da Cantuária", 1995),
+          diaDeSaoJoao,
+          emancipacaoDoMunicipio(SETEMBRO, 28)
+        ]
+      },
+      {
+        nome: "Feira de Santana",
+        feriados: [
+          // https://www.feiradesantana.ba.gov.br/servico.asp?id=2&link=segov/feriados.asp
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          diaDeSantAnna
+        ]
+      },
+      {
+        nome: "Ilhéus",
+        feriados: [
+          // https://www.ilheus.ba.gov.br/abrir_arquivo.aspx?cdLocal=12&arquivo=%7BDCBB2AC5-DDBE-B7DC-D41B-AC24CE48C8B1%7D.pdf
+          diaDeSaoJorge,
+          diaDeSaoJoao,
+          aniversarioDaCidade(JUNHO, 28),
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Vitória")
+        ]
+      },
+      {
+        nome: "Luís Eduardo Magalhães",
+        feriados: [
+          // https://sai.io.org.br/HandlerPublicacao.ashx?mixed=ZG9jdW1lbnRvc1NFUC80NjkvMjAyNC8xLzE2LzI3MTg3MzQucGRm
+          aniversarioDaCidade(MARCO, 30),
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          ff(AGOSTO, 2, "Dia do Evangélico"),
+        ]
+      },
+      {
+        nome: "Porto Seguro",
+        feriados: [
+          // https://www.acessoinformacao.com.br/ba/portoseguro/wp-includes/ExternalApps/downloader.php?hurl=aHR0cDovL2RvZW0ub3JnLmJyL2JhL3BvcnRvc2VndXJvL2FycXVpdm9zL2Rvd25sb2FkLzdkM2NmZDM1Y2I1NDlmOTNkMTkwMjQyODE3OTVkZGMxL0RFQ1JFVE8gMTEuNjEwIC0gQ0FMRU5EQVJJTyBERSBGRVJJQURPUy5wZGY%3D
+          ff(ABRIL, 22, "Aniversário do Brasil"),
+          ff(JUNHO, 30, "Elevação da Vila de Porto Seguro à categoria de cidade"),
+          ff(AGOSTO, 15, "Padroeira Nossa Senhora D'Ajuda"),
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora da Pena")
+        ]
+      },
+      {
+        nome: "Salvador",
+        feriados: [
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Teixeira de Freitas",
+        feriados: [
+          // https://www.teixeiradefreitas.ba.gov.br/feriados-municipais/
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(MAIO, 9),
+          diaDeSaoPedro
+        ]
+      },
+      {
+        nome: "Vitória da Conquista",
+        feriados: [
+          // https://www.pmvc.ba.gov.br/feriados-municipais/
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora das Vitórias"),
+          aniversarioDaCidade(NOVEMBRO, 9)
+        ]
+      },
+      {
+        nome: "Xique-Xique",
+        feriados: [
+          // https://xiquexique.ba.gov.br/prefeitura-de-xique-xique-divulga-calendario-de-feriados-do-municipio
+          aniversarioDaCidade(JUNHO, 13),
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          emancipacaoDoMunicipio(JULHO, 6),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "CE",
+    nome: "Ceará",
+    feriadosEstaduais: [
+      ff(MARCO, 19, "Dia de São José"),
+      ff(MARCO, 25, "Abolição da escravidão no Ceará"),
+      ff(AGOSTO, 15, "Dia de Nossa Senhora da Assunção (Padroeira de Fortaleza)"),
+    ],
+    cidades: [
+      {
+        nome: "Caucaia",
+        feriados: [
+          // https://www.caucaia.ce.gov.br/arquivos/1172/2209.pdf
+          ff(AGOSTO, 15, "Dia de Nossa Senhora dos Prazeres"),
+          aniversarioDaCidade(OUTUBRO, 15)
+        ]
+      },
+      {
+        nome: "Fortaleza",
+        feriados: [
+          aniversarioDaCidade(ABRIL, 13),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Assunção de Nossa Senhora")
+        ]
+      },
+      {
+        nome: "Juazeiro do Norte",
+        feriados: [
+          // https://www.calendariox.com.br/feriados-juazeiro-do-norte-ce.html
+          ff(MARCO, 24, "Aniversário de Padre Cícero"),
+          aniversarioDaCidade(JULHO, 22),
+          ff(SETEMBRO, 15, "Dia de Nossa Senhora das Dores")
+        ]
+      },
+      {
+        nome: "Sobral",
+        feriados: [
+          // https://www.camarasobral.ce.gov.br/arquivos/322/LeiOrdinria23382023.pdf
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "DF",
+    nome: "Distrito Federal",
+    feriadosEstaduais: [
+      ff(ABRIL, 21, "Fundação de Brasília"),
+      ff(NOVEMBRO, 30, "Dia do evangélico"),
+    ],
+    cidades: [
+      {
+        nome: "Brasília",
+        feriados: [
+          // O aniversário de Brasília cai no dia de Tiradentes,
+          // além disso, Brasília não possui municípios, por ser um distrito federal.
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "ES",
+    nome: "Espírito Santo",
+    feriadosEstaduais: [
+      fm(calcularNossaSenhoraDaPenha, "Dia da Padroeira do Estado (Nossa Senhora da Penha)"),
+    ],
+    cidades: [
+      {
+        nome: "Aracruz",
+        feriados: [
+          // https://www.aracruz.es.gov.br/pagina/funcionamento-das-reparticoes-publicas-da-administracao-direta-e-autarquias-de-aracruz-39
+          emancipacaoDoMunicipio(ABRIL, 3),
+          diaDeCorpusChristi,
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Cariacica",
+        feriados: [
+          // https://www.cariacica.es.gov.br/noticia/ler/89845/-/popup
+          diaDeCorpusChristi,
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Colatina",
+        feriados: [
+          // https://colatina.es.gov.br/wp-content/uploads/2021/03/lei_3.336_1988.pdf
+          diaDeCorpusChristi,
+          diaDoSagradoCoracaoDeJesus,
+          aniversarioDaCidade(AGOSTO, 22)
+        ]
+      },
+      {
+        nome: "Serra",
+        feriados: [
+          // https://www.serra.es.gov.br/noticias/serra-divulga-calendario-de-feriados-e-pontos-facultativos-para-2025
+          diaDeSaoPedro,
+          diaDeNossaSenhoraDaConceicao,
+          ff(DEZEMBRO, 26, "Dia do Serrano")
+        ]
+      },
+      {
+        nome: "Venda Nova do Imigrante",
+        feriados: [
+          // https://gedoc.ifes.edu.br/visualizarAnexo/;jsessionid=a68E2EGO1_dLRzgXs75f2Auy.ifes-gedoc01?d=ACF720A6F92EDD07F94C4D33F1A0C043&a=956ED7CFE840FEC25264E7BFACABA2B0&inline
+          aniversarioDaCidade(MAIO, 10),          
+          diaDeCorpusChristi,
+          diaDeSaoPedro
+        ]
+      },
+      {
+        nome: "Vila Velha",
+        feriados: [
+          // https://legislacao.vilavelha.es.gov.br/Arquivo/Documents/legislacao/html/D72025.html?identificador=340039003600310039003A004C00
+          diaDeCorpusChristi,
+          ff(MAIO, 23, "Colonização do Solo Espírito-Santense")
+        ]
+      },
+      {
+        nome: "Vitória",
+        feriados: [
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora da Vitória"),
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "GO",
+    nome: "Goiás",
+    feriadosEstaduais: [
+      ff(JULHO, 26, "Fundação da cidade de Goiás"),
+      ff(OUTUBRO, 24, "Pedra Fundamental de Goiânia"),
+    ],
+    cidades: [
+      {
+        nome: "Anápolis",
+        feriados: [
+          // https://sapl.anapolis.go.leg.br/media/sapl/public/normajuridica/1968/3929/3929_texto_integral.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 31)
+        ]
+      },
+      {
+        nome: "Aparecida de Goiânia",
+        feriados: [
+          // https://www.calendariox.com.br/feriados-aparecida-de-goiania-go.html
+          aniversarioDaCidade(MAIO, 11),
+          ff(NOVEMBRO, 14, "Emacipação de Aparecida de Goiânia")
+        ]
+      },
+      {
+        nome: "Caldas Novas",
+        feriados: [
+          // https://www.unimed.coop.br/site/web/caldasnovas/feriados-municipais-caldas-novas
+          ff(SETEMBRO, 15, "Dia de Nossa Senhora das Dores"),
+          aniversarioDaCidade(OUTUBRO, 21)
+        ]
+      },
+      {
+        nome: "Goiânia",
+        feriados: [
+          ff(MAIO, 24, "Dia de Nossa Senhora Auxiliadora"),
+          diaDeCorpusChristi,
+          aniversarioDaCidade(OUTUBRO, 24),
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "MA",
+    nome: "Maranhão",
+    feriadosEstaduais: [
+      ff(JULHO, 28, "Adesão do Maranhão à independência do Brasil"),
+    ],
+    cidades: [
+      {
+        nome: "Açailândia",
+        feriados: [
+          // https://cmacailandia.ma.gov.br/lei/112
+          tercaFeiraDeCarnaval,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Imperatriz",
+        feriados: [
+          // https://novo.imperatriz.ma.gov.br/media/site/download/legislacao/LEI_N%C2%BA_370-85.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 16),
+          ff(OUTUBRO, 15, "Dia de Santa Tereza D'Ávila"),
+        ]
+      },
+      {
+        nome: "Santo Antônio dos Lopes",
+        feriados: [
+          // https://www.stoantoniodoslopes.ma.gov.br/DOM/DOM20240112.pdf
+          diaDeSantoAntonio,
+          aniversarioDaCidade(DEZEMBRO, 30)
+        ]
+      },
+      {
+        nome: "São José de Ribamar",
+        feriados: [
+          // https://www.saojosederibamar.ma.gov.br/arquivo/legislacao/decreto_1127_2016
+          diaDeSaoJose,
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(SETEMBRO, 24),
+          aniversarioDaCidade(DEZEMBRO, 16)
+        ]
+      },
+      {
+        nome: "São Luís",
+        feriados: [
+          diaDeSaoPedro,
+          ff(SETEMBRO, 8, "Natividade de Nossa Senhora"),
+          fm(calcularDiaDoComercio, "Dia do Comércio (apenas para comerciantes)"),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "MT",
+    nome: "Mato Grosso",
+    feriadosEstaduais: [
+      // Dia da Consciência Negra -> lei de nº 7.879, de 27 de dezembro de 2002
+      ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2003)
+    ],
+    cidades: [
+      {
+        nome: "Cáceres",
+        feriados: [
+          // https://amm.diariomunicipal.org/publicacao/1535145/
+          aniversarioDaCidade(OUTUBRO, 6),
+          ff(AGOSTO, 25, "Dia de São Luiz de Cáceres"),
+          diaDeCorpusChristiFacultativoServidores
+        ]
+      },
+      {
+        nome: "Cuiabá",
+        feriados: [
+          aniversarioDaCidade(ABRIL, 8),
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Lucas do Rio Verde",
+        feriados: [
+          // https://www.lucasdorioverde.mt.gov.br/site/noticias/prefeitura-de-lucas-do-rio-verde-divulga-feriados-e-pontos-facultativos-de-2025-13456
+          ff(MAIO, 13, "Dia de Nossa Senhora de Fátima"),
+          aniversarioDaCidade(AGOSTO, 5),
+        ]
+      },
+      {
+        nome: "Primavera do Leste",
+        feriados: [
+          // DECRETO Nº 2.538, DE 07 DE FEVEREIRO DE 2025
+          tercaFeiraDeCarnaval,
+          emancipacaoDoMunicipio(MAIO, 13),
+          diaDeCorpusChristi,
+          ff(JULHO, 25, "Dia de São Cristóvão")
+        ]
+      },
+      {
+        nome: "Rondonópolis",
+        feriados: [
+          // https://noticias.uol.com.br/cotidiano/ultimas-noticias/2025/12/31/feriados-em-rondonopolis-mt-2026-veja-data-e-dia-da-semana-de-todos.htm
+          // https://www.rondonopolis.mt.gov.br/cidade/feriados/
+          // https://intranet-mc.tjmt.jus.br/portaldaintranet-arquivos-prod/cms/10_Portaria_1428_Calendario_Forense_7fba1cee7d.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(DEZEMBRO, 10),
+        ]
+      },
+      {
+        nome: "Sinop",
+        feriados: [
+          // https://www.sonoticias.com.br/geral/prefeito-oficializa-lista-de-feriados-e-pontos-facultativos-em-sinop/
+          diaDeSantoAntonio,
+          aniversarioDaCidade(SETEMBRO, 14),
+        ]
+      },
+      {
+        nome: "Sorriso",
+        feriados: [
+          // https://site.sorriso.mt.gov.br/noticia/prefeitura-divulga-lista-de-feriados-e-pontos-facultativos-para-2025-67a0f34b30946
+          aniversarioDaCidade(MAIO, 13),
+          diaDeSaoPedro
+        ]
+      },
+      {
+        nome: "Vila Bela da Santíssima Trindade",
+        feriados: [
+          // https://transparencia.vilabeladasantissimatrindade.mt.gov.br/fotos_downloads/15563.pdf
+          aniversarioDaCidade(MARCO, 19),
+          ff(JULHO, 21, "Festança"),
+          ff(JULHO, 22, "Festança (só até meio-dia)")
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "MS",
+    nome: "Mato Grosso do Sul",
+    feriadosEstaduais: [
+      ff(OUTUBRO, 11, "Criação do estado"),
+    ],
+    cidades: [
+      {
+        nome: "Aquidauana",
+        feriados: [
+          // https://www.mpms.mp.br/feriados/2026
+          aniversarioDaCidade(AGOSTO, 15),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Campo Grande",
+        feriados: [
+          diaDeCorpusChristi,
+          diaDeSantoAntonio,
+          aniversarioDaCidade(AGOSTO, 26),
+        ]
+      },
+      {
+        nome: "Chapadão do Sul",
+        feriados: [
+          // https://www.chapadaodosul.ms.gov.br/portal/servicos/1016/feriado-e-pontos-facultativos/
+          diaDeCorpusChristi,
+          diaDeSaoPedro,
+          aniversarioDaCidade(OUTUBRO, 23),
+        ]
+      },
+      {
+        nome: "Dourados",
+        feriados: [
+          // https://www.calendariox.com.br/feriados-dourados-ms.html
+          diaDeNossaSenhoraDaConceicao,
+          aniversarioDaCidade(DEZEMBRO, 20)
+        ]
+      },
+      {
+        nome: "Iguatemi",
+        feriados: [
+          // https://www.mpms.mp.br/feriados/2026
+          aniversarioDaCidade(MAIO, 8),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Ladário",
+        feriados: [
+          // https://publicacoes.camaraladario.ms.gov.br/arquivo/251/download
+          // https://www.ladario.ms.gov.br/portal/noticias/0/3/3767/prefeitura-de-ladario-decreta-feriado-municipal-no-dia-de-corpus-christi-19-de-junho-e-ponto-facultativo-em-20-de-junho
+          aniversarioDaCidade(JANEIRO, 31),
+          diaDeCorpusChristiAnoInicial(2025),
+          ff(OUTUBRO, 24, "Dia de Nossa Senhora dos Remédios")
+        ]
+      },
+      {
+        nome: "Ponta Porã",
+        feriados: [
+          // https://www.mpms.mp.br/feriados/2025
+          diaDeSaoJose,
+          aniversarioDaCidade(JULHO, 18)
+        ]
+      },
+      {
+        nome: "Três Lagoas",
+        feriados: [
+          // https://www.calendariox.com.br/feriados-tres-lagoas-ms.html
+          diaDeSantoAntonio,
+          aniversarioDaCidade(JUNHO, 15)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "MG",
+    nome: "Minas Gerais",
+    feriadosEstaduais: [
+      ff(ABRIL, 21, "Data magna do estado"),
+    ],
+    cidades: [
+      {
+        nome: "Belo Horizonte",
+        feriados: [
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Boa Viagem"),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Barbacena",
+        feriados: [
+          // https://barbacena.portaldacidade.com/noticias/cidade/saiba-quais-sao-os-feriados-e-pontos-facultativos-de-2025-em-minas-gerais-3858
+          aniversarioDaCidade(AGOSTO, 14),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Betim",
+        feriados: [
+          // https://www.betim.mg.gov.br/portal/noticias/0/3/14663/prefeitura-de-betim-divulga-calendario-de-feriados-e-pontos-facultativos-para-2026
+          diaDeCorpusChristi,
+          ff(JULHO, 16, "Dia de Nossa Senhora do Carmo")
+        ]
+      },
+      {
+        nome: "Camanducaia",
+        feriados: [
+          // https://ecrie.com.br/sistema/conteudos/arquivo/a_97_61_28_28052026115612.pdf
+          tercaFeiraDeCarnaval,          
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 20),
+          diaDeNossaSenhoraDaConceicao,
+          ff(NOVEMBRO, 29, "Aniversário de Monte Verde<br/>(restrito ao distrito apenas)")
+        ],
+        excecoes: [
+          {
+            // https://camanducaia.mg.gov.br/noticias/geral/atencao-para-a-mudanca-do-feriado
+            ano: 2022,
+            removidos: [ "Aniversário da cidade" ],
+            adicionados: [ ff(JULHO, 22, "Aniversário da cidade (alterado)") ]
+          },
+          {
+            // https://www.camanducaia.mg.gov.br/noticias/geral/o-decreto-n-65-de-9-de-maio-de-2023-altera-neste-ano-de-2023
+            ano: 2023,
+            removidos: [ "Aniversário da cidade" ],
+            adicionados: [ ff(JULHO, 21, "Aniversário da cidade (alterado)") ]
+          }
+        ]
+      },
+      {
+        nome: "Capitólio",
+        feriados: [
+          // https://sinimbu.cespro.com.br/visualizarDiploma.php?cdMunicipio=2821&cdDiploma=19910874&NroLei=874
+          diaDeSaoSebastiao,
+          diaDeNossaSenhoraDaConceicao,
+          aniversarioDaCidade(DEZEMBRO, 27)
+        ]
+      },
+      {
+        nome: "Contagem",
+        feriados: [
+          // https://www.portal.contagem.mg.gov.br/uploads/5482doc-e_19050814.pdf
+          diaDeJubileuDeNsaSraDasDores,
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 30)
+        ]
+      },
+      {
+        nome: "Governador Valadares",
+        feriados: [
+          // https://www.valadares.mg.gov.br/detalhe-da-legislacao/info/lei-ordinaria-3831-1993/2389
+          aniversarioDaCidade(JANEIRO, 30),
+          diaDeCorpusChristi,
+          diaDeSantoAntonio
+        ]
+      },
+      {
+        nome: "Ipatinga",
+        feriados: [
+          // https://www.ipatinga.mg.gov.br/arquivo/download/26229/categoria/219/feriados_federais_e_municipais2025
+          emancipacaoDoMunicipio(ABRIL, 29),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Assunção de Nossa Senhora"),
+        ]
+      },
+      {
+        nome: "Itajubá",
+        feriados: [
+          // https://www.itajuba.mg.gov.br/abrir_arquivo.aspx/Portaria_183_2021?cdLocal=2&arquivo={4764771E-E70C-AA0B-6BAC-CD88BEDDBDD8}.pdf#search=feriados
+          diaDeSaoJose,
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Piedade"),
+        ]
+      },
+      {
+        nome: "Juiz de Fora",
+        feriados: [
+          // https://www.pjf.mg.gov.br/secretarias/sarh/servicos/feriados.php
+          diaDeSantoAntonio,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Montes Claros",
+        feriados: [
+          // https://portal.montesclaros.mg.gov.br/noticia/programe-se-definido-o-calendario-oficial-de-feriados-e-pontos-facultativos-em-montes-claros-no-ano-de-2026
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 3)
+        ]
+      },
+      {
+        nome: "Nova Lima",
+        feriados: [
+          // https://cmnovalima.mg.gov.br/processo-legislativo/arquivos/3cf43abdcb3a0f16dc30f15307ce2879.pdf
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora do Pilar"),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Ouro Preto",
+        feriados: [
+          // https://www.tjmg.jus.br/data/files/42/75/15/30/A671C710078C21C75ECB08A8/feriados%20municipais%202021.pdf
+          diaDeCorpusChristi,
+          ff(JULHO, 8, "Dia de Nossa Senhora do Pilar"), // MESMO NOME, DATA DIFERENTE!!!!!!
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Patos de Minas",
+        feriados: [
+          // https://camarapatos.mg.gov.br/index.php/post-formats/noticias/455-feriados-e-pontos-facultativos-nacionais-e-feriados-do-municipio-de-patos-de-minas
+          aniversarioDaCidade(MAIO, 24),
+          diaDeSantoAntonio,
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Abadia")
+        ]
+      },
+      {
+        nome: "Poços de Caldas",
+        feriados: [
+          // https://pocosdecaldas.mg.gov.br/noticias/decreto-municipal-estabelece-pontos-facultativos-para-o-ano-de-2025-em-pocos/
+          // https://www.instagram.com/p/DJcmWdSSpfT/
+          // https://pocosdecaldas.siscam.com.br/arquivo?Id=209474
+          ff(MAIO, 13, "Festa de São Benedito"),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Serranópolis de Minas",
+        feriados: [
+          // https://www.serranopolisdeminas.mg.gov.br/a-cidade/feriados-municipais
+          diaDaSantaCruzDeMaio,
+          diaDeSaoJoao,
+          diaDeNossaSenhoraDaConceicao,
+          aniversarioDaCidade(DEZEMBRO, 21)
+        ]
+      },
+      {
+        nome: "Três Corações",
+        feriados: [
+          // https://www.tjmg.jus.br/data/files/42/75/15/30/A671C710078C21C75ECB08A8/feriados%20municipais%202021.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(SETEMBRO, 23)
+        ]
+      },
+      {
+        nome: "Uberaba",
+        feriados: [
+          // http://www.uberaba.mg.gov.br/portal/acervo//legislacao/feriados_municipio/Lei%205545.pdf
+          ff(MARCO, 2, "Dia de Uberaba"),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Assunção de Nossa Senhora"),
+        ]
+      },
+      {
+        nome: "Uberlândia",
+        feriados: [
+          // https://www.uberlandia.mg.gov.br/prefeitura/secretarias/administracao/calendario-de-feriados/
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Abadia"),
+          ff(AGOSTO, 31, "Dia de São Raimundo")
+        ]
+      },
+      {
+        nome: "Viçosa",
+        feriados: [
+          // https://www.folhadamata.com.br/prefeitura-de-vicosa-define-o-feriados-e-pontos-facultativos-de-2026
+          ff(MAIO, 22, "Dia de Santa Rita de Cássia"),
+          aniversarioDaCidade(SETEMBRO, 30)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "PA",
+    nome: "Pará",
+    feriadosEstaduais: [
+      ff(AGOSTO, 15, "Adesão do Pará à independência do Brasil"),
+    ],
+    cidades: [
+      {
+        nome: "Altamira",
+        feriados: [
+          // https://altamira.pa.gov.br/feriados/
+          diaDeSaoSebastiao,
+          ff(AGOSTO, 8, "Aniversário do distrito de Castelo de Sonhos"),
+          aniversarioDaCidade(NOVEMBRO, 6),
+          ff(NOVEMBRO, 19, "Aniversário do distrito de Cachoeira da Serra")
+        ]
+      },
+      {
+        nome: "Ananindeua",
+        feriados: [
+          // https://www.ananindeua.pa.gov.br/midias/legislacao/2193_decreto_n_2_740_de_24_de_fevereiro_de_2025_.pdf
+          aniversarioDaCidade(JANEIRO, 3),
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Barcarena",
+        feriados: [
+          // https://barcarena.wdsolucoes.com.br/pdf.view.php?filename=redacao_original&url=uploads/1063.pdf
+          ff(DEZEMBRO, 3, "Festividade de São Francisco Xavier")
+        ]
+      },
+      {
+        nome: "Belém",
+        feriados: [
+          aniversarioDaCidade(JANEIRO, 12),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Paragominas",
+        feriados: [
+          // https://paragominas.pa.gov.br/wp-content/uploads/2024/01/DECRETO-No-0012024-GPP-FERIADOS-E-PONTOS-FACULTATIVOS.pdf
+          // https://paragominas.pa.gov.br/wp-content/uploads/2022/04/DECRETO-16.2022-GPP-REVOGA-DECRETO-No-11.2022-E-FIXA-CALENDARIO-2022.pdf
+          // Erroneamente marca Corpus Christi como feriado nacional (CONFUSO)
+          aniversarioDaCidade(JANEIRO, 23),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Santarém",
+        feriados: [
+          // https://santarem.pa.gov.br/notas/governo-e-administracao/prefeitura-divulga-datas-de-feriados-nacionais-estadual-e-municipais-vgjyz7
+          aniversarioDaCidade(JUNHO, 22),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "PB",
+    nome: "Paraíba",
+    feriadosEstaduais: [
+      ff(AGOSTO, 5, "Fundação do Estado em 1585 e dia da sua padroeira, Nossa Senhora das Neves"),
+    ],
+    cidades: [
+      {
+        nome: "Campina Grande",
+        feriados: [
+          // https://sapl.campinagrande.pb.leg.br/media/sapl/public/normajuridica/2019/7960/lei_no_7197.pdf
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "João Pessoa",
+        feriados: [
+          diaDeSaoJoao,
+          aniversarioDaCidade(AGOSTO, 5),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Patos",
+        feriados: [
+          // https://www.ifpb.edu.br/patos/ensino/calendarios-2020/calendario-2025/tecnicos-integrados/integ2025.pdf
+          ff(SETEMBRO, 24, "Dia de Nossa Senhora da Guia"),
+          emancipacaoDoMunicipio(OUTUBRO, 24)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "PR",
+    nome: "Paraná",
+    feriadosEstaduais: [
+      // Desde 2014, por meio da lei estadual 18.384, 19 de dezembro (Emancipação política do estado do Paraná) deixou de ser feriado.
+    ],
+    cidades: [
+      {
+        nome: "Campo Mourão",
+        feriados: [
+          // https://www.campomourao.pr.leg.br/proposicoes/Portarias/2023/2/0/80490
+          diaDeSaoJose,
+          aniversarioDaCidade(OUTUBRO, 14)
+        ]
+      },
+      {
+        nome: "Cascavel",
+        feriados: [
+          // https://leismunicipais.com.br/a1/pr/c/cascavel/decreto/2025/1925/19241/decreto-n-19241-2025
+          aniversarioDaCidade(NOVEMBRO, 14)
+        ]
+      },
+      {
+        nome: "Curitiba",
+        feriados: [
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora da Luz dos Pinhais"),
+        ]
+      },
+      {
+        nome: "Foz do Iguaçu",
+        feriados: [
+          // https://www5.pmfi.pr.gov.br/noticia-49621
+          aniversarioDaCidade(JUNHO, 10),
+          diaDeCorpusChristi,
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Londrina",
+        feriados: [
+          // https://portal.londrina.pr.gov.br/feriados-pontos-facultativos
+          diaDeCorpusChristi,
+          diaDoSagradoCoracaoDeJesus,
+          aniversarioDaCidade(DEZEMBRO, 10)
+        ]
+      },
+      {
+        nome: "Maringá",
+        feriados: [
+          // https://pt.scribd.com/document/841902321/Decreto-400-Feriados-2025-1
+          aniversarioDaCidade(MAIO, 12),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Abadia")
+        ]
+      },
+      {
+        nome: "Medianeira",
+        feriados: [
+          // https://www.medianeira.pr.gov.br/arquivos/feriados_e_pontos_facultativos_2025.pdf
+          ff(MAIO, 31, "Dia Nossa Senhora Medianeira de Todas as Graças"),
+          aniversarioDaCidade(JULHO, 25),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Ponta Grossa",
+        feriados: [
+          // https://bntonline.com.br/prefeitura-de-pg-publica-calendario-de-feriados-e-pontos-facultativos-para-2026/
+          diaDeSantAnna,
+          emancipacaoDoMunicipio(SETEMBRO, 15)
+        ]
+      },
+      {
+        nome: "Prudentópolis",
+        feriados: [
+          // https://prudentopolispr.equiplano.com.br:7443/transparencia/menuCustomizavel/downloadDocumento?formulario.idAnexo=9621
+          diaDeSaoJoao,
+          emancipacaoDoMunicipio(AGOSTO, 12),
+          ff(NOVEMBRO, 12, "Dia de São Josafat")
+        ]
+      },
+      {
+        nome: "Rolândia",
+        feriados: [
+          // https://www.rolandia.pr.gov.br/noticias_individual/20074
+          emancipacaoDoMunicipio(JANEIRO, 28),
+          diaDeSaoJose,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Umuarama",
+        feriados: [
+          // https://umuarama.pr.gov.br/files/Atos/arquivo/decreto%20-%201770298375.pdf
+          aniversarioDaCidade(JUNHO, 26),
+          ff(AGOSTO, 15, "Assunção de Nossa Senhora"),
+          ff(OUTUBRO, 4, "Dia de São Francisco de Assis"),
+          emancipacaoDoMunicipio(JANEIRO, 28)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "PE",
+    nome: "Pernambuco",
+    feriadosEstaduais: [
+      ff(MARCO, 6, "Revolução Pernambucana de 1817"),
+      ff(JUNHO, 24, "Dia de São João"),
+    ],
+    cidades: [
+      {
+        nome: "Abreu e Lima",
+        feriados: [
+          // https://portal.tjpe.jus.br/servicos/consulta/feriados/feriados-oficiais-nas-comarca-de-pernambuco
+          // TODO: extinção de feriado
+          diaDeSaoJose,
+          aniversarioDaCidade(MAIO, 14),
+          ff(OUTUBRO, 31, "Dia da Consciência Evangélica")
+        ]
+      },
+      {
+        nome: "Cabo de Santo Agostinho",
+        feriados: [
+          // https://www.cabo.pe.gov.br/pagina/cidade/
+          diaDeSantoAntonio,
+          aniversarioDaCidade(JULHO, 9),
+          diaDaReformaLuterana
+        ]
+      },
+      {
+        nome: "Caruaru",
+        feriados: [
+          // https://noticias.uol.com.br/cotidiano/ultimas-noticias/2025/12/31/feriados-em-caruaru-pe-2026-veja-data-e-dia-da-semana-de-todos.htm
+          aniversarioDaCidade(MAIO, 18),
+          diaDeSaoPedro,
+          ff(SETEMBRO, 15, "Dia de Nossa Senhora das Dores"),
+        ]
+      },
+      {
+        nome: "Fernando de Noronha",
+        feriados: [
+          // https://www.bardomeionoronha.com/blog/saiba-dos-feriados-em-noronha-2022/
+          // https://portal.tjpe.jus.br/servicos/consulta/feriados/feriados-oficiais-nas-comarca-de-pernambuco
+          // https://www.bardomeionoronha.com/blog/feriados-e-datas-importantes-em-fernando-de-noronha-2024/
+          diaDeSaoPedro,
+          aniversarioDaCidade(AGOSTO, 10),
+          ff(AGOSTO, 29, "Dia de Nossa Senhora dos Remédios"),
+        ]
+      },
+      {
+        nome: "Garanhuns",
+        feriados: [
+          // https://garanhuns.pe.gov.br/nota-sobre-os-feriados-municipais-de-garanhuns/
+          aniversarioDaCidade(FEVEREIRO, 4),
+          diaDeCorpusChristi,
+          diaDeSantoAntonio,
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Jaboatão dos Guararapes",
+        feriados: [
+          ff(JANEIRO, 15, "Dia de Santo Amaro"),
+          ff(ABRIL, 17, "Dia de Nossa Senhora dos Prazeres"),
+          aniversarioDaCidade(MAIO, 4),
+        ]
+      },
+      {
+        nome: "Olinda",
+        feriados: [
+          // https://www.olinda.pe.gov.br/nossa-cidade/feriados-municipais/
+          aniversarioDaCidade(MARCO, 12),
+          ff(AGOSTO, 6, "Dia de São Salvador do Mundo"),
+          ff(NOVEMBRO, 10, "1º Grito de República no Brasil"),
+        ]
+      },
+      {
+        nome: "Paulista",
+        feriados: [
+          // https://paulista.pe.gov.br/prefeitura-do-paulista-divulga-feriados-e-pontos-facultativos-para-o-ano-de-2026/
+          fm(calcularQuartaFeiraDeCinzas, "Quarta-feira de Cinzas"),
+          diaDeSaoJoao,
+          emancipacaoDoMunicipio(SETEMBRO, 4)
+        ]
+      },
+      {
+        nome: "Petrolina",
+        feriados: [
+          // http://www.pe.portaldatransparencia.com.br/prefeitura/petrolina/?pagina=abreDocumento&arquivo=30EB0A5F
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora Rainha dos Anjos"),
+          aniversarioDaCidade(SETEMBRO, 21),
+        ]
+      },
+      {
+        nome: "Recife",
+        feriados: [
+          ff(JULHO, 16, "Dia de Nossa Senhora do Carmo"),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Vitória de Santo Antão",
+        feriados: [
+          // https://www.prefeituradavitoria.pe.gov.br/portal/index.php/2026/01/08/confira-os-feriados-e-pontos-facultativos-para-2026-em-vitoria-de-santo-antao/
+          ff(JANEIRO, 17, "Dia de Santo Antão"),
+          aniversarioDaCidade(MAIO, 6),
+          ff(AGOSTO, 3, "Batalha das Tabocas")
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "PI",
+    nome: "Piauí",
+    feriadosEstaduais: [
+      ff(OUTUBRO, 19, "Dia do Piauí"),
+    ],
+    cidades: [
+      {
+        nome: "Parnaíba",
+        feriados: [
+          // https://www.parnaiba.pi.leg.br/wp-content/uploads/2023/09/PROJETO-DE-LEI-No-82-2023-PODER-EXECUTIVO.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 14),
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora Mãe da Divina Graça"),
+          ff(OUTUBRO, 4, "Dia de São Francisco")
+        ]
+      },
+      {
+        nome: "Teresina",
+        feriados: [
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 16),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "RJ",
+    nome: "Rio de Janeiro",
+    feriadosEstaduais: [
+      // Dia da Consciência Negra -> LEI Nº 1929, DE 26 DE DEZEMBRO DE 1991.
+      tercaFeiraDeCarnaval,
+      diaDeSaoJorge,
+      fm(calcularDiaDoComercio, "Dia do Comércio (apenas para comerciantes e trabalhadores da construção civil)"),
+      ff(NOVEMBRO, 20, "Dia da Consciência Negra", 1992)
+    ],
+    cidades: [
+      {
+        nome: "Armação dos Búzios",
+        feriados: [
+          // https://buzios.rj.gov.br/prefeitura-de-buzios-decreta-ponto-facultativo-nos-dias-13-e-14-de-novembro-devido-ao-feriado-municipal-de-12-de-novembro-aniversario-da-cidade/
+          // https://sapl.armacaodosbuzios.rj.leg.br/norma/5?display#:~:text=Fica%20declarado%20FERIADO%20MUNICIPAL%2C%20o,no%20calend%C3%A1rio%20tur%C3%ADstico%20do%20Munic%C3%ADpio.
+          diaDeSantAnna,
+          emancipacaoDoMunicipio(NOVEMBRO, 12)
+        ]
+      },
+      {
+        nome: "Angra dos Reis",
+        feriados: [
+          // https://portaldoservidor.angra.rj.gov.br/arquivos/calendario/calendario-2026.pdf
+          // https://portal.angra.rj.gov.br/downloads/SAD/calendario_2025.pdf
+          aniversarioDaCidade(JANEIRO, 6),
+          diaDeSaoBeneditoEmTaubateEAngra,
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Belford Roxo",
+        feriados: [
+          // https://www.transportal.com.br/feriados/rj/belford-roxo/
+          aniversarioDaCidade(ABRIL, 3),
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Campos dos Goytacazes",
+        feriados: [
+          // https://sindivarejocampos.com.br/calendario
+          ff(JANEIRO, 15, "Dia de Santo Amaro"),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 6, "Dia de São Salvador"),
+        ]
+      },
+      {
+        nome: "Duque de Caxias",
+        feriados: [
+          diaDeCorpusChristi,
+          diaDeSantoAntonio,
+        ]
+      },
+      {
+        nome: "Itatiaia",
+        feriados: [
+          // https://itatiaia.rj.gov.br/feriados
+          diaDeSaoJose,
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(JUNHO, 1)
+        ]
+      },
+      {
+        nome: "Niterói",
+        feriados: [
+          // https://consultaniteroi.siscam.com.br/Arquivos//Materias/Proposituras/ProjLei/15c045aa-8713-4c04-a6e6-54f23cb49858.html
+          // https://www.jusbrasil.com.br/noticias/feriado-municipal-de-niteroi-e-extinto/2827457335
+          // TODO: extinção de feriado
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Nova Iguaçu",
+        feriados: [
+          diaDeSantoAntonio,
+        ]
+      },
+      {
+        nome: "Paraty",
+        feriados: [
+          // https://paraty.rj.leg.br/site/wp-content/uploads/2021/07/projeto_lei_042_2021269.pdf
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora dos Remédios")
+        ]
+      },
+      {
+        nome: "Petrópolis",
+        feriados: [
+          // https://www.petropolis.rj.gov.br/pmp/index.php/cidade/33-feriados-do-municipio
+          aniversarioDaCidade(MARCO, 16),
+          diaDeCorpusChristi,
+          ff(JUNHO, 29, "Chegada dos Primeiros Colonos Alemães a Petrópolis")
+        ]
+      },
+      {
+        nome: "Resende",
+        feriados: [
+          // https://www.trf2.jus.br/trf2/atendimento/prazos-suspensos-feriado
+          // no calendário escolar consta Corpus Christi como feriado:
+          // http://educacao.resende.rj.gov.br/wp-content/uploads/2026/02/INFANTILCRECHE-E-PR%C3%89-ESCOLA-E-ENSINO-FUNDAMENTAL.pdf
+          aniversarioDaCidade(SETEMBRO, 29)
+        ]
+      },
+      {
+        nome: "Rio de Janeiro",
+        feriados: [
+          diaDeSaoSebastiao,
+        ],
+        excecoes: [
+          {
+            // https://www.sindilojas.rio/2021/03/25/decreto-estadual-antecipa-feriados-e-cria-outros-tres/
+            // TODO: o decreto acima vale para todo o estado do RJ
+            ano: 2021,
+            removidos: [
+              "Tiradentes",
+              "Dia de São Jorge",
+            ],
+            adicionados: [
+              ff(MARCO, 26, "Feriadão excepcional devido à pandemia de COVID-19"),
+              ff(MARCO, 29, "Tiradentes (adiantado pela pandemia)"),
+              ff(MARCO, 30, "Dia de São Jorge (adiantado pela pandemia)"),
+              ff(MARCO, 31, "Feriadão excepcional devido à pandemia de COVID-19"),
+              ff(ABRIL, 1, "Feriadão excepcional devido à pandemia de COVID-19"),
+            ]
+          },
+          {
+            // https://www.sindilojas.rio/2024/10/25/comunicado-sobre-o-feriado-do-g20-decreto-no-55-200-2024/
+            ano: 2024,
+            adicionados: [
+              ff(NOVEMBRO, 18, "Cúpula do G20<br/>(feriado para categorias não-essenciais)"),
+              ff(NOVEMBRO, 19, "Cúpula do G20<br/>(feriado para categorias não-essenciais)"),
+            ]
+          }
+        ]
+      },
+      {
+        nome: "Saquarema",
+        feriados: [
+          // https://transparencia.saquarema.rj.gov.br/wp-content/uploads/2018/01/LO-567-2001.pdf
+          // https://www.transparencia.saquarema.rj.leg.br/arquivos/1673/818.pdf
+          emancipacaoDoMunicipio(MAIO, 8),
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora de Nazareth"),
+          diaDeSantoAntonio,
+          fm(calcularDiaDaBiblia, "Dia da Bíblia")
+        ]
+      },
+      {
+        nome: "São Gonçalo",
+        feriados: [
+          ff(JANEIRO, 10, "Dia de São Gonçalo"),
+          aniversarioDaCidade(SETEMBRO, 22),
+        ]
+      },
+      {
+        nome: "Teresópolis",
+        feriados: [
+          // https://www.instagram.com/p/DGilO7NuS4_/?img_index=4
+          diaDeSantoAntonio,
+          aniversarioDaCidade(JULHO, 6),
+          ff(OUTUBRO, 15, "Dia de Santa Teresa D'Ávila"),
+        ]
+      },
+      {
+        nome: "Volta Redonda",
+        feriados: [
+          // https://sapl.voltaredonda.rj.leg.br/media/sapl/public/normajuridica/2018/4025/4025_texto_integral.pdf
+          diaDeCorpusChristi,
+          diaDeSantoAntonio,
+          aniversarioDaCidade(JULHO, 17)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "RN",
+    nome: "Rio Grande do Norte",
+    feriadosEstaduais: [
+      ff(AGOSTO, 7, "Dia do Rio Grande do Norte"),
+      ff(OUTUBRO, 3, "Mártires de Cunhaú e Uruaçu"),
+    ],
+    cidades: [
+      {
+        nome: "Caicó",
+        feriados: [
+          // https://pt.wikipedia.org/wiki/Caic%C3%B3
+          fm(calcularDiaDaFestaDeSantaAna, "Festa de Sant'Ana"),
+          aniversarioDaCidade(DEZEMBRO, 16),
+        ]
+      },
+      {
+        nome: "Mossoró",
+        feriados: [
+          // https://dom.mossoro.rn.gov.br/dom/ato/13663
+          ff(SETEMBRO, 30, "Libertação dos escravos"),
+          ff(DEZEMBRO, 13, "Dia de Santa Luzia")
+        ]
+      },
+      {
+        nome: "Natal",
+        feriados: [
+          ff(JANEIRO, 6, "Dia de Santos Reis"),
+          diaDeCorpusChristi,
+          ff(NOVEMBRO, 21, "Dia de Nossa Senhora da Apresentação"),
+        ]
+      },
+      {
+        nome: "Parnamirim",
+        feriados: [
+          // https://antigo.parnamirim.rn.gov.br/pdf/feriados.pdf
+          // https://www.instagram.com/p/DTLQ5U5ADlb/
+          ff(MAIO, 12, "Dia de Nossa Senhora de Fátima"),
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(DEZEMBRO, 17)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "RS",
+    nome: "Rio Grande do Sul",
+    feriadosEstaduais: [
+      ff(SETEMBRO, 20, "Dia do Gaúcho"),
+    ],
+    cidades: [
+      {
+        nome: "Anta Gorda",
+        feriados: [
+          // https://antagorda.rs.gov.br/legislacao/download-lei/223/
+          // https://antagorda.rs.gov.br/legislacao/download-lei/808/
+          // Dia de São Carlos Borromeu, em 04/11, deixou de ser feriado em 2015
+          // https://antagorda.rs.gov.br/legislacao/download-lei/691/
+          // TODO: extinção de feriados
+          diaDeCorpusChristi,
+          ff(JULHO, 25, "Dia de São Cristóvão"),
+          emancipacaoDoMunicipio(DEZEMBRO, 26, 2018)
+        ]
+      },
+      {
+        nome: "Bento Gonçalves",
+        feriados: [
+          // https://www.bentogoncalves.rs.gov.br/publicado-o-decreto-com-os-feriados-e-pontos-facultativos-de-2025/
+          diaDeCorpusChristi,
+          diaDeSantoAntonio
+        ]
+      },
+      {
+        nome: "Canela",
+        feriados: [
+          // https://canela.rs.gov.br/sitenovo/gabinete-do-prefeito/feriados-municipais/
+          diaDeNossaSenhoraDeCaravaggio,
+          diaDeAscensaoDoSenhor,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Canoas",
+        feriados: [
+          // https://noticias.uol.com.br/cotidiano/ultimas-noticias/2026/01/01/feriados-em-canoas-rs-2026-veja-data-e-dia-da-semana-de-todos.htm
+          // https://portaldoservidor.canoas.rs.gov.br/saiu-a-lista-de-feriados-e-pontos-facultativos-de-2026/
+          ff(FEVEREIRO, 2, "Dia de Nossa Senhora dos Navegantes"),
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JUNHO, 27)
+        ]
+      },
+      {
+        nome: "Caxias do Sul",
+        feriados: [
+          // https://www.camaracaxias.rs.gov.br/noticias/index/10388
+          // https://noticias.uol.com.br/cotidiano/ultimas-noticias/2025/12/31/feriados-em-caxias-do-sul-rs-2026-veja-data-e-dia-da-semana-de-todos.htm
+          diaDeNossaSenhoraDeCaravaggio,
+          aniversarioDaCidade(JUNHO, 20)
+        ]
+      },
+      {
+        nome: "Chuí",
+        feriados: [
+          // https://chui.rs.gov.br/o-municipio/sobre-o-municipio/
+          aniversarioDaCidade(OUTUBRO, 22)
+        ]
+      },
+      {
+        nome: "Garibaldi",
+        feriados: [
+          // https://www.garibaldi.rs.gov.br/pagina/feriados
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Gramado",
+        feriados: [
+          // https://ecrie.com.br/sistema/conteudos/arquivo/a_160_0_1_17112023163950.pdf
+          diaDeAscensaoDoSenhor,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Não-Me-Toque",
+        feriados: [
+          // https://naometoque.rs.gov.br/2012/10/24/feriados-municipais-e-pontos-facultativos/
+          diaDeCorpusChristi,
+          diaDaReformaLuterana,
+        ]
+      },
+      {
+        nome: "Nova Prata",
+        feriados: [
+          // https://www.trf4.jus.br/trf4/controlador.php?acao=calendario_feriados_listar&selOrgao=2
+          diaDeCorpusChristi,
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Novo Hamburgo",
+        feriados: [
+          // https://www.novohamburgo.rs.gov.br/feriados
+          emancipacaoDoMunicipio(ABRIL, 5),
+          diaDeAscensaoDoSenhor,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Passo Fundo",
+        feriados: [
+          // https://leismunicipais.com.br/a1/rs/p/passo-fundo/lei-ordinaria/1949/10/106/lei-ordinaria-n-106-1949-regulamenta-feriados-religiosos?r=c
+          diaDeCorpusChristi,
+          diaDeSaoPedro,
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Porto Alegre",
+        feriados: [
+          ff(FEVEREIRO, 2, "Dia de Nossa Senhora dos Navegantes"),
+        ]
+      },
+      {
+        nome: "Santa Maria",
+        feriados: [
+          // https://www.santamaria.rs.gov.br/arquivos/baixar-arquivo/noticias/D10-2064.pdf
+          aniversarioDaCidade(MAIO, 17),
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Santana do Livramento",
+        feriados: [
+          // https://www.instagram.com/p/DEXoUwtxWdm/?img_index=1
+          ff(FEVEREIRO, 2, "Dia de Iemanjá"),
+          aniversarioDaCidade(JULHO, 30)
+        ]
+      },
+      {
+        nome: "São José dos Ausentes",
+        feriados: [
+          // https://www.saojosedosausentes.rs.gov.br/wp-content/uploads/2021/03/Decreto-019.pdf
+          // https://www.saojosedosausentes.rs.gov.br/wp-content/uploads/2025/01/CALENDARIO-ESCOLAR.pdf
+          diaDeSaoJose,
+          emancipacaoDoMunicipio(MARCO, 20)
+        ]
+      },
+      {
+        nome: "Serafina Corrêa",
+        feriados: [
+          // https://leismunicipais.com.br/a/rs/s/serafina-correa/lei-ordinaria/1967/16/155/lei-ordinaria-n-155-1967-cria-os-feriados-municipais
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(JULHO, 25)
+        ]
+      },
+      {
+        nome: "Teutônia",
+        feriados: [
+          // https://leismunicipais.com.br/a/rs/t/teutonia/lei-ordinaria/1983/3/29/lei-ordinaria-n-29-1983-declara-feriados-municipais-sexta-feira-da-paixao-corpus-cristi-dia-da-reforma-e-dia-de-finados?q=decretos+municipais
+          diaDeCorpusChristi,
+          diaDaReformaLuterana
+        ]
+      },
+      {
+        nome: "Uruguaiana",
+        feriados: [
+          // https://www.uruguaiana.rs.gov.br/portal/servicos/1269/feriados/
+          diaDeCorpusChristi,
+          diaDeSantAnna
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "RO",
+    nome: "Rondônia",
+    feriadosEstaduais: [
+      ff(JANEIRO, 4, "Criação do estado"),
+      ff(JUNHO, 18, "Dia do evangélico"),
+    ],
+    cidades: [
+      {
+        nome: "Ji-Paraná",
+        feriados: [
+          // https://rondonia.ro.gov.br/decreto-regulamenta-calendario-de-feriados-e-pontos-facultativos-para-2025-em-rondonia/
+          ff(AGOSTO, 16, "Dia de São João Bosco"),
+          aniversarioDaCidade(NOVEMBRO, 22)
+        ]
+      },
+      {
+        nome: "Porto Velho",
+        feriados: [
+          ff(JANEIRO, 24, "Dia de São Francisco de Sales"),
+          aniversarioDaCidade(OUTUBRO, 2),
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "RR",
+    nome: "Roraima",
+    feriadosEstaduais: [
+      ff(OUTUBRO, 5, "Criação do estado")
+    ],
+    cidades: [
+      {
+        nome: "Boa Vista",
+        feriados: [
+          diaDeSaoSebastiao,
+          diaDeSaoPedro,
+          aniversarioDaCidade(JULHO, 9),
+          diaDeNossaSenhoraDaConceicao,
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2016) // Lei Ordinária nº 1.705, de 14 de junho de 2016 - SAPL
+        ]
+      },
+      {
+        nome: "Pacaraima",
+        feriados: [
+          // https://portal.pacaraima.rr.gov.br/index.php/publicacoes/preview/2178
+          ff(OUTUBRO, 4, "Dia de São Francisco de Assis"),
+          aniversarioDaCidade(OUTUBRO, 17)
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "SC",
+    nome: "Santa Catarina",
+    feriadosEstaduais: [
+      deslocarFeriadoEstadualDeSantaCatarina(ff(AGOSTO, 11, "Dia de Santa Catarina (criação da capitania, separando-se de São Paulo)")),
+      deslocarFeriadoEstadualDeSantaCatarina(ff(NOVEMBRO, 25, "Dia de Santa Catarina de Alexandria")),
+    ],
+    cidades: [
+      {
+        nome: "Balneário Camboriú",
+        feriados: [
+          tercaFeiraDeCarnaval,
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 20),
+        ]
+      },
+      {
+        nome: "Blumenau",
+        feriados: [
+          diaDeCorpusChristi,
+          aniversarioDaCidade(SETEMBRO, 2),
+        ]
+      },
+      {
+        nome: "Camboriú",
+        feriados: [
+          // https://static.dom.sc.gov.br/?r=site/atoView&id=4415454
+          aniversarioDaCidade(ABRIL, 5),
+          fm(calcularOitavaDaFestaDoDivinoEspiritoSanto, "Segunda-feira da Festa do Divino Espírito Santo"),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Chapecó",
+        feriados: [
+          // https://www.chapeco.sc.gov.br/noticia/11694/prefeitura-divulga-calendario-de-feriados-para-o-ano-de-2026
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 25),
+        ]
+      },
+      {
+        nome: "Florianópolis",
+        feriados: [
+          diaDeCorpusChristi,
+          aniversarioDaCidade(MARCO, 23),
+        ]
+      },
+      {
+        nome: "Itajaí",
+        feriados: [
+          // https://leismunicipais.com.br/a/sc/i/itajai/decreto/2025/1347/13479/decreto-n-13479-2025-fixa-o-calendario-dos-pontos-facultativos-para-os-orgaos-da-administracao-direta-autarquias-e-fundacoes-publicas-do-poder-executivo-municipal
+          // nenhum mesmo
+        ]
+      },
+      {
+        nome: "Jaraguá do Sul",
+        feriados: [
+          // https://senhas.jaraguadosul.sc.gov.br/calendario-feriados-e-pontos-facultativos?snow/BmRSdlFy/qoRZbeDe
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 25),
+        ]
+      },
+      {
+        nome: "Joinville",
+        feriados: [
+          aniversarioDaCidade(MARCO, 9),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Navegantes",
+        feriados: [
+          // https://navegantes.sc.gov.br/feriados-municipais/
+          ff(FEVEREIRO, 2, "Dia de Nossa Senhora dos Navegantes"),
+          aniversarioDaCidade(AGOSTO, 26),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Pomerode",
+        feriados: [
+          // https://www.cmpomerode.sc.gov.br/proposicoes/Projetos-de-Leis-Ordinarias/0/1/62/3872
+          fm(calcularSegundaFeiraDoBrilho, "Segunda-feira de Páscoa"),
+          diaDeCorpusChristi,
+          diaDaReformaLuterana
+        ]
+      },
+      {
+        nome: "São Joaquim",
+        feriados: [
+          // https://saojoaquim.sc.gov.br/uploads/sites/348/2025/06/Decreto-No-493-2025.pdf
+          aniversarioDaCidade(MAIO, 7),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Treze Tílias",
+        feriados: [
+          // https://leis.org/municipais/sc/treze-tilias/lei/decreto/2026/3243/decreto-n-3243-2026-edita-o-calendario-de-feriados-e-pontos-facultativos-para-o-ano-de-2026-para-o-municipio-de-treze-tilias-que
+          diaDeCorpusChristi,
+          ff(OUTUBRO, 13, "Aniversário da Imigração Austríaca")
+        ]
+      },
+      {
+        nome: "Urupema",
+        feriados: [
+          // https://urupema.sc.gov.br/legislacao/norma-368067/
+          // https://urupema.sc.gov.br/legislacao/norma-370634/
+          // https://urupema.sc.gov.br/legislacao/norma-427760/
+          aniversarioDaCidade(JUNHO, 1),
+          diaDeCorpusChristi,
+          diaDeSantAnna
+        ]
+      },
+      {
+        nome: "Xanxerê",
+        feriados: [
+          // https://leismunicipais.com.br/a/sc/x/xanxere/lei-ordinaria/2016/384/3833/lei-ordinaria-n-3833-2016-estipula-os-feriados-municipais-no-municipio-de-xanxere-e-da-outras-providencias
+          aniversarioDaCidade(FEVEREIRO, 27),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 6, "Dia do Senhor Bom Jesus")
+        ],
+        excecoes: [
+          {
+            // https://xanxere.sc.gov.br/uploads/sites/92/2026/02/Decreto-n.-271-2025-Transfere-data-feriado.pdf
+            ano: 2026,
+            removidos: [
+              "Aniversário da cidade"
+            ],
+            adicionados: [
+              ff(MARCO, 6, "Aniversário da cidade<br/>(movido devido à ExpoFemi)")
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "SP",
+    nome: "São Paulo",
+    feriadosEstaduais: [
+      // Dia da Consciência Negra -> Lei nº 17.746, de 12/09/2023
+      ff(JULHO, 9, "Revolução Constitucionalista de 1932"),
+      ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2023)
+    ],
+    cidades: [
+      {
+        nome: "Águas de Lindóia",
+        feriados: [
+          // https://www.aguasdelindoia.sp.gov.br/public/admin/globalarq/diario-oficial/fdaaaae04702d743e8515620ab96df0f.pdf
+          aniversarioDaCidade(JULHO, 2),
+          emancipacaoDoMunicipio(NOVEMBRO, 16)
+        ]
+      },
+      {
+        nome: "Americana",
+        feriados: [
+          // https://www.americana.sp.gov.br/legislacao/lei_939_1969.html
+          diaDeCorpusChristi,
+          diaDeSantoAntonio
+        ]
+      },
+      {
+        nome: "Amparo",
+        feriados: [
+          // https://www.amparo.sp.gov.br/wp-content/uploads/2025/05/CALENDARIO-2025.pdf
+          aniversarioDaCidade(ABRIL, 8),
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora do Amparo")
+        ]
+      },
+      {
+        nome: "Aparecida do Norte",
+        feriados: [
+          // https://www.aparecida.sp.gov.br/arquivos/decreto_-_calendario_22032957.pdf
+          // https://www.aparecida.sp.gov.br/portal/leis_decretos/21866/
+          diaDaFestaDeSaoBeneditoEmAparecida,
+          aniversarioDaCidade(DEZEMBRO, 17)
+        ]
+      },
+      {
+        nome: "Araraquara",
+        feriados: [
+          // https://www.camara-arq.sp.gov.br/Pagina/Listar/709
+          // https://www.acidadeon.com/araraquara/economia/confira-os-feriados-e-pontos-facultativos-de-2025-em-araraquara/
+          diaDeCorpusChristi,
+          ff(JULHO, 11, "Dia de São Bento"),
+          ff(AGOSTO, 22, "Imaculado Coração de Maria")
+        ]
+      },
+      {
+        nome: "Barretos",
+        feriados: [
+          // https://consulta.camarabarretos.sp.gov.br/Documentos/Documento/276091
+          diaDeCorpusChristi,
+          ff(AGOSTO, 25, "Dia de São Luís"),
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2009) // LEI ORDINÁRIA Nº 4151
+        ]
+      },
+      {
+        nome: "Bauru",
+        feriados: [
+          // https://www2.bauru.sp.gov.br/feriados.aspx
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 1)
+        ]
+      },
+      {
+        nome: "Barueri",
+        feriados: [
+          diaDeSaoJoao,
+          diaDeCorpusChristi,
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2007) // LEI Nº 1639, de 1 de Março de 2007
+        ],
+        excecoes: [
+          {
+            // https://peccicaccoadvogados.com.br/?p=10877
+            ano: 2021,
+            removidos: [
+              "Dia de São João",
+              "Dia da Consciência Negra"
+            ],
+            adicionados: [
+              ff(MARCO, 29, "Dia de São João (adiantado de 2021, pandemia)"),
+              ff(MARCO, 30, "Dia da Consciência Negra (adiantado de 2021, pandemia)"),
+              ff(MARCO, 31, "Dia da Consciência Negra (adiantado de 2022, pandemia)"),
+            ]
+          },
+          {
+            ano: 2022,
+            removidos: [
+              "Dia da Consciência Negra",
+            ]
+          }
+        ]
+      },
+      {
+        nome: "Botucatu",
+        feriados: [
+          // https://sistemas.botucatu.sp.gov.br/transparencia/decretos/view.php?file=2025%2F13681+feriados+e+pontos+facultativos+2026.pdf
+          aniversarioDaCidade(ABRIL, 14),
+          diaDeCorpusChristi,
+          diaDeSantAnna
+        ]
+      },
+      {
+        nome: "Brotas",
+        feriados: [
+          // https://www.camarabrotas.sp.gov.br//temp/26122025132731download_lei_5.pdf
+          diaDaSantaCruzDeMaio,
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 15, "Dia de Nossa Senhora das Dores")
+        ]
+      },
+      {
+        nome: "Caçapava",
+        feriados: [
+          // https://www.cacapava.sp.gov.br/cidade/feriados-municipais
+          ff(ABRIL, 14, "Dia de São Tibúrcio"),
+          diaDeCorpusChristi,
+          diaDeSaoJoao
+        ]
+      },
+      {
+        nome: "Cajamar",
+        feriados: [
+          // https://cajamar.sp.gov.br/cidade/feriados/
+          diaDeSaoSebastiao,
+          aniversarioDaCidade(FEVEREIRO, 18),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Campinas",
+        feriados: [
+          // Dia da Consciência Negra -> Lei nº 11128 de 14 de janeiro de 2002
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao,
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2002),
+          ff(AGOSTO, 12, "Dia do Evangélico", 2026)
+        ],
+        excecoes: [
+          {
+            // https://campinas.sp.gov.br/noticias/para-melhorar-isolamento-social-campinas-antecipa-feriados-municipais-87625
+            ano: 2020,
+            removidos: [
+              "Revolução Constitucionalista de 1932",
+              "Quinta-feira de Corpus-Christi",
+              "Dia da Consciência Negra"
+            ],
+            adicionados: [
+              // TODO: 9 de julho foi adiantado em todo o estado de SP em 2020              
+              ff(MAIO, 25, "Revolução Constitucionalista de 1932 (adiantado pela pandemia)"),
+              ff(MAIO, 26, "Quinta-feira de Corpus-Christi (adiantado pela pandemia)"),
+              ff(MAIO, 27, "Dia da Consciência Negra (adiantado pela pandemia)"),
+            ]
+          }
+        ]
+      },
+      {
+        nome: "Campos do Jordão",
+        feriados: [
+          // https://www.instagram.com/p/DEYQL1wvW-5/
+          aniversarioDaCidade(ABRIL, 29),
+          diaDeCorpusChristi,
+          ff(OUTUBRO, 1, "Dia de Santa Teresinha")
+        ]
+      },
+      {
+        nome: "Carapicuíba",
+        feriados: [
+          // https://www.carapicuiba.sp.gov.br/uploads/legislacao/27842/bVWX-rXlmOUuH8yZKZEyA2jhX9_jNc45.pdf
+          emancipacaoDoMunicipio(MARCO, 26),
+          diaDeSaoPedro,
+        ],
+        excecoes: [
+          {
+            // https://www.aciccarapicuiba.com.br/site/noticias:antecipacao-de-feriados-em-carapicuiba
+            ano: 2021,
+            removidos: [
+              "Emancipação política do município",
+              "Dia de São Pedro",
+              "Dia da Consciência Negra"
+            ],
+            adicionados: [
+              // TODO: 9 de julho foi adiantado em todo o estado de SP em 2020
+              ff(MARCO, 29, "Emancipação política do município<br/>(postergado pela pandemia)"),
+              ff(MARCO, 30, "Dia de São Pedro (adiantado pela pandemia)"),
+              ff(MARCO, 31, "Dia da Consciência Negra (adiantado pela pandemia)")
+            ]
+          }
+        ]
+      },
+      {
+        nome: "Cubatão",
+        feriados: [
+          // https://diariooficial.cubatao.sp.gov.br/search_sres.php?id=MTYzMg==
+          aniversarioDaCidade(ABRIL, 9),
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Lapa")
+        ]
+      },
+      {
+        nome: "Diadema",
+        feriados: [
+          // https://portal.diadema.sp.gov.br/feriados-municipais/
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Franca",
+        feriados: [
+          // https://www3.franca.sp.gov.br/noticia/31843/feriados.html
+          diaDeCorpusChristi,
+          aniversarioDaCidade(NOVEMBRO, 28),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Guarulhos",
+        feriados: [
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Guarujá",
+        feriados: [
+          // https://www.guaruja.sp.gov.br/plataforma/wp-content/uploads/2024/10/12-1xD3QW36c0-2024.pdf
+          ff(JANEIRO, 15, "Dia de Santo Amaro"),
+          diaDeCorpusChristi,
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2009),
+        ]
+      },
+      {
+        nome: "Holambra",
+        feriados: [
+          // https://camaraholambra.sp.gov.br/Noticia/Visualizar/4560
+          ff(MAIO, 25, "Divino Espírito Santo"),
+          diaDeCorpusChristi,
+          aniversarioDaCidade(OUTUBRO, 27),
+        ]
+      },
+      {
+        nome: "Hortolândia",
+        feriados: [
+          // https://www.hortolandia.sp.gov.br/servidor-municipal/prefeitura-de-hortolandia-oficializa-calendario-de-feriados-para-2025/
+          aniversarioDaCidade(MAIO, 19),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Ilha Solteira",
+        feriados: [
+          // https://ilhasolteira.sp.gov.br/wp-content/uploads/2026/01/Calendario-2026.pdf
+          ff(OUTUBRO, 4, "Dia de São Francisco de Assis"),
+          aniversarioDaCidade(OUTUBRO, 15)
+        ]
+      },
+      {
+        nome: "Itaquaquecetuba",
+        feriados: [
+          // https://www.itaquaquecetuba.sp.gov.br/diariooficial/index.php/prefeitura/decreto-8438-feriados-pontos-facultativos-19-11-24/viewdocument
+          diaDeCorpusChristi,
+          aniversarioDaCidade(SETEMBRO, 8),
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2014),
+        ]
+      },
+      {
+        nome: "Itu",
+        feriados: [
+          // https://itu.sp.gov.br/a-cidade/dados-gerais/
+          ff(FEVEREIRO, 2, "Dia de Nossa Senhora da Candelária"),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Itupeva",
+        feriados: [
+          // https://itupeva.sp.gov.br/itupeva/feriados-e-pontos-facultativos
+          diaDeSaoSebastiao,
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Jacareí",
+        feriados: [
+          // https://egov.jacarei.sp.gov.br/pmjacarei/websis/siapegov/administrativo/aacw/aac_calendario_feriados.php
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Jaguariúna",
+        feriados: [
+          // https://jaguariuna.sp.leg.br/wp-content/uploads/2020/09/LEI-1567.pdf
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 12, "Santíssimo Nome de Maria"),
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2005)
+        ]
+      },
+      {
+        nome: "Jundiaí",
+        feriados: [
+          // DECRETO Nº 34.592, DE 06 DE NOVEMBRO DE 2024.
+          // https://jundiai.sp.gov.br/a-cidade/feriados-e-pontos-facultativos/
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Dia de Nossa Senhora do Desterro")
+        ]
+      },
+      {
+        nome: "Limeira",
+        feriados: [
+          // https://www.limeira.sp.gov.br/secretarias/ceprosom/feriados-municipais-e-pontos-facultativos
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 15, "Dia de Nossa Senhora das Dores")
+        ]
+      },
+      {
+        nome: "Lindóia",
+        feriados: [
+          // https://ecrie.com.br/sistema/conteudos/arquivo/a_201_0_1_08012024152427.pdf
+          // https://lindoia.sp.gov.br/lindoia-oficializa-data-de-fundacao-do-municipio
+          // https://www.transportal.com.br/feriados/sp/lindoia/
+          emancipacaoDoMunicipio(MARCO, 21),
+          ff(SETEMBRO, 8, "Natividade de Nossa Senhora"),
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2010)
+        ]
+      },
+      {
+        nome: "Louveira",
+        feriados: [
+          // https://dosp.com.br/exibe_do.php?i=NzUxNDI5
+          diaDeSaoSebastiao,
+          aniversarioDaCidade(MARCO, 21),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Mauá",
+        feriados: [
+          // https://dom.maua.sp.gov.br/public/docs/ea9f8d17580fcfa49b7c52fe4d83e9e9.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(DEZEMBRO, 8),
+        ]
+      },
+      {
+        nome: "Marília",
+        feriados: [
+          // https://noticias.uol.com.br/cotidiano/ultimas-noticias/2025/12/31/feriados-em-marilia-sp-2026-veja-data-e-dia-da-semana-de-todos.htm
+          aniversarioDaCidade(ABRIL, 4),
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Mogi das Cruzes",
+        feriados: [
+          // https://www.mogidascruzes.sp.gov.br/servico/servidor/calendario-administrativo
+          diaDeCorpusChristi,
+          diaDeSantAnna,
+          aniversarioDaCidade(SETEMBRO, 1),
+        ]
+      },
+      {
+        nome: "Monte Alegre do Sul",
+        feriados: [
+          // https://www.montealegredosul.sp.gov.br/up/anexo/1723751226.pdf
+          diaDeCorpusChristi,
+          ff(AGOSTO, 6, "Dia do Senhor Bom Jesus"),
+          emancipacaoDoMunicipio(DEZEMBRO, 24)
+        ]
+      },
+      {
+        nome: "Osasco",
+        feriados: [
+          aniversarioDaCidade(FEVEREIRO, 19),
+          diaDeCorpusChristi,
+          diaDeSantoAntonio,
+        ]
+      },
+      {
+        nome: "Paulínia",
+        feriados: [
+          // https://www.paulinia.sp.gov.br/feriados2025/
+          aniversarioDaCidade(FEVEREIRO, 28),
+          diaDoSagradoCoracaoDeJesus,
+        ]
+      },
+      {
+        nome: "Pedreira",
+        feriados: [
+          // https://pedreira.sp.gov.br/noticias/governo/31-de-outubro-aniversario-de-pedreira-e-feriado-municipal
+          diaDeCorpusChristi,
+          diaDeSantAnna,
+          aniversarioDaCidade(OUTUBRO, 31)
+        ]
+      },
+      {
+        nome: "Piracicaba",
+        feriados: [
+          // https://piracicaba.sp.gov.br/servicos/calendario-de-feriados-e-pontos-facultativos-2025/
+          diaDeSantoAntonio,
+          diaDeCorpusChristi,
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2003),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Pirassununga",
+        feriados: [
+          // https://pirassununga.siscam.com.br/arquivo?Id=72522
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 6),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Praia Grande",
+        feriados: [
+          // https://www.praiagrande.sp.gov.br/Administracao/leisdecretos_view.asp?codLeis=3345
+          diaDeCorpusChristi,
+          diaDeSaoPedro
+        ]
+      },
+      {
+        nome: "Presidente Prudente",
+        feriados: [
+          // https://g1.globo.com/sp/presidente-prudente-regiao/noticia/2025/02/17/presidente-prudente-divulga-novo-calendario-com-15-feriados-e-12-pontos-facultativos-em-2025-veja-a-lista.ghtml
+          // https://www.presidenteprudente.sp.gov.br/site/noticia/66177
+          diaDeSaoSebastiao,
+          diaDeCorpusChristi,
+          aniversarioDaCidade(SETEMBRO, 14),
+          diaDeNossaSenhoraDaConceicao
+        ]
+      },
+      {
+        nome: "Ribeirão Preto",
+        feriados: [
+          diaDeSaoSebastiao,
+          diaDeCorpusChristi,
+          ff(JUNHO, 19, "Dia de Santa Juliana Falconieri"),
+        ]
+      },
+      {
+        nome: "Rio Claro",
+        feriados: [
+          // https://cespro.com.br/visualizarDiploma.php?cdMunicipio=9320&cdDiploma=19701158&NroLei=1.158&Word=&Word2=
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+        ]
+      },
+      {
+        nome: "Santa Bárbara d'Oeste",
+        feriados: [
+          // http://www2.camarasantabarbara.sp.gov.br/Sino.Siave/arquivo?Id=51235
+          diaDeCorpusChristi,
+          ff(AGOSTO, 15, "Assunção de Nossa Senhora"),
+          ff(DEZEMBRO, 4, "Dia de Santa Bárbara"),
+        ]
+      },
+      {
+        nome: "Santos",
+        feriados: [
+          // https://www.claudiamendes.com.br/boletim/feriados-e-pontos-facultativos-em-santos-2025-332
+          aniversarioDaCidade(JANEIRO, 26),
+          diaDeCorpusChristi,
+          ff(SETEMBRO, 8, "Dia de Nossa Senhora do Monte Serrat")
+        ]
+      },
+      {
+        nome: "Santo André",
+        feriados: [
+          aniversarioDaCidade(ABRIL, 8),
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "São Bernardo do Campo",
+        feriados: [
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 20)
+        ]
+      },
+      {
+        nome: "São Carlos",
+        feriados: [
+          // https://saocarlos.sp.gov.br/index.php/conheca-sao-carlos/115443-feriados.html
+          ff(AGOSTO, 15, "Dia de Nossa Senhora da Babilônia"),
+          ff(OUTUBRO, 15, "Dia do Professor (somente para os professores da rede municipal de ensino)"),
+          aniversarioDaCidade(NOVEMBRO, 4),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "São José dos Campos",
+        feriados: [
+          diaDeSaoJose,
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 27),
+        ]
+      },
+      {
+        nome: "São José do Rio Preto",
+        feriados: [
+          // https://riopreto.siscam.com.br/Documentos/Arquivo/386924
+          diaDeSaoJose,
+          diaDeCorpusChristi,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "São Paulo",
+        feriados: [
+          // Dia da Consciência Negra, lei Nº 13.707 de 7 de Janeiro de 2004
+          aniversarioDaCidade(JANEIRO, 25),
+          diaDeCorpusChristi,
+          ff(NOVEMBRO, 20, "Dia da Consciência Negra", 2004)
+        ],
+        excecoes: [
+          {
+            // https://g1.globo.com/sp/sao-paulo/noticia/2020/05/18/camara-de-sp-aprova-antecipacao-de-feriados-municipais-para-aumentar-isolamento-social.ghtml
+            ano: 2020,
+            removidos: [
+              "Quinta-feira de Corpus-Christi",
+              "Dia da Consciência Negra",
+              "Revolução Constitucionalista de 1932"
+            ],
+            adicionados: [
+              // TODO: 9 de julho foi adiantado em todo o estado de SP em 2020              
+              ff(MAIO, 20, "Quinta-feira de Corpus-Christi (adiantado pela pandemia)"),
+              ff(MAIO, 21, "Dia da Consciência Negra (adiantado pela pandemia)"),
+              ff(MAIO, 25, "Revolução Constitucionalista de 1932 (adiantado pela pandemia)"),
+            ]
+          },
+          {
+            // https://g1.globo.com/sp/sao-paulo/noticia/2021/03/18/prefeitura-de-sp-antecipa-5-feriados-para-conter-avanco-da-covid-veja-como-fica-o-calendario.ghtml
+            // https://peccicaccoadvogados.com.br/?p=10877
+            ano: 2021,
+            removidos: [
+              "Quinta-feira de Corpus-Christi",
+              "Dia da Consciência Negra",
+            ],
+            adicionados: [
+              // TODO: 9 de julho foi adiantado em todo o estado de SP em 2020              
+              ff(MARCO, 26, "Quinta-feira de Corpus-Christi (adiantado de 2021, pandemia)"),
+              ff(MARCO, 29, "Dia da Consciência Negra (adiantado de 2021, pandemia)"),
+              ff(MARCO, 30, "Aniversário da cidade de São Paulo (adiantado de 2022, pandemia)"),
+              ff(MARCO, 31, "Quinta-feira de Corpus-Christi (adiantado de 2022, pandemia)"),
+              ff(ABRIL, 1, "Dia da Consciência Negra (adiantado de 2022, pandemia)"),
+            ]
+          },
+          {
+            ano: 2022,
+            removidos: [
+              "Aniversário da cidade",
+              "Quinta-feira de Corpus-Christi",
+              "Dia da Consciência Negra",
+            ]
+          }
+        ]
+      },
+      {
+        nome: "São Sebastião",
+        feriados: [
+          // https://www.saosebastiao.sp.gov.br/noticia.asp?id=N1512024162324
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "São Vicente",
+        feriados: [
+          // https://www.saovicente.sp.gov.br/institucional/calendario
+          ff(JANEIRO, 22, "Fundação de São Vicente"),
+          diaDeCorpusChristi,
+        ]
+      },
+      {
+        nome: "Serra Negra",
+        feriados: [
+          // https://serranegra.sp.gov.br/noticias/nao-havera-expediente-na-prefeitura-de-serra-negra-nos-dias-31-de-outubro-1-e-2-de-novembro
+          // https://ecrie.com.br/sistema/conteudos/arquivo/a_107_0_1_24072025090113.pdf
+          // O calendário de Serra Negra erroneamente informa Corpus Christi como feriado nacional
+          diaDeCorpusChristi,
+          ff(NOVEMBRO, 1, "Dia de Nossa Senhora do Rosário"),
+          aniversarioDaCidade(SETEMBRO, 23)
+        ]
+      },
+      {
+        nome: "Socorro",
+        feriados: [
+          // https://www.socorro.sp.gov.br/feriados
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 9),
+          ff(AGOSTO, 15, "Dia de Nossa Senhora do Perpétuo Socorro")
+        ]
+      },
+      {
+        nome: "Sorocaba",
+        feriados: [
+          // DECRETO Nº 29.533, DE 20 DE DEZEMBRO DE 2024.
+          diaDeCorpusChristi,
+          aniversarioDaCidade(AGOSTO, 15),
+        ]
+      },
+      {
+        nome: "Sumaré",
+        feriados: [
+          // https://www.sumare.sp.gov.br/pdfDiario.php?edicao=702&pdf=95a5e82515e74b2c82ed35bb9b27fb8b.pdf
+          diaDeCorpusChristi,
+          aniversarioDaCidade(JULHO, 26),
+        ]
+      },
+      {
+        nome: "Taubaté",
+        feriados: [
+          // https://taubate.sp.gov.br/anexos/FERIADOS_2025.pdf
+          // https://ecrie.com.br/sistema/conteudos/arquivo/a_241_1_1_08122025144906.pdf
+          ff(FEVEREIRO, 5, "Elevação de Taubaté à categoria de município"),
+          diaDeSaoBeneditoEmTaubateEAngra,
+          diaDeCorpusChristi,
+          ff(OUTUBRO, 4, "Dia de São Francisco"),
+        ]
+      },
+      {
+        nome: "Ubatuba",
+        feriados: [
+          // https://www.ubatuba.sp.gov.br/calendarios/calendario-municipal-2024/
+          diaDeSaoPedro,
+          ff(SETEMBRO, 14, "Paz de Iperoig"),
+          aniversarioDaCidade(OUTUBRO, 28)
+        ]
+      },
+      {
+        nome: "Valinhos",
+        feriados: [
+          // https://www.valinhos.sp.gov.br/portal/secretarias-paginas/143/feriados-municipaisnacionais/
+          diaDeSaoSebastiao,
+          diaDeCorpusChristi
+        ]
+      },
+      {
+        nome: "Vinhedo",
+        feriados: [
+          // https://www.vinhedo.sp.gov.br/imgeditor/CALENDARIO%20PONTES%202025.pdf
+          aniversarioDaCidade(ABRIL, 2),
+          diaDeCorpusChristi,
+          diaDeSantAnna
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "SE",
+    nome: "Sergipe",
+    feriadosEstaduais: [
+      ff(JULHO, 8, "Emancipação política de Sergipe"),
+    ],
+    cidades: [
+      {
+        nome: "Aracaju",
+        feriados: [
+          aniversarioDaCidade(MARCO, 17),
+          diaDeCorpusChristi,
+          diaDeSaoJoao,
+          diaDeNossaSenhoraDaConceicao,
+        ]
+      },
+      {
+        nome: "Nossa Senhora do Socorro",
+        feriados: [
+          // https://www.socorro.se.gov.br/feriados-municipais
+          ff(FEVEREIRO, 2, "Dia de Nossa Senhora do Socorro"),
+          diaDeCorpusChristi,
+          emancipacaoDoMunicipio(JULHO, 7),
+          ff(AGOSTO, 15, "Dia de Nossa Senhora do Amparo")
+        ]
+      }
+    ]
+  },
+  {
+    acronimo: "TO",
+    nome: "Tocantins",
+    feriadosEstaduais: [
+      ff(MARCO, 18, "Autonomia do Estado (criação da Comarca do Norte)"),
+      ff(SETEMBRO, 8, "Padroeira do Estado (Nossa Senhora da Natividade)"),
+      ff(OUTUBRO, 5, "Criação do estado"),
+    ],
+    cidades: [
+      {
+        nome: "Araguaína",
+        feriados: [
+          // https://www.sindmetalurgicos-to.com.br/wp-content/uploads/2025/01/FERIADOS-2025-2.pdf
+          diaDoSagradoCoracaoDeJesus,
+          aniversarioDaCidade(NOVEMBRO, 14)
+        ]
+      },
+      {
+        nome: "Palmas",
+        feriados: [
+          diaDeSaoJose,
+          aniversarioDaCidade(MAIO, 20),
+        ]
+      }
+    ]
+  }
+];
+
+function calcularFeriadosDoAnoParaLista(listaFeriados, tipo, ano) {
+  var saida = [];
+  listaFeriados.forEach(feriado => {
+    var obj = feriado(ano);
+    obj.tipo = tipo;
+    if (obj.anoInicioVigencia != undefined && ano < obj.anoInicioVigencia) {
+      // não incluir nesse caso.
+    }
+    else {
+      saida.push(obj);
+    }
+  });
+  return saida;
+}
+
+function obterTodosOsFeriadosParaAno(ano, uf, municipio, deveMarcarEmendas) {
+  var nacionais = undefined;
+  var estaduais = undefined;
+  var municipais = undefined;
+
+  // variável global com mesmo nome: feriadosNacionais
+  nacionais = calcularFeriadosDoAnoParaLista(feriadosNacionais, "NACIONAL", ano);
+
+  if (uf == undefined || uf == null || uf == "") {
+    estaduais = [];
+  } else {
+    var uf = estados.find(x => x.acronimo == uf);
+    estaduais = calcularFeriadosDoAnoParaLista(uf.feriadosEstaduais, "ESTADUAL", ano);
+  }
+
+  if (municipio == undefined || municipio == null || municipio == "") {
+    municipais = [];
+  } else {
+    var municipio = uf.cidades.find(x => x.nome == municipio);
+    municipais = calcularFeriadosDoAnoParaLista(municipio.feriados, "MUNICIPAL", ano);
+  }
+
+  // Gambiarra para tratar Carnaval repetido, por exemplo, no Rio de Janeiro e em Manaus
+  var carnavalEstadual = estaduais.find(x => x.descricao.includes("Carnaval"));
+  var carnavalMunicipal = municipais.find(x => x.descricao.includes("Carnaval"));
+
+  if (carnavalEstadual != undefined || carnavalMunicipal != undefined) {
+    // se houver feriado municipal ou estadual de Carnaval, vamos sobrepôr estes ao feriado nacional.
+    nacionais = nacionais.filter(x => x.descricao.includes("Carnaval") == false);
+  }
+
+  // Gambiarra para tratar Dia da Consciência Negra repetido, por exemplo, em São Paulo e no Rio de Janeiro
+  const conscienciaNegraStr = "Consciência Negra";
+  var conscienciaNegraNacional = nacionais.find(x => x.descricao.includes(conscienciaNegraStr));
+  var conscienciaNegraEstadual = estaduais.find(x => x.descricao.includes(conscienciaNegraStr));
+  var conscienciaNegraMunicipal = municipais.find(x => x.descricao.includes(conscienciaNegraStr));
+
+  if (conscienciaNegraNacional != undefined && (conscienciaNegraEstadual != undefined || conscienciaNegraMunicipal != undefined)) {
+    // feriado nacional sobrepõe feriados estaduais e municipais.
+    estaduais = estaduais.filter(x => x.descricao.includes(conscienciaNegraStr) == false);
+    municipais = municipais.filter(x => x.descricao.includes(conscienciaNegraStr) == false);
+  }
+  else if (conscienciaNegraEstadual != undefined && conscienciaNegraMunicipal != undefined) {
+    // feriado estadual sobrepõe feriados municipais.
+    municipais = municipais.filter(x => x.descricao.includes(conscienciaNegraStr) == false);
+  }
+
+  var feriados = nacionais
+    .concat(estaduais)
+    .concat(municipais);
+
+  // exceções da época da pandemia
+  if (municipio != undefined && municipio.excecoes != undefined) {
+    var excecoesAno = municipio.excecoes.find(x => x.ano == ano);
+    if (excecoesAno != undefined && excecoesAno != null) {
+      // tirar feriados removidos
+      if (excecoesAno.removidos != undefined) {
+        feriados = feriados.filter(x => !excecoesAno.removidos.includes(x.descricao));
+      }
+      // colocar feriados adicionados
+      if (excecoesAno.adicionados != undefined) {
+        feriados = feriados.concat(calcularFeriadosDoAnoParaLista(excecoesAno.adicionados, "MUNICIPAL", ano));
+      }
+    }
+  }
+
+  if (deveMarcarEmendas) {
+    feriados = feriados.concat(obterEmendasDeFeriados(feriados));
+  }
+
+  return feriados.sort((a, b) => a.data - b.data);
+}
+
+function obterFinaisDeSemanaParaAno(ano) {
+  const finaisDeSemana = [];
+  var x = new Date(ano, JANEIRO, 1);
+  while (x.getFullYear() == ano) {
+    if (x.getDay() == SABADO || x.getDay() == DOMINGO) {
+      finaisDeSemana.push(x);
+    }
+    x = x.addDays(1);
+  }
+  return finaisDeSemana;
+}
+
+function obterEmendasDeFeriados(feriados) {
+  var emendasDeFeriado = [];
+  for (var i = 0; i < feriados.length; i++) {
+    var d = feriados[i].data;
+    // TODO: Considerar emendas entre feriados com 2 dias de diferença entre um e outro
+    if (d.getDay() == TERCA_FEIRA) {
+      emendasDeFeriado.push({ ehEmenda: true, tipo: feriados[i].tipo, data: d.addDays(-1), descricao: "Emenda de feriado" });
+    }
+    else if (d.getDay() == QUINTA_FEIRA) {
+      emendasDeFeriado.push({ ehEmenda: true, tipo: feriados[i].tipo, data: d.addDays(1), descricao: "Emenda de feriado" });
+    }
+  }
+  return emendasDeFeriado;
+}
+
+// Único ponto de entrada exposto ao restante da aplicação — o resto (estados,
+// feriadosNacionais, funções de cálculo de cada feriado móvel) é detalhe
+// interno da base de feriados e não precisa vazar para quem consome isto.
+export { obterTodosOsFeriadosParaAno };

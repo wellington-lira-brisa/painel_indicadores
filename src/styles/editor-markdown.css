@@ -1,0 +1,195 @@
+.w-md-editor {
+  --md-editor-font-family: var(--font-sans, "Inter", "Segoe UI", system-ui, sans-serif);
+  box-shadow: none !important;
+  font-family: var(--md-editor-font-family) !important;
+}
+
+.w-md-editor-toolbar {
+  min-height: 44px !important;
+  padding: 6px 12px !important;
+  border-bottom: 1px solid rgb(226 232 240) !important;
+  background-color: rgb(248 250 252) !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.w-md-editor-toolbar ul {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px;
+  height: 32px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.w-md-editor-toolbar li {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.w-md-editor-toolbar li > button {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  color: rgb(71 85 105) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+.w-md-editor-toolbar li > button svg {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  vertical-align: middle !important;
+}
+
+.w-md-editor-toolbar li > button:hover,
+.w-md-editor-toolbar li > button:focus {
+  background-color: rgb(226 232 240) !important;
+  color: rgb(29 67 160) !important;
+}
+
+.w-md-editor-toolbar li.active > button {
+  background-color: rgb(219 228 248) !important;
+  color: rgb(29 67 160) !important;
+}
+
+.w-md-editor-toolbar-divider {
+  align-self: center !important;
+  width: 1px !important;
+  height: 20px !important;
+  margin: 0 6px !important;
+  background-color: rgb(203 213 225) !important;
+  flex-shrink: 0 !important;
+}
+
+/*
+  O @uiw/react-md-editor renderiza duas camadas sobrepostas:
+  1. textarea real, transparente, onde o cursor/caret fica;
+  2. pre > code, visível, com o texto formatado.
+
+  Se qualquer detalhe de tipografia for diferente entre essas camadas
+  (font-size, line-height, font-family, letter-spacing, white-space etc.),
+  o cursor começa a "andar" para longe do texto, principalmente ao digitar
+  espaços. Por isso, todos os estilos abaixo são sincronizados nas duas
+  camadas e também no <code> interno do preview de edição.
+*/
+.w-md-editor-text,
+.w-md-editor-text-input,
+.w-md-editor-text-pre,
+.w-md-editor-text-pre > code {
+  font-family: var(--md-editor-font-family) !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-align: left !important;
+  text-indent: 0 !important;
+  text-transform: none !important;
+  tab-size: 2 !important;
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  font-variant-ligatures: none !important;
+  text-rendering: auto !important;
+}
+
+.w-md-editor-text {
+  padding: 14px !important;
+}
+
+.w-md-editor-text-input,
+.w-md-editor-text-pre,
+.w-md-editor-text-pre > code {
+  margin: 0 !important;
+}
+
+.w-md-editor-text-pre,
+.w-md-editor-text-pre > code {
+  padding: 0 !important;
+}
+
+.w-md-editor-text-input {
+  padding: inherit !important;
+  color: transparent !important;
+  caret-color: rgb(29 67 160) !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.w-md-editor-text-input::placeholder {
+  color: rgb(148 163 184) !important;
+  -webkit-text-fill-color: rgb(148 163 184) !important;
+  opacity: 1;
+}
+
+.w-md-editor-text-input::selection {
+  background-color: rgba(29, 67, 160, 0.22) !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.w-md-editor-text-pre {
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .w-md-editor-toolbar {
+    min-height: 48px !important;
+    padding: 5px 8px !important;
+    gap: 5px !important;
+  }
+
+  .w-md-editor-toolbar ul {
+    height: 38px !important;
+  }
+
+  .w-md-editor-toolbar li {
+    height: 38px !important;
+  }
+
+  .w-md-editor-toolbar li > button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .w-md-editor-toolbar li > button svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .w-md-editor-text,
+  .w-md-editor-text-input,
+  .w-md-editor-text-pre,
+  .w-md-editor-text-pre > code {
+    font-size: 16px !important; /* evita zoom automático no iOS */
+    line-height: 1.65 !important;
+  }
+
+  .w-md-editor-text {
+    padding: 12px !important;
+  }
+}

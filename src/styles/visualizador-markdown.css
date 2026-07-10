@@ -1,0 +1,39 @@
+.visualizador-markdown,
+.visualizador-markdown * {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/*
+  O ReactMarkdown segue a regra padrão do Markdown: uma quebra de linha
+  simples dentro de um parágrafo vira uma quebra "suave" no HTML. Sem este
+  white-space, o navegador colapsa essas quebras e mostra tudo na mesma linha.
+
+  Aplicamos apenas em elementos textuais para preservar o jeito que o usuário
+  escreveu no editor, sem quebrar tabela, imagem ou layout geral.
+*/
+.visualizador-markdown p,
+.visualizador-markdown li,
+.visualizador-markdown blockquote,
+.visualizador-markdown td,
+.visualizador-markdown th {
+  white-space: pre-wrap;
+}
+
+.visualizador-markdown pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.visualizador-markdown pre code {
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.visualizador-markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}

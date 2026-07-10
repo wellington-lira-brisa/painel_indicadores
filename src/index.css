@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-900: #0f2557;
+  --color-brand-800: #16337a;
+  --color-brand-700: #1d43a0;
+  --color-brand-100: #dbe4f8;
+  --color-brand-50: #f0f4fc;
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --breakpoint-xs: 22.5rem; /* 360px — telefones pequenos ficam em 1 coluna abaixo disso */
+}
+
+body {
+  @apply bg-slate-100 text-slate-800 antialiased;
+}
+
+/**
+ * Identidade visual do 5G: reescreve as mesmas variáveis --color-brand-*
+ * dentro de qualquer subárvore com esta classe. Como todo componente já usa
+ * utilitários como bg-brand-900/text-brand-700 (nunca cor fixa), envolver a
+ * página do 5G nesta classe re-tema automaticamente cabeçalhos, destaques,
+ * ícones e estados de seleção — sem duplicar nenhum componente. Paleta:
+ * escala "orange" do Tailwind (900/800/700/100/50), mesmo padrão de
+ * contraste da escala azul original.
+ */
+.tema-5g {
+  --color-brand-900: #7c2d12;
+  --color-brand-800: #9a3412;
+  --color-brand-700: #c2410c;
+  --color-brand-100: #ffedd5;
+  --color-brand-50: #fff7ed;
+}
