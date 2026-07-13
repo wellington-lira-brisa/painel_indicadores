@@ -16,6 +16,14 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
+        env:
+          # VITE_ é embutido no bundle em build-time — normal pra URL +
+          # chave anon do Supabase, que já são feitas pra rodar no
+          # navegador (a segurança real está nas policies de RLS, não em
+          # esconder essas duas). Sem isso aqui, supabaseClient.js recebe
+          # `undefined` e lança o erro que você viu.
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
