@@ -36,13 +36,39 @@ export const MAPA_INDICADOR = {
 
 const REGEX_DATA = /^\d{4}-\d{2}-\d{2}$/;
 
-/** Parser CSV mínimo (RFC4180: aspas duplas e vírgula/quebra de linha dentro de campo). */
+/**
+ * O export em produção usa `decimal=","` (padrão BR/Spark) — "3,5" deve
+ * virar 3.5, não NaN. Só troca vírgula por ponto quando não há ponto já
+ * presente (evita quebrar um valor que por algum motivo já viesse com
+ * ponto decimal).
+ */
+function paraNumero(texto) {
+  if (typeof texto !== 'string') return Number(texto);
+  const normalizado = texto.includes(',') && !texto.includes('.') ? texto.replace(',', '.') : texto;
+  return Number(normalizado);
+}
+
+/** Descobre o separador olhando só a primeira linha (cabeçalho): conta ocorrências de cada candidato e usa o mais frequente. Cobre vírgula (padrão RFC4180), ponto e vírgula (comum em export BR, já que "," é separador decimal) e tab. */
+function detectarSeparador(primeiraLinha) {
+  const candidatos = [',', ';', '\t'];
+  let melhor = ',';
+  let maiorContagem = 0;
+  for (const c of candidatos) {
+    const contagem = primeiraLinha.split(c).length - 1;
+    if (contagem > maiorContagem) { maiorContagem = contagem; melhor = c; }
+  }
+  return melhor;
+}
+
+/** Parser CSV mínimo (RFC4180: aspas duplas e vírgula/quebra de linha dentro de campo), com separador auto-detectado. */
 export function parsearCsv(texto) {
   const linhas = [];
   let campo = '';
   let linha = [];
   let dentroDeAspas = false;
   const s = texto.replace(/\r\n/g, '\n');
+  const primeiraQuebra = s.indexOf('\n');
+  const separador = detectarSeparador(primeiraQuebra === -1 ? s : s.slice(0, primeiraQuebra));
 
   for (let i = 0; i < s.length; i++) {
     const c = s[i];
@@ -55,7 +81,7 @@ export function parsearCsv(texto) {
       continue;
     }
     if (c === '"') { dentroDeAspas = true; continue; }
-    if (c === ',') { linha.push(campo); campo = ''; continue; }
+    if (c === separador) { linha.push(campo); campo = ''; continue; }
     if (c === '\n') { linha.push(campo); linhas.push(linha); linha = []; campo = ''; continue; }
     campo += c;
   }
@@ -162,8 +188,8 @@ export function validar(linhas) {
     }
 
     // numéricos e negativos
-    const semana = Number(l.realizado_semana);
-    const mensal = Number(l.realizado_mes);
+    const semana = paraNumero(l.realizado_semana);
+    const mensal = paraNumero(l.realizado_mes);
     if (l.realizado_semana === '' || Number.isNaN(semana)) {
       erros.push(`${idLinha}: realizado_semana não é numérico ("${l.realizado_semana}").`);
     } else if (semana < 0) {
@@ -263,10 +289,10 @@ export function normalizar(linhas) {
     const registroMensal = mensal.get(chaveMensal);
     if (!registroMensal._canaisSomados.has(l.canal_geral + '\u0001' + l.origem)) {
       registroMensal._canaisSomados.add(l.canal_geral + '\u0001' + l.origem);
-      registroMensal.valor += Number(l.realizado_mes);
+      registroMensal.valor += paraNumero(l.realizado_mes);
     }
 
-    semanal.get(chaveSemanal).valor += Number(l.realizado_semana);
+    semanal.get(chaveSemanal).valor += paraNumero(l.realizado_semana);
   }
 
   const limpar = (r) => { const { _canaisSomados, ...resto } = r; return resto; };
