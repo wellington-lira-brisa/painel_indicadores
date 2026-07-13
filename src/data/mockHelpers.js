@@ -39,15 +39,26 @@ function distribuirValorPorSemanas(valorTotal, semanasDoMesArr) {
  * depois): a única coisa que muda de uma tecnologia pra outra é qual
  * `id`/`nome` é passado (ex.: 'instalacao'/'Instalação' vs
  * 'ativacao'/'Ativação'), nunca a lógica de geração em si.
+ *
+ * `possuiSemanas` (default true, preserva o comportamento de sempre):
+ * quando false, as semanas do indicador ficam com `valor: null` — a
+ * própria tabela já trata valor nulo como "—" (ver formatarValor), então
+ * nenhum componente de exibição precisa saber quais indicadores têm
+ * quebra semanal real; só a origem do dado decide isso. Existe porque
+ * nem todo indicador é apurado por semana (ex.: 5G só quebra Ativação
+ * por semana; os demais só fecham no fim do mês).
  */
-export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizados) {
+export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizados, possuiSemanas = true) {
   const meses = MESES.map((mes, i) => {
     const realizado = realizados[i] ?? null;
+    const semanasDoMesAtual = semanasDoMes(ANO_PAINEL, i);
     return {
       mes,
       meta: metas[i],
       realizado,
-      semanas: distribuirValorPorSemanas(realizado, semanasDoMes(ANO_PAINEL, i)),
+      semanas: possuiSemanas
+        ? distribuirValorPorSemanas(realizado, semanasDoMesAtual)
+        : semanasDoMesAtual.map((semana) => ({ ...semana, valor: null })),
     };
   });
 

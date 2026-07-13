@@ -19,6 +19,7 @@ import { listarCidades } from '../services/cidadeService';
 import { formatarDataHora, removerMarcacaoMarkdown } from '../utils/format';
 import StatusBadge from '../components/StatusBadge';
 import StatusPlanoBadge from '../components/StatusPlanoBadge';
+import BadgeEvidenciaPendente from '../components/BadgeEvidenciaPendente';
 import { STATUS_PLANO_ROTULOS, normalizarStatusPlano } from '../utils/statusPlano';
 import PaginaPlano from './PaginaPlano';
 
@@ -495,6 +496,7 @@ function CardPlano({ plano }) {
                 <StatusBadge status={plano.statusCidade} />
               )}
               <StatusPlanoBadge status={plano.status} />
+              <BadgeEvidenciaPendente temEvidencias={plano.temEvidencias} />
             </div>
 
             <p

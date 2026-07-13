@@ -1,0 +1,80 @@
+name: Atualizar base de indicadores
+on:
+  schedule:
+    # 07:15 UTC = 04:15 em Fortaleza (horário de baixo tráfego, antes do
+    # expediente) — ajustar se a cadência de atualização da fonte mudar.
+    - cron: '15 7 * * *'
+  workflow_dispatch: {}
+  # Permite que outro sistema (ex.: automação que gera a planilha) dispare
+  # a atualização assim que uma base nova estiver pronta, sem esperar o
+  # cron. Ver "Instruções para atualização futura da base" no RELATORIO.md.
+  repository_dispatch:
+    types: [nova-base-disponivel]
+
+permissions:
+  contents: write # precisa escrever (commit) o CSV publicado de volta no repo
+
+concurrency:
+  group: atualizar-base-indicadores
+  cancel-in-progress: false # nunca cancelar uma publicação no meio
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true # necessário pro passo de commit/push no final
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Testes do ETL (parsing, validação, normalização)
+        run: node --test scripts/etl/__tests__/*.test.mjs
+
+      - name: Baixar base oficial (Google Drive)
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_DRIVE_FILE_ID: ${{ secrets.GOOGLE_DRIVE_FILE_ID }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs > /tmp/base.csv
+
+      - name: Validar e normalizar (gera public/dados/*.csv e *.json)
+        run: node scripts/etl/gerarBase.mjs /tmp/base.csv
+
+      - name: Publicar log de falha como artefato (só roda se o passo acima falhar)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-falha-validacao
+          path: ultima-execucao-falhou.json
+          if-no-files-found: ignore
+
+      # Só chega aqui se gerarBase.mjs terminou com sucesso — se a
+      # validação reprovou, o job já falhou no passo anterior e nada é
+      # commitado: a última versão publicada (o que já está em `main`)
+      # continua sendo a que o front serve. É a estratégia de rollback
+      # inteira: nunca existe "commit parcial".
+      - name: Commitar base atualizada
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/dados/indicadores-realizados.csv public/dados/ultima-atualizacao.json
+          if git diff --cached --quiet; then
+            echo "Nada mudou na base — nenhum commit necessário."
+          else
+            git commit -m "chore(dados): atualizar indicadores realizados"
+            git push
+          fi
+
+      # O commit acima entra em `main` como qualquer outro push, então o
+      # `deploy.yml` já existente dispara sozinho e publica o site com o
+      # CSV novo — não foi preciso mexer no deploy.
+
+      # A base baixada crua nunca é commitada nem sobe como artefato: só o
+      # resultado já validado/normalizado (sem granularidade de canal) vai
+      # pro repositório.

@@ -8,6 +8,7 @@ import {
   ClipboardList,
   FileText,
   Image as ImageIcon,
+  ImagePlus,
   Loader2,
   MapPin,
   Pencil,
@@ -29,12 +30,14 @@ import {
 import { buscarCidade } from '../services/cidadeService';
 import { foiAtualizado, formatarDataHora, formatarDataSimples } from '../utils/format';
 import StatusBadge from '../components/StatusBadge';
+import BadgeEvidenciaPendente from '../components/BadgeEvidenciaPendente';
 import SeletorStatusPlano from '../components/SeletorStatusPlano';
 import BotaoHistoricoPlano from '../components/BotaoHistoricoPlano';
 import TabelaIndicadores from '../components/TabelaIndicadores';
 import GaleriaEvidencias from '../components/GaleriaEvidencias';
 import LightboxImagem from '../components/LightboxImagem';
 import CapturaLocalizacaoEvidencia from '../components/CapturaLocalizacaoEvidencia';
+import ModalAnexarEvidencias from '../components/ModalAnexarEvidencias';
 import ModalConfirmacao from '../components/ModalConfirmacao';
 
 const VisualizadorMarkdown = lazy(() => import('../components/VisualizadorMarkdown'));
@@ -66,6 +69,7 @@ export default function PaginaPlano() {
   const [salvandoEdicao, setSalvandoEdicao] = useState(false);
   const [erroEdicao, setErroEdicao] = useState(null);
   const [indiceLightbox, setIndiceLightbox] = useState(null);
+  const [anexandoEvidencias, setAnexandoEvidencias] = useState(false);
 
   useEffect(() => {
     let cancelado = false;
@@ -241,6 +245,7 @@ export default function PaginaPlano() {
                   </p>
                 </div>
                 {statusCidade && <StatusBadge status={statusCidade} />}
+                <BadgeEvidenciaPendente temEvidencias={plano.temEvidencias} />
               </div>
             </div>
 
@@ -371,9 +376,21 @@ export default function PaginaPlano() {
         {plano.evidencias.length > 0 ? (
           <section aria-label="Evidências anexadas" className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_24rem]">
             <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-              <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-                <ImageIcon className="size-5 text-brand-700" aria-hidden="true" />
-                <h3 className="text-base font-bold text-slate-900">Evidências anexadas</h3>
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <ImageIcon className="size-5 text-brand-700" aria-hidden="true" />
+                  <h3 className="text-base font-bold text-slate-900">Evidências anexadas</h3>
+                </div>
+                {podeEditar && (
+                  <button
+                    type="button"
+                    onClick={() => setAnexandoEvidencias(true)}
+                    className="flex min-h-[36px] items-center gap-1.5 rounded-lg border border-slate-200 px-3 text-xs font-semibold text-slate-600 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+                  >
+                    <ImagePlus className="size-3.5" aria-hidden="true" />
+                    Anexar mais evidências
+                  </button>
+                )}
               </div>
               <div className="mt-4">
                 <GaleriaEvidencias
@@ -382,25 +399,52 @@ export default function PaginaPlano() {
                 />
               </div>
             </article>
-            <CapturaLocalizacaoEvidencia localizacao={plano.localizacaoEvidencia} obrigatoria={false} />
+            <div className="space-y-3">
+              {plano.localizacoesEvidencia.length > 0 ? (
+                plano.localizacoesEvidencia.map((localizacao) => (
+                  <CapturaLocalizacaoEvidencia key={localizacao.id ?? localizacao.capturadaEm} localizacao={localizacao} obrigatoria={false} />
+                ))
+              ) : (
+                <CapturaLocalizacaoEvidencia localizacao={null} obrigatoria={false} />
+              )}
+            </div>
           </section>
         ) : (
-          <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-sm text-slate-500 shadow-sm">
-            <div className="flex items-start gap-3">
-              <ImageIcon className="mt-0.5 size-5 shrink-0 text-slate-400" aria-hidden="true" />
-              <div>
-                <p className="font-semibold text-slate-700">Nenhuma evidência anexada</p>
-                <p className="mt-1">Este plano foi registrado apenas com descrição textual.</p>
+          <section className="rounded-2xl border border-dashed border-amber-300 bg-amber-50 p-6 text-sm text-slate-600 shadow-sm">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <ImageIcon className="mt-0.5 size-5 shrink-0 text-amber-600" aria-hidden="true" />
+                <div>
+                  <p className="font-semibold text-slate-800">Evidências pendentes</p>
+                  <p className="mt-1">
+                    Este plano ainda não tem evidências anexadas. Assim que a ação for executada em
+                    campo, anexe as fotos e a localização para concluir o registro.
+                  </p>
+                </div>
               </div>
+              {podeEditar && (
+                <button
+                  type="button"
+                  onClick={() => setAnexandoEvidencias(true)}
+                  className="flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-lg bg-brand-700 px-4 text-sm font-semibold text-white hover:bg-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+                >
+                  <ImagePlus className="size-4" aria-hidden="true" />
+                  Anexar evidências
+                </button>
+              )}
             </div>
           </section>
         )}
 
         {indiceLightbox !== null && (
           <LightboxImagem
-            itens={plano.evidencias.map((ev) => ({ url: ev.imagemUrl, metadados: ev.metadados, criadoEm: ev.criadoEm }))}
+            itens={plano.evidencias.map((ev) => ({
+              url: ev.imagemUrl,
+              metadados: ev.metadados,
+              criadoEm: ev.criadoEm,
+              localizacaoEvidencia: ev.localizacaoEvidencia,
+            }))}
             indiceInicial={indiceLightbox}
-            localizacaoEvidencia={plano.localizacaoEvidencia}
             criadoPor={plano.criadoPor}
             aoFechar={() => setIndiceLightbox(null)}
           />
@@ -424,6 +468,17 @@ export default function PaginaPlano() {
           </section>
         )}
       </div>
+
+      {anexandoEvidencias && (
+        <ModalAnexarEvidencias
+          plano={plano}
+          aoFechar={() => setAnexandoEvidencias(false)}
+          aoAnexado={(planoAtualizado) => {
+            setPlano(planoAtualizado);
+            setAnexandoEvidencias(false);
+          }}
+        />
+      )}
 
       {confirmandoExclusao && (
         <ModalConfirmacao

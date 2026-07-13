@@ -15,6 +15,9 @@ import { TECNOLOGIAS } from './config/tecnologias';
 // Only usuários com acesso administrativo carregam este bundle — a
 // maioria dos colaboradores nunca visita /admin.
 const PaginaAdmin = lazy(() => import('./pages/PaginaAdmin'));
+// Base de feriados é ~97KB (dados de 27 estados + 238 municípios) — só
+// carrega quando alguém realmente abre a página, não no bundle principal.
+const PaginaFeriados = lazy(() => import('./pages/PaginaFeriados'));
 
 function CarregandoRota() {
   return <p className="p-4 text-sm text-slate-500">Carregando…</p>;
@@ -40,6 +43,15 @@ export default function App() {
               <Route path="/planos" element={<PaginaListaPlanos />} />
               <Route path="/planos/:planoId" element={<PaginaPlano />} />
               <Route path="/conta" element={<PaginaConta />} />
+
+              <Route
+                path="/feriados"
+                element={
+                  <Suspense fallback={<CarregandoRota />}>
+                    <PaginaFeriados />
+                  </Suspense>
+                }
+              />
 
               <Route element={<RotaProtegida permissaoRequerida={PERMISSOES.ACESSAR_ADMIN} />}>
                 <Route

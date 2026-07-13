@@ -48,16 +48,47 @@ export function capturarLocalizacaoAtual() {
 const TEMPO_LIMITE_GEOCODING_MS = 8000;
 
 /**
- * Endereço aproximado a partir de coordenadas (reverse geocoding via
+ * Extrai os campos estruturados que o negócio pediu (rua+número num
+ * endereço completo, bairro, cidade, estado, CEP, país) do objeto
+ * `address` do Nominatim. Nominatim não tem um vocabulário fixo — o mesmo
+ * conceito vem com nomes diferentes dependendo do país/tipo de lugar (ex.:
+ * cidade pode vir em `city`, `town`, `village` ou `municipality` conforme o
+ * tamanho da localidade) — por isso cada campo tenta múltiplas chaves, da
+ * mais específica pra mais genérica.
+ */
+function extrairEnderecoEstruturado(dados) {
+  const endereco = dados?.address ?? {};
+  const numero = endereco.house_number ?? null;
+  const rua = endereco.road ?? endereco.pedestrian ?? null;
+
+  return {
+    enderecoCompleto: dados?.display_name ?? null,
+    numero,
+    rua,
+    bairro: endereco.suburb ?? endereco.neighbourhood ?? endereco.quarter ?? null,
+    cidade: endereco.city ?? endereco.town ?? endereco.village ?? endereco.municipality ?? null,
+    estado: endereco.state ?? null,
+    cep: endereco.postcode ?? null,
+    pais: endereco.country ?? null,
+  };
+}
+
+/**
+ * Endereço estruturado a partir de coordenadas (reverse geocoding via
  * Nominatim/OpenStreetMap — serviço público, sem chave de API). Best-effort
  * por natureza: qualquer falha (rede, limite de uso, indisponibilidade)
  * devolve `null` silenciosamente — a coordenada já capturada continua
  * válida e utilizável mesmo sem endereço textual, então isso nunca deve
  * bloquear ou dar erro pro usuário.
  *
+ * `addressdetails=1` (antes era 0) é o que faz o Nominatim devolver o
+ * endereço já quebrado em componentes (rua, bairro, cidade...) em vez de só
+ * o texto único `display_name` — sem isso não dá pra guardar CEP, bairro
+ * etc. separadamente, só o texto inteiro.
+ *
  * Trocar de provedor no futuro (ex.: um serviço pago com SLA melhor) é
  * reescrever só esta função — nada mais no app depende de qual provedor
- * faz a conversão.
+ * faz a conversão, nem do formato bruto que ele devolve.
  */
 export async function buscarEnderecoPorCoordenadas(latitude, longitude) {
   const controlador = new AbortController();
@@ -65,15 +96,29 @@ export async function buscarEnderecoPorCoordenadas(latitude, longitude) {
 
   try {
     const resposta = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=0`,
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`,
       { signal: controlador.signal, headers: { Accept: 'application/json' } },
     );
     if (!resposta.ok) return null;
     const dados = await resposta.json();
-    return dados?.display_name ?? null;
+    if (!dados) return null;
+    return extrairEnderecoEstruturado(dados);
   } catch {
     return null;
   } finally {
     clearTimeout(timeoutId);
   }
+}
+
+/**
+ * Link direto pro Google Maps a partir de coordenadas — formato oficial de
+ * "pesquisar por coordenada" do Maps, funciona sem chave de API e abre
+ * direto no ponto exato, sem precisar de endereço textual. Gerado sob
+ * demanda (nunca persistido): é 100% derivável de latitude/longitude, então
+ * guardar isso no banco seria dado duplicado que pode ficar desatualizado
+ * se o formato de URL do Google mudar no futuro.
+ */
+export function linkGoogleMaps(latitude, longitude) {
+  if (latitude == null || longitude == null) return null;
+  return `https://www.google.com/maps?q=${latitude},${longitude}`;
 }

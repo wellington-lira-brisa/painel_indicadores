@@ -3,6 +3,24 @@ import { cidadesMock5g } from '../data/mockCidades5g';
 import { scoreCidade, statusCidade, tendenciaCidade } from '../utils/status';
 import { listarStatusFwa } from './fwaService';
 import { listarStatusPlanosAtivosPorCidade } from './planoAcaoService';
+import { carregarIndiceRealizados, indiceEmCacheOuNulo, aplicarRealizadosReais } from './indicadorRealizadoService';
+
+/**
+ * Indicadores realizados (ver INDICADORES_COM_DADO_REAL em
+ * indicadorRealizadoService.js) são complementares no mesmo sentido que
+ * FWA e plano de ação: uma falha ao buscar a base real não pode derrubar
+ * a listagem de cidades. Na falha, reaproveita o último índice carregado
+ * com sucesso nesta sessão (se houver) — nunca mostra o valor mockado no
+ * lugar do real.
+ */
+async function indiceRealizadosComFallback(tecnologiaId) {
+  try {
+    return await carregarIndiceRealizados(tecnologiaId);
+  } catch (excecao) {
+    console.error(`Falha ao carregar dados reais de ${tecnologiaId}, mantendo último valor conhecido:`, excecao);
+    return indiceEmCacheOuNulo(tecnologiaId);
+  }
+}
 
 /**
  * FWA é informação complementar: se a consulta falhar (RLS, rede, etc.),
@@ -28,12 +46,13 @@ async function statusPlanoAtivoComFallback(tecnologiaId) {
   }
 }
 
-function enriquecer(cidade, statusFwa, statusPlanoAtivo) {
+function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, tecnologiaId) {
+  const cidadeComDadosReais = aplicarRealizadosReais(cidade, indiceRealizados, tecnologiaId);
   return {
-    ...cidade,
-    score: scoreCidade(cidade),
-    status: statusCidade(cidade),
-    tendencia: tendenciaCidade(cidade),
+    ...cidadeComDadosReais,
+    score: scoreCidade(cidadeComDadosReais),
+    status: statusCidade(cidadeComDadosReais),
+    tendencia: tendenciaCidade(cidadeComDadosReais),
     vendeFwa: statusFwa[cidade.id] ?? false,
     temPlanoAtivo: statusPlanoAtivo[cidade.id] ?? false,
   };
@@ -47,17 +66,23 @@ function enriquecer(cidade, statusFwa, statusPlanoAtivo) {
  * `listarStatusPlanosAtivosPorCidade`, garantindo que o badge "possui
  * plano" do Ranking do 5G nunca conte um plano de FTTH (e vice-versa).
  *
- * Hoje lê dados mockados; ao integrar com API real, trocar apenas a fonte
- * (`cidadesMockDaTecnologia`) por uma consulta ao Supabase, mantendo o
- * restante igual.
+ * A metainformação da cidade (nome, gerente, regional, coordenador,
+ * ativação comercial) e os indicadores sem cobertura na base real (meta,
+ * churn, cancelamento, crescimento) ainda vêm de `cidadesMockDaTecnologia`
+ * — só o `realizado` dos indicadores em INDICADORES_COM_DADO_REAL
+ * (indicadorRealizadoService.js) é substituído pela base real, dentro de
+ * `enriquecer`. Ver RELATORIO.md, "O que continua mockado".
  */
 function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   async function listarCidades() {
-    const [statusFwa, statusPlanoAtivo] = await Promise.all([
+    const [statusFwa, statusPlanoAtivo, indiceRealizados] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
+      indiceRealizadosComFallback(tecnologiaId),
     ]);
-    return cidadesMockDaTecnologia.map((cidade) => enriquecer(cidade, statusFwa, statusPlanoAtivo));
+    return cidadesMockDaTecnologia.map((cidade) =>
+      enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, tecnologiaId),
+    );
   }
 
   async function listarRanking() {
@@ -68,11 +93,12 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   async function buscarCidade(id) {
     const cidade = cidadesMockDaTecnologia.find((c) => c.id === id);
     if (!cidade) return null;
-    const [statusFwa, statusPlanoAtivo] = await Promise.all([
+    const [statusFwa, statusPlanoAtivo, indiceRealizados] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
+      indiceRealizadosComFallback(tecnologiaId),
     ]);
-    return enriquecer(cidade, statusFwa, statusPlanoAtivo);
+    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, tecnologiaId);
   }
 
   return { listarCidades, listarRanking, buscarCidade };

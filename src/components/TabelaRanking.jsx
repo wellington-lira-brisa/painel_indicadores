@@ -8,15 +8,27 @@ import CardRankingCidade from './CardRankingCidade';
 import { atingimentoIndicador } from '../utils/status';
 import { formatarPercentual } from '../utils/format';
 
-/** Usa o indicador de orçamento (vendas) como referência de meta x realizado. */
+/**
+ * Usa "Orçamento (vendas)" como referência de meta x realizado quando
+ * existe (FTTH); cidades que não têm mais esse indicador (5G, desde que
+ * Orçamento/Efetivado saíram do conjunto rastreado) caem pra "Ativação" —
+ * é o indicador com par meta/realizado que sobrou como principal — e, na
+ * falta dele também, pro primeiro indicador da lista. Sem fallback, a
+ * coluna "Meta (vendas)" do ranking 5G ficaria zerada pra toda cidade.
+ */
 export function resumoMetaRealizado(cidade) {
-  const orcamento = cidade.indicadores.find((i) => i.id === 'orcamento');
-  if (!orcamento) return { meta: 0, realizado: 0 };
-  const apurados = orcamento.meses.filter((m) => m.realizado !== null);
+  const referencia =
+    cidade.indicadores.find((i) => i.id === 'orcamento') ??
+    cidade.indicadores.find((i) => i.id === 'ativacao') ??
+    cidade.indicadores[0];
+  if (!referencia) return { meta: 0, realizado: 0, rotulo: 'Meta' };
+
+  const apurados = referencia.meses.filter((m) => m.realizado !== null);
   return {
     meta: apurados.reduce((acc, m) => acc + m.meta, 0),
     realizado: apurados.reduce((acc, m) => acc + m.realizado, 0),
-    atingimento: atingimentoIndicador(orcamento),
+    atingimento: atingimentoIndicador(referencia),
+    rotulo: referencia.nome,
   };
 }
 
@@ -25,6 +37,14 @@ export function resumoMetaRealizado(cidade) {
  * A partir de `md`: tabela comparativa completa.
  */
 export default function TabelaRanking({ cidades, rotaBase = '' }) {
+  // Rótulo da coluna de meta/realizado segue o indicador de referência
+  // usado (ver resumoMetaRealizado). "Orçamento (vendas)" já vem com
+  // parênteses no próprio nome — preserva o texto original "Meta (vendas)"
+  // pra não duplicar parênteses; qualquer outro indicador de referência
+  // (ex.: "Ativação", no 5G) usa o nome dele direto.
+  const referencia = cidades[0] ? resumoMetaRealizado(cidades[0]).rotulo : null;
+  const rotuloColunaMeta = referencia === 'Orçamento (vendas)' ? 'Meta (vendas)' : `Meta (${referencia ?? '—'})`;
+
   return (
     <>
       <ul className="space-y-3 md:hidden">
@@ -46,7 +66,7 @@ export default function TabelaRanking({ cidades, rotaBase = '' }) {
             <th className="px-4 py-3">#</th>
             <th className="min-w-[10rem] px-4 py-3">Cidade</th>
             <th className="min-w-[8rem] px-4 py-3">Gerente</th>
-            <th className="whitespace-nowrap px-4 py-3 text-right">Meta (vendas)</th>
+            <th className="whitespace-nowrap px-4 py-3 text-right">{rotuloColunaMeta}</th>
             <th className="whitespace-nowrap px-4 py-3 text-right">Realizado</th>
             <th className="whitespace-nowrap px-4 py-3">Atingimento geral</th>
             <th className="whitespace-nowrap px-4 py-3">Tendência</th>

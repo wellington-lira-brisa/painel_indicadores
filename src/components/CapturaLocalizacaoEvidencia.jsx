@@ -1,7 +1,8 @@
-import { Loader2, MapPin, MapPinned, RotateCcw } from 'lucide-react';
+import { ExternalLink, Loader2, MapPin, MapPinned, RotateCcw } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { PERMISSOES } from '../services/permissaoService';
 import { formatarDataHora } from '../utils/format';
+import { linkGoogleMaps } from '../utils/geolocalizacao';
 
 /**
  * Captura da localização do dispositivo no momento em que as evidências são
@@ -62,6 +63,17 @@ export default function CapturaLocalizacaoEvidencia({ localizacao, status = 'oci
                   <span className="mt-0.5 block text-xs text-emerald-700">
                     Precisão de ±{Math.round(localizacao.precisaoMetros)} m · {formatarDataHora(localizacao.capturadaEm)}
                   </span>
+                )}
+                {(localizacao.linkGoogleMaps ?? linkGoogleMaps(localizacao.latitude, localizacao.longitude)) && (
+                  <a
+                    href={localizacao.linkGoogleMaps ?? linkGoogleMaps(localizacao.latitude, localizacao.longitude)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:underline"
+                  >
+                    <ExternalLink className="size-3 shrink-0" aria-hidden="true" />
+                    Ver no Google Maps
+                  </a>
                 )}
               </>
             ) : (

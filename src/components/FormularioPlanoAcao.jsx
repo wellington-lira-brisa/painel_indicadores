@@ -1,6 +1,5 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ImagePlus, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import {
   LIMITE_COMO,
@@ -10,13 +9,10 @@ import {
   localizacaoEvidenciaObrigatoria,
   validarCamposPlanoDetalhado,
 } from '../services/planoAcaoService';
-import { extrairMetadadosExif } from '../utils/exif';
-import { TIPOS_ACEITOS, prepararImagemParaUpload } from '../utils/imagemUpload';
-import { buscarEnderecoPorCoordenadas, capturarLocalizacaoAtual } from '../utils/geolocalizacao';
+import { useCapturaEvidencias } from '../hooks/useCapturaEvidencias';
 import ModalFormulario from './ModalFormulario';
-import GaleriaEvidencias from './GaleriaEvidencias';
+import BlocoAnexoEvidencias from './BlocoAnexoEvidencias';
 import LightboxImagem from './LightboxImagem';
-import CapturaLocalizacaoEvidencia from './CapturaLocalizacaoEvidencia';
 
 const CampoMarkdown = lazy(() => import('./CampoMarkdown'));
 
@@ -30,137 +26,39 @@ const CAMPOS_VAZIOS = { oQue: '', como: '', quem: '', quandoPrevisto: '' };
  * (`validarCamposPlano`), então o erro que aparece aqui é exatamente o
  * que o banco também aplicaria.
  *
- * Evidências: suporta múltiplas imagens (galeria + lightbox). A
- * localização é capturada UMA vez para o lote inteiro (não por imagem) e é
- * obrigatória sempre que houver ao menos uma imagem — regra validada aqui
- * (UX imediata) e de novo no backend, dentro da transação que cria o plano
- * (ver criar_plano_com_evidencias, migration 20260709130000).
+ * Evidências: anexar aqui é OPCIONAL — o plano pode ser salvo sem nenhuma
+ * imagem (fluxo real: colaborador cria o plano numa reunião e só depois
+ * vai a campo). Se já tiver as fotos em mãos, pode anexar direto aqui;
+ * senão, o mesmo fluxo de anexo fica disponível depois em "Anexar
+ * evidências" na tela do plano (ver ModalAnexarEvidencias) — os dois usam
+ * o mesmo hook (useCapturaEvidencias) e o mesmo bloco visual
+ * (BlocoAnexoEvidencias), então o comportamento é idêntico nos dois
+ * momentos, só muda quando cada um acontece.
  */
 export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) {
   const { usuario } = useAuth();
   const navigate = useNavigate();
   const [campos, setCampos] = useState(CAMPOS_VAZIOS);
   const [errosCampos, setErrosCampos] = useState({});
-  const [imagens, setImagens] = useState([]); // [{ id, blob, previewUrl, metadados }]
   const [indiceLightbox, setIndiceLightbox] = useState(null);
   const [erroGeral, setErroGeral] = useState(null);
-  const [processandoImagem, setProcessandoImagem] = useState(false);
   const [enviando, setEnviando] = useState(false);
 
-  // Localização é do LOTE de evidências, não de uma imagem específica —
-  // por isso vive fora do array `imagens`.
-  const [localizacaoEvidencia, setLocalizacaoEvidencia] = useState(null);
-  const [statusLocalizacao, setStatusLocalizacao] = useState('ocioso'); // 'ocioso' | 'capturando' | 'sucesso' | 'erro'
-  const [erroLocalizacao, setErroLocalizacao] = useState(null);
-
-  // Revoga todos os object URLs de preview só no unmount do formulário —
-  // remoção/troca individual de imagem já revoga a própria URL na hora
-  // (ver removerImagem). Um efeito atrelado a `imagens` revogaria TODAS as
-  // URLs a cada adição/remoção, quebrando as miniaturas que continuam na tela.
-  const imagensRef = useRef(imagens);
-  imagensRef.current = imagens;
-  useEffect(() => {
-    return () => {
-      imagensRef.current.forEach((img) => {
-        if (img.previewUrl) URL.revokeObjectURL(img.previewUrl);
-      });
-    };
-  }, []);
+  const {
+    imagens,
+    processandoImagem,
+    erroImagens,
+    aoSelecionarImagens,
+    removerImagem,
+    localizacaoEvidencia,
+    statusLocalizacao,
+    erroLocalizacao,
+    aoClicarCapturarLocalizacao,
+  } = useCapturaEvidencias();
 
   function atualizarCampo(chave, valor) {
     setCampos((atual) => ({ ...atual, [chave]: valor }));
     setErrosCampos((atual) => (atual[chave] ? { ...atual, [chave]: null } : atual));
-  }
-
-  async function aoSelecionarImagens(evento) {
-    const arquivos = Array.from(evento.target.files ?? []);
-    evento.target.value = ''; // permite reselecionar os mesmos arquivos depois
-    if (arquivos.length === 0) return;
-
-    setErroGeral(null);
-    setProcessandoImagem(true);
-
-    const resultados = await Promise.all(
-      arquivos.map(async (arquivo) => {
-        try {
-          const [preparo, metadadosExif] = await Promise.all([
-            prepararImagemParaUpload(arquivo),
-            extrairMetadadosExif(arquivo),
-          ]);
-          return {
-            ok: true,
-            imagem: {
-              id: crypto.randomUUID(),
-              blob: preparo.blob,
-              previewUrl: URL.createObjectURL(preparo.blob),
-              metadados: {
-                ...metadadosExif,
-                tamanhoOriginalBytes: preparo.tamanhoOriginalBytes,
-                tamanhoFinalBytes: preparo.tamanhoFinalBytes,
-                larguraFinal: preparo.largura,
-                alturaFinal: preparo.altura,
-                tipoMimeFinal: preparo.tipoMimeFinal,
-              },
-            },
-          };
-        } catch (excecao) {
-          return { ok: false, erro: `${arquivo.name}: ${excecao.message}` };
-        }
-      }),
-    );
-
-    // Preserva a ordem de seleção mesmo com processamento em paralelo —
-    // .map já mantém a ordem do array original, independente de qual
-    // arquivo terminou de processar primeiro.
-    const novasImagens = resultados.filter((r) => r.ok).map((r) => r.imagem);
-    const erros = resultados.filter((r) => !r.ok).map((r) => r.erro);
-
-    if (novasImagens.length > 0) setImagens((atual) => [...atual, ...novasImagens]);
-    if (erros.length > 0) setErroGeral(erros.join(' · '));
-    setProcessandoImagem(false);
-  }
-
-  function removerImagem(id) {
-    const alvo = imagens.find((img) => img.id === id);
-    if (alvo?.previewUrl) URL.revokeObjectURL(alvo.previewUrl);
-
-    const restante = imagens.filter((img) => img.id !== id);
-    setImagens(restante);
-
-    // Sem evidência, não há mais o que a localização documentar — some
-    // junto, em vez de deixar uma localização "órfã" que o usuário
-    // esqueceu de recapturar caso reanexe uma imagem depois.
-    if (restante.length === 0) {
-      setLocalizacaoEvidencia(null);
-      setStatusLocalizacao('ocioso');
-      setErroLocalizacao(null);
-    }
-  }
-
-  /**
-   * Só executa quando o usuário clica no botão (nunca automático). O
-   * próprio navegador exige permissão explícita antes de entregar
-   * qualquer coordenada. Geocodificação (endereço) é aprimoramento
-   * opcional: se falhar ou demorar, a coordenada capturada continua
-   * válida mesmo assim.
-   */
-  async function aoClicarCapturarLocalizacao() {
-    setStatusLocalizacao('capturando');
-    setErroLocalizacao(null);
-
-    try {
-      const posicao = await capturarLocalizacaoAtual();
-      setLocalizacaoEvidencia(posicao);
-      setStatusLocalizacao('sucesso');
-
-      const endereco = await buscarEnderecoPorCoordenadas(posicao.latitude, posicao.longitude);
-      if (endereco) {
-        setLocalizacaoEvidencia((atual) => (atual ? { ...atual, endereco } : atual));
-      }
-    } catch (excecao) {
-      setErroLocalizacao(excecao.message);
-      setStatusLocalizacao('erro');
-    }
   }
 
   /**
@@ -189,7 +87,7 @@ export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) 
 
   async function aoEnviar(evento) {
     evento.preventDefault();
-    setErroGeral(null);
+    setErroGeral(erroImagens ?? null);
     if (!validarAntesDeEnviar()) return;
 
     setEnviando(true);
@@ -289,47 +187,22 @@ export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) 
         </div>
 
         <div>
-          <span className="block text-sm font-medium text-slate-700">Evidências (imagens)</span>
-
-          <label className="mt-2 flex min-h-[96px] cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-slate-300 px-4 py-6 text-center text-sm text-slate-500 hover:border-brand-700 hover:text-brand-700">
-            {processandoImagem ? (
-              <>
-                <Loader2 className="size-5 animate-spin" aria-hidden="true" />
-                Otimizando imagens…
-              </>
-            ) : (
-              <>
-                <ImagePlus className="size-5" aria-hidden="true" />
-                Anexar imagens (JPEG, PNG, WebP ou HEIC) — comprimidas automaticamente
-              </>
-            )}
-            <input
-              type="file"
-              accept={TIPOS_ACEITOS.join(',')}
-              multiple
-              className="sr-only"
-              onChange={aoSelecionarImagens}
-              disabled={processandoImagem}
-            />
-          </label>
-
-          {imagens.length > 0 && (
-            <div className="mt-3 space-y-3">
-              <GaleriaEvidencias
-                itens={imagens.map((img) => ({ id: img.id, url: img.previewUrl }))}
-                aoRemover={removerImagem}
-                aoAbrirImagem={setIndiceLightbox}
-              />
-
-              <CapturaLocalizacaoEvidencia
-                localizacao={localizacaoEvidencia}
-                status={statusLocalizacao}
-                erro={erroLocalizacao}
-                aoCapturar={aoClicarCapturarLocalizacao}
-                obrigatoria
-              />
-            </div>
-          )}
+          <BlocoAnexoEvidencias
+            imagens={imagens}
+            processandoImagem={processandoImagem}
+            aoSelecionarImagens={aoSelecionarImagens}
+            removerImagem={removerImagem}
+            aoAbrirImagem={setIndiceLightbox}
+            localizacaoEvidencia={localizacaoEvidencia}
+            statusLocalizacao={statusLocalizacao}
+            erroLocalizacao={erroLocalizacao}
+            aoClicarCapturarLocalizacao={aoClicarCapturarLocalizacao}
+            rotulo="Evidências (imagens) — opcional, pode anexar depois"
+          />
+          <p className="mt-2 text-xs text-slate-500">
+            Não tem as fotos agora? Sem problema — salve o plano assim mesmo e anexe as evidências
+            depois, na tela do plano.
+          </p>
         </div>
 
         {erroGeral && (
@@ -359,9 +232,8 @@ export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) 
 
       {indiceLightbox !== null && (
         <LightboxImagem
-          itens={imagens.map((img) => ({ url: img.previewUrl, metadados: img.metadados }))}
+          itens={imagens.map((img) => ({ url: img.previewUrl, metadados: img.metadados, localizacaoEvidencia }))}
           indiceInicial={indiceLightbox}
-          localizacaoEvidencia={localizacaoEvidencia}
           criadoPor={usuario}
           aoFechar={() => setIndiceLightbox(null)}
         />

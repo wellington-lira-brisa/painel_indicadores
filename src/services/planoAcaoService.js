@@ -2,6 +2,7 @@ import { supabase } from './supabaseClient';
 import { tratarErro } from './supabaseHelpers';
 import { validarCamposSensiveis, mensagemBloqueioSensivel } from '../utils/validacaoConteudoSensivel';
 import { normalizarStatusPlano, statusPlanoValido, STATUS_PLANO } from '../utils/statusPlano';
+import { linkGoogleMaps } from '../utils/geolocalizacao';
 
 /**
  * Status que contam como "plano de ação ativo" pro indicador do Ranking.
@@ -51,13 +52,19 @@ export const LIMITE_QUEM = 200;
 
 // Listagens nunca precisam do path/metadados da imagem — só o detalhe exibe
 // evidência e EXIF. Buscar isso na lista é over-fetch (jsonb pode ser grande).
+// `tem_evidencias` é a exceção: é um boolean barato (mantido por trigger,
+// ver migration 20260710120000), não uma imagem — cabe na lista porque é
+// exatamente o que a listagem precisa pra sinalizar "evidência pendente"
+// sem fazer join nenhum com planos_acao_evidencias.
 const COLUNAS_PLANO_LISTA =
-  'id, cidade_id, tecnologia_id, indicador_id, criado_por, descricao, o_que, como, quem, quando_previsto, status, criado_em, atualizado_em, ' +
+  'id, cidade_id, tecnologia_id, indicador_id, criado_por, descricao, o_que, como, quem, quando_previsto, status, tem_evidencias, criado_em, atualizado_em, ' +
   'colaboradores!criado_por(nome, matricula, cargo)';
 const COLUNAS_PLANO_DETALHE =
   `${COLUNAS_PLANO_LISTA}, imagem_path, imagem_metadados, evidencia_latitude, evidencia_longitude, ` +
-  'evidencia_precisao_metros, evidencia_endereco, evidencia_capturada_em, ' +
-  'planos_acao_evidencias(id, imagem_path, imagem_metadados, ordem, criado_em)';
+  'evidencia_precisao_metros, evidencia_endereco, evidencia_numero, evidencia_bairro, evidencia_cidade, ' +
+  'evidencia_estado, evidencia_cep, evidencia_pais, evidencia_capturada_em, ' +
+  'planos_acao_evidencias(id, imagem_path, imagem_metadados, ordem, criado_em, localizacao_id), ' +
+  'planos_acao_evidencia_localizacoes(id, latitude, longitude, precisao_metros, endereco, numero, bairro, cidade, estado, cep, pais, capturada_em)';
 
 /**
  * Converte a linha do Postgres (snake_case) para o formato usado pelos
@@ -70,6 +77,16 @@ const COLUNAS_PLANO_DETALHE =
 function mapearPlano(linha) {
   if (!linha) return null;
 
+  // Histórico de localizações — 1 por lote de anexação (ver migration
+  // 20260710130000), mais antiga primeiro: é a ordem que a tela usa pra
+  // empilhar (nova localização aparece embaixo das anteriores).
+  const localizacoesRelacionadas = linha.planos_acao_evidencia_localizacoes ?? [];
+  const localizacoesEvidencia = [...localizacoesRelacionadas]
+    .sort((a, b) => new Date(a.capturada_em) - new Date(b.capturada_em))
+    .map((l) => mapearLocalizacao(l));
+
+  const localizacaoPorId = Object.fromEntries(localizacoesEvidencia.map((l) => [l.id, l]));
+
   const evidenciasRelacionadas = linha.planos_acao_evidencias ?? [];
   const evidencias =
     evidenciasRelacionadas.length > 0
@@ -80,10 +97,37 @@ function mapearPlano(linha) {
             imagemPath: e.imagem_path,
             metadados: e.imagem_metadados ?? null,
             criadoEm: e.criado_em ?? linha.criado_em,
+            // Localização do LOTE em que essa evidência específica foi
+            // anexada — não necessariamente a mais recente do plano.
+            // Evidências legadas (localizacao_id null) caem no fallback
+            // abaixo (colunas legadas de planos_acao).
+            localizacaoEvidencia: localizacaoPorId[e.localizacao_id] ?? null,
           }))
       : linha.imagem_path
-        ? [{ id: null, imagemPath: linha.imagem_path, metadados: linha.imagem_metadados ?? null, criadoEm: linha.criado_em }]
+        ? [{ id: null, imagemPath: linha.imagem_path, metadados: linha.imagem_metadados ?? null, criadoEm: linha.criado_em, localizacaoEvidencia: null }]
         : [];
+
+  // Fallback pras colunas legadas (evidencia_latitude etc. em planos_acao)
+  // — cobre planos gravados antes da migration 20260710130000 existir, ou
+  // um ambiente onde ela ainda não rodou. Nunca é a fonte principal pra
+  // planos novos: esses já têm tudo em `localizacoesEvidencia`.
+  const localizacaoLegada =
+    linha.evidencia_latitude != null && linha.evidencia_longitude != null
+      ? mapearLocalizacao({
+          id: null,
+          latitude: linha.evidencia_latitude,
+          longitude: linha.evidencia_longitude,
+          precisao_metros: linha.evidencia_precisao_metros,
+          endereco: linha.evidencia_endereco,
+          numero: linha.evidencia_numero,
+          bairro: linha.evidencia_bairro,
+          cidade: linha.evidencia_cidade,
+          estado: linha.evidencia_estado,
+          cep: linha.evidencia_cep,
+          pais: linha.evidencia_pais,
+          capturada_em: linha.evidencia_capturada_em,
+        })
+      : null;
 
   return {
     id: linha.id,
@@ -104,21 +148,41 @@ function mapearPlano(linha) {
     // não deve quebrar caso rode contra um ambiente sem a migration ainda.
     status: normalizarStatusPlano(linha.status),
     evidencias,
-    // Localização capturada no momento do anexo das evidências (não é EXIF
-    // da foto) — um único valor por plano, não por imagem.
-    localizacaoEvidencia:
-      linha.evidencia_latitude != null && linha.evidencia_longitude != null
-        ? {
-            latitude: linha.evidencia_latitude,
-            longitude: linha.evidencia_longitude,
-            precisaoMetros: linha.evidencia_precisao_metros ?? null,
-            endereco: linha.evidencia_endereco ?? null,
-            capturadaEm: linha.evidencia_capturada_em ?? null,
-          }
-        : null,
+    // `tem_evidencias` vem pronto do banco (mantido por trigger — ver
+    // migration 20260710120000); o fallback em `evidencias.length` só
+    // cobre o caso defensivo de rodar contra um ambiente sem essa
+    // migration ainda, mesmo padrão já usado em `status` acima.
+    temEvidencias: linha.tem_evidencias ?? evidencias.length > 0,
+    // Histórico completo — mais antiga primeiro. É o que a tela do plano
+    // usa pra listar "uma localização por anexação".
+    localizacoesEvidencia: localizacoesEvidencia.length > 0 ? localizacoesEvidencia : localizacaoLegada ? [localizacaoLegada] : [],
+    // Mantido por retrocompatibilidade com qualquer trecho que ainda
+    // espere UMA localização (a mais recente) em vez do histórico —
+    // sempre deriva do mesmo dado, nunca uma fonte própria.
+    localizacaoEvidencia: localizacoesEvidencia.at(-1) ?? localizacaoLegada,
     criadoPor: linha.colaboradores,
     criadoEm: linha.criado_em,
     atualizadoEm: linha.atualizado_em,
+  };
+}
+
+/** Formata uma linha de planos_acao_evidencia_localizacoes (ou o fallback legado) pro formato usado pelos componentes. */
+function mapearLocalizacao(l) {
+  return {
+    id: l.id,
+    latitude: l.latitude,
+    longitude: l.longitude,
+    precisaoMetros: l.precisao_metros ?? null,
+    endereco: l.endereco ?? null,
+    numero: l.numero ?? null,
+    bairro: l.bairro ?? null,
+    cidade: l.cidade ?? null,
+    estado: l.estado ?? null,
+    cep: l.cep ?? null,
+    pais: l.pais ?? null,
+    capturadaEm: l.capturada_em ?? null,
+    // Derivado, nunca vem do banco — ver comentário em linkGoogleMaps.
+    linkGoogleMaps: linkGoogleMaps(l.latitude, l.longitude),
   };
 }
 
@@ -352,6 +416,12 @@ export async function criarPlano(dados) {
       p_evidencia_precisao_metros: dados.localizacaoEvidencia?.precisaoMetros ?? null,
       p_evidencia_endereco: dados.localizacaoEvidencia?.endereco ?? null,
       p_evidencia_capturada_em: dados.localizacaoEvidencia?.capturadaEm ?? null,
+      p_evidencia_numero: dados.localizacaoEvidencia?.numero ?? null,
+      p_evidencia_bairro: dados.localizacaoEvidencia?.bairro ?? null,
+      p_evidencia_cidade: dados.localizacaoEvidencia?.cidade ?? null,
+      p_evidencia_estado: dados.localizacaoEvidencia?.estado ?? null,
+      p_evidencia_cep: dados.localizacaoEvidencia?.cep ?? null,
+      p_evidencia_pais: dados.localizacaoEvidencia?.pais ?? null,
     });
 
     if (erroRpc) throw new Error(erroRpc.message || 'Não foi possível salvar o plano de ação.');
@@ -365,6 +435,82 @@ export async function criarPlano(dados) {
 }
 
 const LIMITE_DESCRICAO_LEGADO = 8000;
+
+/**
+ * Anexa evidências a um plano JÁ EXISTENTE — o novo caminho de escrita
+ * (ver migration 20260710120000), separado de `criarPlano` de propósito:
+ * são operações diferentes (uma cria o plano, a outra só adiciona
+ * evidência a um plano que já existe), então funções diferentes, cada uma
+ * com sua própria responsabilidade — mistura-las forçaria `criarPlano` a
+ * aceitar um `planoId` opcional e ramificar por dentro, mais confuso que
+ * duas funções pequenas e diretas.
+ *
+ * Upload de imagem + rollback em caso de falha seguem exatamente o mesmo
+ * padrão de `criarPlano`: imagens vão pro Storage primeiro; se a RPC
+ * falhar depois, os arquivos já enviados são removidos, pra não sobrar
+ * imagem órfã apontando pra um plano sem o registro da evidência.
+ *
+ * @param {string} planoId
+ * @param {{ criadoPorId: string, imagens: Array<{ blob: Blob, metadados: object }>,
+ *   localizacaoEvidencia: { latitude: number, longitude: number, precisaoMetros?: number,
+ *     endereco?: string, numero?: string, bairro?: string, cidade?: string, estado?: string,
+ *     cep?: string, pais?: string, capturadaEm?: string } }} dados
+ */
+export async function anexarEvidenciasPlano(planoId, dados) {
+  if (!planoId) throw new Error('Plano é obrigatório.');
+
+  const imagens = dados.imagens ?? [];
+  if (imagens.length === 0) throw new Error('Selecione ao menos uma imagem para anexar.');
+  if (localizacaoEvidenciaObrigatoria(imagens.length, dados.localizacaoEvidencia)) {
+    throw new Error('Localização é obrigatória quando há evidências anexadas.');
+  }
+  if (!dados.criadoPorId) throw new Error('Usuário autenticado é obrigatório.');
+
+  const caminhosEnviados = [];
+
+  try {
+    const evidenciasParaRpc = [];
+    for (let indice = 0; indice < imagens.length; indice += 1) {
+      const { blob, metadados } = imagens[indice];
+      const extensao = EXTENSAO_POR_TIPO[blob.type] ?? 'jpg';
+      // Prefixo com o próprio planoId (não só criadoPorId-timestamp) pra
+      // ficar óbvio, só olhando o path no Storage, a quais evidências de
+      // qual plano cada arquivo pertence — útil pra auditoria manual.
+      const caminho = `${dados.criadoPorId}/${planoId}-${Date.now()}-${indice}.${extensao}`;
+
+      const { error: erroUpload } = await supabase.storage
+        .from(BUCKET)
+        .upload(caminho, blob, { contentType: blob.type });
+      if (erroUpload) throw new Error('Falha ao enviar uma das imagens. Tente novamente.');
+
+      caminhosEnviados.push(caminho);
+      evidenciasParaRpc.push({ imagem_path: caminho, imagem_metadados: metadados ?? null });
+    }
+
+    const { error: erroRpc } = await supabase.rpc('anexar_evidencias_plano', {
+      p_plano_id: planoId,
+      p_evidencias: evidenciasParaRpc,
+      p_evidencia_latitude: dados.localizacaoEvidencia?.latitude ?? null,
+      p_evidencia_longitude: dados.localizacaoEvidencia?.longitude ?? null,
+      p_evidencia_precisao_metros: dados.localizacaoEvidencia?.precisaoMetros ?? null,
+      p_evidencia_endereco: dados.localizacaoEvidencia?.endereco ?? null,
+      p_evidencia_numero: dados.localizacaoEvidencia?.numero ?? null,
+      p_evidencia_bairro: dados.localizacaoEvidencia?.bairro ?? null,
+      p_evidencia_cidade: dados.localizacaoEvidencia?.cidade ?? null,
+      p_evidencia_estado: dados.localizacaoEvidencia?.estado ?? null,
+      p_evidencia_cep: dados.localizacaoEvidencia?.cep ?? null,
+      p_evidencia_pais: dados.localizacaoEvidencia?.pais ?? null,
+      p_evidencia_capturada_em: dados.localizacaoEvidencia?.capturadaEm ?? null,
+    });
+
+    if (erroRpc) throw new Error(erroRpc.message || 'Não foi possível anexar as evidências.');
+
+    return await buscarPlano(planoId);
+  } catch (excecao) {
+    if (caminhosEnviados.length > 0) await supabase.storage.from(BUCKET).remove(caminhosEnviados);
+    throw excecao;
+  }
+}
 
 /** Validação do campo livre legado — só usada ao editar planos criados antes da versão estruturada. */
 function validarDescricaoLegado(valorBruto) {

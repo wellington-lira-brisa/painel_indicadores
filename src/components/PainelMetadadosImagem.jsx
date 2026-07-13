@@ -66,6 +66,41 @@ function PainelMetadadosImagem({ metadados, nomeArquivo, criadoEm, criadoPor, lo
             <span className="text-slate-400">Restrito</span>
           )}
         </LinhaInfo>
+        {localizacaoCapturada && podeVerDadosSensiveis && (
+          <>
+            <LinhaInfo rotulo="Coordenadas">
+              {localizacaoCapturada.latitude.toFixed(6)}, {localizacaoCapturada.longitude.toFixed(6)}
+            </LinhaInfo>
+            {localizacaoCapturada.precisaoMetros != null && (
+              <LinhaInfo rotulo="Precisão do GPS">±{Math.round(localizacaoCapturada.precisaoMetros)} m</LinhaInfo>
+            )}
+            {(localizacaoCapturada.bairro || localizacaoCapturada.cidade) && (
+              <LinhaInfo rotulo="Bairro / Cidade" quebrarLinha>
+                {[localizacaoCapturada.bairro, localizacaoCapturada.cidade].filter(Boolean).join(' · ')}
+              </LinhaInfo>
+            )}
+            {(localizacaoCapturada.estado || localizacaoCapturada.cep || localizacaoCapturada.pais) && (
+              <LinhaInfo rotulo="Estado / CEP / País" quebrarLinha>
+                {[localizacaoCapturada.estado, localizacaoCapturada.cep, localizacaoCapturada.pais]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </LinhaInfo>
+            )}
+            {localizacaoCapturada.linkGoogleMaps && (
+              <LinhaInfo rotulo="Mapa">
+                <a
+                  href={localizacaoCapturada.linkGoogleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-medium text-brand-700 hover:underline"
+                >
+                  <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
+                  Abrir no Google Maps
+                </a>
+              </LinhaInfo>
+            )}
+          </>
+        )}
       </Secao>
 
       <Secao titulo="Arquivo">
