@@ -1,4 +1,5 @@
 import { parsearCsv } from '../shared/csvIndicadores';
+import { ANO_PAINEL } from '../data/mockHelpers';
 
 // Enquanto não existe uma API real, a base fica versionada no próprio
 // repositório e é publicada como arquivo estático pelo workflow
@@ -30,8 +31,11 @@ const INDICADORES_COM_DADO_REAL = {
   '5g': ['ativacao'],
 };
 
-function indiceDoMes(mesRefIso) {
-  return Number(mesRefIso.slice(5, 7)) - 1; // 'YYYY-MM-DD' -> índice 0-based (jan=0)
+/** 'YYYY-MM-DD' -> índice 0-based do mês (jan=0), só quando o ano bate com ANO_PAINEL. `null` caso contrário. */
+function indiceDoMesNoAnoDoPainel(mesRefIso) {
+  const ano = Number(mesRefIso.slice(0, 4));
+  if (ano !== ANO_PAINEL) return null;
+  return Number(mesRefIso.slice(5, 7)) - 1;
 }
 
 /**
@@ -67,7 +71,8 @@ function indexarValoresPorCidade(linhas) {
       porIndicador.set(l.indicador_id, { meses: new Map(), semanas: new Map() });
     }
     const registro = porIndicador.get(l.indicador_id);
-    const mesIndex = indiceDoMes(l.mes_ref);
+    const mesIndex = indiceDoMesNoAnoDoPainel(l.mes_ref);
+    if (mesIndex === null) continue; // ano fora do painel atual (ver comentário de indiceDoMesNoAnoDoPainel)
     const valor = Number(l.valor);
     if (l.semana_mes === '') {
       registro.meses.set(mesIndex, valor);

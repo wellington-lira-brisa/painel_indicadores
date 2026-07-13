@@ -159,6 +159,29 @@ test('datas reais da semana (primeiro_dia_semana/ultimo_dia_semana) sobrevivem a
   assert.equal(semanaFtth.ultimo_dia_semana, '2026-07-05');
 });
 
+test('normalizar mantém 2025-07 e 2026-07 como registros separados (não colide por mês, só por mes_ref completo)', () => {
+  const linhas = [COLUNAS_OBRIGATORIAS.join(',')];
+  const linha = (mesRef, canal, valor) =>
+    [
+      mesRef, `${mesRef.slice(0, 7)}_S01`, '1', mesRef, mesRef, '25', '5', '5',
+      'ARARIPINA / PE', 'INTERNET', canal, 'Instalado', 'WAVES', valor, valor,
+    ].join(',');
+  linhas.push(linha('2026-07-01', 'CANAL_2026', 119));
+  linhas.push(linha('2025-07-01', 'CANAL_2025', 240));
+  for (let i = 0; i < 98; i++) {
+    linhas.push(
+      ['2026-07-01', '2026-07_S01', '1', '2026-07-01', '2026-07-01', '25', '5', '5', 'ARARIPINA / PE',
+        '5G', `CANAL_5G_${i}`, 'Assinado', '5G AVULSO', i, i].join(','),
+    );
+  }
+
+  const registros = normalizar(parsearCsv(linhas.join('\n')));
+  const mensal2026 = registros.find((r) => r.tecnologia === 'ftth' && r.mesRef === '2026-07-01' && r.semanaMes === null);
+  const mensal2025 = registros.find((r) => r.tecnologia === 'ftth' && r.mesRef === '2025-07-01' && r.semanaMes === null);
+  assert.equal(mensal2026.valor, 119);
+  assert.equal(mensal2025.valor, 240);
+});
+
 test('parsearCsv detecta ";" como delimitador e a base aceita decimal com vírgula (formato real do export Spark)', () => {
   const cabecalho = COLUNAS_OBRIGATORIAS.join(';');
   const linha = (canal, semana, mensal) =>
