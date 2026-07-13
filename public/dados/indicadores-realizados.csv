@@ -1,0 +1,2773 @@
+cidade_slug,cidade_origem,tecnologia,indicador_id,mes_ref,semana_mes,valor
+,,5g,ativacao,2026-07-01,,1371
+,,ftth,efetivado,2026-07-01,,13
+acarape-ce,ACARAPE / CE,5g,ativacao,2026-07-01,,121
+acarau-ce,ACARAU / CE,5g,ativacao,2026-07-01,,173
+acopiara-ce,ACOPIARA / CE,5g,ativacao,2026-07-01,,101
+acopiara-ce,ACOPIARA / CE,ftth,efetivado,2026-07-01,,37
+alagoinhas-ba,ALAGOINHAS / BA,ftth,orcamento,2026-07-01,,164
+altaneira-ce,ALTANEIRA / CE,5g,ativacao,2026-07-01,,81
+altos-pi,ALTOS / PI,ftth,efetivado,2026-07-01,,39
+angicos-rn,ANGICOS / RN,5g,ativacao,2026-07-01,,28
+apodi-rn,APODI / RN,5g,ativacao,2026-07-01,,44
+aracaju-se,ARACAJU / SE,ftth,orcamento,2026-07-01,,750
+aracaju-se,ARACAJU / SE,ftth,efetivado,2026-07-01,,587
+aracaju-se,ARACAJU / SE,ftth,instalacao,2026-07-01,,468
+aracati-ce,ARACATI / CE,5g,ativacao,2026-07-01,,140
+aracoiaba-ce,ARACOIABA / CE,5g,ativacao,2026-07-01,,23
+arapiraca-al,ARAPIRACA / AL,ftth,orcamento,2026-07-01,,152
+arapiraca-al,ARAPIRACA / AL,ftth,instalacao,2026-07-01,,110
+araripina-pe,ARARIPINA / PE,5g,ativacao,2026-07-01,,76
+araripina-pe,ARARIPINA / PE,ftth,efetivado,2026-07-01,,32
+areia-branca-rn,AREIA BRANCA / RN,5g,ativacao,2026-07-01,,76
+baia-formosa-rn,BAIA FORMOSA / RN,5g,ativacao,2026-07-01,,3
+banabuiu-ce,BANABUIU / CE,5g,ativacao,2026-07-01,,39
+barbalha-ce,BARBALHA / CE,5g,ativacao,2026-07-01,,74
+barbalha-ce,BARBALHA / CE,ftth,orcamento,2026-07-01,,119
+barbalha-ce,BARBALHA / CE,ftth,efetivado,2026-07-01,,101
+bayeux-pb,BAYEUX / PB,ftth,orcamento,2026-07-01,,125
+belo-jardim-pe,BELO JARDIM / PE,ftth,instalacao,2026-07-01,,22
+bezerros-pe,BEZERROS / PE,ftth,orcamento,2026-07-01,,33
+bezerros-pe,BEZERROS / PE,ftth,efetivado,2026-07-01,,33
+boa-viagem-ce,BOA VIAGEM / CE,5g,ativacao,2026-07-01,,29
+brejo-do-cruz-pb,BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,,55
+brejo-santo-ce,BREJO SANTO / CE,5g,ativacao,2026-07-01,,124
+brejo-santo-ce,BREJO SANTO / CE,ftth,orcamento,2026-07-01,,94
+brejo-santo-ce,BREJO SANTO / CE,ftth,efetivado,2026-07-01,,82
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,efetivado,2026-07-01,,105
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,orcamento,2026-07-01,,129
+caico-rn,CAICO / RN,5g,ativacao,2026-07-01,,143
+caico-rn,CAICO / RN,ftth,orcamento,2026-07-01,,64
+cajari-ma,CAJARI  / MA,5g,ativacao,2026-07-01,,7
+cajazeiras-pb,CAJAZEIRAS / PB,5g,ativacao,2026-07-01,,119
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,instalacao,2026-07-01,,83
+camacari-ba,CAMACARI / BA,ftth,efetivado,2026-07-01,,259
+camaragibe-pe,CAMARAGIBE / PE,ftth,efetivado,2026-07-01,,112
+camaragibe-pe,CAMARAGIBE / PE,ftth,orcamento,2026-07-01,,146
+camocim-ce,CAMOCIM / CE,5g,ativacao,2026-07-01,,222
+campina-grande-pb,CAMPINA GRANDE / PB,5g,ativacao,2026-07-01,,225
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,instalacao,2026-07-01,,281
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,orcamento,2026-07-01,,379
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,efetivado,2026-07-01,,297
+campo-maior-pi,CAMPO MAIOR / PI,ftth,orcamento,2026-07-01,,28
+campo-maior-pi,CAMPO MAIOR / PI,ftth,efetivado,2026-07-01,,25
+caninde-ce,CANINDE / CE,5g,ativacao,2026-07-01,,89
+caninde-ce,CANINDE / CE,ftth,orcamento,2026-07-01,,60
+caraubas-rn,CARAUBAS / RN,5g,ativacao,2026-07-01,,59
+caruaru-pe,CARUARU / PE,5g,ativacao,2026-07-01,,269
+caruaru-pe,CARUARU / PE,ftth,efetivado,2026-07-01,,254
+caruaru-pe,CARUARU / PE,ftth,orcamento,2026-07-01,,314
+cascavel-ce,CASCAVEL / CE,5g,ativacao,2026-07-01,,81
+cascavel-ce,CASCAVEL / CE,ftth,orcamento,2026-07-01,,85
+cascavel-ce,CASCAVEL / CE,ftth,efetivado,2026-07-01,,73
+cascavel-ce,CASCAVEL / CE,ftth,instalacao,2026-07-01,,74
+caucaia-ce,CAUCAIA / CE,5g,ativacao,2026-07-01,,460
+caucaia-ce,CAUCAIA / CE,ftth,orcamento,2026-07-01,,368
+caucaia-ce,CAUCAIA / CE,ftth,efetivado,2026-07-01,,301
+caucaia-ce,CAUCAIA / CE,ftth,instalacao,2026-07-01,,234
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,orcamento,2026-07-01,,77
+cha-de-alegria-pe,CHA DE ALEGRIA / PE,5g,ativacao,2026-07-01,,37
+crateus-ce,CRATEUS / CE,5g,ativacao,2026-07-01,,188
+crato-ce,CRATO / CE,5g,ativacao,2026-07-01,,240
+crato-ce,CRATO / CE,ftth,orcamento,2026-07-01,,200
+crato-ce,CRATO / CE,ftth,efetivado,2026-07-01,,171
+cruz-do-espirito-santo-pb,CRUZ DO ESPIRITO SANTO / PB,5g,ativacao,2026-07-01,,27
+currais-novos-rn,CURRAIS NOVOS / RN,5g,ativacao,2026-07-01,,119
+dias-davila-ba,DIAS DAVILA / BA,ftth,orcamento,2026-07-01,,58
+estancia-se,ESTANCIA / SE,ftth,orcamento,2026-07-01,,67
+estancia-se,ESTANCIA / SE,ftth,efetivado,2026-07-01,,62
+eusebio-ce,EUSEBIO / CE,ftth,efetivado,2026-07-01,,124
+eusebio-ce,EUSEBIO / CE,ftth,orcamento,2026-07-01,,149
+extremoz-rn,EXTREMOZ / RN,5g,ativacao,2026-07-01,,215
+extremoz-rn,EXTREMOZ / RN,ftth,orcamento,2026-07-01,,204
+extremoz-rn,EXTREMOZ / RN,ftth,efetivado,2026-07-01,,174
+extremoz-rn,EXTREMOZ / RN,ftth,instalacao,2026-07-01,,141
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,instalacao,2026-07-01,,122
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,orcamento,2026-07-01,,212
+fortaleza-ce,FORTALEZA / CE,5g,ativacao,2026-07-01,,3342
+fortaleza-ce,FORTALEZA / CE,ftth,orcamento,2026-07-01,,3111
+fortaleza-ce,FORTALEZA / CE,ftth,efetivado,2026-07-01,,2536
+fortaleza-ce,FORTALEZA / CE,ftth,instalacao,2026-07-01,,1850
+garanhuns-pe,GARANHUNS / PE,ftth,efetivado,2026-07-01,,66
+horizonte-ce,HORIZONTE / CE,5g,ativacao,2026-07-01,,116
+iguatu-ce,IGUATU / CE,5g,ativacao,2026-07-01,,174
+iguatu-ce,IGUATU / CE,ftth,instalacao,2026-07-01,,158
+iguatu-ce,IGUATU / CE,ftth,orcamento,2026-07-01,,191
+itapaje-ce,ITAPAJE / CE,5g,ativacao,2026-07-01,,38
+itapaje-ce,ITAPAJE / CE,ftth,efetivado,2026-07-01,,28
+itapipoca-ce,ITAPIPOCA / CE,ftth,orcamento,2026-07-01,,109
+joao-pessoa-pb,JOAO PESSOA / PB,5g,ativacao,2026-07-01,,613
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,orcamento,2026-07-01,,1394
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,efetivado,2026-07-01,,1149
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,instalacao,2026-07-01,,912
+juazeiro-ba,JUAZEIRO / BA,5g,ativacao,2026-07-01,,138
+juazeiro-ba,JUAZEIRO / BA,ftth,orcamento,2026-07-01,,159
+juazeiro-ba,JUAZEIRO / BA,ftth,instalacao,2026-07-01,,121
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,,516
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,,450
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,,400
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,5g,ativacao,2026-07-01,,57
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,orcamento,2026-07-01,,23
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,efetivado,2026-07-01,,23
+limoeiro-pe,LIMOEIRO / PE,ftth,orcamento,2026-07-01,,39
+limoeiro-pe,LIMOEIRO / PE,ftth,efetivado,2026-07-01,,38
+limoeiro-pe,LIMOEIRO / PE,ftth,instalacao,2026-07-01,,32
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,5g,ativacao,2026-07-01,,95
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,,75
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,,65
+macaiba-rn,MACAIBA / RN,ftth,orcamento,2026-07-01,,94
+macau-rn,MACAU / RN,5g,ativacao,2026-07-01,,35
+maceio-al,MACEIO / AL,5g,ativacao,2026-07-01,,500
+maceio-al,MACEIO / AL,ftth,orcamento,2026-07-01,,925
+maceio-al,MACEIO / AL,ftth,instalacao,2026-07-01,,631
+maceio-al,MACEIO / AL,ftth,efetivado,2026-07-01,,744
+machados-pe,MACHADOS / PE,5g,ativacao,2026-07-01,,46
+mamanguape-pb,MAMANGUAPE / PB,5g,ativacao,2026-07-01,,12
+maracanau-ce,MARACANAU / CE,5g,ativacao,2026-07-01,,276
+maracanau-ce,MARACANAU / CE,ftth,efetivado,2026-07-01,,319
+maranguape-ce,MARANGUAPE / CE,5g,ativacao,2026-07-01,,138
+maranguape-ce,MARANGUAPE / CE,ftth,orcamento,2026-07-01,,84
+marcelino-vieira-rn,MARCELINO VIEIRA / RN,5g,ativacao,2026-07-01,,27
+mari-pb,MARI / PB,5g,ativacao,2026-07-01,,27
+marizopolis-pb,MARIZOPOLIS / PB,5g,ativacao,2026-07-01,,28
+massape-ce,MASSAPE / CE,5g,ativacao,2026-07-01,,72
+milagres-ce,MILAGRES / CE,5g,ativacao,2026-07-01,,37
+missao-velha-ce,MISSAO VELHA / CE,5g,ativacao,2026-07-01,,57
+morada-nova-ce,MORADA NOVA / CE,5g,ativacao,2026-07-01,,97
+moreno-pe,MORENO / PE,5g,ativacao,2026-07-01,,86
+moreno-pe,MORENO / PE,ftth,orcamento,2026-07-01,,2
+mossoro-rn,MOSSORO / RN,5g,ativacao,2026-07-01,,665
+mossoro-rn,MOSSORO / RN,ftth,orcamento,2026-07-01,,313
+mossoro-rn,MOSSORO / RN,ftth,instalacao,2026-07-01,,237
+natal-rn,NATAL / RN,5g,ativacao,2026-07-01,,1359
+natal-rn,NATAL / RN,ftth,orcamento,2026-07-01,,1484
+natal-rn,NATAL / RN,ftth,instalacao,2026-07-01,,1040
+natal-rn,NATAL / RN,ftth,efetivado,2026-07-01,,1213
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,orcamento,2026-07-01,,453
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,efetivado,2026-07-01,,361
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,instalacao,2026-07-01,,294
+nova-cruz-rn,NOVA CRUZ / RN,5g,ativacao,2026-07-01,,66
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,5g,ativacao,2026-07-01,,15
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,orcamento,2026-07-01,,12
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,efetivado,2026-07-01,,9
+olinda-pe,OLINDA / PE,ftth,orcamento,2026-07-01,,320
+olinda-pe,OLINDA / PE,ftth,efetivado,2026-07-01,,260
+ouricuri-pe,OURICURI / PE,ftth,orcamento,2026-07-01,,23
+pacajus-ce,PACAJUS / CE,5g,ativacao,2026-07-01,,137
+pacajus-ce,PACAJUS / CE,ftth,orcamento,2026-07-01,,113
+pacajus-ce,PACAJUS / CE,ftth,efetivado,2026-07-01,,96
+pacatuba-ce,PACATUBA / CE,ftth,efetivado,2026-07-01,,25
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,orcamento,2026-07-01,,59
+paracuru-ce,PARACURU / CE,ftth,efetivado,2026-07-01,,3
+paraipaba-ce,PARAIPABA / CE,5g,ativacao,2026-07-01,,105
+paraipaba-ce,PARAIPABA / CE,ftth,orcamento,2026-07-01,,47
+parnaiba-pi,PARNAIBA / PI,ftth,orcamento,2026-07-01,,197
+parnamirim-rn,PARNAMIRIM / RN,5g,ativacao,2026-07-01,,289
+parnamirim-rn,PARNAMIRIM / RN,ftth,efetivado,2026-07-01,,639
+parnamirim-rn,PARNAMIRIM / RN,ftth,orcamento,2026-07-01,,742
+parnamirim-rn,PARNAMIRIM / RN,ftth,instalacao,2026-07-01,,465
+patos-pb,PATOS / PB,5g,ativacao,2026-07-01,,179
+patos-pb,PATOS / PB,ftth,orcamento,2026-07-01,,154
+patos-pb,PATOS / PB,ftth,efetivado,2026-07-01,,135
+pau-dos-ferros-rn,PAU DOS FERROS / RN,5g,ativacao,2026-07-01,,125
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,efetivado,2026-07-01,,26
+paulista-pe,PAULISTA / PE,ftth,orcamento,2026-07-01,,209
+paulista-pe,PAULISTA / PE,ftth,efetivado,2026-07-01,,176
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,efetivado,2026-07-01,,44
+penaforte-ce,PENAFORTE / CE,5g,ativacao,2026-07-01,,32
+pereiro-ce,PEREIRO / CE,5g,ativacao,2026-07-01,,220
+pesqueira-pe,PESQUEIRA / PE,5g,ativacao,2026-07-01,,51
+petrolina-pe,PETROLINA / PE,5g,ativacao,2026-07-01,,393
+petrolina-pe,PETROLINA / PE,ftth,efetivado,2026-07-01,,202
+petrolina-pe,PETROLINA / PE,ftth,orcamento,2026-07-01,,255
+petrolina-pe,PETROLINA / PE,ftth,instalacao,2026-07-01,,168
+pombal-pb,POMBAL / PB,5g,ativacao,2026-07-01,,60
+porcao-de-pedras-ma,PORCAO DE PEDRAS  / MA,5g,ativacao,2026-07-01,,7
+quixada-ce,QUIXADA / CE,5g,ativacao,2026-07-01,,178
+quixada-ce,QUIXADA / CE,ftth,instalacao,2026-07-01,,85
+quixada-ce,QUIXADA / CE,ftth,orcamento,2026-07-01,,103
+quixada-ce,QUIXADA / CE,ftth,efetivado,2026-07-01,,90
+quixeramobim-ce,QUIXERAMOBIM / CE,5g,ativacao,2026-07-01,,160
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,orcamento,2026-07-01,,105
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,efetivado,2026-07-01,,92
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,orcamento,2026-07-01,,11
+recife-pe,RECIFE / PE,ftth,orcamento,2026-07-01,,339
+recife-pe,RECIFE / PE,ftth,efetivado,2026-07-01,,267
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,orcamento,2026-07-01,,47
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,efetivado,2026-07-01,,45
+rio-largo-al,RIO LARGO / AL,ftth,orcamento,2026-07-01,,84
+rio-largo-al,RIO LARGO / AL,ftth,instalacao,2026-07-01,,58
+rodolfo-fernandes-rn,RODOLFO FERNANDES / RN,5g,ativacao,2026-07-01,,15
+russas-ce,RUSSAS / CE,5g,ativacao,2026-07-01,,125
+russas-ce,RUSSAS / CE,ftth,orcamento,2026-07-01,,64
+salgueiro-pe,SALGUEIRO / PE,5g,ativacao,2026-07-01,,94
+salgueiro-pe,SALGUEIRO / PE,ftth,orcamento,2026-07-01,,43
+santa-luzia-pb,SANTA LUZIA / PB,5g,ativacao,2026-07-01,,45
+santa-quiteria-ce,SANTA QUITERIA / CE,5g,ativacao,2026-07-01,,53
+santa-rita-pb,SANTA RITA / PB,5g,ativacao,2026-07-01,,161
+santa-rita-pb,SANTA RITA / PB,ftth,orcamento,2026-07-01,,153
+santa-rita-pb,SANTA RITA / PB,ftth,efetivado,2026-07-01,,126
+sao-bento-pb,SAO BENTO / PB,5g,ativacao,2026-07-01,,45
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,efetivado,2026-07-01,,63
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,efetivado,2026-07-01,,234
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,instalacao,2026-07-01,,220
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,efetivado,2026-07-01,,116
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,orcamento,2026-07-01,,143
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,instalacao,2026-07-01,,62
+sao-miguel-rn,SAO MIGUEL / RN,5g,ativacao,2026-07-01,,94
+sao-miguel-rn,SAO MIGUEL / RN,ftth,orcamento,2026-07-01,,35
+sape-pb,SAPE / PB,5g,ativacao,2026-07-01,,68
+senador-pompeu-ce,SENADOR POMPEU / CE,5g,ativacao,2026-07-01,,80
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,orcamento,2026-07-01,,21
+serra-talhada-pe,SERRA TALHADA / PE,5g,ativacao,2026-07-01,,122
+sobral-ce,SOBRAL / CE,5g,ativacao,2026-07-01,,247
+sousa-pb,SOUSA / PB,ftth,orcamento,2026-07-01,,34
+sousa-pb,SOUSA / PB,ftth,efetivado,2026-07-01,,30
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,5g,ativacao,2026-07-01,,48
+taua-ce,TAUA / CE,ftth,instalacao,2026-07-01,,44
+tenente-ananias-rn,TENENTE ANANIAS / RN,5g,ativacao,2026-07-01,,48
+teresina-pi,TERESINA / PI,5g,ativacao,2026-07-01,,619
+teresina-pi,TERESINA / PI,ftth,orcamento,2026-07-01,,1049
+teresina-pi,TERESINA / PI,ftth,efetivado,2026-07-01,,857
+teresina-pi,TERESINA / PI,ftth,instalacao,2026-07-01,,778
+tiangua-ce,TIANGUA / CE,5g,ativacao,2026-07-01,,85
+tiangua-ce,TIANGUA / CE,ftth,orcamento,2026-07-01,,58
+tiangua-ce,TIANGUA / CE,ftth,efetivado,2026-07-01,,49
+timon-ma,TIMON / MA,5g,ativacao,2026-07-01,,94
+timon-ma,TIMON / MA,ftth,orcamento,2026-07-01,,213
+toritama-pe,TORITAMA / PE,ftth,orcamento,2026-07-01,,38
+toritama-pe,TORITAMA / PE,ftth,efetivado,2026-07-01,,30
+touros-rn,TOUROS / RN,5g,ativacao,2026-07-01,,197
+umarizal-rn,UMARIZAL / RN,ftth,orcamento,2026-07-01,,7
+umarizal-rn,UMARIZAL / RN,ftth,efetivado,2026-07-01,,7
+upanema-rn,UPANEMA / RN,5g,ativacao,2026-07-01,,12
+varjota-ce,VARJOTA / CE,5g,ativacao,2026-07-01,,34
+varzea-alegre-ce,VARZEA ALEGRE / CE,5g,ativacao,2026-07-01,,57
+,,ftth,orcamento,2026-07-01,,12
+,/,5g,ativacao,2026-07-01,,70
+,/ / GO,5g,ativacao,2026-07-01,,6
+abaiara-ce,ABAIARA / CE,5g,ativacao,2026-07-01,,29
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,orcamento,2026-07-01,,42
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,efetivado,2026-07-01,,40
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,instalacao,2026-07-01,,30
+acarau-ce,ACARAU / CE,ftth,instalacao,2026-07-01,,21
+acarau-ce,ACARAU / CE,ftth,orcamento,2026-07-01,,17
+acarau-ce,ACARAU / CE,ftth,efetivado,2026-07-01,,18
+acopiara-ce,ACOPIARA / CE,ftth,orcamento,2026-07-01,,38
+acopiara-ce,ACOPIARA / CE,ftth,instalacao,2026-07-01,,35
+afonso-bezerra-rn,AFONSO BEZERRA / RN,5g,ativacao,2026-07-01,,14
+agua-nova-rn,AGUA NOVA / RN,5g,ativacao,2026-07-01,,25
+aiuaba-ce,AIUABA / CE,5g,ativacao,2026-07-01,,15
+alagoa-grande-pb,ALAGOA GRANDE / PB,5g,ativacao,2026-07-01,,24
+alagoinhas-ba,ALAGOINHAS / BA,ftth,efetivado,2026-07-01,,136
+alagoinhas-ba,ALAGOINHAS / BA,ftth,instalacao,2026-07-01,,123
+alexandria-rn,ALEXANDRIA / RN,5g,ativacao,2026-07-01,,8
+,ALEXANDRIA/RN / RN,5g,ativacao,2026-07-01,,5
+altaneira-ce,ALTANEIRA / CE,ftth,orcamento,2026-07-01,,1
+altaneira-ce,ALTANEIRA / CE,ftth,efetivado,2026-07-01,,1
+alto-do-rodrigues-rn,ALTO DO RODRIGUES / RN,5g,ativacao,2026-07-01,,28
+alto-do-rodrigues-rn,ALTO DO RODRIGUES / RN,ftth,orcamento,2026-07-01,,2
+alto-santo-ce,ALTO SANTO / CE,5g,ativacao,2026-07-01,,31
+altos-pi,ALTOS / PI,ftth,orcamento,2026-07-01,,49
+altos-pi,ALTOS / PI,ftth,instalacao,2026-07-01,,41
+amontada-ce,AMONTADA  / CE,5g,ativacao,2026-07-01,,5
+angical-ba,ANGICAL / BA,5g,ativacao,2026-07-01,,4
+antonina-do-norte-ce,ANTONINA DO NORTE / CE,5g,ativacao,2026-07-01,,9
+antonio-martins-rn,ANTONIO MARTINS / RN,5g,ativacao,2026-07-01,,11
+aquidauana-ms,AQUIDAUANA / MS,5g,ativacao,2026-07-01,,2
+aquiraz-ce,AQUIRAZ / CE,5g,ativacao,2026-07-01,,94
+aquiraz-ce,AQUIRAZ / CE,ftth,orcamento,2026-07-01,,30
+aquiraz-ce,AQUIRAZ / CE,ftth,efetivado,2026-07-01,,18
+aquiraz-ce,AQUIRAZ / CE,ftth,instalacao,2026-07-01,,19
+arapiraca-al,ARAPIRACA / AL,ftth,efetivado,2026-07-01,,122
+araripe-ce,ARARIPE / CE,5g,ativacao,2026-07-01,,4
+araripina-pe,ARARIPINA / PE,ftth,orcamento,2026-07-01,,35
+araripina-pe,ARARIPINA / PE,ftth,instalacao,2026-07-01,,31
+aratuba-ce,ARATUBA / CE,5g,ativacao,2026-07-01,,10
+arcoverde-pe,ARCOVERDE / PE,5g,ativacao,2026-07-01,,69
+arcoverde-pe,ARCOVERDE / PE,ftth,orcamento,2026-07-01,,21
+arcoverde-pe,ARCOVERDE / PE,ftth,efetivado,2026-07-01,,14
+arcoverde-pe,ARCOVERDE / PE,ftth,instalacao,2026-07-01,,16
+assare-ce,ASSARE / CE,5g,ativacao,2026-07-01,,53
+assu-rn,ASSU / RN,5g,ativacao,2026-07-01,,82
+assu-rn,ASSU / RN,ftth,orcamento,2026-07-01,,27
+assu-rn,ASSU / RN,ftth,efetivado,2026-07-01,,24
+assu-rn,ASSU / RN,ftth,instalacao,2026-07-01,,20
+aurora-ce,AURORA / CE,5g,ativacao,2026-07-01,,15
+baia-formosa-rn,BAIA FORMOSA / RN,ftth,orcamento,2026-07-01,,1
+banabuiu-ce,BANABUIU / CE,ftth,orcamento,2026-07-01,,16
+banabuiu-ce,BANABUIU / CE,ftth,efetivado,2026-07-01,,16
+banabuiu-ce,BANABUIU / CE,ftth,instalacao,2026-07-01,,12
+bananeiras-pb,BANANEIRAS / PB,5g,ativacao,2026-07-01,,7
+barauna-rn,BARAUNA / RN,5g,ativacao,2026-07-01,,23
+barauna-rn,BARAUNA / RN,ftth,orcamento,2026-07-01,,11
+barauna-rn,BARAUNA / RN,ftth,efetivado,2026-07-01,,8
+barauna-rn,BARAUNA / RN,ftth,instalacao,2026-07-01,,9
+barbalha-ce,BARBALHA / CE,ftth,instalacao,2026-07-01,,87
+barra-de-guabiraba-pe,BARRA DE GUABIRABA / PE,5g,ativacao,2026-07-01,,19
+barra-de-santana-pb,BARRA DE SANTANA / PB,5g,ativacao,2026-07-01,,6
+barra-de-sao-miguel-pb,BARRA DE SAO MIGUEL / PB,5g,ativacao,2026-07-01,,4
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,orcamento,2026-07-01,,71
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,efetivado,2026-07-01,,56
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,instalacao,2026-07-01,,37
+barreira-ce,BARREIRA  / CE,5g,ativacao,2026-07-01,,24
+barro-ce,BARRO / CE,5g,ativacao,2026-07-01,,30
+barroquinha-ce,BARROQUINHA / CE,5g,ativacao,2026-07-01,,1
+baturite-ce,BATURITE / CE,5g,ativacao,2026-07-01,,48
+baturite-ce,BATURITE / CE,ftth,orcamento,2026-07-01,,1
+baturite-ce,BATURITE / CE,ftth,efetivado,2026-07-01,,1
+bayeux-pb,BAYEUX / PB,5g,ativacao,2026-07-01,,85
+bayeux-pb,BAYEUX / PB,ftth,efetivado,2026-07-01,,95
+bayeux-pb,BAYEUX / PB,ftth,instalacao,2026-07-01,,79
+beberibe-ce,BEBERIBE / CE,5g,ativacao,2026-07-01,,82
+belo-jardim-pe,BELO JARDIM / PE,5g,ativacao,2026-07-01,,17
+belo-jardim-pe,BELO JARDIM / PE,ftth,orcamento,2026-07-01,,30
+belo-jardim-pe,BELO JARDIM / PE,ftth,efetivado,2026-07-01,,25
+benedito-leite-ma,BENEDITO LEITE / MA,5g,ativacao,2026-07-01,,1
+bezerros-pe,BEZERROS / PE,5g,ativacao,2026-07-01,,55
+bezerros-pe,BEZERROS / PE,ftth,instalacao,2026-07-01,,31
+bom-conselho-pe,BOM CONSELHO / PE,5g,ativacao,2026-07-01,,47
+bom-conselho-pe,BOM CONSELHO / PE,ftth,orcamento,2026-07-01,,14
+bom-conselho-pe,BOM CONSELHO / PE,ftth,efetivado,2026-07-01,,10
+bom-conselho-pe,BOM CONSELHO / PE,ftth,instalacao,2026-07-01,,9
+bom-sucesso-pb,BOM SUCESSO / PB,5g,ativacao,2026-07-01,,7
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,efetivado,2026-07-01,,3
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,instalacao,2026-07-01,,3
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,orcamento,2026-07-01,,3
+brejo-santo-ce,BREJO SANTO / CE,ftth,instalacao,2026-07-01,,73
+brisanet-ce,BRISANET / CE,5g,ativacao,2026-07-01,,8
+buriti-dos-lopes-pi,BURITI DOS LOPES / PI,5g,ativacao,2026-07-01,,1
+cabedelo-pb,CABEDELO / PB,5g,ativacao,2026-07-01,,28
+cabedelo-pb,CABEDELO / PB,ftth,orcamento,2026-07-01,,125
+cabedelo-pb,CABEDELO / PB,ftth,efetivado,2026-07-01,,95
+cabedelo-pb,CABEDELO / PB,ftth,instalacao,2026-07-01,,80
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,instalacao,2026-07-01,,93
+cachoeira-dos-indios-pb,CACHOEIRA DOS INDIOS / PB,5g,ativacao,2026-07-01,,35
+caico-rn,CAICO / RN,ftth,efetivado,2026-07-01,,55
+caico-rn,CAICO / RN,ftth,instalacao,2026-07-01,,49
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,orcamento,2026-07-01,,92
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,efetivado,2026-07-01,,91
+camacari-ba,CAMACARI / BA,ftth,orcamento,2026-07-01,,304
+camacari-ba,CAMACARI / BA,ftth,instalacao,2026-07-01,,184
+camaragibe-pe,CAMARAGIBE / PE,ftth,instalacao,2026-07-01,,102
+camocim-ce,CAMOCIM / CE,ftth,orcamento,2026-07-01,,4
+camocim-ce,CAMOCIM / CE,ftth,instalacao,2026-07-01,,2
+,CAMOCIM/CE / CE,5g,ativacao,2026-07-01,,2
+campo-grande-rn,CAMPO GRANDE / RN,5g,ativacao,2026-07-01,,7
+campo-maior-pi,CAMPO MAIOR / PI,ftth,instalacao,2026-07-01,,20
+campos-sales-ce,CAMPOS SALES / CE,5g,ativacao,2026-07-01,,83
+canguaretama-rn,CANGUARETAMA / RN,5g,ativacao,2026-07-01,,19
+caninde-ce,CANINDE / CE,ftth,instalacao,2026-07-01,,42
+caninde-ce,CANINDE / CE,ftth,efetivado,2026-07-01,,53
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,5g,ativacao,2026-07-01,,29
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,orcamento,2026-07-01,,26
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,efetivado,2026-07-01,,25
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,instalacao,2026-07-01,,21
+capinzal-do-norte-ma,CAPINZAL DO NORTE / MA,5g,ativacao,2026-07-01,,3
+capistrano-ce,CAPISTRANO / CE,5g,ativacao,2026-07-01,,6
+caridade-ce,CARIDADE / CE,5g,ativacao,2026-07-01,,28
+caridade-ce,CARIDADE / CE,ftth,instalacao,2026-07-01,,1
+carire-ce,CARIRE / CE,5g,ativacao,2026-07-01,,15
+caririacu-ce,CARIRIACU / CE,5g,ativacao,2026-07-01,,43
+carius-ce,CARIUS / CE,5g,ativacao,2026-07-01,,14
+carnaubal-ce,CARNAUBAL / CE,5g,ativacao,2026-07-01,,3
+carpina-pe,CARPINA / PE,ftth,orcamento,2026-07-01,,10
+carpina-pe,CARPINA / PE,ftth,efetivado,2026-07-01,,7
+caruaru-pe,CARUARU / PE,ftth,instalacao,2026-07-01,,257
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,5g,ativacao,2026-07-01,,86
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,orcamento,2026-07-01,,24
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,efetivado,2026-07-01,,22
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,instalacao,2026-07-01,,22
+catu-ba,CATU / BA,ftth,orcamento,2026-07-01,,69
+catu-ba,CATU / BA,ftth,efetivado,2026-07-01,,60
+catu-ba,CATU / BA,ftth,instalacao,2026-07-01,,50
+ceara-mirim-rn,CEARA MIRIM / RN,5g,ativacao,2026-07-01,,166
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,efetivado,2026-07-01,,67
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,instalacao,2026-07-01,,64
+cedro-ce,CEDRO / CE,5g,ativacao,2026-07-01,,47
+cedro-ce,CEDRO / CE,ftth,orcamento,2026-07-01,,11
+cedro-ce,CEDRO / CE,ftth,efetivado,2026-07-01,,10
+cedro-ce,CEDRO / CE,ftth,instalacao,2026-07-01,,16
+cha-grande-pe,CHA GRANDE / PE,5g,ativacao,2026-07-01,,20
+chorozinho-ce,CHOROZINHO  / CE,5g,ativacao,2026-07-01,,85
+conde-pb,CONDE / PB,ftth,orcamento,2026-07-01,,1
+conde-pb,CONDE / PB,ftth,efetivado,2026-07-01,,1
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,5g,ativacao,2026-07-01,,13
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,orcamento,2026-07-01,,6
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,efetivado,2026-07-01,,5
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,instalacao,2026-07-01,,4
+craibas-al,CRAIBAS  / AL,5g,ativacao,2026-07-01,,1
+crateus-ce,CRATEUS / CE,ftth,orcamento,2026-07-01,,57
+crateus-ce,CRATEUS / CE,ftth,efetivado,2026-07-01,,56
+crateus-ce,CRATEUS / CE,ftth,instalacao,2026-07-01,,51
+crato-ce,CRATO / CE,ftth,instalacao,2026-07-01,,150
+,CRATO/CE / CE,5g,ativacao,2026-07-01,,5
+croata-ce,CROATA / CE,5g,ativacao,2026-07-01,,16
+cruz-ce,CRUZ / CE,5g,ativacao,2026-07-01,,8
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,orcamento,2026-07-01,,2
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,efetivado,2026-07-01,,1
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,instalacao,2026-07-01,,1
+cururupu-ma,CURURUPU  / MA,5g,ativacao,2026-07-01,,5
+custodia-pe,CUSTODIA / PE,5g,ativacao,2026-07-01,,43
+custodia-pe,CUSTODIA / PE,ftth,orcamento,2026-07-01,,5
+custodia-pe,CUSTODIA / PE,ftth,efetivado,2026-07-01,,5
+custodia-pe,CUSTODIA / PE,ftth,instalacao,2026-07-01,,5
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,5g,ativacao,2026-07-01,,39
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,orcamento,2026-07-01,,33
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,efetivado,2026-07-01,,26
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,instalacao,2026-07-01,,23
+dias-davila-ba,DIAS DAVILA / BA,ftth,efetivado,2026-07-01,,48
+dias-davila-ba,DIAS DAVILA / BA,ftth,instalacao,2026-07-01,,42
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,5g,ativacao,2026-07-01,,12
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,orcamento,2026-07-01,,5
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,efetivado,2026-07-01,,4
+encanto-rn,ENCANTO / RN,5g,ativacao,2026-07-01,,30
+encanto-rn,ENCANTO / RN,ftth,instalacao,2026-07-01,,1
+encanto-rn,ENCANTO / RN,ftth,orcamento,2026-07-01,,2
+encanto-rn,ENCANTO / RN,ftth,efetivado,2026-07-01,,2
+erere-ce,ERERE / CE,5g,ativacao,2026-07-01,,20
+escada-pe,ESCADA / PE,ftth,orcamento,2026-07-01,,48
+escada-pe,ESCADA / PE,ftth,efetivado,2026-07-01,,42
+escada-pe,ESCADA / PE,ftth,instalacao,2026-07-01,,43
+esperanca-pb,ESPERANCA / PB,5g,ativacao,2026-07-01,,53
+estancia-se,ESTANCIA / SE,5g,ativacao,2026-07-01,,3
+estancia-se,ESTANCIA / SE,ftth,instalacao,2026-07-01,,42
+eusebio-ce,EUSEBIO / CE,5g,ativacao,2026-07-01,,99
+eusebio-ce,EUSEBIO / CE,ftth,instalacao,2026-07-01,,108
+farias-brito-ce,FARIAS BRITO / CE,5g,ativacao,2026-07-01,,25
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,efetivado,2026-07-01,,177
+felipe-guerra-rn,FELIPE GUERRA / RN,5g,ativacao,2026-07-01,,21
+ferreiros-pe,FERREIROS / PE,5g,ativacao,2026-07-01,,12
+forquilha-ce,FORQUILHA  / CE,5g,ativacao,2026-07-01,,32
+forquilha-ce,FORQUILHA / CE,ftth,orcamento,2026-07-01,,1
+forquilha-ce,FORQUILHA / CE,ftth,efetivado,2026-07-01,,1
+fortaleza-ce-ce,FORTALEZA CE / CE,5g,ativacao,2026-07-01,,2
+francisco-rn,FRANCISCO / RN,5g,ativacao,2026-07-01,,3
+francisco-dantas-rn,FRANCISCO DANTAS / RN,ftth,orcamento,2026-07-01,,1
+frutuoso-gomes-rn,FRUTUOSO GOMES / RN,5g,ativacao,2026-07-01,,23
+gado-bravo-pb,GADO BRAVO / PB,5g,ativacao,2026-07-01,,5
+garanhuns-pe,GARANHUNS / PE,ftth,orcamento,2026-07-01,,73
+garanhuns-pe,GARANHUNS / PE,ftth,instalacao,2026-07-01,,58
+goianinha-rn,GOIANINHA / RN,5g,ativacao,2026-07-01,,21
+governador-dix-sept-rosado-rn,GOVERNADOR DIX SEPT ROSADO / RN,5g,ativacao,2026-07-01,,36
+granja-ce,GRANJA / CE,5g,ativacao,2026-07-01,,70
+granja-ce,GRANJA / CE,ftth,orcamento,2026-07-01,,1
+gravata-pe,GRAVATA / PE,5g,ativacao,2026-07-01,,28
+gravata-pe,GRAVATA / PE,ftth,orcamento,2026-07-01,,27
+gravata-pe,GRAVATA / PE,ftth,efetivado,2026-07-01,,17
+gravata-pe,GRAVATA / PE,ftth,instalacao,2026-07-01,,14
+grossos-rn,GROSSOS / RN,5g,ativacao,2026-07-01,,18
+grossos-rn,GROSSOS / RN,ftth,efetivado,2026-07-01,,1
+guamare-rn,GUAMARE / RN,5g,ativacao,2026-07-01,,1
+guamare-rn,GUAMARE / RN,ftth,orcamento,2026-07-01,,2
+guamare-rn,GUAMARE / RN,ftth,efetivado,2026-07-01,,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,5g,ativacao,2026-07-01,,45
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,orcamento,2026-07-01,,2
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,efetivado,2026-07-01,,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,instalacao,2026-07-01,,5
+guaramiranga-ce,GUARAMIRANGA  / CE,5g,ativacao,2026-07-01,,4
+horizonte-ce,HORIZONTE / CE,ftth,orcamento,2026-07-01,,150
+horizonte-ce,HORIZONTE / CE,ftth,efetivado,2026-07-01,,126
+horizonte-ce,HORIZONTE / CE,ftth,instalacao,2026-07-01,,111
+ibiapina-ce,IBIAPINA / CE,5g,ativacao,2026-07-01,,16
+ibiapina-ce,IBIAPINA / CE,ftth,instalacao,2026-07-01,,1
+ibiapina-ce,IBIAPINA / CE,ftth,orcamento,2026-07-01,,1
+ibiapina-ce,IBIAPINA / CE,ftth,efetivado,2026-07-01,,1
+icapui-ce,ICAPUI / CE,5g,ativacao,2026-07-01,,4
+ico-ce,ICO / CE,5g,ativacao,2026-07-01,,92
+ico-ce,ICO / CE,ftth,orcamento,2026-07-01,,68
+ico-ce,ICO / CE,ftth,efetivado,2026-07-01,,66
+ico-ce,ICO / CE,ftth,instalacao,2026-07-01,,61
+igarassu-pe,IGARASSU / PE,ftth,orcamento,2026-07-01,,78
+igarassu-pe,IGARASSU / PE,ftth,efetivado,2026-07-01,,67
+igarassu-pe,IGARASSU / PE,ftth,instalacao,2026-07-01,,62
+iguaracy-pe,IGUARACY / PE,5g,ativacao,2026-07-01,,18
+iguatu-ce,IGUATU / CE,ftth,efetivado,2026-07-01,,164
+ipanguacu-rn,IPANGUACU / RN,5g,ativacao,2026-07-01,,10
+ipaporanga-ce,IPAPORANGA / CE,5g,ativacao,2026-07-01,,9
+ipaumirim-ce,IPAUMIRIM / CE,5g,ativacao,2026-07-01,,46
+ipu-ce,IPU / CE,5g,ativacao,2026-07-01,,72
+ipu-ce,IPU / CE,ftth,orcamento,2026-07-01,,19
+ipu-ce,IPU / CE,ftth,efetivado,2026-07-01,,20
+ipu-ce,IPU / CE,ftth,instalacao,2026-07-01,,19
+ipueiras-ce,IPUEIRAS / CE,5g,ativacao,2026-07-01,,31
+iracema-ce,IRACEMA / CE,5g,ativacao,2026-07-01,,32
+iracema-ce,IRACEMA / CE,ftth,orcamento,2026-07-01,,10
+iracema-ce,IRACEMA / CE,ftth,efetivado,2026-07-01,,10
+iracema-ce,IRACEMA / CE,ftth,instalacao,2026-07-01,,10
+iraucuba-ce,IRAUCUBA / CE,5g,ativacao,2026-07-01,,14
+itabaiana-se,ITABAIANA / SE,ftth,orcamento,2026-07-01,,43
+itabaiana-se,ITABAIANA / SE,ftth,efetivado,2026-07-01,,38
+itabaiana-se,ITABAIANA / SE,ftth,instalacao,2026-07-01,,35
+itaitinga-ce,ITAITINGA / CE,5g,ativacao,2026-07-01,,19
+itaja-rn,ITAJA / RN,5g,ativacao,2026-07-01,,15
+itapaje-ce,ITAPAJE / CE,ftth,orcamento,2026-07-01,,31
+itapaje-ce,ITAPAJE / CE,ftth,instalacao,2026-07-01,,25
+itapipoca-ce,ITAPIPOCA / CE,5g,ativacao,2026-07-01,,133
+itapipoca-ce,ITAPIPOCA / CE,ftth,efetivado,2026-07-01,,99
+itapipoca-ce,ITAPIPOCA / CE,ftth,instalacao,2026-07-01,,89
+itarema-ce,ITAREMA / CE,5g,ativacao,2026-07-01,,7
+itau-rn,ITAU / RN,5g,ativacao,2026-07-01,,11
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,orcamento,2026-07-01,,265
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,efetivado,2026-07-01,,211
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,instalacao,2026-07-01,,130
+jaguaretama-ce,JAGUARETAMA / CE,5g,ativacao,2026-07-01,,31
+jaguaretama-ce,JAGUARETAMA / CE,ftth,orcamento,2026-07-01,,8
+jaguaretama-ce,JAGUARETAMA / CE,ftth,efetivado,2026-07-01,,8
+jaguaretama-ce,JAGUARETAMA / CE,ftth,instalacao,2026-07-01,,9
+jaguaribara-ce,JAGUARIBARA / CE,5g,ativacao,2026-07-01,,17
+jaguaribara-ce,JAGUARIBARA / CE,ftth,orcamento,2026-07-01,,10
+jaguaribara-ce,JAGUARIBARA / CE,ftth,efetivado,2026-07-01,,12
+jaguaribara-ce,JAGUARIBARA / CE,ftth,instalacao,2026-07-01,,8
+jaguaribe-ce,JAGUARIBE / CE,5g,ativacao,2026-07-01,,72
+jaguaribe-ce,JAGUARIBE / CE,ftth,orcamento,2026-07-01,,41
+jaguaribe-ce,JAGUARIBE / CE,ftth,efetivado,2026-07-01,,39
+jaguaribe-ce,JAGUARIBE / CE,ftth,instalacao,2026-07-01,,36
+jaguaruana-ce,JAGUARUANA / CE,5g,ativacao,2026-07-01,,29
+janduis-rn,JANDUIS / RN,5g,ativacao,2026-07-01,,13
+jardim-de-piranhas-rn,JARDIM DE PIRANHAS / RN,5g,ativacao,2026-07-01,,19
+jati-ce,JATI  / CE,5g,ativacao,2026-07-01,,34
+jati-ce,JATI / CE,ftth,orcamento,2026-07-01,,1
+jati-ce,JATI / CE,ftth,efetivado,2026-07-01,,1
+jati-ce,JATI / CE,ftth,instalacao,2026-07-01,,1
+jeremoabo-ba,JEREMOABO / BA,5g,ativacao,2026-07-01,,67
+jeremoabo-ba,JEREMOABO / BA,ftth,orcamento,2026-07-01,,23
+jeremoabo-ba,JEREMOABO / BA,ftth,efetivado,2026-07-01,,23
+jeremoabo-ba,JEREMOABO / BA,ftth,instalacao,2026-07-01,,20
+jijoca-de-jericoacoara-ce,JIJOCA DE JERICOACOARA / CE,5g,ativacao,2026-07-01,,2
+joao-camara-rn,JOAO CAMARA / RN,5g,ativacao,2026-07-01,,88
+joao-camara-rn,JOAO CAMARA / RN,ftth,orcamento,2026-07-01,,1
+joao-camara-rn,JOAO CAMARA / RN,ftth,efetivado,2026-07-01,,1
+jose-da-penha-rn,JOSE DA PENHA / RN,5g,ativacao,2026-07-01,,6
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,instalacao,2026-07-01,,8
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,orcamento,2026-07-01,,10
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,efetivado,2026-07-01,,8
+juazeirinho-pb,JUAZEIRINHO / PB,5g,ativacao,2026-07-01,,30
+juazeiro-ba,JUAZEIRO / BA,ftth,efetivado,2026-07-01,,132
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,5g,ativacao,2026-07-01,,584
+jucas-ce,JUCAS / CE,5g,ativacao,2026-07-01,,40
+jucas-ce,JUCAS / CE,ftth,instalacao,2026-07-01,,1
+jucurutu-rn,JUCURUTU / RN,5g,ativacao,2026-07-01,,27
+junco-do-serido-pb,JUNCO DO SERIDO / PB,5g,ativacao,2026-07-01,,20
+lagarto-se,LAGARTO / SE,ftth,orcamento,2026-07-01,,65
+lagarto-se,LAGARTO / SE,ftth,efetivado,2026-07-01,,40
+lagarto-se,LAGARTO / SE,ftth,instalacao,2026-07-01,,43
+lago-dos-rodrigues-ma,LAGO DOS RODRIGUES / MA,5g,ativacao,2026-07-01,,1
+lagoa-pb,LAGOA / PB,5g,ativacao,2026-07-01,,7
+lagoa-seca-pb,LAGOA SECA / PB,5g,ativacao,2026-07-01,,5
+lagoa-seca-pb,LAGOA SECA / PB,ftth,instalacao,2026-07-01,,1
+lajes-rn,LAJES / RN,5g,ativacao,2026-07-01,,21
+lastro-pb,LASTRO / PB,5g,ativacao,2026-07-01,,2
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,instalacao,2026-07-01,,20
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,,67
+luis-correia-pi,LUIS CORREIA / PI,ftth,orcamento,2026-07-01,,21
+luis-correia-pi,LUIS CORREIA / PI,ftth,efetivado,2026-07-01,,21
+luis-correia-pi,LUIS CORREIA / PI,ftth,instalacao,2026-07-01,,17
+luis-gomes-rn,LUIS GOMES / RN,ftth,orcamento,2026-07-01,,2
+macaiba-rn,MACAIBA / RN,5g,ativacao,2026-07-01,,117
+macaiba-rn,MACAIBA / RN,ftth,efetivado,2026-07-01,,79
+macaiba-rn,MACAIBA / RN,ftth,instalacao,2026-07-01,,48
+macau-rn,MACAU / RN,ftth,instalacao,2026-07-01,,9
+macau-rn,MACAU / RN,ftth,orcamento,2026-07-01,,9
+macau-rn,MACAU / RN,ftth,efetivado,2026-07-01,,8
+magalhaes-de-almeida-ma,MAGALHAES DE ALMEIDA / MA,5g,ativacao,2026-07-01,,11
+major-sales-rn,MAJOR SALES / RN,5g,ativacao,2026-07-01,,17
+major-sales-rn,MAJOR SALES / RN,ftth,orcamento,2026-07-01,,7
+major-sales-rn,MAJOR SALES / RN,ftth,efetivado,2026-07-01,,6
+major-sales-rn,MAJOR SALES / RN,ftth,instalacao,2026-07-01,,3
+maracanau-ce,MARACANAU / CE,ftth,orcamento,2026-07-01,,393
+maracanau-ce,MARACANAU / CE,ftth,instalacao,2026-07-01,,278
+maranguape-ce,MARANGUAPE / CE,ftth,efetivado,2026-07-01,,71
+maranguape-ce,MARANGUAPE / CE,ftth,instalacao,2026-07-01,,63
+marco-ce,MARCO / CE,5g,ativacao,2026-07-01,,24
+marechal-deodoro-al,MARECHAL DEODORO / AL,5g,ativacao,2026-07-01,,34
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,orcamento,2026-07-01,,73
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,efetivado,2026-07-01,,62
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,instalacao,2026-07-01,,58
+martins-rn,MARTINS / RN,ftth,orcamento,2026-07-01,,4
+martins-rn,MARTINS / RN,ftth,efetivado,2026-07-01,,4
+martins-rn,MARTINS / RN,ftth,instalacao,2026-07-01,,4
+massaranduba-pb,MASSARANDUBA / PB,ftth,orcamento,2026-07-01,,1
+mataraca-pb,MATARACA / PB,5g,ativacao,2026-07-01,,22
+mato-grosso-pb,MATO GROSSO  / PB,5g,ativacao,2026-07-01,,2
+mauriti-ce,MAURITI / CE,5g,ativacao,2026-07-01,,30
+maxaranguape-rn,MAXARANGUAPE / RN,5g,ativacao,2026-07-01,,30
+meruoca-ce,MERUOCA / CE,5g,ativacao,2026-07-01,,1
+messias-targino-rn,MESSIAS TARGINO / RN,5g,ativacao,2026-07-01,,10
+milagres-ce,MILAGRES / CE,ftth,orcamento,2026-07-01,,23
+milagres-ce,MILAGRES / CE,ftth,efetivado,2026-07-01,,22
+milagres-ce,MILAGRES / CE,ftth,instalacao,2026-07-01,,17
+,MIRADOR/MA / MA,5g,ativacao,2026-07-01,,2
+missao-velha-ce,MISSAO VELHA / CE,ftth,instalacao,2026-07-01,,23
+missao-velha-ce,MISSAO VELHA / CE,ftth,orcamento,2026-07-01,,30
+missao-velha-ce,MISSAO VELHA / CE,ftth,efetivado,2026-07-01,,24
+mombaca-ce,MOMBACA / CE,5g,ativacao,2026-07-01,,39
+mombaca-ce,MOMBACA / CE,ftth,orcamento,2026-07-01,,34
+mombaca-ce,MOMBACA / CE,ftth,efetivado,2026-07-01,,33
+mombaca-ce,MOMBACA / CE,ftth,instalacao,2026-07-01,,32
+morada-nova-ce,MORADA NOVA / CE,ftth,orcamento,2026-07-01,,36
+morada-nova-ce,MORADA NOVA / CE,ftth,efetivado,2026-07-01,,30
+morada-nova-ce,MORADA NOVA / CE,ftth,instalacao,2026-07-01,,35
+morrinhos-ce,MORRINHOS / CE,5g,ativacao,2026-07-01,,28
+mossoro-rn,MOSSORO / RN,ftth,efetivado,2026-07-01,,269
+mossoro-rn-rn,MOSSORO RN / RN,5g,ativacao,2026-07-01,,11
+mucambo-ce,MUCAMBO / CE,5g,ativacao,2026-07-01,,25
+nisia-floresta-rn,NISIA FLORESTA / RN,5g,ativacao,2026-07-01,,6
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,efetivado,2026-07-01,,13
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,instalacao,2026-07-01,,10
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,orcamento,2026-07-01,,15
+nova-olinda-ce,NOVA OLINDA / CE,5g,ativacao,2026-07-01,,22
+nova-russas-ce,NOVA RUSSAS / CE,5g,ativacao,2026-07-01,,74
+novo-oriente-ce,NOVO ORIENTE / CE,5g,ativacao,2026-07-01,,2
+ocara-ce,OCARA / CE,5g,ativacao,2026-07-01,,19
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,instalacao,2026-07-01,,7
+olho-dagua-do-borges-rn,OLHO DAGUA DO BORGES / RN,5g,ativacao,2026-07-01,,11
+olinda-pe,OLINDA / PE,5g,ativacao,2026-07-01,,8
+olinda-pe,OLINDA / PE,ftth,instalacao,2026-07-01,,176
+oros-ce,OROS / CE,5g,ativacao,2026-07-01,,39
+oros-ce,OROS / CE,ftth,orcamento,2026-07-01,,6
+oros-ce,OROS / CE,ftth,efetivado,2026-07-01,,6
+oros-ce,OROS / CE,ftth,instalacao,2026-07-01,,6
+ouricuri-pe,OURICURI / PE,5g,ativacao,2026-07-01,,45
+ouricuri-pe,OURICURI / PE,ftth,efetivado,2026-07-01,,19
+ouricuri-pe,OURICURI / PE,ftth,instalacao,2026-07-01,,16
+pacajus-ce,PACAJUS / CE,ftth,instalacao,2026-07-01,,87
+pacatuba-ce,PACATUBA / CE,5g,ativacao,2026-07-01,,30
+pacatuba-ce,PACATUBA / CE,ftth,orcamento,2026-07-01,,30
+pacatuba-ce,PACATUBA / CE,ftth,instalacao,2026-07-01,,17
+pacoti-ce,PACOTI / CE,5g,ativacao,2026-07-01,,3
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,instalacao,2026-07-01,,53
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,efetivado,2026-07-01,,51
+paracuru-ce,PARACURU / CE,5g,ativacao,2026-07-01,,59
+paracuru-ce,PARACURU / CE,ftth,orcamento,2026-07-01,,3
+paracuru-ce,PARACURU / CE,ftth,instalacao,2026-07-01,,1
+,PARACURU/CE / CE,5g,ativacao,2026-07-01,,2
+paraipaba-ce,PARAIPABA / CE,ftth,efetivado,2026-07-01,,45
+paraipaba-ce,PARAIPABA / CE,ftth,instalacao,2026-07-01,,39
+parana-rn,PARANA / RN,5g,ativacao,2026-07-01,,12
+parau-rn,PARAU / RN,5g,ativacao,2026-07-01,,2
+parnaiba-pi,PARNAIBA / PI,5g,ativacao,2026-07-01,,158
+parnaiba-pi,PARNAIBA / PI,ftth,efetivado,2026-07-01,,173
+parnaiba-pi,PARNAIBA / PI,ftth,instalacao,2026-07-01,,146
+patos-pb,PATOS / PB,ftth,instalacao,2026-07-01,,125
+patos-do-piaui-pi,PATOS DO PIAUI / PI,5g,ativacao,2026-07-01,,10
+patos-pb-pb,PATOS PB / PB,5g,ativacao,2026-07-01,,3
+patu-rn,PATU / RN,5g,ativacao,2026-07-01,,39
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,orcamento,2026-07-01,,28
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,instalacao,2026-07-01,,20
+paulista-pe,PAULISTA / PE,ftth,instalacao,2026-07-01,,133
+paulo-afonso-ba,PAULO AFONSO / BA,5g,ativacao,2026-07-01,,57
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,orcamento,2026-07-01,,55
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,instalacao,2026-07-01,,44
+pedra-branca-ce,PEDRA BRANCA / CE,5g,ativacao,2026-07-01,,52
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,orcamento,2026-07-01,,10
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,efetivado,2026-07-01,,10
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,instalacao,2026-07-01,,10
+,PEDREIRAS/MA / MA,5g,ativacao,2026-07-01,,1
+pedro-avelino-rn,PEDRO AVELINO / RN,5g,ativacao,2026-07-01,,3
+pendencias-rn,PENDENCIAS / RN,5g,ativacao,2026-07-01,,24
+pendencias-rn,PENDENCIAS / RN,ftth,orcamento,2026-07-01,,2
+pendencias-rn,PENDENCIAS / RN,ftth,efetivado,2026-07-01,,1
+pereiro-ce,PEREIRO / CE,ftth,orcamento,2026-07-01,,12
+pereiro-ce,PEREIRO / CE,ftth,efetivado,2026-07-01,,10
+pereiro-ce,PEREIRO / CE,ftth,instalacao,2026-07-01,,6
+pesqueira-pe,PESQUEIRA / PE,ftth,orcamento,2026-07-01,,22
+pesqueira-pe,PESQUEIRA / PE,ftth,efetivado,2026-07-01,,16
+pesqueira-pe,PESQUEIRA / PE,ftth,instalacao,2026-07-01,,15
+picos-pi,PICOS / PI,ftth,orcamento,2026-07-01,,35
+picos-pi,PICOS / PI,ftth,efetivado,2026-07-01,,27
+picos-pi,PICOS / PI,ftth,instalacao,2026-07-01,,28
+piloes-rn,PILOES / RN,5g,ativacao,2026-07-01,,13
+pindoretama-ce,PINDORETAMA / CE,5g,ativacao,2026-07-01,,14
+pinheiro-ma,PINHEIRO / MA,5g,ativacao,2026-07-01,,5
+piquet-carneiro-ce,PIQUET CARNEIRO / CE,5g,ativacao,2026-07-01,,40
+piranhas-al,PIRANHAS / AL,5g,ativacao,2026-07-01,,13
+piranhas-al,PIRANHAS / AL,ftth,orcamento,2026-07-01,,9
+piranhas-al,PIRANHAS / AL,ftth,efetivado,2026-07-01,,8
+piranhas-al,PIRANHAS / AL,ftth,instalacao,2026-07-01,,7
+pirapemas-ma,PIRAPEMAS / MA,5g,ativacao,2026-07-01,,3
+piripiri-pi,PIRIPIRI / PI,ftth,orcamento,2026-07-01,,32
+piripiri-pi,PIRIPIRI / PI,ftth,efetivado,2026-07-01,,25
+piripiri-pi,PIRIPIRI / PI,ftth,instalacao,2026-07-01,,22
+poco-dantas-pb,POCO DANTAS / PB,5g,ativacao,2026-07-01,,14
+pombal-pb,POMBAL / PB,ftth,orcamento,2026-07-01,,28
+pombal-pb,POMBAL / PB,ftth,efetivado,2026-07-01,,27
+pombal-pb,POMBAL / PB,ftth,instalacao,2026-07-01,,31
+portalegre-rn,PORTALEGRE / RN,5g,ativacao,2026-07-01,,12
+portalegre-rn,PORTALEGRE / RN,ftth,orcamento,2026-07-01,,4
+portalegre-rn,PORTALEGRE / RN,ftth,efetivado,2026-07-01,,4
+portalegre-rn,PORTALEGRE / RN,ftth,instalacao,2026-07-01,,6
+potengi-ce,POTENGI / CE,5g,ativacao,2026-07-01,,6
+potiretama-ce,POTIRETAMA / CE,5g,ativacao,2026-07-01,,21
+prata-pb,PRATA / PB,5g,ativacao,2026-07-01,,3
+queimadas-pb,QUEIMADAS / PB,ftth,efetivado,2026-07-01,,1
+queimadas-pb,QUEIMADAS / PB,ftth,orcamento,2026-07-01,,4
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,instalacao,2026-07-01,,80
+quixere-ce,QUIXERE / CE,5g,ativacao,2026-07-01,,42
+quixere-ce,QUIXERE / CE,ftth,orcamento,2026-07-01,,16
+quixere-ce,QUIXERE / CE,ftth,efetivado,2026-07-01,,13
+quixere-ce,QUIXERE / CE,ftth,instalacao,2026-07-01,,13
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,5g,ativacao,2026-07-01,,20
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,efetivado,2026-07-01,,8
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,instalacao,2026-07-01,,6
+recife-pe,RECIFE / PE,5g,ativacao,2026-07-01,,1
+recife-pe,RECIFE / PE,ftth,instalacao,2026-07-01,,142
+riacho-de-santana-rn,RIACHO DE SANTANA / RN,5g,ativacao,2026-07-01,,8
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,instalacao,2026-07-01,,43
+rio-largo-al,RIO LARGO / AL,5g,ativacao,2026-07-01,,57
+rio-largo-al,RIO LARGO / AL,ftth,efetivado,2026-07-01,,62
+rio-tinto-pb,RIO TINTO / PB,5g,ativacao,2026-07-01,,16
+russas-ce,RUSSAS / CE,ftth,efetivado,2026-07-01,,61
+russas-ce,RUSSAS / CE,ftth,instalacao,2026-07-01,,59
+saboeiro-ce,SABOEIRO / CE,5g,ativacao,2026-07-01,,8
+salgueiro-pe,SALGUEIRO / PE,ftth,efetivado,2026-07-01,,34
+salgueiro-pe,SALGUEIRO / PE,ftth,instalacao,2026-07-01,,30
+santa-cruz-pb,SANTA CRUZ / PB,5g,ativacao,2026-07-01,,12
+santa-cruz-rn,SANTA CRUZ / RN,5g,ativacao,2026-07-01,,44
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,orcamento,2026-07-01,,62
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,efetivado,2026-07-01,,51
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,instalacao,2026-07-01,,48
+santa-luzia-pb,SANTA LUZIA / PB,ftth,orcamento,2026-07-01,,16
+santa-luzia-pb,SANTA LUZIA / PB,ftth,efetivado,2026-07-01,,14
+santa-luzia-pb,SANTA LUZIA / PB,ftth,instalacao,2026-07-01,,11
+santa-rita-pb,SANTA RITA / PB,ftth,instalacao,2026-07-01,,101
+santana-do-cariri-ce,SANTANA DO CARIRI / CE,5g,ativacao,2026-07-01,,19
+santo-amaro-ba,SANTO AMARO / BA,ftth,orcamento,2026-07-01,,56
+santo-amaro-ba,SANTO AMARO / BA,ftth,efetivado,2026-07-01,,45
+santo-amaro-ba,SANTO AMARO / BA,ftth,instalacao,2026-07-01,,42
+sao-benedito-ce,SAO BENEDITO / CE,5g,ativacao,2026-07-01,,37
+sao-benedito-ce,SAO BENEDITO / CE,ftth,orcamento,2026-07-01,,12
+sao-benedito-ce,SAO BENEDITO / CE,ftth,efetivado,2026-07-01,,10
+sao-benedito-ce,SAO BENEDITO / CE,ftth,instalacao,2026-07-01,,11
+sao-bento-pb,SAO BENTO / PB,ftth,efetivado,2026-07-01,,21
+sao-bento-pb,SAO BENTO / PB,ftth,instalacao,2026-07-01,,21
+sao-bento-pb,SAO BENTO / PB,ftth,orcamento,2026-07-01,,22
+sao-caitano-pe,SAO CAITANO  / PE,5g,ativacao,2026-07-01,,29
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,orcamento,2026-07-01,,85
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,instalacao,2026-07-01,,61
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,5g,ativacao,2026-07-01,,11
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,orcamento,2026-07-01,,34
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,efetivado,2026-07-01,,32
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,instalacao,2026-07-01,,17
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,5g,ativacao,2026-07-01,,23
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,ftth,orcamento,2026-07-01,,1
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,ftth,efetivado,2026-07-01,,1
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,ftth,instalacao,2026-07-01,,1
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,5g,ativacao,2026-07-01,,90
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,orcamento,2026-07-01,,279
+sao-joao-do-cariri-pb,SAO JOAO DO CARIRI / PB,5g,ativacao,2026-07-01,,5
+sao-jose-de-brejo-do-cruz-pb,SAO JOSE DE BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,,2
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,5g,ativacao,2026-07-01,,61
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,instalacao,2026-07-01,,59
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,orcamento,2026-07-01,,83
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,efetivado,2026-07-01,,69
+sao-mamede-pb,SAO MAMEDE / PB,5g,ativacao,2026-07-01,,13
+sao-miguel-rn,SAO MIGUEL / RN,ftth,efetivado,2026-07-01,,31
+sao-miguel-rn,SAO MIGUEL / RN,ftth,instalacao,2026-07-01,,30
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,instalacao,2026-07-01,,38
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,orcamento,2026-07-01,,37
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,efetivado,2026-07-01,,36
+sao-paulo-sp,SAO PAULO / SP,5g,ativacao,2026-07-01,,1
+,SAO PAULO DO POTENGI/RN / RN,5g,ativacao,2026-07-01,,4
+satuba-al,SATUBA / AL,ftth,orcamento,2026-07-01,,4
+satuba-al,SATUBA / AL,ftth,efetivado,2026-07-01,,3
+senador-alexandre-costa-ma,SENADOR ALEXANDRE COSTA / MA,5g,ativacao,2026-07-01,,6
+senador-georgino-avelino-rn,SENADOR GEORGINO AVELINO / RN,5g,ativacao,2026-07-01,,9
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,instalacao,2026-07-01,,16
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,efetivado,2026-07-01,,18
+serra-do-mel-rn,SERRA DO MEL / RN,5g,ativacao,2026-07-01,,1
+serra-talhada-pe,SERRA TALHADA / PE,ftth,orcamento,2026-07-01,,50
+serra-talhada-pe,SERRA TALHADA / PE,ftth,efetivado,2026-07-01,,45
+serra-talhada-pe,SERRA TALHADA / PE,ftth,instalacao,2026-07-01,,41
+simoes-filho-ba,SIMOES FILHO / BA,ftth,orcamento,2026-07-01,,22
+simoes-filho-ba,SIMOES FILHO / BA,ftth,efetivado,2026-07-01,,15
+sobral-ce,SOBRAL / CE,ftth,orcamento,2026-07-01,,179
+sobral-ce,SOBRAL / CE,ftth,efetivado,2026-07-01,,153
+sobral-ce,SOBRAL / CE,ftth,instalacao,2026-07-01,,152
+,SOBRAL/CE / CE,5g,ativacao,2026-07-01,,5
+solanea-pb,SOLANEA / PB,5g,ativacao,2026-07-01,,46
+soledade-pb,SOLEDADE / PB,5g,ativacao,2026-07-01,,22
+sousa-pb,SOUSA / PB,5g,ativacao,2026-07-01,,50
+sousa-pb,SOUSA / PB,ftth,instalacao,2026-07-01,,26
+surubim-pe,SURUBIM / PE,ftth,orcamento,2026-07-01,,17
+surubim-pe,SURUBIM / PE,ftth,efetivado,2026-07-01,,14
+surubim-pe,SURUBIM / PE,ftth,instalacao,2026-07-01,,14
+taboleiro-grande-rn,TABOLEIRO GRANDE / RN,5g,ativacao,2026-07-01,,7
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,,15
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,,14
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,,13
+taquaritinga-do-norte-pe,TAQUARITINGA DO NORTE / PE,5g,ativacao,2026-07-01,,55
+taua-ce,TAUA / CE,5g,ativacao,2026-07-01,,97
+taua-ce,TAUA / CE,ftth,orcamento,2026-07-01,,56
+taua-ce,TAUA / CE,ftth,efetivado,2026-07-01,,52
+tiangua-ce,TIANGUA / CE,ftth,instalacao,2026-07-01,,46
+timon-ma,TIMON / MA,ftth,efetivado,2026-07-01,,180
+timon-ma,TIMON / MA,ftth,instalacao,2026-07-01,,157
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,orcamento,2026-07-01,,33
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,efetivado,2026-07-01,,30
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,instalacao,2026-07-01,,24
+toritama-pe,TORITAMA / PE,5g,ativacao,2026-07-01,,34
+toritama-pe,TORITAMA / PE,ftth,instalacao,2026-07-01,,27
+trairi-ce,TRAIRI / CE,5g,ativacao,2026-07-01,,1
+triunfo-potiguar-rn,TRIUNFO POTIGUAR / RN,5g,ativacao,2026-07-01,,14
+trizidela-do-vale-ma,TRIZIDELA DO VALE / MA,5g,ativacao,2026-07-01,,7
+tuntum-ma,TUNTUM / MA,5g,ativacao,2026-07-01,,1
+ubajara-ce,UBAJARA / CE,5g,ativacao,2026-07-01,,27
+ubajara-ce,UBAJARA / CE,ftth,instalacao,2026-07-01,,3
+ubajara-ce,UBAJARA / CE,ftth,orcamento,2026-07-01,,6
+ubajara-ce,UBAJARA / CE,ftth,efetivado,2026-07-01,,5
+uirauna-pb,UIRAUNA / PB,5g,ativacao,2026-07-01,,54
+uirauna-pb,UIRAUNA / PB,ftth,instalacao,2026-07-01,,6
+uirauna-pb,UIRAUNA / PB,ftth,orcamento,2026-07-01,,8
+uirauna-pb,UIRAUNA / PB,ftth,efetivado,2026-07-01,,7
+umari-ce,UMARI / CE,5g,ativacao,2026-07-01,,24
+umarizal-rn,UMARIZAL / RN,5g,ativacao,2026-07-01,,9
+umarizal-rn,UMARIZAL / RN,ftth,instalacao,2026-07-01,,6
+uniao-pi,UNIAO / PI,5g,ativacao,2026-07-01,,4
+uruoca-ce,URUOCA / CE,5g,ativacao,2026-07-01,,6
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,orcamento,2026-07-01,,27
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,efetivado,2026-07-01,,26
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,instalacao,2026-07-01,,25
+verdejante-pe,VERDEJANTE  / PE,5g,ativacao,2026-07-01,,6
+viana-ma,VIANA / MA,5g,ativacao,2026-07-01,,1
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,orcamento,2026-07-01,,14
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,efetivado,2026-07-01,,11
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,instalacao,2026-07-01,,8
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,efetivado,2026-07-01,,41
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,instalacao,2026-07-01,,39
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,orcamento,2026-07-01,,51
+xexeu-pe,XEXEU / PE,5g,ativacao,2026-07-01,,8
+acari-rn,ACARI / RN,5g,ativacao,2026-07-01,,1
+apodi-rn,APODI / RN,ftth,instalacao,2026-07-01,,1
+arara-pb,ARARA / PB,5g,ativacao,2026-07-01,,1
+batal-rn,BATAL / RN,5g,ativacao,2026-07-01,,3
+bela-cruz-ce,BELA CRUZ / CE,5g,ativacao,2026-07-01,,13
+camocim-ce,CAMOCIM / CE,ftth,efetivado,2026-07-01,,2
+canguaretama-rn,CANGUARETAMA / RN,ftth,orcamento,2026-07-01,,1
+carire-ce,CARIRE / CE,ftth,orcamento,2026-07-01,,1
+catarina-ce,CATARINA / CE,5g,ativacao,2026-07-01,,2
+catende-pe,CATENDE / PE,5g,ativacao,2026-07-01,,1
+deputado-irapua-pinheiro-ce,DEPUTADO IRAPUA PINHEIRO / CE,5g,ativacao,2026-07-01,,1
+deputado-irapuan-pinheiro-ce,DEPUTADO IRAPUAN PINHEIRO / CE,5g,ativacao,2026-07-01,,1
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,instalacao,2026-07-01,,3
+,FORTALEZA/CE / CE,5g,ativacao,2026-07-01,,2
+francisco-dantas-rn,FRANCISCO DANTAS / RN,5g,ativacao,2026-07-01,,1
+ibicuitinga-ce,IBICUITINGA / CE,5g,ativacao,2026-07-01,,4
+itaicaba-ce,ITAICABA / CE,5g,ativacao,2026-07-01,,1
+,JOAO PESSOA/PB / PB,5g,ativacao,2026-07-01,,1
+jucas-ce,JUCAS / CE,ftth,orcamento,2026-07-01,,1
+lagoa-seca-pb,LAGOA SECA / PB,ftth,orcamento,2026-07-01,,2
+lagoa-seca-pb,LAGOA SECA / PB,ftth,efetivado,2026-07-01,,1
+luis-correia-pi,LUIS CORREIA / PI,5g,ativacao,2026-07-01,,2
+madalena-ce,MADALENA / CE,5g,ativacao,2026-07-01,,5
+mansidao-ba,MANSIDAO / BA,5g,ativacao,2026-07-01,,1
+marco-ce,MARCO / CE,ftth,orcamento,2026-07-01,,1
+marco-ce,MARCO / CE,ftth,efetivado,2026-07-01,,1
+marco-ce,MARCO / CE,ftth,instalacao,2026-07-01,,1
+,MARIZOPOLIS/PB / PB,5g,ativacao,2026-07-01,,1
+massape-ce,MASSAPE / CE,ftth,orcamento,2026-07-01,,1
+massape-ce,MASSAPE / CE,ftth,efetivado,2026-07-01,,1
+massape-ce,MASSAPE / CE,ftth,instalacao,2026-07-01,,1
+milha-ce,MILHA / CE,5g,ativacao,2026-07-01,,8
+mulungu-ce,MULUNGU / CE,5g,ativacao,2026-07-01,,4
+nova-russas-ce,NOVA RUSSAS / CE,ftth,orcamento,2026-07-01,,1
+penaforte-ce,PENAFORTE / CE,ftth,orcamento,2026-07-01,,1
+piripiri-pi,PIRIPIRI / PI,5g,ativacao,2026-07-01,,1
+porteiras-ce,PORTEIRAS / CE,5g,ativacao,2026-07-01,,4
+queimadas-pb,QUEIMADAS / PB,ftth,instalacao,2026-07-01,,2
+santa-ines-ma,SANTA INES / MA,5g,ativacao,2026-07-01,,1
+sao-miguel-pb,SAO MIGUEL / PB,5g,ativacao,2026-07-01,,1
+solonopole-ce,SOLONOPOLE / CE,5g,ativacao,2026-07-01,,1
+taipu-rn,TAIPU / RN,ftth,efetivado,2026-07-01,,1
+taipu-rn,TAIPU / RN,ftth,instalacao,2026-07-01,,1
+venha-ver-rn,VENHA VER / RN,ftth,instalacao,2026-07-01,,1
+viana-ma-ma,VIANA MA / MA,5g,ativacao,2026-07-01,,5
+,,5g,ativacao,2026-07-01,3,24
+,,ftth,efetivado,2026-07-01,3,1
+acarape-ce,ACARAPE / CE,5g,ativacao,2026-07-01,3,4
+acarau-ce,ACARAU / CE,5g,ativacao,2026-07-01,3,2
+acopiara-ce,ACOPIARA / CE,5g,ativacao,2026-07-01,3,2
+acopiara-ce,ACOPIARA / CE,ftth,efetivado,2026-07-01,3,1
+alagoinhas-ba,ALAGOINHAS / BA,ftth,orcamento,2026-07-01,3,1
+altaneira-ce,ALTANEIRA / CE,5g,ativacao,2026-07-01,3,1
+altos-pi,ALTOS / PI,ftth,efetivado,2026-07-01,3,1
+angicos-rn,ANGICOS / RN,5g,ativacao,2026-07-01,3,1
+apodi-rn,APODI / RN,5g,ativacao,2026-07-01,3,1
+aracaju-se,ARACAJU / SE,ftth,orcamento,2026-07-01,3,9
+aracaju-se,ARACAJU / SE,ftth,efetivado,2026-07-01,3,5
+aracaju-se,ARACAJU / SE,ftth,instalacao,2026-07-01,3,1
+aracati-ce,ARACATI / CE,5g,ativacao,2026-07-01,3,4
+aracoiaba-ce,ARACOIABA / CE,5g,ativacao,2026-07-01,3,1
+arapiraca-al,ARAPIRACA / AL,ftth,orcamento,2026-07-01,3,1
+arapiraca-al,ARAPIRACA / AL,ftth,instalacao,2026-07-01,3,1
+araripina-pe,ARARIPINA / PE,5g,ativacao,2026-07-01,3,2
+araripina-pe,ARARIPINA / PE,ftth,efetivado,2026-07-01,3,1
+areia-branca-rn,AREIA BRANCA / RN,5g,ativacao,2026-07-01,3,1
+baia-formosa-rn,BAIA FORMOSA / RN,5g,ativacao,2026-07-01,3,1
+banabuiu-ce,BANABUIU / CE,5g,ativacao,2026-07-01,3,2
+barbalha-ce,BARBALHA / CE,5g,ativacao,2026-07-01,3,1
+barbalha-ce,BARBALHA / CE,ftth,orcamento,2026-07-01,3,3
+barbalha-ce,BARBALHA / CE,ftth,efetivado,2026-07-01,3,1
+bayeux-pb,BAYEUX / PB,ftth,orcamento,2026-07-01,3,2
+belo-jardim-pe,BELO JARDIM / PE,ftth,instalacao,2026-07-01,3,2
+bezerros-pe,BEZERROS / PE,ftth,orcamento,2026-07-01,3,1
+bezerros-pe,BEZERROS / PE,ftth,efetivado,2026-07-01,3,1
+boa-viagem-ce,BOA VIAGEM / CE,5g,ativacao,2026-07-01,3,1
+brejo-do-cruz-pb,BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,3,2
+brejo-santo-ce,BREJO SANTO / CE,5g,ativacao,2026-07-01,3,1
+brejo-santo-ce,BREJO SANTO / CE,ftth,orcamento,2026-07-01,3,3
+brejo-santo-ce,BREJO SANTO / CE,ftth,efetivado,2026-07-01,3,3
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,efetivado,2026-07-01,3,2
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,orcamento,2026-07-01,3,1
+caico-rn,CAICO / RN,5g,ativacao,2026-07-01,3,2
+caico-rn,CAICO / RN,ftth,orcamento,2026-07-01,3,1
+cajari-ma,CAJARI  / MA,5g,ativacao,2026-07-01,3,1
+cajazeiras-pb,CAJAZEIRAS / PB,5g,ativacao,2026-07-01,3,1
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,instalacao,2026-07-01,3,1
+camacari-ba,CAMACARI / BA,ftth,efetivado,2026-07-01,3,2
+camaragibe-pe,CAMARAGIBE / PE,ftth,efetivado,2026-07-01,3,1
+camaragibe-pe,CAMARAGIBE / PE,ftth,orcamento,2026-07-01,3,1
+camocim-ce,CAMOCIM / CE,5g,ativacao,2026-07-01,3,1
+campina-grande-pb,CAMPINA GRANDE / PB,5g,ativacao,2026-07-01,3,1
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,instalacao,2026-07-01,3,2
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,orcamento,2026-07-01,3,4
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,efetivado,2026-07-01,3,3
+campo-maior-pi,CAMPO MAIOR / PI,ftth,orcamento,2026-07-01,3,1
+campo-maior-pi,CAMPO MAIOR / PI,ftth,efetivado,2026-07-01,3,1
+caninde-ce,CANINDE / CE,5g,ativacao,2026-07-01,3,3
+caninde-ce,CANINDE / CE,ftth,orcamento,2026-07-01,3,1
+caraubas-rn,CARAUBAS / RN,5g,ativacao,2026-07-01,3,1
+caruaru-pe,CARUARU / PE,5g,ativacao,2026-07-01,3,3
+caruaru-pe,CARUARU / PE,ftth,efetivado,2026-07-01,3,7
+caruaru-pe,CARUARU / PE,ftth,orcamento,2026-07-01,3,5
+cascavel-ce,CASCAVEL / CE,5g,ativacao,2026-07-01,3,3
+cascavel-ce,CASCAVEL / CE,ftth,orcamento,2026-07-01,3,1
+cascavel-ce,CASCAVEL / CE,ftth,efetivado,2026-07-01,3,2
+cascavel-ce,CASCAVEL / CE,ftth,instalacao,2026-07-01,3,1
+caucaia-ce,CAUCAIA / CE,5g,ativacao,2026-07-01,3,4
+caucaia-ce,CAUCAIA / CE,ftth,orcamento,2026-07-01,3,1
+caucaia-ce,CAUCAIA / CE,ftth,efetivado,2026-07-01,3,4
+caucaia-ce,CAUCAIA / CE,ftth,instalacao,2026-07-01,3,1
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,orcamento,2026-07-01,3,1
+cha-de-alegria-pe,CHA DE ALEGRIA / PE,5g,ativacao,2026-07-01,3,1
+crateus-ce,CRATEUS / CE,5g,ativacao,2026-07-01,3,2
+crato-ce,CRATO / CE,5g,ativacao,2026-07-01,3,4
+crato-ce,CRATO / CE,ftth,orcamento,2026-07-01,3,5
+crato-ce,CRATO / CE,ftth,efetivado,2026-07-01,3,4
+cruz-do-espirito-santo-pb,CRUZ DO ESPIRITO SANTO / PB,5g,ativacao,2026-07-01,3,1
+currais-novos-rn,CURRAIS NOVOS / RN,5g,ativacao,2026-07-01,3,1
+dias-davila-ba,DIAS DAVILA / BA,ftth,orcamento,2026-07-01,3,1
+estancia-se,ESTANCIA / SE,ftth,orcamento,2026-07-01,3,1
+estancia-se,ESTANCIA / SE,ftth,efetivado,2026-07-01,3,1
+eusebio-ce,EUSEBIO / CE,ftth,efetivado,2026-07-01,3,1
+eusebio-ce,EUSEBIO / CE,ftth,orcamento,2026-07-01,3,1
+extremoz-rn,EXTREMOZ / RN,5g,ativacao,2026-07-01,3,4
+extremoz-rn,EXTREMOZ / RN,ftth,orcamento,2026-07-01,3,3
+extremoz-rn,EXTREMOZ / RN,ftth,efetivado,2026-07-01,3,1
+extremoz-rn,EXTREMOZ / RN,ftth,instalacao,2026-07-01,3,1
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,instalacao,2026-07-01,3,1
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,orcamento,2026-07-01,3,1
+fortaleza-ce,FORTALEZA / CE,5g,ativacao,2026-07-01,3,26
+fortaleza-ce,FORTALEZA / CE,ftth,orcamento,2026-07-01,3,15
+fortaleza-ce,FORTALEZA / CE,ftth,efetivado,2026-07-01,3,14
+fortaleza-ce,FORTALEZA / CE,ftth,instalacao,2026-07-01,3,1
+garanhuns-pe,GARANHUNS / PE,ftth,efetivado,2026-07-01,3,1
+horizonte-ce,HORIZONTE / CE,5g,ativacao,2026-07-01,3,3
+iguatu-ce,IGUATU / CE,5g,ativacao,2026-07-01,3,7
+iguatu-ce,IGUATU / CE,ftth,instalacao,2026-07-01,3,2
+iguatu-ce,IGUATU / CE,ftth,orcamento,2026-07-01,3,2
+itapaje-ce,ITAPAJE / CE,5g,ativacao,2026-07-01,3,2
+itapaje-ce,ITAPAJE / CE,ftth,efetivado,2026-07-01,3,1
+itapipoca-ce,ITAPIPOCA / CE,ftth,orcamento,2026-07-01,3,1
+joao-pessoa-pb,JOAO PESSOA / PB,5g,ativacao,2026-07-01,3,6
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,orcamento,2026-07-01,3,19
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,efetivado,2026-07-01,3,13
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,instalacao,2026-07-01,3,4
+juazeiro-ba,JUAZEIRO / BA,5g,ativacao,2026-07-01,3,1
+juazeiro-ba,JUAZEIRO / BA,ftth,orcamento,2026-07-01,3,3
+juazeiro-ba,JUAZEIRO / BA,ftth,instalacao,2026-07-01,3,3
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,3,4
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,3,3
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,3,4
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,5g,ativacao,2026-07-01,3,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,orcamento,2026-07-01,3,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,efetivado,2026-07-01,3,1
+limoeiro-pe,LIMOEIRO / PE,ftth,orcamento,2026-07-01,3,1
+limoeiro-pe,LIMOEIRO / PE,ftth,efetivado,2026-07-01,3,1
+limoeiro-pe,LIMOEIRO / PE,ftth,instalacao,2026-07-01,3,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,5g,ativacao,2026-07-01,3,2
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,3,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,3,1
+macaiba-rn,MACAIBA / RN,ftth,orcamento,2026-07-01,3,1
+macau-rn,MACAU / RN,5g,ativacao,2026-07-01,3,1
+maceio-al,MACEIO / AL,5g,ativacao,2026-07-01,3,2
+maceio-al,MACEIO / AL,ftth,orcamento,2026-07-01,3,14
+maceio-al,MACEIO / AL,ftth,instalacao,2026-07-01,3,1
+maceio-al,MACEIO / AL,ftth,efetivado,2026-07-01,3,8
+machados-pe,MACHADOS / PE,5g,ativacao,2026-07-01,3,1
+mamanguape-pb,MAMANGUAPE / PB,5g,ativacao,2026-07-01,3,1
+maracanau-ce,MARACANAU / CE,5g,ativacao,2026-07-01,3,1
+maracanau-ce,MARACANAU / CE,ftth,efetivado,2026-07-01,3,1
+maranguape-ce,MARANGUAPE / CE,5g,ativacao,2026-07-01,3,3
+maranguape-ce,MARANGUAPE / CE,ftth,orcamento,2026-07-01,3,2
+marcelino-vieira-rn,MARCELINO VIEIRA / RN,5g,ativacao,2026-07-01,3,2
+mari-pb,MARI / PB,5g,ativacao,2026-07-01,3,1
+marizopolis-pb,MARIZOPOLIS / PB,5g,ativacao,2026-07-01,3,1
+massape-ce,MASSAPE / CE,5g,ativacao,2026-07-01,3,1
+milagres-ce,MILAGRES / CE,5g,ativacao,2026-07-01,3,1
+missao-velha-ce,MISSAO VELHA / CE,5g,ativacao,2026-07-01,3,1
+morada-nova-ce,MORADA NOVA / CE,5g,ativacao,2026-07-01,3,3
+moreno-pe,MORENO / PE,5g,ativacao,2026-07-01,3,1
+moreno-pe,MORENO / PE,ftth,orcamento,2026-07-01,3,1
+mossoro-rn,MOSSORO / RN,5g,ativacao,2026-07-01,3,8
+mossoro-rn,MOSSORO / RN,ftth,orcamento,2026-07-01,3,2
+mossoro-rn,MOSSORO / RN,ftth,instalacao,2026-07-01,3,1
+natal-rn,NATAL / RN,5g,ativacao,2026-07-01,3,12
+natal-rn,NATAL / RN,ftth,orcamento,2026-07-01,3,17
+natal-rn,NATAL / RN,ftth,instalacao,2026-07-01,3,3
+natal-rn,NATAL / RN,ftth,efetivado,2026-07-01,3,5
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,orcamento,2026-07-01,3,5
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,efetivado,2026-07-01,3,2
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,instalacao,2026-07-01,3,2
+nova-cruz-rn,NOVA CRUZ / RN,5g,ativacao,2026-07-01,3,1
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,5g,ativacao,2026-07-01,3,1
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,orcamento,2026-07-01,3,1
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,efetivado,2026-07-01,3,1
+olinda-pe,OLINDA / PE,ftth,orcamento,2026-07-01,3,5
+olinda-pe,OLINDA / PE,ftth,efetivado,2026-07-01,3,2
+ouricuri-pe,OURICURI / PE,ftth,orcamento,2026-07-01,3,1
+pacajus-ce,PACAJUS / CE,5g,ativacao,2026-07-01,3,1
+pacajus-ce,PACAJUS / CE,ftth,orcamento,2026-07-01,3,2
+pacajus-ce,PACAJUS / CE,ftth,efetivado,2026-07-01,3,1
+pacatuba-ce,PACATUBA / CE,ftth,efetivado,2026-07-01,3,1
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,orcamento,2026-07-01,3,1
+paracuru-ce,PARACURU / CE,ftth,efetivado,2026-07-01,3,1
+paraipaba-ce,PARAIPABA / CE,5g,ativacao,2026-07-01,3,1
+paraipaba-ce,PARAIPABA / CE,ftth,orcamento,2026-07-01,3,1
+parnaiba-pi,PARNAIBA / PI,ftth,orcamento,2026-07-01,3,1
+parnamirim-rn,PARNAMIRIM / RN,5g,ativacao,2026-07-01,3,6
+parnamirim-rn,PARNAMIRIM / RN,ftth,efetivado,2026-07-01,3,2
+parnamirim-rn,PARNAMIRIM / RN,ftth,orcamento,2026-07-01,3,2
+parnamirim-rn,PARNAMIRIM / RN,ftth,instalacao,2026-07-01,3,2
+patos-pb,PATOS / PB,5g,ativacao,2026-07-01,3,5
+patos-pb,PATOS / PB,ftth,orcamento,2026-07-01,3,1
+patos-pb,PATOS / PB,ftth,efetivado,2026-07-01,3,1
+pau-dos-ferros-rn,PAU DOS FERROS / RN,5g,ativacao,2026-07-01,3,1
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,efetivado,2026-07-01,3,1
+paulista-pe,PAULISTA / PE,ftth,orcamento,2026-07-01,3,4
+paulista-pe,PAULISTA / PE,ftth,efetivado,2026-07-01,3,1
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,efetivado,2026-07-01,3,1
+penaforte-ce,PENAFORTE / CE,5g,ativacao,2026-07-01,3,1
+pereiro-ce,PEREIRO / CE,5g,ativacao,2026-07-01,3,3
+pesqueira-pe,PESQUEIRA / PE,5g,ativacao,2026-07-01,3,1
+petrolina-pe,PETROLINA / PE,5g,ativacao,2026-07-01,3,3
+petrolina-pe,PETROLINA / PE,ftth,efetivado,2026-07-01,3,2
+petrolina-pe,PETROLINA / PE,ftth,orcamento,2026-07-01,3,1
+petrolina-pe,PETROLINA / PE,ftth,instalacao,2026-07-01,3,1
+pombal-pb,POMBAL / PB,5g,ativacao,2026-07-01,3,1
+porcao-de-pedras-ma,PORCAO DE PEDRAS  / MA,5g,ativacao,2026-07-01,3,1
+quixada-ce,QUIXADA / CE,5g,ativacao,2026-07-01,3,1
+quixada-ce,QUIXADA / CE,ftth,instalacao,2026-07-01,3,1
+quixada-ce,QUIXADA / CE,ftth,orcamento,2026-07-01,3,2
+quixada-ce,QUIXADA / CE,ftth,efetivado,2026-07-01,3,1
+quixeramobim-ce,QUIXERAMOBIM / CE,5g,ativacao,2026-07-01,3,6
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,orcamento,2026-07-01,3,3
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,efetivado,2026-07-01,3,2
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,orcamento,2026-07-01,3,1
+recife-pe,RECIFE / PE,ftth,orcamento,2026-07-01,3,3
+recife-pe,RECIFE / PE,ftth,efetivado,2026-07-01,3,4
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,orcamento,2026-07-01,3,1
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,efetivado,2026-07-01,3,1
+rio-largo-al,RIO LARGO / AL,ftth,orcamento,2026-07-01,3,2
+rio-largo-al,RIO LARGO / AL,ftth,instalacao,2026-07-01,3,3
+rodolfo-fernandes-rn,RODOLFO FERNANDES / RN,5g,ativacao,2026-07-01,3,1
+russas-ce,RUSSAS / CE,5g,ativacao,2026-07-01,3,3
+russas-ce,RUSSAS / CE,ftth,orcamento,2026-07-01,3,1
+salgueiro-pe,SALGUEIRO / PE,5g,ativacao,2026-07-01,3,2
+salgueiro-pe,SALGUEIRO / PE,ftth,orcamento,2026-07-01,3,1
+santa-luzia-pb,SANTA LUZIA / PB,5g,ativacao,2026-07-01,3,1
+santa-quiteria-ce,SANTA QUITERIA / CE,5g,ativacao,2026-07-01,3,1
+santa-rita-pb,SANTA RITA / PB,5g,ativacao,2026-07-01,3,3
+santa-rita-pb,SANTA RITA / PB,ftth,orcamento,2026-07-01,3,5
+santa-rita-pb,SANTA RITA / PB,ftth,efetivado,2026-07-01,3,1
+sao-bento-pb,SAO BENTO / PB,5g,ativacao,2026-07-01,3,1
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,efetivado,2026-07-01,3,1
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,efetivado,2026-07-01,3,3
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,instalacao,2026-07-01,3,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,efetivado,2026-07-01,3,2
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,orcamento,2026-07-01,3,4
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,instalacao,2026-07-01,3,2
+sao-miguel-rn,SAO MIGUEL / RN,5g,ativacao,2026-07-01,3,3
+sao-miguel-rn,SAO MIGUEL / RN,ftth,orcamento,2026-07-01,3,1
+sape-pb,SAPE / PB,5g,ativacao,2026-07-01,3,1
+senador-pompeu-ce,SENADOR POMPEU / CE,5g,ativacao,2026-07-01,3,2
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,orcamento,2026-07-01,3,2
+serra-talhada-pe,SERRA TALHADA / PE,5g,ativacao,2026-07-01,3,1
+sobral-ce,SOBRAL / CE,5g,ativacao,2026-07-01,3,2
+sousa-pb,SOUSA / PB,ftth,orcamento,2026-07-01,3,1
+sousa-pb,SOUSA / PB,ftth,efetivado,2026-07-01,3,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,5g,ativacao,2026-07-01,3,2
+taua-ce,TAUA / CE,ftth,instalacao,2026-07-01,3,1
+tenente-ananias-rn,TENENTE ANANIAS / RN,5g,ativacao,2026-07-01,3,3
+teresina-pi,TERESINA / PI,5g,ativacao,2026-07-01,3,4
+teresina-pi,TERESINA / PI,ftth,orcamento,2026-07-01,3,10
+teresina-pi,TERESINA / PI,ftth,efetivado,2026-07-01,3,9
+teresina-pi,TERESINA / PI,ftth,instalacao,2026-07-01,3,5
+tiangua-ce,TIANGUA / CE,5g,ativacao,2026-07-01,3,1
+tiangua-ce,TIANGUA / CE,ftth,orcamento,2026-07-01,3,1
+tiangua-ce,TIANGUA / CE,ftth,efetivado,2026-07-01,3,1
+timon-ma,TIMON / MA,5g,ativacao,2026-07-01,3,1
+timon-ma,TIMON / MA,ftth,orcamento,2026-07-01,3,2
+toritama-pe,TORITAMA / PE,ftth,orcamento,2026-07-01,3,1
+toritama-pe,TORITAMA / PE,ftth,efetivado,2026-07-01,3,1
+touros-rn,TOUROS / RN,5g,ativacao,2026-07-01,3,2
+umarizal-rn,UMARIZAL / RN,ftth,orcamento,2026-07-01,3,1
+umarizal-rn,UMARIZAL / RN,ftth,efetivado,2026-07-01,3,1
+upanema-rn,UPANEMA / RN,5g,ativacao,2026-07-01,3,1
+varjota-ce,VARJOTA / CE,5g,ativacao,2026-07-01,3,1
+varzea-alegre-ce,VARZEA ALEGRE / CE,5g,ativacao,2026-07-01,3,1
+,,5g,ativacao,2026-07-01,2,791
+,,ftth,orcamento,2026-07-01,2,5
+,,ftth,efetivado,2026-07-01,2,7
+,/,5g,ativacao,2026-07-01,2,51
+,/ / GO,5g,ativacao,2026-07-01,2,1
+abaiara-ce,ABAIARA / CE,5g,ativacao,2026-07-01,2,17
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,orcamento,2026-07-01,2,28
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,efetivado,2026-07-01,2,25
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,instalacao,2026-07-01,2,23
+acarape-ce,ACARAPE / CE,5g,ativacao,2026-07-01,2,66
+acarau-ce,ACARAU / CE,5g,ativacao,2026-07-01,2,112
+acarau-ce,ACARAU / CE,ftth,instalacao,2026-07-01,2,12
+acarau-ce,ACARAU / CE,ftth,orcamento,2026-07-01,2,9
+acarau-ce,ACARAU / CE,ftth,efetivado,2026-07-01,2,9
+acopiara-ce,ACOPIARA / CE,5g,ativacao,2026-07-01,2,54
+acopiara-ce,ACOPIARA / CE,ftth,orcamento,2026-07-01,2,23
+acopiara-ce,ACOPIARA / CE,ftth,efetivado,2026-07-01,2,23
+acopiara-ce,ACOPIARA / CE,ftth,instalacao,2026-07-01,2,20
+afonso-bezerra-rn,AFONSO BEZERRA / RN,5g,ativacao,2026-07-01,2,9
+agua-nova-rn,AGUA NOVA / RN,5g,ativacao,2026-07-01,2,9
+aiuaba-ce,AIUABA / CE,5g,ativacao,2026-07-01,2,8
+alagoa-grande-pb,ALAGOA GRANDE / PB,5g,ativacao,2026-07-01,2,14
+alagoinhas-ba,ALAGOINHAS / BA,ftth,orcamento,2026-07-01,2,99
+alagoinhas-ba,ALAGOINHAS / BA,ftth,efetivado,2026-07-01,2,88
+alagoinhas-ba,ALAGOINHAS / BA,ftth,instalacao,2026-07-01,2,94
+alexandria-rn,ALEXANDRIA / RN,5g,ativacao,2026-07-01,2,5
+,ALEXANDRIA/RN / RN,5g,ativacao,2026-07-01,2,4
+altaneira-ce,ALTANEIRA / CE,5g,ativacao,2026-07-01,2,57
+altaneira-ce,ALTANEIRA / CE,ftth,orcamento,2026-07-01,2,1
+altaneira-ce,ALTANEIRA / CE,ftth,efetivado,2026-07-01,2,1
+alto-do-rodrigues-rn,ALTO DO RODRIGUES / RN,5g,ativacao,2026-07-01,2,11
+alto-do-rodrigues-rn,ALTO DO RODRIGUES / RN,ftth,orcamento,2026-07-01,2,2
+alto-santo-ce,ALTO SANTO / CE,5g,ativacao,2026-07-01,2,14
+altos-pi,ALTOS / PI,ftth,orcamento,2026-07-01,2,25
+altos-pi,ALTOS / PI,ftth,efetivado,2026-07-01,2,15
+altos-pi,ALTOS / PI,ftth,instalacao,2026-07-01,2,15
+amontada-ce,AMONTADA  / CE,5g,ativacao,2026-07-01,2,5
+angical-ba,ANGICAL / BA,5g,ativacao,2026-07-01,2,3
+angicos-rn,ANGICOS / RN,5g,ativacao,2026-07-01,2,16
+antonina-do-norte-ce,ANTONINA DO NORTE / CE,5g,ativacao,2026-07-01,2,5
+antonio-martins-rn,ANTONIO MARTINS / RN,5g,ativacao,2026-07-01,2,8
+apodi-rn,APODI / RN,5g,ativacao,2026-07-01,2,27
+aquidauana-ms,AQUIDAUANA / MS,5g,ativacao,2026-07-01,2,2
+aquiraz-ce,AQUIRAZ / CE,5g,ativacao,2026-07-01,2,85
+aquiraz-ce,AQUIRAZ / CE,ftth,orcamento,2026-07-01,2,15
+aquiraz-ce,AQUIRAZ / CE,ftth,efetivado,2026-07-01,2,10
+aquiraz-ce,AQUIRAZ / CE,ftth,instalacao,2026-07-01,2,13
+aracaju-se,ARACAJU / SE,ftth,orcamento,2026-07-01,2,454
+aracaju-se,ARACAJU / SE,ftth,efetivado,2026-07-01,2,351
+aracaju-se,ARACAJU / SE,ftth,instalacao,2026-07-01,2,272
+aracati-ce,ARACATI / CE,5g,ativacao,2026-07-01,2,85
+aracoiaba-ce,ARACOIABA / CE,5g,ativacao,2026-07-01,2,22
+arapiraca-al,ARAPIRACA / AL,ftth,orcamento,2026-07-01,2,86
+arapiraca-al,ARAPIRACA / AL,ftth,efetivado,2026-07-01,2,68
+arapiraca-al,ARAPIRACA / AL,ftth,instalacao,2026-07-01,2,56
+araripe-ce,ARARIPE / CE,5g,ativacao,2026-07-01,2,1
+araripina-pe,ARARIPINA / PE,5g,ativacao,2026-07-01,2,44
+araripina-pe,ARARIPINA / PE,ftth,orcamento,2026-07-01,2,22
+araripina-pe,ARARIPINA / PE,ftth,efetivado,2026-07-01,2,20
+araripina-pe,ARARIPINA / PE,ftth,instalacao,2026-07-01,2,18
+aratuba-ce,ARATUBA / CE,5g,ativacao,2026-07-01,2,5
+arcoverde-pe,ARCOVERDE / PE,5g,ativacao,2026-07-01,2,46
+arcoverde-pe,ARCOVERDE / PE,ftth,orcamento,2026-07-01,2,11
+arcoverde-pe,ARCOVERDE / PE,ftth,efetivado,2026-07-01,2,7
+arcoverde-pe,ARCOVERDE / PE,ftth,instalacao,2026-07-01,2,6
+areia-branca-rn,AREIA BRANCA / RN,5g,ativacao,2026-07-01,2,47
+assare-ce,ASSARE / CE,5g,ativacao,2026-07-01,2,35
+assu-rn,ASSU / RN,5g,ativacao,2026-07-01,2,51
+assu-rn,ASSU / RN,ftth,orcamento,2026-07-01,2,20
+assu-rn,ASSU / RN,ftth,efetivado,2026-07-01,2,19
+assu-rn,ASSU / RN,ftth,instalacao,2026-07-01,2,17
+aurora-ce,AURORA / CE,5g,ativacao,2026-07-01,2,8
+baia-formosa-rn,BAIA FORMOSA / RN,5g,ativacao,2026-07-01,2,2
+baia-formosa-rn,BAIA FORMOSA / RN,ftth,orcamento,2026-07-01,2,1
+banabuiu-ce,BANABUIU / CE,5g,ativacao,2026-07-01,2,15
+banabuiu-ce,BANABUIU / CE,ftth,orcamento,2026-07-01,2,9
+banabuiu-ce,BANABUIU / CE,ftth,efetivado,2026-07-01,2,10
+banabuiu-ce,BANABUIU / CE,ftth,instalacao,2026-07-01,2,7
+bananeiras-pb,BANANEIRAS / PB,5g,ativacao,2026-07-01,2,6
+barauna-rn,BARAUNA / RN,5g,ativacao,2026-07-01,2,15
+barauna-rn,BARAUNA / RN,ftth,orcamento,2026-07-01,2,4
+barauna-rn,BARAUNA / RN,ftth,efetivado,2026-07-01,2,3
+barauna-rn,BARAUNA / RN,ftth,instalacao,2026-07-01,2,5
+barbalha-ce,BARBALHA / CE,5g,ativacao,2026-07-01,2,37
+barbalha-ce,BARBALHA / CE,ftth,orcamento,2026-07-01,2,69
+barbalha-ce,BARBALHA / CE,ftth,efetivado,2026-07-01,2,58
+barbalha-ce,BARBALHA / CE,ftth,instalacao,2026-07-01,2,41
+barra-de-guabiraba-pe,BARRA DE GUABIRABA / PE,5g,ativacao,2026-07-01,2,14
+barra-de-santana-pb,BARRA DE SANTANA / PB,5g,ativacao,2026-07-01,2,5
+barra-de-sao-miguel-pb,BARRA DE SAO MIGUEL / PB,5g,ativacao,2026-07-01,2,3
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,orcamento,2026-07-01,2,42
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,efetivado,2026-07-01,2,30
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,instalacao,2026-07-01,2,22
+barreira-ce,BARREIRA  / CE,5g,ativacao,2026-07-01,2,16
+barro-ce,BARRO / CE,5g,ativacao,2026-07-01,2,19
+barroquinha-ce,BARROQUINHA / CE,5g,ativacao,2026-07-01,2,1
+baturite-ce,BATURITE / CE,5g,ativacao,2026-07-01,2,29
+baturite-ce,BATURITE / CE,ftth,orcamento,2026-07-01,2,1
+baturite-ce,BATURITE / CE,ftth,efetivado,2026-07-01,2,1
+bayeux-pb,BAYEUX / PB,5g,ativacao,2026-07-01,2,41
+bayeux-pb,BAYEUX / PB,ftth,orcamento,2026-07-01,2,67
+bayeux-pb,BAYEUX / PB,ftth,efetivado,2026-07-01,2,52
+bayeux-pb,BAYEUX / PB,ftth,instalacao,2026-07-01,2,42
+beberibe-ce,BEBERIBE / CE,5g,ativacao,2026-07-01,2,52
+belo-jardim-pe,BELO JARDIM / PE,5g,ativacao,2026-07-01,2,12
+belo-jardim-pe,BELO JARDIM / PE,ftth,orcamento,2026-07-01,2,19
+belo-jardim-pe,BELO JARDIM / PE,ftth,efetivado,2026-07-01,2,16
+belo-jardim-pe,BELO JARDIM / PE,ftth,instalacao,2026-07-01,2,14
+benedito-leite-ma,BENEDITO LEITE / MA,5g,ativacao,2026-07-01,2,1
+bezerros-pe,BEZERROS / PE,5g,ativacao,2026-07-01,2,31
+bezerros-pe,BEZERROS / PE,ftth,orcamento,2026-07-01,2,19
+bezerros-pe,BEZERROS / PE,ftth,efetivado,2026-07-01,2,19
+bezerros-pe,BEZERROS / PE,ftth,instalacao,2026-07-01,2,18
+boa-viagem-ce,BOA VIAGEM / CE,5g,ativacao,2026-07-01,2,17
+bom-conselho-pe,BOM CONSELHO / PE,5g,ativacao,2026-07-01,2,25
+bom-conselho-pe,BOM CONSELHO / PE,ftth,orcamento,2026-07-01,2,10
+bom-conselho-pe,BOM CONSELHO / PE,ftth,efetivado,2026-07-01,2,9
+bom-conselho-pe,BOM CONSELHO / PE,ftth,instalacao,2026-07-01,2,8
+bom-sucesso-pb,BOM SUCESSO / PB,5g,ativacao,2026-07-01,2,4
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,efetivado,2026-07-01,2,2
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,instalacao,2026-07-01,2,2
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,orcamento,2026-07-01,2,1
+brejo-do-cruz-pb,BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,2,38
+brejo-santo-ce,BREJO SANTO  / CE,5g,ativacao,2026-07-01,2,60
+brejo-santo-ce,BREJO SANTO / CE,ftth,orcamento,2026-07-01,2,53
+brejo-santo-ce,BREJO SANTO / CE,ftth,efetivado,2026-07-01,2,48
+brejo-santo-ce,BREJO SANTO / CE,ftth,instalacao,2026-07-01,2,41
+brisanet-ce,BRISANET / CE,5g,ativacao,2026-07-01,2,3
+buriti-dos-lopes-pi,BURITI DOS LOPES / PI,5g,ativacao,2026-07-01,2,1
+cabedelo-pb,CABEDELO / PB,5g,ativacao,2026-07-01,2,18
+cabedelo-pb,CABEDELO / PB,ftth,orcamento,2026-07-01,2,75
+cabedelo-pb,CABEDELO / PB,ftth,efetivado,2026-07-01,2,58
+cabedelo-pb,CABEDELO / PB,ftth,instalacao,2026-07-01,2,49
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,orcamento,2026-07-01,2,77
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,efetivado,2026-07-01,2,64
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,instalacao,2026-07-01,2,66
+cachoeira-dos-indios-pb,CACHOEIRA DOS INDIOS / PB,5g,ativacao,2026-07-01,2,22
+caico-rn,CAICO / RN,5g,ativacao,2026-07-01,2,96
+caico-rn,CAICO / RN,ftth,orcamento,2026-07-01,2,36
+caico-rn,CAICO / RN,ftth,efetivado,2026-07-01,2,31
+caico-rn,CAICO / RN,ftth,instalacao,2026-07-01,2,28
+cajari-ma,CAJARI  / MA,5g,ativacao,2026-07-01,2,6
+cajazeiras-pb,CAJAZEIRAS / PB,5g,ativacao,2026-07-01,2,73
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,orcamento,2026-07-01,2,60
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,efetivado,2026-07-01,2,58
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,instalacao,2026-07-01,2,50
+camacari-ba,CAMACARI / BA,ftth,orcamento,2026-07-01,2,182
+camacari-ba,CAMACARI / BA,ftth,efetivado,2026-07-01,2,160
+camacari-ba,CAMACARI / BA,ftth,instalacao,2026-07-01,2,120
+camaragibe-pe,CAMARAGIBE / PE,ftth,orcamento,2026-07-01,2,92
+camaragibe-pe,CAMARAGIBE / PE,ftth,efetivado,2026-07-01,2,66
+camaragibe-pe,CAMARAGIBE / PE,ftth,instalacao,2026-07-01,2,58
+camocim-ce,CAMOCIM  / CE,5g,ativacao,2026-07-01,2,133
+camocim-ce,CAMOCIM / CE,ftth,orcamento,2026-07-01,2,1
+camocim-ce,CAMOCIM / CE,ftth,instalacao,2026-07-01,2,1
+,CAMOCIM/CE / CE,5g,ativacao,2026-07-01,2,1
+campina-grande-pb,CAMPINA GRANDE  / PB,5g,ativacao,2026-07-01,2,154
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,orcamento,2026-07-01,2,220
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,efetivado,2026-07-01,2,177
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,instalacao,2026-07-01,2,169
+campo-grande-rn,CAMPO GRANDE / RN,5g,ativacao,2026-07-01,2,4
+campo-maior-pi,CAMPO MAIOR / PI,ftth,orcamento,2026-07-01,2,12
+campo-maior-pi,CAMPO MAIOR / PI,ftth,efetivado,2026-07-01,2,10
+campo-maior-pi,CAMPO MAIOR / PI,ftth,instalacao,2026-07-01,2,8
+campos-sales-ce,CAMPOS SALES / CE,5g,ativacao,2026-07-01,2,61
+canguaretama-rn,CANGUARETAMA / RN,5g,ativacao,2026-07-01,2,13
+caninde-ce,CANINDE / CE,5g,ativacao,2026-07-01,2,52
+caninde-ce,CANINDE / CE,ftth,instalacao,2026-07-01,2,23
+caninde-ce,CANINDE / CE,ftth,orcamento,2026-07-01,2,32
+caninde-ce,CANINDE / CE,ftth,efetivado,2026-07-01,2,29
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,5g,ativacao,2026-07-01,2,12
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,orcamento,2026-07-01,2,18
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,efetivado,2026-07-01,2,15
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,instalacao,2026-07-01,2,13
+capinzal-do-norte-ma,CAPINZAL DO NORTE / MA,5g,ativacao,2026-07-01,2,3
+capistrano-ce,CAPISTRANO / CE,5g,ativacao,2026-07-01,2,4
+caraubas-rn,CARAUBAS / RN,5g,ativacao,2026-07-01,2,40
+caridade-ce,CARIDADE / CE,5g,ativacao,2026-07-01,2,17
+caridade-ce,CARIDADE / CE,ftth,instalacao,2026-07-01,2,1
+carire-ce,CARIRE / CE,5g,ativacao,2026-07-01,2,7
+caririacu-ce,CARIRIACU / CE,5g,ativacao,2026-07-01,2,21
+carius-ce,CARIUS / CE,5g,ativacao,2026-07-01,2,9
+carnaubal-ce,CARNAUBAL / CE,5g,ativacao,2026-07-01,2,2
+carpina-pe,CARPINA / PE,ftth,orcamento,2026-07-01,2,7
+carpina-pe,CARPINA / PE,ftth,efetivado,2026-07-01,2,6
+caruaru-pe,CARUARU / PE,5g,ativacao,2026-07-01,2,153
+caruaru-pe,CARUARU / PE,ftth,orcamento,2026-07-01,2,168
+caruaru-pe,CARUARU / PE,ftth,efetivado,2026-07-01,2,134
+caruaru-pe,CARUARU / PE,ftth,instalacao,2026-07-01,2,140
+cascavel-ce,CASCAVEL / CE,5g,ativacao,2026-07-01,2,50
+cascavel-ce,CASCAVEL / CE,ftth,orcamento,2026-07-01,2,50
+cascavel-ce,CASCAVEL / CE,ftth,efetivado,2026-07-01,2,43
+cascavel-ce,CASCAVEL / CE,ftth,instalacao,2026-07-01,2,49
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,5g,ativacao,2026-07-01,2,48
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,orcamento,2026-07-01,2,12
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,efetivado,2026-07-01,2,11
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,instalacao,2026-07-01,2,14
+catu-ba,CATU / BA,ftth,orcamento,2026-07-01,2,44
+catu-ba,CATU / BA,ftth,efetivado,2026-07-01,2,40
+catu-ba,CATU / BA,ftth,instalacao,2026-07-01,2,32
+caucaia-ce,CAUCAIA  / CE,5g,ativacao,2026-07-01,2,320
+caucaia-ce,CAUCAIA / CE,ftth,orcamento,2026-07-01,2,228
+caucaia-ce,CAUCAIA / CE,ftth,efetivado,2026-07-01,2,182
+caucaia-ce,CAUCAIA / CE,ftth,instalacao,2026-07-01,2,140
+ceara-mirim-rn,CEARA MIRIM / RN,5g,ativacao,2026-07-01,2,114
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,orcamento,2026-07-01,2,51
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,efetivado,2026-07-01,2,42
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,instalacao,2026-07-01,2,39
+cedro-ce,CEDRO / CE,5g,ativacao,2026-07-01,2,27
+cedro-ce,CEDRO / CE,ftth,orcamento,2026-07-01,2,4
+cedro-ce,CEDRO / CE,ftth,efetivado,2026-07-01,2,4
+cedro-ce,CEDRO / CE,ftth,instalacao,2026-07-01,2,5
+cha-de-alegria-pe,CHA DE ALEGRIA / PE,5g,ativacao,2026-07-01,2,26
+cha-grande-pe,CHA GRANDE / PE,5g,ativacao,2026-07-01,2,13
+chorozinho-ce,CHOROZINHO  / CE,5g,ativacao,2026-07-01,2,68
+conde-pb,CONDE / PB,ftth,orcamento,2026-07-01,2,1
+conde-pb,CONDE / PB,ftth,efetivado,2026-07-01,2,1
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,5g,ativacao,2026-07-01,2,9
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,orcamento,2026-07-01,2,2
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,efetivado,2026-07-01,2,2
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,instalacao,2026-07-01,2,4
+craibas-al,CRAIBAS  / AL,5g,ativacao,2026-07-01,2,1
+crateus-ce,CRATEUS / CE,5g,ativacao,2026-07-01,2,113
+crateus-ce,CRATEUS / CE,ftth,orcamento,2026-07-01,2,37
+crateus-ce,CRATEUS / CE,ftth,efetivado,2026-07-01,2,37
+crateus-ce,CRATEUS / CE,ftth,instalacao,2026-07-01,2,29
+crato-ce,CRATO / CE,5g,ativacao,2026-07-01,2,163
+crato-ce,CRATO / CE,ftth,orcamento,2026-07-01,2,120
+crato-ce,CRATO / CE,ftth,efetivado,2026-07-01,2,100
+crato-ce,CRATO / CE,ftth,instalacao,2026-07-01,2,82
+,CRATO/CE / CE,5g,ativacao,2026-07-01,2,1
+croata-ce,CROATA / CE,5g,ativacao,2026-07-01,2,11
+cruz-ce,CRUZ / CE,5g,ativacao,2026-07-01,2,2
+cruz-do-espirito-santo-pb,CRUZ DO ESPIRITO SANTO / PB,5g,ativacao,2026-07-01,2,17
+currais-novos-rn,CURRAIS NOVOS / RN,5g,ativacao,2026-07-01,2,64
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,orcamento,2026-07-01,2,1
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,efetivado,2026-07-01,2,1
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,instalacao,2026-07-01,2,1
+cururupu-ma,CURURUPU  / MA,5g,ativacao,2026-07-01,2,5
+custodia-pe,CUSTODIA / PE,5g,ativacao,2026-07-01,2,25
+custodia-pe,CUSTODIA / PE,ftth,orcamento,2026-07-01,2,3
+custodia-pe,CUSTODIA / PE,ftth,efetivado,2026-07-01,2,2
+custodia-pe,CUSTODIA / PE,ftth,instalacao,2026-07-01,2,2
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,5g,ativacao,2026-07-01,2,17
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,orcamento,2026-07-01,2,20
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,efetivado,2026-07-01,2,17
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,instalacao,2026-07-01,2,14
+dias-davila-ba,DIAS DAVILA / BA,ftth,orcamento,2026-07-01,2,38
+dias-davila-ba,DIAS DAVILA / BA,ftth,efetivado,2026-07-01,2,33
+dias-davila-ba,DIAS DAVILA / BA,ftth,instalacao,2026-07-01,2,24
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,5g,ativacao,2026-07-01,2,5
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,orcamento,2026-07-01,2,1
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,efetivado,2026-07-01,2,1
+encanto-rn,ENCANTO / RN,5g,ativacao,2026-07-01,2,14
+encanto-rn,ENCANTO / RN,ftth,instalacao,2026-07-01,2,1
+encanto-rn,ENCANTO / RN,ftth,orcamento,2026-07-01,2,1
+encanto-rn,ENCANTO / RN,ftth,efetivado,2026-07-01,2,1
+erere-ce,ERERE / CE,5g,ativacao,2026-07-01,2,12
+escada-pe,ESCADA / PE,ftth,orcamento,2026-07-01,2,21
+escada-pe,ESCADA / PE,ftth,efetivado,2026-07-01,2,20
+escada-pe,ESCADA / PE,ftth,instalacao,2026-07-01,2,19
+esperanca-pb,ESPERANCA / PB,5g,ativacao,2026-07-01,2,33
+estancia-se,ESTANCIA / SE,5g,ativacao,2026-07-01,2,3
+estancia-se,ESTANCIA / SE,ftth,orcamento,2026-07-01,2,37
+estancia-se,ESTANCIA / SE,ftth,efetivado,2026-07-01,2,35
+estancia-se,ESTANCIA / SE,ftth,instalacao,2026-07-01,2,26
+eusebio-ce,EUSEBIO / CE,5g,ativacao,2026-07-01,2,72
+eusebio-ce,EUSEBIO / CE,ftth,orcamento,2026-07-01,2,88
+eusebio-ce,EUSEBIO / CE,ftth,efetivado,2026-07-01,2,73
+eusebio-ce,EUSEBIO / CE,ftth,instalacao,2026-07-01,2,50
+extremoz-rn,EXTREMOZ / RN,5g,ativacao,2026-07-01,2,117
+extremoz-rn,EXTREMOZ / RN,ftth,orcamento,2026-07-01,2,105
+extremoz-rn,EXTREMOZ / RN,ftth,efetivado,2026-07-01,2,91
+extremoz-rn,EXTREMOZ / RN,ftth,instalacao,2026-07-01,2,76
+farias-brito-ce,FARIAS BRITO / CE,5g,ativacao,2026-07-01,2,15
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,orcamento,2026-07-01,2,135
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,efetivado,2026-07-01,2,110
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,instalacao,2026-07-01,2,85
+felipe-guerra-rn,FELIPE GUERRA / RN,5g,ativacao,2026-07-01,2,12
+ferreiros-pe,FERREIROS / PE,5g,ativacao,2026-07-01,2,7
+forquilha-ce,FORQUILHA  / CE,5g,ativacao,2026-07-01,2,22
+forquilha-ce,FORQUILHA / CE,ftth,orcamento,2026-07-01,2,1
+forquilha-ce,FORQUILHA / CE,ftth,efetivado,2026-07-01,2,1
+fortaleza-ce,FORTALEZA / CE,5g,ativacao,2026-07-01,2,1994
+fortaleza-ce,FORTALEZA / CE,ftth,orcamento,2026-07-01,2,1865
+fortaleza-ce,FORTALEZA / CE,ftth,efetivado,2026-07-01,2,1490
+fortaleza-ce,FORTALEZA / CE,ftth,instalacao,2026-07-01,2,1191
+fortaleza-ce-ce,FORTALEZA CE / CE,5g,ativacao,2026-07-01,2,2
+francisco-rn,FRANCISCO / RN,5g,ativacao,2026-07-01,2,2
+francisco-dantas-rn,FRANCISCO DANTAS / RN,ftth,orcamento,2026-07-01,2,1
+frutuoso-gomes-rn,FRUTUOSO GOMES / RN,5g,ativacao,2026-07-01,2,16
+gado-bravo-pb,GADO BRAVO / PB,5g,ativacao,2026-07-01,2,5
+garanhuns-pe,GARANHUNS / PE,ftth,orcamento,2026-07-01,2,45
+garanhuns-pe,GARANHUNS / PE,ftth,efetivado,2026-07-01,2,39
+garanhuns-pe,GARANHUNS / PE,ftth,instalacao,2026-07-01,2,34
+goianinha-rn,GOIANINHA / RN,5g,ativacao,2026-07-01,2,12
+governador-dix-sept-rosado-rn,GOVERNADOR DIX SEPT ROSADO / RN,5g,ativacao,2026-07-01,2,30
+granja-ce,GRANJA / CE,5g,ativacao,2026-07-01,2,50
+granja-ce,GRANJA / CE,ftth,orcamento,2026-07-01,2,1
+gravata-pe,GRAVATA / PE,5g,ativacao,2026-07-01,2,22
+gravata-pe,GRAVATA / PE,ftth,orcamento,2026-07-01,2,20
+gravata-pe,GRAVATA / PE,ftth,efetivado,2026-07-01,2,14
+gravata-pe,GRAVATA / PE,ftth,instalacao,2026-07-01,2,10
+grossos-rn,GROSSOS / RN,5g,ativacao,2026-07-01,2,9
+grossos-rn,GROSSOS / RN,ftth,efetivado,2026-07-01,2,1
+guamare-rn,GUAMARE / RN,5g,ativacao,2026-07-01,2,1
+guamare-rn,GUAMARE / RN,ftth,orcamento,2026-07-01,2,1
+guamare-rn,GUAMARE / RN,ftth,efetivado,2026-07-01,2,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,5g,ativacao,2026-07-01,2,27
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,orcamento,2026-07-01,2,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,efetivado,2026-07-01,2,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,instalacao,2026-07-01,2,2
+guaramiranga-ce,GUARAMIRANGA  / CE,5g,ativacao,2026-07-01,2,2
+horizonte-ce,HORIZONTE / CE,5g,ativacao,2026-07-01,2,61
+horizonte-ce,HORIZONTE / CE,ftth,orcamento,2026-07-01,2,97
+horizonte-ce,HORIZONTE / CE,ftth,efetivado,2026-07-01,2,81
+horizonte-ce,HORIZONTE / CE,ftth,instalacao,2026-07-01,2,76
+ibiapina-ce,IBIAPINA / CE,5g,ativacao,2026-07-01,2,10
+ibiapina-ce,IBIAPINA / CE,ftth,instalacao,2026-07-01,2,1
+ibiapina-ce,IBIAPINA / CE,ftth,orcamento,2026-07-01,2,1
+ibiapina-ce,IBIAPINA / CE,ftth,efetivado,2026-07-01,2,1
+icapui-ce,ICAPUI / CE,5g,ativacao,2026-07-01,2,2
+ico-ce,ICO / CE,5g,ativacao,2026-07-01,2,57
+ico-ce,ICO / CE,ftth,orcamento,2026-07-01,2,46
+ico-ce,ICO / CE,ftth,efetivado,2026-07-01,2,45
+ico-ce,ICO / CE,ftth,instalacao,2026-07-01,2,37
+igarassu-pe,IGARASSU / PE,ftth,orcamento,2026-07-01,2,50
+igarassu-pe,IGARASSU / PE,ftth,efetivado,2026-07-01,2,44
+igarassu-pe,IGARASSU / PE,ftth,instalacao,2026-07-01,2,36
+iguaracy-pe,IGUARACY / PE,5g,ativacao,2026-07-01,2,9
+iguatu-ce,IGUATU / CE,5g,ativacao,2026-07-01,2,102
+iguatu-ce,IGUATU / CE,ftth,orcamento,2026-07-01,2,110
+iguatu-ce,IGUATU / CE,ftth,efetivado,2026-07-01,2,94
+iguatu-ce,IGUATU / CE,ftth,instalacao,2026-07-01,2,88
+ipanguacu-rn,IPANGUACU / RN,5g,ativacao,2026-07-01,2,4
+ipaporanga-ce,IPAPORANGA / CE,5g,ativacao,2026-07-01,2,4
+ipaumirim-ce,IPAUMIRIM / CE,5g,ativacao,2026-07-01,2,25
+ipu-ce,IPU / CE,5g,ativacao,2026-07-01,2,37
+ipu-ce,IPU / CE,ftth,orcamento,2026-07-01,2,10
+ipu-ce,IPU / CE,ftth,efetivado,2026-07-01,2,10
+ipu-ce,IPU / CE,ftth,instalacao,2026-07-01,2,9
+ipueiras-ce,IPUEIRAS / CE,5g,ativacao,2026-07-01,2,23
+iracema-ce,IRACEMA / CE,5g,ativacao,2026-07-01,2,21
+iracema-ce,IRACEMA / CE,ftth,orcamento,2026-07-01,2,7
+iracema-ce,IRACEMA / CE,ftth,efetivado,2026-07-01,2,7
+iracema-ce,IRACEMA / CE,ftth,instalacao,2026-07-01,2,7
+iraucuba-ce,IRAUCUBA / CE,5g,ativacao,2026-07-01,2,7
+itabaiana-se,ITABAIANA / SE,ftth,orcamento,2026-07-01,2,32
+itabaiana-se,ITABAIANA / SE,ftth,efetivado,2026-07-01,2,25
+itabaiana-se,ITABAIANA / SE,ftth,instalacao,2026-07-01,2,22
+itaitinga-ce,ITAITINGA / CE,5g,ativacao,2026-07-01,2,8
+itaja-rn,ITAJA / RN,5g,ativacao,2026-07-01,2,9
+itapaje-ce,ITAPAJE / CE,5g,ativacao,2026-07-01,2,21
+itapaje-ce,ITAPAJE / CE,ftth,orcamento,2026-07-01,2,22
+itapaje-ce,ITAPAJE / CE,ftth,efetivado,2026-07-01,2,19
+itapaje-ce,ITAPAJE / CE,ftth,instalacao,2026-07-01,2,15
+itapipoca-ce,ITAPIPOCA / CE,5g,ativacao,2026-07-01,2,76
+itapipoca-ce,ITAPIPOCA / CE,ftth,orcamento,2026-07-01,2,65
+itapipoca-ce,ITAPIPOCA / CE,ftth,efetivado,2026-07-01,2,60
+itapipoca-ce,ITAPIPOCA / CE,ftth,instalacao,2026-07-01,2,55
+itarema-ce,ITAREMA / CE,5g,ativacao,2026-07-01,2,4
+itau-rn,ITAU / RN,5g,ativacao,2026-07-01,2,6
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,orcamento,2026-07-01,2,154
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,efetivado,2026-07-01,2,127
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,instalacao,2026-07-01,2,78
+jaguaretama-ce,JAGUARETAMA / CE,5g,ativacao,2026-07-01,2,17
+jaguaretama-ce,JAGUARETAMA / CE,ftth,orcamento,2026-07-01,2,6
+jaguaretama-ce,JAGUARETAMA / CE,ftth,efetivado,2026-07-01,2,6
+jaguaretama-ce,JAGUARETAMA / CE,ftth,instalacao,2026-07-01,2,4
+jaguaribara-ce,JAGUARIBARA / CE,5g,ativacao,2026-07-01,2,9
+jaguaribara-ce,JAGUARIBARA / CE,ftth,orcamento,2026-07-01,2,8
+jaguaribara-ce,JAGUARIBARA / CE,ftth,efetivado,2026-07-01,2,8
+jaguaribara-ce,JAGUARIBARA / CE,ftth,instalacao,2026-07-01,2,7
+jaguaribe-ce,JAGUARIBE / CE,5g,ativacao,2026-07-01,2,49
+jaguaribe-ce,JAGUARIBE / CE,ftth,orcamento,2026-07-01,2,20
+jaguaribe-ce,JAGUARIBE / CE,ftth,efetivado,2026-07-01,2,20
+jaguaribe-ce,JAGUARIBE / CE,ftth,instalacao,2026-07-01,2,19
+jaguaruana-ce,JAGUARUANA / CE,5g,ativacao,2026-07-01,2,12
+janduis-rn,JANDUIS / RN,5g,ativacao,2026-07-01,2,10
+jardim-de-piranhas-rn,JARDIM DE PIRANHAS / RN,5g,ativacao,2026-07-01,2,10
+jati-ce,JATI  / CE,5g,ativacao,2026-07-01,2,21
+jati-ce,JATI / CE,ftth,orcamento,2026-07-01,2,1
+jati-ce,JATI / CE,ftth,efetivado,2026-07-01,2,1
+jati-ce,JATI / CE,ftth,instalacao,2026-07-01,2,1
+jeremoabo-ba,JEREMOABO / BA,5g,ativacao,2026-07-01,2,47
+jeremoabo-ba,JEREMOABO / BA,ftth,orcamento,2026-07-01,2,14
+jeremoabo-ba,JEREMOABO / BA,ftth,efetivado,2026-07-01,2,14
+jeremoabo-ba,JEREMOABO / BA,ftth,instalacao,2026-07-01,2,15
+jijoca-de-jericoacoara-ce,JIJOCA DE JERICOACOARA / CE,5g,ativacao,2026-07-01,2,1
+joao-camara-rn,JOAO CAMARA / RN,5g,ativacao,2026-07-01,2,59
+joao-camara-rn,JOAO CAMARA / RN,ftth,orcamento,2026-07-01,2,1
+joao-camara-rn,JOAO CAMARA / RN,ftth,efetivado,2026-07-01,2,1
+joao-pessoa-pb,JOAO PESSOA / PB,5g,ativacao,2026-07-01,2,393
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,orcamento,2026-07-01,2,826
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,efetivado,2026-07-01,2,678
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,instalacao,2026-07-01,2,512
+jose-da-penha-rn,JOSE DA PENHA / RN,5g,ativacao,2026-07-01,2,2
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,instalacao,2026-07-01,2,4
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,orcamento,2026-07-01,2,5
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,efetivado,2026-07-01,2,3
+juazeirinho-pb,JUAZEIRINHO / PB,5g,ativacao,2026-07-01,2,18
+juazeiro-ba,JUAZEIRO / BA,5g,ativacao,2026-07-01,2,90
+juazeiro-ba,JUAZEIRO / BA,ftth,orcamento,2026-07-01,2,75
+juazeiro-ba,JUAZEIRO / BA,ftth,efetivado,2026-07-01,2,64
+juazeiro-ba,JUAZEIRO / BA,ftth,instalacao,2026-07-01,2,59
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,5g,ativacao,2026-07-01,2,357
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,2,308
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,2,274
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,2,248
+jucas-ce,JUCAS / CE,5g,ativacao,2026-07-01,2,23
+jucas-ce,JUCAS / CE,ftth,instalacao,2026-07-01,2,1
+jucurutu-rn,JUCURUTU / RN,5g,ativacao,2026-07-01,2,14
+junco-do-serido-pb,JUNCO DO SERIDO / PB,5g,ativacao,2026-07-01,2,13
+lagarto-se,LAGARTO / SE,ftth,orcamento,2026-07-01,2,26
+lagarto-se,LAGARTO / SE,ftth,efetivado,2026-07-01,2,18
+lagarto-se,LAGARTO / SE,ftth,instalacao,2026-07-01,2,23
+lago-dos-rodrigues-ma,LAGO DOS RODRIGUES / MA,5g,ativacao,2026-07-01,2,1
+lagoa-pb,LAGOA / PB,5g,ativacao,2026-07-01,2,3
+lagoa-seca-pb,LAGOA SECA / PB,5g,ativacao,2026-07-01,2,2
+lagoa-seca-pb,LAGOA SECA / PB,ftth,instalacao,2026-07-01,2,1
+lajes-rn,LAJES / RN,5g,ativacao,2026-07-01,2,10
+lastro-pb,LASTRO / PB,5g,ativacao,2026-07-01,2,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,5g,ativacao,2026-07-01,2,38
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,orcamento,2026-07-01,2,10
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,efetivado,2026-07-01,2,10
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,instalacao,2026-07-01,2,7
+limoeiro-pe,LIMOEIRO / PE,ftth,orcamento,2026-07-01,2,26
+limoeiro-pe,LIMOEIRO / PE,ftth,efetivado,2026-07-01,2,25
+limoeiro-pe,LIMOEIRO / PE,ftth,instalacao,2026-07-01,2,22
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE  / CE,5g,ativacao,2026-07-01,2,65
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,2,48
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,2,40
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,2,38
+luis-correia-pi,LUIS CORREIA / PI,ftth,orcamento,2026-07-01,2,12
+luis-correia-pi,LUIS CORREIA / PI,ftth,efetivado,2026-07-01,2,11
+luis-correia-pi,LUIS CORREIA / PI,ftth,instalacao,2026-07-01,2,10
+luis-gomes-rn,LUIS GOMES / RN,ftth,orcamento,2026-07-01,2,1
+macaiba-rn,MACAIBA / RN,5g,ativacao,2026-07-01,2,73
+macaiba-rn,MACAIBA / RN,ftth,orcamento,2026-07-01,2,56
+macaiba-rn,MACAIBA / RN,ftth,efetivado,2026-07-01,2,56
+macaiba-rn,MACAIBA / RN,ftth,instalacao,2026-07-01,2,31
+macau-rn,MACAU / RN,5g,ativacao,2026-07-01,2,11
+macau-rn,MACAU / RN,ftth,instalacao,2026-07-01,2,6
+macau-rn,MACAU / RN,ftth,orcamento,2026-07-01,2,5
+macau-rn,MACAU / RN,ftth,efetivado,2026-07-01,2,5
+maceio-al,MACEIO / AL,5g,ativacao,2026-07-01,2,318
+maceio-al,MACEIO / AL,ftth,orcamento,2026-07-01,2,525
+maceio-al,MACEIO / AL,ftth,efetivado,2026-07-01,2,414
+maceio-al,MACEIO / AL,ftth,instalacao,2026-07-01,2,402
+machados-pe,MACHADOS / PE,5g,ativacao,2026-07-01,2,23
+magalhaes-de-almeida-ma,MAGALHAES DE ALMEIDA / MA,5g,ativacao,2026-07-01,2,4
+major-sales-rn,MAJOR SALES / RN,5g,ativacao,2026-07-01,2,6
+major-sales-rn,MAJOR SALES / RN,ftth,orcamento,2026-07-01,2,5
+major-sales-rn,MAJOR SALES / RN,ftth,efetivado,2026-07-01,2,4
+major-sales-rn,MAJOR SALES / RN,ftth,instalacao,2026-07-01,2,3
+mamanguape-pb,MAMANGUAPE / PB,5g,ativacao,2026-07-01,2,6
+maracanau-ce,MARACANAU / CE,5g,ativacao,2026-07-01,2,154
+maracanau-ce,MARACANAU / CE,ftth,orcamento,2026-07-01,2,235
+maracanau-ce,MARACANAU / CE,ftth,efetivado,2026-07-01,2,186
+maracanau-ce,MARACANAU / CE,ftth,instalacao,2026-07-01,2,164
+maranguape-ce,MARANGUAPE  / CE,5g,ativacao,2026-07-01,2,94
+maranguape-ce,MARANGUAPE / CE,ftth,orcamento,2026-07-01,2,51
+maranguape-ce,MARANGUAPE / CE,ftth,efetivado,2026-07-01,2,42
+maranguape-ce,MARANGUAPE / CE,ftth,instalacao,2026-07-01,2,33
+marcelino-vieira-rn,MARCELINO VIEIRA / RN,5g,ativacao,2026-07-01,2,14
+marco-ce,MARCO / CE,5g,ativacao,2026-07-01,2,13
+marechal-deodoro-al,MARECHAL DEODORO / AL,5g,ativacao,2026-07-01,2,23
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,orcamento,2026-07-01,2,41
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,efetivado,2026-07-01,2,34
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,instalacao,2026-07-01,2,36
+mari-pb,MARI / PB,5g,ativacao,2026-07-01,2,16
+marizopolis-pb,MARIZOPOLIS / PB,5g,ativacao,2026-07-01,2,15
+martins-rn,MARTINS / RN,ftth,orcamento,2026-07-01,2,2
+martins-rn,MARTINS / RN,ftth,efetivado,2026-07-01,2,2
+martins-rn,MARTINS / RN,ftth,instalacao,2026-07-01,2,1
+massape-ce,MASSAPE / CE,5g,ativacao,2026-07-01,2,44
+massaranduba-pb,MASSARANDUBA / PB,ftth,orcamento,2026-07-01,2,1
+mataraca-pb,MATARACA / PB,5g,ativacao,2026-07-01,2,10
+mato-grosso-pb,MATO GROSSO  / PB,5g,ativacao,2026-07-01,2,2
+mauriti-ce,MAURITI / CE,5g,ativacao,2026-07-01,2,22
+maxaranguape-rn,MAXARANGUAPE / RN,5g,ativacao,2026-07-01,2,19
+meruoca-ce,MERUOCA / CE,5g,ativacao,2026-07-01,2,1
+messias-targino-rn,MESSIAS TARGINO / RN,5g,ativacao,2026-07-01,2,2
+milagres-ce,MILAGRES / CE,5g,ativacao,2026-07-01,2,27
+milagres-ce,MILAGRES / CE,ftth,orcamento,2026-07-01,2,11
+milagres-ce,MILAGRES / CE,ftth,efetivado,2026-07-01,2,11
+milagres-ce,MILAGRES / CE,ftth,instalacao,2026-07-01,2,8
+,MIRADOR/MA / MA,5g,ativacao,2026-07-01,2,1
+missao-velha-ce,MISSAO VELHA / CE,5g,ativacao,2026-07-01,2,30
+missao-velha-ce,MISSAO VELHA / CE,ftth,instalacao,2026-07-01,2,15
+missao-velha-ce,MISSAO VELHA / CE,ftth,orcamento,2026-07-01,2,19
+missao-velha-ce,MISSAO VELHA / CE,ftth,efetivado,2026-07-01,2,14
+mombaca-ce,MOMBACA / CE,5g,ativacao,2026-07-01,2,25
+mombaca-ce,MOMBACA / CE,ftth,orcamento,2026-07-01,2,20
+mombaca-ce,MOMBACA / CE,ftth,efetivado,2026-07-01,2,18
+mombaca-ce,MOMBACA / CE,ftth,instalacao,2026-07-01,2,17
+morada-nova-ce,MORADA NOVA / CE,5g,ativacao,2026-07-01,2,59
+morada-nova-ce,MORADA NOVA / CE,ftth,orcamento,2026-07-01,2,25
+morada-nova-ce,MORADA NOVA / CE,ftth,efetivado,2026-07-01,2,19
+morada-nova-ce,MORADA NOVA / CE,ftth,instalacao,2026-07-01,2,18
+moreno-pe,MORENO / PE,5g,ativacao,2026-07-01,2,55
+morrinhos-ce,MORRINHOS / CE,5g,ativacao,2026-07-01,2,28
+mossoro-rn,MOSSORO / RN,5g,ativacao,2026-07-01,2,398
+mossoro-rn,MOSSORO / RN,ftth,orcamento,2026-07-01,2,180
+mossoro-rn,MOSSORO / RN,ftth,efetivado,2026-07-01,2,153
+mossoro-rn,MOSSORO / RN,ftth,instalacao,2026-07-01,2,147
+mossoro-rn-rn,MOSSORO RN / RN,5g,ativacao,2026-07-01,2,6
+mucambo-ce,MUCAMBO / CE,5g,ativacao,2026-07-01,2,13
+natal-rn,NATAL / RN,5g,ativacao,2026-07-01,2,851
+natal-rn,NATAL / RN,ftth,orcamento,2026-07-01,2,782
+natal-rn,NATAL / RN,ftth,efetivado,2026-07-01,2,663
+natal-rn,NATAL / RN,ftth,instalacao,2026-07-01,2,597
+nisia-floresta-rn,NISIA FLORESTA / RN,5g,ativacao,2026-07-01,2,3
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,efetivado,2026-07-01,2,5
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,instalacao,2026-07-01,2,6
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,orcamento,2026-07-01,2,5
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,orcamento,2026-07-01,2,271
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,efetivado,2026-07-01,2,218
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,instalacao,2026-07-01,2,192
+nova-cruz-rn,NOVA CRUZ  / RN,5g,ativacao,2026-07-01,2,40
+nova-olinda-ce,NOVA OLINDA / CE,5g,ativacao,2026-07-01,2,14
+nova-russas-ce,NOVA RUSSAS / CE,5g,ativacao,2026-07-01,2,46
+novo-oriente-ce,NOVO ORIENTE / CE,5g,ativacao,2026-07-01,2,2
+ocara-ce,OCARA / CE,5g,ativacao,2026-07-01,2,8
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,5g,ativacao,2026-07-01,2,8
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,orcamento,2026-07-01,2,5
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,efetivado,2026-07-01,2,2
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,instalacao,2026-07-01,2,4
+olho-dagua-do-borges-rn,OLHO DAGUA DO BORGES / RN,5g,ativacao,2026-07-01,2,9
+olinda-pe,OLINDA / PE,5g,ativacao,2026-07-01,2,2
+olinda-pe,OLINDA / PE,ftth,orcamento,2026-07-01,2,183
+olinda-pe,OLINDA / PE,ftth,efetivado,2026-07-01,2,143
+olinda-pe,OLINDA / PE,ftth,instalacao,2026-07-01,2,110
+oros-ce,OROS / CE,5g,ativacao,2026-07-01,2,16
+oros-ce,OROS / CE,ftth,orcamento,2026-07-01,2,3
+oros-ce,OROS / CE,ftth,efetivado,2026-07-01,2,3
+oros-ce,OROS / CE,ftth,instalacao,2026-07-01,2,3
+ouricuri-pe,OURICURI / PE,5g,ativacao,2026-07-01,2,30
+ouricuri-pe,OURICURI / PE,ftth,orcamento,2026-07-01,2,14
+ouricuri-pe,OURICURI / PE,ftth,efetivado,2026-07-01,2,10
+ouricuri-pe,OURICURI / PE,ftth,instalacao,2026-07-01,2,8
+pacajus-ce,PACAJUS / CE,5g,ativacao,2026-07-01,2,88
+pacajus-ce,PACAJUS / CE,ftth,orcamento,2026-07-01,2,62
+pacajus-ce,PACAJUS / CE,ftth,efetivado,2026-07-01,2,55
+pacajus-ce,PACAJUS / CE,ftth,instalacao,2026-07-01,2,54
+pacatuba-ce,PACATUBA / CE,5g,ativacao,2026-07-01,2,25
+pacatuba-ce,PACATUBA / CE,ftth,orcamento,2026-07-01,2,20
+pacatuba-ce,PACATUBA / CE,ftth,efetivado,2026-07-01,2,15
+pacatuba-ce,PACATUBA / CE,ftth,instalacao,2026-07-01,2,12
+pacoti-ce,PACOTI / CE,5g,ativacao,2026-07-01,2,1
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,instalacao,2026-07-01,2,27
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,orcamento,2026-07-01,2,27
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,efetivado,2026-07-01,2,22
+paracuru-ce,PARACURU / CE,5g,ativacao,2026-07-01,2,40
+paracuru-ce,PARACURU / CE,ftth,orcamento,2026-07-01,2,1
+paracuru-ce,PARACURU / CE,ftth,instalacao,2026-07-01,2,1
+,PARACURU/CE / CE,5g,ativacao,2026-07-01,2,2
+paraipaba-ce,PARAIPABA / CE,5g,ativacao,2026-07-01,2,67
+paraipaba-ce,PARAIPABA / CE,ftth,orcamento,2026-07-01,2,35
+paraipaba-ce,PARAIPABA / CE,ftth,efetivado,2026-07-01,2,30
+paraipaba-ce,PARAIPABA / CE,ftth,instalacao,2026-07-01,2,23
+parana-rn,PARANA / RN,5g,ativacao,2026-07-01,2,12
+parau-rn,PARAU / RN,5g,ativacao,2026-07-01,2,1
+parnaiba-pi,PARNAIBA / PI,5g,ativacao,2026-07-01,2,107
+parnaiba-pi,PARNAIBA / PI,ftth,orcamento,2026-07-01,2,113
+parnaiba-pi,PARNAIBA / PI,ftth,efetivado,2026-07-01,2,95
+parnaiba-pi,PARNAIBA / PI,ftth,instalacao,2026-07-01,2,88
+parnamirim-rn,PARNAMIRIM / RN,5g,ativacao,2026-07-01,2,188
+parnamirim-rn,PARNAMIRIM / RN,ftth,orcamento,2026-07-01,2,364
+parnamirim-rn,PARNAMIRIM / RN,ftth,efetivado,2026-07-01,2,313
+parnamirim-rn,PARNAMIRIM / RN,ftth,instalacao,2026-07-01,2,259
+patos-pb,PATOS / PB,5g,ativacao,2026-07-01,2,100
+patos-pb,PATOS / PB,ftth,orcamento,2026-07-01,2,94
+patos-pb,PATOS / PB,ftth,efetivado,2026-07-01,2,85
+patos-pb,PATOS / PB,ftth,instalacao,2026-07-01,2,78
+patos-do-piaui-pi,PATOS DO PIAUI / PI,5g,ativacao,2026-07-01,2,9
+patos-pb-pb,PATOS PB / PB,5g,ativacao,2026-07-01,2,3
+patu-rn,PATU / RN,5g,ativacao,2026-07-01,2,24
+pau-dos-ferros-rn,PAU DOS FERROS / RN,5g,ativacao,2026-07-01,2,73
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,orcamento,2026-07-01,2,17
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,efetivado,2026-07-01,2,17
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,instalacao,2026-07-01,2,14
+paulista-pe,PAULISTA / PE,ftth,orcamento,2026-07-01,2,115
+paulista-pe,PAULISTA / PE,ftth,efetivado,2026-07-01,2,103
+paulista-pe,PAULISTA / PE,ftth,instalacao,2026-07-01,2,76
+paulo-afonso-ba,PAULO AFONSO / BA,5g,ativacao,2026-07-01,2,35
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,orcamento,2026-07-01,2,23
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,efetivado,2026-07-01,2,19
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,instalacao,2026-07-01,2,23
+pedra-branca-ce,PEDRA BRANCA / CE,5g,ativacao,2026-07-01,2,31
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,orcamento,2026-07-01,2,7
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,efetivado,2026-07-01,2,7
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,instalacao,2026-07-01,2,9
+,PEDREIRAS/MA / MA,5g,ativacao,2026-07-01,2,1
+pedro-avelino-rn,PEDRO AVELINO / RN,5g,ativacao,2026-07-01,2,2
+penaforte-ce,PENAFORTE / CE,5g,ativacao,2026-07-01,2,16
+pendencias-rn,PENDENCIAS / RN,5g,ativacao,2026-07-01,2,15
+pendencias-rn,PENDENCIAS / RN,ftth,orcamento,2026-07-01,2,2
+pendencias-rn,PENDENCIAS / RN,ftth,efetivado,2026-07-01,2,1
+pereiro-ce,PEREIRO / CE,5g,ativacao,2026-07-01,2,133
+pereiro-ce,PEREIRO / CE,ftth,orcamento,2026-07-01,2,9
+pereiro-ce,PEREIRO / CE,ftth,efetivado,2026-07-01,2,7
+pereiro-ce,PEREIRO / CE,ftth,instalacao,2026-07-01,2,3
+pesqueira-pe,PESQUEIRA / PE,5g,ativacao,2026-07-01,2,29
+pesqueira-pe,PESQUEIRA / PE,ftth,orcamento,2026-07-01,2,12
+pesqueira-pe,PESQUEIRA / PE,ftth,efetivado,2026-07-01,2,10
+pesqueira-pe,PESQUEIRA / PE,ftth,instalacao,2026-07-01,2,10
+petrolina-pe,PETROLINA / PE,5g,ativacao,2026-07-01,2,252
+petrolina-pe,PETROLINA / PE,ftth,orcamento,2026-07-01,2,147
+petrolina-pe,PETROLINA / PE,ftth,efetivado,2026-07-01,2,118
+petrolina-pe,PETROLINA / PE,ftth,instalacao,2026-07-01,2,101
+picos-pi,PICOS / PI,ftth,orcamento,2026-07-01,2,27
+picos-pi,PICOS / PI,ftth,efetivado,2026-07-01,2,20
+picos-pi,PICOS / PI,ftth,instalacao,2026-07-01,2,18
+piloes-rn,PILOES / RN,5g,ativacao,2026-07-01,2,10
+pindoretama-ce,PINDORETAMA / CE,5g,ativacao,2026-07-01,2,8
+pinheiro-ma,PINHEIRO / MA,5g,ativacao,2026-07-01,2,2
+piquet-carneiro-ce,PIQUET CARNEIRO / CE,5g,ativacao,2026-07-01,2,22
+piranhas-al,PIRANHAS / AL,5g,ativacao,2026-07-01,2,7
+piranhas-al,PIRANHAS / AL,ftth,orcamento,2026-07-01,2,4
+piranhas-al,PIRANHAS / AL,ftth,efetivado,2026-07-01,2,4
+piranhas-al,PIRANHAS / AL,ftth,instalacao,2026-07-01,2,4
+pirapemas-ma,PIRAPEMAS / MA,5g,ativacao,2026-07-01,2,1
+piripiri-pi,PIRIPIRI / PI,ftth,orcamento,2026-07-01,2,19
+piripiri-pi,PIRIPIRI / PI,ftth,efetivado,2026-07-01,2,15
+piripiri-pi,PIRIPIRI / PI,ftth,instalacao,2026-07-01,2,13
+poco-dantas-pb,POCO DANTAS / PB,5g,ativacao,2026-07-01,2,11
+pombal-pb,POMBAL / PB,5g,ativacao,2026-07-01,2,31
+pombal-pb,POMBAL / PB,ftth,orcamento,2026-07-01,2,19
+pombal-pb,POMBAL / PB,ftth,efetivado,2026-07-01,2,19
+pombal-pb,POMBAL / PB,ftth,instalacao,2026-07-01,2,22
+porcao-de-pedras-ma,PORCAO DE PEDRAS  / MA,5g,ativacao,2026-07-01,2,3
+portalegre-rn,PORTALEGRE / RN,5g,ativacao,2026-07-01,2,8
+portalegre-rn,PORTALEGRE / RN,ftth,orcamento,2026-07-01,2,2
+portalegre-rn,PORTALEGRE / RN,ftth,efetivado,2026-07-01,2,2
+portalegre-rn,PORTALEGRE / RN,ftth,instalacao,2026-07-01,2,3
+potengi-ce,POTENGI / CE,5g,ativacao,2026-07-01,2,3
+potiretama-ce,POTIRETAMA / CE,5g,ativacao,2026-07-01,2,13
+prata-pb,PRATA / PB,5g,ativacao,2026-07-01,2,2
+queimadas-pb,QUEIMADAS / PB,ftth,efetivado,2026-07-01,2,1
+queimadas-pb,QUEIMADAS / PB,ftth,orcamento,2026-07-01,2,1
+quixada-ce,QUIXADA / CE,5g,ativacao,2026-07-01,2,119
+quixada-ce,QUIXADA / CE,ftth,orcamento,2026-07-01,2,65
+quixada-ce,QUIXADA / CE,ftth,efetivado,2026-07-01,2,56
+quixada-ce,QUIXADA / CE,ftth,instalacao,2026-07-01,2,50
+quixeramobim-ce,QUIXERAMOBIM / CE,5g,ativacao,2026-07-01,2,103
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,orcamento,2026-07-01,2,67
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,efetivado,2026-07-01,2,60
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,instalacao,2026-07-01,2,49
+quixere-ce,QUIXERE / CE,5g,ativacao,2026-07-01,2,26
+quixere-ce,QUIXERE / CE,ftth,orcamento,2026-07-01,2,7
+quixere-ce,QUIXERE / CE,ftth,efetivado,2026-07-01,2,5
+quixere-ce,QUIXERE / CE,ftth,instalacao,2026-07-01,2,6
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,5g,ativacao,2026-07-01,2,14
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,orcamento,2026-07-01,2,5
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,efetivado,2026-07-01,2,5
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,instalacao,2026-07-01,2,3
+recife-pe,RECIFE / PE,5g,ativacao,2026-07-01,2,1
+recife-pe,RECIFE / PE,ftth,orcamento,2026-07-01,2,207
+recife-pe,RECIFE / PE,ftth,efetivado,2026-07-01,2,167
+recife-pe,RECIFE / PE,ftth,instalacao,2026-07-01,2,93
+riacho-de-santana-rn,RIACHO DE SANTANA / RN,5g,ativacao,2026-07-01,2,6
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,instalacao,2026-07-01,2,23
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,efetivado,2026-07-01,2,28
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,orcamento,2026-07-01,2,28
+rio-largo-al,RIO LARGO / AL,5g,ativacao,2026-07-01,2,35
+rio-largo-al,RIO LARGO / AL,ftth,orcamento,2026-07-01,2,50
+rio-largo-al,RIO LARGO / AL,ftth,efetivado,2026-07-01,2,38
+rio-largo-al,RIO LARGO / AL,ftth,instalacao,2026-07-01,2,30
+rio-tinto-pb,RIO TINTO / PB,5g,ativacao,2026-07-01,2,6
+rodolfo-fernandes-rn,RODOLFO FERNANDES / RN,5g,ativacao,2026-07-01,2,12
+russas-ce,RUSSAS / CE,5g,ativacao,2026-07-01,2,78
+russas-ce,RUSSAS / CE,ftth,orcamento,2026-07-01,2,37
+russas-ce,RUSSAS / CE,ftth,efetivado,2026-07-01,2,37
+russas-ce,RUSSAS / CE,ftth,instalacao,2026-07-01,2,43
+saboeiro-ce,SABOEIRO / CE,5g,ativacao,2026-07-01,2,4
+salgueiro-pe,SALGUEIRO  / PE,5g,ativacao,2026-07-01,2,53
+salgueiro-pe,SALGUEIRO / PE,ftth,orcamento,2026-07-01,2,21
+salgueiro-pe,SALGUEIRO / PE,ftth,efetivado,2026-07-01,2,17
+salgueiro-pe,SALGUEIRO / PE,ftth,instalacao,2026-07-01,2,17
+santa-cruz-pb,SANTA CRUZ / PB,5g,ativacao,2026-07-01,2,4
+santa-cruz-rn,SANTA CRUZ / RN,5g,ativacao,2026-07-01,2,30
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,orcamento,2026-07-01,2,43
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,efetivado,2026-07-01,2,33
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,instalacao,2026-07-01,2,33
+santa-luzia-pb,SANTA LUZIA / PB,5g,ativacao,2026-07-01,2,17
+santa-luzia-pb,SANTA LUZIA / PB,ftth,orcamento,2026-07-01,2,9
+santa-luzia-pb,SANTA LUZIA / PB,ftth,efetivado,2026-07-01,2,7
+santa-luzia-pb,SANTA LUZIA / PB,ftth,instalacao,2026-07-01,2,6
+santa-quiteria-ce,SANTA QUITERIA / CE,5g,ativacao,2026-07-01,2,30
+santa-rita-pb,SANTA RITA / PB,5g,ativacao,2026-07-01,2,74
+santa-rita-pb,SANTA RITA / PB,ftth,orcamento,2026-07-01,2,87
+santa-rita-pb,SANTA RITA / PB,ftth,efetivado,2026-07-01,2,68
+santa-rita-pb,SANTA RITA / PB,ftth,instalacao,2026-07-01,2,61
+santana-do-cariri-ce,SANTANA DO CARIRI / CE,5g,ativacao,2026-07-01,2,16
+santo-amaro-ba,SANTO AMARO / BA,ftth,orcamento,2026-07-01,2,31
+santo-amaro-ba,SANTO AMARO / BA,ftth,efetivado,2026-07-01,2,25
+santo-amaro-ba,SANTO AMARO / BA,ftth,instalacao,2026-07-01,2,27
+sao-benedito-ce,SAO BENEDITO / CE,5g,ativacao,2026-07-01,2,19
+sao-benedito-ce,SAO BENEDITO / CE,ftth,orcamento,2026-07-01,2,9
+sao-benedito-ce,SAO BENEDITO / CE,ftth,efetivado,2026-07-01,2,7
+sao-benedito-ce,SAO BENEDITO / CE,ftth,instalacao,2026-07-01,2,7
+sao-bento-pb,SAO BENTO / PB,5g,ativacao,2026-07-01,2,26
+sao-bento-pb,SAO BENTO / PB,ftth,efetivado,2026-07-01,2,12
+sao-bento-pb,SAO BENTO / PB,ftth,instalacao,2026-07-01,2,15
+sao-bento-pb,SAO BENTO / PB,ftth,orcamento,2026-07-01,2,12
+sao-caitano-pe,SAO CAITANO  / PE,5g,ativacao,2026-07-01,2,23
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,orcamento,2026-07-01,2,51
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,efetivado,2026-07-01,2,35
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,instalacao,2026-07-01,2,31
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,5g,ativacao,2026-07-01,2,6
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,orcamento,2026-07-01,2,33
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,efetivado,2026-07-01,2,31
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,instalacao,2026-07-01,2,17
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,5g,ativacao,2026-07-01,2,18
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,ftth,orcamento,2026-07-01,2,1
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,ftth,efetivado,2026-07-01,2,1
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,ftth,instalacao,2026-07-01,2,1
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,5g,ativacao,2026-07-01,2,54
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,orcamento,2026-07-01,2,142
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,efetivado,2026-07-01,2,122
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,instalacao,2026-07-01,2,109
+sao-joao-do-cariri-pb,SAO JOAO DO CARIRI / PB,5g,ativacao,2026-07-01,2,5
+sao-jose-de-brejo-do-cruz-pb,SAO JOSE DE BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,2,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,5g,ativacao,2026-07-01,2,35
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,orcamento,2026-07-01,2,103
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,efetivado,2026-07-01,2,86
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,instalacao,2026-07-01,2,35
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,orcamento,2026-07-01,2,49
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,efetivado,2026-07-01,2,45
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,instalacao,2026-07-01,2,37
+sao-mamede-pb,SAO MAMEDE / PB,5g,ativacao,2026-07-01,2,8
+sao-miguel-rn,SAO MIGUEL / RN,5g,ativacao,2026-07-01,2,47
+sao-miguel-rn,SAO MIGUEL / RN,ftth,orcamento,2026-07-01,2,16
+sao-miguel-rn,SAO MIGUEL / RN,ftth,efetivado,2026-07-01,2,16
+sao-miguel-rn,SAO MIGUEL / RN,ftth,instalacao,2026-07-01,2,15
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,instalacao,2026-07-01,2,21
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,orcamento,2026-07-01,2,20
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,efetivado,2026-07-01,2,21
+sao-paulo-sp,SAO PAULO / SP,5g,ativacao,2026-07-01,2,1
+,SAO PAULO DO POTENGI/RN / RN,5g,ativacao,2026-07-01,2,3
+sape-pb,SAPE / PB,5g,ativacao,2026-07-01,2,36
+satuba-al,SATUBA / AL,ftth,orcamento,2026-07-01,2,4
+satuba-al,SATUBA / AL,ftth,efetivado,2026-07-01,2,3
+senador-alexandre-costa-ma,SENADOR ALEXANDRE COSTA / MA,5g,ativacao,2026-07-01,2,3
+senador-georgino-avelino-rn,SENADOR GEORGINO AVELINO / RN,5g,ativacao,2026-07-01,2,3
+senador-pompeu-ce,SENADOR POMPEU / CE,5g,ativacao,2026-07-01,2,53
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,instalacao,2026-07-01,2,12
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,orcamento,2026-07-01,2,8
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,efetivado,2026-07-01,2,9
+serra-do-mel-rn,SERRA DO MEL / RN,5g,ativacao,2026-07-01,2,1
+serra-talhada-pe,SERRA TALHADA / PE,5g,ativacao,2026-07-01,2,68
+serra-talhada-pe,SERRA TALHADA / PE,ftth,orcamento,2026-07-01,2,33
+serra-talhada-pe,SERRA TALHADA / PE,ftth,efetivado,2026-07-01,2,32
+serra-talhada-pe,SERRA TALHADA / PE,ftth,instalacao,2026-07-01,2,27
+simoes-filho-ba,SIMOES FILHO / BA,ftth,orcamento,2026-07-01,2,16
+simoes-filho-ba,SIMOES FILHO / BA,ftth,efetivado,2026-07-01,2,11
+sobral-ce,SOBRAL / CE,5g,ativacao,2026-07-01,2,143
+sobral-ce,SOBRAL / CE,ftth,orcamento,2026-07-01,2,118
+sobral-ce,SOBRAL / CE,ftth,efetivado,2026-07-01,2,98
+sobral-ce,SOBRAL / CE,ftth,instalacao,2026-07-01,2,95
+,SOBRAL/CE / CE,5g,ativacao,2026-07-01,2,2
+solanea-pb,SOLANEA / PB,5g,ativacao,2026-07-01,2,33
+soledade-pb,SOLEDADE / PB,5g,ativacao,2026-07-01,2,11
+sousa-pb,SOUSA / PB,5g,ativacao,2026-07-01,2,32
+sousa-pb,SOUSA / PB,ftth,orcamento,2026-07-01,2,21
+sousa-pb,SOUSA / PB,ftth,efetivado,2026-07-01,2,22
+sousa-pb,SOUSA / PB,ftth,instalacao,2026-07-01,2,18
+surubim-pe,SURUBIM / PE,ftth,orcamento,2026-07-01,2,10
+surubim-pe,SURUBIM / PE,ftth,efetivado,2026-07-01,2,9
+surubim-pe,SURUBIM / PE,ftth,instalacao,2026-07-01,2,9
+taboleiro-grande-rn,TABOLEIRO GRANDE / RN,5g,ativacao,2026-07-01,2,5
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,5g,ativacao,2026-07-01,2,28
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,2,8
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,2,7
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,2,8
+taquaritinga-do-norte-pe,TAQUARITINGA DO NORTE / PE,5g,ativacao,2026-07-01,2,40
+taua-ce,TAUA / CE,5g,ativacao,2026-07-01,2,69
+taua-ce,TAUA / CE,ftth,orcamento,2026-07-01,2,33
+taua-ce,TAUA / CE,ftth,efetivado,2026-07-01,2,31
+taua-ce,TAUA / CE,ftth,instalacao,2026-07-01,2,25
+tenente-ananias-rn,TENENTE ANANIAS / RN,5g,ativacao,2026-07-01,2,29
+teresina-pi,TERESINA / PI,5g,ativacao,2026-07-01,2,397
+teresina-pi,TERESINA / PI,ftth,orcamento,2026-07-01,2,588
+teresina-pi,TERESINA / PI,ftth,efetivado,2026-07-01,2,489
+teresina-pi,TERESINA / PI,ftth,instalacao,2026-07-01,2,430
+tiangua-ce,TIANGUA / CE,5g,ativacao,2026-07-01,2,48
+tiangua-ce,TIANGUA / CE,ftth,orcamento,2026-07-01,2,33
+tiangua-ce,TIANGUA / CE,ftth,efetivado,2026-07-01,2,27
+tiangua-ce,TIANGUA / CE,ftth,instalacao,2026-07-01,2,30
+timon-ma,TIMON / MA,5g,ativacao,2026-07-01,2,55
+timon-ma,TIMON / MA,ftth,orcamento,2026-07-01,2,128
+timon-ma,TIMON / MA,ftth,efetivado,2026-07-01,2,109
+timon-ma,TIMON / MA,ftth,instalacao,2026-07-01,2,90
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,orcamento,2026-07-01,2,23
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,efetivado,2026-07-01,2,19
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,instalacao,2026-07-01,2,14
+toritama-pe,TORITAMA / PE,5g,ativacao,2026-07-01,2,20
+toritama-pe,TORITAMA / PE,ftth,orcamento,2026-07-01,2,23
+toritama-pe,TORITAMA / PE,ftth,instalacao,2026-07-01,2,13
+toritama-pe,TORITAMA / PE,ftth,efetivado,2026-07-01,2,16
+touros-rn,TOUROS / RN,5g,ativacao,2026-07-01,2,126
+trairi-ce,TRAIRI / CE,5g,ativacao,2026-07-01,2,1
+triunfo-potiguar-rn,TRIUNFO POTIGUAR / RN,5g,ativacao,2026-07-01,2,10
+trizidela-do-vale-ma,TRIZIDELA DO VALE / MA,5g,ativacao,2026-07-01,2,7
+tuntum-ma,TUNTUM / MA,5g,ativacao,2026-07-01,2,1
+ubajara-ce,UBAJARA / CE,5g,ativacao,2026-07-01,2,14
+ubajara-ce,UBAJARA / CE,ftth,instalacao,2026-07-01,2,2
+ubajara-ce,UBAJARA / CE,ftth,orcamento,2026-07-01,2,3
+ubajara-ce,UBAJARA / CE,ftth,efetivado,2026-07-01,2,3
+uirauna-pb,UIRAUNA / PB,5g,ativacao,2026-07-01,2,33
+uirauna-pb,UIRAUNA / PB,ftth,instalacao,2026-07-01,2,3
+uirauna-pb,UIRAUNA / PB,ftth,orcamento,2026-07-01,2,3
+uirauna-pb,UIRAUNA / PB,ftth,efetivado,2026-07-01,2,3
+umari-ce,UMARI / CE,5g,ativacao,2026-07-01,2,13
+umarizal-rn,UMARIZAL / RN,5g,ativacao,2026-07-01,2,4
+umarizal-rn,UMARIZAL / RN,ftth,orcamento,2026-07-01,2,3
+umarizal-rn,UMARIZAL / RN,ftth,efetivado,2026-07-01,2,3
+umarizal-rn,UMARIZAL / RN,ftth,instalacao,2026-07-01,2,3
+uniao-pi,UNIAO / PI,5g,ativacao,2026-07-01,2,2
+upanema-rn,UPANEMA / RN,5g,ativacao,2026-07-01,2,1
+uruoca-ce,URUOCA / CE,5g,ativacao,2026-07-01,2,4
+varjota-ce,VARJOTA / CE,5g,ativacao,2026-07-01,2,20
+varzea-alegre-ce,VARZEA ALEGRE / CE,5g,ativacao,2026-07-01,2,28
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,orcamento,2026-07-01,2,15
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,efetivado,2026-07-01,2,15
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,instalacao,2026-07-01,2,13
+verdejante-pe,VERDEJANTE  / PE,5g,ativacao,2026-07-01,2,15
+viana-ma,VIANA / MA,5g,ativacao,2026-07-01,2,1
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,orcamento,2026-07-01,2,9
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,efetivado,2026-07-01,2,7
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,instalacao,2026-07-01,2,5
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,efetivado,2026-07-01,2,17
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,instalacao,2026-07-01,2,20
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,orcamento,2026-07-01,2,23
+xexeu-pe,XEXEU / PE,5g,ativacao,2026-07-01,2,6
+,,5g,ativacao,2026-07-01,1,556
+,,ftth,orcamento,2026-07-01,1,7
+,,ftth,efetivado,2026-07-01,1,5
+,/,5g,ativacao,2026-07-01,1,19
+,/ / GO,5g,ativacao,2026-07-01,1,5
+abaiara-ce,ABAIARA / CE,5g,ativacao,2026-07-01,1,12
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,orcamento,2026-07-01,1,14
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,efetivado,2026-07-01,1,15
+abreu-e-lima-pe,ABREU E LIMA / PE,ftth,instalacao,2026-07-01,1,7
+acarape-ce,ACARAPE / CE,5g,ativacao,2026-07-01,1,51
+acarau-ce,ACARAU / CE,5g,ativacao,2026-07-01,1,59
+acarau-ce,ACARAU / CE,ftth,orcamento,2026-07-01,1,8
+acarau-ce,ACARAU / CE,ftth,efetivado,2026-07-01,1,9
+acarau-ce,ACARAU / CE,ftth,instalacao,2026-07-01,1,9
+acari-rn,ACARI / RN,5g,ativacao,2026-07-01,1,1
+acopiara-ce,ACOPIARA / CE,5g,ativacao,2026-07-01,1,45
+acopiara-ce,ACOPIARA / CE,ftth,orcamento,2026-07-01,1,15
+acopiara-ce,ACOPIARA / CE,ftth,efetivado,2026-07-01,1,13
+acopiara-ce,ACOPIARA / CE,ftth,instalacao,2026-07-01,1,15
+afonso-bezerra-rn,AFONSO BEZERRA / RN,5g,ativacao,2026-07-01,1,5
+agua-nova-rn,AGUA NOVA / RN,5g,ativacao,2026-07-01,1,16
+aiuaba-ce,AIUABA / CE,5g,ativacao,2026-07-01,1,7
+alagoa-grande-pb,ALAGOA GRANDE / PB,5g,ativacao,2026-07-01,1,10
+alagoinhas-ba,ALAGOINHAS / BA,ftth,orcamento,2026-07-01,1,64
+alagoinhas-ba,ALAGOINHAS / BA,ftth,efetivado,2026-07-01,1,48
+alagoinhas-ba,ALAGOINHAS / BA,ftth,instalacao,2026-07-01,1,29
+alexandria-rn,ALEXANDRIA / RN,5g,ativacao,2026-07-01,1,3
+,ALEXANDRIA/RN / RN,5g,ativacao,2026-07-01,1,1
+altaneira-ce,ALTANEIRA / CE,5g,ativacao,2026-07-01,1,23
+alto-do-rodrigues-rn,ALTO DO RODRIGUES / RN,5g,ativacao,2026-07-01,1,17
+alto-santo-ce,ALTO SANTO / CE,5g,ativacao,2026-07-01,1,17
+altos-pi,ALTOS / PI,ftth,orcamento,2026-07-01,1,24
+altos-pi,ALTOS / PI,ftth,efetivado,2026-07-01,1,23
+altos-pi,ALTOS / PI,ftth,instalacao,2026-07-01,1,26
+angical-ba,ANGICAL / BA,5g,ativacao,2026-07-01,1,1
+angicos-rn,ANGICOS / RN,5g,ativacao,2026-07-01,1,11
+antonina-do-norte-ce,ANTONINA DO NORTE / CE,5g,ativacao,2026-07-01,1,4
+antonio-martins-rn,ANTONIO MARTINS / RN,5g,ativacao,2026-07-01,1,3
+apodi-rn,APODI / RN,5g,ativacao,2026-07-01,1,16
+apodi-rn,APODI / RN,ftth,instalacao,2026-07-01,1,1
+aquiraz-ce,AQUIRAZ / CE,5g,ativacao,2026-07-01,1,9
+aquiraz-ce,AQUIRAZ / CE,ftth,orcamento,2026-07-01,1,15
+aquiraz-ce,AQUIRAZ / CE,ftth,efetivado,2026-07-01,1,8
+aquiraz-ce,AQUIRAZ / CE,ftth,instalacao,2026-07-01,1,6
+aracaju-se,ARACAJU / SE,ftth,orcamento,2026-07-01,1,287
+aracaju-se,ARACAJU / SE,ftth,efetivado,2026-07-01,1,231
+aracaju-se,ARACAJU / SE,ftth,instalacao,2026-07-01,1,195
+aracati-ce,ARACATI / CE,5g,ativacao,2026-07-01,1,51
+arapiraca-al,ARAPIRACA / AL,ftth,orcamento,2026-07-01,1,65
+arapiraca-al,ARAPIRACA / AL,ftth,efetivado,2026-07-01,1,54
+arapiraca-al,ARAPIRACA / AL,ftth,instalacao,2026-07-01,1,53
+arara-pb,ARARA / PB,5g,ativacao,2026-07-01,1,1
+araripe-ce,ARARIPE / CE,5g,ativacao,2026-07-01,1,3
+araripina-pe,ARARIPINA / PE,5g,ativacao,2026-07-01,1,30
+araripina-pe,ARARIPINA / PE,ftth,orcamento,2026-07-01,1,13
+araripina-pe,ARARIPINA / PE,ftth,instalacao,2026-07-01,1,13
+araripina-pe,ARARIPINA / PE,ftth,efetivado,2026-07-01,1,11
+aratuba-ce,ARATUBA / CE,5g,ativacao,2026-07-01,1,5
+arcoverde-pe,ARCOVERDE / PE,5g,ativacao,2026-07-01,1,23
+arcoverde-pe,ARCOVERDE / PE,ftth,orcamento,2026-07-01,1,10
+arcoverde-pe,ARCOVERDE / PE,ftth,efetivado,2026-07-01,1,7
+arcoverde-pe,ARCOVERDE / PE,ftth,instalacao,2026-07-01,1,10
+areia-branca-rn,AREIA BRANCA / RN,5g,ativacao,2026-07-01,1,28
+assare-ce,ASSARE / CE,5g,ativacao,2026-07-01,1,18
+assu-rn,ASSU / RN,5g,ativacao,2026-07-01,1,31
+assu-rn,ASSU / RN,ftth,orcamento,2026-07-01,1,7
+assu-rn,ASSU / RN,ftth,efetivado,2026-07-01,1,5
+assu-rn,ASSU / RN,ftth,instalacao,2026-07-01,1,3
+aurora-ce,AURORA / CE,5g,ativacao,2026-07-01,1,7
+banabuiu-ce,BANABUIU / CE,5g,ativacao,2026-07-01,1,22
+banabuiu-ce,BANABUIU / CE,ftth,orcamento,2026-07-01,1,7
+banabuiu-ce,BANABUIU / CE,ftth,efetivado,2026-07-01,1,6
+banabuiu-ce,BANABUIU / CE,ftth,instalacao,2026-07-01,1,5
+bananeiras-pb,BANANEIRAS / PB,5g,ativacao,2026-07-01,1,1
+barauna-rn,BARAUNA / RN,5g,ativacao,2026-07-01,1,8
+barauna-rn,BARAUNA / RN,ftth,orcamento,2026-07-01,1,7
+barauna-rn,BARAUNA / RN,ftth,efetivado,2026-07-01,1,5
+barauna-rn,BARAUNA / RN,ftth,instalacao,2026-07-01,1,4
+barbalha-ce,BARBALHA / CE,5g,ativacao,2026-07-01,1,36
+barbalha-ce,BARBALHA / CE,ftth,orcamento,2026-07-01,1,47
+barbalha-ce,BARBALHA / CE,ftth,efetivado,2026-07-01,1,42
+barbalha-ce,BARBALHA / CE,ftth,instalacao,2026-07-01,1,46
+barra-de-guabiraba-pe,BARRA DE GUABIRABA / PE,5g,ativacao,2026-07-01,1,5
+barra-de-santana-pb,BARRA DE SANTANA / PB,5g,ativacao,2026-07-01,1,1
+barra-de-sao-miguel-pb,BARRA DE SAO MIGUEL / PB,5g,ativacao,2026-07-01,1,1
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,orcamento,2026-07-01,1,29
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,efetivado,2026-07-01,1,26
+barra-dos-coqueiros-se,BARRA DOS COQUEIROS / SE,ftth,instalacao,2026-07-01,1,15
+barreira-ce,BARREIRA  / CE,5g,ativacao,2026-07-01,1,8
+barro-ce,BARRO / CE,5g,ativacao,2026-07-01,1,11
+batal-rn,BATAL / RN,5g,ativacao,2026-07-01,1,3
+baturite-ce,BATURITE / CE,5g,ativacao,2026-07-01,1,19
+bayeux-pb,BAYEUX / PB,5g,ativacao,2026-07-01,1,44
+bayeux-pb,BAYEUX / PB,ftth,orcamento,2026-07-01,1,56
+bayeux-pb,BAYEUX / PB,ftth,efetivado,2026-07-01,1,43
+bayeux-pb,BAYEUX / PB,ftth,instalacao,2026-07-01,1,37
+beberibe-ce,BEBERIBE / CE,5g,ativacao,2026-07-01,1,30
+bela-cruz-ce,BELA CRUZ / CE,5g,ativacao,2026-07-01,1,13
+belo-jardim-pe,BELO JARDIM / PE,5g,ativacao,2026-07-01,1,5
+belo-jardim-pe,BELO JARDIM / PE,ftth,orcamento,2026-07-01,1,11
+belo-jardim-pe,BELO JARDIM / PE,ftth,efetivado,2026-07-01,1,9
+belo-jardim-pe,BELO JARDIM / PE,ftth,instalacao,2026-07-01,1,6
+bezerros-pe,BEZERROS / PE,5g,ativacao,2026-07-01,1,24
+bezerros-pe,BEZERROS / PE,ftth,orcamento,2026-07-01,1,13
+bezerros-pe,BEZERROS / PE,ftth,efetivado,2026-07-01,1,13
+bezerros-pe,BEZERROS / PE,ftth,instalacao,2026-07-01,1,13
+boa-viagem-ce,BOA VIAGEM / CE,5g,ativacao,2026-07-01,1,11
+bom-conselho-pe,BOM CONSELHO / PE,5g,ativacao,2026-07-01,1,22
+bom-conselho-pe,BOM CONSELHO / PE,ftth,orcamento,2026-07-01,1,4
+bom-conselho-pe,BOM CONSELHO / PE,ftth,efetivado,2026-07-01,1,1
+bom-conselho-pe,BOM CONSELHO / PE,ftth,instalacao,2026-07-01,1,1
+bom-sucesso-pb,BOM SUCESSO / PB,5g,ativacao,2026-07-01,1,3
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,orcamento,2026-07-01,1,2
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,efetivado,2026-07-01,1,1
+brejo-da-madre-de-deus-pe,BREJO DA MADRE DE DEUS / PE,ftth,instalacao,2026-07-01,1,1
+brejo-do-cruz-pb,BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,1,15
+brejo-santo-ce,BREJO SANTO  / CE,5g,ativacao,2026-07-01,1,63
+brejo-santo-ce,BREJO SANTO / CE,ftth,orcamento,2026-07-01,1,38
+brejo-santo-ce,BREJO SANTO / CE,ftth,efetivado,2026-07-01,1,31
+brejo-santo-ce,BREJO SANTO / CE,ftth,instalacao,2026-07-01,1,32
+brisanet-ce,BRISANET / CE,5g,ativacao,2026-07-01,1,5
+cabedelo-pb,CABEDELO / PB,5g,ativacao,2026-07-01,1,10
+cabedelo-pb,CABEDELO / PB,ftth,orcamento,2026-07-01,1,50
+cabedelo-pb,CABEDELO / PB,ftth,efetivado,2026-07-01,1,37
+cabedelo-pb,CABEDELO / PB,ftth,instalacao,2026-07-01,1,31
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,orcamento,2026-07-01,1,51
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,efetivado,2026-07-01,1,39
+cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO / PE,ftth,instalacao,2026-07-01,1,27
+cachoeira-dos-indios-pb,CACHOEIRA DOS INDIOS / PB,5g,ativacao,2026-07-01,1,13
+caico-rn,CAICO / RN,5g,ativacao,2026-07-01,1,45
+caico-rn,CAICO / RN,ftth,orcamento,2026-07-01,1,27
+caico-rn,CAICO / RN,ftth,efetivado,2026-07-01,1,24
+caico-rn,CAICO / RN,ftth,instalacao,2026-07-01,1,21
+cajazeiras-pb,CAJAZEIRAS / PB,5g,ativacao,2026-07-01,1,45
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,orcamento,2026-07-01,1,32
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,efetivado,2026-07-01,1,33
+cajazeiras-pb,CAJAZEIRAS / PB,ftth,instalacao,2026-07-01,1,32
+camacari-ba,CAMACARI / BA,ftth,orcamento,2026-07-01,1,122
+camacari-ba,CAMACARI / BA,ftth,efetivado,2026-07-01,1,97
+camacari-ba,CAMACARI / BA,ftth,instalacao,2026-07-01,1,64
+camaragibe-pe,CAMARAGIBE / PE,ftth,orcamento,2026-07-01,1,53
+camaragibe-pe,CAMARAGIBE / PE,ftth,efetivado,2026-07-01,1,45
+camaragibe-pe,CAMARAGIBE / PE,ftth,instalacao,2026-07-01,1,44
+camocim-ce,CAMOCIM  / CE,5g,ativacao,2026-07-01,1,107
+camocim-ce,CAMOCIM / CE,ftth,orcamento,2026-07-01,1,3
+camocim-ce,CAMOCIM / CE,ftth,efetivado,2026-07-01,1,2
+camocim-ce,CAMOCIM / CE,ftth,instalacao,2026-07-01,1,1
+,CAMOCIM/CE / CE,5g,ativacao,2026-07-01,1,1
+campina-grande-pb,CAMPINA GRANDE / PB,5g,ativacao,2026-07-01,1,93
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,orcamento,2026-07-01,1,155
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,efetivado,2026-07-01,1,117
+campina-grande-pb,CAMPINA GRANDE / PB,ftth,instalacao,2026-07-01,1,110
+campo-grande-rn,CAMPO GRANDE / RN,5g,ativacao,2026-07-01,1,3
+campo-maior-pi,CAMPO MAIOR / PI,ftth,orcamento,2026-07-01,1,15
+campo-maior-pi,CAMPO MAIOR / PI,ftth,efetivado,2026-07-01,1,14
+campo-maior-pi,CAMPO MAIOR / PI,ftth,instalacao,2026-07-01,1,12
+campos-sales-ce,CAMPOS SALES / CE,5g,ativacao,2026-07-01,1,22
+canguaretama-rn,CANGUARETAMA / RN,5g,ativacao,2026-07-01,1,6
+canguaretama-rn,CANGUARETAMA / RN,ftth,orcamento,2026-07-01,1,1
+caninde-ce,CANINDE / CE,5g,ativacao,2026-07-01,1,34
+caninde-ce,CANINDE / CE,ftth,orcamento,2026-07-01,1,27
+caninde-ce,CANINDE / CE,ftth,efetivado,2026-07-01,1,24
+caninde-ce,CANINDE / CE,ftth,instalacao,2026-07-01,1,19
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,5g,ativacao,2026-07-01,1,17
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,orcamento,2026-07-01,1,8
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,efetivado,2026-07-01,1,10
+caninde-de-sao-francisco-se,CANINDE DE SAO FRANCISCO / SE,ftth,instalacao,2026-07-01,1,8
+capistrano-ce,CAPISTRANO / CE,5g,ativacao,2026-07-01,1,2
+caraubas-rn,CARAUBAS / RN,5g,ativacao,2026-07-01,1,18
+caridade-ce,CARIDADE / CE,5g,ativacao,2026-07-01,1,11
+carire-ce,CARIRE / CE,5g,ativacao,2026-07-01,1,8
+carire-ce,CARIRE / CE,ftth,orcamento,2026-07-01,1,1
+caririacu-ce,CARIRIACU / CE,5g,ativacao,2026-07-01,1,22
+carius-ce,CARIUS / CE,5g,ativacao,2026-07-01,1,5
+carnaubal-ce,CARNAUBAL / CE,5g,ativacao,2026-07-01,1,1
+carpina-pe,CARPINA / PE,ftth,orcamento,2026-07-01,1,3
+carpina-pe,CARPINA / PE,ftth,efetivado,2026-07-01,1,1
+caruaru-pe,CARUARU / PE,5g,ativacao,2026-07-01,1,113
+caruaru-pe,CARUARU / PE,ftth,orcamento,2026-07-01,1,141
+caruaru-pe,CARUARU / PE,ftth,efetivado,2026-07-01,1,113
+caruaru-pe,CARUARU / PE,ftth,instalacao,2026-07-01,1,117
+cascavel-ce,CASCAVEL / CE,5g,ativacao,2026-07-01,1,28
+cascavel-ce,CASCAVEL / CE,ftth,orcamento,2026-07-01,1,34
+cascavel-ce,CASCAVEL / CE,ftth,efetivado,2026-07-01,1,28
+cascavel-ce,CASCAVEL / CE,ftth,instalacao,2026-07-01,1,24
+catarina-ce,CATARINA / CE,5g,ativacao,2026-07-01,1,2
+catende-pe,CATENDE / PE,5g,ativacao,2026-07-01,1,1
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,5g,ativacao,2026-07-01,1,38
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,orcamento,2026-07-01,1,12
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,efetivado,2026-07-01,1,11
+catole-do-rocha-pb,CATOLE DO ROCHA / PB,ftth,instalacao,2026-07-01,1,8
+catu-ba,CATU / BA,ftth,orcamento,2026-07-01,1,25
+catu-ba,CATU / BA,ftth,efetivado,2026-07-01,1,20
+catu-ba,CATU / BA,ftth,instalacao,2026-07-01,1,18
+caucaia-ce,CAUCAIA  / CE,5g,ativacao,2026-07-01,1,162
+caucaia-ce,CAUCAIA / CE,ftth,orcamento,2026-07-01,1,139
+caucaia-ce,CAUCAIA / CE,ftth,efetivado,2026-07-01,1,115
+caucaia-ce,CAUCAIA / CE,ftth,instalacao,2026-07-01,1,93
+ceara-mirim-rn,CEARA MIRIM / RN,5g,ativacao,2026-07-01,1,52
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,orcamento,2026-07-01,1,25
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,efetivado,2026-07-01,1,25
+ceara-mirim-rn,CEARA MIRIM / RN,ftth,instalacao,2026-07-01,1,25
+cedro-ce,CEDRO / CE,5g,ativacao,2026-07-01,1,20
+cedro-ce,CEDRO / CE,ftth,orcamento,2026-07-01,1,7
+cedro-ce,CEDRO / CE,ftth,efetivado,2026-07-01,1,6
+cedro-ce,CEDRO / CE,ftth,instalacao,2026-07-01,1,11
+cha-de-alegria-pe,CHA DE ALEGRIA / PE,5g,ativacao,2026-07-01,1,10
+cha-grande-pe,CHA GRANDE / PE,5g,ativacao,2026-07-01,1,7
+chorozinho-ce,CHOROZINHO / CE,5g,ativacao,2026-07-01,1,22
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,5g,ativacao,2026-07-01,1,4
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,orcamento,2026-07-01,1,4
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA / RN,ftth,efetivado,2026-07-01,1,3
+crateus-ce,CRATEUS / CE,5g,ativacao,2026-07-01,1,73
+crateus-ce,CRATEUS / CE,ftth,orcamento,2026-07-01,1,20
+crateus-ce,CRATEUS / CE,ftth,efetivado,2026-07-01,1,19
+crateus-ce,CRATEUS / CE,ftth,instalacao,2026-07-01,1,22
+crato-ce,CRATO / CE,5g,ativacao,2026-07-01,1,73
+crato-ce,CRATO / CE,ftth,orcamento,2026-07-01,1,75
+crato-ce,CRATO / CE,ftth,efetivado,2026-07-01,1,67
+crato-ce,CRATO / CE,ftth,instalacao,2026-07-01,1,68
+,CRATO/CE / CE,5g,ativacao,2026-07-01,1,4
+croata-ce,CROATA / CE,5g,ativacao,2026-07-01,1,5
+cruz-ce,CRUZ / CE,5g,ativacao,2026-07-01,1,6
+cruz-do-espirito-santo-pb,CRUZ DO ESPIRITO SANTO / PB,5g,ativacao,2026-07-01,1,9
+currais-novos-rn,CURRAIS NOVOS / RN,5g,ativacao,2026-07-01,1,54
+currais-novos-rn,CURRAIS NOVOS / RN,ftth,orcamento,2026-07-01,1,1
+custodia-pe,CUSTODIA / PE,5g,ativacao,2026-07-01,1,18
+custodia-pe,CUSTODIA / PE,ftth,orcamento,2026-07-01,1,2
+custodia-pe,CUSTODIA / PE,ftth,efetivado,2026-07-01,1,3
+custodia-pe,CUSTODIA / PE,ftth,instalacao,2026-07-01,1,3
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,5g,ativacao,2026-07-01,1,22
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,orcamento,2026-07-01,1,13
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,efetivado,2026-07-01,1,9
+delmiro-gouveia-al,DELMIRO GOUVEIA / AL,ftth,instalacao,2026-07-01,1,9
+deputado-irapua-pinheiro-ce,DEPUTADO IRAPUA PINHEIRO / CE,5g,ativacao,2026-07-01,1,1
+deputado-irapuan-pinheiro-ce,DEPUTADO IRAPUAN PINHEIRO / CE,5g,ativacao,2026-07-01,1,1
+dias-davila-ba,DIAS DAVILA / BA,ftth,orcamento,2026-07-01,1,19
+dias-davila-ba,DIAS DAVILA / BA,ftth,efetivado,2026-07-01,1,15
+dias-davila-ba,DIAS DAVILA / BA,ftth,instalacao,2026-07-01,1,18
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,5g,ativacao,2026-07-01,1,7
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,orcamento,2026-07-01,1,4
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,efetivado,2026-07-01,1,3
+doutor-severiano-rn,DOUTOR SEVERIANO / RN,ftth,instalacao,2026-07-01,1,3
+encanto-rn,ENCANTO / RN,5g,ativacao,2026-07-01,1,16
+encanto-rn,ENCANTO / RN,ftth,orcamento,2026-07-01,1,1
+encanto-rn,ENCANTO / RN,ftth,efetivado,2026-07-01,1,1
+erere-ce,ERERE / CE,5g,ativacao,2026-07-01,1,8
+escada-pe,ESCADA / PE,ftth,orcamento,2026-07-01,1,27
+escada-pe,ESCADA / PE,ftth,efetivado,2026-07-01,1,22
+escada-pe,ESCADA / PE,ftth,instalacao,2026-07-01,1,24
+esperanca-pb,ESPERANCA / PB,5g,ativacao,2026-07-01,1,20
+estancia-se,ESTANCIA / SE,ftth,orcamento,2026-07-01,1,29
+estancia-se,ESTANCIA / SE,ftth,efetivado,2026-07-01,1,26
+estancia-se,ESTANCIA / SE,ftth,instalacao,2026-07-01,1,16
+eusebio-ce,EUSEBIO / CE,5g,ativacao,2026-07-01,1,27
+eusebio-ce,EUSEBIO / CE,ftth,orcamento,2026-07-01,1,60
+eusebio-ce,EUSEBIO / CE,ftth,efetivado,2026-07-01,1,50
+eusebio-ce,EUSEBIO / CE,ftth,instalacao,2026-07-01,1,58
+extremoz-rn,EXTREMOZ / RN,5g,ativacao,2026-07-01,1,94
+extremoz-rn,EXTREMOZ / RN,ftth,orcamento,2026-07-01,1,96
+extremoz-rn,EXTREMOZ / RN,ftth,efetivado,2026-07-01,1,82
+extremoz-rn,EXTREMOZ / RN,ftth,instalacao,2026-07-01,1,64
+farias-brito-ce,FARIAS BRITO / CE,5g,ativacao,2026-07-01,1,10
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,orcamento,2026-07-01,1,76
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,efetivado,2026-07-01,1,67
+feira-de-santana-ba,FEIRA DE SANTANA / BA,ftth,instalacao,2026-07-01,1,36
+felipe-guerra-rn,FELIPE GUERRA / RN,5g,ativacao,2026-07-01,1,9
+ferreiros-pe,FERREIROS / PE,5g,ativacao,2026-07-01,1,5
+forquilha-ce,FORQUILHA / CE,5g,ativacao,2026-07-01,1,10
+fortaleza-ce,FORTALEZA / CE,5g,ativacao,2026-07-01,1,1322
+fortaleza-ce,FORTALEZA / CE,ftth,orcamento,2026-07-01,1,1231
+fortaleza-ce,FORTALEZA / CE,ftth,efetivado,2026-07-01,1,1032
+fortaleza-ce,FORTALEZA / CE,ftth,instalacao,2026-07-01,1,658
+,FORTALEZA/CE / CE,5g,ativacao,2026-07-01,1,2
+francisco-rn,FRANCISCO / RN,5g,ativacao,2026-07-01,1,1
+francisco-dantas-rn,FRANCISCO DANTAS / RN,5g,ativacao,2026-07-01,1,1
+frutuoso-gomes-rn,FRUTUOSO GOMES / RN,5g,ativacao,2026-07-01,1,7
+garanhuns-pe,GARANHUNS / PE,ftth,orcamento,2026-07-01,1,28
+garanhuns-pe,GARANHUNS / PE,ftth,efetivado,2026-07-01,1,26
+garanhuns-pe,GARANHUNS / PE,ftth,instalacao,2026-07-01,1,24
+goianinha-rn,GOIANINHA / RN,5g,ativacao,2026-07-01,1,9
+governador-dix-sept-rosado-rn,GOVERNADOR DIX SEPT ROSADO / RN,5g,ativacao,2026-07-01,1,6
+granja-ce,GRANJA / CE,5g,ativacao,2026-07-01,1,20
+gravata-pe,GRAVATA / PE,5g,ativacao,2026-07-01,1,6
+gravata-pe,GRAVATA / PE,ftth,orcamento,2026-07-01,1,7
+gravata-pe,GRAVATA / PE,ftth,instalacao,2026-07-01,1,4
+gravata-pe,GRAVATA / PE,ftth,efetivado,2026-07-01,1,3
+grossos-rn,GROSSOS / RN,5g,ativacao,2026-07-01,1,9
+guamare-rn,GUAMARE / RN,ftth,orcamento,2026-07-01,1,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,5g,ativacao,2026-07-01,1,18
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,instalacao,2026-07-01,1,3
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE / CE,ftth,orcamento,2026-07-01,1,1
+guaramiranga-ce,GUARAMIRANGA  / CE,5g,ativacao,2026-07-01,1,2
+horizonte-ce,HORIZONTE / CE,5g,ativacao,2026-07-01,1,52
+horizonte-ce,HORIZONTE / CE,ftth,orcamento,2026-07-01,1,53
+horizonte-ce,HORIZONTE / CE,ftth,efetivado,2026-07-01,1,45
+horizonte-ce,HORIZONTE / CE,ftth,instalacao,2026-07-01,1,35
+ibiapina-ce,IBIAPINA / CE,5g,ativacao,2026-07-01,1,6
+ibicuitinga-ce,IBICUITINGA / CE,5g,ativacao,2026-07-01,1,4
+icapui-ce,ICAPUI / CE,5g,ativacao,2026-07-01,1,2
+ico-ce,ICO / CE,5g,ativacao,2026-07-01,1,35
+ico-ce,ICO / CE,ftth,instalacao,2026-07-01,1,24
+ico-ce,ICO / CE,ftth,orcamento,2026-07-01,1,22
+ico-ce,ICO / CE,ftth,efetivado,2026-07-01,1,21
+igarassu-pe,IGARASSU / PE,ftth,orcamento,2026-07-01,1,28
+igarassu-pe,IGARASSU / PE,ftth,efetivado,2026-07-01,1,23
+igarassu-pe,IGARASSU / PE,ftth,instalacao,2026-07-01,1,26
+iguaracy-pe,IGUARACY / PE,5g,ativacao,2026-07-01,1,9
+iguatu-ce,IGUATU / CE,5g,ativacao,2026-07-01,1,65
+iguatu-ce,IGUATU / CE,ftth,orcamento,2026-07-01,1,79
+iguatu-ce,IGUATU / CE,ftth,efetivado,2026-07-01,1,70
+iguatu-ce,IGUATU / CE,ftth,instalacao,2026-07-01,1,68
+ipanguacu-rn,IPANGUACU / RN,5g,ativacao,2026-07-01,1,6
+ipaporanga-ce,IPAPORANGA / CE,5g,ativacao,2026-07-01,1,5
+ipaumirim-ce,IPAUMIRIM / CE,5g,ativacao,2026-07-01,1,21
+ipu-ce,IPU / CE,5g,ativacao,2026-07-01,1,35
+ipu-ce,IPU / CE,ftth,instalacao,2026-07-01,1,10
+ipu-ce,IPU / CE,ftth,orcamento,2026-07-01,1,9
+ipu-ce,IPU / CE,ftth,efetivado,2026-07-01,1,10
+ipueiras-ce,IPUEIRAS / CE,5g,ativacao,2026-07-01,1,8
+iracema-ce,IRACEMA / CE,5g,ativacao,2026-07-01,1,11
+iracema-ce,IRACEMA / CE,ftth,orcamento,2026-07-01,1,3
+iracema-ce,IRACEMA / CE,ftth,efetivado,2026-07-01,1,3
+iracema-ce,IRACEMA / CE,ftth,instalacao,2026-07-01,1,3
+iraucuba-ce,IRAUCUBA / CE,5g,ativacao,2026-07-01,1,7
+itabaiana-se,ITABAIANA / SE,ftth,orcamento,2026-07-01,1,11
+itabaiana-se,ITABAIANA / SE,ftth,efetivado,2026-07-01,1,13
+itabaiana-se,ITABAIANA / SE,ftth,instalacao,2026-07-01,1,13
+itaicaba-ce,ITAICABA / CE,5g,ativacao,2026-07-01,1,1
+itaitinga-ce,ITAITINGA / CE,5g,ativacao,2026-07-01,1,11
+itaja-rn,ITAJA / RN,5g,ativacao,2026-07-01,1,6
+itapaje-ce,ITAPAJE / CE,5g,ativacao,2026-07-01,1,15
+itapaje-ce,ITAPAJE / CE,ftth,orcamento,2026-07-01,1,9
+itapaje-ce,ITAPAJE / CE,ftth,efetivado,2026-07-01,1,8
+itapaje-ce,ITAPAJE / CE,ftth,instalacao,2026-07-01,1,10
+itapipoca-ce,ITAPIPOCA / CE,5g,ativacao,2026-07-01,1,57
+itapipoca-ce,ITAPIPOCA / CE,ftth,orcamento,2026-07-01,1,43
+itapipoca-ce,ITAPIPOCA / CE,ftth,efetivado,2026-07-01,1,39
+itapipoca-ce,ITAPIPOCA / CE,ftth,instalacao,2026-07-01,1,34
+itarema-ce,ITAREMA / CE,5g,ativacao,2026-07-01,1,3
+itau-rn,ITAU / RN,5g,ativacao,2026-07-01,1,5
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,orcamento,2026-07-01,1,111
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,efetivado,2026-07-01,1,84
+jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES / PE,ftth,instalacao,2026-07-01,1,52
+jaguaretama-ce,JAGUARETAMA / CE,5g,ativacao,2026-07-01,1,14
+jaguaretama-ce,JAGUARETAMA / CE,ftth,orcamento,2026-07-01,1,2
+jaguaretama-ce,JAGUARETAMA / CE,ftth,efetivado,2026-07-01,1,2
+jaguaretama-ce,JAGUARETAMA / CE,ftth,instalacao,2026-07-01,1,5
+jaguaribara-ce,JAGUARIBARA / CE,5g,ativacao,2026-07-01,1,8
+jaguaribara-ce,JAGUARIBARA / CE,ftth,orcamento,2026-07-01,1,2
+jaguaribara-ce,JAGUARIBARA / CE,ftth,efetivado,2026-07-01,1,4
+jaguaribara-ce,JAGUARIBARA / CE,ftth,instalacao,2026-07-01,1,1
+jaguaribe-ce,JAGUARIBE / CE,5g,ativacao,2026-07-01,1,23
+jaguaribe-ce,JAGUARIBE / CE,ftth,orcamento,2026-07-01,1,21
+jaguaribe-ce,JAGUARIBE / CE,ftth,efetivado,2026-07-01,1,19
+jaguaribe-ce,JAGUARIBE / CE,ftth,instalacao,2026-07-01,1,17
+jaguaruana-ce,JAGUARUANA / CE,5g,ativacao,2026-07-01,1,17
+janduis-rn,JANDUIS / RN,5g,ativacao,2026-07-01,1,3
+jardim-de-piranhas-rn,JARDIM DE PIRANHAS / RN,5g,ativacao,2026-07-01,1,9
+jati-ce,JATI  / CE,5g,ativacao,2026-07-01,1,13
+jeremoabo-ba,JEREMOABO / BA,5g,ativacao,2026-07-01,1,20
+jeremoabo-ba,JEREMOABO / BA,ftth,orcamento,2026-07-01,1,9
+jeremoabo-ba,JEREMOABO / BA,ftth,efetivado,2026-07-01,1,9
+jeremoabo-ba,JEREMOABO / BA,ftth,instalacao,2026-07-01,1,5
+jijoca-de-jericoacoara-ce,JIJOCA DE JERICOACOARA / CE,5g,ativacao,2026-07-01,1,1
+joao-camara-rn,JOAO CAMARA  / RN,5g,ativacao,2026-07-01,1,31
+joao-pessoa-pb,JOAO PESSOA / PB,5g,ativacao,2026-07-01,1,214
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,orcamento,2026-07-01,1,549
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,efetivado,2026-07-01,1,458
+joao-pessoa-pb,JOAO PESSOA / PB,ftth,instalacao,2026-07-01,1,396
+,JOAO PESSOA/PB / PB,5g,ativacao,2026-07-01,1,1
+jose-da-penha-rn,JOSE DA PENHA / RN,5g,ativacao,2026-07-01,1,4
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,orcamento,2026-07-01,1,5
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,efetivado,2026-07-01,1,5
+jose-da-penha-rn,JOSE DA PENHA / RN,ftth,instalacao,2026-07-01,1,4
+juazeirinho-pb,JUAZEIRINHO / PB,5g,ativacao,2026-07-01,1,12
+juazeiro-ba,JUAZEIRO / BA,5g,ativacao,2026-07-01,1,47
+juazeiro-ba,JUAZEIRO / BA,ftth,orcamento,2026-07-01,1,81
+juazeiro-ba,JUAZEIRO / BA,ftth,efetivado,2026-07-01,1,68
+juazeiro-ba,JUAZEIRO / BA,ftth,instalacao,2026-07-01,1,59
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,5g,ativacao,2026-07-01,1,227
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,1,204
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,1,173
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,1,148
+jucas-ce,JUCAS / CE,5g,ativacao,2026-07-01,1,17
+jucas-ce,JUCAS / CE,ftth,orcamento,2026-07-01,1,1
+jucurutu-rn,JUCURUTU / RN,5g,ativacao,2026-07-01,1,13
+junco-do-serido-pb,JUNCO DO SERIDO / PB,5g,ativacao,2026-07-01,1,7
+lagarto-se,LAGARTO / SE,ftth,orcamento,2026-07-01,1,39
+lagarto-se,LAGARTO / SE,ftth,efetivado,2026-07-01,1,22
+lagarto-se,LAGARTO / SE,ftth,instalacao,2026-07-01,1,20
+lagoa-pb,LAGOA / PB,5g,ativacao,2026-07-01,1,4
+lagoa-seca-pb,LAGOA SECA / PB,5g,ativacao,2026-07-01,1,3
+lagoa-seca-pb,LAGOA SECA / PB,ftth,orcamento,2026-07-01,1,2
+lagoa-seca-pb,LAGOA SECA / PB,ftth,efetivado,2026-07-01,1,1
+lajes-rn,LAJES / RN,5g,ativacao,2026-07-01,1,11
+lastro-pb,LASTRO / PB,5g,ativacao,2026-07-01,1,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,5g,ativacao,2026-07-01,1,18
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,instalacao,2026-07-01,1,13
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,orcamento,2026-07-01,1,12
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,ftth,efetivado,2026-07-01,1,12
+limoeiro-pe,LIMOEIRO / PE,ftth,orcamento,2026-07-01,1,12
+limoeiro-pe,LIMOEIRO / PE,ftth,efetivado,2026-07-01,1,12
+limoeiro-pe,LIMOEIRO / PE,ftth,instalacao,2026-07-01,1,9
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,5g,ativacao,2026-07-01,1,28
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,1,26
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,1,27
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,1,26
+luis-correia-pi,LUIS CORREIA / PI,5g,ativacao,2026-07-01,1,2
+luis-correia-pi,LUIS CORREIA / PI,ftth,orcamento,2026-07-01,1,9
+luis-correia-pi,LUIS CORREIA / PI,ftth,efetivado,2026-07-01,1,10
+luis-correia-pi,LUIS CORREIA / PI,ftth,instalacao,2026-07-01,1,7
+luis-gomes-rn,LUIS GOMES / RN,ftth,orcamento,2026-07-01,1,1
+macaiba-rn,MACAIBA / RN,5g,ativacao,2026-07-01,1,44
+macaiba-rn,MACAIBA / RN,ftth,orcamento,2026-07-01,1,37
+macaiba-rn,MACAIBA / RN,ftth,efetivado,2026-07-01,1,23
+macaiba-rn,MACAIBA / RN,ftth,instalacao,2026-07-01,1,17
+macau-rn,MACAU / RN,5g,ativacao,2026-07-01,1,23
+macau-rn,MACAU / RN,ftth,orcamento,2026-07-01,1,4
+macau-rn,MACAU / RN,ftth,efetivado,2026-07-01,1,3
+macau-rn,MACAU / RN,ftth,instalacao,2026-07-01,1,3
+maceio-al,MACEIO / AL,5g,ativacao,2026-07-01,1,180
+maceio-al,MACEIO / AL,ftth,orcamento,2026-07-01,1,386
+maceio-al,MACEIO / AL,ftth,efetivado,2026-07-01,1,322
+maceio-al,MACEIO / AL,ftth,instalacao,2026-07-01,1,228
+machados-pe,MACHADOS / PE,5g,ativacao,2026-07-01,1,22
+madalena-ce,MADALENA / CE,5g,ativacao,2026-07-01,1,5
+magalhaes-de-almeida-ma,MAGALHAES DE ALMEIDA / MA,5g,ativacao,2026-07-01,1,7
+major-sales-rn,MAJOR SALES / RN,5g,ativacao,2026-07-01,1,11
+major-sales-rn,MAJOR SALES / RN,ftth,orcamento,2026-07-01,1,2
+major-sales-rn,MAJOR SALES / RN,ftth,efetivado,2026-07-01,1,2
+mamanguape-pb,MAMANGUAPE / PB,5g,ativacao,2026-07-01,1,5
+mansidao-ba,MANSIDAO / BA,5g,ativacao,2026-07-01,1,1
+maracanau-ce,MARACANAU / CE,5g,ativacao,2026-07-01,1,121
+maracanau-ce,MARACANAU / CE,ftth,orcamento,2026-07-01,1,158
+maracanau-ce,MARACANAU / CE,ftth,efetivado,2026-07-01,1,132
+maracanau-ce,MARACANAU / CE,ftth,instalacao,2026-07-01,1,114
+maranguape-ce,MARANGUAPE / CE,5g,ativacao,2026-07-01,1,46
+maranguape-ce,MARANGUAPE / CE,ftth,orcamento,2026-07-01,1,31
+maranguape-ce,MARANGUAPE / CE,ftth,efetivado,2026-07-01,1,29
+maranguape-ce,MARANGUAPE / CE,ftth,instalacao,2026-07-01,1,30
+marcelino-vieira-rn,MARCELINO VIEIRA / RN,5g,ativacao,2026-07-01,1,11
+marco-ce,MARCO / CE,5g,ativacao,2026-07-01,1,11
+marco-ce,MARCO / CE,ftth,orcamento,2026-07-01,1,1
+marco-ce,MARCO / CE,ftth,efetivado,2026-07-01,1,1
+marco-ce,MARCO / CE,ftth,instalacao,2026-07-01,1,1
+marechal-deodoro-al,MARECHAL DEODORO / AL,5g,ativacao,2026-07-01,1,11
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,orcamento,2026-07-01,1,32
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,efetivado,2026-07-01,1,28
+marechal-deodoro-al,MARECHAL DEODORO / AL,ftth,instalacao,2026-07-01,1,22
+mari-pb,MARI / PB,5g,ativacao,2026-07-01,1,10
+marizopolis-pb,MARIZOPOLIS / PB,5g,ativacao,2026-07-01,1,12
+,MARIZOPOLIS/PB / PB,5g,ativacao,2026-07-01,1,1
+martins-rn,MARTINS / RN,ftth,orcamento,2026-07-01,1,2
+martins-rn,MARTINS / RN,ftth,efetivado,2026-07-01,1,2
+martins-rn,MARTINS / RN,ftth,instalacao,2026-07-01,1,3
+massape-ce,MASSAPE / CE,5g,ativacao,2026-07-01,1,27
+massape-ce,MASSAPE / CE,ftth,orcamento,2026-07-01,1,1
+massape-ce,MASSAPE / CE,ftth,efetivado,2026-07-01,1,1
+massape-ce,MASSAPE / CE,ftth,instalacao,2026-07-01,1,1
+mataraca-pb,MATARACA / PB,5g,ativacao,2026-07-01,1,12
+mauriti-ce,MAURITI / CE,5g,ativacao,2026-07-01,1,8
+maxaranguape-rn,MAXARANGUAPE / RN,5g,ativacao,2026-07-01,1,11
+messias-targino-rn,MESSIAS TARGINO / RN,5g,ativacao,2026-07-01,1,8
+milagres-ce,MILAGRES / CE,5g,ativacao,2026-07-01,1,9
+milagres-ce,MILAGRES / CE,ftth,orcamento,2026-07-01,1,12
+milagres-ce,MILAGRES / CE,ftth,efetivado,2026-07-01,1,11
+milagres-ce,MILAGRES / CE,ftth,instalacao,2026-07-01,1,9
+milha-ce,MILHA / CE,5g,ativacao,2026-07-01,1,8
+,MIRADOR/MA / MA,5g,ativacao,2026-07-01,1,1
+missao-velha-ce,MISSAO VELHA / CE,5g,ativacao,2026-07-01,1,26
+missao-velha-ce,MISSAO VELHA / CE,ftth,efetivado,2026-07-01,1,10
+missao-velha-ce,MISSAO VELHA / CE,ftth,orcamento,2026-07-01,1,11
+missao-velha-ce,MISSAO VELHA / CE,ftth,instalacao,2026-07-01,1,8
+mombaca-ce,MOMBACA / CE,5g,ativacao,2026-07-01,1,14
+mombaca-ce,MOMBACA / CE,ftth,orcamento,2026-07-01,1,14
+mombaca-ce,MOMBACA / CE,ftth,efetivado,2026-07-01,1,15
+mombaca-ce,MOMBACA / CE,ftth,instalacao,2026-07-01,1,15
+morada-nova-ce,MORADA NOVA / CE,5g,ativacao,2026-07-01,1,35
+morada-nova-ce,MORADA NOVA / CE,ftth,instalacao,2026-07-01,1,17
+morada-nova-ce,MORADA NOVA / CE,ftth,orcamento,2026-07-01,1,11
+morada-nova-ce,MORADA NOVA / CE,ftth,efetivado,2026-07-01,1,11
+moreno-pe,MORENO / PE,5g,ativacao,2026-07-01,1,30
+moreno-pe,MORENO / PE,ftth,orcamento,2026-07-01,1,1
+mossoro-rn,MOSSORO / RN,5g,ativacao,2026-07-01,1,259
+mossoro-rn,MOSSORO / RN,ftth,orcamento,2026-07-01,1,131
+mossoro-rn,MOSSORO / RN,ftth,efetivado,2026-07-01,1,116
+mossoro-rn,MOSSORO / RN,ftth,instalacao,2026-07-01,1,89
+mossoro-rn-rn,MOSSORO RN / RN,5g,ativacao,2026-07-01,1,5
+mucambo-ce,MUCAMBO / CE,5g,ativacao,2026-07-01,1,12
+mulungu-ce,MULUNGU / CE,5g,ativacao,2026-07-01,1,4
+natal-rn,NATAL / RN,5g,ativacao,2026-07-01,1,496
+natal-rn,NATAL / RN,ftth,orcamento,2026-07-01,1,685
+natal-rn,NATAL / RN,ftth,efetivado,2026-07-01,1,545
+natal-rn,NATAL / RN,ftth,instalacao,2026-07-01,1,440
+nisia-floresta-rn,NISIA FLORESTA / RN,5g,ativacao,2026-07-01,1,3
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,orcamento,2026-07-01,1,10
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,efetivado,2026-07-01,1,8
+nisia-floresta-rn,NISIA FLORESTA / RN,ftth,instalacao,2026-07-01,1,4
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,orcamento,2026-07-01,1,177
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,efetivado,2026-07-01,1,141
+nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO / SE,ftth,instalacao,2026-07-01,1,100
+nova-cruz-rn,NOVA CRUZ / RN,5g,ativacao,2026-07-01,1,25
+nova-olinda-ce,NOVA OLINDA / CE,5g,ativacao,2026-07-01,1,8
+nova-russas-ce,NOVA RUSSAS / CE,5g,ativacao,2026-07-01,1,28
+nova-russas-ce,NOVA RUSSAS / CE,ftth,orcamento,2026-07-01,1,1
+ocara-ce,OCARA / CE,5g,ativacao,2026-07-01,1,11
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,5g,ativacao,2026-07-01,1,6
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,orcamento,2026-07-01,1,6
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,efetivado,2026-07-01,1,6
+olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES / AL,ftth,instalacao,2026-07-01,1,3
+olho-dagua-do-borges-rn,OLHO DAGUA DO BORGES / RN,5g,ativacao,2026-07-01,1,2
+olinda-pe,OLINDA / PE,5g,ativacao,2026-07-01,1,6
+olinda-pe,OLINDA / PE,ftth,orcamento,2026-07-01,1,132
+olinda-pe,OLINDA / PE,ftth,efetivado,2026-07-01,1,115
+olinda-pe,OLINDA / PE,ftth,instalacao,2026-07-01,1,66
+oros-ce,OROS / CE,5g,ativacao,2026-07-01,1,23
+oros-ce,OROS / CE,ftth,orcamento,2026-07-01,1,3
+oros-ce,OROS / CE,ftth,efetivado,2026-07-01,1,3
+oros-ce,OROS / CE,ftth,instalacao,2026-07-01,1,3
+ouricuri-pe,OURICURI / PE,5g,ativacao,2026-07-01,1,15
+ouricuri-pe,OURICURI / PE,ftth,orcamento,2026-07-01,1,8
+ouricuri-pe,OURICURI / PE,ftth,efetivado,2026-07-01,1,9
+ouricuri-pe,OURICURI / PE,ftth,instalacao,2026-07-01,1,8
+pacajus-ce,PACAJUS / CE,5g,ativacao,2026-07-01,1,48
+pacajus-ce,PACAJUS / CE,ftth,orcamento,2026-07-01,1,49
+pacajus-ce,PACAJUS / CE,ftth,efetivado,2026-07-01,1,40
+pacajus-ce,PACAJUS / CE,ftth,instalacao,2026-07-01,1,33
+pacatuba-ce,PACATUBA  / CE,5g,ativacao,2026-07-01,1,7
+pacatuba-ce,PACATUBA / CE,ftth,orcamento,2026-07-01,1,10
+pacatuba-ce,PACATUBA / CE,ftth,efetivado,2026-07-01,1,9
+pacatuba-ce,PACATUBA / CE,ftth,instalacao,2026-07-01,1,5
+pacoti-ce,PACOTI / CE,5g,ativacao,2026-07-01,1,2
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,orcamento,2026-07-01,1,31
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,efetivado,2026-07-01,1,29
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS / AL,ftth,instalacao,2026-07-01,1,26
+paracuru-ce,PARACURU / CE,5g,ativacao,2026-07-01,1,19
+paracuru-ce,PARACURU / CE,ftth,orcamento,2026-07-01,1,2
+paracuru-ce,PARACURU / CE,ftth,efetivado,2026-07-01,1,2
+paraipaba-ce,PARAIPABA / CE,5g,ativacao,2026-07-01,1,37
+paraipaba-ce,PARAIPABA / CE,ftth,orcamento,2026-07-01,1,11
+paraipaba-ce,PARAIPABA / CE,ftth,efetivado,2026-07-01,1,15
+paraipaba-ce,PARAIPABA / CE,ftth,instalacao,2026-07-01,1,16
+parau-rn,PARAU / RN,5g,ativacao,2026-07-01,1,1
+parnaiba-pi,PARNAIBA / PI,5g,ativacao,2026-07-01,1,51
+parnaiba-pi,PARNAIBA / PI,ftth,orcamento,2026-07-01,1,83
+parnaiba-pi,PARNAIBA / PI,ftth,efetivado,2026-07-01,1,78
+parnaiba-pi,PARNAIBA / PI,ftth,instalacao,2026-07-01,1,58
+parnamirim-rn,PARNAMIRIM / RN,5g,ativacao,2026-07-01,1,95
+parnamirim-rn,PARNAMIRIM / RN,ftth,orcamento,2026-07-01,1,376
+parnamirim-rn,PARNAMIRIM / RN,ftth,efetivado,2026-07-01,1,324
+parnamirim-rn,PARNAMIRIM / RN,ftth,instalacao,2026-07-01,1,204
+patos-pb,PATOS / PB,5g,ativacao,2026-07-01,1,74
+patos-pb,PATOS / PB,ftth,orcamento,2026-07-01,1,59
+patos-pb,PATOS / PB,ftth,efetivado,2026-07-01,1,49
+patos-pb,PATOS / PB,ftth,instalacao,2026-07-01,1,47
+patos-do-piaui-pi,PATOS DO PIAUI / PI,5g,ativacao,2026-07-01,1,1
+patu-rn,PATU / RN,5g,ativacao,2026-07-01,1,15
+pau-dos-ferros-rn,PAU DOS FERROS / RN,5g,ativacao,2026-07-01,1,51
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,orcamento,2026-07-01,1,11
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,efetivado,2026-07-01,1,8
+pau-dos-ferros-rn,PAU DOS FERROS / RN,ftth,instalacao,2026-07-01,1,6
+paulista-pe,PAULISTA / PE,ftth,orcamento,2026-07-01,1,90
+paulista-pe,PAULISTA / PE,ftth,efetivado,2026-07-01,1,72
+paulista-pe,PAULISTA / PE,ftth,instalacao,2026-07-01,1,57
+paulo-afonso-ba,PAULO AFONSO / BA,5g,ativacao,2026-07-01,1,22
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,orcamento,2026-07-01,1,32
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,efetivado,2026-07-01,1,24
+paulo-afonso-ba,PAULO AFONSO / BA,ftth,instalacao,2026-07-01,1,21
+pedra-branca-ce,PEDRA BRANCA / CE,5g,ativacao,2026-07-01,1,21
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,orcamento,2026-07-01,1,3
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,efetivado,2026-07-01,1,3
+pedra-branca-ce,PEDRA BRANCA / CE,ftth,instalacao,2026-07-01,1,1
+pedro-avelino-rn,PEDRO AVELINO / RN,5g,ativacao,2026-07-01,1,1
+penaforte-ce,PENAFORTE / CE,5g,ativacao,2026-07-01,1,15
+penaforte-ce,PENAFORTE / CE,ftth,orcamento,2026-07-01,1,1
+pendencias-rn,PENDENCIAS / RN,5g,ativacao,2026-07-01,1,9
+pereiro-ce,PEREIRO / CE,5g,ativacao,2026-07-01,1,84
+pereiro-ce,PEREIRO / CE,ftth,instalacao,2026-07-01,1,3
+pereiro-ce,PEREIRO / CE,ftth,orcamento,2026-07-01,1,3
+pereiro-ce,PEREIRO / CE,ftth,efetivado,2026-07-01,1,3
+pesqueira-pe,PESQUEIRA / PE,5g,ativacao,2026-07-01,1,21
+pesqueira-pe,PESQUEIRA / PE,ftth,orcamento,2026-07-01,1,10
+pesqueira-pe,PESQUEIRA / PE,ftth,efetivado,2026-07-01,1,6
+pesqueira-pe,PESQUEIRA / PE,ftth,instalacao,2026-07-01,1,5
+petrolina-pe,PETROLINA / PE,5g,ativacao,2026-07-01,1,138
+petrolina-pe,PETROLINA / PE,ftth,orcamento,2026-07-01,1,107
+petrolina-pe,PETROLINA / PE,ftth,efetivado,2026-07-01,1,82
+petrolina-pe,PETROLINA / PE,ftth,instalacao,2026-07-01,1,66
+picos-pi,PICOS / PI,ftth,orcamento,2026-07-01,1,8
+picos-pi,PICOS / PI,ftth,instalacao,2026-07-01,1,10
+picos-pi,PICOS / PI,ftth,efetivado,2026-07-01,1,7
+piloes-rn,PILOES / RN,5g,ativacao,2026-07-01,1,3
+pindoretama-ce,PINDORETAMA / CE,5g,ativacao,2026-07-01,1,6
+pinheiro-ma,PINHEIRO / MA,5g,ativacao,2026-07-01,1,3
+piquet-carneiro-ce,PIQUET CARNEIRO / CE,5g,ativacao,2026-07-01,1,18
+piranhas-al,PIRANHAS / AL,5g,ativacao,2026-07-01,1,6
+piranhas-al,PIRANHAS / AL,ftth,orcamento,2026-07-01,1,5
+piranhas-al,PIRANHAS / AL,ftth,efetivado,2026-07-01,1,4
+piranhas-al,PIRANHAS / AL,ftth,instalacao,2026-07-01,1,3
+pirapemas-ma,PIRAPEMAS / MA,5g,ativacao,2026-07-01,1,2
+piripiri-pi,PIRIPIRI / PI,5g,ativacao,2026-07-01,1,1
+piripiri-pi,PIRIPIRI / PI,ftth,orcamento,2026-07-01,1,13
+piripiri-pi,PIRIPIRI / PI,ftth,efetivado,2026-07-01,1,10
+piripiri-pi,PIRIPIRI / PI,ftth,instalacao,2026-07-01,1,9
+poco-dantas-pb,POCO DANTAS / PB,5g,ativacao,2026-07-01,1,3
+pombal-pb,POMBAL / PB,5g,ativacao,2026-07-01,1,28
+pombal-pb,POMBAL / PB,ftth,efetivado,2026-07-01,1,8
+pombal-pb,POMBAL / PB,ftth,instalacao,2026-07-01,1,9
+pombal-pb,POMBAL / PB,ftth,orcamento,2026-07-01,1,9
+porcao-de-pedras-ma,PORCAO DE PEDRAS  / MA,5g,ativacao,2026-07-01,1,3
+portalegre-rn,PORTALEGRE / RN,5g,ativacao,2026-07-01,1,4
+portalegre-rn,PORTALEGRE / RN,ftth,orcamento,2026-07-01,1,2
+portalegre-rn,PORTALEGRE / RN,ftth,efetivado,2026-07-01,1,2
+portalegre-rn,PORTALEGRE / RN,ftth,instalacao,2026-07-01,1,3
+porteiras-ce,PORTEIRAS / CE,5g,ativacao,2026-07-01,1,4
+potengi-ce,POTENGI / CE,5g,ativacao,2026-07-01,1,3
+potiretama-ce,POTIRETAMA / CE,5g,ativacao,2026-07-01,1,8
+prata-pb,PRATA / PB,5g,ativacao,2026-07-01,1,1
+queimadas-pb,QUEIMADAS / PB,ftth,orcamento,2026-07-01,1,3
+queimadas-pb,QUEIMADAS / PB,ftth,instalacao,2026-07-01,1,2
+quixada-ce,QUIXADA / CE,5g,ativacao,2026-07-01,1,58
+quixada-ce,QUIXADA / CE,ftth,orcamento,2026-07-01,1,36
+quixada-ce,QUIXADA / CE,ftth,efetivado,2026-07-01,1,33
+quixada-ce,QUIXADA / CE,ftth,instalacao,2026-07-01,1,34
+quixeramobim-ce,QUIXERAMOBIM / CE,5g,ativacao,2026-07-01,1,51
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,orcamento,2026-07-01,1,35
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,instalacao,2026-07-01,1,31
+quixeramobim-ce,QUIXERAMOBIM / CE,ftth,efetivado,2026-07-01,1,30
+quixere-ce,QUIXERE / CE,5g,ativacao,2026-07-01,1,16
+quixere-ce,QUIXERE / CE,ftth,orcamento,2026-07-01,1,9
+quixere-ce,QUIXERE / CE,ftth,efetivado,2026-07-01,1,8
+quixere-ce,QUIXERE / CE,ftth,instalacao,2026-07-01,1,7
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,5g,ativacao,2026-07-01,1,6
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,orcamento,2026-07-01,1,5
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,efetivado,2026-07-01,1,3
+rafael-fernandes-rn,RAFAEL FERNANDES / RN,ftth,instalacao,2026-07-01,1,3
+recife-pe,RECIFE / PE,ftth,orcamento,2026-07-01,1,129
+recife-pe,RECIFE / PE,ftth,efetivado,2026-07-01,1,96
+recife-pe,RECIFE / PE,ftth,instalacao,2026-07-01,1,49
+riacho-de-santana-rn,RIACHO DE SANTANA / RN,5g,ativacao,2026-07-01,1,2
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,orcamento,2026-07-01,1,18
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,efetivado,2026-07-01,1,16
+ribeira-do-pombal-ba,RIBEIRA DO POMBAL / BA,ftth,instalacao,2026-07-01,1,20
+rio-largo-al,RIO LARGO / AL,5g,ativacao,2026-07-01,1,22
+rio-largo-al,RIO LARGO / AL,ftth,orcamento,2026-07-01,1,32
+rio-largo-al,RIO LARGO / AL,ftth,efetivado,2026-07-01,1,24
+rio-largo-al,RIO LARGO / AL,ftth,instalacao,2026-07-01,1,25
+rio-tinto-pb,RIO TINTO / PB,5g,ativacao,2026-07-01,1,10
+rodolfo-fernandes-rn,RODOLFO FERNANDES / RN,5g,ativacao,2026-07-01,1,2
+russas-ce,RUSSAS / CE,5g,ativacao,2026-07-01,1,44
+russas-ce,RUSSAS / CE,ftth,orcamento,2026-07-01,1,26
+russas-ce,RUSSAS / CE,ftth,efetivado,2026-07-01,1,24
+russas-ce,RUSSAS / CE,ftth,instalacao,2026-07-01,1,16
+saboeiro-ce,SABOEIRO / CE,5g,ativacao,2026-07-01,1,4
+salgueiro-pe,SALGUEIRO / PE,5g,ativacao,2026-07-01,1,44
+salgueiro-pe,SALGUEIRO / PE,ftth,orcamento,2026-07-01,1,21
+salgueiro-pe,SALGUEIRO / PE,ftth,efetivado,2026-07-01,1,17
+salgueiro-pe,SALGUEIRO / PE,ftth,instalacao,2026-07-01,1,13
+santa-cruz-pb,SANTA CRUZ / PB,5g,ativacao,2026-07-01,1,8
+santa-cruz-rn,SANTA CRUZ / RN,5g,ativacao,2026-07-01,1,14
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,orcamento,2026-07-01,1,19
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,efetivado,2026-07-01,1,18
+santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE / PE,ftth,instalacao,2026-07-01,1,15
+santa-ines-ma,SANTA INES / MA,5g,ativacao,2026-07-01,1,1
+santa-luzia-pb,SANTA LUZIA / PB,5g,ativacao,2026-07-01,1,27
+santa-luzia-pb,SANTA LUZIA / PB,ftth,orcamento,2026-07-01,1,7
+santa-luzia-pb,SANTA LUZIA / PB,ftth,efetivado,2026-07-01,1,7
+santa-luzia-pb,SANTA LUZIA / PB,ftth,instalacao,2026-07-01,1,5
+santa-quiteria-ce,SANTA QUITERIA / CE,5g,ativacao,2026-07-01,1,22
+santa-rita-pb,SANTA RITA / PB,5g,ativacao,2026-07-01,1,84
+santa-rita-pb,SANTA RITA / PB,ftth,orcamento,2026-07-01,1,61
+santa-rita-pb,SANTA RITA / PB,ftth,efetivado,2026-07-01,1,57
+santa-rita-pb,SANTA RITA / PB,ftth,instalacao,2026-07-01,1,40
+santana-do-cariri-ce,SANTANA DO CARIRI / CE,5g,ativacao,2026-07-01,1,3
+santo-amaro-ba,SANTO AMARO / BA,ftth,orcamento,2026-07-01,1,25
+santo-amaro-ba,SANTO AMARO / BA,ftth,efetivado,2026-07-01,1,20
+santo-amaro-ba,SANTO AMARO / BA,ftth,instalacao,2026-07-01,1,15
+sao-benedito-ce,SAO BENEDITO / CE,5g,ativacao,2026-07-01,1,18
+sao-benedito-ce,SAO BENEDITO / CE,ftth,instalacao,2026-07-01,1,4
+sao-benedito-ce,SAO BENEDITO / CE,ftth,orcamento,2026-07-01,1,3
+sao-benedito-ce,SAO BENEDITO / CE,ftth,efetivado,2026-07-01,1,3
+sao-bento-pb,SAO BENTO / PB,5g,ativacao,2026-07-01,1,18
+sao-bento-pb,SAO BENTO / PB,ftth,orcamento,2026-07-01,1,10
+sao-bento-pb,SAO BENTO / PB,ftth,efetivado,2026-07-01,1,9
+sao-bento-pb,SAO BENTO / PB,ftth,instalacao,2026-07-01,1,6
+sao-caitano-pe,SAO CAITANO / PE,5g,ativacao,2026-07-01,1,6
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,orcamento,2026-07-01,1,34
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,efetivado,2026-07-01,1,27
+sao-cristovao-se,SAO CRISTOVAO / SE,ftth,instalacao,2026-07-01,1,30
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,5g,ativacao,2026-07-01,1,5
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,orcamento,2026-07-01,1,1
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE / RN,ftth,efetivado,2026-07-01,1,1
+sao-goncalo-do-amarante-ce,SAO GONCALO DO AMARANTE / CE,5g,ativacao,2026-07-01,1,5
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,5g,ativacao,2026-07-01,1,36
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,orcamento,2026-07-01,1,137
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,efetivado,2026-07-01,1,109
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,ftth,instalacao,2026-07-01,1,110
+sao-jose-de-brejo-do-cruz-pb,SAO JOSE DE BREJO DO CRUZ / PB,5g,ativacao,2026-07-01,1,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,5g,ativacao,2026-07-01,1,26
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,orcamento,2026-07-01,1,36
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,efetivado,2026-07-01,1,28
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,ftth,instalacao,2026-07-01,1,24
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,orcamento,2026-07-01,1,34
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,efetivado,2026-07-01,1,24
+sao-lourenco-da-mata-pe,SAO LOURENCO DA MATA / PE,ftth,instalacao,2026-07-01,1,23
+sao-mamede-pb,SAO MAMEDE / PB,5g,ativacao,2026-07-01,1,5
+sao-miguel-pb,SAO MIGUEL / PB,5g,ativacao,2026-07-01,1,1
+sao-miguel-rn,SAO MIGUEL / RN,5g,ativacao,2026-07-01,1,44
+sao-miguel-rn,SAO MIGUEL / RN,ftth,instalacao,2026-07-01,1,15
+sao-miguel-rn,SAO MIGUEL / RN,ftth,orcamento,2026-07-01,1,18
+sao-miguel-rn,SAO MIGUEL / RN,ftth,efetivado,2026-07-01,1,15
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,orcamento,2026-07-01,1,17
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,efetivado,2026-07-01,1,15
+sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS / AL,ftth,instalacao,2026-07-01,1,17
+,SAO PAULO DO POTENGI/RN / RN,5g,ativacao,2026-07-01,1,1
+sape-pb,SAPE / PB,5g,ativacao,2026-07-01,1,31
+senador-alexandre-costa-ma,SENADOR ALEXANDRE COSTA / MA,5g,ativacao,2026-07-01,1,3
+senador-georgino-avelino-rn,SENADOR GEORGINO AVELINO / RN,5g,ativacao,2026-07-01,1,6
+senador-pompeu-ce,SENADOR POMPEU / CE,5g,ativacao,2026-07-01,1,25
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,orcamento,2026-07-01,1,11
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,efetivado,2026-07-01,1,9
+senador-pompeu-ce,SENADOR POMPEU / CE,ftth,instalacao,2026-07-01,1,4
+serra-talhada-pe,SERRA TALHADA / PE,5g,ativacao,2026-07-01,1,53
+serra-talhada-pe,SERRA TALHADA / PE,ftth,orcamento,2026-07-01,1,17
+serra-talhada-pe,SERRA TALHADA / PE,ftth,efetivado,2026-07-01,1,13
+serra-talhada-pe,SERRA TALHADA / PE,ftth,instalacao,2026-07-01,1,14
+simoes-filho-ba,SIMOES FILHO / BA,ftth,orcamento,2026-07-01,1,6
+simoes-filho-ba,SIMOES FILHO / BA,ftth,efetivado,2026-07-01,1,4
+sobral-ce,SOBRAL / CE,5g,ativacao,2026-07-01,1,102
+sobral-ce,SOBRAL / CE,ftth,orcamento,2026-07-01,1,61
+sobral-ce,SOBRAL / CE,ftth,efetivado,2026-07-01,1,55
+sobral-ce,SOBRAL / CE,ftth,instalacao,2026-07-01,1,57
+,SOBRAL/CE / CE,5g,ativacao,2026-07-01,1,3
+solanea-pb,SOLANEA / PB,5g,ativacao,2026-07-01,1,13
+soledade-pb,SOLEDADE / PB,5g,ativacao,2026-07-01,1,11
+solonopole-ce,SOLONOPOLE / CE,5g,ativacao,2026-07-01,1,1
+sousa-pb,SOUSA / PB,5g,ativacao,2026-07-01,1,18
+sousa-pb,SOUSA / PB,ftth,orcamento,2026-07-01,1,12
+sousa-pb,SOUSA / PB,ftth,efetivado,2026-07-01,1,7
+sousa-pb,SOUSA / PB,ftth,instalacao,2026-07-01,1,8
+surubim-pe,SURUBIM / PE,ftth,orcamento,2026-07-01,1,7
+surubim-pe,SURUBIM / PE,ftth,efetivado,2026-07-01,1,5
+surubim-pe,SURUBIM / PE,ftth,instalacao,2026-07-01,1,5
+taboleiro-grande-rn,TABOLEIRO GRANDE / RN,5g,ativacao,2026-07-01,1,2
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,5g,ativacao,2026-07-01,1,18
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,orcamento,2026-07-01,1,7
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,efetivado,2026-07-01,1,7
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,ftth,instalacao,2026-07-01,1,5
+taipu-rn,TAIPU / RN,ftth,efetivado,2026-07-01,1,1
+taipu-rn,TAIPU / RN,ftth,instalacao,2026-07-01,1,1
+taquaritinga-do-norte-pe,TAQUARITINGA DO NORTE / PE,5g,ativacao,2026-07-01,1,15
+taua-ce,TAUA / CE,5g,ativacao,2026-07-01,1,28
+taua-ce,TAUA / CE,ftth,orcamento,2026-07-01,1,23
+taua-ce,TAUA / CE,ftth,instalacao,2026-07-01,1,18
+taua-ce,TAUA / CE,ftth,efetivado,2026-07-01,1,21
+tenente-ananias-rn,TENENTE ANANIAS / RN,5g,ativacao,2026-07-01,1,16
+teresina-pi,TERESINA / PI,5g,ativacao,2026-07-01,1,218
+teresina-pi,TERESINA / PI,ftth,orcamento,2026-07-01,1,451
+teresina-pi,TERESINA / PI,ftth,efetivado,2026-07-01,1,359
+teresina-pi,TERESINA / PI,ftth,instalacao,2026-07-01,1,343
+tiangua-ce,TIANGUA / CE,5g,ativacao,2026-07-01,1,36
+tiangua-ce,TIANGUA / CE,ftth,orcamento,2026-07-01,1,24
+tiangua-ce,TIANGUA / CE,ftth,efetivado,2026-07-01,1,21
+tiangua-ce,TIANGUA / CE,ftth,instalacao,2026-07-01,1,16
+timon-ma,TIMON / MA,5g,ativacao,2026-07-01,1,38
+timon-ma,TIMON / MA,ftth,orcamento,2026-07-01,1,83
+timon-ma,TIMON / MA,ftth,efetivado,2026-07-01,1,71
+timon-ma,TIMON / MA,ftth,instalacao,2026-07-01,1,67
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,orcamento,2026-07-01,1,10
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,efetivado,2026-07-01,1,11
+tobias-barreto-se,TOBIAS BARRETO / SE,ftth,instalacao,2026-07-01,1,10
+toritama-pe,TORITAMA / PE,5g,ativacao,2026-07-01,1,14
+toritama-pe,TORITAMA / PE,ftth,orcamento,2026-07-01,1,14
+toritama-pe,TORITAMA / PE,ftth,efetivado,2026-07-01,1,13
+toritama-pe,TORITAMA / PE,ftth,instalacao,2026-07-01,1,14
+touros-rn,TOUROS / RN,5g,ativacao,2026-07-01,1,69
+triunfo-potiguar-rn,TRIUNFO POTIGUAR / RN,5g,ativacao,2026-07-01,1,4
+ubajara-ce,UBAJARA / CE,5g,ativacao,2026-07-01,1,13
+ubajara-ce,UBAJARA / CE,ftth,orcamento,2026-07-01,1,3
+ubajara-ce,UBAJARA / CE,ftth,efetivado,2026-07-01,1,2
+ubajara-ce,UBAJARA / CE,ftth,instalacao,2026-07-01,1,1
+uirauna-pb,UIRAUNA / PB,5g,ativacao,2026-07-01,1,21
+uirauna-pb,UIRAUNA / PB,ftth,orcamento,2026-07-01,1,5
+uirauna-pb,UIRAUNA / PB,ftth,efetivado,2026-07-01,1,4
+uirauna-pb,UIRAUNA / PB,ftth,instalacao,2026-07-01,1,3
+umari-ce,UMARI / CE,5g,ativacao,2026-07-01,1,11
+umarizal-rn,UMARIZAL / RN,5g,ativacao,2026-07-01,1,5
+umarizal-rn,UMARIZAL / RN,ftth,orcamento,2026-07-01,1,3
+umarizal-rn,UMARIZAL / RN,ftth,efetivado,2026-07-01,1,3
+umarizal-rn,UMARIZAL / RN,ftth,instalacao,2026-07-01,1,3
+uniao-pi,UNIAO / PI,5g,ativacao,2026-07-01,1,2
+upanema-rn,UPANEMA / RN,5g,ativacao,2026-07-01,1,10
+uruoca-ce,URUOCA / CE,5g,ativacao,2026-07-01,1,2
+varjota-ce,VARJOTA / CE,5g,ativacao,2026-07-01,1,13
+varzea-alegre-ce,VARZEA ALEGRE / CE,5g,ativacao,2026-07-01,1,28
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,orcamento,2026-07-01,1,12
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,instalacao,2026-07-01,1,12
+varzea-alegre-ce,VARZEA ALEGRE / CE,ftth,efetivado,2026-07-01,1,11
+venha-ver-rn,VENHA VER / RN,ftth,instalacao,2026-07-01,1,1
+verdejante-pe,VERDEJANTE / PE,5g,ativacao,2026-07-01,1,1
+viana-ma-ma,VIANA MA / MA,5g,ativacao,2026-07-01,1,5
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,orcamento,2026-07-01,1,5
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,efetivado,2026-07-01,1,4
+vicosa-do-ceara-ce,VICOSA DO CEARA / CE,ftth,instalacao,2026-07-01,1,3
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,orcamento,2026-07-01,1,28
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,efetivado,2026-07-01,1,24
+vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO / PE,ftth,instalacao,2026-07-01,1,19
+xexeu-pe,XEXEU / PE,5g,ativacao,2026-07-01,1,2
