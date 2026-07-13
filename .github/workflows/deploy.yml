@@ -24,6 +24,17 @@ jobs:
           # `undefined` e lança o erro que você viu.
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+      - name: Fallback de SPA pro GitHub Pages
+        # BrowserRouter usa URLs reais (/cidades/araripina-pe), mas GitHub
+        # Pages é hospedagem estática: um reload ou link direto pra essa
+        # URL bate no servidor ANTES do React Router existir, e como não
+        # existe arquivo nesse caminho, o Pages devolve o 404 genérico
+        # dele. Publicar o mesmo index.html também como 404.html faz o
+        # Pages servir a SPA pra qualquer caminho não encontrado; o React
+        # Router então lê a URL real do navegador e renderiza a página
+        # certa client-side. Precisa rodar depois do build (dist/ só
+        # existe a partir daqui).
+        run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
