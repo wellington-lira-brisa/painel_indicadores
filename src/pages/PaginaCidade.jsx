@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { PERMISSOES } from '../services/permissaoService';
 import { TECNOLOGIAS } from '../config/tecnologias';
 import { listarPlanosPorCidade } from '../services/planoAcaoService';
-import { formatarPercentual, formatarDataHora, removerMarcacaoMarkdown } from '../utils/format';
+import { formatarPercentual, formatarDataHora, formatarDataSimples, removerMarcacaoMarkdown } from '../utils/format';
 import { usePeriodoAnalise } from '../hooks/usePeriodoAnalise';
 import StatusBadge from '../components/StatusBadge';
 import TendenciaBadge from '../components/TendenciaBadge';
@@ -72,7 +72,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
           </Link>
           <h2 className="mt-1 text-2xl font-bold text-slate-900">{cidade.nome}</h2>
           <p className="text-sm text-slate-500">
-            Gerente: {cidade.gerente} · Regional: {cidade.regional} · Coord.: {cidade.coordenadorRegional}
+            Gerente: {cidade.gerente ?? '—'} · Regional: {cidade.regional ?? '—'} · Coord.: {cidade.coordenadorRegional ?? '—'}
           </p>
           <div className="mt-2 flex items-center gap-3">
             <StatusBadge status={cidade.status} />
@@ -92,7 +92,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
         <CardKpi titulo="Atingimento geral" valor={formatarPercentual(cidade.score)} destaque />
         <CardKpi
           titulo="Ativação comercial"
-          valor={new Date(cidade.ativacaoComercial).toLocaleDateString('pt-BR')}
+          valor={formatarDataSimples(cidade.ativacaoComercial)}
         />
         <CardKpi titulo="Indicadores monitorados" valor={cidade.indicadores.length} />
         <CardKpi titulo="Planos de ação" valor={planos.length} />

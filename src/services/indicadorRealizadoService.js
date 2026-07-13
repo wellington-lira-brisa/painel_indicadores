@@ -7,9 +7,8 @@ import { parsearCsv } from '../shared/csvIndicadores';
 // e em produção (GitHub Pages, mesmo `deploy.yml` de sempre).
 //
 // TROCA FUTURA PRA API: esta é a ÚNICA função que precisa mudar. Troque o
-// corpo de `buscarLinhasCru` por uma chamada à API (ex.:
-// `fetch('https://.../api/indicadores?tecnologia=' + tecnologia)`) devolvendo
-// a mesma lista de objetos `{ cidade_slug, indicador_id, mes_ref, semana_mes, valor }`
+// corpo de `buscarLinhasCru` por uma chamada à API devolvendo a mesma
+// lista de objetos `{ cidade_slug, cidade_origem, indicador_id, mes_ref, semana_mes, valor }`
 // — todo o resto deste arquivo (indexação, cache, aplicação sobre a
 // cidade) continua igual, e `cidadeService.js` nem precisa saber que a
 // fonte mudou.
@@ -23,8 +22,9 @@ const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/indicadores-realizados.csv
 // tecnologia (ver RELATORIO.md, seção 5). Qualquer indicador fora daqui
 // (meta, churn, cancelamento, crescimento — e toda a metainformação de
 // cidade: gerente, regional, coordenador, ativação comercial) continua
-// vindo do mock até existir uma fonte real pra ele. Este arquivo nunca
-// decide inventar um valor pra fechar essa lacuna.
+// vindo do mock (ou fica `null`, pra cidade sem cadastro) até existir uma
+// fonte real pra ele. Este arquivo nunca decide inventar um valor pra
+// fechar essa lacuna.
 const INDICADORES_COM_DADO_REAL = {
   ftth: ['orcamento', 'efetivado', 'instalacao'],
   '5g': ['ativacao'],
@@ -50,8 +50,14 @@ async function buscarLinhasCru(tecnologia) {
   return todasAsLinhas.filter((l) => l.tecnologia === tecnologia);
 }
 
-/** cidadeSlug -> indicadorId -> { meses: Map(mesIndex->valor), semanas: Map(mesIndex->Map(numeroSemana->valor)) } */
-function indexarPorCidade(linhas) {
+/** '2026-07-05' -> 5. Usado pra extrair só o dia-do-mês das datas reais de semana (mesmo mês do mes_ref, sempre seguro fatiar assim). */
+function diaDoMes(dataIso) {
+  if (!dataIso) return null;
+  return Number(dataIso.slice(8, 10));
+}
+
+/** cidadeSlug -> indicadorId -> { meses: Map(mesIndex->valor), semanas: Map(mesIndex->Map(numeroSemana->{valor, diaInicio, diaFim})) } */
+function indexarValoresPorCidade(linhas) {
   const indice = new Map();
   for (const l of linhas) {
     if (!l.cidade_slug) continue; // sem cidade mapeada: não há como exibir por cidade (fica só auditável no CSV)
@@ -68,10 +74,28 @@ function indexarPorCidade(linhas) {
     } else {
       const numeroSemana = Number(l.semana_mes);
       if (!registro.semanas.has(mesIndex)) registro.semanas.set(mesIndex, new Map());
-      registro.semanas.get(mesIndex).set(numeroSemana, valor);
+      // diaInicio/diaFim vêm de primeiro_dia_semana/ultimo_dia_semana da
+      // base — NÃO dos blocos fixos de 7 dias que utils/semanas.js gera
+      // pra semana fictícia. É essa troca que corrige o rótulo da coluna
+      // de semana no front (ver RELATORIO.md, diagnóstico da divergência
+      // de datas de semana).
+      registro.semanas.get(mesIndex).set(numeroSemana, {
+        valor,
+        diaInicio: diaDoMes(l.primeiro_dia_semana),
+        diaFim: diaDoMes(l.ultimo_dia_semana),
+      });
     }
   }
   return indice;
+}
+
+/** cidadeSlug -> texto cru da cidade como veio na base ("ARARIPINA / PE"), primeira ocorrência. */
+function indexarNomesOriginais(linhas) {
+  const nomes = new Map();
+  for (const l of linhas) {
+    if (l.cidade_slug && !nomes.has(l.cidade_slug)) nomes.set(l.cidade_slug, l.cidade_origem);
+  }
+  return nomes;
 }
 
 // Cache em memória por tecnologia, só pra não refazer o fetch a cada card
@@ -80,15 +104,22 @@ function indexarPorCidade(linhas) {
 // cobertos mostram "—", nunca o valor mockado).
 const cachePorTecnologia = new Map();
 
-/** Busca (ou reaproveita do cache) o índice de realizados reais para a tecnologia. */
-export async function carregarIndiceRealizados(tecnologia) {
+/**
+ * Busca (ou reaproveita do cache) a base real inteira pra uma tecnologia:
+ * o índice de valores e o mapa de cidades conhecidas. Um único fetch
+ * alimenta os dois, porque são a mesma linha de CSV lida de duas formas.
+ */
+export async function carregarBaseReal(tecnologia) {
   const linhas = await buscarLinhasCru(tecnologia);
-  const indice = indexarPorCidade(linhas);
-  cachePorTecnologia.set(tecnologia, indice);
-  return indice;
+  const resultado = {
+    indice: indexarValoresPorCidade(linhas),
+    nomesOriginais: indexarNomesOriginais(linhas),
+  };
+  cachePorTecnologia.set(tecnologia, resultado);
+  return resultado;
 }
 
-export function indiceEmCacheOuNulo(tecnologia) {
+export function baseRealEmCacheOuNula(tecnologia) {
   return cachePorTecnologia.get(tecnologia) ?? null;
 }
 
@@ -96,8 +127,9 @@ export function indiceEmCacheOuNulo(tecnologia) {
  * Substitui, em `cidade.indicadores`, o `realizado` mensal e a quebra
  * semanal dos indicadores cobertos pela base real. Tudo o resto do
  * objeto (meta, gerente, regional, churn, cancelamento, crescimento,
- * base ativa) permanece exatamente como veio do mock — ver o comentário
- * no topo do arquivo.
+ * base ativa) permanece exatamente como veio do mock (ou `null`, pra
+ * cidade sintetizada — ver cidadeService.js) — ver o comentário no topo
+ * do arquivo.
  *
  * Se `indice` for `null` (nenhum carregamento bem-sucedido ainda nesta
  * sessão), os indicadores cobertos ficam com `realizado: null` em vez do
@@ -121,7 +153,16 @@ export function aplicarRealizadosReais(cidade, indice, tecnologia) {
           return {
             ...m,
             realizado,
-            semanas: m.semanas.map((s) => ({ ...s, valor: semanasReais?.get(s.numero) ?? null })),
+            semanas: m.semanas.map((s) => {
+              const real = semanasReais?.get(s.numero);
+              if (!real) return { ...s, valor: null };
+              return {
+                ...s,
+                valor: real.valor,
+                diaInicio: real.diaInicio ?? s.diaInicio,
+                diaFim: real.diaFim ?? s.diaFim,
+              };
+            }),
           };
         }),
       };

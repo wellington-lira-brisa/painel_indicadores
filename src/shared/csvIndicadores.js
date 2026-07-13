@@ -277,6 +277,11 @@ export function normalizar(linhas) {
         indicadorId: mapa.indicadorId,
         mesRef: l.mes_ref,
         semanaMes: Number(l.semana_mes),
+        // datas REAIS da semana, direto da base (não os blocos fixos de 7
+        // dias que o app usa pra semana fictícia — ver utils/semanas.js).
+        // É isso que corrige o rótulo errado da coluna de semana no front.
+        primeiroDiaSemana: l.primeiro_dia_semana,
+        ultimoDiaSemana: l.ultimo_dia_semana,
         valor: 0,
       });
     }
@@ -299,7 +304,17 @@ export function normalizar(linhas) {
   return [...mensal.values()].map(limpar).concat([...semanal.values()].map(limpar));
 }
 
-const COLUNAS_SAIDA = ['cidade_slug', 'cidade_origem', 'tecnologia', 'indicador_id', 'mes_ref', 'semana_mes', 'valor'];
+const COLUNAS_SAIDA = [
+  'cidade_slug',
+  'cidade_origem',
+  'tecnologia',
+  'indicador_id',
+  'mes_ref',
+  'semana_mes',
+  'primeiro_dia_semana',
+  'ultimo_dia_semana',
+  'valor',
+];
 
 function celulaCsv(valor) {
   if (valor === null || valor === undefined) return '';
@@ -315,7 +330,17 @@ function celulaCsv(valor) {
  */
 export function paraCsv(registros) {
   const linhas = registros.map((r) =>
-    [r.cidadeSlug, r.cidadeOrigem, r.tecnologia, r.indicadorId, r.mesRef, r.semanaMes, r.valor]
+    [
+      r.cidadeSlug,
+      r.cidadeOrigem,
+      r.tecnologia,
+      r.indicadorId,
+      r.mesRef,
+      r.semanaMes,
+      r.primeiroDiaSemana,
+      r.ultimoDiaSemana,
+      r.valor,
+    ]
       .map(celulaCsv)
       .join(','),
   );

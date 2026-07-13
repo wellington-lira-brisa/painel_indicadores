@@ -137,3 +137,56 @@ test('paraCsv + parsearCsv fazem um roundtrip sem perda (é o que gerarBase.mjs 
   assert.equal(mensalFtth.cidade_slug, 'araripina-pe');
   assert.equal(mensalFtth.valor, '1770');
 });
+
+test('datas reais da semana (primeiro_dia_semana/ultimo_dia_semana) sobrevivem ao roundtrip — é isso que corrige o rótulo errado da coluna de semana no front', () => {
+  const linhas = [COLUNAS_OBRIGATORIAS.join(',')];
+  const linha = (canal, semanaMes, primeiroDia, ultimoDia, valor) =>
+    [
+      '2026-07-01', `2026-07_S0${semanaMes}`, String(semanaMes), primeiroDia, ultimoDia, '25', '3.5', '3.5',
+      'ARARIPINA / PE', 'INTERNET', canal, 'Instalado', 'WAVES', valor, valor,
+    ].join(',');
+  // semana 1 real vai de 01 a 05 (5 dias, não 7) — é exatamente o caso que
+  // quebrava com o esquema fixo de blocos de 7 dias do app
+  linhas.push(linha('CANAL_A', 1, '2026-07-01', '2026-07-05', 10));
+  for (let i = 0; i < 99; i++) linhas.push(linha(`CANAL_5G_${i}`, 1, '2026-07-01', '2026-07-05', i).replace('INTERNET', '5G').replace('Instalado', 'Assinado').replace('WAVES', '5G AVULSO'));
+
+  const registros = normalizar(parsearCsv(linhas.join('\n')));
+  const csvGerado = paraCsv(registros);
+  const relinhas = parsearCsv(csvGerado);
+
+  const semanaFtth = relinhas.find((l) => l.tecnologia === 'ftth' && l.semana_mes === '1');
+  assert.equal(semanaFtth.primeiro_dia_semana, '2026-07-01');
+  assert.equal(semanaFtth.ultimo_dia_semana, '2026-07-05');
+});
+
+test('parsearCsv detecta ";" como delimitador e a base aceita decimal com vírgula (formato real do export Spark)', () => {
+  const cabecalho = COLUNAS_OBRIGATORIAS.join(';');
+  const linha = (canal, semana, mensal) =>
+    [
+      '2026-07-01', '2026-07_S01', '1', '2026-07-01', '2026-07-05', '25', '3,5', '3,5',
+      'ARARIPINA / PE', 'INTERNET', canal, 'Instalado', 'WAVES', semana, mensal,
+    ].join(';');
+
+  const linhas = [cabecalho];
+  for (let i = 0; i < 60; i++) linhas.push(linha(`CANAL_${i}`, `${i},5`, `${i},5`));
+  for (let i = 0; i < 60; i++) {
+    linhas.push(
+      [
+        '2026-07-01', '2026-07_S01', '1', '2026-07-01', '2026-07-05', '25', '3,5', '3,5',
+        'ARARIPINA / PE', '5G', `CANAL_5G_${i}`, 'Assinado', '5G AVULSO', `${i},5`, `${i},5`,
+      ].join(';'),
+    );
+  }
+
+  const linhasParsed = parsearCsv(linhas.join('\n'));
+  assert.equal(linhasParsed[0].cidade, 'ARARIPINA / PE');
+  assert.equal(linhasParsed[0].dias_uteis_semana, '3,5'); // string crua preservada — só validar()/normalizar() convertem
+
+  const { erros } = validar(linhasParsed);
+  assert.deepEqual(erros, []);
+
+  const registros = normalizar(linhasParsed);
+  const mensalFtth = registros.find((r) => r.tecnologia === 'ftth' && r.semanaMes === null);
+  // soma de 0,5 + 1,5 + ... + 59,5 = soma(0..59) + 60*0.5 = 1770 + 30 = 1800
+  assert.equal(mensalFtth.valor, 1800);
+});

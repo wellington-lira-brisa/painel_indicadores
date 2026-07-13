@@ -18,15 +18,20 @@ function media(valores) {
  * do período —, em vez de duplicar a regra de soma meta/realizado e a
  * inversão pra indicadores onde menor é melhor (churn, cancelamento).
  *
- * `realizadoMedia` conta só meses já apurados (ignora `null`); `metaMedia`
- * usa todos os meses do período, já que a meta é sempre definida de antemão.
+ * `realizadoMedia` e `metaMedia` ignoram, cada um, os meses em que o
+ * respectivo valor é `null` — uma cidade sem cadastro de meta (existe só
+ * na base real, nunca foi cadastrada — ver cidadeService.js) tem `meta:
+ * null` em todo mês; `media([null, null, ...])` sem esse filtro somaria
+ * "null" como 0 e devolveria 0 (parece "meta zerada", quando na verdade é
+ * "meta desconhecida" — `null` deveria virar "—", não "0").
  */
 export function calcularMediaIndicador(indicador, indicesPeriodo) {
   const mesesDoPeriodo = indicesPeriodo.map((i) => indicador.meses[i]);
   const apurados = mesesDoPeriodo.filter((m) => m.realizado !== null);
+  const comMeta = mesesDoPeriodo.filter((m) => m.meta !== null);
 
   return {
-    metaMedia: media(mesesDoPeriodo.map((m) => m.meta)),
+    metaMedia: media(comMeta.map((m) => m.meta)),
     realizadoMedia: media(apurados.map((m) => m.realizado)),
     atingimentoPeriodo: atingimentoIndicador({ ...indicador, meses: mesesDoPeriodo }),
     quantidadeMesesApurados: apurados.length,

@@ -39,10 +39,8 @@ export default function PaginaRanking({ tecnologia = TECNOLOGIAS.ftth }) {
     amarelo: cidadesFiltradas.filter((c) => c.status === 'amarelo').length,
     vermelho: cidadesFiltradas.filter((c) => c.status === 'vermelho').length,
   };
-  const mediaGeral =
-    cidadesFiltradas.length > 0
-      ? cidadesFiltradas.reduce((acc, c) => acc + c.score, 0) / cidadesFiltradas.length
-      : 0;
+  const scoresValidos = cidadesFiltradas.map((c) => c.score).filter((s) => s !== null);
+  const mediaGeral = scoresValidos.length > 0 ? scoresValidos.reduce((acc, s) => acc + s, 0) / scoresValidos.length : null;
 
   return (
     <div className={`space-y-6 ${tecnologia.classeTema}`}>

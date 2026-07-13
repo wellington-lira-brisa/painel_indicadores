@@ -23,7 +23,7 @@ export default function CardRankingCidade({ cidade, posicao, resumo, rotaBase = 
           <div className="min-w-0">
             <p className="text-xs font-semibold text-slate-400">{posicao}º lugar</p>
             <p className="truncate text-base font-bold text-slate-900">{cidade.nome}</p>
-            <p className="truncate text-sm text-slate-500">{cidade.gerente}</p>
+            <p className="truncate text-sm text-slate-500">{cidade.gerente ?? '—'}</p>
           </div>
           <StatusBadge status={cidade.status} />
         </div>

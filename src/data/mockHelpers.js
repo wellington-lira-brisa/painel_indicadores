@@ -66,6 +66,50 @@ export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizado
 }
 
 /**
+ * Metadados dos indicadores por tecnologia (id, nome, unidade, se "maior é
+ * melhor", se tem quebra semanal) — extraídos dos mesmos valores já usados
+ * em cada `indicador(...)` de `cidadesMock`/`cidadesMock5g`, só que como
+ * dado isolado, sem meta/realizado. Existem só pra alimentar
+ * `indicadoresVazios()` abaixo; as cidades mockadas continuam com seus
+ * blocos originais intactos (duplicar essa metadata aqui foi a troca
+ * deliberada por não mexer num dataset que já funciona).
+ */
+export const DEFINICOES_INDICADORES_FTTH = [
+  { id: 'orcamento', nome: 'Orçamento (vendas)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
+  { id: 'efetivado', nome: 'Efetivado', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
+  { id: 'instalacao', nome: 'Instalação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
+  { id: 'churn', nome: 'Churn Rate', unidade: 'pct', melhorQuandoMaior: false, possuiSemanas: true },
+  { id: 'cancelamento', nome: 'Cancelamento', unidade: 'abs', melhorQuandoMaior: false, possuiSemanas: true },
+  { id: 'crescimento', nome: 'Crescimento (base)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
+];
+
+export const DEFINICOES_INDICADORES_5G = [
+  { id: 'crescimento', nome: 'Crescimento (base)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: false },
+  { id: 'ativacao', nome: 'Ativação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
+  { id: 'churn', nome: 'Churn Rate', unidade: 'pct', melhorQuandoMaior: false, possuiSemanas: false },
+  { id: 'cancelamento', nome: 'Cancelamento', unidade: 'abs', melhorQuandoMaior: false, possuiSemanas: false },
+];
+
+/**
+ * Gera os indicadores de uma cidade que não tem cadastro no mock (existe
+ * na base real, mas nunca foi cadastrada com meta/gerente/regional) — meta
+ * e realizado nascem `null` em todo mês. `aplicarRealizadosReais`
+ * (indicadorRealizadoService.js) preenche depois o `realizado` dos
+ * indicadores cobertos pela base real; a meta continua `null` porque
+ * nenhuma fonte hoje fornece meta — e é exatamente por isso que
+ * `atingimentoIndicador` (utils/status.js) devolve `null` pra esses
+ * indicadores mesmo com realizado preenchido: sem meta não existe
+ * "atingimento", só o número bruto.
+ */
+export function indicadoresVazios(definicoes) {
+  const metasNulas = MESES.map(() => null);
+  const realizadosNulos = MESES.map(() => null);
+  return definicoes.map((d) =>
+    indicador(d.id, d.nome, d.unidade, d.melhorQuandoMaior, metasNulas, realizadosNulos, d.possuiSemanas),
+  );
+}
+
+/**
  * Base Ativa mês a mês, derivada do indicador "Crescimento (base)": cada
  * mês soma o `realizado` de crescimento daquele mês a um valor inicial da
  * cidade. Meses ainda não apurados ficam `null`. Como percorre

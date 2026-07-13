@@ -79,7 +79,9 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
 
   const regionaisDisponiveis = useMemo(() => {
     if (!cidades) return [];
-    return [...new Set(cidades.map((c) => c.regional))].sort((a, b) => a.localeCompare(b));
+    return [...new Set(cidades.map((c) => c.regional).filter((r) => r != null))].sort((a, b) =>
+      a.localeCompare(b),
+    );
   }, [cidades]);
 
   const cidadesFiltradas = useMemo(() => {

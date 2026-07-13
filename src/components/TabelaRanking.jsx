@@ -94,7 +94,7 @@ export default function TabelaRanking({ cidades, rotaBase = '' }) {
                     {cidade.nome}
                   </Link>
                 </td>
-                <td className="min-w-[8rem] whitespace-nowrap px-4 py-3 text-slate-600">{cidade.gerente}</td>
+                <td className="min-w-[8rem] whitespace-nowrap px-4 py-3 text-slate-600">{cidade.gerente ?? '—'}</td>
                 <td className="px-4 py-3 text-right tabular-nums">{resumo.meta.toLocaleString('pt-BR')}</td>
                 <td className="px-4 py-3 text-right tabular-nums">{resumo.realizado.toLocaleString('pt-BR')}</td>
                 <td className="px-4 py-3">

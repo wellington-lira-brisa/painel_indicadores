@@ -2,6 +2,7 @@ const ESTILOS = {
   verde: { classes: 'bg-emerald-100 text-emerald-800 ring-emerald-600/20', rotulo: 'Saudável' },
   amarelo: { classes: 'bg-amber-100 text-amber-800 ring-amber-600/20', rotulo: 'Atenção' },
   vermelho: { classes: 'bg-red-100 text-red-800 ring-red-600/20', rotulo: 'Crítico' },
+  'sem-dado': { classes: 'bg-slate-100 text-slate-500 ring-slate-400/20', rotulo: 'Sem meta' },
 };
 
 export default function StatusBadge({ status }) {

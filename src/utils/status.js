@@ -44,17 +44,26 @@ export function atingimentoIndicador(indicador) {
   return Math.min(razao * 100, 150);
 }
 
-/** Score da cidade: média simples dos atingimentos válidos dos indicadores. */
+/**
+ * Score da cidade: média simples dos atingimentos válidos dos indicadores.
+ * `null` quando NENHUM indicador tem meta+realizado pra calcular — não é
+ * "0%" (que seria "meta batida em 0%", ou seja, uma nota péssima real).
+ * Cidades sem meta cadastrada (ex.: só existem na base real, nunca foram
+ * cadastradas — ver cidadeService.js) caem aqui; distinguir isso de
+ * "score baixo de verdade" é o que `statusCidade` usa pra não rotular uma
+ * cidade sem meta como "Crítico".
+ */
 export function scoreCidade(cidade) {
   const valores = cidade.indicadores
     .map(atingimentoIndicador)
     .filter((v) => v !== null);
-  if (valores.length === 0) return 0;
+  if (valores.length === 0) return null;
   return valores.reduce((acc, v) => acc + v, 0) / valores.length;
 }
 
 export function statusCidade(cidade) {
-  return classificarAtingimento(scoreCidade(cidade));
+  const score = scoreCidade(cidade);
+  return score === null ? 'sem-dado' : classificarAtingimento(score);
 }
 
 /** Último mês com realizado apurado de um indicador, ou null se nenhum. */
