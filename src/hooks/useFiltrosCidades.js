@@ -5,10 +5,12 @@ const CHAVE_LOCALSTORAGE_PADRAO = 'painel-metas:filtros-ranking';
 const FILTROS_PADRAO = {
   busca: '',
   regional: '',
+  coordenacaoRegional: '',
   status: [], // subset de ['verde', 'amarelo', 'vermelho']; vazio = todos
   vendeFwa: 'todas', // 'todas' | 'sim' | 'nao'
   metaBatida: 'todas', // 'todas' | 'sim' | 'nao'
   atingimentoMin: '', // string do input; '' = sem piso
+  prioritaria: 'todas', // 'todas' | 'sim' | 'nao'
 };
 
 /** Não guarda nada sensível — só preferências de visualização da tabela. */
@@ -26,6 +28,7 @@ function carregarFiltrosSalvos(chave) {
 function cidadeCorrespondeAosFiltros(cidade, filtros, atingimentoMinNumero) {
   if (filtros.busca && !cidade.nome.toLowerCase().includes(filtros.busca)) return false;
   if (filtros.regional && cidade.regional !== filtros.regional) return false;
+  if (filtros.coordenacaoRegional && cidade.coordenacaoRegional !== filtros.coordenacaoRegional) return false;
   if (filtros.status.length > 0 && !filtros.status.includes(cidade.status)) return false;
 
   if (filtros.vendeFwa !== 'todas') {
@@ -36,6 +39,11 @@ function cidadeCorrespondeAosFiltros(cidade, filtros, atingimentoMinNumero) {
   if (filtros.metaBatida !== 'todas') {
     const deveTerBatido = filtros.metaBatida === 'sim';
     if (cidade.score >= 100 !== deveTerBatido) return false;
+  }
+
+  if (filtros.prioritaria !== 'todas') {
+    const deveSerPrioritaria = filtros.prioritaria === 'sim';
+    if (Boolean(cidade.prioritaria) !== deveSerPrioritaria) return false;
   }
 
   if (atingimentoMinNumero !== null && cidade.score < atingimentoMinNumero) return false;
@@ -84,6 +92,13 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
     );
   }, [cidades]);
 
+  const coordenacoesDisponiveis = useMemo(() => {
+    if (!cidades) return [];
+    return [...new Set(cidades.map((c) => c.coordenacaoRegional).filter((c) => c != null))].sort((a, b) =>
+      a.localeCompare(b),
+    );
+  }, [cidades]);
+
   const cidadesFiltradas = useMemo(() => {
     if (!cidades) return [];
 
@@ -102,9 +117,11 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
   const quantidadeFiltrosAtivos =
     (filtros.busca !== '' ? 1 : 0) +
     (filtros.regional !== '' ? 1 : 0) +
+    (filtros.coordenacaoRegional !== '' ? 1 : 0) +
     (filtros.status.length > 0 ? 1 : 0) +
     (filtros.vendeFwa !== 'todas' ? 1 : 0) +
     (filtros.metaBatida !== 'todas' ? 1 : 0) +
+    (filtros.prioritaria !== 'todas' ? 1 : 0) +
     (filtros.atingimentoMin !== '' ? 1 : 0);
 
   return {
@@ -113,6 +130,7 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
     alternarStatus,
     limparFiltros,
     regionaisDisponiveis,
+    coordenacoesDisponiveis,
     cidadesFiltradas,
     quantidadeFiltrosAtivos,
   };

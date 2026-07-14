@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
 
 const CABECALHO = COLUNAS_OBRIGATORIAS.join(',');
 
@@ -212,4 +212,61 @@ test('parsearCsv detecta ";" como delimitador e a base aceita decimal com vírgu
   const mensalFtth = registros.find((r) => r.tecnologia === 'ftth' && r.semanaMes === null);
   // soma de 0,5 + 1,5 + ... + 59,5 = soma(0..59) + 60*0.5 = 1770 + 30 = 1800
   assert.equal(mensalFtth.valor, 1800);
+});
+
+test('normalizarMetadadosCidade extrai gerência/gerente/coordenação por cidade, 1 registro por cidade (não por linha)', () => {
+  const linhas = [
+    { cidade: 'ARARIPINA / PE', gerencia_cidade: 'G7', gerente_cidade: 'JECKSON DIOGO', coordenacao: 'PETROLINA' },
+    { cidade: 'ARARIPINA / PE', gerencia_cidade: 'G7', gerente_cidade: 'JECKSON DIOGO', coordenacao: 'PETROLINA' },
+    { cidade: 'NATAL / RN', gerencia_cidade: 'G3', gerente_cidade: 'TIAGO BRASILEIRO', coordenacao: 'RN LITORAL' },
+  ];
+  const { registros, avisos } = normalizarMetadadosCidade(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros.length, 2);
+  const araripina = registros.find((r) => r.cidadeSlug === 'araripina-pe');
+  assert.deepEqual(araripina, {
+    cidadeSlug: 'araripina-pe',
+    cidadeOrigem: 'ARARIPINA / PE',
+    gerenciaCidade: 'G7',
+    gerenteCidade: 'JECKSON DIOGO',
+    coordenacao: 'PETROLINA',
+  });
+});
+
+test('normalizarMetadadosCidade trata "NÃO MAPEADO" e coluna ausente como sem dado, sem quebrar', () => {
+  const linhas = [
+    { cidade: 'ARARIPINA / PE', gerencia_cidade: 'NÃO MAPEADO', gerente_cidade: '', coordenacao: undefined },
+  ];
+  const { registros, avisos } = normalizarMetadadosCidade(linhas);
+  assert.deepEqual(avisos, []);
+  assert.deepEqual(registros[0], {
+    cidadeSlug: 'araripina-pe',
+    cidadeOrigem: 'ARARIPINA / PE',
+    gerenciaCidade: null,
+    gerenteCidade: null,
+    coordenacao: null,
+  });
+});
+
+test('normalizarMetadadosCidade avisa (sem quebrar) quando a mesma cidade tem valores divergentes, e mantém o primeiro', () => {
+  const linhas = [
+    { cidade: 'ARARIPINA / PE', gerencia_cidade: 'G7', gerente_cidade: 'JECKSON DIOGO', coordenacao: 'PETROLINA' },
+    { cidade: 'ARARIPINA / PE', gerencia_cidade: 'G9', gerente_cidade: 'JECKSON DIOGO', coordenacao: 'PETROLINA' },
+  ];
+  const { registros, avisos } = normalizarMetadadosCidade(linhas);
+  assert.equal(avisos.length, 1);
+  assert.match(avisos[0], /gerencia_cidade/);
+  assert.equal(registros[0].gerenciaCidade, 'G7'); // primeiro valor visto, não o último
+});
+
+test('paraCsvMetadados + parsearCsv fazem roundtrip sem perda', () => {
+  const { registros } = normalizarMetadadosCidade([
+    { cidade: 'ARARIPINA / PE', gerencia_cidade: 'G7', gerente_cidade: 'JECKSON DIOGO', coordenacao: 'PETROLINA' },
+  ]);
+  const linhas = parsearCsv(paraCsvMetadados(registros));
+  assert.equal(linhas.length, 1);
+  assert.equal(linhas[0].cidade_slug, 'araripina-pe');
+  assert.equal(linhas[0].gerencia_cidade, 'G7');
+  assert.equal(linhas[0].gerente_cidade, 'JECKSON DIOGO');
+  assert.equal(linhas[0].coordenacao, 'PETROLINA');
 });

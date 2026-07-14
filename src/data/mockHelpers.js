@@ -78,16 +78,11 @@ export const DEFINICOES_INDICADORES_FTTH = [
   { id: 'orcamento', nome: 'Orçamento (vendas)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
   { id: 'efetivado', nome: 'Efetivado', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
   { id: 'instalacao', nome: 'Instalação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
-  { id: 'churn', nome: 'Churn Rate', unidade: 'pct', melhorQuandoMaior: false, possuiSemanas: true },
-  { id: 'cancelamento', nome: 'Cancelamento', unidade: 'abs', melhorQuandoMaior: false, possuiSemanas: true },
-  { id: 'crescimento', nome: 'Crescimento (base)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
 ];
 
 export const DEFINICOES_INDICADORES_5G = [
   { id: 'crescimento', nome: 'Crescimento (base)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: false },
   { id: 'ativacao', nome: 'Ativação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
-  { id: 'churn', nome: 'Churn Rate', unidade: 'pct', melhorQuandoMaior: false, possuiSemanas: false },
-  { id: 'cancelamento', nome: 'Cancelamento', unidade: 'abs', melhorQuandoMaior: false, possuiSemanas: false },
 ];
 
 /**
@@ -117,8 +112,19 @@ export function indicadoresVazios(definicoes) {
  * Ativa acompanha automaticamente qualquer mês novo adicionado depois —
  * pra qualquer tecnologia que reutilize este helper.
  */
+/**
+ * Base Ativa é a soma acumulada do indicador `crescimento` mês a mês —
+ * por isso depende dele existir. Cidades sem `crescimento` (FTTH, depois
+ * da remoção pedida pelo negócio — ver mockCidades.js) não têm como ter
+ * Base Ativa calculada; `baseAtiva: null` é o valor que os componentes já
+ * tratam como "não exibir esse card" (ver TabelaIndicadores.jsx,
+ * ListaIndicadoresMobile.jsx, usePeriodoAnalise.js) — não é um caso novo
+ * inventado aqui, é o mesmo null-check que já existia pra outros motivos.
+ */
 export function comBaseAtiva(cidade, baseInicial) {
   const crescimento = cidade.indicadores.find((i) => i.id === 'crescimento');
+  if (!crescimento) return { ...cidade, baseAtiva: null };
+
   let acumulado = baseInicial;
 
   const baseAtiva = crescimento.meses.map((mes) => {

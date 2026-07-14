@@ -50,8 +50,8 @@ export default function PaginaLogin() {
     <div className="flex min-h-screen items-center justify-center bg-slate-100 px-4 py-10">
       <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-sm sm:p-8">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-700">FTTH</p>
-          <h1 className="mt-1 text-xl font-bold text-slate-900">Painel de Metas e Resultados</h1>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-700">FTTH & 5G</p>
+          <h1 className="mt-1 text-xl font-bold text-slate-900">Mesa de Performace OP</h1>
           <p className="mt-1 text-sm text-slate-500">
             {modoCriarConta ? 'Crie sua conta com um código de convite' : 'Entre com sua matrícula para continuar'}
           </p>

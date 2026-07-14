@@ -35,6 +35,7 @@ export const MAPA_INDICADOR = {
 };
 
 const REGEX_DATA = /^\d{4}-\d{2}-\d{2}$/;
+const VALOR_NAO_MAPEADO = 'NÃO MAPEADO';
 
 /**
  * O export em produção usa `decimal=","` (padrão BR/Spark) — "3,5" deve
@@ -302,6 +303,66 @@ export function normalizar(linhas) {
 
   const limpar = (r) => { const { _canaisSomados, ...resto } = r; return resto; };
   return [...mensal.values()].map(limpar).concat([...semanal.values()].map(limpar));
+}
+
+/**
+ * Colunas de metainformação de cidade (gerência regional, gerente e
+ * coordenação) — opcionais: bases antigas sem essas colunas continuam
+ * funcionando, só não geram metadado nenhum (front cai no que já tinha:
+ * mock ou `null`, ver cidadeService.js). Nunca em COLUNAS_OBRIGATORIAS
+ * por causa disso.
+ *
+ * Cada cidade deveria ter só um valor de cada campo na base inteira (não
+ * é algo que muda por semana/mês). Se a base trouxer valores diferentes
+ * pra uma mesma cidade — inconsistência de cadastro, não erro de
+ * parsing — mantém o primeiro valor não-"NÃO MAPEADO" encontrado (ordem
+ * de leitura do CSV) e devolve um aviso, sem derrubar o workflow: dado
+ * de gerência é complementar, não pode bloquear a publicação de vendas.
+ */
+export function normalizarMetadadosCidade(linhas) {
+  const avisos = [];
+  const porCidade = new Map(); // cidadeSlug -> { cidadeOrigem, gerenciaCidade, gerenteCidade, coordenacao }
+
+  const CAMPOS = [
+    ['gerencia_cidade', 'gerenciaCidade'],
+    ['gerente_cidade', 'gerenteCidade'],
+    ['coordenacao', 'coordenacao'],
+  ];
+
+  for (const l of linhas) {
+    const cidadeSlug = normalizarCidade(l.cidade);
+    if (!cidadeSlug) continue; // sem cidade mapeada: mesmo critério de normalizar()
+
+    if (!porCidade.has(cidadeSlug)) {
+      porCidade.set(cidadeSlug, { cidadeOrigem: l.cidade, gerenciaCidade: null, gerenteCidade: null, coordenacao: null });
+    }
+    const registro = porCidade.get(cidadeSlug);
+
+    for (const [colunaOrigem, campoDestino] of CAMPOS) {
+      const bruto = l[colunaOrigem];
+      if (bruto === undefined || bruto === '' || bruto === VALOR_NAO_MAPEADO) continue;
+
+      if (registro[campoDestino] === null) {
+        registro[campoDestino] = bruto;
+      } else if (registro[campoDestino] !== bruto) {
+        avisos.push(
+          `Cidade "${l.cidade}": valores divergentes em "${colunaOrigem}" ("${registro[campoDestino]}" vs "${bruto}") — mantendo o primeiro.`,
+        );
+      }
+    }
+  }
+
+  return { registros: [...porCidade.entries()].map(([cidadeSlug, r]) => ({ cidadeSlug, ...r })), avisos };
+}
+
+const COLUNAS_SAIDA_METADADOS = ['cidade_slug', 'cidade_origem', 'gerencia_cidade', 'gerente_cidade', 'coordenacao'];
+
+/** Serializa a saída de `normalizarMetadadosCidade()` — arquivo separado (`cidades-metadados.csv`) porque é 1 linha por cidade, não 1 por indicador/semana como `indicadores-realizados.csv`. */
+export function paraCsvMetadados(registros) {
+  const linhas = registros.map((r) =>
+    [r.cidadeSlug, r.cidadeOrigem, r.gerenciaCidade, r.gerenteCidade, r.coordenacao].map(celulaCsv).join(','),
+  );
+  return [COLUNAS_SAIDA_METADADOS.join(','), ...linhas].join('\n') + '\n';
 }
 
 const COLUNAS_SAIDA = [

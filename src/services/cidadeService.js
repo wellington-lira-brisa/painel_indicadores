@@ -5,6 +5,8 @@ import { scoreCidade, statusCidade, tendenciaCidade } from '../utils/status';
 import { listarStatusFwa } from './fwaService';
 import { listarStatusPlanosAtivosPorCidade } from './planoAcaoService';
 import { carregarBaseReal, baseRealEmCacheOuNula, aplicarRealizadosReais } from './indicadorRealizadoService';
+import { carregarMetadadosCidades, metadadosCidadesEmCacheOuNulo } from './cidadeMetadadosService';
+import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
 const DEFINICOES_POR_TECNOLOGIA = { ftth: DEFINICOES_INDICADORES_FTTH, '5g': DEFINICOES_INDICADORES_5G };
 
@@ -24,6 +26,17 @@ async function baseRealComFallback(tecnologiaId) {
     return baseRealEmCacheOuNula(tecnologiaId) ?? { indice: null, nomesOriginais: new Map() };
   }
 }
+
+/** Mesmo raciocínio do FWA (abaixo) e do plano de ação: metadado de cidade é complementar, nunca pode quebrar o Ranking. */
+async function metadadosCidadesComFallback() {
+  try {
+    return await carregarMetadadosCidades();
+  } catch (excecao) {
+    console.error('Falha ao carregar metadados de cidade, mantendo última base conhecida:', excecao);
+    return metadadosCidadesEmCacheOuNulo() ?? new Map();
+  }
+}
+
 
 /**
  * FWA é informação complementar: se a consulta falhar (RLS, rede, etc.),
@@ -87,8 +100,33 @@ function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId) {
   };
 }
 
-function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, tecnologiaId) {
-  const cidadeComDadosReais = aplicarRealizadosReais(cidade, indiceRealizados, tecnologiaId);
+/**
+ * Sobrepõe `regional` e `gerente` com o dado real (colunas `gerencia_cidade`
+ * e `gerente_cidade` da base), quando mapeado — real é mais confiável e
+ * mais atual que o mock, então tem prioridade; cai no mock só quando a
+ * base real não tem valor pra essa cidade (`null`, cidade sintética, ou
+ * "NÃO MAPEADO" na origem). `coordenacaoRegional` é campo novo, só
+ * existe na base real (grupo/território — ex. "FORTALEZA", "CEARA
+ * CENTRO") — não confundir com `coordenadorRegional` do mock, que é
+ * nome de pessoa; são dois conceitos diferentes, então nenhum sobrescreve
+ * o outro.
+ */
+function aplicarMetadadosCidade(cidade, metadadosCidades) {
+  const metadado = metadadosCidades.get(cidade.id);
+  return {
+    ...cidade,
+    regional: metadado?.gerenciaCidade ?? cidade.regional,
+    gerente: metadado?.gerenteCidade ?? cidade.gerente,
+    coordenacaoRegional: metadado?.coordenacao ?? null,
+  };
+}
+
+function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, metadadosCidades, tecnologiaId) {
+  const cidadeComDadosReais = aplicarRealizadosReais(
+    aplicarMetadadosCidade(cidade, metadadosCidades),
+    indiceRealizados,
+    tecnologiaId,
+  );
   return {
     ...cidadeComDadosReais,
     score: scoreCidade(cidadeComDadosReais),
@@ -96,6 +134,7 @@ function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, tecno
     tendencia: tendenciaCidade(cidadeComDadosReais),
     vendeFwa: statusFwa[cidade.id] ?? false,
     temPlanoAtivo: statusPlanoAtivo[cidade.id] ?? false,
+    prioritaria: ehCidadePrioritaria(cidade.id),
   };
 }
 
@@ -125,13 +164,14 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   }
 
   async function listarCidades() {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }] = await Promise.all([
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
       baseRealComFallback(tecnologiaId),
+      metadadosCidadesComFallback(),
     ]);
     return montarListaCompleta(nomesOriginais).map((cidade) =>
-      enriquecer(cidade, statusFwa, statusPlanoAtivo, indice, tecnologiaId),
+      enriquecer(cidade, statusFwa, statusPlanoAtivo, indice, metadadosCidades, tecnologiaId),
     );
   }
 
@@ -144,14 +184,15 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   }
 
   async function buscarCidade(id) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }] = await Promise.all([
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
       baseRealComFallback(tecnologiaId),
+      metadadosCidadesComFallback(),
     ]);
     const cidade = montarListaCompleta(nomesOriginais).find((c) => c.id === id);
     if (!cidade) return null;
-    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indice, tecnologiaId);
+    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indice, metadadosCidades, tecnologiaId);
   }
 
   return { listarCidades, listarRanking, buscarCidade };

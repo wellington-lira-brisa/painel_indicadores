@@ -21,7 +21,7 @@ const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/indicadores-realizados.csv
 
 // Único conjunto de indicadores que a base real hoje sustenta, por
 // tecnologia (ver RELATORIO.md, seção 5). Qualquer indicador fora daqui
-// (meta, churn, cancelamento, crescimento — e toda a metainformação de
+// (meta — e toda a metainformação de
 // cidade: gerente, regional, coordenador, ativação comercial) continua
 // vindo do mock (ou fica `null`, pra cidade sem cadastro) até existir uma
 // fonte real pra ele. Este arquivo nunca decide inventar um valor pra
@@ -131,10 +131,9 @@ export function baseRealEmCacheOuNula(tecnologia) {
 /**
  * Substitui, em `cidade.indicadores`, o `realizado` mensal e a quebra
  * semanal dos indicadores cobertos pela base real. Tudo o resto do
- * objeto (meta, gerente, regional, churn, cancelamento, crescimento,
- * base ativa) permanece exatamente como veio do mock (ou `null`, pra
- * cidade sintetizada — ver cidadeService.js) — ver o comentário no topo
- * do arquivo.
+ * objeto (meta, gerente, regional, crescimento, base ativa) permanece
+ * exatamente como veio do mock (ou `null`, pra cidade sintetizada — ver
+ * cidadeService.js) — ver o comentário no topo do arquivo.
  *
  * Se `indice` for `null` (nenhum carregamento bem-sucedido ainda nesta
  * sessão), os indicadores cobertos ficam com `realizado: null` em vez do

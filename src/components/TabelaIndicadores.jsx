@@ -174,9 +174,9 @@ export default function TabelaIndicadores({ indicadores, baseAtiva, cidade }) {
           </tbody>
         </table>
         <p className="border-t border-slate-100 px-3 py-2 text-[11px] text-slate-500">
-          Linha superior: meta · Linha inferior: realizado (— = mês não apurado). Para churn e
-          cancelamento, valores menores são melhores. As semanas seguem o calendário do próprio mês
-          (4 ou 5, conforme a quantidade de dias) e cada coluna pode ser recolhida individualmente.
+          Linha superior: meta · Linha inferior: realizado (— = mês não apurado). As semanas seguem
+          o calendário do próprio mês (4 ou 5, conforme a quantidade de dias) e cada coluna pode ser
+          recolhida individualmente.
         </p>
       </div>
     </div>

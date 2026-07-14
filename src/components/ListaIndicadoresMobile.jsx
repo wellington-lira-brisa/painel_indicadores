@@ -54,8 +54,7 @@ export default function ListaIndicadoresMobile({
         />
       ))}
       <p className="px-1 text-xs text-slate-500">
-        Toque em um indicador para ver o histórico mensal. Para churn e
-        cancelamento, valores menores são melhores.
+        Toque em um indicador para ver o histórico mensal.
       </p>
     </div>
   );

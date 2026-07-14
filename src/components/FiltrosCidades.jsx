@@ -13,6 +13,7 @@ export default function FiltrosCidades({
   alternarStatus,
   limparFiltros,
   regionaisDisponiveis,
+  coordenacoesDisponiveis = [],
   quantidadeFiltrosAtivos,
   quantidadeResultados,
 }) {
@@ -61,7 +62,7 @@ export default function FiltrosCidades({
 
             <div>
               <label htmlFor="filtro-regional" className="block text-xs font-medium text-slate-600">
-                Regional
+                Gerência Regional
               </label>
               <select
                 id="filtro-regional"
@@ -73,6 +74,25 @@ export default function FiltrosCidades({
                 {regionaisDisponiveis.map((regional) => (
                   <option key={regional} value={regional}>
                     {regional}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="filtro-coordenacao" className="block text-xs font-medium text-slate-600">
+                Coordenação Regional
+              </label>
+              <select
+                id="filtro-coordenacao"
+                value={filtros.coordenacaoRegional}
+                onChange={(e) => atualizarFiltro('coordenacaoRegional', e.target.value)}
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-brand-700 focus:outline-none focus:ring-1 focus:ring-brand-700"
+              >
+                <option value="">Todas</option>
+                {coordenacoesDisponiveis.map((coordenacao) => (
+                  <option key={coordenacao} value={coordenacao}>
+                    {coordenacao}
                   </option>
                 ))}
               </select>
@@ -124,6 +144,22 @@ export default function FiltrosCidades({
                 <option value="todas">Todas</option>
                 <option value="sim">Sim (≥ 100%)</option>
                 <option value="nao">Não (&lt; 100%)</option>
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="filtro-prioritaria" className="block text-xs font-medium text-slate-600">
+                Cidades prioritárias
+              </label>
+              <select
+                id="filtro-prioritaria"
+                value={filtros.prioritaria}
+                onChange={(e) => atualizarFiltro('prioritaria', e.target.value)}
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-brand-700 focus:outline-none focus:ring-1 focus:ring-brand-700"
+              >
+                <option value="todas">Todas</option>
+                <option value="sim">Somente prioritárias</option>
+                <option value="nao">Somente não prioritárias</option>
               </select>
             </div>
 

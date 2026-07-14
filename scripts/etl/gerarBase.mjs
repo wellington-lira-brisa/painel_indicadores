@@ -16,9 +16,10 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { parsearCsv, validar, normalizar, paraCsv } from '../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, paraCsv, normalizarMetadadosCidade, paraCsvMetadados } from '../../src/shared/csvIndicadores.js';
 
 const SAIDA_CSV = 'public/dados/indicadores-realizados.csv';
+const SAIDA_METADADOS_CIDADE = 'public/dados/cidades-metadados.csv';
 const SAIDA_STATUS = 'public/dados/ultima-atualizacao.json';
 
 function escreverStatus(status) {
@@ -63,8 +64,15 @@ function main() {
   const registros = normalizar(linhas);
   const semCidade = registros.filter((r) => r.cidadeSlug === null).length;
 
+  const { registros: metadadosCidade, avisos: avisosMetadados } = normalizarMetadadosCidade(linhas);
+  if (avisosMetadados.length > 0) {
+    console.warn(`${avisosMetadados.length} aviso(s) de metadado de cidade (não bloqueiam a publicação):`);
+    avisosMetadados.slice(0, 20).forEach((a) => console.warn(`  - ${a}`));
+  }
+
   mkdirSync('public/dados', { recursive: true });
   writeFileSync(SAIDA_CSV, paraCsv(registros), 'utf-8');
+  writeFileSync(SAIDA_METADADOS_CIDADE, paraCsvMetadados(metadadosCidade), 'utf-8');
   escreverStatus({
     iniciadoEm,
     finalizadoEm: new Date().toISOString(),

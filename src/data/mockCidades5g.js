@@ -7,13 +7,15 @@ import { indicador, comBaseAtiva } from './mockHelpers';
  * Conjunto de indicadores é menor que o do FTTH e numa ordem própria,
  * pedido explícito do negócio: Base Ativa (sempre primeiro, indicador
  * implícito — ver `comBaseAtiva` abaixo), Crescimento (base), Ativação
- * (meta + realizado), Churn Rate, Cancelamento. "Orçamento (vendas)" e
- * "Efetivado" — que o FTTH tem — não são rastreados no 5G.
+ * (meta + realizado). "Orçamento (vendas)" e "Efetivado" — que o FTTH tem
+ * — não são rastreados no 5G. Churn Rate e Cancelamento existiam aqui
+ * antes, mas foram removidos a pedido do negócio (não usados no momento)
+ * — ver histórico do arquivo se precisar recuperar os valores mockados.
  *
  * Quebra semanal só existe pra Ativação — é o único indicador com
- * apuração real por semana; os demais só fecham no fim do mês (por isso
- * o 6º argumento `false` em Crescimento/Churn/Cancelamento — ver
- * `possuiSemanas` em `indicador()`, mockHelpers.js).
+ * apuração real por semana; Crescimento só fecha no fim do mês (por isso
+ * o 6º argumento `false` — ver `possuiSemanas` em `indicador()`,
+ * mockHelpers.js).
  *
  * Reaproveita o mesmo roster de cidades do FTTH (mesmos `id`), mas com
  * `ativacaoComercial` própria do 5G (lançado depois, cidade a cidade) —
@@ -36,14 +38,6 @@ export const cidadesMock5g = [
       indicador('ativacao', 'Ativação', 'abs', true,
         [36, 30, 35, 34, 37, 33, 39, 38, 38, 38, 38, 38],
         [27, 38, 32, 30, 20, 27]),
-      indicador('churn', 'Churn Rate', 'pct', false,
-        [2.6, 2.5, 2.5, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4],
-        [6.4, 3.0, 4.8, 3.5, 2.5, 2.3],
-        false),
-      indicador('cancelamento', 'Cancelamento', 'abs', false,
-        [15, 15, 15, 14, 14, 14, 14, 14, 0, 0, 0, 0],
-        [38, 18, 30, 22, 16, 15],
-        false),
     ],
   },
   {
@@ -62,14 +56,6 @@ export const cidadesMock5g = [
       indicador('ativacao', 'Ativação', 'abs', true,
         [77, 96, 113, 112, 118, 100, 118, 118, 118, 118, 118, 118],
         [80, 76, 87, 87, 93, 72]),
-      indicador('churn', 'Churn Rate', 'pct', false,
-        [2.5, 2.5, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4],
-        [2.7, 2.4, 2.3, 2.5, 2.6, 2.8],
-        false),
-      indicador('cancelamento', 'Cancelamento', 'abs', false,
-        [32, 32, 31, 30, 30, 30, 30, 30, 30, 30, 30, 30],
-        [34, 30, 28, 29, 32, 35],
-        false),
     ],
   },
   {
@@ -88,14 +74,6 @@ export const cidadesMock5g = [
       indicador('ativacao', 'Ativação', 'abs', true,
         [132, 136, 140, 138, 144, 140, 148, 144, 144, 144, 140, 144],
         [135, 141, 144, 140, 149, 146]),
-      indicador('churn', 'Churn Rate', 'pct', false,
-        [2.3, 2.3, 2.3, 2.25, 2.25, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2],
-        [2.2, 2.15, 2.22, 2.18, 2.1, 2.12],
-        false),
-      indicador('cancelamento', 'Cancelamento', 'abs', false,
-        [48, 48, 47, 46, 46, 45, 45, 45, 45, 45, 45, 45],
-        [46, 44, 45, 43, 42, 43],
-        false),
     ],
   },
   {
@@ -114,14 +92,6 @@ export const cidadesMock5g = [
       indicador('ativacao', 'Ativação', 'abs', true,
         [66, 69, 71, 69, 72, 71, 74, 72, 72, 72, 69, 72],
         [53, 56, 58, 53, 56, 52]),
-      indicador('churn', 'Churn Rate', 'pct', false,
-        [2.5, 2.5, 2.5, 2.45, 2.45, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4],
-        [2.9, 3.0, 2.85, 3.1, 3.05, 3.2],
-        false),
-      indicador('cancelamento', 'Cancelamento', 'abs', false,
-        [28, 28, 27, 26, 26, 26, 26, 26, 26, 26, 26, 26],
-        [35, 37, 34, 38, 36, 40],
-        false),
     ],
   },
   {
@@ -140,14 +110,6 @@ export const cidadesMock5g = [
       indicador('ativacao', 'Ativação', 'abs', true,
         [50, 51, 53, 52, 54, 53, 56, 54, 54, 54, 52, 54],
         [42, 40, 46, 41, 44, 38]),
-      indicador('churn', 'Churn Rate', 'pct', false,
-        [2.6, 2.6, 2.55, 2.5, 2.5, 2.45, 2.45, 2.45, 2.45, 2.45, 2.45, 2.45],
-        [2.8, 2.9, 2.75, 2.85, 2.8, 2.95],
-        false),
-      indicador('cancelamento', 'Cancelamento', 'abs', false,
-        [22, 22, 21, 20, 20, 20, 20, 20, 20, 20, 20, 20],
-        [25, 26, 24, 26, 25, 28],
-        false),
     ],
   },
   {
@@ -166,14 +128,6 @@ export const cidadesMock5g = [
       indicador('ativacao', 'Ativação', 'abs', true,
         [99, 103, 106, 104, 109, 106, 111, 109, 109, 109, 104, 109],
         [91, 96, 101, 96, 104, 98]),
-      indicador('churn', 'Churn Rate', 'pct', false,
-        [2.4, 2.4, 2.35, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3],
-        [2.5, 2.45, 2.35, 2.4, 2.3, 2.35],
-        false),
-      indicador('cancelamento', 'Cancelamento', 'abs', false,
-        [38, 38, 37, 36, 36, 36, 36, 36, 36, 36, 36, 36],
-        [40, 38, 37, 38, 36, 37],
-        false),
     ],
   },
 ];
