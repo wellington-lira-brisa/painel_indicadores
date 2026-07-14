@@ -22,6 +22,7 @@ export default function PaginaRanking({ tecnologia = TECNOLOGIAS.ftth }) {
     limparFiltros,
     regionaisDisponiveis,
     coordenacoesDisponiveis,
+    gerentesDisponiveis,
     cidadesFiltradas,
     quantidadeFiltrosAtivos,
   } = useFiltrosCidades(cidades, tecnologia.chaveFiltros);
@@ -59,6 +60,7 @@ export default function PaginaRanking({ tecnologia = TECNOLOGIAS.ftth }) {
         limparFiltros={limparFiltros}
         regionaisDisponiveis={regionaisDisponiveis}
         coordenacoesDisponiveis={coordenacoesDisponiveis}
+        gerentesDisponiveis={gerentesDisponiveis}
         quantidadeFiltrosAtivos={quantidadeFiltrosAtivos}
         quantidadeResultados={cidadesFiltradas.length}
       />

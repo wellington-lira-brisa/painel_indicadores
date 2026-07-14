@@ -35,7 +35,7 @@ jobs:
       - run: npm ci
 
       - name: Testes do ETL (parsing, validação, normalização)
-        run: node --test scripts/etl/__tests__/*.test.mjs
+        run: node --test scripts/etl/__tests__/*.test.mjs src/config/__tests__/*.test.mjs
 
       - name: Baixar base oficial (Google Drive)
         env:

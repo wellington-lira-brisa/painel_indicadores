@@ -14,6 +14,7 @@ export default function FiltrosCidades({
   limparFiltros,
   regionaisDisponiveis,
   coordenacoesDisponiveis = [],
+  gerentesDisponiveis = [],
   quantidadeFiltrosAtivos,
   quantidadeResultados,
 }) {
@@ -93,6 +94,25 @@ export default function FiltrosCidades({
                 {coordenacoesDisponiveis.map((coordenacao) => (
                   <option key={coordenacao} value={coordenacao}>
                     {coordenacao}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="filtro-gerente" className="block text-xs font-medium text-slate-600">
+                Gerente
+              </label>
+              <select
+                id="filtro-gerente"
+                value={filtros.gerente}
+                onChange={(e) => atualizarFiltro('gerente', e.target.value)}
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-brand-700 focus:outline-none focus:ring-1 focus:ring-brand-700"
+              >
+                <option value="">Todos</option>
+                {gerentesDisponiveis.map((gerente) => (
+                  <option key={gerente} value={gerente}>
+                    {gerente}
                   </option>
                 ))}
               </select>

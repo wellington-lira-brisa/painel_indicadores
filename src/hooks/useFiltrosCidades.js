@@ -6,6 +6,7 @@ const FILTROS_PADRAO = {
   busca: '',
   regional: '',
   coordenacaoRegional: '',
+  gerente: '',
   status: [], // subset de ['verde', 'amarelo', 'vermelho']; vazio = todos
   vendeFwa: 'todas', // 'todas' | 'sim' | 'nao'
   metaBatida: 'todas', // 'todas' | 'sim' | 'nao'
@@ -29,6 +30,7 @@ function cidadeCorrespondeAosFiltros(cidade, filtros, atingimentoMinNumero) {
   if (filtros.busca && !cidade.nome.toLowerCase().includes(filtros.busca)) return false;
   if (filtros.regional && cidade.regional !== filtros.regional) return false;
   if (filtros.coordenacaoRegional && cidade.coordenacaoRegional !== filtros.coordenacaoRegional) return false;
+  if (filtros.gerente && cidade.gerente !== filtros.gerente) return false;
   if (filtros.status.length > 0 && !filtros.status.includes(cidade.status)) return false;
 
   if (filtros.vendeFwa !== 'todas') {
@@ -99,6 +101,11 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
     );
   }, [cidades]);
 
+  const gerentesDisponiveis = useMemo(() => {
+    if (!cidades) return [];
+    return [...new Set(cidades.map((c) => c.gerente).filter((g) => g != null))].sort((a, b) => a.localeCompare(b));
+  }, [cidades]);
+
   const cidadesFiltradas = useMemo(() => {
     if (!cidades) return [];
 
@@ -118,6 +125,7 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
     (filtros.busca !== '' ? 1 : 0) +
     (filtros.regional !== '' ? 1 : 0) +
     (filtros.coordenacaoRegional !== '' ? 1 : 0) +
+    (filtros.gerente !== '' ? 1 : 0) +
     (filtros.status.length > 0 ? 1 : 0) +
     (filtros.vendeFwa !== 'todas' ? 1 : 0) +
     (filtros.metaBatida !== 'todas' ? 1 : 0) +
@@ -131,6 +139,7 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
     limparFiltros,
     regionaisDisponiveis,
     coordenacoesDisponiveis,
+    gerentesDisponiveis,
     cidadesFiltradas,
     quantidadeFiltrosAtivos,
   };
