@@ -1,9 +1,9 @@
 {
-  "iniciadoEm": "2026-07-14T09:15:55.287Z",
-  "finalizadoEm": "2026-07-14T09:15:57.670Z",
+  "iniciadoEm": "2026-07-14T19:00:50.790Z",
+  "finalizadoEm": "2026-07-14T19:00:53.725Z",
   "status": "sucesso",
-  "linhasLidas": 243368,
-  "linhasPublicadas": 77767,
-  "linhasSemCidade": 457,
-  "commit": "cde59ca6196e16580fde95808f07ef79d9be815e"
+  "linhasLidas": 244715,
+  "linhasPublicadas": 78086,
+  "linhasSemCidade": 462,
+  "commit": "2e982bb9d7227d660433c52918d75d9ed02f8310"
 }
