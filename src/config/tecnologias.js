@@ -1,4 +1,4 @@
-import { listarCidades, listarRanking, buscarCidade, cidadeService5g } from '../services/cidadeService';
+import { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis, cidadeService5g } from '../services/cidadeService';
 
 /**
  * Um único lugar que descreve o que muda entre tecnologias (FTTH, 5G, e as
@@ -22,7 +22,7 @@ export const TECNOLOGIAS = {
     classeTema: '',
     /** Prefixo de rota: '' -> '/', '/cidades/:id'. */
     rotaBase: '',
-    servicoCidades: { listarCidades, listarRanking, buscarCidade },
+    servicoCidades: { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis },
     chaveFiltros: 'painel-metas:filtros-ranking',
   },
   cincoG: {

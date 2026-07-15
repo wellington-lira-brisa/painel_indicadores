@@ -306,6 +306,111 @@ export function normalizar(linhas) {
 }
 
 /**
+ * Mesma agregação de `normalizar()`, mas SEM somar canal_geral — usada só
+ * pra gerar o arquivo separado que alimenta o filtro de canal
+ * (`indicadores-realizados-por-canal.csv`). Arquivo à parte, não uma
+ * coluna a mais no arquivo principal, porque o caso comum (sem filtro de
+ * canal) não deve pagar o custo de um arquivo ~40x maior — ver
+ * `indicadorRealizadoService.js`, que só busca este aqui quando o filtro
+ * de canal é usado.
+ *
+ * O dedup de `realizado_mes` (repetido em toda linha-semana do mesmo mês)
+ * agora é por "canal + origem" dentro da CHAVE MENSAL (que já inclui
+ * canal) — antes era isso mesmo, só que dentro de uma chave que somava
+ * todos os canais juntos; aqui cada canal fica com sua própria linha.
+ */
+export function normalizarPorCanal(linhas) {
+  const mensal = new Map();
+  const semanal = new Map();
+
+  for (const l of linhas) {
+    const mapa = MAPA_INDICADOR[`${l.servico}|${l.status_venda}`];
+    if (!mapa) continue;
+
+    const cidadeSlug = normalizarCidade(l.cidade);
+    const cidadeChaveAgrupamento = cidadeSlug ?? `__bruta__${l.cidade}`;
+    const canal = l.canal_geral || VALOR_NAO_MAPEADO;
+
+    const chaveMensal = [cidadeChaveAgrupamento, mapa.tecnologia, mapa.indicadorId, l.mes_ref, canal].join('\u0001');
+    if (!mensal.has(chaveMensal)) {
+      mensal.set(chaveMensal, {
+        cidadeOrigem: l.cidade,
+        cidadeSlug,
+        tecnologia: mapa.tecnologia,
+        indicadorId: mapa.indicadorId,
+        mesRef: l.mes_ref,
+        semanaMes: null,
+        canal,
+        valor: 0,
+        _origensSomadas: new Set(),
+      });
+    }
+    const registroMensal = mensal.get(chaveMensal);
+    if (!registroMensal._origensSomadas.has(l.origem)) {
+      registroMensal._origensSomadas.add(l.origem);
+      registroMensal.valor += paraNumero(l.realizado_mes);
+    }
+
+    const chaveSemanal = [cidadeChaveAgrupamento, mapa.tecnologia, mapa.indicadorId, l.mes_ref, l.semana_mes, canal].join(
+      '\u0001',
+    );
+    if (!semanal.has(chaveSemanal)) {
+      semanal.set(chaveSemanal, {
+        cidadeOrigem: l.cidade,
+        cidadeSlug,
+        tecnologia: mapa.tecnologia,
+        indicadorId: mapa.indicadorId,
+        mesRef: l.mes_ref,
+        semanaMes: Number(l.semana_mes),
+        primeiroDiaSemana: l.primeiro_dia_semana,
+        ultimoDiaSemana: l.ultimo_dia_semana,
+        canal,
+        valor: 0,
+      });
+    }
+    // valor semanal não se repete entre semanas (diferente do mensal), não precisa de dedup.
+    semanal.get(chaveSemanal).valor += paraNumero(l.realizado_semana);
+  }
+
+  const limparCanal = (r) => { const { _origensSomadas, ...resto } = r; return resto; };
+  return [...mensal.values()].map(limparCanal).concat([...semanal.values()].map(limparCanal));
+}
+
+const COLUNAS_SAIDA_POR_CANAL = [
+  'cidade_slug',
+  'cidade_origem',
+  'tecnologia',
+  'indicador_id',
+  'canal',
+  'mes_ref',
+  'semana_mes',
+  'primeiro_dia_semana',
+  'ultimo_dia_semana',
+  'valor',
+];
+
+/** Serializa a saída de `normalizarPorCanal()` — mesmo parser (`parsearCsv`) lê os dois arquivos, só muda o conjunto de colunas. */
+export function paraCsvPorCanal(registros) {
+  const linhas = registros.map((r) =>
+    [
+      r.cidadeSlug,
+      r.cidadeOrigem,
+      r.tecnologia,
+      r.indicadorId,
+      r.canal,
+      r.mesRef,
+      r.semanaMes,
+      r.primeiroDiaSemana,
+      r.ultimoDiaSemana,
+      r.valor,
+    ]
+      .map(celulaCsv)
+      .join(','),
+  );
+  return [COLUNAS_SAIDA_POR_CANAL.join(','), ...linhas].join('\n') + '\n';
+}
+
+/**
  * Colunas de metainformação de cidade (gerência regional, gerente e
  * coordenação) — opcionais: bases antigas sem essas colunas continuam
  * funcionando, só não geram metadado nenhum (front cai no que já tinha:

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ClipboardPlus, Eye, EyeOff, Lock } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { PERMISSOES } from '../services/permissaoService';
@@ -14,6 +14,7 @@ import TabelaIndicadores from '../components/TabelaIndicadores';
 import SeletorPeriodoAnalise from '../components/SeletorPeriodoAnalise';
 import ResumoMediaPeriodo from '../components/ResumoMediaPeriodo';
 import FormularioPlanoAcao from '../components/FormularioPlanoAcao';
+import SeletorCanais from '../components/SeletorCanais';
 
 /**
  * Detalhe de uma cidade — reutilizado por qualquer tecnologia (FTTH, 5G,
@@ -25,6 +26,7 @@ import FormularioPlanoAcao from '../components/FormularioPlanoAcao';
  */
 export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
   const { cidadeId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { temPermissao } = useAuth();
   const [cidade, setCidade] = useState(null);
   const [planos, setPlanos] = useState([]);
@@ -32,19 +34,43 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
   const [formularioAberto, setFormularioAberto] = useState(false);
   const [mediaPeriodoVisivel, setMediaPeriodoVisivel] = useState(true);
 
+  // Mesmo filtro de canal aplicado no Ranking (chegou via query string do
+  // link que trouxe até aqui — ver sufixoRota em PaginaRanking.jsx),
+  // reaproveitado aqui pra abrir a cidade já no mesmo recorte que ela
+  // apareceu na lista, em vez de voltar pro total.
+  const canaisSelecionados = searchParams.get('canais')?.split(',').filter(Boolean) ?? [];
+  const canaisChave = canaisSelecionados.join(',');
+  const sufixoRota = canaisSelecionados.length > 0 ? `?canais=${encodeURIComponent(canaisChave)}` : '';
+
+  function definirCanaisSelecionados(canais) {
+    setSearchParams(
+      (atual) => {
+        const proximos = new URLSearchParams(atual);
+        if (canais.length === 0) proximos.delete('canais');
+        else proximos.set('canais', canais.join(','));
+        return proximos;
+      },
+      { replace: true },
+    );
+  }
+
   // Chamado incondicionalmente (regra dos hooks) mesmo antes de `cidade`
   // carregar — o hook já lida com `cidade` nulo internamente.
   const periodoAnalise = usePeriodoAnalise(cidade);
 
   useEffect(() => {
     setCarregando(true);
-    Promise.all([tecnologia.servicoCidades.buscarCidade(cidadeId), listarPlanosPorCidade(cidadeId, tecnologia.id)])
+    Promise.all([
+      tecnologia.servicoCidades.buscarCidade(cidadeId, canaisSelecionados),
+      listarPlanosPorCidade(cidadeId, tecnologia.id),
+    ])
       .then(([dadosCidade, dadosPlanos]) => {
         setCidade(dadosCidade);
         setPlanos(dadosPlanos);
       })
       .finally(() => setCarregando(false));
-  }, [cidadeId, tecnologia]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- canaisChave (string estável) é a dependência real; canaisSelecionados é um array novo a cada render.
+  }, [cidadeId, tecnologia, canaisChave]);
 
   if (carregando) return <EstadoCarregandoCidade />;
 
@@ -52,7 +78,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
     return (
       <div className="space-y-3">
         <p className="text-sm text-slate-600">Cidade não encontrada.</p>
-        <Link to={tecnologia.rotaBase || '/'} className="text-sm font-medium text-brand-700 hover:underline">
+        <Link to={(tecnologia.rotaBase || '/') + sufixoRota} className="text-sm font-medium text-brand-700 hover:underline">
           Voltar ao ranking
         </Link>
       </div>
@@ -64,7 +90,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <Link
-            to={tecnologia.rotaBase || '/'}
+            to={(tecnologia.rotaBase || '/') + sufixoRota}
             className="inline-flex items-center gap-1 text-sm font-medium text-brand-700 hover:underline"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
@@ -74,6 +100,22 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
           <p className="text-sm text-slate-500">
             Gerente: {cidade.gerente ?? '—'} · Regional: {cidade.regional ?? '—'} · Coord.: {cidade.coordenadorRegional ?? '—'}
           </p>
+          {canaisSelecionados.length > 0 && (
+            <p className="mt-1 rounded-lg border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-800">
+              Mostrando só: <strong>{canaisSelecionados.join(', ')}</strong> — meta continua sendo a da cidade inteira.
+            </p>
+          )}
+          <div className="mt-2 max-w-xs">
+            <label className="block text-xs font-medium text-slate-600">
+              Canal
+              <span className="ml-1 font-normal text-slate-400">(recalcula o realizado)</span>
+            </label>
+            <SeletorCanais
+              canaisSelecionados={canaisSelecionados}
+              aoAplicar={definirCanaisSelecionados}
+              carregarCanaisDisponiveis={tecnologia.servicoCidades.carregarCanaisDisponiveis}
+            />
+          </div>
           <div className="mt-2 flex items-center gap-3">
             <StatusBadge status={cidade.status} />
             <TendenciaBadge tendencia={cidade.tendencia} />

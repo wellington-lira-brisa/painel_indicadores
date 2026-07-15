@@ -10,11 +10,11 @@ import { formatarPercentual } from '../utils/format';
  * Card de cidade para o ranking em mobile. Substitui a linha de tabela
  * por um bloco tocável único (alvo de toque de página inteira).
  */
-export default function CardRankingCidade({ cidade, posicao, resumo, rotaBase = '' }) {
+export default function CardRankingCidade({ cidade, posicao, resumo, rotaBase = '', sufixoRota = '' }) {
   return (
     <li>
       <Link
-        to={`${rotaBase}/cidades/${cidade.id}`}
+        to={`${rotaBase}/cidades/${cidade.id}${sufixoRota}`}
         className={`block rounded-xl border bg-white p-4 shadow-sm active:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700 ${
           cidade.status === 'vermelho' ? 'border-red-200' : 'border-slate-200'
         }`}

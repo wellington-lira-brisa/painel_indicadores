@@ -4,7 +4,13 @@ import { DEFINICOES_INDICADORES_FTTH, DEFINICOES_INDICADORES_5G, indicadoresVazi
 import { scoreCidade, statusCidade, tendenciaCidade } from '../utils/status';
 import { listarStatusFwa } from './fwaService';
 import { listarStatusPlanosAtivosPorCidade } from './planoAcaoService';
-import { carregarBaseReal, baseRealEmCacheOuNula, aplicarRealizadosReais } from './indicadorRealizadoService';
+import {
+  carregarBaseReal,
+  baseRealEmCacheOuNula,
+  aplicarRealizadosReais,
+  carregarCanaisDisponiveis as carregarCanaisDisponiveisDaTecnologia,
+  carregarIndicePorCanal,
+} from './indicadorRealizadoService';
 import { carregarMetadadosCidades, metadadosCidadesEmCacheOuNulo } from './cidadeMetadadosService';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
@@ -34,6 +40,26 @@ async function metadadosCidadesComFallback() {
   } catch (excecao) {
     console.error('Falha ao carregar metadados de cidade, mantendo última base conhecida:', excecao);
     return metadadosCidadesEmCacheOuNulo() ?? new Map();
+  }
+}
+
+/**
+ * Índice recortado por canal é complementar no mesmo sentido dos outros:
+ * se o fetch (pesado, ~40x maior que o total) falhar, não pode derrubar
+ * a tela — cai pro índice total (`indiceTotal`), como se nenhum canal
+ * tivesse sido selecionado. Diferente do FWA/plano de ação, não guarda
+ * "última base conhecida" de propósito: o resultado depende de QUAIS
+ * canais estão selecionados agora, então reaproveitar um cache de uma
+ * seleção anterior poderia mostrar o recorte errado sem avisar — melhor
+ * cair pro total (visivelmente sem filtro) do que isso.
+ */
+async function indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indiceTotal) {
+  if (canaisSelecionados.length === 0) return indiceTotal;
+  try {
+    return await carregarIndicePorCanal(tecnologiaId, canaisSelecionados);
+  } catch (excecao) {
+    console.error('Falha ao carregar índice por canal, usando o total (sem filtro de canal):', excecao);
+    return indiceTotal;
   }
 }
 
@@ -163,27 +189,28 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
     return [...cidadesMockDaTecnologia, ...cidadesSinteticas];
   }
 
-  async function listarCidades() {
+  async function listarCidades(canaisSelecionados = []) {
     const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
       baseRealComFallback(tecnologiaId),
       metadadosCidadesComFallback(),
     ]);
+    const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
     return montarListaCompleta(nomesOriginais).map((cidade) =>
-      enriquecer(cidade, statusFwa, statusPlanoAtivo, indice, metadadosCidades, tecnologiaId),
+      enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, tecnologiaId),
     );
   }
 
-  async function listarRanking() {
-    const cidades = await listarCidades();
+  async function listarRanking(canaisSelecionados = []) {
+    const cidades = await listarCidades(canaisSelecionados);
     // cidade sem score (score null, status 'sem-dado') vai pro fim do
     // ranking — não faz sentido competir por posição num ranking de
     // atingimento sem ter meta pra atingir.
     return [...cidades].sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
   }
 
-  async function buscarCidade(id) {
+  async function buscarCidade(id, canaisSelecionados = []) {
     const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
@@ -192,17 +219,18 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
     ]);
     const cidade = montarListaCompleta(nomesOriginais).find((c) => c.id === id);
     if (!cidade) return null;
-    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indice, metadadosCidades, tecnologiaId);
+    const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
+    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, tecnologiaId);
   }
 
-  return { listarCidades, listarRanking, buscarCidade };
+  return { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis: () => carregarCanaisDisponiveisDaTecnologia(tecnologiaId) };
 }
 
 // Serviço padrão (FTTH) — exports nomeados individuais mantidos por
 // compatibilidade: todo import existente (`import { listarCidades, ... }
 // from '../services/cidadeService'`) continua funcionando sem mudança.
 const servicoFtth = criarServicoCidades(cidadesMock, 'ftth');
-export const { listarCidades, listarRanking, buscarCidade } = servicoFtth;
+export const { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis } = servicoFtth;
 
 /** Mesmo contrato do serviço padrão, operando sobre o dataset e a tecnologia do 5G. */
 export const cidadeService5g = criarServicoCidades(cidadesMock5g, '5g');

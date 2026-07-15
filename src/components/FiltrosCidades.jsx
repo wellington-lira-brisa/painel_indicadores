@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, Filter, X } from 'lucide-react';
+import SeletorCanais from './SeletorCanais';
 
 const OPCOES_STATUS = [
   { valor: 'verde', rotulo: 'Saudável' },
@@ -15,6 +16,9 @@ export default function FiltrosCidades({
   regionaisDisponiveis,
   coordenacoesDisponiveis = [],
   gerentesDisponiveis = [],
+  canaisSelecionados = [],
+  aoAplicarCanais,
+  carregarCanaisDisponiveis,
   quantidadeFiltrosAtivos,
   quantidadeResultados,
 }) {
@@ -117,6 +121,20 @@ export default function FiltrosCidades({
                 ))}
               </select>
             </div>
+
+            {carregarCanaisDisponiveis && (
+              <div>
+                <label className="block text-xs font-medium text-slate-600">
+                  Canal
+                  <span className="ml-1 font-normal text-slate-400">(recalcula o realizado)</span>
+                </label>
+                <SeletorCanais
+                  canaisSelecionados={canaisSelecionados}
+                  aoAplicar={aoAplicarCanais}
+                  carregarCanaisDisponiveis={carregarCanaisDisponiveis}
+                />
+              </div>
+            )}
 
             <div>
               <label htmlFor="filtro-atingimento" className="block text-xs font-medium text-slate-600">

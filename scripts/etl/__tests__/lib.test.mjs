@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
 
 const CABECALHO = COLUNAS_OBRIGATORIAS.join(',');
 
@@ -269,4 +269,98 @@ test('paraCsvMetadados + parsearCsv fazem roundtrip sem perda', () => {
   assert.equal(linhas[0].gerencia_cidade, 'G7');
   assert.equal(linhas[0].gerente_cidade, 'JECKSON DIOGO');
   assert.equal(linhas[0].coordenacao, 'PETROLINA');
+});
+
+test('normalizarPorCanal mantém uma linha por canal (não soma canais entre si)', () => {
+  const linhaBase = (overrides = {}) => {
+    const base = {
+      mes_ref: '2026-07-01',
+      mes_semana: '2026-07_S01',
+      semana_mes: '1',
+      primeiro_dia_semana: '2026-07-01',
+      ultimo_dia_semana: '2026-07-05',
+      dias_uteis_mes: '25',
+      dias_uteis_semana: '3.5',
+      dias_trab_semana: '3.5',
+      cidade: 'ARARIPINA / PE',
+      servico: 'INTERNET',
+      status_venda: 'Instalado',
+      origem: 'WAVES',
+      ...overrides,
+    };
+    return COLUNAS_OBRIGATORIAS.map((c) => base[c]).join(',');
+  };
+  const linhas = parsearCsv(
+    [
+      CABECALHO,
+      linhaBase({ canal_geral: 'PAP', realizado_semana: '10', realizado_mes: '10' }),
+      linhaBase({ canal_geral: 'LOJA', realizado_semana: '5', realizado_mes: '5' }),
+    ].join('\n'),
+  );
+
+  const porCanal = normalizarPorCanal(linhas);
+  const mensalPorCanal = porCanal.filter((r) => r.semanaMes === null);
+  assert.equal(mensalPorCanal.length, 2); // PAP e LOJA, não somados
+
+  const pap = mensalPorCanal.find((r) => r.canal === 'PAP');
+  const loja = mensalPorCanal.find((r) => r.canal === 'LOJA');
+  assert.equal(pap.valor, 10);
+  assert.equal(loja.valor, 5);
+
+  // soma dos canais == total que normalizar() (agregado) produziria
+  const totalNormalizar = normalizar(linhas).find((r) => r.semanaMes === null).valor;
+  assert.equal(pap.valor + loja.valor, totalNormalizar);
+});
+
+test('normalizarPorCanal não duplica realizado_mes entre as semanas do mesmo mês (mesmo canal)', () => {
+  const linhaBase = (overrides = {}) => {
+    const base = {
+      mes_ref: '2026-07-01',
+      dias_uteis_mes: '25',
+      dias_uteis_semana: '3.5',
+      dias_trab_semana: '3.5',
+      cidade: 'ARARIPINA / PE',
+      servico: 'INTERNET',
+      canal_geral: 'PAP',
+      status_venda: 'Instalado',
+      origem: 'WAVES',
+      realizado_mes: '10',
+      ...overrides,
+    };
+    return COLUNAS_OBRIGATORIAS.map((c) => base[c]).join(',');
+  };
+  const linhas = parsearCsv(
+    [
+      CABECALHO,
+      linhaBase({ mes_semana: '2026-07_S01', semana_mes: '1', primeiro_dia_semana: '2026-07-01', ultimo_dia_semana: '2026-07-05', realizado_semana: '6' }),
+      linhaBase({ mes_semana: '2026-07_S02', semana_mes: '2', primeiro_dia_semana: '2026-07-06', ultimo_dia_semana: '2026-07-12', realizado_semana: '4' }),
+    ].join('\n'),
+  );
+
+  const porCanal = normalizarPorCanal(linhas);
+  const mensal = porCanal.find((r) => r.semanaMes === null);
+  assert.equal(mensal.valor, 10); // não 20 — realizado_mes contado uma vez só
+
+  const semanais = porCanal.filter((r) => r.semanaMes !== null);
+  assert.equal(semanais.length, 2);
+  assert.equal(semanais.reduce((soma, r) => soma + r.valor, 0), 10); // 6 + 4
+});
+
+test('paraCsvPorCanal + parsearCsv fazem roundtrip sem perda, incluindo a coluna canal', () => {
+  const registros = normalizarPorCanal(
+    parsearCsv(
+      [
+        CABECALHO,
+        [
+          '2026-07-01', '2026-07_S01', '1', '2026-07-01', '2026-07-05', '25', '3.5', '3.5',
+          'ARARIPINA / PE', 'INTERNET', 'PAP', 'Instalado', 'WAVES', '10', '10',
+        ].join(','),
+      ].join('\n'),
+    ),
+  );
+  const linhas = parsearCsv(paraCsvPorCanal(registros));
+  const mensal = linhas.find((l) => l.semana_mes === '');
+  assert.equal(mensal.cidade_slug, 'araripina-pe');
+  assert.equal(mensal.canal, 'PAP');
+  assert.equal(mensal.valor, '10');
 });

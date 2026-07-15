@@ -36,7 +36,7 @@ export function resumoMetaRealizado(cidade) {
  * Abaixo de `md`: lista de cards tocáveis, um por cidade.
  * A partir de `md`: tabela comparativa completa.
  */
-export default function TabelaRanking({ cidades, rotaBase = '' }) {
+export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' }) {
   // Rótulo da coluna de meta/realizado segue o indicador de referência
   // usado (ver resumoMetaRealizado). "Orçamento (vendas)" já vem com
   // parênteses no próprio nome — preserva o texto original "Meta (vendas)"
@@ -55,6 +55,7 @@ export default function TabelaRanking({ cidades, rotaBase = '' }) {
             posicao={indice + 1}
             resumo={resumoMetaRealizado(cidade)}
             rotaBase={rotaBase}
+            sufixoRota={sufixoRota}
           />
         ))}
       </ul>
@@ -88,7 +89,7 @@ export default function TabelaRanking({ cidades, rotaBase = '' }) {
                 <td className="px-4 py-3 font-semibold text-slate-500">{indice + 1}º</td>
                 <td className="min-w-[10rem] whitespace-nowrap px-4 py-3">
                   <Link
-                    to={`${rotaBase}/cidades/${cidade.id}`}
+                    to={`${rotaBase}/cidades/${cidade.id}${sufixoRota}`}
                     className="font-semibold text-brand-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700"
                   >
                     {cidade.nome}
