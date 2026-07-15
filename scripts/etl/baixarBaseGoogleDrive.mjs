@@ -62,11 +62,16 @@ export async function baixarBaseGoogleDrive({ credenciaisJson, arquivoId }) {
 }
 
 // Execução direta (uso no workflow): node baixarBaseGoogleDrive.mjs > base.csv
+// Aceita opcionalmente o ID do arquivo por argumento — é o que permite
+// baixar mais de um arquivo do Drive reusando este mesmo script (ex.: a
+// base de vendas e a de metas, com IDs diferentes), sem duplicar a lógica
+// de autenticação. Sem argumento, cai no comportamento de sempre
+// (GOOGLE_DRIVE_FILE_ID).
 if (import.meta.url === `file://${process.argv[1]}`) {
   const credenciaisJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-  const arquivoId = process.env.GOOGLE_DRIVE_FILE_ID;
+  const arquivoId = process.argv[2] || process.env.GOOGLE_DRIVE_FILE_ID;
   if (!credenciaisJson || !arquivoId) {
-    console.error('GOOGLE_SERVICE_ACCOUNT_JSON e GOOGLE_DRIVE_FILE_ID são obrigatórias.');
+    console.error('GOOGLE_SERVICE_ACCOUNT_JSON e GOOGLE_DRIVE_FILE_ID (ou um ID por argumento) são obrigatórios.');
     process.exit(1);
   }
   baixarBaseGoogleDrive({ credenciaisJson, arquivoId })

@@ -12,15 +12,33 @@
 // é literalmente o commit atual em main — não precisa de lógica extra de
 // rollback (ver RELATORIO.md, seção 13).
 //
-// Uso: node scripts/etl/gerarBase.mjs <caminho-do-csv-baixado>
+// Uso: node scripts/etl/gerarBase.mjs <caminho-do-csv-baixado> [caminho-do-csv-de-metas]
+//
+// O 2º argumento é opcional (mantém compatibilidade com quem chamar só
+// com a base de vendas) — quando informado, gera também
+// `public/dados/metas-instalacao-ftth.csv`. No workflow automatizado
+// (.github/workflows/atualizar-base.yml) os dois arquivos são baixados do
+// Drive e este é sempre chamado com os dois.
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { parsearCsv, validar, normalizar, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal } from '../../src/shared/csvIndicadores.js';
+import {
+  parsearCsv,
+  validar,
+  normalizar,
+  paraCsv,
+  normalizarMetadadosCidade,
+  paraCsvMetadados,
+  normalizarPorCanal,
+  paraCsvPorCanal,
+  normalizarMetasInstalacaoFtth,
+  paraCsvMetasInstalacaoFtth,
+} from '../../src/shared/csvIndicadores.js';
 
 const SAIDA_CSV = 'public/dados/indicadores-realizados.csv';
 const SAIDA_METADADOS_CIDADE = 'public/dados/cidades-metadados.csv';
 const SAIDA_POR_CANAL = 'public/dados/indicadores-realizados-por-canal.csv';
+const SAIDA_METAS_INSTALACAO = 'public/dados/metas-instalacao-ftth.csv';
 const SAIDA_STATUS = 'public/dados/ultima-atualizacao.json';
 
 function escreverStatus(status) {
@@ -75,6 +93,22 @@ function main() {
   writeFileSync(SAIDA_CSV, paraCsv(registros), 'utf-8');
   writeFileSync(SAIDA_METADADOS_CIDADE, paraCsvMetadados(metadadosCidade), 'utf-8');
   writeFileSync(SAIDA_POR_CANAL, paraCsvPorCanal(normalizarPorCanal(linhas)), 'utf-8');
+
+  const caminhoMetas = process.argv[3];
+  let metasProcessadas = null;
+  if (caminhoMetas) {
+    const textoMetas = readFileSync(caminhoMetas, 'utf-8');
+    const linhasMetas = parsearCsv(textoMetas);
+    const { registros: metasInstalacao, avisos: avisosMetas } = normalizarMetasInstalacaoFtth(linhasMetas);
+    if (avisosMetas.length > 0) {
+      console.warn(`${avisosMetas.length} aviso(s) de meta de instalação (não bloqueiam a publicação):`);
+      avisosMetas.slice(0, 20).forEach((a) => console.warn(`  - ${a}`));
+    }
+    writeFileSync(SAIDA_METAS_INSTALACAO, paraCsvMetasInstalacaoFtth(metasInstalacao), 'utf-8');
+    metasProcessadas = metasInstalacao.length;
+    console.log(`Metas de instalação FTTH: ${metasInstalacao.length} registro(s) em ${SAIDA_METAS_INSTALACAO}.`);
+  }
+
   escreverStatus({
     iniciadoEm,
     finalizadoEm: new Date().toISOString(),
@@ -82,6 +116,7 @@ function main() {
     linhasLidas: linhas.length,
     linhasPublicadas: registros.length,
     linhasSemCidade: semCidade,
+    metasInstalacaoProcessadas: metasProcessadas,
     commit: process.env.GITHUB_SHA ?? null,
   });
 

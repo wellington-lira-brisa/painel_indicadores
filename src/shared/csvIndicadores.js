@@ -512,3 +512,54 @@ export function paraCsv(registros) {
   );
   return [COLUNAS_SAIDA.join(','), ...linhas].join('\n') + '\n';
 }
+
+/**
+ * Metas de "Vendas Instaladas" por cidade/mês — fonte separada da base de
+ * vendas (arquivo próprio, formato diferente: `data,cidade,indicador,
+ * indicador_geral,servico,meta,categoria,...`). Primeira meta real que o
+ * painel passa a ter (antes só existia mockada, pra 4 cidades) — por isso
+ * o filtro é restrito e explícito: só entra o que é literalmente "meta de
+ * Vendas Instaladas de FTTH, categoria venda, ativa" — qualquer outra
+ * linha do arquivo (FWA, Banda Larga, indicador desativado) é ignorada,
+ * não misturada.
+ *
+ * `data` já vem como primeiro dia do mês ("2026-01-01") — mesmo formato
+ * de `mes_ref` no resto do pipeline, não precisa conversão.
+ */
+export function normalizarMetasInstalacaoFtth(linhas) {
+  const avisos = [];
+  const porChave = new Map(); // "cidadeSlug\u0001mesRef" -> { cidadeOrigem, cidadeSlug, mesRef, meta }
+
+  for (const l of linhas) {
+    if (l.servico !== 'FTTH') continue;
+    if (l.indicador_geral !== 'Vendas Instaladas') continue;
+    if (l.categoria !== 'venda') continue;
+    if (l.stutus !== 'Ativo') continue;
+
+    const cidadeSlug = normalizarCidade(l.cidade);
+    if (!cidadeSlug) continue; // mesmo critério do resto do pipeline: nunca inventa cidade
+
+    const meta = paraNumero(l.meta);
+    if (Number.isNaN(meta)) continue;
+
+    const chave = cidadeSlug + '\u0001' + l.data;
+    if (porChave.has(chave)) {
+      const anterior = porChave.get(chave).meta;
+      if (anterior !== meta) {
+        avisos.push(`Cidade "${l.cidade}", mês ${l.data}: meta divergente (${anterior} vs ${meta}) — mantendo a primeira.`);
+      }
+      continue;
+    }
+    porChave.set(chave, { cidadeOrigem: l.cidade, cidadeSlug, mesRef: l.data, meta });
+  }
+
+  return { registros: [...porChave.values()], avisos };
+}
+
+const COLUNAS_SAIDA_METAS_INSTALACAO = ['cidade_slug', 'cidade_origem', 'mes_ref', 'meta'];
+
+/** Serializa a saída de `normalizarMetasInstalacaoFtth()` — mesmo parser (`parsearCsv`) lê de volta. */
+export function paraCsvMetasInstalacaoFtth(registros) {
+  const linhas = registros.map((r) => [r.cidadeSlug, r.cidadeOrigem, r.mesRef, r.meta].map(celulaCsv).join(','));
+  return [COLUNAS_SAIDA_METAS_INSTALACAO.join(','), ...linhas].join('\n') + '\n';
+}

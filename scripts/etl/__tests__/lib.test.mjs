@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
 
 const CABECALHO = COLUNAS_OBRIGATORIAS.join(',');
 
@@ -363,4 +363,41 @@ test('paraCsvPorCanal + parsearCsv fazem roundtrip sem perda, incluindo a coluna
   assert.equal(mensal.cidade_slug, 'araripina-pe');
   assert.equal(mensal.canal, 'PAP');
   assert.equal(mensal.valor, '10');
+});
+
+test('normalizarMetasInstalacaoFtth filtra só FTTH + Vendas Instaladas + venda + Ativo', () => {
+  const linhas = [
+    { data: '2026-01-01', cidade: 'ARARIPINA/PE', indicador_geral: 'Vendas Instaladas', servico: 'FTTH', meta: '119', categoria: 'venda', stutus: 'Ativo' },
+    { data: '2026-01-01', cidade: 'ARARIPINA/PE', indicador_geral: 'Vendas Instaladas', servico: 'FWA', meta: '3', categoria: 'venda', stutus: 'Ativo' }, // outro serviço, ignora
+    { data: '2026-01-01', cidade: 'NATAL/RN', indicador_geral: 'Vendas Efetivadas', servico: 'FTTH', meta: '50', categoria: 'venda', stutus: 'Ativo' }, // outro indicador, ignora
+    { data: '2026-01-01', cidade: 'SOBRAL/CE', indicador_geral: 'Vendas Instaladas', servico: 'FTTH', meta: '80', categoria: 'venda', stutus: 'Inativo' }, // inativo, ignora
+  ];
+  const { registros, avisos } = normalizarMetasInstalacaoFtth(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].cidadeSlug, 'araripina-pe');
+  assert.equal(registros[0].mesRef, '2026-01-01');
+  assert.equal(registros[0].meta, 119);
+});
+
+test('normalizarMetasInstalacaoFtth avisa (sem quebrar) quando a mesma cidade/mês tem metas divergentes', () => {
+  const linhas = [
+    { data: '2026-01-01', cidade: 'ARARIPINA/PE', indicador_geral: 'Vendas Instaladas', servico: 'FTTH', meta: '119', categoria: 'venda', stutus: 'Ativo' },
+    { data: '2026-01-01', cidade: 'ARARIPINA/PE', indicador_geral: 'Vendas Instaladas', servico: 'FTTH', meta: '200', categoria: 'venda', stutus: 'Ativo' },
+  ];
+  const { registros, avisos } = normalizarMetasInstalacaoFtth(linhas);
+  assert.equal(avisos.length, 1);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].meta, 119); // primeira, não a última
+});
+
+test('paraCsvMetasInstalacaoFtth + parsearCsv fazem roundtrip sem perda', () => {
+  const { registros } = normalizarMetasInstalacaoFtth([
+    { data: '2026-01-01', cidade: 'ARARIPINA/PE', indicador_geral: 'Vendas Instaladas', servico: 'FTTH', meta: '119', categoria: 'venda', stutus: 'Ativo' },
+  ]);
+  const linhas = parsearCsv(paraCsvMetasInstalacaoFtth(registros));
+  assert.equal(linhas.length, 1);
+  assert.equal(linhas[0].cidade_slug, 'araripina-pe');
+  assert.equal(linhas[0].mes_ref, '2026-01-01');
+  assert.equal(linhas[0].meta, '119');
 });

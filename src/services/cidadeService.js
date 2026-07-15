@@ -12,6 +12,7 @@ import {
   carregarIndicePorCanal,
 } from './indicadorRealizadoService';
 import { carregarMetadadosCidades, metadadosCidadesEmCacheOuNulo } from './cidadeMetadadosService';
+import { carregarMetasInstalacaoFtth, metasInstalacaoFtthEmCacheOuNulo } from './metaInstalacaoFtthService';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
 const DEFINICOES_POR_TECNOLOGIA = { ftth: DEFINICOES_INDICADORES_FTTH, '5g': DEFINICOES_INDICADORES_5G };
@@ -60,6 +61,24 @@ async function indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indic
   } catch (excecao) {
     console.error('Falha ao carregar índice por canal, usando o total (sem filtro de canal):', excecao);
     return indiceTotal;
+  }
+}
+
+/**
+ * Meta é informação complementar no mesmo sentido dos outros: só existe
+ * pra FTTH (Instalação) por enquanto — pra 5G nem tenta buscar. Falha no
+ * fetch não pode fazer a meta cadastrada (mock) sumir do Ranking, então
+ * cai pro cache da sessão, e na ausência dele, mapa vazio (equivalente a
+ * "nenhuma meta real encontrada" — `aplicarMetaInstalacaoFtth` já lida
+ * com isso preservando a meta mockada de quem já tinha).
+ */
+async function metasInstalacaoFtthComFallback(tecnologiaId) {
+  if (tecnologiaId !== 'ftth') return new Map();
+  try {
+    return await carregarMetasInstalacaoFtth();
+  } catch (excecao) {
+    console.error('Falha ao carregar metas de instalação FTTH, mantendo última base conhecida:', excecao);
+    return metasInstalacaoFtthEmCacheOuNulo() ?? new Map();
   }
 }
 
@@ -147,9 +166,40 @@ function aplicarMetadadosCidade(cidade, metadadosCidades) {
   };
 }
 
-function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, metadadosCidades, tecnologiaId) {
+/**
+ * Preenche a meta de Instalação (FTTH) com o dado real quando a cidade
+ * ainda não tem meta cadastrada pra esse mês (`m.meta` 0 ou null) — nunca
+ * sobrescreve meta já existente (as 4 cidades de teste, que têm meta
+ * mockada completa, continuam exatamente como estão). É essa troca que
+ * faz "Meta (vendas)"/"Atingimento Geral" no Ranking passar de "Sem
+ * meta" pra um número real, pras cidades cobertas por esse arquivo — ver
+ * resumoMetaRealizado() em TabelaRanking.jsx, que passa a preferir
+ * Instalação quando Orçamento não tem meta.
+ */
+function aplicarMetaInstalacaoFtth(cidade, metasInstalacao, tecnologiaId) {
+  if (tecnologiaId !== 'ftth') return cidade;
+  const metasCidade = metasInstalacao.get(cidade.id);
+  if (!metasCidade) return cidade;
+
+  return {
+    ...cidade,
+    indicadores: cidade.indicadores.map((ind) => {
+      if (ind.id !== 'instalacao') return ind;
+      return {
+        ...ind,
+        meses: ind.meses.map((m, mesIndex) => {
+          if (m.meta) return m; // já tem meta (mock) — preenche só o vazio
+          const metaReal = metasCidade.get(mesIndex);
+          return metaReal !== undefined ? { ...m, meta: metaReal } : m;
+        }),
+      };
+    }),
+  };
+}
+
+function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, metadadosCidades, metasInstalacao, tecnologiaId) {
   const cidadeComDadosReais = aplicarRealizadosReais(
-    aplicarMetadadosCidade(cidade, metadadosCidades),
+    aplicarMetaInstalacaoFtth(aplicarMetadadosCidade(cidade, metadadosCidades), metasInstalacao, tecnologiaId),
     indiceRealizados,
     tecnologiaId,
   );
@@ -190,15 +240,16 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   }
 
   async function listarCidades(canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades] = await Promise.all([
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metasInstalacao] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
       baseRealComFallback(tecnologiaId),
       metadadosCidadesComFallback(),
+      metasInstalacaoFtthComFallback(tecnologiaId),
     ]);
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
     return montarListaCompleta(nomesOriginais).map((cidade) =>
-      enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, tecnologiaId),
+      enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, metasInstalacao, tecnologiaId),
     );
   }
 
@@ -211,16 +262,17 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades] = await Promise.all([
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metasInstalacao] = await Promise.all([
       statusFwaComFallback(),
       statusPlanoAtivoComFallback(tecnologiaId),
       baseRealComFallback(tecnologiaId),
       metadadosCidadesComFallback(),
+      metasInstalacaoFtthComFallback(tecnologiaId),
     ]);
     const cidade = montarListaCompleta(nomesOriginais).find((c) => c.id === id);
     if (!cidade) return null;
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
-    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, tecnologiaId);
+    return enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, metasInstalacao, tecnologiaId);
   }
 
   return { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis: () => carregarCanaisDisponiveisDaTecnologia(tecnologiaId) };
