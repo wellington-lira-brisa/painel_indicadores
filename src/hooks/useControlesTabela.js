@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ANO_PAINEL, MESES } from '../data/mockCidades';
+import { ANO_PAINEL, MESES } from '../data/mockHelpers';
 import {
   JANELAS_HISTORICO,
   indiceMesAtual,

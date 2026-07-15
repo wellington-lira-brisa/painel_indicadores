@@ -12,13 +12,14 @@
 // é literalmente o commit atual em main — não precisa de lógica extra de
 // rollback (ver RELATORIO.md, seção 13).
 //
-// Uso: node scripts/etl/gerarBase.mjs <caminho-do-csv-baixado> [caminho-do-csv-de-metas]
+// Uso: node scripts/etl/gerarBase.mjs <caminho-do-csv-baixado> [caminho-do-csv-de-metas] [caminho-do-csv-de-cidades-oficiais]
 //
-// O 2º argumento é opcional (mantém compatibilidade com quem chamar só
-// com a base de vendas) — quando informado, gera também
-// `public/dados/metas-instalacao-ftth.csv`. No workflow automatizado
-// (.github/workflows/atualizar-base.yml) os dois arquivos são baixados do
-// Drive e este é sempre chamado com os dois.
+// 2º e 3º argumentos são opcionais (mantém compatibilidade com quem
+// chamar só com a base de vendas) — quando informados, geram também
+// `public/dados/metas-instalacao-ftth.csv` e
+// `public/dados/cidades-oficiais.csv`, respectivamente. No workflow
+// automatizado (.github/workflows/atualizar-base.yml) os três arquivos
+// são baixados do Drive e este é sempre chamado com os três.
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
@@ -33,12 +34,15 @@ import {
   paraCsvPorCanal,
   normalizarMetasInstalacaoFtth,
   paraCsvMetasInstalacaoFtth,
+  normalizarCidadesOficiais,
+  paraCsvCidadesOficiais,
 } from '../../src/shared/csvIndicadores.js';
 
 const SAIDA_CSV = 'public/dados/indicadores-realizados.csv';
 const SAIDA_METADADOS_CIDADE = 'public/dados/cidades-metadados.csv';
 const SAIDA_POR_CANAL = 'public/dados/indicadores-realizados-por-canal.csv';
 const SAIDA_METAS_INSTALACAO = 'public/dados/metas-instalacao-ftth.csv';
+const SAIDA_CIDADES_OFICIAIS = 'public/dados/cidades-oficiais.csv';
 const SAIDA_STATUS = 'public/dados/ultima-atualizacao.json';
 
 function escreverStatus(status) {
@@ -109,6 +113,21 @@ function main() {
     console.log(`Metas de instalação FTTH: ${metasInstalacao.length} registro(s) em ${SAIDA_METAS_INSTALACAO}.`);
   }
 
+  const caminhoCidadesOficiais = process.argv[4];
+  let cidadesOficiaisProcessadas = null;
+  if (caminhoCidadesOficiais) {
+    const textoCidadesOficiais = readFileSync(caminhoCidadesOficiais, 'utf-8');
+    const linhasCidadesOficiais = parsearCsv(textoCidadesOficiais);
+    const { registros: cidadesOficiais, avisos: avisosCidadesOficiais } = normalizarCidadesOficiais(linhasCidadesOficiais);
+    if (avisosCidadesOficiais.length > 0) {
+      console.warn(`${avisosCidadesOficiais.length} aviso(s) de cidades oficiais (não bloqueiam a publicação):`);
+      avisosCidadesOficiais.slice(0, 20).forEach((a) => console.warn(`  - ${a}`));
+    }
+    writeFileSync(SAIDA_CIDADES_OFICIAIS, paraCsvCidadesOficiais(cidadesOficiais), 'utf-8');
+    cidadesOficiaisProcessadas = cidadesOficiais.length;
+    console.log(`Cidades oficiais: ${cidadesOficiais.length} registro(s) em ${SAIDA_CIDADES_OFICIAIS}.`);
+  }
+
   escreverStatus({
     iniciadoEm,
     finalizadoEm: new Date().toISOString(),
@@ -117,6 +136,7 @@ function main() {
     linhasPublicadas: registros.length,
     linhasSemCidade: semCidade,
     metasInstalacaoProcessadas: metasProcessadas,
+    cidadesOficiaisProcessadas,
     commit: process.env.GITHUB_SHA ?? null,
   });
 

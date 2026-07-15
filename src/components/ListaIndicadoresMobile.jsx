@@ -1,5 +1,5 @@
 import { ChevronDown, Inbox } from 'lucide-react';
-import { MESES, ANO_PAINEL } from '../data/mockCidades';
+import { MESES, ANO_PAINEL } from '../data/mockHelpers';
 import {
   atingimentoIndicador,
   atingimentoMes,

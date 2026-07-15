@@ -1,5 +1,3 @@
-import { cidadesMock } from '../data/mockCidades';
-import { cidadesMock5g } from '../data/mockCidades5g';
 import { DEFINICOES_INDICADORES_FTTH, DEFINICOES_INDICADORES_5G, indicadoresVazios } from '../data/mockHelpers';
 import { scoreCidade, statusCidade, tendenciaCidade } from '../utils/status';
 import { listarStatusFwa } from './fwaService';
@@ -13,6 +11,7 @@ import {
 } from './indicadorRealizadoService';
 import { carregarMetadadosCidades, metadadosCidadesEmCacheOuNulo } from './cidadeMetadadosService';
 import { carregarMetasInstalacaoFtth, metasInstalacaoFtthEmCacheOuNulo } from './metaInstalacaoFtthService';
+import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
 const DEFINICOES_POR_TECNOLOGIA = { ftth: DEFINICOES_INDICADORES_FTTH, '5g': DEFINICOES_INDICADORES_5G };
@@ -22,8 +21,8 @@ const DEFINICOES_POR_TECNOLOGIA = { ftth: DEFINICOES_INDICADORES_FTTH, '5g': DEF
  * indicadorRealizadoService.js) são complementares no mesmo sentido que
  * FWA e plano de ação: uma falha ao buscar a base real não pode derrubar
  * a listagem de cidades. Na falha, reaproveita a última base carregada
- * com sucesso nesta sessão (se houver) — nunca mostra o valor mockado no
- * lugar do real, e nunca deixa de listar as cidades já mockadas.
+ * com sucesso nesta sessão (se houver) — sem isso a cidade fica sem
+ * `realizado` (`null`, exibido como "—"), nunca some da lista.
  */
 async function baseRealComFallback(tecnologiaId) {
   try {
@@ -67,10 +66,10 @@ async function indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indic
 /**
  * Meta é informação complementar no mesmo sentido dos outros: só existe
  * pra FTTH (Instalação) por enquanto — pra 5G nem tenta buscar. Falha no
- * fetch não pode fazer a meta cadastrada (mock) sumir do Ranking, então
- * cai pro cache da sessão, e na ausência dele, mapa vazio (equivalente a
- * "nenhuma meta real encontrada" — `aplicarMetaInstalacaoFtth` já lida
- * com isso preservando a meta mockada de quem já tinha).
+ * fetch cai pro cache da sessão, e na ausência dele, mapa vazio (cidade
+ * fica sem meta esse ciclo — `null`, exibido como "—" — nunca inventada).
+ * Só o VALOR da meta, não decide quais cidades aparecem — isso é
+ * `cidadesOficiaisComFallback`, abaixo.
  */
 async function metasInstalacaoFtthComFallback(tecnologiaId) {
   if (tecnologiaId !== 'ftth') return new Map();
@@ -79,6 +78,22 @@ async function metasInstalacaoFtthComFallback(tecnologiaId) {
   } catch (excecao) {
     console.error('Falha ao carregar metas de instalação FTTH, mantendo última base conhecida:', excecao);
     return metasInstalacaoFtthEmCacheOuNulo() ?? new Map();
+  }
+}
+
+/**
+ * Lista oficial de cidades (FTTH/5G/FWA) — define ESCOPO do Ranking (ver
+ * `montarListaCompleta`, abaixo). Falha no fetch cai pro cache da sessão;
+ * na ausência dele, mapa vazio — nesse caso `montarListaCompleta` degrada
+ * pra lista ampla (toda cidade com dado na base de vendas) em vez de
+ * mostrar 0 cidades, mesmo raciocínio de `indicePorCanalComFallback`.
+ */
+async function cidadesOficiaisComFallback() {
+  try {
+    return await carregarCidadesOficiais();
+  } catch (excecao) {
+    console.error('Falha ao carregar lista de cidades oficiais, mantendo última base conhecida:', excecao);
+    return cidadesOficiaisEmCacheOuNulo() ?? new Map();
   }
 }
 
@@ -124,12 +139,17 @@ function nomeEUfDoTextoOriginal(cidadeOrigem) {
 }
 
 /**
- * Cidade que existe na base real mas nunca foi cadastrada no mock: sem
- * meta, sem gerente/regional/coordenador/data de ativação — tudo `null`,
- * nunca inventado. `enriquecer()` ainda roda por cima dela igual a
- * qualquer outra cidade: `aplicarRealizadosReais` preenche o `realizado`
- * dos indicadores cobertos, e `statusCidade` cai em `'sem-dado'` (não em
- * "Crítico") porque não existe meta pra comparar — ver utils/status.js.
+ * Monta uma cidade a partir só do que existe na base real (nome/UF, mais
+ * o slug já calculado em `normalizarCidade()` — src/shared/csvIndicadores.js).
+ * Tudo que não tem fonte real ainda nasce `null` — nunca inventado — e é
+ * exibido como "—" pelos formatters (ver utils/format.js). `enriquecer()`
+ * roda por cima disso: `aplicarMetadadosCidade` preenche gerente/regional/
+ * coordenação quando mapeados, `aplicarMetaInstalacaoFtth` preenche a meta
+ * de Instalação quando existe, `aplicarRealizadosReais` preenche o
+ * `realizado` dos indicadores cobertos. O que nenhuma dessas fontes cobre
+ * (ex.: meta de Orçamento/Efetivado, data de ativação comercial) continua
+ * `null`, e `statusCidade` cai em `'sem-dado'` (não em "Crítico") porque
+ * não existe meta pra comparar — ver utils/status.js.
  */
 function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId) {
   const { nome, uf } = nomeEUfDoTextoOriginal(cidadeOrigem);
@@ -146,35 +166,29 @@ function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId) {
 }
 
 /**
- * Sobrepõe `regional` e `gerente` com o dado real (colunas `gerencia_cidade`
- * e `gerente_cidade` da base), quando mapeado — real é mais confiável e
- * mais atual que o mock, então tem prioridade; cai no mock só quando a
- * base real não tem valor pra essa cidade (`null`, cidade sintética, ou
- * "NÃO MAPEADO" na origem). `coordenacaoRegional` é campo novo, só
- * existe na base real (grupo/território — ex. "FORTALEZA", "CEARA
- * CENTRO") — não confundir com `coordenadorRegional` do mock, que é
- * nome de pessoa; são dois conceitos diferentes, então nenhum sobrescreve
- * o outro.
+ * Aplica `regional` e `gerente` com o dado real (colunas `gerencia_cidade`
+ * e `gerente_cidade` da base), quando mapeado; fica `null` (exibido como
+ * "—") quando a base não tem valor pra essa cidade ou marca "NÃO MAPEADO"
+ * na origem. `coordenacaoRegional` é o grupo/território (ex.: "FORTALEZA",
+ * "CEARA CENTRO") — conceito diferente de "quem coordena", que hoje não
+ * tem fonte de dado nenhuma.
  */
 function aplicarMetadadosCidade(cidade, metadadosCidades) {
   const metadado = metadadosCidades.get(cidade.id);
   return {
     ...cidade,
-    regional: metadado?.gerenciaCidade ?? cidade.regional,
-    gerente: metadado?.gerenteCidade ?? cidade.gerente,
+    regional: metadado?.gerenciaCidade ?? null,
+    gerente: metadado?.gerenteCidade ?? null,
     coordenacaoRegional: metadado?.coordenacao ?? null,
   };
 }
 
 /**
- * Preenche a meta de Instalação (FTTH) com o dado real quando a cidade
- * ainda não tem meta cadastrada pra esse mês (`m.meta` 0 ou null) — nunca
- * sobrescreve meta já existente (as 4 cidades de teste, que têm meta
- * mockada completa, continuam exatamente como estão). É essa troca que
- * faz "Meta (vendas)"/"Atingimento Geral" no Ranking passar de "Sem
- * meta" pra um número real, pras cidades cobertas por esse arquivo — ver
- * resumoMetaRealizado() em TabelaRanking.jsx, que passa a preferir
- * Instalação quando Orçamento não tem meta.
+ * Preenche a meta de Instalação (FTTH) com o dado real, quando existe pra
+ * essa cidade/mês — continua `null` (exibido como "—") pra quem não está
+ * coberto por esse arquivo ainda. É essa troca que faz "Meta (vendas)"/
+ * "Atingimento Geral" no Ranking sair de "Sem meta" pra um número real —
+ * ver resumoMetaRealizado() em TabelaRanking.jsx.
  */
 function aplicarMetaInstalacaoFtth(cidade, metasInstalacao, tecnologiaId) {
   if (tecnologiaId !== 'ftth') return cidade;
@@ -188,8 +202,7 @@ function aplicarMetaInstalacaoFtth(cidade, metasInstalacao, tecnologiaId) {
       return {
         ...ind,
         meses: ind.meses.map((m, mesIndex) => {
-          if (m.meta) return m; // já tem meta (mock) — preenche só o vazio
-          const metaReal = metasCidade.get(mesIndex);
+          const metaReal = metasCidade.metas.get(mesIndex);
           return metaReal !== undefined ? { ...m, meta: metaReal } : m;
         }),
       };
@@ -215,40 +228,52 @@ function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, metad
 }
 
 /**
- * Fábrica de serviço de cidades: recebe o dataset mockado e o id da
- * tecnologia correspondente, devolve o mesmo contrato de 3 funções
- * assíncronas. FWA não depende de tecnologia (é atributo da cidade em si);
- * plano de ação depende — por isso `tecnologiaId` é passado a
- * `listarStatusPlanosAtivosPorCidade`, garantindo que o badge "possui
- * plano" do Ranking do 5G nunca conte um plano de FTTH (e vice-versa).
+ * Fábrica de serviço de cidades: recebe o id da tecnologia, devolve o
+ * mesmo contrato de funções assíncronas. FWA não depende de tecnologia (é
+ * atributo da cidade em si); plano de ação depende — por isso
+ * `tecnologiaId` é passado a `listarStatusPlanosAtivosPorCidade`,
+ * garantindo que o badge "possui plano" do Ranking do 5G nunca conte um
+ * plano de FTTH (e vice-versa).
  *
- * A lista de cidades é a UNIÃO de `cidadesMockDaTecnologia` (cadastradas,
- * com meta/gerente/regional) com as cidades que só existem na base real
- * (`criarCidadeSintetica`, sem meta) — ver RELATORIO.md, "O que continua
- * mockado". `enriquecer` roda igual pras duas: só o `realizado` dos
- * indicadores em INDICADORES_COM_DADO_REAL (indicadorRealizadoService.js)
- * vem da base real; o resto é mock, ou `null` quando não há cadastro.
+ * **Escopo de cidades vem da lista oficial (`cidadesOficiais`), pras duas
+ * tecnologias** — não da base de vendas. A base de vendas sozinha tem
+ * ~920 cidades no FTTH (a maioria só com Orçamento/Efetivado, funil que
+ * nunca virou venda) e passava de mil no 5G (incluindo cidade errada por
+ * erro de digitação, fora da área de operação) — confirmado com o time
+ * de negócio que a lista de quem realmente vende é a
+ * `base_mesa_performace_ATUAL.csv` (`vende_ftth`/`vende_5g` por cidade).
+ * A base de metas (`metasInstalacao`) continua existindo, mas só pro
+ * VALOR da meta de Instalação — não decide mais quais cidades aparecem.
+ *
+ * `enriquecer()` aplica por cima o que cada fonte real cobre hoje
+ * (gerência/gerente/coordenação, meta de Instalação FTTH, realizado); o
+ * que nenhuma fonte cobre fica `null`, exibido como "—".
  */
-function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
-  const idsMockados = new Set(cidadesMockDaTecnologia.map((c) => c.id));
+function criarServicoCidades(tecnologiaId) {
+  function montarListaCompleta(nomesOriginais, cidadesOficiais) {
+    const chaveVende = tecnologiaId === 'ftth' ? 'vendeFtth' : 'vende5g';
+    const cidadesDoEscopo = [...cidadesOficiais.entries()].filter(([, c]) => c[chaveVende]);
 
-  function montarListaCompleta(nomesOriginais) {
-    const cidadesSinteticas = [...nomesOriginais.entries()]
-      .filter(([slug]) => !idsMockados.has(slug))
-      .map(([slug, origem]) => criarCidadeSintetica(slug, origem, tecnologiaId));
-    return [...cidadesMockDaTecnologia, ...cidadesSinteticas];
+    if (cidadesDoEscopo.length > 0) {
+      return cidadesDoEscopo.map(([slug, { cidadeOrigem }]) => criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId));
+    }
+    // Lista oficial vazia (fetch falhou e não há cache) — mostrar a lista
+    // ampla (sem escopo) é mais seguro que mostrar 0 cidades.
+    return [...nomesOriginais.entries()].map(([slug, origem]) => criarCidadeSintetica(slug, origem, tecnologiaId));
   }
 
   async function listarCidades(canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metasInstalacao] = await Promise.all([
-      statusFwaComFallback(),
-      statusPlanoAtivoComFallback(tecnologiaId),
-      baseRealComFallback(tecnologiaId),
-      metadadosCidadesComFallback(),
-      metasInstalacaoFtthComFallback(tecnologiaId),
-    ]);
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metasInstalacao, cidadesOficiais] =
+      await Promise.all([
+        statusFwaComFallback(),
+        statusPlanoAtivoComFallback(tecnologiaId),
+        baseRealComFallback(tecnologiaId),
+        metadadosCidadesComFallback(),
+        metasInstalacaoFtthComFallback(tecnologiaId),
+        cidadesOficiaisComFallback(),
+      ]);
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
-    return montarListaCompleta(nomesOriginais).map((cidade) =>
+    return montarListaCompleta(nomesOriginais, cidadesOficiais).map((cidade) =>
       enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, metasInstalacao, tecnologiaId),
     );
   }
@@ -262,14 +287,16 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metasInstalacao] = await Promise.all([
-      statusFwaComFallback(),
-      statusPlanoAtivoComFallback(tecnologiaId),
-      baseRealComFallback(tecnologiaId),
-      metadadosCidadesComFallback(),
-      metasInstalacaoFtthComFallback(tecnologiaId),
-    ]);
-    const cidade = montarListaCompleta(nomesOriginais).find((c) => c.id === id);
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metasInstalacao, cidadesOficiais] =
+      await Promise.all([
+        statusFwaComFallback(),
+        statusPlanoAtivoComFallback(tecnologiaId),
+        baseRealComFallback(tecnologiaId),
+        metadadosCidadesComFallback(),
+        metasInstalacaoFtthComFallback(tecnologiaId),
+        cidadesOficiaisComFallback(),
+      ]);
+    const cidade = montarListaCompleta(nomesOriginais, cidadesOficiais).find((c) => c.id === id);
     if (!cidade) return null;
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
     return enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceEfetivo, metadadosCidades, metasInstalacao, tecnologiaId);
@@ -281,8 +308,8 @@ function criarServicoCidades(cidadesMockDaTecnologia, tecnologiaId) {
 // Serviço padrão (FTTH) — exports nomeados individuais mantidos por
 // compatibilidade: todo import existente (`import { listarCidades, ... }
 // from '../services/cidadeService'`) continua funcionando sem mudança.
-const servicoFtth = criarServicoCidades(cidadesMock, 'ftth');
+const servicoFtth = criarServicoCidades('ftth');
 export const { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis } = servicoFtth;
 
-/** Mesmo contrato do serviço padrão, operando sobre o dataset e a tecnologia do 5G. */
-export const cidadeService5g = criarServicoCidades(cidadesMock5g, '5g');
+/** Mesmo contrato do serviço padrão, operando sobre a tecnologia 5G. */
+export const cidadeService5g = criarServicoCidades('5g');

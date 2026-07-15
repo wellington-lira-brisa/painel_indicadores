@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ANO_PAINEL, MESES } from '../data/mockCidades';
+import { ANO_PAINEL, MESES } from '../data/mockHelpers';
 import { indiceMesAtual } from '../utils/tabelaIndicadores';
 import { calcularMediaBaseAtiva, calcularMediaIndicador, indicesDoPeriodo } from '../utils/mediaPeriodo';
 

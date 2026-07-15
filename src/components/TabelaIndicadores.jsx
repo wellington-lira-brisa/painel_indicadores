@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { ChevronDown, ChevronRight, Inbox } from 'lucide-react';
-import { MESES, ANO_PAINEL } from '../data/mockCidades';
+import { MESES, ANO_PAINEL } from '../data/mockHelpers';
 import { semanasDoMes } from '../utils/semanas';
 import { atingimentoIndicador, atingimentoMes, classificarAtingimento, STATUS_COR_TEXTO } from '../utils/status';
 import { formatarValor, formatarPercentual } from '../utils/format';

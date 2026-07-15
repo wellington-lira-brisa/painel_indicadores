@@ -10,7 +10,8 @@ import { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis, 
  *
  * O que já é automaticamente reaproveitado SEM precisar de nada aqui:
  * nome de indicador (ex.: "Ativação" em vez de "Instalação" já vem de
- * `mockCidades5g.js` — nenhum componente tem "Instalação" hardcoded),
+ * `DEFINICOES_INDICADORES_5G` em `mockHelpers.js` — nenhum componente tem
+ * "Instalação" hardcoded),
  * cálculo de semanas/feriados/médias, colapso de colunas (tudo já lê os
  * dados da cidade, nunca o nome da tecnologia).
  */

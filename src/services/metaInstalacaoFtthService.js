@@ -6,6 +6,13 @@ import { ANO_PAINEL } from '../data/mockHelpers';
 // Drive e publicada pelo mesmo workflow automatizado da base de vendas
 // (.github/workflows/atualizar-base.yml), com secret próprio
 // (GOOGLE_DRIVE_METAS_FILE_ID).
+//
+// Esse arquivo também é a LISTA OFICIAL de cidades do FTTH (as ~161 que
+// a operação realmente vende) — ver `criarServicoCidades('ftth')` em
+// cidadeService.js. A base de vendas sozinha traz ~920 cidades porque
+// Orçamento/Efetivado têm cobertura muito mais ampla que Instalação
+// (funil comercial largo, nem toda oportunidade vira venda de verdade);
+// a meta é o filtro certo pra escopo, não um corte arbitrário no código.
 const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/metas-instalacao-ftth.csv`;
 
 /** 'YYYY-MM-DD' -> índice 0-based do mês (jan=0), só quando o ano bate com ANO_PAINEL. Mesmo critério de indicadorRealizadoService.js. */
@@ -15,15 +22,15 @@ function indiceDoMesNoAnoDoPainel(mesRefIso) {
   return Number(mesRefIso.slice(5, 7)) - 1;
 }
 
-/** cidadeSlug -> Map(mesIndex -> meta) */
+/** cidadeSlug -> { cidadeOrigem, metas: Map(mesIndex -> meta) } */
 function indexarMetasPorCidade(linhas) {
   const indice = new Map();
   for (const l of linhas) {
     if (!l.cidade_slug) continue;
     const mesIndex = indiceDoMesNoAnoDoPainel(l.mes_ref);
     if (mesIndex === null) continue;
-    if (!indice.has(l.cidade_slug)) indice.set(l.cidade_slug, new Map());
-    indice.get(l.cidade_slug).set(mesIndex, Number(l.meta));
+    if (!indice.has(l.cidade_slug)) indice.set(l.cidade_slug, { cidadeOrigem: l.cidade_origem, metas: new Map() });
+    indice.get(l.cidade_slug).metas.set(mesIndex, Number(l.meta));
   }
   return indice;
 }

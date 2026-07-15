@@ -4,7 +4,7 @@ import TendenciaBadge from './TendenciaBadge';
 import BarraProgresso from './BarraProgresso';
 import BadgeFwa from './BadgeFwa';
 import BadgePlanoAcao from './BadgePlanoAcao';
-import { formatarPercentual } from '../utils/format';
+import { formatarPercentual, formatarValor } from '../utils/format';
 
 /**
  * Card de cidade para o ranking em mobile. Substitui a linha de tabela
@@ -39,7 +39,7 @@ export default function CardRankingCidade({ cidade, posicao, resumo, rotaBase = 
 
         <div className="mt-3 flex items-center justify-between text-sm">
           <span className="text-slate-500">
-            {resumo.realizado.toLocaleString('pt-BR')} / {resumo.meta.toLocaleString('pt-BR')}{' '}
+            {formatarValor(resumo.realizado)} / {formatarValor(resumo.meta)}{' '}
             <span className="text-xs">(meta)</span>
           </span>
           <TendenciaBadge tendencia={cidade.tendencia} />

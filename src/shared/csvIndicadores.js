@@ -563,3 +563,52 @@ export function paraCsvMetasInstalacaoFtth(registros) {
   const linhas = registros.map((r) => [r.cidadeSlug, r.cidadeOrigem, r.mesRef, r.meta].map(celulaCsv).join(','));
   return [COLUNAS_SAIDA_METAS_INSTALACAO.join(','), ...linhas].join('\n') + '\n';
 }
+
+/**
+ * Lista oficial de cidades onde a operação vende (FTTH/5G/FWA) — fonte de
+ * ESCOPO do Ranking, diferente da base de vendas (que traz qualquer
+ * cidade com atividade registrada, incluindo funil que nunca virou venda
+ * — ver normalizarPorCanal/normalizar). Arquivo próprio
+ * (`base_mesa_performace_ATUAL.csv`), atualizado mensalmente pelo
+ * negócio, colunas: `atuais` (nome da cidade — usa essa, não `cidades`;
+ * ver aviso abaixo), `servico` ("FTTH E 5G" | "5G ONLY"), `fwa`
+ * ("VENDENDO" | "PENDENTE").
+ *
+ * 1 linha por cidade (sem meses/período) — mais simples que
+ * `normalizarMetadadosCidade`, não precisa de agregação por chave
+ * composta.
+ */
+export function normalizarCidadesOficiais(linhas) {
+  const avisos = [];
+  const porCidade = new Map();
+
+  for (const l of linhas) {
+    const cidadeSlug = normalizarCidade(l.atuais);
+    if (!cidadeSlug) continue; // mesmo critério do resto do pipeline: nunca inventa cidade
+
+    if (porCidade.has(cidadeSlug)) {
+      avisos.push(`Cidade "${l.atuais}" aparece mais de uma vez na base oficial — mantendo a primeira ocorrência.`);
+      continue;
+    }
+
+    porCidade.set(cidadeSlug, {
+      cidadeSlug,
+      cidadeOrigem: l.atuais,
+      vendeFtth: l.servico === 'FTTH E 5G',
+      vende5g: l.servico === 'FTTH E 5G' || l.servico === '5G ONLY',
+      vendeFwa: l.fwa === 'VENDENDO',
+    });
+  }
+
+  return { registros: [...porCidade.values()], avisos };
+}
+
+const COLUNAS_SAIDA_CIDADES_OFICIAIS = ['cidade_slug', 'cidade_origem', 'vende_ftth', 'vende_5g', 'vende_fwa'];
+
+/** Serializa a saída de `normalizarCidadesOficiais()` — mesmo parser (`parsearCsv`) lê de volta. */
+export function paraCsvCidadesOficiais(registros) {
+  const linhas = registros.map((r) =>
+    [r.cidadeSlug, r.cidadeOrigem, r.vendeFtth, r.vende5g, r.vendeFwa].map(celulaCsv).join(','),
+  );
+  return [COLUNAS_SAIDA_CIDADES_OFICIAIS.join(','), ...linhas].join('\n') + '\n';
+}

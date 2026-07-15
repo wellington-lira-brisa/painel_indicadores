@@ -8,10 +8,11 @@ export const ANO_PAINEL = 2026;
 
 /**
  * Distribui `valorTotal` pelas semanas do mês de forma determinística (sem
- * aleatoriedade, pra manter o mock reproduzível). A última semana absorve o
- * resto da divisão, garantindo que a soma das semanas feche exatamente com
- * o `realizado` do mês — a mesma invariante que os dados reais precisarão
- * respeitar.
+ * aleatoriedade). A última semana absorve o resto da divisão, garantindo
+ * que a soma das semanas feche exatamente com o `realizado` do mês.
+ * Chamada com `valorTotal: null` (todo indicador nasce assim — ver
+ * `indicadoresVazios()` abaixo) cai direto no primeiro `if` e devolve
+ * semanas com `valor: null`, sem distribuir nada.
  */
 function distribuirValorPorSemanas(valorTotal, semanasDoMesArr) {
   if (valorTotal === null) {
@@ -33,20 +34,19 @@ function distribuirValorPorSemanas(valorTotal, semanasDoMesArr) {
 }
 
 /**
- * Cria um indicador mockado, com quebra semanal fictícia (`semanas`) só
- * para validar layout/legibilidade antes da integração com a base real.
- * Compartilhado entre todas as tecnologias (FTTH, 5G, e as que vierem
- * depois): a única coisa que muda de uma tecnologia pra outra é qual
- * `id`/`nome` é passado (ex.: 'instalacao'/'Instalação' vs
- * 'ativacao'/'Ativação'), nunca a lógica de geração em si.
+ * Monta um indicador no formato que todo o front espera (meses + quebra
+ * semanal). Compartilhado entre todas as tecnologias (FTTH, 5G, e as que
+ * vierem depois): a única coisa que muda de uma tecnologia pra outra é
+ * qual `id`/`nome` é passado (ex.: 'instalacao'/'Instalação' vs
+ * 'ativacao'/'Ativação'), nunca a lógica de montagem em si.
  *
- * `possuiSemanas` (default true, preserva o comportamento de sempre):
- * quando false, as semanas do indicador ficam com `valor: null` — a
- * própria tabela já trata valor nulo como "—" (ver formatarValor), então
- * nenhum componente de exibição precisa saber quais indicadores têm
- * quebra semanal real; só a origem do dado decide isso. Existe porque
- * nem todo indicador é apurado por semana (ex.: 5G só quebra Ativação
- * por semana; os demais só fecham no fim do mês).
+ * `possuiSemanas` (default true): quando false, as semanas do indicador
+ * ficam com `valor: null` — a própria tabela já trata valor nulo como
+ * "—" (ver formatarValor), então nenhum componente de exibição precisa
+ * saber quais indicadores têm quebra semanal real; só a origem do dado
+ * decide isso. Existe porque nem todo indicador é apurado por semana
+ * (ex.: 5G só quebra Ativação por semana; os demais só fecham no fim do
+ * mês).
  */
 export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizados, possuiSemanas = true) {
   const meses = MESES.map((mes, i) => {
@@ -67,12 +67,9 @@ export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizado
 
 /**
  * Metadados dos indicadores por tecnologia (id, nome, unidade, se "maior é
- * melhor", se tem quebra semanal) — extraídos dos mesmos valores já usados
- * em cada `indicador(...)` de `cidadesMock`/`cidadesMock5g`, só que como
- * dado isolado, sem meta/realizado. Existem só pra alimentar
- * `indicadoresVazios()` abaixo; as cidades mockadas continuam com seus
- * blocos originais intactos (duplicar essa metadata aqui foi a troca
- * deliberada por não mexer num dataset que já funciona).
+ * melhor", se tem quebra semanal) — única fonte de verdade de quais
+ * indicadores cada tecnologia tem. Alimenta `indicadoresVazios()` abaixo,
+ * que é como toda cidade nasce hoje (ver cidadeService.js).
  */
 export const DEFINICOES_INDICADORES_FTTH = [
   { id: 'orcamento', nome: 'Orçamento (vendas)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
@@ -86,14 +83,14 @@ export const DEFINICOES_INDICADORES_5G = [
 ];
 
 /**
- * Gera os indicadores de uma cidade que não tem cadastro no mock (existe
- * na base real, mas nunca foi cadastrada com meta/gerente/regional) — meta
- * e realizado nascem `null` em todo mês. `aplicarRealizadosReais`
+ * Gera os indicadores de uma cidade recém-criada a partir da base real —
+ * meta e realizado nascem `null` em todo mês. `aplicarRealizadosReais`
  * (indicadorRealizadoService.js) preenche depois o `realizado` dos
- * indicadores cobertos pela base real; a meta continua `null` porque
- * nenhuma fonte hoje fornece meta — e é exatamente por isso que
- * `atingimentoIndicador` (utils/status.js) devolve `null` pra esses
- * indicadores mesmo com realizado preenchido: sem meta não existe
+ * indicadores cobertos pela base real; `aplicarMetaInstalacaoFtth`
+ * (cidadeService.js) preenche a meta de Instalação quando existe pra essa
+ * cidade. O que nenhuma fonte cobre continua `null` — e é exatamente por
+ * isso que `atingimentoIndicador` (utils/status.js) devolve `null` pra
+ * esses indicadores mesmo com realizado preenchido: sem meta não existe
  * "atingimento", só o número bruto.
  */
 export function indicadoresVazios(definicoes) {
@@ -102,36 +99,4 @@ export function indicadoresVazios(definicoes) {
   return definicoes.map((d) =>
     indicador(d.id, d.nome, d.unidade, d.melhorQuandoMaior, metasNulas, realizadosNulos, d.possuiSemanas),
   );
-}
-
-/**
- * Base Ativa mês a mês, derivada do indicador "Crescimento (base)": cada
- * mês soma o `realizado` de crescimento daquele mês a um valor inicial da
- * cidade. Meses ainda não apurados ficam `null`. Como percorre
- * `crescimento.meses` (já preparado para novos meses via MESES), a Base
- * Ativa acompanha automaticamente qualquer mês novo adicionado depois —
- * pra qualquer tecnologia que reutilize este helper.
- */
-/**
- * Base Ativa é a soma acumulada do indicador `crescimento` mês a mês —
- * por isso depende dele existir. Cidades sem `crescimento` (FTTH, depois
- * da remoção pedida pelo negócio — ver mockCidades.js) não têm como ter
- * Base Ativa calculada; `baseAtiva: null` é o valor que os componentes já
- * tratam como "não exibir esse card" (ver TabelaIndicadores.jsx,
- * ListaIndicadoresMobile.jsx, usePeriodoAnalise.js) — não é um caso novo
- * inventado aqui, é o mesmo null-check que já existia pra outros motivos.
- */
-export function comBaseAtiva(cidade, baseInicial) {
-  const crescimento = cidade.indicadores.find((i) => i.id === 'crescimento');
-  if (!crescimento) return { ...cidade, baseAtiva: null };
-
-  let acumulado = baseInicial;
-
-  const baseAtiva = crescimento.meses.map((mes) => {
-    if (mes.realizado === null) return { mes: mes.mes, valor: null };
-    acumulado += mes.realizado;
-    return { mes: mes.mes, valor: acumulado };
-  });
-
-  return { ...cidade, baseAtiva };
 }

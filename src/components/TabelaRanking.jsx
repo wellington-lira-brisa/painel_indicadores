@@ -6,19 +6,19 @@ import BadgeFwa from './BadgeFwa';
 import BadgePlanoAcao from './BadgePlanoAcao';
 import CardRankingCidade from './CardRankingCidade';
 import { atingimentoIndicador } from '../utils/status';
-import { formatarPercentual } from '../utils/format';
+import { formatarPercentual, formatarValor } from '../utils/format';
 
 /**
  * Referência de meta x realizado do Ranking. Ordem de prioridade:
  * Orçamento -> Instalação -> Ativação -> primeiro indicador da lista —
  * mas só entra na disputa quem JÁ TEM meta cadastrada (>0); entre os que
  * têm, vence o primeiro da ordem acima. Isso é o que faz uma cidade sem
- * meta de Orçamento mas com meta de Instalação (primeira meta real do
- * painel — ver metaInstalacaoFtthService.js) mostrar o número de
- * Instalação em vez de "Sem meta", sem tirar o Orçamento das 4 cidades
- * de teste que já tinham meta completa antes disso existir.
- * Sem fallback nenhum com meta, cai no candidato de maior prioridade
- * mesmo com meta 0 (mantém "Sem meta" visível, não some da tabela).
+ * meta de Orçamento mas com meta de Instalação (única meta real do
+ * painel hoje — ver metaInstalacaoFtthService.js) mostrar o número de
+ * Instalação em vez de "—".
+ * `meta`/`realizado` vêm `null` (não `0`) quando não há nenhum mês
+ * apurado — `0` seria "meta batida em zero", que é uma informação
+ * diferente de "não temos esse dado ainda".
  */
 export function resumoMetaRealizado(cidade) {
   const candidatos = [
@@ -27,11 +27,14 @@ export function resumoMetaRealizado(cidade) {
     cidade.indicadores.find((i) => i.id === 'ativacao'),
     cidade.indicadores[0],
   ].filter(Boolean);
-  if (candidatos.length === 0) return { meta: 0, realizado: 0, rotulo: 'Meta' };
+  if (candidatos.length === 0) return { meta: null, realizado: null, atingimento: null, rotulo: 'Meta' };
 
   const referencia = candidatos.find((ind) => ind.meses.some((m) => m.meta > 0)) ?? candidatos[0];
 
   const apurados = referencia.meses.filter((m) => m.realizado !== null);
+  if (apurados.length === 0) {
+    return { meta: null, realizado: null, atingimento: null, rotulo: referencia.nome };
+  }
   return {
     meta: apurados.reduce((acc, m) => acc + m.meta, 0),
     realizado: apurados.reduce((acc, m) => acc + m.realizado, 0),
@@ -104,8 +107,8 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                   </Link>
                 </td>
                 <td className="min-w-[8rem] whitespace-nowrap px-4 py-3 text-slate-600">{cidade.gerente ?? '—'}</td>
-                <td className="px-4 py-3 text-right tabular-nums">{resumo.meta.toLocaleString('pt-BR')}</td>
-                <td className="px-4 py-3 text-right tabular-nums">{resumo.realizado.toLocaleString('pt-BR')}</td>
+                <td className="px-4 py-3 text-right tabular-nums">{formatarValor(resumo.meta)}</td>
+                <td className="px-4 py-3 text-right tabular-nums">{formatarValor(resumo.realizado)}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
                     <div className="w-24 shrink-0">

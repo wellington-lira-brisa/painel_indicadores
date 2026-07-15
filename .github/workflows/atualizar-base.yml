@@ -48,8 +48,13 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: node scripts/etl/baixarBaseGoogleDrive.mjs "${{ secrets.GOOGLE_DRIVE_METAS_FILE_ID }}" > /tmp/metas.csv
 
+      - name: Baixar lista oficial de cidades FTTH/5G/FWA (Google Drive)
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs "${{ secrets.GOOGLE_DRIVE_CIDADES_OFICIAIS_FILE_ID }}" > /tmp/cidades-oficiais.csv
+
       - name: Validar e normalizar (gera public/dados/*.csv e *.json)
-        run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv
+        run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv /tmp/cidades-oficiais.csv
 
       - name: Publicar log de falha como artefato (só roda se o passo acima falhar)
         if: failure()
@@ -68,7 +73,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/dados/indicadores-realizados.csv public/dados/cidades-metadados.csv public/dados/indicadores-realizados-por-canal.csv public/dados/metas-instalacao-ftth.csv public/dados/ultima-atualizacao.json
+          git add public/dados/indicadores-realizados.csv public/dados/cidades-metadados.csv public/dados/indicadores-realizados-por-canal.csv public/dados/metas-instalacao-ftth.csv public/dados/cidades-oficiais.csv public/dados/ultima-atualizacao.json
           if git diff --cached --quiet; then
             echo "Nada mudou na base — nenhum commit necessário."
           else

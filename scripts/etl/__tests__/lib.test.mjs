@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, normalizarCidadesOficiais, paraCsvCidadesOficiais, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
 
 const CABECALHO = COLUNAS_OBRIGATORIAS.join(',');
 
@@ -400,4 +400,47 @@ test('paraCsvMetasInstalacaoFtth + parsearCsv fazem roundtrip sem perda', () => 
   assert.equal(linhas[0].cidade_slug, 'araripina-pe');
   assert.equal(linhas[0].mes_ref, '2026-01-01');
   assert.equal(linhas[0].meta, '119');
+});
+
+test('normalizarCidadesOficiais classifica vendeFtth/vende5g/vendeFwa a partir de servico/fwa', () => {
+  const linhas = [
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
+    { atuais: 'ACARI/RN', cidades: 'ACARI/RN', servico: '5G ONLY', fwa: 'PENDENTE' },
+  ];
+  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros.length, 2);
+
+  const pereiro = registros.find((r) => r.cidadeSlug === 'pereiro-ce');
+  assert.equal(pereiro.vendeFtth, true);
+  assert.equal(pereiro.vende5g, true);
+  assert.equal(pereiro.vendeFwa, true);
+
+  const acari = registros.find((r) => r.cidadeSlug === 'acari-rn');
+  assert.equal(acari.vendeFtth, false);
+  assert.equal(acari.vende5g, true);
+  assert.equal(acari.vendeFwa, false);
+});
+
+test('normalizarCidadesOficiais avisa (sem quebrar) em cidade duplicada, mantendo a primeira', () => {
+  const linhas = [
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: '5G ONLY', fwa: 'PENDENTE' },
+  ];
+  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  assert.equal(avisos.length, 1);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].vendeFtth, true); // da primeira ocorrencia
+});
+
+test('paraCsvCidadesOficiais + parsearCsv fazem roundtrip sem perda', () => {
+  const { registros } = normalizarCidadesOficiais([
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
+  ]);
+  const linhas = parsearCsv(paraCsvCidadesOficiais(registros));
+  assert.equal(linhas.length, 1);
+  assert.equal(linhas[0].cidade_slug, 'pereiro-ce');
+  assert.equal(linhas[0].vende_ftth, 'true');
+  assert.equal(linhas[0].vende_5g, 'true');
+  assert.equal(linhas[0].vende_fwa, 'true');
 });
