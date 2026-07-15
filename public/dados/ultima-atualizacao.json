@@ -1,9 +1,10 @@
 {
-  "iniciadoEm": "2026-07-15T12:45:35.894Z",
-  "finalizadoEm": "2026-07-15T12:45:41.051Z",
+  "iniciadoEm": "2026-07-15T13:34:29.837Z",
+  "finalizadoEm": "2026-07-15T13:34:35.166Z",
   "status": "sucesso",
   "linhasLidas": 244935,
   "linhasPublicadas": 78125,
   "linhasSemCidade": 462,
-  "commit": "2ddf2366fce8a97059c6505f08d78aa3ff01e166"
+  "metasInstalacaoProcessadas": 1932,
+  "commit": "2d357ab365685a661c195b6d2f382dce71a463a7"
 }
