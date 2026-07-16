@@ -1,5 +1,5 @@
 import { DEFINICOES_INDICADORES_FTTH, DEFINICOES_INDICADORES_5G, indicadoresVazios } from '../data/mockHelpers';
-import { scoreCidade, statusCidade, tendenciaCidade } from '../utils/status';
+import { scoreCidade, statusCidade } from '../utils/status';
 import { listarStatusFwa } from './fwaService';
 import { listarStatusPlanosAtivosPorCidade } from './planoAcaoService';
 import {
@@ -247,7 +247,6 @@ function enriquecer(cidade, statusFwa, statusPlanoAtivo, indiceRealizados, metad
     ...cidadeComDadosReais,
     score: scoreCidade(cidadeComDadosReais),
     status: statusCidade(cidadeComDadosReais),
-    tendencia: tendenciaCidade(cidadeComDadosReais),
     vendeFwa: statusFwa[cidade.id] ?? false,
     temPlanoAtivo: statusPlanoAtivo[cidade.id] ?? false,
     prioritaria: ehCidadePrioritaria(cidade.id),

@@ -92,30 +92,40 @@ export function atingimentoMes(indicador, mes, campoMeta = 'meta') {
   return razaoAtingimento(indicador.melhorQuandoMaior, mes.realizado, metaValor);
 }
 
+/** Textos dos tooltips (IconeInfo) do Ranking — um lugar só pra manter a explicação igual em toda tela que usa `resumoMetaRealizado`. */
+export const EXPLICACAO_META_GERAL =
+  'Meta Geral da Cidade: meta do indicador de referência (Instalação no FTTH, Ativação no 5G), acumulada até o último mês apurado do ano. Não é a meta de um indicador específico — essa fica só na tabela de indicadores dentro da cidade, quando existir.';
+
+export const EXPLICACAO_REALIZADO_GERAL =
+  'Realizado acumulado do ano até o último mês apurado, do mesmo indicador de referência da Meta Geral. Filtrar por canal recalcula esse número — a meta continua sendo a da cidade inteira.';
+
+export const EXPLICACAO_META_REALIZADO_GERAL =
+  'Realizado e Meta Geral da Cidade, acumulados do ano até o último mês apurado, do indicador de referência (Instalação no FTTH, Ativação no 5G). Filtrar por canal recalcula o realizado — a meta continua sendo a da cidade inteira.';
+
+export const EXPLICACAO_ATINGIMENTO =
+  'Realizado ÷ Meta Geral (colunas ao lado), do mesmo indicador de referência. Não é a média de todos os indicadores da cidade — só desse indicador.';
+
+/** Texto do tooltip (IconeInfo) em toda tela que mostra a Projeção (mês) — um só lugar pra manter a explicação igual em todo canto. */
+export const EXPLICACAO_PROJECAO_FECHAMENTO =
+  'Estimativa de fechamento do mês atual: pega o ritmo médio das semanas já apuradas e extrapola pro total de semanas do mês. Não é meta nem o acumulado do ano — só uma projeção de curto prazo.';
+
 /**
- * Tendência: compara o atingimento do último mês realizado com a média dos anteriores.
- * Retorna 'alta' | 'estavel' | 'queda'.
+ * Projeção de fechamento do mês corrente de um indicador: ritmo semanal —
+ * realizado das semanas JÁ apuradas nesse mês, dividido pela quantidade
+ * de semanas apuradas, extrapolado pro total de semanas do mês (4 ou 5,
+ * conforme o calendário real — ver utils/semanas.js). `null` quando
+ * nenhuma semana do mês tem dado ainda (nada pra projetar, nunca inventa
+ * ritmo a partir de zero) ou quando o indicador não tem granularidade
+ * semanal (`possuiSemanas: false` — ver mockHelpers.js).
  */
-export function tendenciaCidade(cidade) {
-  const porMes = {};
-  cidade.indicadores.forEach((ind) => {
-    ind.meses.forEach((m, i) => {
-      if (m.realizado === null || m.meta === 0) return;
-      const razao = ind.melhorQuandoMaior
-        ? m.realizado / m.meta
-        : m.meta / Math.max(m.realizado, 0.0001);
-      (porMes[i] ??= []).push(Math.min(razao, 1.5));
-    });
-  });
+export function projecaoFechamentoMes(indicador, indiceMes) {
+  const mes = indicador.meses[indiceMes];
+  if (!mes) return null;
 
-  const indices = Object.keys(porMes).map(Number).sort((a, b) => a - b);
-  if (indices.length < 2) return 'estavel';
+  const semanasApuradas = mes.semanas.filter((s) => s.valor !== null);
+  if (semanasApuradas.length === 0) return null;
 
-  const media = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
-  const ultimo = media(porMes[indices.at(-1)]);
-  const anteriores = media(indices.slice(0, -1).flatMap((i) => porMes[i]));
-
-  if (ultimo > anteriores * 1.03) return 'alta';
-  if (ultimo < anteriores * 0.97) return 'queda';
-  return 'estavel';
+  const realizadoParcial = semanasApuradas.reduce((acc, s) => acc + s.valor, 0);
+  const ritmoSemanal = realizadoParcial / semanasApuradas.length;
+  return ritmoSemanal * mes.semanas.length;
 }

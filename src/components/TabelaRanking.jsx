@@ -1,12 +1,21 @@
 import { Link } from 'react-router-dom';
 import StatusBadge from './StatusBadge';
-import TendenciaBadge from './TendenciaBadge';
 import BarraProgresso from './BarraProgresso';
 import BadgeFwa from './BadgeFwa';
 import BadgePlanoAcao from './BadgePlanoAcao';
 import CardRankingCidade from './CardRankingCidade';
-import { atingimentoIndicador } from '../utils/status';
+import {
+  atingimentoIndicador,
+  projecaoFechamentoMes,
+  EXPLICACAO_PROJECAO_FECHAMENTO,
+  EXPLICACAO_META_GERAL,
+  EXPLICACAO_REALIZADO_GERAL,
+  EXPLICACAO_ATINGIMENTO,
+} from '../utils/status';
+import { indiceMesAtual } from '../utils/tabelaIndicadores';
+import { ANO_PAINEL } from '../data/mockHelpers';
 import { formatarPercentual, formatarValor } from '../utils/format';
+import IconeInfo from './IconeInfo';
 
 /**
  * Meta x realizado x atingimento do indicador de referência, pra Ranking
@@ -25,6 +34,11 @@ import { formatarPercentual, formatarValor } from '../utils/format';
  * indicadores com meta): misturar as duas bases faria o percentual
  * exibido não bater com `realizado ÷ meta` da própria linha assim que
  * outro indicador (Orçamento, Efetivado) ganhar meta própria.
+ * `projecaoFechamento` (ex-coluna "Tendência") também é do MESMO
+ * indicador de referência, mas olha só o MÊS CORRENTE (ritmo semanal
+ * extrapolado — ver projecaoFechamentoMes em utils/status.js), diferente
+ * de `meta`/`realizado`/`atingimento` acima, que são acumulados do ano
+ * inteiro até o último mês apurado.
  */
 export function resumoMetaRealizado(cidade) {
   const candidatos = [
@@ -33,19 +47,24 @@ export function resumoMetaRealizado(cidade) {
     cidade.indicadores.find((i) => i.id === 'ativacao'),
     cidade.indicadores[0],
   ].filter(Boolean);
-  if (candidatos.length === 0) return { meta: null, realizado: null, atingimento: null, rotulo: 'Meta' };
+  if (candidatos.length === 0) {
+    return { meta: null, realizado: null, atingimento: null, rotulo: 'Meta', projecaoFechamento: null, unidade: null };
+  }
 
   const referencia = candidatos.find((ind) => ind.meses.some((m) => m.meta > 0)) ?? candidatos[0];
+  const projecaoFechamento = projecaoFechamentoMes(referencia, indiceMesAtual(ANO_PAINEL));
 
   const apurados = referencia.meses.filter((m) => m.realizado !== null);
   if (apurados.length === 0) {
-    return { meta: null, realizado: null, atingimento: null, rotulo: referencia.nome };
+    return { meta: null, realizado: null, atingimento: null, rotulo: referencia.nome, projecaoFechamento, unidade: referencia.unidade };
   }
   return {
     meta: apurados.reduce((acc, m) => acc + m.meta, 0),
     realizado: apurados.reduce((acc, m) => acc + m.realizado, 0),
     atingimento: atingimentoIndicador(referencia),
     rotulo: referencia.nome,
+    projecaoFechamento,
+    unidade: referencia.unidade,
   };
 }
 
@@ -84,10 +103,30 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
             <th className="px-4 py-3">#</th>
             <th className="min-w-[10rem] px-4 py-3">Cidade</th>
             <th className="min-w-[8rem] px-4 py-3">Gerente</th>
-            <th className="whitespace-nowrap px-4 py-3 text-right">{rotuloColunaMeta}</th>
-            <th className="whitespace-nowrap px-4 py-3 text-right">Realizado</th>
-            <th className="whitespace-nowrap px-4 py-3">Atingimento</th>
-            <th className="whitespace-nowrap px-4 py-3">Tendência</th>
+            <th className="whitespace-nowrap px-4 py-3 text-right">
+              <span className="inline-flex items-center justify-end gap-1">
+                {rotuloColunaMeta}
+                <IconeInfo texto={EXPLICACAO_META_GERAL} />
+              </span>
+            </th>
+            <th className="whitespace-nowrap px-4 py-3 text-right">
+              <span className="inline-flex items-center justify-end gap-1">
+                Realizado
+                <IconeInfo texto={EXPLICACAO_REALIZADO_GERAL} />
+              </span>
+            </th>
+            <th className="whitespace-nowrap px-4 py-3">
+              <span className="inline-flex items-center gap-1">
+                Atingimento
+                <IconeInfo texto={EXPLICACAO_ATINGIMENTO} />
+              </span>
+            </th>
+            <th className="whitespace-nowrap px-4 py-3 text-right">
+              <span className="inline-flex items-center gap-1">
+                Projeção (mês)
+                <IconeInfo texto={EXPLICACAO_PROJECAO_FECHAMENTO} />
+              </span>
+            </th>
             <th className="whitespace-nowrap px-4 py-3">Status</th>
             <th className="whitespace-nowrap px-4 py-3">Plano de ação</th>
             <th className="whitespace-nowrap px-4 py-3">FWA</th>
@@ -123,7 +162,9 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                     <span className="tabular-nums font-medium">{formatarPercentual(resumo.atingimento)}</span>
                   </div>
                 </td>
-                <td className="whitespace-nowrap px-4 py-3"><TendenciaBadge tendencia={cidade.tendencia} /></td>
+                <td className="whitespace-nowrap px-4 py-3 text-right tabular-nums">
+                  {formatarValor(resumo.projecaoFechamento, resumo.unidade)}
+                </td>
                 <td className="whitespace-nowrap px-4 py-3"><StatusBadge status={cidade.status} /></td>
                 <td className="whitespace-nowrap px-4 py-3"><BadgePlanoAcao temPlanoAtivo={cidade.temPlanoAtivo} /></td>
                 <td className="whitespace-nowrap px-4 py-3"><BadgeFwa vendeFwa={cidade.vendeFwa} /></td>

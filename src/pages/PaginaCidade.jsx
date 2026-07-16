@@ -5,16 +5,18 @@ import { useAuth } from '../context/AuthContext';
 import { PERMISSOES } from '../services/permissaoService';
 import { TECNOLOGIAS } from '../config/tecnologias';
 import { listarPlanosPorCidade } from '../services/planoAcaoService';
-import { formatarPercentual, formatarDataHora, formatarDataSimples, removerMarcacaoMarkdown } from '../utils/format';
+import { formatarPercentual, formatarDataHora, formatarDataSimples, formatarValor, removerMarcacaoMarkdown } from '../utils/format';
 import { usePeriodoAnalise } from '../hooks/usePeriodoAnalise';
 import StatusBadge from '../components/StatusBadge';
-import TendenciaBadge from '../components/TendenciaBadge';
 import CardKpi from '../components/CardKpi';
+import IconeInfo from '../components/IconeInfo';
+import { EXPLICACAO_PROJECAO_FECHAMENTO } from '../utils/status';
 import TabelaIndicadores from '../components/TabelaIndicadores';
 import SeletorPeriodoAnalise from '../components/SeletorPeriodoAnalise';
 import ResumoMediaPeriodo from '../components/ResumoMediaPeriodo';
 import FormularioPlanoAcao from '../components/FormularioPlanoAcao';
 import SeletorCanais from '../components/SeletorCanais';
+import { resumoMetaRealizado } from '../components/TabelaRanking';
 
 /**
  * Detalhe de uma cidade — reutilizado por qualquer tecnologia (FTTH, 5G,
@@ -85,6 +87,8 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
     );
   }
 
+  const resumo = resumoMetaRealizado(cidade);
+
   return (
     <div className={`space-y-6 ${tecnologia.classeTema}`}>
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -118,7 +122,12 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
           </div>
           <div className="mt-2 flex items-center gap-3">
             <StatusBadge status={cidade.status} />
-            <TendenciaBadge tendencia={cidade.tendencia} />
+            <span className="text-sm font-semibold tabular-nums text-slate-700">
+              {formatarValor(resumo.projecaoFechamento, resumo.unidade)}{' '}
+              <span className="inline-flex items-center gap-0.5 text-xs font-normal text-slate-400">
+                (projeção de fechamento do mês · {resumo.rotulo}) <IconeInfo texto={EXPLICACAO_PROJECAO_FECHAMENTO} />
+              </span>
+            </span>
           </div>
         </div>
 
