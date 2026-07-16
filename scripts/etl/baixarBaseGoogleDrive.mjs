@@ -69,10 +69,18 @@ async function obterAccessToken(credenciais) {
  * o ID dele — é essa busca que substitui precisar saber o ID de antemão.
  * `trashed = false` ignora arquivo apagado (Drive mantém na lixeira por
  * um tempo, `files.list` sem esse filtro o devolveria mesmo apagado).
+ *
+ * `supportsAllDrives`/`includeItemsFromAllDrives`/`corpora=allDrives`:
+ * a pasta desse painel é um Drive Compartilhado (Shared Drive) do
+ * Workspace, não uma pasta comum do "Meu Drive" — sem esses três
+ * parâmetros, `files.list` só varre "Meu Drive" e devolve lista vazia
+ * mesmo com a Service Account tendo acesso de sobra na pasta (foi
+ * exatamente esse o sintoma: "Administrador" na pasta, e mesmo assim
+ * zero arquivos encontrados).
  */
 async function resolverArquivoIdPorNome({ accessToken, pastaId, nomeArquivo }) {
   const consulta = `'${pastaId}' in parents and name = '${nomeArquivo}' and trashed = false`;
-  const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(consulta)}&fields=${encodeURIComponent('files(id,name,modifiedTime)')}&orderBy=modifiedTime desc&pageSize=5`;
+  const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(consulta)}&fields=${encodeURIComponent('files(id,name,modifiedTime)')}&orderBy=modifiedTime desc&pageSize=5&supportsAllDrives=true&includeItemsFromAllDrives=true&corpora=allDrives`;
 
   const resposta = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
   if (!resposta.ok) {
@@ -101,7 +109,7 @@ async function resolverArquivoIdPorNome({ accessToken, pastaId, nomeArquivo }) {
 /** Só pra diagnóstico de erro (ver acima) — lista até 20 nomes visíveis na pasta, sem filtrar por nome. */
 async function listarNomesDaPasta({ accessToken, pastaId }) {
   const consulta = `'${pastaId}' in parents and trashed = false`;
-  const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(consulta)}&fields=${encodeURIComponent('files(name)')}&pageSize=20`;
+  const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(consulta)}&fields=${encodeURIComponent('files(name)')}&pageSize=20&supportsAllDrives=true&includeItemsFromAllDrives=true&corpora=allDrives`;
   const resposta = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
   if (!resposta.ok) return []; // diagnóstico é best-effort — se falhar aqui também, o erro original já basta
   const { files } = await resposta.json();
@@ -118,7 +126,7 @@ export async function baixarBaseGoogleDrive({ credenciaisJson, arquivoId, pastaI
 
   const idResolvido = arquivoId ?? (await resolverArquivoIdPorNome({ accessToken, pastaId, nomeArquivo }));
 
-  const resposta = await fetch(`https://www.googleapis.com/drive/v3/files/${idResolvido}?alt=media`, {
+  const resposta = await fetch(`https://www.googleapis.com/drive/v3/files/${idResolvido}?alt=media&supportsAllDrives=true`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
   if (!resposta.ok) {
