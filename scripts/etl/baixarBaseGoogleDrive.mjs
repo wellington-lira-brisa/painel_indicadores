@@ -80,15 +80,32 @@ async function resolverArquivoIdPorNome({ accessToken, pastaId, nomeArquivo }) {
   }
   const { files } = await resposta.json();
   if (files.length === 0) {
-    throw new Error(
-      `Nenhum arquivo chamado "${nomeArquivo}" encontrado na pasta ${pastaId} do Drive — confira o nome exato ` +
-        `e se a Service Account tem permissão de Leitor nessa pasta.`,
-    );
+    // Não achou pelo nome — antes de falhar, lista o que a Service Account
+    // CONSEGUE ver na pasta (sem filtro de nome). Isso diferencia na hora
+    // "não tenho permissão nessa pasta" (lista vazia) de "o nome no
+    // workflow está errado" (lista vem com outros nomes) — sem precisar
+    // de mais uma rodada de tentativa e erro.
+    const diagnostico = await listarNomesDaPasta({ accessToken, pastaId });
+    const detalhe =
+      diagnostico.length === 0
+        ? 'A Service Account não enxerga NENHUM arquivo nessa pasta — é permissão, não nome (confirme que a pasta foi compartilhada com o e-mail certo da Service Account, com acesso de Leitor, e que não é uma subpasta diferente).'
+        : `A Service Account enxerga ${diagnostico.length} arquivo(s) nessa pasta, mas nenhum com esse nome exato. Nomes vistos: ${diagnostico.join(', ')}`;
+    throw new Error(`Nenhum arquivo chamado "${nomeArquivo}" encontrado na pasta ${pastaId} do Drive. ${detalhe}`);
   }
   if (files.length > 1) {
     console.warn(`Aviso: ${files.length} arquivos chamados "${nomeArquivo}" na pasta — usando o mais recente (${files[0].modifiedTime}).`);
   }
   return files[0].id;
+}
+
+/** Só pra diagnóstico de erro (ver acima) — lista até 20 nomes visíveis na pasta, sem filtrar por nome. */
+async function listarNomesDaPasta({ accessToken, pastaId }) {
+  const consulta = `'${pastaId}' in parents and trashed = false`;
+  const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(consulta)}&fields=${encodeURIComponent('files(name)')}&pageSize=20`;
+  const resposta = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+  if (!resposta.ok) return []; // diagnóstico é best-effort — se falhar aqui também, o erro original já basta
+  const { files } = await resposta.json();
+  return files.map((f) => f.name);
 }
 
 export async function baixarBaseGoogleDrive({ credenciaisJson, arquivoId, pastaId, nomeArquivo }) {
