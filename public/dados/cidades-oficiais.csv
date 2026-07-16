@@ -19,14 +19,14 @@ barbalha-ce,BARBALHA/CE,true,true,true,2023-09-04
 crato-ce,CRATO/CE,true,true,true,2023-09-04
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,true,true,true,2023-09-04
 encanto-rn,ENCANTO/RN,true,true,true,2023-11-06
-erere-ce,ERERE/CE,true,true,false,2023-10-27
+erere-ce,ERERE/CE,true,true,true,2023-10-27
 jaguaretama-ce,JAGUARETAMA/CE,true,true,true,2023-10-09
 solonopole-ce,SOLONOPOLE/CE,true,true,false,2024-04-17
 banabuiu-ce,BANABUIU/CE,true,true,true,2023-10-16
 piquet-carneiro-ce,PIQUET CARNEIRO/CE,false,true,true,2023-12-15
 jucas-ce,JUCAS/CE,false,true,true,2023-12-15
 pedra-branca-ce,PEDRA BRANCA/CE,true,true,true,2023-10-09
-boa-viagem-ce,BOA VIAGEM/CE,true,true,false,2023-11-06
+boa-viagem-ce,BOA VIAGEM/CE,true,true,true,2023-11-06
 morada-nova-ce,MORADA NOVA/CE,true,true,true,2024-01-16
 russas-ce,RUSSAS/CE,true,true,true,2024-02-28
 quixeramobim-ce,QUIXERAMOBIM/CE,true,true,true,2023-10-09
@@ -36,25 +36,25 @@ milha-ce,MILHA/CE,true,true,false,2024-01-26
 senador-pompeu-ce,SENADOR POMPEU/CE,true,true,true,2024-01-30
 mombaca-ce,MOMBACA/CE,true,true,true,2024-01-11
 ipu-ce,IPU/CE,true,true,true,2023-10-31
-itaitinga-ce,ITAITINGA/CE,false,true,false,2024-03-18
+itaitinga-ce,ITAITINGA/CE,false,true,true,2024-03-18
 agua-nova-rn,AGUA NOVA/RN,false,true,true,2024-01-11
 taboleiro-grande-rn,TABOLEIRO GRANDE/RN,false,true,false,2024-03-04
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,true,true,true,2024-03-15
-sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE/RN,true,true,false,2024-03-15
+sao-francisco-do-oeste-rn,SAO FRANCISCO DO OESTE/RN,false,true,true,2024-01-11
 umari-ce,UMARI/CE,false,true,true,2024-01-16
-deputado-irapuan-pinheiro-ce,DEPUTADO IRAPUAN PINHEIRO/CE,true,true,false,2024-01-16
+deputado-irapuan-pinheiro-ce,DEPUTADO IRAPUAN PINHEIRO/CE,true,true,true,2024-01-16
 jati-ce,JATI/CE,false,true,true,2024-03-23
 altaneira-ce,ALTANEIRA/CE,false,true,true,2024-01-11
-marcelino-vieira-rn,MARCELINO VIEIRA/RN,true,true,false,2024-01-11
-quixelo-ce,QUIXELO/CE,false,true,false,2024-01-16
+marcelino-vieira-rn,MARCELINO VIEIRA/RN,true,true,true,2024-01-11
+quixelo-ce,QUIXELO/CE,false,true,true,2024-01-16
 antonina-do-norte-ce,ANTONINA DO NORTE/CE,false,true,true,2024-01-11
 aiuaba-ce,AIUABA/CE,false,true,true,2024-02-09
 jaguaribara-ce,JAGUARIBARA/CE,true,true,true,2024-02-16
 penaforte-ce,PENAFORTE/CE,false,true,true,2024-03-22
-apuiares-ce,APUIARES/CE,false,true,false,2024-02-09
-alto-santo-ce,ALTO SANTO/CE,true,true,false,2024-01-16
-saboeiro-ce,SABOEIRO/CE,true,true,false,2024-02-09
-sao-luis-do-curu-ce,SAO LUIS DO CURU/CE,false,true,false,2024-01-11
+apuiares-ce,APUIARES/CE,false,true,true,2024-02-09
+alto-santo-ce,ALTO SANTO/CE,true,true,true,2024-01-16
+saboeiro-ce,SABOEIRO/CE,true,true,true,2024-02-09
+sao-luis-do-curu-ce,SAO LUIS DO CURU/CE,false,true,true,2024-01-11
 barro-ce,BARRO/CE,false,true,true,2024-01-22
 bela-cruz-ce,BELA CRUZ/CE,false,true,true,2024-04-03
 milagres-ce,MILAGRES/CE,true,true,true,2024-01-11
@@ -85,9 +85,9 @@ poco-dantas-pb,POCO DANTAS/PB,true,true,false,2025-09-11
 bernardino-batista-pb,BERNARDINO BATISTA/PB,true,true,false,2025-12-29
 gado-bravo-pb,GADO BRAVO/PB,false,true,true,2024-03-11
 francisco-dantas-rn,FRANCISCO DANTAS/RN,true,true,true,2024-07-24
-riacho-de-santana-rn,RIACHO DE SANTANA/RN,true,true,false,2024-10-28
+riacho-de-santana-rn,RIACHO DE SANTANA/RN,true,true,true,2024-10-28
 rafael-godeiro-rn,RAFAEL GODEIRO/RN,false,true,true,2024-03-12
-piloes-rn,PILOES/RN,true,true,false,2024-07-24
+piloes-rn,PILOES/RN,true,true,true,2024-07-24
 severiano-melo-rn,SEVERIANO MELO/RN,false,true,false,2025-09-16
 divina-pastora-se,DIVINA PASTORA/SE,false,true,true,2024-12-24
 triunfo-potiguar-rn,TRIUNFO POTIGUAR/RN,true,true,false,2025-09-16
@@ -110,37 +110,37 @@ alcantaras-ce,ALCANTARAS/CE,false,true,true,2024-08-07
 cachoeira-dos-indios-pb,CACHOEIRA DOS INDIOS/PB,false,true,true,2024-04-02
 aparecida-pb,APARECIDA/PB,false,true,true,2024-12-06
 itau-rn,ITAU/RN,false,true,true,2024-09-30
-portalegre-rn,PORTALEGRE/RN,false,true,false,2024-07-29
+portalegre-rn,PORTALEGRE/RN,false,true,true,2024-07-29
 ibaretama-ce,IBARETAMA/CE,true,true,true,2024-09-30
 pacoti-ce,PACOTI/CE,true,true,false,2024-08-07
 tibau-rn,TIBAU/RN,false,true,false,2024-07-24
 itaicaba-ce,ITAICABA/CE,false,true,false,2024-07-24
-carnaubais-rn,CARNAUBAIS/RN,false,true,false,2024-11-04
+carnaubais-rn,CARNAUBAIS/RN,false,true,true,2024-11-04
 potengi-ce,POTENGI/CE,false,true,true,2024-12-06
 coite-do-noia-al,COITE DO NOIA/AL,false,true,true,2024-08-07
 malta-pb,MALTA/PB,false,true,true,2025-02-06
 serra-do-mel-rn,SERRA DO MEL/RN,false,true,true,2024-10-18
-abaiara-ce,ABAIARA/CE,false,true,false,2024-09-19
-marizopolis-pb,MARIZOPOLIS/PB,true,true,false,2024-06-05
+abaiara-ce,ABAIARA/CE,false,true,true,2024-09-19
+marizopolis-pb,MARIZOPOLIS/PB,true,true,true,2024-06-05
 pio-ix-pi,PIO IX/PI,false,true,true,2024-10-18
 iguaracy-pe,IGUARACY/PE,false,true,true,2025-01-21
 sao-mamede-pb,SAO MAMEDE/PB,false,true,true,2025-02-21
 ipaporanga-ce,IPAPORANGA/CE,false,true,true,2024-10-28
-martins-rn,MARTINS/RN,false,true,false,2024-07-12
+martins-rn,MARTINS/RN,false,true,true,2024-07-12
 itaja-rn,ITAJA/RN,true,true,true,2024-09-03
 ibicuitinga-ce,IBICUITINGA/CE,false,true,true,2024-09-03
-catunda-ce,CATUNDA/CE,true,true,false,2024-03-04
-tejucuoca-ce,TEJUCUOCA/CE,false,true,false,2024-08-27
-camutanga-pe,CAMUTANGA/PE,false,true,false,2024-12-17
+catunda-ce,CATUNDA/CE,true,true,true,2024-03-04
+tejucuoca-ce,TEJUCUOCA/CE,false,true,true,2024-08-27
+camutanga-pe,CAMUTANGA/PE,false,true,true,2024-12-17
 ipaumirim-ce,IPAUMIRIM/CE,false,true,true,2025-05-06
 governador-dix-sept-rosado-rn,GOVERNADOR DIX SEPT ROSADO/RN,false,true,true,2024-06-26
-mulungu-ce,MULUNGU/CE,true,true,false,2024-08-30
+mulungu-ce,MULUNGU/CE,true,true,true,2024-08-30
 santa-terezinha-pe,SANTA TEREZINHA/PE,false,true,false,2024-07-29
 ipanguacu-rn,IPANGUACU/RN,false,true,true,2024-11-29
 baia-formosa-rn,BAIA FORMOSA/RN,false,true,true,2024-10-18
 quiterianopolis-ce,QUITERIANOPOLIS/CE,false,true,true,2025-02-28
 grossos-rn,GROSSOS/RN,false,true,true,2024-12-26
-santana-do-cariri-ce,SANTANA DO CARIRI/CE,true,true,false,2024-07-24
+santana-do-cariri-ce,SANTANA DO CARIRI/CE,true,true,true,2024-07-24
 tenente-ananias-rn,TENENTE ANANIAS/RN,false,true,false,2025-12-16
 belem-de-maria-pe,BELEM DE MARIA/PE,true,true,false,2024-10-16
 porteiras-ce,PORTEIRAS/CE,false,true,true,2025-01-07
@@ -150,11 +150,11 @@ sao-joao-do-rio-do-peixe-pb,SAO JOAO DO RIO DO PEIXE/PB,false,true,true,2024-09-
 meruoca-ce,MERUOCA/CE,false,true,false,2025-09-02
 lajes-rn,LAJES/RN,false,true,true,2024-08-12
 uruoca-ce,URUOCA/CE,false,true,true,2024-09-03
-martinopole-ce,MARTINOPOLE/CE,true,true,false,2024-08-27
-jatoba-pe,JATOBA/PE,true,true,false,2024-08-30
+martinopole-ce,MARTINOPOLE/CE,true,true,true,2024-08-27
+jatoba-pe,JATOBA/PE,true,true,true,2024-08-30
 serra-preta-ba,SERRA PRETA/BA,false,true,true,2024-12-13
 farias-brito-ce,FARIAS BRITO/CE,false,true,true,2025-05-12
-machados-pe,MACHADOS/PE,true,true,false,2024-04-02
+machados-pe,MACHADOS/PE,true,true,true,2024-04-02
 carius-ce,CARIUS/CE,false,true,true,2025-02-28
 carire-ce,CARIRE/CE,false,true,true,2024-01-11
 chaval-ce,CHAVAL/CE,true,true,false,2024-12-06
@@ -170,7 +170,7 @@ patu-rn,PATU/RN,false,true,true,2024-11-04
 arara-pb,ARARA/PB,false,true,true,2024-09-03
 carnaubal-ce,CARNAUBAL/CE,false,true,true,2024-03-11
 alexandria-rn,ALEXANDRIA/RN,false,true,true,2024-12-09
-pendencias-rn,PENDENCIAS/RN,true,true,false,2024-02-14
+pendencias-rn,PENDENCIAS/RN,true,true,true,2024-02-14
 itatira-ce,ITATIRA/CE,false,true,true,2024-10-22
 madalena-ce,MADALENA/CE,true,true,false,2024-12-26
 croata-ce,CROATA/CE,true,true,false,2024-07-18
@@ -185,18 +185,18 @@ ibiapina-ce,IBIAPINA/CE,false,true,true,2025-05-29
 uirauna-pb,UIRAUNA/PB,true,true,true,2024-01-16
 brejo-do-cruz-pb,BREJO DO CRUZ/PB,true,true,true,2024-09-10
 jardim-de-piranhas-rn,JARDIM DE PIRANHAS/RN,true,true,false,2024-11-27
-morrinhos-ce,MORRINHOS/CE,true,true,false,2024-11-22
+morrinhos-ce,MORRINHOS/CE,true,true,true,2024-11-22
 independencia-ce,INDEPENDENCIA/CE,false,true,false,2024-08-27
 jucurutu-rn,JUCURUTU/RN,true,true,false,2025-12-05
 cruz-ce,CRUZ/CE,false,true,true,2024-06-26
 frei-paulo-se,FREI PAULO/SE,true,true,false,2024-10-10
 icapui-ce,ICAPUI/CE,false,true,true,2024-12-13
-chorozinho-ce,CHOROZINHO/CE,false,true,false,2024-09-30
+chorozinho-ce,CHOROZINHO/CE,false,true,true,2024-09-30
 cha-grande-pe,CHA GRANDE/PE,false,true,true,2024-07-16
 aurora-ce,AURORA/CE,false,true,true,2025-05-06
 ferreiros-pe,FERREIROS/PE,false,true,true,2024-08-23
 jijoca-de-jericoacoara-ce,JIJOCA DE JERICOACOARA/CE,false,true,true,2025-05-06
-varjota-ce,VARJOTA/CE,true,true,false,2024-12-17
+varjota-ce,VARJOTA/CE,true,true,true,2024-12-17
 bananeiras-pb,BANANEIRAS/PB,false,true,true,2024-06-05
 santa-luzia-pb,SANTA LUZIA/PB,false,true,true,2025-04-23
 caraubas-rn,CARAUBAS/RN,true,true,true,2025-05-26
@@ -223,8 +223,8 @@ barauna-rn,BARAUNA/RN,false,true,true,2024-02-27
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,false,true,true,2024-10-18
 guaiuba-ce,GUAIUBA/CE,true,true,true,2024-09-03
 jaguaruana-ce,JAGUARUANA/CE,true,true,true,2024-01-11
-jeremoabo-ba,JEREMOABO/BA,false,true,false,2024-09-03
-areia-branca-rn,AREIA BRANCA/RN,false,true,false,2024-12-06
+jeremoabo-ba,JEREMOABO/BA,false,true,true,2024-09-03
+areia-branca-rn,AREIA BRANCA/RN,false,true,true,2024-12-06
 conde-pb,CONDE/PB,true,true,false,2025-05-29
 solanea-pb,SOLANEA/PB,true,true,false,2024-09-19
 apodi-rn,APODI/RN,false,true,true,2024-03-27
@@ -238,7 +238,7 @@ varzea-alegre-ce,VARZEA ALEGRE/CE,false,true,true,2024-12-06
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,false,true,true,2024-09-03
 pentecoste-ce,PENTECOSTE/CE,true,true,true,2024-11-12
 custodia-pe,CUSTODIA/PE,true,true,true,2024-11-22
-massape-ce,MASSAPE/CE,false,true,false,2024-05-06
+massape-ce,MASSAPE/CE,false,true,true,2024-05-06
 santa-quiteria-ce,SANTA QUITERIA/CE,true,true,true,2025-05-06
 trairi-ce,TRAIRI/CE,false,true,true,2024-03-21
 canguaretama-rn,CANGUARETAMA/RN,false,true,true,2024-09-19
@@ -265,7 +265,7 @@ pesqueira-pe,PESQUEIRA/PE,true,true,false,2025-05-14
 camocim-ce,CAMOCIM/CE,true,true,true,2025-04-03
 aracati-ce,ARACATI/CE,true,true,true,2025-05-06
 moreno-pe,MORENO/PE,false,true,true,2024-08-07
-salgueiro-pe,SALGUEIRO/PE,true,true,false,2024-03-21
+salgueiro-pe,SALGUEIRO/PE,true,true,true,2024-03-21
 araripina-pe,ARARIPINA/PE,false,true,true,2025-05-06
 caninde-ce,CANINDE/CE,true,true,true,2024-11-11
 cajazeiras-pb,CAJAZEIRAS/PB,true,true,true,2025-03-11
@@ -287,7 +287,7 @@ patos-pb,PATOS/PB,true,true,true,2024-11-14
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,true,true,false,2025-05-14
 santa-rita-pb,SANTA RITA/PB,true,true,true,2024-11-21
 parnaiba-pi,PARNAIBA/PI,true,true,true,2024-09-19
-timon-ma,TIMON/MA,true,true,true,2024-11-14
+timon-ma,TIMON/MA,true,true,false,2024-11-14
 sobral-ce,SOBRAL/CE,true,true,true,2025-05-06
 juazeiro-ba,JUAZEIRO/BA,true,true,true,2025-05-06
 mossoro-rn,MOSSORO/RN,true,true,true,2024-09-19
@@ -308,29 +308,29 @@ junco-do-serido-pb,JUNCO DO SERIDO/PB,false,true,false,2026-02-20
 jose-da-penha-rn,JOSE DA PENHA/RN,true,true,false,2026-02-20
 choro-ce,CHORO/CE,false,true,false,2026-01-06
 almino-afonso-rn,ALMINO AFONSO/RN,false,true,false,2026-06-23
-antonio-martins-rn,ANTONIO MARTINS/RN,false,true,false,2026-06-09
-campo-grande-rn,CAMPO GRANDE/RN,false,true,false,2026-06-24
-joao-dias-rn,JOAO DIAS/RN,false,true,false,2026-06-23
-lucrecia-rn,LUCRECIA/RN,false,true,false,2026-06-10
-jerico-pb,JERICO/PB,true,true,false,2026-06-02
-rodolfo-fernandes-rn,RODOLFO FERNANDES/RN,true,true,false,2026-05-30
-mato-grosso-pb,MATO GROSSO/PB,true,true,false,2026-06-02
-prata-pb,PRATA/PB,true,true,false,2026-04-13
-catarina-ce,CATARINA/CE,false,true,false,2026-04-13
-aratuba-ce,ARATUBA/CE,false,true,false,2026-05-04
-general-sampaio-ce,GENERAL SAMPAIO/CE,false,true,false,2026-03-24
-olho-dagua-do-borges-rn,OLHO DAGUA DO BORGES/RN,true,true,false,2026-04-01
-olho-dagua-das-flores-al,OLHO DAGUA DAS FLORES/AL,false,true,false,2026-03-24
-senador-eloi-de-souza-rn,SENADOR ELOI DE SOUZA/RN,false,true,false,2026-05-02
-vila-nova-do-piaui-pi,VILA NOVA DO PIAUI/PI,true,true,false,2026-06-09
-marechal-deodoro-al,MARECHAL DEODORO/AL,false,true,false,2026-05-08
-maceio-al,MACEIO/AL,false,true,false,2026-04-01
-rio-largo-al,RIO LARGO/AL,false,true,false,2026-05-08
-bom-jesus-pb,BOM JESUS/PB,false,true,false,2026-03-20
-granjeiro-ce,GRANJEIRO/CE,false,true,false,2026-04-27
-hidrolandia-ce,HIDROLANDIA/CE,false,true,false,2026-07-08
-sao-joao-do-jaguaribe-ce,SAO JOAO DO JAGUARIBE/CE,false,true,false,2026-04-27
-bom-jesus-rn,BOM JESUS/RN,false,true,false,2026-05-23
-tavares-pb,TAVARES/PB,false,true,false,2026-05-04
-condado-pb,CONDADO/PB,false,true,true,2026-06-09
-palmacia-ce,PALMACIA/CE,false,true,false,2026-06-23
+antonio-martins-rn,ANTONIO MARTINS/RN,false,true,false,2026-07-16
+campo-grande-rn,CAMPO GRANDE/RN,false,true,false,2026-06-09
+joao-dias-rn,JOAO DIAS/RN,false,true,false,2026-06-24
+lucrecia-rn,LUCRECIA/RN,false,true,false,2026-06-23
+jerico-pb,JERICO/PB,false,true,false,2026-06-10
+rodolfo-fernandes-rn,RODOLFO FERNANDES/RN,true,true,false,2026-06-02
+mato-grosso-pb,MATO GROSSO/PB,true,true,false,2026-05-30
+prata-pb,PRATA/PB,true,true,false,2026-06-02
+catarina-ce,CATARINA/CE,true,true,false,2026-04-13
+aratuba-ce,ARATUBA/CE,false,true,false,2026-04-13
+general-sampaio-ce,GENERAL SAMPAIO/CE,false,true,false,2026-05-04
+olho-d-agua-do-borges-rn,OLHO D'AGUA DO BORGES/RN,false,true,false,2026-03-24
+olho-d-agua-das-flores-al,OLHO D'AGUA DAS FLORES/AL,true,true,false,2026-04-01
+senador-eloi-de-souza-rn,SENADOR ELOI DE SOUZA/RN,false,true,false,2026-03-24
+vila-nova-do-piaui-pi,VILA NOVA DO PIAUI/PI,false,true,false,2026-05-02
+marechal-deodoro-al,MARECHAL DEODORO/AL,true,true,false,2026-06-09
+maceio-al,MACEIO/AL,false,true,false,2026-05-08
+rio-largo-al,RIO LARGO/AL,false,true,false,2026-04-01
+bom-jesus-pb,BOM JESUS/PB,false,true,false,2026-05-08
+granjeiro-ce,GRANJEIRO/CE,false,true,false,2026-03-20
+hidrolandia-ce,HIDROLANDIA/CE,false,true,false,2026-04-27
+sao-joao-do-jaguaribe-ce,SAO JOAO DO JAGUARIBE/CE,false,true,false,2026-07-08
+bom-jesus-rn,BOM JESUS/RN,false,true,false,2026-04-27
+tavares-pb,TAVARES/PB,false,true,false,2026-05-23
+condado-pb,CONDADO/PB,false,true,false,2026-05-04
+palmacia-ce,PALMACIA/CE,false,true,true,2026-06-09
