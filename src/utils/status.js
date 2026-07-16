@@ -65,7 +65,7 @@ export function atingimentoIndicador(indicador, campoMeta = 'meta') {
  */
 export function scoreCidade(cidade) {
   const valores = cidade.indicadores
-    .map(atingimentoIndicador)
+    .map((ind) => atingimentoIndicador(ind))
     .filter((v) => v !== null);
   if (valores.length === 0) return null;
   return valores.reduce((acc, v) => acc + v, 0) / valores.length;

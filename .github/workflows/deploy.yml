@@ -15,6 +15,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+      - name: Testes (unidade + ETL) — bloqueia o deploy se algo quebrar
+        run: node --test scripts/etl/__tests__/*.test.mjs src/config/__tests__/*.test.mjs src/utils/__tests__/*.test.mjs
       - run: npm run build
         env:
           # VITE_ é embutido no bundle em build-time — normal pra URL +

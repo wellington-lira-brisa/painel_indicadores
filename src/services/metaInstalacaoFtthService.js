@@ -5,7 +5,7 @@ import { ANO_PAINEL } from '../data/mockHelpers';
 // csvIndicadores.js) — cobre FTTH/Instalação por enquanto. Baixada do
 // Drive e publicada pelo mesmo workflow automatizado da base de vendas
 // (.github/workflows/atualizar-base.yml), com secret próprio
-// (GOOGLE_DRIVE_METAS_FILE_ID).
+// (GOOGLE_DRIVE_METAS_CIDADES_FILE_ID).
 //
 // Esse arquivo também é a LISTA OFICIAL de cidades do FTTH (as ~161 que
 // a operação realmente vende) — ver `criarServicoCidades('ftth')` em
