@@ -11,7 +11,7 @@ import ListaIndicadoresMobile from './ListaIndicadoresMobile';
 import FeriadosMes from './FeriadosMes';
 
 function corCelula(indicador, mes) {
-  const atingimento = atingimentoMes(indicador, mes);
+  const atingimento = atingimentoMes(indicador, mes, 'metaIndicador');
   return atingimento === null ? 'text-slate-400' : STATUS_COR_TEXTO[classificarAtingimento(atingimento)];
 }
 
@@ -52,11 +52,14 @@ const LARGURA_SEMANA_EXPANDIDA = 'min-w-[3rem] px-2';
 const LARGURA_SEMANA_COLAPSADA = 'w-6 min-w-[1.5rem] max-w-[1.5rem] px-0';
 
 /**
- * Tabela de indicadores de uma cidade: Base Ativa, meta x realizado por mês,
- * resultado semanal (dividido nas semanas reais do calendário, com colunas
- * agrupáveis ao estilo Google Sheets) e feriados do mês. Componente único
- * reutilizado por todas as telas que mostram indicadores de cidade
- * (PaginaCidade e PaginaPlano).
+ * Tabela de indicadores de uma cidade: Base Ativa, meta do indicador x
+ * realizado por mês (a meta aqui é a Meta do Indicador — `metaIndicador`,
+ * hoje sempre "—" até existir fonte própria; NÃO a Meta Geral da Cidade
+ * usada no Ranking/score — ver aplicarMetaInstalacaoFtth em
+ * cidadeService.js), resultado semanal (dividido nas semanas reais do
+ * calendário, com colunas agrupáveis ao estilo Google Sheets) e feriados
+ * do mês. Componente único reutilizado por todas as telas que mostram
+ * indicadores de cidade (PaginaCidade e PaginaPlano).
  *
  * Abaixo de `md`: lista de acordeões (ListaIndicadoresMobile).
  * A partir de `md`: tabela completa.
@@ -163,9 +166,8 @@ export default function TabelaIndicadores({ indicadores, baseAtiva, cidade }) {
               <FragmentoIndicador
                 key={indicador.id}
                 indicador={indicador}
-                atingimento={atingimentoIndicador(indicador)}
+                atingimento={atingimentoIndicador(indicador, 'metaIndicador')}
                 indicesVisiveis={indicesVisiveis}
-                semanasPorMesVisivel={semanasPorMesVisivel}
                 mostrarSemanas={mostrarSemanas}
                 indiceMesAtual={indiceMesAtual}
                 semanaColapsada={semanaColapsada}
@@ -174,9 +176,9 @@ export default function TabelaIndicadores({ indicadores, baseAtiva, cidade }) {
           </tbody>
         </table>
         <p className="border-t border-slate-100 px-3 py-2 text-[11px] text-slate-500">
-          Linha superior: meta · Linha inferior: realizado (— = mês não apurado). As semanas seguem
-          o calendário do próprio mês (4 ou 5, conforme a quantidade de dias) e cada coluna pode ser
-          recolhida individualmente.
+          Linha superior: meta do indicador (— = ainda não cadastrada) · Linha inferior: realizado
+          (— = mês não apurado). As semanas seguem o calendário do próprio mês (4 ou 5, conforme a
+          quantidade de dias) e cada coluna pode ser recolhida individualmente.
         </p>
       </div>
     </div>
@@ -340,7 +342,6 @@ const FragmentoIndicador = memo(function FragmentoIndicador({
   indicador,
   atingimento,
   indicesVisiveis,
-  semanasPorMesVisivel,
   mostrarSemanas,
   indiceMesAtual,
   semanaColapsada,
@@ -351,28 +352,28 @@ const FragmentoIndicador = memo(function FragmentoIndicador({
         <td className={`sticky left-0 bg-slate-50 px-3 py-1.5 font-semibold text-slate-700 ${LARGURA_COLUNA_INDICADOR}`}>
           {indicador.nome} <span className="font-normal text-slate-400">· meta</span>
         </td>
-        {indicesVisiveis.map((i, pos) => (
-          <CelulasMes
-            key={i}
-            mesIndice={i}
-            valorMensal={indicador.meses[i].meta}
-            unidade={indicador.unidade}
-            semanas={semanasPorMesVisivel[pos]}
-            mostrarSemanas={mostrarSemanas}
-            emDestaque={i === indiceMesAtual}
-            semanaColapsada={semanaColapsada}
-          />
-        ))}
-        <td
-          rowSpan={2}
-          className="px-3 py-1.5 text-right align-middle"
-        >
+        {indicesVisiveis.map((i) => {
+          const mes = indicador.meses[i];
+          return (
+            <CelulasMes
+              key={i}
+              mesIndice={i}
+              valorMensal={mes.metaIndicador}
+              unidade={indicador.unidade}
+              semanas={mes.semanas}
+              mostrarSemanas={mostrarSemanas}
+              emDestaque={i === indiceMesAtual}
+              semanaColapsada={semanaColapsada}
+            />
+          );
+        })}
+        <td rowSpan={2} className="px-3 py-1.5 text-right align-middle">
           <BadgeAtingimento atingimento={atingimento} />
         </td>
       </tr>
       <tr>
         <td className={`sticky left-0 bg-white px-3 py-1.5 text-slate-500 ${LARGURA_COLUNA_INDICADOR}`}>realizado</td>
-        {indicesVisiveis.map((i, pos) => {
+        {indicesVisiveis.map((i) => {
           const mes = indicador.meses[i];
           return (
             <CelulasMes

@@ -25,23 +25,33 @@ export function classificarAtingimento(percentual) {
   return STATUS.VERMELHO;
 }
 
+/** Razão realizado/meta (ou invertida, se "menor é melhor"), limitada a 150%. */
+function razaoAtingimento(melhorQuandoMaior, realizado, meta) {
+  const razao = melhorQuandoMaior ? realizado / meta : meta / Math.max(realizado, 0.0001);
+  return Math.min(razao * 100, 150);
+}
+
 /**
  * Atingimento acumulado de um indicador (apenas meses com realizado informado).
  * Para indicadores onde "menor é melhor" (ex.: churn), o atingimento é invertido:
  * meta/realizado, limitado a 150% para não distorcer a média.
+ *
+ * `campoMeta` decide QUAL meta usar: `'meta'` (padrão, Meta Geral da Cidade —
+ * usada em scoreCidade/Ranking) ou `'metaIndicador'` (Meta do Indicador,
+ * usada na tabela da cidade — ver TabelaIndicadores.jsx). Enquanto
+ * `metaIndicador` não tem fonte cadastrada (sempre `null`), a soma dá 0 e
+ * isso devolve `null` — atingimento só aparece na tabela quando a meta do
+ * indicador aparecer.
  */
-export function atingimentoIndicador(indicador) {
+export function atingimentoIndicador(indicador, campoMeta = 'meta') {
   const meses = indicador.meses.filter((m) => m.realizado !== null);
   if (meses.length === 0) return null;
 
-  const meta = meses.reduce((acc, m) => acc + m.meta, 0);
+  const meta = meses.reduce((acc, m) => acc + (m[campoMeta] ?? 0), 0);
   const realizado = meses.reduce((acc, m) => acc + m.realizado, 0);
   if (meta === 0) return null;
 
-  const razao = indicador.melhorQuandoMaior
-    ? realizado / meta
-    : meta / Math.max(realizado, 0.0001);
-  return Math.min(razao * 100, 150);
+  return razaoAtingimento(indicador.melhorQuandoMaior, realizado, meta);
 }
 
 /**
@@ -72,13 +82,14 @@ export function ultimoMesApurado(indicador) {
   return apurados.length > 0 ? apurados[apurados.length - 1] : null;
 }
 
-/** Atingimento (%) de um único mês do indicador, ou null se não apurado. */
-export function atingimentoMes(indicador, mes) {
-  if (mes.realizado === null || mes.meta === 0) return null;
-  const razao = indicador.melhorQuandoMaior
-    ? mes.realizado / mes.meta
-    : mes.meta / Math.max(mes.realizado, 0.0001);
-  return Math.min(razao * 100, 150);
+/**
+ * Atingimento (%) de um único mês do indicador, ou null se não apurado.
+ * Mesmo `campoMeta` de atingimentoIndicador — padrão `'meta'` (Meta Geral).
+ */
+export function atingimentoMes(indicador, mes, campoMeta = 'meta') {
+  const metaValor = mes[campoMeta];
+  if (mes.realizado === null || !metaValor) return null;
+  return razaoAtingimento(indicador.melhorQuandoMaior, mes.realizado, metaValor);
 }
 
 /**

@@ -55,6 +55,11 @@ export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizado
     return {
       mes,
       meta: metas[i],
+      // Meta do Indicador (conceito à parte da Meta Geral da Cidade em `meta`
+      // — ver aplicarMetaInstalacaoFtth em cidadeService.js). Ainda não existe
+      // fonte própria por indicador; nasce `null` ("—" na tabela) até essa
+      // fonte ser cadastrada. Nunca deve ser preenchida com o valor de `meta`.
+      metaIndicador: null,
       realizado,
       semanas: possuiSemanas
         ? distribuirValorPorSemanas(realizado, semanasDoMesAtual)
@@ -87,11 +92,14 @@ export const DEFINICOES_INDICADORES_5G = [
  * meta e realizado nascem `null` em todo mês. `aplicarRealizadosReais`
  * (indicadorRealizadoService.js) preenche depois o `realizado` dos
  * indicadores cobertos pela base real; `aplicarMetaInstalacaoFtth`
- * (cidadeService.js) preenche a meta de Instalação quando existe pra essa
- * cidade. O que nenhuma fonte cobre continua `null` — e é exatamente por
- * isso que `atingimentoIndicador` (utils/status.js) devolve `null` pra
- * esses indicadores mesmo com realizado preenchido: sem meta não existe
- * "atingimento", só o número bruto.
+ * (cidadeService.js) preenche a Meta Geral da Cidade (`meta`, usada em
+ * score/atingimento/Ranking) quando existe pra essa cidade — nunca a Meta
+ * do Indicador (`metaIndicador`, exibida na tabela da cidade), que segue
+ * `null` até existir fonte própria por indicador. O que nenhuma fonte cobre
+ * continua `null` — e é exatamente por isso que `atingimentoIndicador`
+ * (utils/status.js) devolve `null` pra esses indicadores mesmo com
+ * realizado preenchido: sem meta não existe "atingimento", só o número
+ * bruto.
  */
 export function indicadoresVazios(definicoes) {
   const metasNulas = MESES.map(() => null);

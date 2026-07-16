@@ -140,18 +140,22 @@ function nomeEUfDoTextoOriginal(cidadeOrigem) {
 
 /**
  * Monta uma cidade a partir só do que existe na base real (nome/UF, mais
- * o slug já calculado em `normalizarCidade()` — src/shared/csvIndicadores.js).
- * Tudo que não tem fonte real ainda nasce `null` — nunca inventado — e é
- * exibido como "—" pelos formatters (ver utils/format.js). `enriquecer()`
- * roda por cima disso: `aplicarMetadadosCidade` preenche gerente/regional/
- * coordenação quando mapeados, `aplicarMetaInstalacaoFtth` preenche a meta
- * de Instalação quando existe, `aplicarRealizadosReais` preenche o
- * `realizado` dos indicadores cobertos. O que nenhuma dessas fontes cobre
- * (ex.: meta de Orçamento/Efetivado, data de ativação comercial) continua
- * `null`, e `statusCidade` cai em `'sem-dado'` (não em "Crítico") porque
- * não existe meta pra comparar — ver utils/status.js.
+ * o slug já calculado em `normalizarCidade()` — src/shared/csvIndicadores.js)
+ * e da data de ativação comercial já resolvida por `montarListaCompleta()`
+ * (vem de `cidades-oficiais.csv`, coluna `lancamento_comercial` — `null`
+ * quando a cidade não está na lista oficial, ou na lista de fallback,
+ * quando o fetch falhou e não há cache). Tudo mais que não tem fonte real
+ * ainda nasce `null` — nunca inventado — e é exibido como "—" pelos
+ * formatters (ver utils/format.js). `enriquecer()` roda por cima disso:
+ * `aplicarMetadadosCidade` preenche gerente/regional/coordenação quando
+ * mapeados, `aplicarMetaInstalacaoFtth` preenche a meta de Instalação
+ * quando existe, `aplicarRealizadosReais` preenche o `realizado` dos
+ * indicadores cobertos. O que nenhuma dessas fontes cobre (ex.: meta de
+ * Orçamento/Efetivado) continua `null`, e `statusCidade` cai em
+ * `'sem-dado'` (não em "Crítico") porque não existe meta pra comparar —
+ * ver utils/status.js.
  */
-function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId) {
+function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId, ativacaoComercial = null) {
   const { nome, uf } = nomeEUfDoTextoOriginal(cidadeOrigem);
   return {
     id: slug,
@@ -160,7 +164,7 @@ function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId) {
     gerente: null,
     regional: null,
     coordenadorRegional: null,
-    ativacaoComercial: null,
+    ativacaoComercial,
     indicadores: indicadoresVazios(DEFINICOES_POR_TECNOLOGIA[tecnologiaId]),
   };
 }
@@ -184,11 +188,15 @@ function aplicarMetadadosCidade(cidade, metadadosCidades) {
 }
 
 /**
- * Preenche a meta de Instalação (FTTH) com o dado real, quando existe pra
- * essa cidade/mês — continua `null` (exibido como "—") pra quem não está
- * coberto por esse arquivo ainda. É essa troca que faz "Meta (vendas)"/
- * "Atingimento Geral" no Ranking sair de "Sem meta" pra um número real —
- * ver resumoMetaRealizado() em TabelaRanking.jsx.
+ * Preenche a Meta Geral da Cidade (`ind.meses[].meta`) com o dado real de
+ * Instalação (FTTH), quando existe pra essa cidade/mês — continua `null`
+ * (exibido como "—") pra quem não está coberto por esse arquivo ainda. É
+ * essa troca que faz "Meta (vendas)"/"Atingimento Geral" no Ranking sair
+ * de "Sem meta" pra um número real — ver resumoMetaRealizado() em
+ * TabelaRanking.jsx. Alimenta score/atingimento e o Ranking; NUNCA a Meta
+ * do Indicador (`ind.meses[].metaIndicador`) exibida na tabela da cidade
+ * — essa é conceito à parte e ainda não tem fonte própria (ver
+ * indicadoresVazios() em mockHelpers.js).
  */
 function aplicarMetaInstalacaoFtth(cidade, metasInstalacao, tecnologiaId) {
   if (tecnologiaId !== 'ftth') return cidade;
@@ -255,7 +263,9 @@ function criarServicoCidades(tecnologiaId) {
     const cidadesDoEscopo = [...cidadesOficiais.entries()].filter(([, c]) => c[chaveVende]);
 
     if (cidadesDoEscopo.length > 0) {
-      return cidadesDoEscopo.map(([slug, { cidadeOrigem }]) => criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId));
+      return cidadesDoEscopo.map(([slug, { cidadeOrigem, lancamentoComercial }]) =>
+        criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId, lancamentoComercial),
+      );
     }
     // Lista oficial vazia (fetch falhou e não há cache) — mostrar a lista
     // ampla (sem escopo) é mais seguro que mostrar 0 cidades.

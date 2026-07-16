@@ -6,7 +6,7 @@ import { parsearCsv } from '../shared/csvIndicadores';
 // Drive pelo mesmo workflow automatizado (GOOGLE_DRIVE_CIDADES_OFICIAIS_FILE_ID).
 const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/cidades-oficiais.csv`;
 
-/** cidadeSlug -> { cidadeOrigem, vendeFtth, vende5g, vendeFwa } */
+/** cidadeSlug -> { cidadeOrigem, vendeFtth, vende5g, vendeFwa, lancamentoComercial } */
 function indexarCidadesOficiais(linhas) {
   const indice = new Map();
   for (const l of linhas) {
@@ -16,6 +16,7 @@ function indexarCidadesOficiais(linhas) {
       vendeFtth: l.vende_ftth === 'true',
       vende5g: l.vende_5g === 'true',
       vendeFwa: l.vende_fwa === 'true',
+      lancamentoComercial: l.lancamento_comercial || null,
     });
   }
   return indice;

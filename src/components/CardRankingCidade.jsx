@@ -30,10 +30,10 @@ export default function CardRankingCidade({ cidade, posicao, resumo, rotaBase = 
 
         <div className="mt-3 flex items-center gap-3">
           <div className="flex-1">
-            <BarraProgresso percentual={cidade.score} />
+            <BarraProgresso percentual={resumo.atingimento} />
           </div>
           <span className="shrink-0 text-sm font-bold tabular-nums text-slate-800">
-            {formatarPercentual(cidade.score)}
+            {formatarPercentual(resumo.atingimento)}
           </span>
         </div>
 

@@ -572,7 +572,11 @@ export function paraCsvMetasInstalacaoFtth(registros) {
  * (`base_mesa_performace_ATUAL.csv`), atualizado mensalmente pelo
  * negócio, colunas: `atuais` (nome da cidade — usa essa, não `cidades`;
  * ver aviso abaixo), `servico` ("FTTH E 5G" | "5G ONLY"), `fwa`
- * ("VENDENDO" | "PENDENTE").
+ * ("VENDENDO" | "PENDENTE"), `lancamento_comercial` (data yyyy-mm-dd de
+ * quando a cidade começou a vender comercialmente — vira o card
+ * "Ativação comercial" da PaginaCidade). Formato inválido/ausente vira
+ * `null` (mesmo critério de "—" do resto do painel), sem bloquear a
+ * publicação.
  *
  * 1 linha por cidade (sem meses/período) — mais simples que
  * `normalizarMetadadosCidade`, não precisa de agregação por chave
@@ -591,24 +595,37 @@ export function normalizarCidadesOficiais(linhas) {
       continue;
     }
 
+    const lancamentoComercial = REGEX_DATA.test(l.lancamento_comercial) ? l.lancamento_comercial : null;
+    if (l.lancamento_comercial && !lancamentoComercial) {
+      avisos.push(`Cidade "${l.atuais}": lancamento_comercial inválida ("${l.lancamento_comercial}") — exibindo "—".`);
+    }
+
     porCidade.set(cidadeSlug, {
       cidadeSlug,
       cidadeOrigem: l.atuais,
       vendeFtth: l.servico === 'FTTH E 5G',
       vende5g: l.servico === 'FTTH E 5G' || l.servico === '5G ONLY',
       vendeFwa: l.fwa === 'VENDENDO',
+      lancamentoComercial,
     });
   }
 
   return { registros: [...porCidade.values()], avisos };
 }
 
-const COLUNAS_SAIDA_CIDADES_OFICIAIS = ['cidade_slug', 'cidade_origem', 'vende_ftth', 'vende_5g', 'vende_fwa'];
+const COLUNAS_SAIDA_CIDADES_OFICIAIS = [
+  'cidade_slug',
+  'cidade_origem',
+  'vende_ftth',
+  'vende_5g',
+  'vende_fwa',
+  'lancamento_comercial',
+];
 
 /** Serializa a saída de `normalizarCidadesOficiais()` — mesmo parser (`parsearCsv`) lê de volta. */
 export function paraCsvCidadesOficiais(registros) {
   const linhas = registros.map((r) =>
-    [r.cidadeSlug, r.cidadeOrigem, r.vendeFtth, r.vende5g, r.vendeFwa].map(celulaCsv).join(','),
+    [r.cidadeSlug, r.cidadeOrigem, r.vendeFtth, r.vende5g, r.vendeFwa, r.lancamentoComercial].map(celulaCsv).join(','),
   );
   return [COLUNAS_SAIDA_CIDADES_OFICIAIS.join(','), ...linhas].join('\n') + '\n';
 }

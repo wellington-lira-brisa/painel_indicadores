@@ -444,3 +444,35 @@ test('paraCsvCidadesOficiais + parsearCsv fazem roundtrip sem perda', () => {
   assert.equal(linhas[0].vende_5g, 'true');
   assert.equal(linhas[0].vende_fwa, 'true');
 });
+
+test('normalizarCidadesOficiais extrai lancamento_comercial quando yyyy-mm-dd válida', () => {
+  const linhas = [
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '2023-07-24' },
+  ];
+  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros[0].lancamentoComercial, '2023-07-24');
+});
+
+test('normalizarCidadesOficiais vira null (com aviso) em lancamento_comercial inválida, e null silencioso quando ausente', () => {
+  const linhas = [
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '24/07/2023' },
+    { atuais: 'ACARI/RN', cidades: 'ACARI/RN', servico: '5G ONLY', fwa: 'PENDENTE' },
+  ];
+  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  assert.equal(avisos.length, 1);
+  assert.match(avisos[0], /lancamento_comercial inválida/);
+
+  const pereiro = registros.find((r) => r.cidadeSlug === 'pereiro-ce');
+  assert.equal(pereiro.lancamentoComercial, null);
+  const acari = registros.find((r) => r.cidadeSlug === 'acari-rn');
+  assert.equal(acari.lancamentoComercial, null);
+});
+
+test('paraCsvCidadesOficiais + parsearCsv fazem roundtrip de lancamento_comercial sem perda', () => {
+  const { registros } = normalizarCidadesOficiais([
+    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '2023-07-24' },
+  ]);
+  const linhas = parsearCsv(paraCsvCidadesOficiais(registros));
+  assert.equal(linhas[0].lancamento_comercial, '2023-07-24');
+});

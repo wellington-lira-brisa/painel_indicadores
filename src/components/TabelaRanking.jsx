@@ -9,16 +9,22 @@ import { atingimentoIndicador } from '../utils/status';
 import { formatarPercentual, formatarValor } from '../utils/format';
 
 /**
- * Referência de meta x realizado do Ranking. Ordem de prioridade:
- * Orçamento -> Instalação -> Ativação -> primeiro indicador da lista —
- * mas só entra na disputa quem JÁ TEM meta cadastrada (>0); entre os que
- * têm, vence o primeiro da ordem acima. Isso é o que faz uma cidade sem
- * meta de Orçamento mas com meta de Instalação (única meta real do
- * painel hoje — ver metaInstalacaoFtthService.js) mostrar o número de
- * Instalação em vez de "—".
- * `meta`/`realizado` vêm `null` (não `0`) quando não há nenhum mês
- * apurado — `0` seria "meta batida em zero", que é uma informação
- * diferente de "não temos esse dado ainda".
+ * Meta x realizado x atingimento do indicador de referência, pra Ranking
+ * (tabela e card mobile). Ordem de prioridade do indicador: Orçamento ->
+ * Instalação -> Ativação -> primeiro indicador da lista — mas só entra na
+ * disputa quem JÁ TEM meta cadastrada (>0); entre os que têm, vence o
+ * primeiro da ordem acima. Isso é o que faz uma cidade sem meta de
+ * Orçamento mas com meta de Instalação (única meta real do painel hoje —
+ * ver metaInstalacaoFtthService.js) mostrar o número de Instalação em vez
+ * de "—".
+ * `meta`/`realizado`/`atingimento` vêm `null` (não `0`) quando não há
+ * nenhum mês apurado — `0` seria "meta batida em zero", que é uma
+ * informação diferente de "não temos esse dado ainda".
+ * `atingimento` é sempre do MESMO indicador de referência das colunas
+ * Meta/Realizado — de propósito não é `cidade.score` (média de todos os
+ * indicadores com meta): misturar as duas bases faria o percentual
+ * exibido não bater com `realizado ÷ meta` da própria linha assim que
+ * outro indicador (Orçamento, Efetivado) ganhar meta própria.
  */
 export function resumoMetaRealizado(cidade) {
   const candidatos = [
@@ -80,7 +86,7 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
             <th className="min-w-[8rem] px-4 py-3">Gerente</th>
             <th className="whitespace-nowrap px-4 py-3 text-right">{rotuloColunaMeta}</th>
             <th className="whitespace-nowrap px-4 py-3 text-right">Realizado</th>
-            <th className="whitespace-nowrap px-4 py-3">Atingimento geral</th>
+            <th className="whitespace-nowrap px-4 py-3">Atingimento</th>
             <th className="whitespace-nowrap px-4 py-3">Tendência</th>
             <th className="whitespace-nowrap px-4 py-3">Status</th>
             <th className="whitespace-nowrap px-4 py-3">Plano de ação</th>
@@ -112,9 +118,9 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
                     <div className="w-24 shrink-0">
-                      <BarraProgresso percentual={cidade.score} />
+                      <BarraProgresso percentual={resumo.atingimento} />
                     </div>
-                    <span className="tabular-nums font-medium">{formatarPercentual(cidade.score)}</span>
+                    <span className="tabular-nums font-medium">{formatarPercentual(resumo.atingimento)}</span>
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-4 py-3"><TendenciaBadge tendencia={cidade.tendencia} /></td>

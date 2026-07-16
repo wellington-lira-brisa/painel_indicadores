@@ -75,7 +75,7 @@ function CardBaseAtiva({ baseAtiva, indicesVisiveis }) {
 }
 
 function CardIndicador({ indicador, cidade, indicesVisiveis, mostrarSemanas, indiceMesAtual }) {
-  const atingimentoGeral = atingimentoIndicador(indicador);
+  const atingimentoGeral = atingimentoIndicador(indicador, 'metaIndicador');
   const status = atingimentoGeral === null ? null : classificarAtingimento(atingimentoGeral);
   const ultimoMes = ultimoMesApurado(indicador);
   const ultimoMesEhAtual = ultimoMes?.mes === MESES[indiceMesAtual];
@@ -96,8 +96,14 @@ function CardIndicador({ indicador, cidade, indicesVisiveis, mostrarSemanas, ind
                   atual
                 </span>
               )}
-              {ultimoMes.mes}: meta {formatarValor(ultimoMes.meta, indicador.unidade)} · realizado{' '}
-              <span className={STATUS_COR_TEXTO[classificarAtingimento(atingimentoMes(indicador, ultimoMes) ?? 0)]}>
+              {ultimoMes.mes}: meta {formatarValor(ultimoMes.metaIndicador, indicador.unidade)} · realizado{' '}
+              <span
+                className={
+                  STATUS_COR_TEXTO[
+                    classificarAtingimento(atingimentoMes(indicador, ultimoMes, 'metaIndicador') ?? 0)
+                  ]
+                }
+              >
                 {formatarValor(ultimoMes.realizado, indicador.unidade)}
               </span>
             </p>
@@ -124,7 +130,7 @@ function CardIndicador({ indicador, cidade, indicesVisiveis, mostrarSemanas, ind
         <ul className="divide-y divide-slate-100">
           {indicesVisiveis.map((i) => {
             const mes = indicador.meses[i];
-            const atingimentoDoMes = atingimentoMes(indicador, mes);
+            const atingimentoDoMes = atingimentoMes(indicador, mes, 'metaIndicador');
             const emDestaque = i === indiceMesAtual;
             return (
               <li key={mes.mes} className={`py-2 text-sm ${emDestaque ? 'rounded-md bg-brand-50/50 px-1.5' : ''}`}>
@@ -139,7 +145,7 @@ function CardIndicador({ indicador, cidade, indicesVisiveis, mostrarSemanas, ind
                     />
                   </span>
                   <span className="flex-1 text-right tabular-nums text-slate-500">
-                    meta {formatarValor(mes.meta, indicador.unidade)}
+                    meta {formatarValor(mes.metaIndicador, indicador.unidade)}
                   </span>
                   <span
                     className={`flex-1 text-right font-medium tabular-nums ${
