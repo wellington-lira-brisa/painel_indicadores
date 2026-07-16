@@ -40,18 +40,20 @@ jobs:
       - name: Baixar base oficial (Google Drive)
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          GOOGLE_DRIVE_FILE_ID: ${{ secrets.GOOGLE_DRIVE_FILE_ID }}
-        run: node scripts/etl/baixarBaseGoogleDrive.mjs > /tmp/base.csv
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta consolidado_canais_semanal.csv > /tmp/base.csv
 
       - name: Baixar metas gerais de cidade — FTTH e 5G (Google Drive)
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-        run: node scripts/etl/baixarBaseGoogleDrive.mjs "${{ secrets.GOOGLE_DRIVE_METAS_CIDADES_FILE_ID }}" > /tmp/metas.csv
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta metas_cidades_vendas_instaladas.csv > /tmp/metas.csv
 
       - name: Baixar lista oficial de cidades FTTH/5G/FWA (Google Drive)
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-        run: node scripts/etl/baixarBaseGoogleDrive.mjs "${{ secrets.GOOGLE_DRIVE_CIDADES_OFICIAIS_FILE_ID }}" > /tmp/cidades-oficiais.csv
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta cidades_atuais.csv > /tmp/cidades-oficiais.csv
 
       - name: Validar e normalizar (gera public/dados/*.csv e *.json)
         run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv /tmp/cidades-oficiais.csv

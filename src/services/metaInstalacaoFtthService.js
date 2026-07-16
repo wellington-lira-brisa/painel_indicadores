@@ -5,7 +5,8 @@ import { ANO_PAINEL } from '../data/mockHelpers';
 // csvIndicadores.js) — cobre FTTH/Instalação. Baixada do Drive e
 // publicada pelo mesmo workflow automatizado da base de vendas
 // (.github/workflows/atualizar-base.yml), com secret próprio
-// (GOOGLE_DRIVE_METAS_CIDADES_FILE_ID). Mesmo arquivo baixado também
+// (GOOGLE_DRIVE_FOLDER_ID + nome do arquivo, metas_cidades_vendas_instaladas.csv
+// — ver baixarBaseGoogleDrive.mjs). Mesmo arquivo baixado também
 // alimenta a meta do 5G — ver metaAtivacao5gService.js e
 // normalizarMetasAtivacao5g() em csvIndicadores.js.
 //
