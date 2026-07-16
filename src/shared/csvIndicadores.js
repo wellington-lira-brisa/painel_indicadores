@@ -514,25 +514,28 @@ export function paraCsv(registros) {
 }
 
 /**
- * Metas de "Vendas Instaladas" por cidade/mês — fonte separada da base de
- * vendas (arquivo próprio, formato diferente: `data,cidade,indicador,
- * indicador_geral,servico,meta,categoria,...`). Primeira meta real que o
- * painel passa a ter (antes só existia mockada, pra 4 cidades) — por isso
- * o filtro é restrito e explícito: só entra o que é literalmente "meta de
- * Vendas Instaladas de FTTH, categoria venda, ativa" — qualquer outra
- * linha do arquivo (FWA, Banda Larga, indicador desativado) é ignorada,
- * não misturada.
+ * Metas de "Vendas Instaladas"/"Vendas Ativadas" por cidade/mês — fonte
+ * separada da base de vendas (arquivo próprio, formato:
+ * `data,cidade,indicador,indicador_geral,servico,meta,categoria,...`).
+ * Mesmo arquivo cobre as duas tecnologias hoje (a query de origem virou
+ * `WHERE indicador_geral IN ('Vendas Instaladas', 'Vendas Ativadas')`) —
+ * por isso a normalização em si vive numa função compartilhada
+ * (`normalizarMetasCidade`), e cada tecnologia só declara o próprio
+ * filtro. O filtro continua restrito e explícito: só entra o que bate
+ * `servico`+`indicadorGeral` exatos, `categoria === 'venda'`,
+ * `stutus === 'Ativo'` — qualquer outra linha (FWA, Banda Larga,
+ * indicador desativado) é ignorada, não misturada.
  *
  * `data` já vem como primeiro dia do mês ("2026-01-01") — mesmo formato
  * de `mes_ref` no resto do pipeline, não precisa conversão.
  */
-export function normalizarMetasInstalacaoFtth(linhas) {
+function normalizarMetasCidade(linhas, { servico, indicadorGeral }) {
   const avisos = [];
   const porChave = new Map(); // "cidadeSlug\u0001mesRef" -> { cidadeOrigem, cidadeSlug, mesRef, meta }
 
   for (const l of linhas) {
-    if (l.servico !== 'FTTH') continue;
-    if (l.indicador_geral !== 'Vendas Instaladas') continue;
+    if (l.servico !== servico) continue;
+    if (l.indicador_geral !== indicadorGeral) continue;
     if (l.categoria !== 'venda') continue;
     if (l.stutus !== 'Ativo') continue;
 
@@ -556,13 +559,26 @@ export function normalizarMetasInstalacaoFtth(linhas) {
   return { registros: [...porChave.values()], avisos };
 }
 
+/** Meta Geral da Cidade — FTTH ("Vendas Instaladas"). Comportamento idêntico a antes da 5G existir. */
+export function normalizarMetasInstalacaoFtth(linhas) {
+  return normalizarMetasCidade(linhas, { servico: 'FTTH', indicadorGeral: 'Vendas Instaladas' });
+}
+
+/** Meta Geral da Cidade — 5G ("Vendas Ativadas"). Mesmo arquivo de origem que o FTTH, filtro próprio. */
+export function normalizarMetasAtivacao5g(linhas) {
+  return normalizarMetasCidade(linhas, { servico: '5G', indicadorGeral: 'Vendas Ativadas' });
+}
+
 const COLUNAS_SAIDA_METAS_INSTALACAO = ['cidade_slug', 'cidade_origem', 'mes_ref', 'meta'];
 
-/** Serializa a saída de `normalizarMetasInstalacaoFtth()` — mesmo parser (`parsearCsv`) lê de volta. */
+/** Serializa a saída de `normalizarMetasInstalacaoFtth()`/`normalizarMetasAtivacao5g()` — mesmo parser (`parsearCsv`) lê de volta. */
 export function paraCsvMetasInstalacaoFtth(registros) {
   const linhas = registros.map((r) => [r.cidadeSlug, r.cidadeOrigem, r.mesRef, r.meta].map(celulaCsv).join(','));
   return [COLUNAS_SAIDA_METAS_INSTALACAO.join(','), ...linhas].join('\n') + '\n';
 }
+
+/** Mesmo formato de `paraCsvMetasInstalacaoFtth` — nome próprio só pra deixar o output (`gerarBase.mjs`) explícito sobre qual arquivo está escrevendo. */
+export const paraCsvMetasAtivacao5g = paraCsvMetasInstalacaoFtth;
 
 /**
  * Lista oficial de cidades onde a operação vende (FTTH/5G/FWA) — fonte de

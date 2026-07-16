@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, normalizarCidadesOficiais, paraCsvCidadesOficiais, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, normalizarMetasAtivacao5g, paraCsvMetasAtivacao5g, normalizarCidadesOficiais, paraCsvCidadesOficiais, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
 
 const CABECALHO = COLUNAS_OBRIGATORIAS.join(',');
 
@@ -400,6 +400,65 @@ test('paraCsvMetasInstalacaoFtth + parsearCsv fazem roundtrip sem perda', () => 
   assert.equal(linhas[0].cidade_slug, 'araripina-pe');
   assert.equal(linhas[0].mes_ref, '2026-01-01');
   assert.equal(linhas[0].meta, '119');
+});
+
+test('normalizarMetasAtivacao5g filtra só 5G + Vendas Ativadas + venda + Ativo', () => {
+  const linhas = [
+    { data: '2026-01-01', cidade: 'ABAIARA/CE', indicador_geral: 'Vendas Ativadas', servico: '5G', meta: '43', categoria: 'venda', stutus: 'Ativo' },
+    { data: '2026-01-01', cidade: 'ABAIARA/CE', indicador_geral: 'Vendas Ativadas', servico: 'FWA', meta: '3', categoria: 'venda', stutus: 'Ativo' }, // outro serviço, ignora
+    { data: '2026-01-01', cidade: 'NATAL/RN', indicador_geral: 'Churn Safra com Bloqueio', servico: '5G', meta: '0.12', categoria: 'cancelamento', stutus: 'Ativo' }, // outro indicador, ignora
+    { data: '2026-01-01', cidade: 'SOBRAL/CE', indicador_geral: 'Vendas Ativadas', servico: '5G', meta: '80', categoria: 'venda', stutus: 'Inativo' }, // inativo, ignora
+  ];
+  const { registros, avisos } = normalizarMetasAtivacao5g(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].cidadeSlug, 'abaiara-ce');
+  assert.equal(registros[0].mesRef, '2026-01-01');
+  assert.equal(registros[0].meta, 43);
+});
+
+test('normalizarMetasAtivacao5g avisa (sem quebrar) quando a mesma cidade/mês tem metas divergentes', () => {
+  const linhas = [
+    { data: '2026-01-01', cidade: 'ABAIARA/CE', indicador_geral: 'Vendas Ativadas', servico: '5G', meta: '43', categoria: 'venda', stutus: 'Ativo' },
+    { data: '2026-01-01', cidade: 'ABAIARA/CE', indicador_geral: 'Vendas Ativadas', servico: '5G', meta: '90', categoria: 'venda', stutus: 'Ativo' },
+  ];
+  const { registros, avisos } = normalizarMetasAtivacao5g(linhas);
+  assert.equal(avisos.length, 1);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].meta, 43); // primeira, não a última
+});
+
+test('paraCsvMetasAtivacao5g + parsearCsv fazem roundtrip sem perda', () => {
+  const { registros } = normalizarMetasAtivacao5g([
+    { data: '2026-01-01', cidade: 'ABAIARA/CE', indicador_geral: 'Vendas Ativadas', servico: '5G', meta: '43', categoria: 'venda', stutus: 'Ativo' },
+  ]);
+  const linhas = parsearCsv(paraCsvMetasAtivacao5g(registros));
+  assert.equal(linhas.length, 1);
+  assert.equal(linhas[0].cidade_slug, 'abaiara-ce');
+  assert.equal(linhas[0].mes_ref, '2026-01-01');
+  assert.equal(linhas[0].meta, '43');
+});
+
+/**
+ * Regressão-alvo: FTTH e 5G agora vêm do MESMO arquivo baixado (mesma
+ * query Spark, `indicador_geral IN (...)`) — sem esse teste, um filtro
+ * mal escrito num normalizador poderia vazar meta de uma tecnologia pra
+ * outra sem que nenhum teste individual (que só testa uma função por
+ * vez) pegasse.
+ */
+test('normalizarMetasInstalacaoFtth e normalizarMetasAtivacao5g não vazam dado um pro outro no mesmo arquivo', () => {
+  const linhasMistas = [
+    { data: '2026-01-01', cidade: 'ARARIPINA/PE', indicador_geral: 'Vendas Instaladas', servico: 'FTTH', meta: '119', categoria: 'venda', stutus: 'Ativo' },
+    { data: '2026-01-01', cidade: 'ABAIARA/CE', indicador_geral: 'Vendas Ativadas', servico: '5G', meta: '43', categoria: 'venda', stutus: 'Ativo' },
+  ];
+
+  const ftth = normalizarMetasInstalacaoFtth(linhasMistas).registros;
+  assert.equal(ftth.length, 1);
+  assert.equal(ftth[0].cidadeSlug, 'araripina-pe');
+
+  const cinco5g = normalizarMetasAtivacao5g(linhasMistas).registros;
+  assert.equal(cinco5g.length, 1);
+  assert.equal(cinco5g[0].cidadeSlug, 'abaiara-ce');
 });
 
 test('normalizarCidadesOficiais classifica vendeFtth/vende5g/vendeFwa a partir de servico/fwa', () => {

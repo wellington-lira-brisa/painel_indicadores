@@ -14,9 +14,9 @@ import { formatarPercentual, formatarValor } from '../utils/format';
  * Instalação -> Ativação -> primeiro indicador da lista — mas só entra na
  * disputa quem JÁ TEM meta cadastrada (>0); entre os que têm, vence o
  * primeiro da ordem acima. Isso é o que faz uma cidade sem meta de
- * Orçamento mas com meta de Instalação (única meta real do painel hoje —
- * ver metaInstalacaoFtthService.js) mostrar o número de Instalação em vez
- * de "—".
+ * Orçamento mas com Meta Geral cadastrada (Instalação no FTTH, Ativação
+ * no 5G — ver metaInstalacaoFtthService.js/metaAtivacao5gService.js)
+ * mostrar esse número em vez de "—".
  * `meta`/`realizado`/`atingimento` vêm `null` (não `0`) quando não há
  * nenhum mês apurado — `0` seria "meta batida em zero", que é uma
  * informação diferente de "não temos esse dado ainda".

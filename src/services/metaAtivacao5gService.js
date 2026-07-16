@@ -1,18 +1,13 @@
 import { parsearCsv } from '../shared/csvIndicadores';
 import { ANO_PAINEL } from '../data/mockHelpers';
 
-// Primeira meta real do painel (ver normalizarMetasInstalacaoFtth em
-// csvIndicadores.js) — cobre FTTH/Instalação. Baixada do Drive e
-// publicada pelo mesmo workflow automatizado da base de vendas
-// (.github/workflows/atualizar-base.yml), com secret próprio
-// (GOOGLE_DRIVE_METAS_CIDADES_FILE_ID). Mesmo arquivo baixado também
-// alimenta a meta do 5G — ver metaAtivacao5gService.js e
-// normalizarMetasAtivacao5g() em csvIndicadores.js.
-//
-// NÃO decide escopo de cidades (isso é cidades-oficiais.csv — ver
-// criarServicoCidades() em cidadeService.js); esse arquivo só dá o
-// VALOR da meta pra quem já está no escopo.
-const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/metas-instalacao-ftth.csv`;
+// Meta Geral da Cidade do 5G ("Vendas Ativadas") — mesmo arquivo baixado
+// que alimenta o FTTH (ver metaInstalacaoFtthService.js), só publicado
+// num CSV próprio (normalizarMetasAtivacao5g() em csvIndicadores.js já
+// separa por servico+indicador_geral). NÃO decide escopo de cidades
+// (isso é cidades-oficiais.csv); só dá o VALOR da meta pra quem já está
+// no escopo do 5G.
+const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/metas-ativacao-5g.csv`;
 
 /** 'YYYY-MM-DD' -> índice 0-based do mês (jan=0), só quando o ano bate com ANO_PAINEL. Mesmo critério de indicadorRealizadoService.js. */
 function indiceDoMesNoAnoDoPainel(mesRefIso) {
@@ -37,7 +32,7 @@ function indexarMetasPorCidade(linhas) {
 let cache = null; // null = ainda não carregado com sucesso nesta sessão
 
 /** `cache: 'no-store'` — mesmo raciocínio dos outros arquivos publicados: pode ser atualizado a qualquer momento. */
-export async function carregarMetasInstalacaoFtth() {
+export async function carregarMetasAtivacao5g() {
   const resposta = await fetch(CAMINHO_CSV, { cache: 'no-store' });
   if (!resposta.ok) {
     throw new Error(`Falha ao buscar ${CAMINHO_CSV} (HTTP ${resposta.status}).`);
@@ -48,6 +43,6 @@ export async function carregarMetasInstalacaoFtth() {
   return indice;
 }
 
-export function metasInstalacaoFtthEmCacheOuNulo() {
+export function metasAtivacao5gEmCacheOuNulo() {
   return cache;
 }

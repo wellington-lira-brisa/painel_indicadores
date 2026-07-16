@@ -16,7 +16,8 @@
 //
 // 2º e 3º argumentos são opcionais (mantém compatibilidade com quem
 // chamar só com a base de vendas) — quando informados, geram também
-// `public/dados/metas-instalacao-ftth.csv` e
+// `public/dados/metas-instalacao-ftth.csv` + `public/dados/metas-ativacao-5g.csv`
+// (mesmo arquivo baixado, um normalizador por tecnologia) e
 // `public/dados/cidades-oficiais.csv`, respectivamente. No workflow
 // automatizado (.github/workflows/atualizar-base.yml) os três arquivos
 // são baixados do Drive e este é sempre chamado com os três.
@@ -34,6 +35,8 @@ import {
   paraCsvPorCanal,
   normalizarMetasInstalacaoFtth,
   paraCsvMetasInstalacaoFtth,
+  normalizarMetasAtivacao5g,
+  paraCsvMetasAtivacao5g,
   normalizarCidadesOficiais,
   paraCsvCidadesOficiais,
 } from '../../src/shared/csvIndicadores.js';
@@ -42,6 +45,7 @@ const SAIDA_CSV = 'public/dados/indicadores-realizados.csv';
 const SAIDA_METADADOS_CIDADE = 'public/dados/cidades-metadados.csv';
 const SAIDA_POR_CANAL = 'public/dados/indicadores-realizados-por-canal.csv';
 const SAIDA_METAS_INSTALACAO = 'public/dados/metas-instalacao-ftth.csv';
+const SAIDA_METAS_ATIVACAO_5G = 'public/dados/metas-ativacao-5g.csv';
 const SAIDA_CIDADES_OFICIAIS = 'public/dados/cidades-oficiais.csv';
 const SAIDA_STATUS = 'public/dados/ultima-atualizacao.json';
 
@@ -100,9 +104,11 @@ function main() {
 
   const caminhoMetas = process.argv[3];
   let metasProcessadas = null;
+  let metasAtivacao5gProcessadas = null;
   if (caminhoMetas) {
     const textoMetas = readFileSync(caminhoMetas, 'utf-8');
     const linhasMetas = parsearCsv(textoMetas);
+
     const { registros: metasInstalacao, avisos: avisosMetas } = normalizarMetasInstalacaoFtth(linhasMetas);
     if (avisosMetas.length > 0) {
       console.warn(`${avisosMetas.length} aviso(s) de meta de instalação (não bloqueiam a publicação):`);
@@ -111,6 +117,17 @@ function main() {
     writeFileSync(SAIDA_METAS_INSTALACAO, paraCsvMetasInstalacaoFtth(metasInstalacao), 'utf-8');
     metasProcessadas = metasInstalacao.length;
     console.log(`Metas de instalação FTTH: ${metasInstalacao.length} registro(s) em ${SAIDA_METAS_INSTALACAO}.`);
+
+    // Mesmo arquivo baixado, filtro próprio (servico='5G' + indicador_geral='Vendas
+    // Ativadas') — não é um download separado, ver comentário de uso no topo do arquivo.
+    const { registros: metasAtivacao5g, avisos: avisosMetas5g } = normalizarMetasAtivacao5g(linhasMetas);
+    if (avisosMetas5g.length > 0) {
+      console.warn(`${avisosMetas5g.length} aviso(s) de meta de ativação 5G (não bloqueiam a publicação):`);
+      avisosMetas5g.slice(0, 20).forEach((a) => console.warn(`  - ${a}`));
+    }
+    writeFileSync(SAIDA_METAS_ATIVACAO_5G, paraCsvMetasAtivacao5g(metasAtivacao5g), 'utf-8');
+    metasAtivacao5gProcessadas = metasAtivacao5g.length;
+    console.log(`Metas de ativação 5G: ${metasAtivacao5g.length} registro(s) em ${SAIDA_METAS_ATIVACAO_5G}.`);
   }
 
   const caminhoCidadesOficiais = process.argv[4];
@@ -136,6 +153,7 @@ function main() {
     linhasPublicadas: registros.length,
     linhasSemCidade: semCidade,
     metasInstalacaoProcessadas: metasProcessadas,
+    metasAtivacao5gProcessadas,
     cidadesOficiaisProcessadas,
     commit: process.env.GITHUB_SHA ?? null,
   });
