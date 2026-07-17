@@ -55,15 +55,13 @@ jobs:
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
         run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta cidades_atuais.csv > /tmp/cidades-oficiais.csv
 
-      # TODO(confirmar nome real do arquivo no Drive): os dois nomes abaixo
-      # ("dicionario_metas.csv" / "metas_vendedores_por_cidade.csv") são os
-      # nomes usados durante o desenvolvimento — ajustar se o arquivo
-      # publicado pelo negócio tiver outro nome.
+      # Nomes confirmados na pasta do Drive (ver log de erro do workflow em
+      # 17/07/2026: a Service Account listou os 5 arquivos existentes).
       - name: Baixar Dicionário de Metas (Google Drive)
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta dicionario_metas.csv > /tmp/dicionario-metas.csv
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta dicionario_indicadores_produtos.csv > /tmp/dicionario-metas.csv
 
       - name: Baixar Fato de Metas por vendedor/canal/cidade (Google Drive)
         env:
