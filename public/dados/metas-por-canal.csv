@@ -28,22 +28,18 @@ apodi-rn,APODI/RN,PAP,efetivado,2026-01-01,34
 apodi-rn,APODI/RN,PAP,instalacao,2026-01-01,32
 aracaju-se,ARACAJU/SE,LOJA,instalacao,2026-01-01,63
 arapiraca-al,ARAPIRACA/AL,LOJA,instalacao,2026-01-01,20
-araripina-pe,ARARIPINA / PE,PAP,ativacao,2026-01-01,0
-araripina-pe,ARARIPINA / PE,PAP,orcamento,2026-01-01,68
-araripina-pe,ARARIPINA / PE,PAP,efetivado,2026-01-01,60
-araripina-pe,ARARIPINA / PE,PAP,instalacao,2026-01-01,56
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,ativacao,2026-01-01,40
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,instalacao,2026-01-01,30
-arcoverde-pe,ARCOVERDE / PE,PAP,ativacao,2026-01-01,0
-arcoverde-pe,ARCOVERDE / PE,PAP,orcamento,2026-01-01,69
-arcoverde-pe,ARCOVERDE / PE,PAP,efetivado,2026-01-01,61
-arcoverde-pe,ARCOVERDE / PE,PAP,instalacao,2026-01-01,57
+araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-01-01,0
+araripina-pe,ARARIPINA/PE,PAP,orcamento,2026-01-01,68
+araripina-pe,ARARIPINA/PE,PAP,efetivado,2026-01-01,60
+araripina-pe,ARARIPINA/PE,PAP,instalacao,2026-01-01,56
 arcoverde-pe,ARCOVERDE/PE,LOJA,ativacao,2026-01-01,20
 arcoverde-pe,ARCOVERDE/PE,LOJA,instalacao,2026-01-01,12
-assu-rn,ASSU / RN,PAP,ativacao,2026-01-01,0
-assu-rn,ASSU / RN,PAP,orcamento,2026-01-01,34
-assu-rn,ASSU / RN,PAP,efetivado,2026-01-01,30
-assu-rn,ASSU / RN,PAP,instalacao,2026-01-01,28
+arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-01-01,0
+arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-01-01,35
+arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-01-01,31
+arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-01-01,29
 banabuiu-ce,BANABUIU/CE,LOJA,ativacao,2026-01-01,47
 banabuiu-ce,BANABUIU/CE,LOJA,instalacao,2026-01-01,30
 barauna-rn,BARAUNA/RN,LOJA,ativacao,2026-01-01,34
@@ -54,18 +50,18 @@ barbalha-ce,BARBALHA/CE,PAP,ativacao,2026-01-01,9
 barbalha-ce,BARBALHA/CE,PAP,orcamento,2026-01-01,21
 barbalha-ce,BARBALHA/CE,PAP,efetivado,2026-01-01,19
 barbalha-ce,BARBALHA/CE,PAP,instalacao,2026-01-01,17
-bayeux-pb,BAYEUX / PB,PAP,ativacao,2026-01-01,0
-bayeux-pb,BAYEUX / PB,PAP,orcamento,2026-01-01,180
-bayeux-pb,BAYEUX / PB,PAP,efetivado,2026-01-01,160
-bayeux-pb,BAYEUX / PB,PAP,instalacao,2026-01-01,150
 bayeux-pb,BAYEUX/PB,DONO CIDADE - LOJAS,ativacao,2026-01-01,45
 bayeux-pb,BAYEUX/PB,DONO CIDADE - LOJAS,instalacao,2026-01-01,21
-belo-jardim-pe,BELO JARDIM / PE,PAP,ativacao,2026-01-01,0
-belo-jardim-pe,BELO JARDIM / PE,PAP,orcamento,2026-01-01,80
-belo-jardim-pe,BELO JARDIM / PE,PAP,efetivado,2026-01-01,72
-belo-jardim-pe,BELO JARDIM / PE,PAP,instalacao,2026-01-01,67
+bayeux-pb,BAYEUX/PB,PAP,ativacao,2026-01-01,0
+bayeux-pb,BAYEUX/PB,PAP,orcamento,2026-01-01,180
+bayeux-pb,BAYEUX/PB,PAP,efetivado,2026-01-01,160
+bayeux-pb,BAYEUX/PB,PAP,instalacao,2026-01-01,150
 belo-jardim-pe,BELO JARDIM/PE,LOJA,ativacao,2026-01-01,44
 belo-jardim-pe,BELO JARDIM/PE,LOJA,instalacao,2026-01-01,32
+belo-jardim-pe,BELO JARDIM/PE,PAP,ativacao,2026-01-01,0
+belo-jardim-pe,BELO JARDIM/PE,PAP,orcamento,2026-01-01,80
+belo-jardim-pe,BELO JARDIM/PE,PAP,efetivado,2026-01-01,72
+belo-jardim-pe,BELO JARDIM/PE,PAP,instalacao,2026-01-01,67
 bezerros-pe,BEZERROS/PE,LOJA,ativacao,2026-01-01,50
 bezerros-pe,BEZERROS/PE,LOJA,instalacao,2026-01-01,34
 bezerros-pe,BEZERROS/PE,PAP,ativacao,2026-01-01,11
@@ -84,32 +80,32 @@ brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,ativacao,2026-01-01,10
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,orcamento,2026-01-01,22
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,efetivado,2026-01-01,20
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,instalacao,2026-01-01,18
-cabedelo-pb,CABEDELO / PB,PAP,ativacao,2026-01-01,0
-cabedelo-pb,CABEDELO / PB,PAP,orcamento,2026-01-01,36
-cabedelo-pb,CABEDELO / PB,PAP,efetivado,2026-01-01,32
-cabedelo-pb,CABEDELO / PB,PAP,instalacao,2026-01-01,30
 cabedelo-pb,CABEDELO/PB,LOJA,ativacao,2026-01-01,30
 cabedelo-pb,CABEDELO/PB,LOJA,instalacao,2026-01-01,20
+cabedelo-pb,CABEDELO/PB,PAP,ativacao,2026-01-01,0
+cabedelo-pb,CABEDELO/PB,PAP,orcamento,2026-01-01,36
+cabedelo-pb,CABEDELO/PB,PAP,efetivado,2026-01-01,32
+cabedelo-pb,CABEDELO/PB,PAP,instalacao,2026-01-01,30
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,LOJA,instalacao,2026-01-01,30
-caico-rn,CAICO / RN,PAP,ativacao,2026-01-01,0
-caico-rn,CAICO / RN,PAP,orcamento,2026-01-01,68
-caico-rn,CAICO / RN,PAP,efetivado,2026-01-01,60
-caico-rn,CAICO / RN,PAP,instalacao,2026-01-01,56
 caico-rn,CAICO/RN,LOJA,ativacao,2026-01-01,75
 caico-rn,CAICO/RN,LOJA,instalacao,2026-01-01,35
-cajazeiras-pb,CAJAZEIRAS / PB,PAP,ativacao,2026-01-01,0
-cajazeiras-pb,CAJAZEIRAS / PB,PAP,orcamento,2026-01-01,90
-cajazeiras-pb,CAJAZEIRAS / PB,PAP,efetivado,2026-01-01,78
-cajazeiras-pb,CAJAZEIRAS / PB,PAP,instalacao,2026-01-01,75
+caico-rn,CAICO/RN,PAP,ativacao,2026-01-01,0
+caico-rn,CAICO/RN,PAP,orcamento,2026-01-01,68
+caico-rn,CAICO/RN,PAP,efetivado,2026-01-01,60
+caico-rn,CAICO/RN,PAP,instalacao,2026-01-01,56
 cajazeiras-pb,CAJAZEIRAS/PB,LOJA,ativacao,2026-01-01,96
 cajazeiras-pb,CAJAZEIRAS/PB,LOJA,instalacao,2026-01-01,63
+cajazeiras-pb,CAJAZEIRAS/PB,PAP,ativacao,2026-01-01,0
+cajazeiras-pb,CAJAZEIRAS/PB,PAP,orcamento,2026-01-01,90
+cajazeiras-pb,CAJAZEIRAS/PB,PAP,efetivado,2026-01-01,78
+cajazeiras-pb,CAJAZEIRAS/PB,PAP,instalacao,2026-01-01,75
 camacari-ba,CAMACARI/BA,LOJA,instalacao,2026-01-01,32
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,ativacao,2026-01-01,0
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,orcamento,2026-01-01,312
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,efetivado,2026-01-01,272
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,instalacao,2026-01-01,256
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,ativacao,2026-01-01,135
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,instalacao,2026-01-01,63
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,ativacao,2026-01-01,0
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,orcamento,2026-01-01,234
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,efetivado,2026-01-01,204
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,instalacao,2026-01-01,192
 campo-maior-pi,CAMPO MAIOR/PI,DONO CIDADE - LOJAS,instalacao,2026-01-01,18
 caninde-ce,CANINDE/CE,LOJA,ativacao,2026-01-01,56
 caninde-ce,CANINDE/CE,LOJA,instalacao,2026-01-01,29
@@ -117,24 +113,24 @@ caninde-ce,CANINDE/CE,PAP,ativacao,2026-01-01,50
 caninde-ce,CANINDE/CE,PAP,orcamento,2026-01-01,110
 caninde-ce,CANINDE/CE,PAP,efetivado,2026-01-01,100
 caninde-ce,CANINDE/CE,PAP,instalacao,2026-01-01,90
-caruaru-pe,CARUARU / PE,PAP,ativacao,2026-01-01,0
-caruaru-pe,CARUARU / PE,PAP,orcamento,2026-01-01,419
-caruaru-pe,CARUARU / PE,PAP,efetivado,2026-01-01,362
-caruaru-pe,CARUARU / PE,PAP,instalacao,2026-01-01,344
 caruaru-pe,CARUARU/PE,LOJA,ativacao,2026-01-01,42
 caruaru-pe,CARUARU/PE,LOJA,instalacao,2026-01-01,24
+caruaru-pe,CARUARU/PE,PAP,ativacao,2026-01-01,0
+caruaru-pe,CARUARU/PE,PAP,orcamento,2026-01-01,324
+caruaru-pe,CARUARU/PE,PAP,efetivado,2026-01-01,280
+caruaru-pe,CARUARU/PE,PAP,instalacao,2026-01-01,266
 cascavel-ce,CASCAVEL/CE,LOJA,ativacao,2026-01-01,35
 cascavel-ce,CASCAVEL/CE,LOJA,instalacao,2026-01-01,17
 cascavel-ce,CASCAVEL/CE,PAP,ativacao,2026-01-01,30
 cascavel-ce,CASCAVEL/CE,PAP,orcamento,2026-01-01,66
 cascavel-ce,CASCAVEL/CE,PAP,efetivado,2026-01-01,60
 cascavel-ce,CASCAVEL/CE,PAP,instalacao,2026-01-01,54
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,ativacao,2026-01-01,20
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,orcamento,2026-01-01,44
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,efetivado,2026-01-01,40
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,instalacao,2026-01-01,36
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,LOJA,ativacao,2026-01-01,64
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,LOJA,instalacao,2026-01-01,24
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,ativacao,2026-01-01,20
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,orcamento,2026-01-01,44
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,efetivado,2026-01-01,40
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,instalacao,2026-01-01,36
 catu-ba,CATU/BA,LOJA,instalacao,2026-01-01,12
 caucaia-ce,CAUCAIA/CE,LOJA,ativacao,2026-01-01,190
 caucaia-ce,CAUCAIA/CE,LOJA,instalacao,2026-01-01,38
@@ -142,12 +138,12 @@ caucaia-ce,CAUCAIA/CE,PAP,ativacao,2026-01-01,0
 caucaia-ce,CAUCAIA/CE,PAP,orcamento,2026-01-01,234
 caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-01-01,204
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-01-01,192
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-01-01,0
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-01-01,34
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-01-01,30
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-01-01,28
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-01-01,90
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-01-01,44
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-01-01,0
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-01-01,34
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-01-01,30
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-01-01,28
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-01-01,68
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-01-01,30
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-01-01,10
@@ -170,12 +166,12 @@ crato-ce,CRATO/CE,PAP,ativacao,2026-01-01,0
 crato-ce,CRATO/CE,PAP,orcamento,2026-01-01,170
 crato-ce,CRATO/CE,PAP,efetivado,2026-01-01,150
 crato-ce,CRATO/CE,PAP,instalacao,2026-01-01,140
-custodia-pe,CUSTODIA / PE,PAP,ativacao,2026-01-01,17
-custodia-pe,CUSTODIA / PE,PAP,orcamento,2026-01-01,38
-custodia-pe,CUSTODIA / PE,PAP,efetivado,2026-01-01,34
-custodia-pe,CUSTODIA / PE,PAP,instalacao,2026-01-01,31
 custodia-pe,CUSTODIA/PE,LOJA,ativacao,2026-01-01,34
 custodia-pe,CUSTODIA/PE,LOJA,instalacao,2026-01-01,34
+custodia-pe,CUSTODIA/PE,PAP,ativacao,2026-01-01,10
+custodia-pe,CUSTODIA/PE,PAP,orcamento,2026-01-01,22
+custodia-pe,CUSTODIA/PE,PAP,efetivado,2026-01-01,20
+custodia-pe,CUSTODIA/PE,PAP,instalacao,2026-01-01,18
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,4 J LOJAS,ativacao,2026-01-01,30
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,4 J LOJAS,instalacao,2026-01-01,28
 dias-d-avila-ba,DIAS D'AVILA/BA,LOJA,instalacao,2026-01-01,32
@@ -184,57 +180,53 @@ estancia-se,ESTANCIA/SE,LOJA,instalacao,2026-01-01,25
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-01-01,56
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-01-01,30
 eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-01-01,0
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-01-01,99
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-01-01,87
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-01-01,82
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-01-01,135
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-01-01,119
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-01-01,112
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-01-01,0
 extremoz-rn,EXTREMOZ/RN,PAP,orcamento,2026-01-01,123
 extremoz-rn,EXTREMOZ/RN,PAP,efetivado,2026-01-01,108
 extremoz-rn,EXTREMOZ/RN,PAP,instalacao,2026-01-01,101
 feira-de-santana-ba,FEIRA DE SANTANA/BA,LOJA,instalacao,2026-01-01,20
-fortaleza-ce,FORTALEZA / CE,NGC,ativacao,2026-01-01,0
-fortaleza-ce,FORTALEZA / CE,NGC,orcamento,2026-01-01,118
-fortaleza-ce,FORTALEZA / CE,NGC,efetivado,2026-01-01,103
-fortaleza-ce,FORTALEZA / CE,NGC,instalacao,2026-01-01,97
-fortaleza-ce,FORTALEZA / CE,PAP,ativacao,2026-01-01,0
-fortaleza-ce,FORTALEZA / CE,PAP,orcamento,2026-01-01,1295
-fortaleza-ce,FORTALEZA / CE,PAP,efetivado,2026-01-01,1133
-fortaleza-ce,FORTALEZA / CE,PAP,instalacao,2026-01-01,1066
 fortaleza-ce,FORTALEZA/CE,LOJA,ativacao,2026-01-01,179
 fortaleza-ce,FORTALEZA/CE,LOJA,instalacao,2026-01-01,49
+fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-01-01,0
+fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-01-01,118
+fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-01-01,103
+fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-01-01,97
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-01-01,0
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-01-01,1127
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-01-01,985
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-01-01,927
 garanhuns-pe,GARANHUNS/PE,LOJA,instalacao,2026-01-01,60
-gravata-pe,GRAVATA / PE,PAP,ativacao,2026-01-01,40
-gravata-pe,GRAVATA / PE,PAP,orcamento,2026-01-01,88
-gravata-pe,GRAVATA / PE,PAP,efetivado,2026-01-01,80
-gravata-pe,GRAVATA / PE,PAP,instalacao,2026-01-01,72
 gravata-pe,GRAVATA/PE,LOJA,ativacao,2026-01-01,36
 gravata-pe,GRAVATA/PE,LOJA,instalacao,2026-01-01,32
+gravata-pe,GRAVATA/PE,PAP,ativacao,2026-01-01,30
+gravata-pe,GRAVATA/PE,PAP,orcamento,2026-01-01,66
+gravata-pe,GRAVATA/PE,PAP,efetivado,2026-01-01,60
+gravata-pe,GRAVATA/PE,PAP,instalacao,2026-01-01,54
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,70
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,30
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,ativacao,2026-01-01,0
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,orcamento,2026-01-01,34
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,efetivado,2026-01-01,30
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,instalacao,2026-01-01,28
-horizonte-ce,HORIZONTE / CE,PAP,ativacao,2026-01-01,0
-horizonte-ce,HORIZONTE / CE,PAP,orcamento,2026-01-01,136
-horizonte-ce,HORIZONTE / CE,PAP,efetivado,2026-01-01,120
-horizonte-ce,HORIZONTE / CE,PAP,instalacao,2026-01-01,112
 horizonte-ce,HORIZONTE/CE,LOJA,ativacao,2026-01-01,135
 horizonte-ce,HORIZONTE/CE,LOJA,instalacao,2026-01-01,65
+horizonte-ce,HORIZONTE/CE,PAP,ativacao,2026-01-01,0
+horizonte-ce,HORIZONTE/CE,PAP,orcamento,2026-01-01,136
+horizonte-ce,HORIZONTE/CE,PAP,efetivado,2026-01-01,120
+horizonte-ce,HORIZONTE/CE,PAP,instalacao,2026-01-01,112
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,23
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,10
-ico-ce,ICO / CE,PAP,ativacao,2026-01-01,20
-ico-ce,ICO / CE,PAP,orcamento,2026-01-01,44
-ico-ce,ICO / CE,PAP,efetivado,2026-01-01,40
-ico-ce,ICO / CE,PAP,instalacao,2026-01-01,36
 ico-ce,ICO/CE,LOJA,ativacao,2026-01-01,165
 ico-ce,ICO/CE,LOJA,instalacao,2026-01-01,96
-iguatu-ce,IGUATU / CE,PAP,ativacao,2026-01-01,0
-iguatu-ce,IGUATU / CE,PAP,orcamento,2026-01-01,117
-iguatu-ce,IGUATU / CE,PAP,efetivado,2026-01-01,105
-iguatu-ce,IGUATU / CE,PAP,instalacao,2026-01-01,98
 iguatu-ce,IGUATU/CE,LOJA,ativacao,2026-01-01,240
 iguatu-ce,IGUATU/CE,LOJA,instalacao,2026-01-01,102
+iguatu-ce,IGUATU/CE,PAP,ativacao,2026-01-01,0
+iguatu-ce,IGUATU/CE,PAP,orcamento,2026-01-01,117
+iguatu-ce,IGUATU/CE,PAP,efetivado,2026-01-01,105
+iguatu-ce,IGUATU/CE,PAP,instalacao,2026-01-01,98
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,78
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,34
 ipu-ce,IPU/CE,PAP,ativacao,2026-01-01,0
@@ -247,10 +239,6 @@ iracema-ce,IRACEMA/CE,PAP,ativacao,2026-01-01,10
 iracema-ce,IRACEMA/CE,PAP,orcamento,2026-01-01,18
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-01-01,16
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-01-01,15
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-01-01,0
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-01-01,36
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-01-01,32
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-01-01,30
 itapaje-ce,ITAPAJE/CE,LOJA,ativacao,2026-01-01,50
 itapaje-ce,ITAPAJE/CE,LOJA,instalacao,2026-01-01,19
 itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-01-01,15
@@ -261,12 +249,12 @@ itapaje-ce,ITAPAJE/CE,QUIOSQUES,ativacao,2026-01-01,10
 itapaje-ce,ITAPAJE/CE,QUIOSQUES,orcamento,2026-01-01,22
 itapaje-ce,ITAPAJE/CE,QUIOSQUES,efetivado,2026-01-01,20
 itapaje-ce,ITAPAJE/CE,QUIOSQUES,instalacao,2026-01-01,18
-itapipoca-ce,ITAPIPOCA / CE,PAP,ativacao,2026-01-01,0
-itapipoca-ce,ITAPIPOCA / CE,PAP,orcamento,2026-01-01,102
-itapipoca-ce,ITAPIPOCA / CE,PAP,efetivado,2026-01-01,90
-itapipoca-ce,ITAPIPOCA / CE,PAP,instalacao,2026-01-01,84
 itapipoca-ce,ITAPIPOCA/CE,LOJA,ativacao,2026-01-01,114
 itapipoca-ce,ITAPIPOCA/CE,LOJA,instalacao,2026-01-01,54
+itapipoca-ce,ITAPIPOCA/CE,PAP,ativacao,2026-01-01,0
+itapipoca-ce,ITAPIPOCA/CE,PAP,orcamento,2026-01-01,68
+itapipoca-ce,ITAPIPOCA/CE,PAP,efetivado,2026-01-01,60
+itapipoca-ce,ITAPIPOCA/CE,PAP,instalacao,2026-01-01,56
 itapipoca-ce,ITAPIPOCA/CE,QUIOSQUES,ativacao,2026-01-01,0
 itapipoca-ce,ITAPIPOCA/CE,QUIOSQUES,orcamento,2026-01-01,34
 itapipoca-ce,ITAPIPOCA/CE,QUIOSQUES,efetivado,2026-01-01,30
@@ -282,67 +270,67 @@ jaguaribara-ce,JAGUARIBARA/CE,PAP,ativacao,2026-01-01,10
 jaguaribara-ce,JAGUARIBARA/CE,PAP,orcamento,2026-01-01,22
 jaguaribara-ce,JAGUARIBARA/CE,PAP,efetivado,2026-01-01,20
 jaguaribara-ce,JAGUARIBARA/CE,PAP,instalacao,2026-01-01,18
-jaguaribe-ce,JAGUARIBE / CE,PAP,ativacao,2026-01-01,40
-jaguaribe-ce,JAGUARIBE / CE,PAP,orcamento,2026-01-01,88
-jaguaribe-ce,JAGUARIBE / CE,PAP,efetivado,2026-01-01,80
-jaguaribe-ce,JAGUARIBE / CE,PAP,instalacao,2026-01-01,72
 jaguaribe-ce,JAGUARIBE/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,129
 jaguaribe-ce,JAGUARIBE/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,54
+jaguaribe-ce,JAGUARIBE/CE,PAP,ativacao,2026-01-01,40
+jaguaribe-ce,JAGUARIBE/CE,PAP,orcamento,2026-01-01,88
+jaguaribe-ce,JAGUARIBE/CE,PAP,efetivado,2026-01-01,80
+jaguaribe-ce,JAGUARIBE/CE,PAP,instalacao,2026-01-01,72
 jeremoabo-ba,JEREMOABO/BA,4 J LOJAS,ativacao,2026-01-01,40
 jeremoabo-ba,JEREMOABO/BA,4 J LOJAS,instalacao,2026-01-01,18
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,ativacao,2026-01-01,0
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,orcamento,2026-01-01,274
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,efetivado,2026-01-01,239
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,instalacao,2026-01-01,225
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,ativacao,2026-01-01,0
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,orcamento,2026-01-01,663
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,efetivado,2026-01-01,578
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,instalacao,2026-01-01,544
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,ativacao,2026-01-01,170
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,instalacao,2026-01-01,94
-juazeiro-ba,JUAZEIRO / BA,PAP,ativacao,2026-01-01,0
-juazeiro-ba,JUAZEIRO / BA,PAP,orcamento,2026-01-01,256
-juazeiro-ba,JUAZEIRO / BA,PAP,efetivado,2026-01-01,224
-juazeiro-ba,JUAZEIRO / BA,PAP,instalacao,2026-01-01,210
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,ativacao,2026-01-01,0
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,orcamento,2026-01-01,577
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,efetivado,2026-01-01,513
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,instalacao,2026-01-01,481
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,ativacao,2026-01-01,0
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,orcamento,2026-01-01,196
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,efetivado,2026-01-01,171
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,instalacao,2026-01-01,161
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-01-01,0
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-01-01,624
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-01-01,544
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-01-01,512
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-01-01,495
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,instalacao,2026-01-01,236
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,ativacao,2026-01-01,0
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,orcamento,2026-01-01,576
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,efetivado,2026-01-01,512
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,instalacao,2026-01-01,480
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,instalacao,2026-01-01,10
+juazeiro-ba,JUAZEIRO/BA,PAP,ativacao,2026-01-01,0
+juazeiro-ba,JUAZEIRO/BA,PAP,orcamento,2026-01-01,256
+juazeiro-ba,JUAZEIRO/BA,PAP,efetivado,2026-01-01,224
+juazeiro-ba,JUAZEIRO/BA,PAP,instalacao,2026-01-01,210
 lagarto-se,LAGARTO/SE,LOJA,instalacao,2026-01-01,13
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,ativacao,2026-01-01,20
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,orcamento,2026-01-01,44
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,efetivado,2026-01-01,40
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,instalacao,2026-01-01,36
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,ativacao,2026-01-01,68
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,instalacao,2026-01-01,32
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,ativacao,2026-01-01,40
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,orcamento,2026-01-01,88
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,efetivado,2026-01-01,80
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,instalacao,2026-01-01,72
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-01-01,10
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-01-01,22
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-01-01,20
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-01-01,18
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,104
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,48
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,ativacao,2026-01-01,30
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,orcamento,2026-01-01,66
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,efetivado,2026-01-01,60
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,instalacao,2026-01-01,54
 limoeiro-pe,LIMOEIRO/PE,LOJA,instalacao,2026-01-01,18
-luis-correia-pi,LUIS CORREIA / PI,PAP,ativacao,2026-01-01,0
-luis-correia-pi,LUIS CORREIA / PI,PAP,orcamento,2026-01-01,34
-luis-correia-pi,LUIS CORREIA / PI,PAP,efetivado,2026-01-01,30
-luis-correia-pi,LUIS CORREIA / PI,PAP,instalacao,2026-01-01,28
+luis-correia-pi,LUIS CORREIA/PI,PAP,ativacao,2026-01-01,0
+luis-correia-pi,LUIS CORREIA/PI,PAP,orcamento,2026-01-01,34
+luis-correia-pi,LUIS CORREIA/PI,PAP,efetivado,2026-01-01,30
+luis-correia-pi,LUIS CORREIA/PI,PAP,instalacao,2026-01-01,28
 macaiba-rn,MACAIBA/RN,LOJA,ativacao,2026-01-01,40
 macaiba-rn,MACAIBA/RN,LOJA,instalacao,2026-01-01,23
 macaiba-rn,MACAIBA/RN,PAP,ativacao,2026-01-01,0
 macaiba-rn,MACAIBA/RN,PAP,orcamento,2026-01-01,142
 macaiba-rn,MACAIBA/RN,PAP,efetivado,2026-01-01,125
 macaiba-rn,MACAIBA/RN,PAP,instalacao,2026-01-01,117
-macau-rn,MACAU / RN,PAP,ativacao,2026-01-01,20
-macau-rn,MACAU / RN,PAP,orcamento,2026-01-01,36
-macau-rn,MACAU / RN,PAP,efetivado,2026-01-01,32
-macau-rn,MACAU / RN,PAP,instalacao,2026-01-01,30
-macau-rn,MACAU / RN,QUIOSQUES,ativacao,2026-01-01,20
-macau-rn,MACAU / RN,QUIOSQUES,orcamento,2026-01-01,36
-macau-rn,MACAU / RN,QUIOSQUES,efetivado,2026-01-01,32
-macau-rn,MACAU / RN,QUIOSQUES,instalacao,2026-01-01,30
+macau-rn,MACAU/RN,PAP,ativacao,2026-01-01,20
+macau-rn,MACAU/RN,PAP,orcamento,2026-01-01,36
+macau-rn,MACAU/RN,PAP,efetivado,2026-01-01,32
+macau-rn,MACAU/RN,PAP,instalacao,2026-01-01,30
+macau-rn,MACAU/RN,QUIOSQUES,ativacao,2026-01-01,20
+macau-rn,MACAU/RN,QUIOSQUES,orcamento,2026-01-01,36
+macau-rn,MACAU/RN,QUIOSQUES,efetivado,2026-01-01,32
+macau-rn,MACAU/RN,QUIOSQUES,instalacao,2026-01-01,30
 maceio-al,MACEIO/AL,LOJA,instalacao,2026-01-01,20
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,ativacao,2026-01-01,52
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,instalacao,2026-01-01,30
@@ -350,18 +338,18 @@ major-sales-rn,MAJOR SALES/RN,PAP,ativacao,2026-01-01,35
 major-sales-rn,MAJOR SALES/RN,PAP,orcamento,2026-01-01,16
 major-sales-rn,MAJOR SALES/RN,PAP,efetivado,2026-01-01,15
 major-sales-rn,MAJOR SALES/RN,PAP,instalacao,2026-01-01,14
-maracanau-ce,MARACANAU / CE,PAP,ativacao,2026-01-01,0
-maracanau-ce,MARACANAU / CE,PAP,orcamento,2026-01-01,273
-maracanau-ce,MARACANAU / CE,PAP,efetivado,2026-01-01,238
-maracanau-ce,MARACANAU / CE,PAP,instalacao,2026-01-01,224
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-01-01,260
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-01-01,60
-maranguape-ce,MARANGUAPE / CE,PAP,ativacao,2026-01-01,0
-maranguape-ce,MARANGUAPE / CE,PAP,orcamento,2026-01-01,319
-maranguape-ce,MARANGUAPE / CE,PAP,efetivado,2026-01-01,278
-maranguape-ce,MARANGUAPE / CE,PAP,instalacao,2026-01-01,262
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-01-01,0
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-01-01,234
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-01-01,204
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-01-01,192
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-01-01,96
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-01-01,34
+maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-01-01,0
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-01-01,280
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-01-01,244
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-01-01,230
 milagres-ce,MILAGRES/CE,LOJA,ativacao,2026-01-01,80
 milagres-ce,MILAGRES/CE,LOJA,instalacao,2026-01-01,41
 milagres-ce,MILAGRES/CE,PAP,ativacao,2026-01-01,10
@@ -386,22 +374,22 @@ morada-nova-ce,MORADA NOVA/CE,PAP,ativacao,2026-01-01,30
 morada-nova-ce,MORADA NOVA/CE,PAP,orcamento,2026-01-01,66
 morada-nova-ce,MORADA NOVA/CE,PAP,efetivado,2026-01-01,60
 morada-nova-ce,MORADA NOVA/CE,PAP,instalacao,2026-01-01,54
-mossoro-rn,MOSSORO / RN,PAP,ativacao,2026-01-01,0
-mossoro-rn,MOSSORO / RN,PAP,orcamento,2026-01-01,438
-mossoro-rn,MOSSORO / RN,PAP,efetivado,2026-01-01,381
-mossoro-rn,MOSSORO / RN,PAP,instalacao,2026-01-01,359
 mossoro-rn,MOSSORO/RN,LOJA,ativacao,2026-01-01,132
 mossoro-rn,MOSSORO/RN,LOJA,instalacao,2026-01-01,39
-natal-rn,NATAL / RN,NGC,ativacao,2026-01-01,0
-natal-rn,NATAL / RN,NGC,orcamento,2026-01-01,382
-natal-rn,NATAL / RN,NGC,efetivado,2026-01-01,333
-natal-rn,NATAL / RN,NGC,instalacao,2026-01-01,313
-natal-rn,NATAL / RN,PAP,ativacao,2026-01-01,0
-natal-rn,NATAL / RN,PAP,orcamento,2026-01-01,787
-natal-rn,NATAL / RN,PAP,efetivado,2026-01-01,686
-natal-rn,NATAL / RN,PAP,instalacao,2026-01-01,646
+mossoro-rn,MOSSORO/RN,PAP,ativacao,2026-01-01,0
+mossoro-rn,MOSSORO/RN,PAP,orcamento,2026-01-01,390
+mossoro-rn,MOSSORO/RN,PAP,efetivado,2026-01-01,338
+mossoro-rn,MOSSORO/RN,PAP,instalacao,2026-01-01,319
 natal-rn,NATAL/RN,LOJA,ativacao,2026-01-01,490
 natal-rn,NATAL/RN,LOJA,instalacao,2026-01-01,116
+natal-rn,NATAL/RN,NGC,ativacao,2026-01-01,0
+natal-rn,NATAL/RN,NGC,orcamento,2026-01-01,382
+natal-rn,NATAL/RN,NGC,efetivado,2026-01-01,333
+natal-rn,NATAL/RN,NGC,instalacao,2026-01-01,313
+natal-rn,NATAL/RN,PAP,ativacao,2026-01-01,0
+natal-rn,NATAL/RN,PAP,orcamento,2026-01-01,709
+natal-rn,NATAL/RN,PAP,efetivado,2026-01-01,618
+natal-rn,NATAL/RN,PAP,instalacao,2026-01-01,582
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,ativacao,2026-01-01,20
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,orcamento,2026-01-01,44
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,efetivado,2026-01-01,40
@@ -415,18 +403,18 @@ oros-ce,OROS/CE,PAP,ativacao,2026-01-01,10
 oros-ce,OROS/CE,PAP,orcamento,2026-01-01,22
 oros-ce,OROS/CE,PAP,efetivado,2026-01-01,20
 oros-ce,OROS/CE,PAP,instalacao,2026-01-01,18
-ouricuri-pe,OURICURI / PE,PAP,ativacao,2026-01-01,0
-ouricuri-pe,OURICURI / PE,PAP,orcamento,2026-01-01,102
-ouricuri-pe,OURICURI / PE,PAP,efetivado,2026-01-01,90
-ouricuri-pe,OURICURI / PE,PAP,instalacao,2026-01-01,84
 ouricuri-pe,OURICURI/PE,DONO CIDADE - LOJAS,ativacao,2026-01-01,38
 ouricuri-pe,OURICURI/PE,DONO CIDADE - LOJAS,instalacao,2026-01-01,28
-pacajus-ce,PACAJUS / CE,PAP,ativacao,2026-01-01,0
-pacajus-ce,PACAJUS / CE,PAP,orcamento,2026-01-01,136
-pacajus-ce,PACAJUS / CE,PAP,efetivado,2026-01-01,120
-pacajus-ce,PACAJUS / CE,PAP,instalacao,2026-01-01,112
+ouricuri-pe,OURICURI/PE,PAP,ativacao,2026-01-01,0
+ouricuri-pe,OURICURI/PE,PAP,orcamento,2026-01-01,102
+ouricuri-pe,OURICURI/PE,PAP,efetivado,2026-01-01,90
+ouricuri-pe,OURICURI/PE,PAP,instalacao,2026-01-01,84
 pacajus-ce,PACAJUS/CE,LOJA,ativacao,2026-01-01,56
 pacajus-ce,PACAJUS/CE,LOJA,instalacao,2026-01-01,30
+pacajus-ce,PACAJUS/CE,PAP,ativacao,2026-01-01,0
+pacajus-ce,PACAJUS/CE,PAP,orcamento,2026-01-01,68
+pacajus-ce,PACAJUS/CE,PAP,efetivado,2026-01-01,60
+pacajus-ce,PACAJUS/CE,PAP,instalacao,2026-01-01,56
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,LOJA,instalacao,2026-01-01,23
 paraipaba-ce,PARAIPABA/CE,LOJA,ativacao,2026-01-01,50
 paraipaba-ce,PARAIPABA/CE,LOJA,instalacao,2026-01-01,19
@@ -434,24 +422,24 @@ paraipaba-ce,PARAIPABA/CE,PAP,ativacao,2026-01-01,0
 paraipaba-ce,PARAIPABA/CE,PAP,orcamento,2026-01-01,68
 paraipaba-ce,PARAIPABA/CE,PAP,efetivado,2026-01-01,60
 paraipaba-ce,PARAIPABA/CE,PAP,instalacao,2026-01-01,56
-parnaiba-pi,PARNAIBA / PI,PAP,ativacao,2026-01-01,0
-parnaiba-pi,PARNAIBA / PI,PAP,orcamento,2026-01-01,364
-parnaiba-pi,PARNAIBA / PI,PAP,efetivado,2026-01-01,321
-parnaiba-pi,PARNAIBA / PI,PAP,instalacao,2026-01-01,301
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,ativacao,2026-01-01,38
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,instalacao,2026-01-01,25
-parnamirim-rn,PARNAMIRIM / RN,PAP,ativacao,2026-01-01,0
-parnamirim-rn,PARNAMIRIM / RN,PAP,orcamento,2026-01-01,235
-parnamirim-rn,PARNAMIRIM / RN,PAP,efetivado,2026-01-01,205
-parnamirim-rn,PARNAMIRIM / RN,PAP,instalacao,2026-01-01,193
+parnaiba-pi,PARNAIBA/PI,PAP,ativacao,2026-01-01,0
+parnaiba-pi,PARNAIBA/PI,PAP,orcamento,2026-01-01,325
+parnaiba-pi,PARNAIBA/PI,PAP,efetivado,2026-01-01,287
+parnaiba-pi,PARNAIBA/PI,PAP,instalacao,2026-01-01,269
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,ativacao,2026-01-01,220
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,instalacao,2026-01-01,92
-patos-pb,PATOS / PB,PAP,ativacao,2026-01-01,0
-patos-pb,PATOS / PB,PAP,orcamento,2026-01-01,180
-patos-pb,PATOS / PB,PAP,efetivado,2026-01-01,160
-patos-pb,PATOS / PB,PAP,instalacao,2026-01-01,150
+parnamirim-rn,PARNAMIRIM/RN,PAP,ativacao,2026-01-01,0
+parnamirim-rn,PARNAMIRIM/RN,PAP,orcamento,2026-01-01,235
+parnamirim-rn,PARNAMIRIM/RN,PAP,efetivado,2026-01-01,205
+parnamirim-rn,PARNAMIRIM/RN,PAP,instalacao,2026-01-01,193
 patos-pb,PATOS/PB,LOJA,ativacao,2026-01-01,135
 patos-pb,PATOS/PB,LOJA,instalacao,2026-01-01,60
+patos-pb,PATOS/PB,PAP,ativacao,2026-01-01,0
+patos-pb,PATOS/PB,PAP,orcamento,2026-01-01,144
+patos-pb,PATOS/PB,PAP,efetivado,2026-01-01,128
+patos-pb,PATOS/PB,PAP,instalacao,2026-01-01,120
 patos-pb,PATOS/PB,QUIOSQUES,ativacao,2026-01-01,0
 patos-pb,PATOS/PB,QUIOSQUES,orcamento,2026-01-01,36
 patos-pb,PATOS/PB,QUIOSQUES,efetivado,2026-01-01,32
@@ -485,12 +473,12 @@ pesqueira-pe,PESQUEIRA/PE,PAP,ativacao,2026-01-01,0
 pesqueira-pe,PESQUEIRA/PE,PAP,orcamento,2026-01-01,1
 pesqueira-pe,PESQUEIRA/PE,PAP,efetivado,2026-01-01,1
 pesqueira-pe,PESQUEIRA/PE,PAP,instalacao,2026-01-01,1
-petrolina-pe,PETROLINA / PE,PAP,ativacao,2026-01-01,0
-petrolina-pe,PETROLINA / PE,PAP,orcamento,2026-01-01,274
-petrolina-pe,PETROLINA / PE,PAP,efetivado,2026-01-01,239
-petrolina-pe,PETROLINA / PE,PAP,instalacao,2026-01-01,225
 petrolina-pe,PETROLINA/PE,DONO CIDADE - LOJAS,ativacao,2026-01-01,56
 petrolina-pe,PETROLINA/PE,DONO CIDADE - LOJAS,instalacao,2026-01-01,26
+petrolina-pe,PETROLINA/PE,PAP,ativacao,2026-01-01,0
+petrolina-pe,PETROLINA/PE,PAP,orcamento,2026-01-01,274
+petrolina-pe,PETROLINA/PE,PAP,efetivado,2026-01-01,239
+petrolina-pe,PETROLINA/PE,PAP,instalacao,2026-01-01,225
 picos-pi,PICOS/PI,DONO CIDADE - LOJAS,instalacao,2026-01-01,8
 piranhas-al,PIRANHAS/AL,4 J LOJAS,ativacao,2026-01-01,5
 piranhas-al,PIRANHAS/AL,4 J LOJAS,instalacao,2026-01-01,3
@@ -501,18 +489,18 @@ pombal-pb,POMBAL/PB,PAP,ativacao,2026-01-01,20
 pombal-pb,POMBAL/PB,PAP,orcamento,2026-01-01,44
 pombal-pb,POMBAL/PB,PAP,efetivado,2026-01-01,40
 pombal-pb,POMBAL/PB,PAP,instalacao,2026-01-01,36
-quixada-ce,QUIXADA / CE,PAP,ativacao,2026-01-01,0
-quixada-ce,QUIXADA / CE,PAP,orcamento,2026-01-01,136
-quixada-ce,QUIXADA / CE,PAP,efetivado,2026-01-01,120
-quixada-ce,QUIXADA / CE,PAP,instalacao,2026-01-01,112
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,172
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,76
-quixeramobim-ce,QUIXERAMOBIM / CE,PAP,ativacao,2026-01-01,0
-quixeramobim-ce,QUIXERAMOBIM / CE,PAP,orcamento,2026-01-01,63
-quixeramobim-ce,QUIXERAMOBIM / CE,PAP,efetivado,2026-01-01,55
-quixeramobim-ce,QUIXERAMOBIM / CE,PAP,instalacao,2026-01-01,52
+quixada-ce,QUIXADA/CE,PAP,ativacao,2026-01-01,0
+quixada-ce,QUIXADA/CE,PAP,orcamento,2026-01-01,68
+quixada-ce,QUIXADA/CE,PAP,efetivado,2026-01-01,60
+quixada-ce,QUIXADA/CE,PAP,instalacao,2026-01-01,56
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,120
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,46
+quixeramobim-ce,QUIXERAMOBIM/CE,PAP,ativacao,2026-01-01,0
+quixeramobim-ce,QUIXERAMOBIM/CE,PAP,orcamento,2026-01-01,63
+quixeramobim-ce,QUIXERAMOBIM/CE,PAP,efetivado,2026-01-01,55
+quixeramobim-ce,QUIXERAMOBIM/CE,PAP,instalacao,2026-01-01,52
 quixeramobim-ce,QUIXERAMOBIM/CE,QUIOSQUES,ativacao,2026-01-01,0
 quixeramobim-ce,QUIXERAMOBIM/CE,QUIOSQUES,orcamento,2026-01-01,34
 quixeramobim-ce,QUIXERAMOBIM/CE,QUIOSQUES,efetivado,2026-01-01,30
@@ -529,16 +517,12 @@ rafael-fernandes-rn,RAFAEL FERNANDES/RN,PAP,efetivado,2026-01-01,16
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,PAP,instalacao,2026-01-01,15
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,LOJA,instalacao,2026-01-01,12
 rio-largo-al,RIO LARGO/AL,LOJA,instalacao,2026-01-01,56
-russas-ce,RUSSAS / CE,PAP,ativacao,2026-01-01,40
-russas-ce,RUSSAS / CE,PAP,orcamento,2026-01-01,88
-russas-ce,RUSSAS / CE,PAP,efetivado,2026-01-01,80
-russas-ce,RUSSAS / CE,PAP,instalacao,2026-01-01,72
 russas-ce,RUSSAS/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,80
 russas-ce,RUSSAS/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,36
-salgueiro-pe,SALGUEIRO / PE,PAP,ativacao,2026-01-01,0
-salgueiro-pe,SALGUEIRO / PE,PAP,orcamento,2026-01-01,34
-salgueiro-pe,SALGUEIRO / PE,PAP,efetivado,2026-01-01,30
-salgueiro-pe,SALGUEIRO / PE,PAP,instalacao,2026-01-01,28
+russas-ce,RUSSAS/CE,PAP,ativacao,2026-01-01,40
+russas-ce,RUSSAS/CE,PAP,orcamento,2026-01-01,88
+russas-ce,RUSSAS/CE,PAP,efetivado,2026-01-01,80
+russas-ce,RUSSAS/CE,PAP,instalacao,2026-01-01,72
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,ativacao,2026-01-01,40
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,instalacao,2026-01-01,12
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,LOJA,instalacao,2026-01-01,17
@@ -548,12 +532,12 @@ santa-luzia-pb,SANTA LUZIA/PB,PAP,ativacao,2026-01-01,0
 santa-luzia-pb,SANTA LUZIA/PB,PAP,orcamento,2026-01-01,34
 santa-luzia-pb,SANTA LUZIA/PB,PAP,efetivado,2026-01-01,30
 santa-luzia-pb,SANTA LUZIA/PB,PAP,instalacao,2026-01-01,28
-santa-rita-pb,SANTA RITA / PB,PAP,ativacao,2026-01-01,0
-santa-rita-pb,SANTA RITA / PB,PAP,orcamento,2026-01-01,216
-santa-rita-pb,SANTA RITA / PB,PAP,efetivado,2026-01-01,192
-santa-rita-pb,SANTA RITA / PB,PAP,instalacao,2026-01-01,180
 santa-rita-pb,SANTA RITA/PB,LOJA,ativacao,2026-01-01,55
 santa-rita-pb,SANTA RITA/PB,LOJA,instalacao,2026-01-01,26
+santa-rita-pb,SANTA RITA/PB,PAP,ativacao,2026-01-01,0
+santa-rita-pb,SANTA RITA/PB,PAP,orcamento,2026-01-01,180
+santa-rita-pb,SANTA RITA/PB,PAP,efetivado,2026-01-01,160
+santa-rita-pb,SANTA RITA/PB,PAP,instalacao,2026-01-01,150
 santo-amaro-ba,SANTO AMARO/BA,LOJA,instalacao,2026-01-01,13
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,46
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,30
@@ -567,19 +551,19 @@ sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,ativacao,2026-01-01,0
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,orcamento,2026-01-01,73
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,efetivado,2026-01-01,64
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,instalacao,2026-01-01,60
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,PAP,ativacao,2026-01-01,10
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,PAP,orcamento,2026-01-01,22
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,PAP,efetivado,2026-01-01,20
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU / RN,PAP,instalacao,2026-01-01,18
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,LOJA,ativacao,2026-01-01,56
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,LOJA,instalacao,2026-01-01,28
-sao-miguel-rn,SAO MIGUEL / RN,PAP,ativacao,2026-01-01,11
-sao-miguel-rn,SAO MIGUEL / RN,PAP,orcamento,2026-01-01,23
-sao-miguel-rn,SAO MIGUEL / RN,PAP,efetivado,2026-01-01,21
-sao-miguel-rn,SAO MIGUEL / RN,PAP,instalacao,2026-01-01,19
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,ativacao,2026-01-01,10
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,orcamento,2026-01-01,22
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,efetivado,2026-01-01,20
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,instalacao,2026-01-01,18
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,LOJA,instalacao,2026-01-01,32
 sao-miguel-rn,SAO MIGUEL/RN,DONO CIDADE - LOJAS,ativacao,2026-01-01,135
 sao-miguel-rn,SAO MIGUEL/RN,DONO CIDADE - LOJAS,instalacao,2026-01-01,39
+sao-miguel-rn,SAO MIGUEL/RN,PAP,ativacao,2026-01-01,11
+sao-miguel-rn,SAO MIGUEL/RN,PAP,orcamento,2026-01-01,23
+sao-miguel-rn,SAO MIGUEL/RN,PAP,efetivado,2026-01-01,21
+sao-miguel-rn,SAO MIGUEL/RN,PAP,instalacao,2026-01-01,19
 sao-miguel-rn,SAO MIGUEL/RN,QUIOSQUES,ativacao,2026-01-01,10
 sao-miguel-rn,SAO MIGUEL/RN,QUIOSQUES,orcamento,2026-01-01,22
 sao-miguel-rn,SAO MIGUEL/RN,QUIOSQUES,efetivado,2026-01-01,20
@@ -590,20 +574,20 @@ senador-pompeu-ce,SENADOR POMPEU/CE,PAP,ativacao,2026-01-01,13
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,orcamento,2026-01-01,28
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,efetivado,2026-01-01,25
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,instalacao,2026-01-01,23
-serra-talhada-pe,SERRA TALHADA / PE,PAP,ativacao,2026-01-01,0
-serra-talhada-pe,SERRA TALHADA / PE,PAP,orcamento,2026-01-01,102
-serra-talhada-pe,SERRA TALHADA / PE,PAP,efetivado,2026-01-01,90
-serra-talhada-pe,SERRA TALHADA / PE,PAP,instalacao,2026-01-01,84
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,ativacao,2026-01-01,27
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,instalacao,2026-01-01,16
-sobral-ce,SOBRAL / CE,PAP,ativacao,2026-01-01,0
-sobral-ce,SOBRAL / CE,PAP,orcamento,2026-01-01,388
-sobral-ce,SOBRAL / CE,PAP,efetivado,2026-01-01,339
-sobral-ce,SOBRAL / CE,PAP,instalacao,2026-01-01,319
+serra-talhada-pe,SERRA TALHADA/PE,PAP,ativacao,2026-01-01,0
+serra-talhada-pe,SERRA TALHADA/PE,PAP,orcamento,2026-01-01,102
+serra-talhada-pe,SERRA TALHADA/PE,PAP,efetivado,2026-01-01,90
+serra-talhada-pe,SERRA TALHADA/PE,PAP,instalacao,2026-01-01,84
 sobral-ce,SOBRAL/CE,4 J LOJAS,ativacao,2026-01-01,15
 sobral-ce,SOBRAL/CE,4 J LOJAS,instalacao,2026-01-01,7
 sobral-ce,SOBRAL/CE,LOJA,ativacao,2026-01-01,149
 sobral-ce,SOBRAL/CE,LOJA,instalacao,2026-01-01,60
+sobral-ce,SOBRAL/CE,PAP,ativacao,2026-01-01,0
+sobral-ce,SOBRAL/CE,PAP,orcamento,2026-01-01,349
+sobral-ce,SOBRAL/CE,PAP,efetivado,2026-01-01,305
+sobral-ce,SOBRAL/CE,PAP,instalacao,2026-01-01,287
 sousa-pb,SOUSA/PB,LOJA,ativacao,2026-01-01,130
 sousa-pb,SOUSA/PB,LOJA,instalacao,2026-01-01,73
 sousa-pb,SOUSA/PB,PAP,ativacao,2026-01-01,0
@@ -611,51 +595,51 @@ sousa-pb,SOUSA/PB,PAP,orcamento,2026-01-01,68
 sousa-pb,SOUSA/PB,PAP,efetivado,2026-01-01,60
 sousa-pb,SOUSA/PB,PAP,instalacao,2026-01-01,56
 surubim-pe,SURUBIM/PE,LOJA,instalacao,2026-01-01,20
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,ativacao,2026-01-01,10
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,orcamento,2026-01-01,22
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,efetivado,2026-01-01,20
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,instalacao,2026-01-01,18
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,LOJA,ativacao,2026-01-01,100
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,LOJA,instalacao,2026-01-01,34
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,ativacao,2026-01-01,10
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,orcamento,2026-01-01,22
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,efetivado,2026-01-01,20
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,instalacao,2026-01-01,18
 taua-ce,TAUA/CE,LOJA,ativacao,2026-01-01,96
 taua-ce,TAUA/CE,LOJA,instalacao,2026-01-01,48
 taua-ce,TAUA/CE,PAP,ativacao,2026-01-01,20
 taua-ce,TAUA/CE,PAP,orcamento,2026-01-01,44
 taua-ce,TAUA/CE,PAP,efetivado,2026-01-01,40
 taua-ce,TAUA/CE,PAP,instalacao,2026-01-01,36
-teresina-pi,TERESINA / PI,PAP,ativacao,2026-01-01,0
-teresina-pi,TERESINA / PI,PAP,orcamento,2026-01-01,846
-teresina-pi,TERESINA / PI,PAP,efetivado,2026-01-01,737
-teresina-pi,TERESINA / PI,PAP,instalacao,2026-01-01,694
 teresina-pi,TERESINA/PI,LOJA,ativacao,2026-01-01,80
 teresina-pi,TERESINA/PI,LOJA,instalacao,2026-01-01,68
-tiangua-ce,TIANGUA / CE,PAP,ativacao,2026-01-01,0
-tiangua-ce,TIANGUA / CE,PAP,orcamento,2026-01-01,102
-tiangua-ce,TIANGUA / CE,PAP,efetivado,2026-01-01,90
-tiangua-ce,TIANGUA / CE,PAP,instalacao,2026-01-01,84
+teresina-pi,TERESINA/PI,PAP,ativacao,2026-01-01,0
+teresina-pi,TERESINA/PI,PAP,orcamento,2026-01-01,768
+teresina-pi,TERESINA/PI,PAP,efetivado,2026-01-01,669
+teresina-pi,TERESINA/PI,PAP,instalacao,2026-01-01,630
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,80
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,36
-timon-ma,TIMON / MA,PAP,ativacao,2026-01-01,0
-timon-ma,TIMON / MA,PAP,orcamento,2026-01-01,256
-timon-ma,TIMON / MA,PAP,efetivado,2026-01-01,223
-timon-ma,TIMON / MA,PAP,instalacao,2026-01-01,210
+tiangua-ce,TIANGUA/CE,PAP,ativacao,2026-01-01,0
+tiangua-ce,TIANGUA/CE,PAP,orcamento,2026-01-01,102
+tiangua-ce,TIANGUA/CE,PAP,efetivado,2026-01-01,90
+tiangua-ce,TIANGUA/CE,PAP,instalacao,2026-01-01,84
 timon-ma,TIMON/MA,LOJA,ativacao,2026-01-01,26
 timon-ma,TIMON/MA,LOJA,instalacao,2026-01-01,17
+timon-ma,TIMON/MA,PAP,ativacao,2026-01-01,0
+timon-ma,TIMON/MA,PAP,orcamento,2026-01-01,178
+timon-ma,TIMON/MA,PAP,efetivado,2026-01-01,155
+timon-ma,TIMON/MA,PAP,instalacao,2026-01-01,146
 tobias-barreto-se,TOBIAS BARRETO/SE,LOJA,instalacao,2026-01-01,20
-toritama-pe,TORITAMA / PE,PAP,ativacao,2026-01-01,0
-toritama-pe,TORITAMA / PE,PAP,orcamento,2026-01-01,136
-toritama-pe,TORITAMA / PE,PAP,efetivado,2026-01-01,120
-toritama-pe,TORITAMA / PE,PAP,instalacao,2026-01-01,112
 toritama-pe,TORITAMA/PE,LOJA,ativacao,2026-01-01,23
 toritama-pe,TORITAMA/PE,LOJA,instalacao,2026-01-01,16
+toritama-pe,TORITAMA/PE,PAP,ativacao,2026-01-01,0
+toritama-pe,TORITAMA/PE,PAP,orcamento,2026-01-01,136
+toritama-pe,TORITAMA/PE,PAP,efetivado,2026-01-01,120
+toritama-pe,TORITAMA/PE,PAP,instalacao,2026-01-01,112
 ubajara-ce,UBAJARA/CE,DONO CIDADE - LOJAS,ativacao,2026-01-01,48
 ubajara-ce,UBAJARA/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,16
-uirauna-pb,UIRAUNA / PB,PAP,ativacao,2026-01-01,20
-uirauna-pb,UIRAUNA / PB,PAP,orcamento,2026-01-01,44
-uirauna-pb,UIRAUNA / PB,PAP,efetivado,2026-01-01,40
-uirauna-pb,UIRAUNA / PB,PAP,instalacao,2026-01-01,36
 uirauna-pb,UIRAUNA/PB,DONO CIDADE - LOJAS,ativacao,2026-01-01,52
 uirauna-pb,UIRAUNA/PB,DONO CIDADE - LOJAS,instalacao,2026-01-01,12
+uirauna-pb,UIRAUNA/PB,PAP,ativacao,2026-01-01,20
+uirauna-pb,UIRAUNA/PB,PAP,orcamento,2026-01-01,44
+uirauna-pb,UIRAUNA/PB,PAP,efetivado,2026-01-01,40
+uirauna-pb,UIRAUNA/PB,PAP,instalacao,2026-01-01,36
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,ativacao,2026-01-01,52
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,instalacao,2026-01-01,12
 varzea-alegre-ce,VARZEA ALEGRE/CE,LOJA,ativacao,2026-01-01,102
@@ -666,12 +650,12 @@ varzea-alegre-ce,VARZEA ALEGRE/CE,PAP,efetivado,2026-01-01,40
 varzea-alegre-ce,VARZEA ALEGRE/CE,PAP,instalacao,2026-01-01,36
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,DONO CIDADE - LOJAS,instalacao,2026-01-01,32
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,LOJA,instalacao,2026-01-01,32
-acarau-ce,ACARAU / CE,PAP,ativacao,2026-02-01,40
-acarau-ce,ACARAU / CE,PAP,orcamento,2026-02-01,88
-acarau-ce,ACARAU / CE,PAP,efetivado,2026-02-01,80
-acarau-ce,ACARAU / CE,PAP,instalacao,2026-02-01,72
 acarau-ce,ACARAU/CE,LOJA,ativacao,2026-02-01,90
 acarau-ce,ACARAU/CE,LOJA,instalacao,2026-02-01,34
+acarau-ce,ACARAU/CE,PAP,ativacao,2026-02-01,30
+acarau-ce,ACARAU/CE,PAP,orcamento,2026-02-01,66
+acarau-ce,ACARAU/CE,PAP,efetivado,2026-02-01,60
+acarau-ce,ACARAU/CE,PAP,instalacao,2026-02-01,54
 acopiara-ce,ACOPIARA/CE,LOJA,ativacao,2026-02-01,78
 acopiara-ce,ACOPIARA/CE,LOJA,instalacao,2026-02-01,30
 acopiara-ce,ACOPIARA/CE,PAP,ativacao,2026-02-01,20
@@ -680,10 +664,6 @@ acopiara-ce,ACOPIARA/CE,PAP,efetivado,2026-02-01,40
 acopiara-ce,ACOPIARA/CE,PAP,instalacao,2026-02-01,36
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,ativacao,2026-02-01,120
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,instalacao,2026-02-01,51
-acu-rn,ACU/RN,PAP,ativacao,2026-02-01,0
-acu-rn,ACU/RN,PAP,orcamento,2026-02-01,34
-acu-rn,ACU/RN,PAP,efetivado,2026-02-01,30
-acu-rn,ACU/RN,PAP,instalacao,2026-02-01,28
 agua-nova-rn,AGUA NOVA/RN,PAP,ativacao,2026-02-01,10
 agua-nova-rn,AGUA NOVA/RN,PAP,orcamento,2026-02-01,22
 agua-nova-rn,AGUA NOVA/RN,PAP,efetivado,2026-02-01,20
@@ -699,16 +679,16 @@ araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-02-01,0
 araripina-pe,ARARIPINA/PE,PAP,orcamento,2026-02-01,68
 araripina-pe,ARARIPINA/PE,PAP,efetivado,2026-02-01,60
 araripina-pe,ARARIPINA/PE,PAP,instalacao,2026-02-01,56
-arcoverde-pe,ARCOVERDE / PE,PAP,ativacao,2026-02-01,0
-arcoverde-pe,ARCOVERDE / PE,PAP,orcamento,2026-02-01,101
-arcoverde-pe,ARCOVERDE / PE,PAP,efetivado,2026-02-01,89
-arcoverde-pe,ARCOVERDE / PE,PAP,instalacao,2026-02-01,83
 arcoverde-pe,ARCOVERDE/PE,LOJA,ativacao,2026-02-01,35
 arcoverde-pe,ARCOVERDE/PE,LOJA,instalacao,2026-02-01,18
-assu-rn,ASSU / RN,PAP,ativacao,2026-02-01,0
-assu-rn,ASSU / RN,PAP,orcamento,2026-02-01,34
-assu-rn,ASSU / RN,PAP,efetivado,2026-02-01,30
-assu-rn,ASSU / RN,PAP,instalacao,2026-02-01,28
+arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-02-01,0
+arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-02-01,67
+arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-02-01,59
+arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-02-01,55
+assu-rn,ASSU/RN,PAP,ativacao,2026-02-01,0
+assu-rn,ASSU/RN,PAP,orcamento,2026-02-01,34
+assu-rn,ASSU/RN,PAP,efetivado,2026-02-01,30
+assu-rn,ASSU/RN,PAP,instalacao,2026-02-01,28
 banabuiu-ce,BANABUIU/CE,LOJA,ativacao,2026-02-01,50
 banabuiu-ce,BANABUIU/CE,LOJA,instalacao,2026-02-01,24
 barauna-rn,BARAUNA/RN,LOJA,ativacao,2026-02-01,36
@@ -725,12 +705,12 @@ bayeux-pb,BAYEUX/PB,PAP,ativacao,2026-02-01,0
 bayeux-pb,BAYEUX/PB,PAP,orcamento,2026-02-01,144
 bayeux-pb,BAYEUX/PB,PAP,efetivado,2026-02-01,128
 bayeux-pb,BAYEUX/PB,PAP,instalacao,2026-02-01,120
-belo-jardim-pe,BELO JARDIM / PE,PAP,ativacao,2026-02-01,0
-belo-jardim-pe,BELO JARDIM / PE,PAP,orcamento,2026-02-01,68
-belo-jardim-pe,BELO JARDIM / PE,PAP,efetivado,2026-02-01,60
-belo-jardim-pe,BELO JARDIM / PE,PAP,instalacao,2026-02-01,56
 belo-jardim-pe,BELO JARDIM/PE,LOJA,ativacao,2026-02-01,44
 belo-jardim-pe,BELO JARDIM/PE,LOJA,instalacao,2026-02-01,28
+belo-jardim-pe,BELO JARDIM/PE,PAP,ativacao,2026-02-01,0
+belo-jardim-pe,BELO JARDIM/PE,PAP,orcamento,2026-02-01,68
+belo-jardim-pe,BELO JARDIM/PE,PAP,efetivado,2026-02-01,60
+belo-jardim-pe,BELO JARDIM/PE,PAP,instalacao,2026-02-01,56
 bezerros-pe,BEZERROS/PE,LOJA,ativacao,2026-02-01,50
 bezerros-pe,BEZERROS/PE,LOJA,instalacao,2026-02-01,32
 bezerros-pe,BEZERROS/PE,PAP,ativacao,2026-02-01,20
@@ -749,12 +729,12 @@ brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,ativacao,2026-02-01,10
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,orcamento,2026-02-01,22
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,efetivado,2026-02-01,20
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,instalacao,2026-02-01,18
-cabedelo-pb,CABEDELO / PB,PAP,ativacao,2026-02-01,0
-cabedelo-pb,CABEDELO / PB,PAP,orcamento,2026-02-01,87
-cabedelo-pb,CABEDELO / PB,PAP,efetivado,2026-02-01,78
-cabedelo-pb,CABEDELO / PB,PAP,instalacao,2026-02-01,73
 cabedelo-pb,CABEDELO/PB,LOJA,ativacao,2026-02-01,36
 cabedelo-pb,CABEDELO/PB,LOJA,instalacao,2026-02-01,20
+cabedelo-pb,CABEDELO/PB,PAP,ativacao,2026-02-01,0
+cabedelo-pb,CABEDELO/PB,PAP,orcamento,2026-02-01,87
+cabedelo-pb,CABEDELO/PB,PAP,efetivado,2026-02-01,78
+cabedelo-pb,CABEDELO/PB,PAP,instalacao,2026-02-01,73
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,LOJA,instalacao,2026-02-01,32
 caico-rn,CAICO/RN,LOJA,ativacao,2026-02-01,82
 caico-rn,CAICO/RN,LOJA,instalacao,2026-02-01,36
@@ -769,12 +749,12 @@ cajazeiras-pb,CAJAZEIRAS/PB,PAP,orcamento,2026-02-01,60
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,efetivado,2026-02-01,52
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,instalacao,2026-02-01,50
 camacari-ba,CAMACARI/BA,LOJA,instalacao,2026-02-01,34
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,ativacao,2026-02-01,0
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,orcamento,2026-02-01,312
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,efetivado,2026-02-01,272
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,instalacao,2026-02-01,256
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,ativacao,2026-02-01,138
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,instalacao,2026-02-01,54
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,ativacao,2026-02-01,0
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,orcamento,2026-02-01,234
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,efetivado,2026-02-01,204
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,instalacao,2026-02-01,192
 campo-maior-pi,CAMPO MAIOR/PI,DONO CIDADE - LOJAS,instalacao,2026-02-01,10
 caninde-ce,CANINDE/CE,LOJA,ativacao,2026-02-01,50
 caninde-ce,CANINDE/CE,LOJA,instalacao,2026-02-01,26
@@ -782,24 +762,24 @@ caninde-ce,CANINDE/CE,PAP,ativacao,2026-02-01,50
 caninde-ce,CANINDE/CE,PAP,orcamento,2026-02-01,110
 caninde-ce,CANINDE/CE,PAP,efetivado,2026-02-01,100
 caninde-ce,CANINDE/CE,PAP,instalacao,2026-02-01,90
-caruaru-pe,CARUARU / PE,PAP,ativacao,2026-02-01,0
-caruaru-pe,CARUARU / PE,PAP,orcamento,2026-02-01,546
-caruaru-pe,CARUARU / PE,PAP,efetivado,2026-02-01,476
-caruaru-pe,CARUARU / PE,PAP,instalacao,2026-02-01,448
 caruaru-pe,CARUARU/PE,LOJA,ativacao,2026-02-01,50
 caruaru-pe,CARUARU/PE,LOJA,instalacao,2026-02-01,23
+caruaru-pe,CARUARU/PE,PAP,ativacao,2026-02-01,0
+caruaru-pe,CARUARU/PE,PAP,orcamento,2026-02-01,351
+caruaru-pe,CARUARU/PE,PAP,efetivado,2026-02-01,306
+caruaru-pe,CARUARU/PE,PAP,instalacao,2026-02-01,288
 cascavel-ce,CASCAVEL/CE,LOJA,ativacao,2026-02-01,80
 cascavel-ce,CASCAVEL/CE,LOJA,instalacao,2026-02-01,32
 cascavel-ce,CASCAVEL/CE,PAP,ativacao,2026-02-01,30
 cascavel-ce,CASCAVEL/CE,PAP,orcamento,2026-02-01,66
 cascavel-ce,CASCAVEL/CE,PAP,efetivado,2026-02-01,60
 cascavel-ce,CASCAVEL/CE,PAP,instalacao,2026-02-01,54
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,ativacao,2026-02-01,30
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,orcamento,2026-02-01,66
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,efetivado,2026-02-01,60
-catole-do-rocha-pb,CATOLE DO ROCHA / PB,PAP,instalacao,2026-02-01,54
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,LOJA,ativacao,2026-02-01,84
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,LOJA,instalacao,2026-02-01,30
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,ativacao,2026-02-01,30
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,orcamento,2026-02-01,66
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,efetivado,2026-02-01,60
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,instalacao,2026-02-01,54
 catu-ba,CATU/BA,LOJA,instalacao,2026-02-01,13
 caucaia-ce,CAUCAIA/CE,LOJA,ativacao,2026-02-01,210
 caucaia-ce,CAUCAIA/CE,LOJA,instalacao,2026-02-01,38
@@ -807,12 +787,12 @@ caucaia-ce,CAUCAIA/CE,PAP,ativacao,2026-02-01,0
 caucaia-ce,CAUCAIA/CE,PAP,orcamento,2026-02-01,234
 caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-02-01,204
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-02-01,192
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-02-01,0
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-02-01,102
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-02-01,90
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-02-01,84
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-02-01,96
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-02-01,46
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-02-01,0
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-02-01,102
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-02-01,90
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-02-01,84
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-02-01,64
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-02-01,28
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-02-01,10
@@ -835,12 +815,12 @@ crato-ce,CRATO/CE,PAP,ativacao,2026-02-01,0
 crato-ce,CRATO/CE,PAP,orcamento,2026-02-01,170
 crato-ce,CRATO/CE,PAP,efetivado,2026-02-01,150
 crato-ce,CRATO/CE,PAP,instalacao,2026-02-01,140
-custodia-pe,CUSTODIA / PE,PAP,ativacao,2026-02-01,20
-custodia-pe,CUSTODIA / PE,PAP,orcamento,2026-02-01,44
-custodia-pe,CUSTODIA / PE,PAP,efetivado,2026-02-01,40
-custodia-pe,CUSTODIA / PE,PAP,instalacao,2026-02-01,36
 custodia-pe,CUSTODIA/PE,LOJA,ativacao,2026-02-01,36
 custodia-pe,CUSTODIA/PE,LOJA,instalacao,2026-02-01,28
+custodia-pe,CUSTODIA/PE,PAP,ativacao,2026-02-01,10
+custodia-pe,CUSTODIA/PE,PAP,orcamento,2026-02-01,22
+custodia-pe,CUSTODIA/PE,PAP,efetivado,2026-02-01,20
+custodia-pe,CUSTODIA/PE,PAP,instalacao,2026-02-01,18
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,4 J LOJAS,ativacao,2026-02-01,30
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,4 J LOJAS,instalacao,2026-02-01,24
 dias-d-avila-ba,DIAS D'AVILA/BA,LOJA,instalacao,2026-02-01,34
@@ -853,53 +833,49 @@ estancia-se,ESTANCIA/SE,LOJA,instalacao,2026-02-01,24
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-02-01,68
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-02-01,32
 eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-02-01,0
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-02-01,108
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-02-01,96
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-02-01,90
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-02-01,144
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-02-01,128
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-02-01,120
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-02-01,0
 extremoz-rn,EXTREMOZ/RN,PAP,orcamento,2026-02-01,136
 extremoz-rn,EXTREMOZ/RN,PAP,efetivado,2026-02-01,120
 extremoz-rn,EXTREMOZ/RN,PAP,instalacao,2026-02-01,112
 feira-de-santana-ba,FEIRA DE SANTANA/BA,LOJA,instalacao,2026-02-01,26
-fortaleza-ce,FORTALEZA / CE,NGC,ativacao,2026-02-01,0
-fortaleza-ce,FORTALEZA / CE,NGC,orcamento,2026-02-01,115
-fortaleza-ce,FORTALEZA / CE,NGC,efetivado,2026-02-01,101
-fortaleza-ce,FORTALEZA / CE,NGC,instalacao,2026-02-01,95
-fortaleza-ce,FORTALEZA / CE,PAP,ativacao,2026-02-01,65
-fortaleza-ce,FORTALEZA / CE,PAP,orcamento,2026-02-01,1655
-fortaleza-ce,FORTALEZA / CE,PAP,efetivado,2026-02-01,1446
-fortaleza-ce,FORTALEZA / CE,PAP,instalacao,2026-02-01,1360
-fortaleza-ce,FORTALEZA / CE,QUIOSQUES,ativacao,2026-02-01,130
-fortaleza-ce,FORTALEZA / CE,QUIOSQUES,orcamento,2026-02-01,28
-fortaleza-ce,FORTALEZA / CE,QUIOSQUES,efetivado,2026-02-01,26
-fortaleza-ce,FORTALEZA / CE,QUIOSQUES,instalacao,2026-02-01,24
 fortaleza-ce,FORTALEZA/CE,LOJA,ativacao,2026-02-01,312
 fortaleza-ce,FORTALEZA/CE,LOJA,instalacao,2026-02-01,65
+fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-02-01,0
+fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-02-01,115
+fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-02-01,101
+fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-02-01,95
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-02-01,65
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-02-01,1382
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-02-01,1208
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-02-01,1136
+fortaleza-ce,FORTALEZA/CE,QUIOSQUES,ativacao,2026-02-01,130
+fortaleza-ce,FORTALEZA/CE,QUIOSQUES,orcamento,2026-02-01,28
+fortaleza-ce,FORTALEZA/CE,QUIOSQUES,efetivado,2026-02-01,26
+fortaleza-ce,FORTALEZA/CE,QUIOSQUES,instalacao,2026-02-01,24
 garanhuns-pe,GARANHUNS/PE,LOJA,instalacao,2026-02-01,35
-gravata-pe,GRAVATA / PE,PAP,ativacao,2026-02-01,40
-gravata-pe,GRAVATA / PE,PAP,orcamento,2026-02-01,88
-gravata-pe,GRAVATA / PE,PAP,efetivado,2026-02-01,80
-gravata-pe,GRAVATA / PE,PAP,instalacao,2026-02-01,72
 gravata-pe,GRAVATA/PE,LOJA,ativacao,2026-02-01,36
 gravata-pe,GRAVATA/PE,LOJA,instalacao,2026-02-01,28
+gravata-pe,GRAVATA/PE,PAP,ativacao,2026-02-01,30
+gravata-pe,GRAVATA/PE,PAP,orcamento,2026-02-01,66
+gravata-pe,GRAVATA/PE,PAP,efetivado,2026-02-01,60
+gravata-pe,GRAVATA/PE,PAP,instalacao,2026-02-01,54
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,48
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,18
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,ativacao,2026-02-01,0
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,orcamento,2026-02-01,34
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,efetivado,2026-02-01,30
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,instalacao,2026-02-01,28
-horizonte-ce,HORIZONTE / CE,PAP,ativacao,2026-02-01,0
-horizonte-ce,HORIZONTE / CE,PAP,orcamento,2026-02-01,157
-horizonte-ce,HORIZONTE / CE,PAP,efetivado,2026-02-01,138
-horizonte-ce,HORIZONTE / CE,PAP,instalacao,2026-02-01,129
 horizonte-ce,HORIZONTE/CE,LOJA,ativacao,2026-02-01,135
 horizonte-ce,HORIZONTE/CE,LOJA,instalacao,2026-02-01,42
+horizonte-ce,HORIZONTE/CE,PAP,ativacao,2026-02-01,0
+horizonte-ce,HORIZONTE/CE,PAP,orcamento,2026-02-01,157
+horizonte-ce,HORIZONTE/CE,PAP,efetivado,2026-02-01,138
+horizonte-ce,HORIZONTE/CE,PAP,instalacao,2026-02-01,129
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,26
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,10
-ico-ce,ICO / CE,PAP,ativacao,2026-02-01,20
-ico-ce,ICO / CE,PAP,orcamento,2026-02-01,44
-ico-ce,ICO / CE,PAP,efetivado,2026-02-01,40
-ico-ce,ICO / CE,PAP,instalacao,2026-02-01,36
 ico-ce,ICO/CE,LOJA,ativacao,2026-02-01,168
 ico-ce,ICO/CE,LOJA,instalacao,2026-02-01,66
 iguatu-ce,IGUATU/CE,LOJA,ativacao,2026-02-01,196
@@ -908,12 +884,12 @@ iguatu-ce,IGUATU/CE,PAP,ativacao,2026-02-01,0
 iguatu-ce,IGUATU/CE,PAP,orcamento,2026-02-01,144
 iguatu-ce,IGUATU/CE,PAP,efetivado,2026-02-01,128
 iguatu-ce,IGUATU/CE,PAP,instalacao,2026-02-01,120
-ipu-ce,IPU / CE,PAP,ativacao,2026-02-01,0
-ipu-ce,IPU / CE,PAP,orcamento,2026-02-01,101
-ipu-ce,IPU / CE,PAP,efetivado,2026-02-01,89
-ipu-ce,IPU / CE,PAP,instalacao,2026-02-01,83
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,84
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,36
+ipu-ce,IPU/CE,PAP,ativacao,2026-02-01,0
+ipu-ce,IPU/CE,PAP,orcamento,2026-02-01,67
+ipu-ce,IPU/CE,PAP,efetivado,2026-02-01,59
+ipu-ce,IPU/CE,PAP,instalacao,2026-02-01,55
 iracema-ce,IRACEMA/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,80
 iracema-ce,IRACEMA/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,26
 iracema-ce,IRACEMA/CE,PAP,ativacao,2026-02-01,10
@@ -921,10 +897,6 @@ iracema-ce,IRACEMA/CE,PAP,orcamento,2026-02-01,18
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-02-01,16
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-02-01,15
 itabaiana-se,ITABAIANA/SE,LOJA,instalacao,2026-02-01,9
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-02-01,0
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-02-01,36
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-02-01,32
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-02-01,30
 itapaje-ce,ITAPAJE/CE,LOJA,ativacao,2026-02-01,28
 itapaje-ce,ITAPAJE/CE,LOJA,instalacao,2026-02-01,13
 itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-02-01,20
@@ -935,12 +907,12 @@ itapaje-ce,ITAPAJE/CE,QUIOSQUES,ativacao,2026-02-01,10
 itapaje-ce,ITAPAJE/CE,QUIOSQUES,orcamento,2026-02-01,22
 itapaje-ce,ITAPAJE/CE,QUIOSQUES,efetivado,2026-02-01,20
 itapaje-ce,ITAPAJE/CE,QUIOSQUES,instalacao,2026-02-01,18
-itapipoca-ce,ITAPIPOCA / CE,PAP,ativacao,2026-02-01,0
-itapipoca-ce,ITAPIPOCA / CE,PAP,orcamento,2026-02-01,136
-itapipoca-ce,ITAPIPOCA / CE,PAP,efetivado,2026-02-01,120
-itapipoca-ce,ITAPIPOCA / CE,PAP,instalacao,2026-02-01,112
 itapipoca-ce,ITAPIPOCA/CE,LOJA,ativacao,2026-02-01,144
 itapipoca-ce,ITAPIPOCA/CE,LOJA,instalacao,2026-02-01,51
+itapipoca-ce,ITAPIPOCA/CE,PAP,ativacao,2026-02-01,0
+itapipoca-ce,ITAPIPOCA/CE,PAP,orcamento,2026-02-01,68
+itapipoca-ce,ITAPIPOCA/CE,PAP,efetivado,2026-02-01,60
+itapipoca-ce,ITAPIPOCA/CE,PAP,instalacao,2026-02-01,56
 itapipoca-ce,ITAPIPOCA/CE,QUIOSQUES,ativacao,2026-02-01,0
 itapipoca-ce,ITAPIPOCA/CE,QUIOSQUES,orcamento,2026-02-01,34
 itapipoca-ce,ITAPIPOCA/CE,QUIOSQUES,efetivado,2026-02-01,30
@@ -964,22 +936,22 @@ jaguaribe-ce,JAGUARIBE/CE,PAP,efetivado,2026-02-01,60
 jaguaribe-ce,JAGUARIBE/CE,PAP,instalacao,2026-02-01,54
 jeremoabo-ba,JEREMOABO/BA,4 J LOJAS,ativacao,2026-02-01,36
 jeremoabo-ba,JEREMOABO/BA,4 J LOJAS,instalacao,2026-02-01,20
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,ativacao,2026-02-01,0
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,orcamento,2026-02-01,335
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,efetivado,2026-02-01,292
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,instalacao,2026-02-01,275
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,ativacao,2026-02-01,0
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,orcamento,2026-02-01,674
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,efetivado,2026-02-01,586
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,instalacao,2026-02-01,552
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,ativacao,2026-02-01,225
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,instalacao,2026-02-01,94
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,ativacao,2026-02-01,0
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,orcamento,2026-02-01,548
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,efetivado,2026-02-01,488
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,instalacao,2026-02-01,457
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,ativacao,2026-02-01,0
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,orcamento,2026-02-01,257
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,efetivado,2026-02-01,224
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,instalacao,2026-02-01,211
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-02-01,0
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-02-01,610
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-02-01,531
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-02-01,500
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-02-01,529
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,instalacao,2026-02-01,214
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,ativacao,2026-02-01,0
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,orcamento,2026-02-01,513
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,efetivado,2026-02-01,457
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,instalacao,2026-02-01,428
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,ativacao,2026-02-01,26
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,instalacao,2026-02-01,18
 juazeiro-ba,JUAZEIRO/BA,PAP,ativacao,2026-02-01,0
@@ -987,37 +959,37 @@ juazeiro-ba,JUAZEIRO/BA,PAP,orcamento,2026-02-01,224
 juazeiro-ba,JUAZEIRO/BA,PAP,efetivado,2026-02-01,196
 juazeiro-ba,JUAZEIRO/BA,PAP,instalacao,2026-02-01,184
 lagarto-se,LAGARTO/SE,LOJA,instalacao,2026-02-01,13
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,ativacao,2026-02-01,20
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,orcamento,2026-02-01,44
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,efetivado,2026-02-01,40
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,instalacao,2026-02-01,36
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,ativacao,2026-02-01,72
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,instalacao,2026-02-01,28
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,ativacao,2026-02-01,30
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,orcamento,2026-02-01,66
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,efetivado,2026-02-01,60
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,instalacao,2026-02-01,54
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-02-01,10
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-02-01,22
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-02-01,20
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-02-01,18
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,141
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,54
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,ativacao,2026-02-01,20
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,orcamento,2026-02-01,44
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,efetivado,2026-02-01,40
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,instalacao,2026-02-01,36
 limoeiro-pe,LIMOEIRO/PE,LOJA,instalacao,2026-02-01,18
-luis-correia-pi,LUIS CORREIA / PI,PAP,ativacao,2026-02-01,0
-luis-correia-pi,LUIS CORREIA / PI,PAP,orcamento,2026-02-01,34
-luis-correia-pi,LUIS CORREIA / PI,PAP,efetivado,2026-02-01,30
-luis-correia-pi,LUIS CORREIA / PI,PAP,instalacao,2026-02-01,28
+luis-correia-pi,LUIS CORREIA/PI,PAP,ativacao,2026-02-01,0
+luis-correia-pi,LUIS CORREIA/PI,PAP,orcamento,2026-02-01,34
+luis-correia-pi,LUIS CORREIA/PI,PAP,efetivado,2026-02-01,30
+luis-correia-pi,LUIS CORREIA/PI,PAP,instalacao,2026-02-01,28
 macaiba-rn,MACAIBA/RN,LOJA,ativacao,2026-02-01,50
 macaiba-rn,MACAIBA/RN,LOJA,instalacao,2026-02-01,22
 macaiba-rn,MACAIBA/RN,PAP,ativacao,2026-02-01,0
 macaiba-rn,MACAIBA/RN,PAP,orcamento,2026-02-01,174
 macaiba-rn,MACAIBA/RN,PAP,efetivado,2026-02-01,153
 macaiba-rn,MACAIBA/RN,PAP,instalacao,2026-02-01,143
-macau-rn,MACAU / RN,PAP,ativacao,2026-02-01,20
-macau-rn,MACAU / RN,PAP,orcamento,2026-02-01,36
-macau-rn,MACAU / RN,PAP,efetivado,2026-02-01,32
-macau-rn,MACAU / RN,PAP,instalacao,2026-02-01,30
-macau-rn,MACAU / RN,QUIOSQUES,ativacao,2026-02-01,20
-macau-rn,MACAU / RN,QUIOSQUES,orcamento,2026-02-01,36
-macau-rn,MACAU / RN,QUIOSQUES,efetivado,2026-02-01,32
-macau-rn,MACAU / RN,QUIOSQUES,instalacao,2026-02-01,30
+macau-rn,MACAU/RN,PAP,ativacao,2026-02-01,20
+macau-rn,MACAU/RN,PAP,orcamento,2026-02-01,36
+macau-rn,MACAU/RN,PAP,efetivado,2026-02-01,32
+macau-rn,MACAU/RN,PAP,instalacao,2026-02-01,30
+macau-rn,MACAU/RN,QUIOSQUES,ativacao,2026-02-01,20
+macau-rn,MACAU/RN,QUIOSQUES,orcamento,2026-02-01,36
+macau-rn,MACAU/RN,QUIOSQUES,efetivado,2026-02-01,32
+macau-rn,MACAU/RN,QUIOSQUES,instalacao,2026-02-01,30
 maceio-al,MACEIO/AL,LOJA,instalacao,2026-02-01,21
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,ativacao,2026-02-01,58
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,instalacao,2026-02-01,32
@@ -1025,26 +997,30 @@ major-sales-rn,MAJOR SALES/RN,PAP,ativacao,2026-02-01,70
 major-sales-rn,MAJOR SALES/RN,PAP,orcamento,2026-02-01,32
 major-sales-rn,MAJOR SALES/RN,PAP,efetivado,2026-02-01,30
 major-sales-rn,MAJOR SALES/RN,PAP,instalacao,2026-02-01,28
-maracanau-ce,MARACANAU / CE,PAP,ativacao,2026-02-01,0
-maracanau-ce,MARACANAU / CE,PAP,orcamento,2026-02-01,273
-maracanau-ce,MARACANAU / CE,PAP,efetivado,2026-02-01,238
-maracanau-ce,MARACANAU / CE,PAP,instalacao,2026-02-01,224
+mamanguape-pb,MAMANGUAPE/PB,PAP,ativacao,2026-02-01,0
+mamanguape-pb,MAMANGUAPE/PB,PAP,orcamento,2026-02-01,39
+mamanguape-pb,MAMANGUAPE/PB,PAP,efetivado,2026-02-01,34
+mamanguape-pb,MAMANGUAPE/PB,PAP,instalacao,2026-02-01,32
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-02-01,180
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-02-01,36
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-02-01,0
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-02-01,234
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-02-01,204
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-02-01,192
 maracanau-ce,MARACANAU/CE,QUIOSQUES,ativacao,2026-02-01,195
 maracanau-ce,MARACANAU/CE,QUIOSQUES,orcamento,2026-02-01,42
 maracanau-ce,MARACANAU/CE,QUIOSQUES,efetivado,2026-02-01,39
 maracanau-ce,MARACANAU/CE,QUIOSQUES,instalacao,2026-02-01,36
-maranguape-ce,MARANGUAPE / CE,PAP,ativacao,2026-02-01,0
-maranguape-ce,MARANGUAPE / CE,PAP,orcamento,2026-02-01,282
-maranguape-ce,MARANGUAPE / CE,PAP,efetivado,2026-02-01,247
-maranguape-ce,MARANGUAPE / CE,PAP,instalacao,2026-02-01,232
-maranguape-ce,MARANGUAPE / CE,QUIOSQUES,ativacao,2026-02-01,65
-maranguape-ce,MARANGUAPE / CE,QUIOSQUES,orcamento,2026-02-01,14
-maranguape-ce,MARANGUAPE / CE,QUIOSQUES,efetivado,2026-02-01,13
-maranguape-ce,MARANGUAPE / CE,QUIOSQUES,instalacao,2026-02-01,12
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-02-01,120
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-02-01,30
+maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-02-01,0
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-02-01,204
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-02-01,179
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-02-01,168
+marco-ce,MARCO/CE,PAP,ativacao,2026-02-01,10
+marco-ce,MARCO/CE,PAP,orcamento,2026-02-01,22
+marco-ce,MARCO/CE,PAP,efetivado,2026-02-01,20
+marco-ce,MARCO/CE,PAP,instalacao,2026-02-01,18
 milagres-ce,MILAGRES/CE,LOJA,ativacao,2026-02-01,76
 milagres-ce,MILAGRES/CE,LOJA,instalacao,2026-02-01,34
 milagres-ce,MILAGRES/CE,PAP,ativacao,2026-02-01,6
@@ -1069,22 +1045,22 @@ morada-nova-ce,MORADA NOVA/CE,PAP,ativacao,2026-02-01,30
 morada-nova-ce,MORADA NOVA/CE,PAP,orcamento,2026-02-01,66
 morada-nova-ce,MORADA NOVA/CE,PAP,efetivado,2026-02-01,60
 morada-nova-ce,MORADA NOVA/CE,PAP,instalacao,2026-02-01,54
-mossoro-rn,MOSSORO / RN,PAP,ativacao,2026-02-01,0
-mossoro-rn,MOSSORO / RN,PAP,orcamento,2026-02-01,390
-mossoro-rn,MOSSORO / RN,PAP,efetivado,2026-02-01,340
-mossoro-rn,MOSSORO / RN,PAP,instalacao,2026-02-01,320
 mossoro-rn,MOSSORO/RN,LOJA,ativacao,2026-02-01,240
 mossoro-rn,MOSSORO/RN,LOJA,instalacao,2026-02-01,56
-natal-rn,NATAL / RN,NGC,ativacao,2026-02-01,0
-natal-rn,NATAL / RN,NGC,orcamento,2026-02-01,380
-natal-rn,NATAL / RN,NGC,efetivado,2026-02-01,331
-natal-rn,NATAL / RN,NGC,instalacao,2026-02-01,312
-natal-rn,NATAL / RN,PAP,ativacao,2026-02-01,0
-natal-rn,NATAL / RN,PAP,orcamento,2026-02-01,848
-natal-rn,NATAL / RN,PAP,efetivado,2026-02-01,740
-natal-rn,NATAL / RN,PAP,instalacao,2026-02-01,696
+mossoro-rn,MOSSORO/RN,PAP,ativacao,2026-02-01,0
+mossoro-rn,MOSSORO/RN,PAP,orcamento,2026-02-01,312
+mossoro-rn,MOSSORO/RN,PAP,efetivado,2026-02-01,272
+mossoro-rn,MOSSORO/RN,PAP,instalacao,2026-02-01,256
 natal-rn,NATAL/RN,LOJA,ativacao,2026-02-01,496
 natal-rn,NATAL/RN,LOJA,instalacao,2026-02-01,105
+natal-rn,NATAL/RN,NGC,ativacao,2026-02-01,0
+natal-rn,NATAL/RN,NGC,orcamento,2026-02-01,380
+natal-rn,NATAL/RN,NGC,efetivado,2026-02-01,331
+natal-rn,NATAL/RN,NGC,instalacao,2026-02-01,312
+natal-rn,NATAL/RN,PAP,ativacao,2026-02-01,0
+natal-rn,NATAL/RN,PAP,orcamento,2026-02-01,809
+natal-rn,NATAL/RN,PAP,efetivado,2026-02-01,706
+natal-rn,NATAL/RN,PAP,instalacao,2026-02-01,664
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,ativacao,2026-02-01,20
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,orcamento,2026-02-01,44
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,efetivado,2026-02-01,40
@@ -1104,12 +1080,12 @@ ouricuri-pe,OURICURI/PE,PAP,ativacao,2026-02-01,0
 ouricuri-pe,OURICURI/PE,PAP,orcamento,2026-02-01,68
 ouricuri-pe,OURICURI/PE,PAP,efetivado,2026-02-01,60
 ouricuri-pe,OURICURI/PE,PAP,instalacao,2026-02-01,56
-pacajus-ce,PACAJUS / CE,PAP,ativacao,2026-02-01,0
-pacajus-ce,PACAJUS / CE,PAP,orcamento,2026-02-01,136
-pacajus-ce,PACAJUS / CE,PAP,efetivado,2026-02-01,120
-pacajus-ce,PACAJUS / CE,PAP,instalacao,2026-02-01,112
 pacajus-ce,PACAJUS/CE,LOJA,ativacao,2026-02-01,90
 pacajus-ce,PACAJUS/CE,LOJA,instalacao,2026-02-01,32
+pacajus-ce,PACAJUS/CE,PAP,ativacao,2026-02-01,0
+pacajus-ce,PACAJUS/CE,PAP,orcamento,2026-02-01,68
+pacajus-ce,PACAJUS/CE,PAP,efetivado,2026-02-01,60
+pacajus-ce,PACAJUS/CE,PAP,instalacao,2026-02-01,56
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,LOJA,instalacao,2026-02-01,21
 paracuru-ce,PARACURU/CE,PAP,ativacao,2026-02-01,0
 paracuru-ce,PARACURU/CE,PAP,orcamento,2026-02-01,34
@@ -1121,24 +1097,24 @@ paraipaba-ce,PARAIPABA/CE,PAP,ativacao,2026-02-01,0
 paraipaba-ce,PARAIPABA/CE,PAP,orcamento,2026-02-01,102
 paraipaba-ce,PARAIPABA/CE,PAP,efetivado,2026-02-01,90
 paraipaba-ce,PARAIPABA/CE,PAP,instalacao,2026-02-01,84
-parnaiba-pi,PARNAIBA / PI,PAP,ativacao,2026-02-01,0
-parnaiba-pi,PARNAIBA / PI,PAP,orcamento,2026-02-01,424
-parnaiba-pi,PARNAIBA / PI,PAP,efetivado,2026-02-01,370
-parnaiba-pi,PARNAIBA / PI,PAP,instalacao,2026-02-01,348
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,ativacao,2026-02-01,50
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,instalacao,2026-02-01,20
-parnamirim-rn,PARNAMIRIM / RN,PAP,ativacao,2026-02-01,0
-parnamirim-rn,PARNAMIRIM / RN,PAP,orcamento,2026-02-01,319
-parnamirim-rn,PARNAMIRIM / RN,PAP,efetivado,2026-02-01,280
-parnamirim-rn,PARNAMIRIM / RN,PAP,instalacao,2026-02-01,263
+parnaiba-pi,PARNAIBA/PI,PAP,ativacao,2026-02-01,0
+parnaiba-pi,PARNAIBA/PI,PAP,orcamento,2026-02-01,385
+parnaiba-pi,PARNAIBA/PI,PAP,efetivado,2026-02-01,336
+parnaiba-pi,PARNAIBA/PI,PAP,instalacao,2026-02-01,316
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,ativacao,2026-02-01,256
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,instalacao,2026-02-01,92
-patos-pb,PATOS / PB,PAP,ativacao,2026-02-01,0
-patos-pb,PATOS / PB,PAP,orcamento,2026-02-01,180
-patos-pb,PATOS / PB,PAP,efetivado,2026-02-01,160
-patos-pb,PATOS / PB,PAP,instalacao,2026-02-01,150
+parnamirim-rn,PARNAMIRIM/RN,PAP,ativacao,2026-02-01,0
+parnamirim-rn,PARNAMIRIM/RN,PAP,orcamento,2026-02-01,319
+parnamirim-rn,PARNAMIRIM/RN,PAP,efetivado,2026-02-01,280
+parnamirim-rn,PARNAMIRIM/RN,PAP,instalacao,2026-02-01,263
 patos-pb,PATOS/PB,LOJA,ativacao,2026-02-01,212
 patos-pb,PATOS/PB,LOJA,instalacao,2026-02-01,80
+patos-pb,PATOS/PB,PAP,ativacao,2026-02-01,0
+patos-pb,PATOS/PB,PAP,orcamento,2026-02-01,180
+patos-pb,PATOS/PB,PAP,efetivado,2026-02-01,160
+patos-pb,PATOS/PB,PAP,instalacao,2026-02-01,150
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,ativacao,2026-02-01,168
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,instalacao,2026-02-01,60
 pau-dos-ferros-rn,PAU DOS FERROS/RN,PAP,ativacao,2026-02-01,30
@@ -1180,12 +1156,12 @@ pombal-pb,POMBAL/PB,PAP,ativacao,2026-02-01,20
 pombal-pb,POMBAL/PB,PAP,orcamento,2026-02-01,44
 pombal-pb,POMBAL/PB,PAP,efetivado,2026-02-01,40
 pombal-pb,POMBAL/PB,PAP,instalacao,2026-02-01,36
-quixada-ce,QUIXADA / CE,PAP,ativacao,2026-02-01,0
-quixada-ce,QUIXADA / CE,PAP,orcamento,2026-02-01,170
-quixada-ce,QUIXADA / CE,PAP,efetivado,2026-02-01,150
-quixada-ce,QUIXADA / CE,PAP,instalacao,2026-02-01,140
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,113
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,49
+quixada-ce,QUIXADA/CE,PAP,ativacao,2026-02-01,0
+quixada-ce,QUIXADA/CE,PAP,orcamento,2026-02-01,102
+quixada-ce,QUIXADA/CE,PAP,efetivado,2026-02-01,90
+quixada-ce,QUIXADA/CE,PAP,instalacao,2026-02-01,84
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,104
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,42
 quixeramobim-ce,QUIXERAMOBIM/CE,PAP,ativacao,2026-02-01,0
@@ -1204,16 +1180,12 @@ rafael-fernandes-rn,RAFAEL FERNANDES/RN,PAP,efetivado,2026-02-01,16
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,PAP,instalacao,2026-02-01,15
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,LOJA,instalacao,2026-02-01,16
 rio-largo-al,RIO LARGO/AL,LOJA,instalacao,2026-02-01,57
-russas-ce,RUSSAS / CE,PAP,ativacao,2026-02-01,40
-russas-ce,RUSSAS / CE,PAP,orcamento,2026-02-01,88
-russas-ce,RUSSAS / CE,PAP,efetivado,2026-02-01,80
-russas-ce,RUSSAS / CE,PAP,instalacao,2026-02-01,72
 russas-ce,RUSSAS/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,88
 russas-ce,RUSSAS/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,32
-salgueiro-pe,SALGUEIRO / PE,PAP,ativacao,2026-02-01,0
-salgueiro-pe,SALGUEIRO / PE,PAP,orcamento,2026-02-01,34
-salgueiro-pe,SALGUEIRO / PE,PAP,efetivado,2026-02-01,30
-salgueiro-pe,SALGUEIRO / PE,PAP,instalacao,2026-02-01,28
+russas-ce,RUSSAS/CE,PAP,ativacao,2026-02-01,40
+russas-ce,RUSSAS/CE,PAP,orcamento,2026-02-01,88
+russas-ce,RUSSAS/CE,PAP,efetivado,2026-02-01,80
+russas-ce,RUSSAS/CE,PAP,instalacao,2026-02-01,72
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,ativacao,2026-02-01,41
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,instalacao,2026-02-01,14
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,LOJA,instalacao,2026-02-01,17
@@ -1223,12 +1195,12 @@ santa-luzia-pb,SANTA LUZIA/PB,PAP,ativacao,2026-02-01,0
 santa-luzia-pb,SANTA LUZIA/PB,PAP,orcamento,2026-02-01,34
 santa-luzia-pb,SANTA LUZIA/PB,PAP,efetivado,2026-02-01,30
 santa-luzia-pb,SANTA LUZIA/PB,PAP,instalacao,2026-02-01,28
-santa-rita-pb,SANTA RITA / PB,PAP,ativacao,2026-02-01,0
-santa-rita-pb,SANTA RITA / PB,PAP,orcamento,2026-02-01,216
-santa-rita-pb,SANTA RITA / PB,PAP,efetivado,2026-02-01,192
-santa-rita-pb,SANTA RITA / PB,PAP,instalacao,2026-02-01,180
 santa-rita-pb,SANTA RITA/PB,LOJA,ativacao,2026-02-01,75
 santa-rita-pb,SANTA RITA/PB,LOJA,instalacao,2026-02-01,30
+santa-rita-pb,SANTA RITA/PB,PAP,ativacao,2026-02-01,0
+santa-rita-pb,SANTA RITA/PB,PAP,orcamento,2026-02-01,180
+santa-rita-pb,SANTA RITA/PB,PAP,efetivado,2026-02-01,160
+santa-rita-pb,SANTA RITA/PB,PAP,instalacao,2026-02-01,150
 santo-amaro-ba,SANTO AMARO/BA,LOJA,instalacao,2026-02-01,14
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,64
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,32
@@ -1239,87 +1211,87 @@ sao-benedito-ce,SAO BENEDITO/CE,PAP,instalacao,2026-02-01,18
 sao-bento-pb,SAO BENTO/PB,DONO CIDADE - LOJAS,ativacao,2026-02-01,63
 sao-bento-pb,SAO BENTO/PB,DONO CIDADE - LOJAS,instalacao,2026-02-01,24
 sao-caitano-pe,SAO CAITANO/PE,LOJA,ativacao,2026-02-01,32
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,PAP,ativacao,2026-02-01,0
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,PAP,orcamento,2026-02-01,117
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,PAP,efetivado,2026-02-01,102
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE / RN,PAP,instalacao,2026-02-01,96
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,ativacao,2026-02-01,0
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,orcamento,2026-02-01,117
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,efetivado,2026-02-01,102
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,instalacao,2026-02-01,96
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,LOJA,ativacao,2026-02-01,64
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,LOJA,instalacao,2026-02-01,26
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,ativacao,2026-02-01,10
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,orcamento,2026-02-01,22
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,efetivado,2026-02-01,20
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,PAP,instalacao,2026-02-01,18
-sao-miguel-rn,SAO MIGUEL / RN,PAP,ativacao,2026-02-01,30
-sao-miguel-rn,SAO MIGUEL / RN,PAP,orcamento,2026-02-01,65
-sao-miguel-rn,SAO MIGUEL / RN,PAP,efetivado,2026-02-01,59
-sao-miguel-rn,SAO MIGUEL / RN,PAP,instalacao,2026-02-01,53
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,LOJA,instalacao,2026-02-01,34
 sao-miguel-rn,SAO MIGUEL/RN,DONO CIDADE - LOJAS,ativacao,2026-02-01,147
 sao-miguel-rn,SAO MIGUEL/RN,DONO CIDADE - LOJAS,instalacao,2026-02-01,42
+sao-miguel-rn,SAO MIGUEL/RN,PAP,ativacao,2026-02-01,30
+sao-miguel-rn,SAO MIGUEL/RN,PAP,orcamento,2026-02-01,65
+sao-miguel-rn,SAO MIGUEL/RN,PAP,efetivado,2026-02-01,59
+sao-miguel-rn,SAO MIGUEL/RN,PAP,instalacao,2026-02-01,53
 senador-pompeu-ce,SENADOR POMPEU/CE,LOJA,ativacao,2026-02-01,96
 senador-pompeu-ce,SENADOR POMPEU/CE,LOJA,instalacao,2026-02-01,36
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,ativacao,2026-02-01,20
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,orcamento,2026-02-01,44
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,efetivado,2026-02-01,40
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,instalacao,2026-02-01,36
-serra-talhada-pe,SERRA TALHADA / PE,PAP,ativacao,2026-02-01,0
-serra-talhada-pe,SERRA TALHADA / PE,PAP,orcamento,2026-02-01,102
-serra-talhada-pe,SERRA TALHADA / PE,PAP,efetivado,2026-02-01,90
-serra-talhada-pe,SERRA TALHADA / PE,PAP,instalacao,2026-02-01,84
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,ativacao,2026-02-01,56
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,instalacao,2026-02-01,34
-sobral-ce,SOBRAL / CE,PAP,ativacao,2026-02-01,0
-sobral-ce,SOBRAL / CE,PAP,orcamento,2026-02-01,351
-sobral-ce,SOBRAL / CE,PAP,efetivado,2026-02-01,306
-sobral-ce,SOBRAL / CE,PAP,instalacao,2026-02-01,288
+serra-talhada-pe,SERRA TALHADA/PE,PAP,ativacao,2026-02-01,0
+serra-talhada-pe,SERRA TALHADA/PE,PAP,orcamento,2026-02-01,102
+serra-talhada-pe,SERRA TALHADA/PE,PAP,efetivado,2026-02-01,90
+serra-talhada-pe,SERRA TALHADA/PE,PAP,instalacao,2026-02-01,84
 sobral-ce,SOBRAL/CE,4 J LOJAS,ativacao,2026-02-01,15
 sobral-ce,SOBRAL/CE,4 J LOJAS,instalacao,2026-02-01,8
 sobral-ce,SOBRAL/CE,LOJA,ativacao,2026-02-01,153
 sobral-ce,SOBRAL/CE,LOJA,instalacao,2026-02-01,62
-sousa-pb,SOUSA / PB,PAP,ativacao,2026-02-01,0
-sousa-pb,SOUSA / PB,PAP,orcamento,2026-02-01,102
-sousa-pb,SOUSA / PB,PAP,efetivado,2026-02-01,90
-sousa-pb,SOUSA / PB,PAP,instalacao,2026-02-01,84
+sobral-ce,SOBRAL/CE,PAP,ativacao,2026-02-01,0
+sobral-ce,SOBRAL/CE,PAP,orcamento,2026-02-01,312
+sobral-ce,SOBRAL/CE,PAP,efetivado,2026-02-01,272
+sobral-ce,SOBRAL/CE,PAP,instalacao,2026-02-01,256
 sousa-pb,SOUSA/PB,LOJA,ativacao,2026-02-01,147
 sousa-pb,SOUSA/PB,LOJA,instalacao,2026-02-01,60
+sousa-pb,SOUSA/PB,PAP,ativacao,2026-02-01,0
+sousa-pb,SOUSA/PB,PAP,orcamento,2026-02-01,102
+sousa-pb,SOUSA/PB,PAP,efetivado,2026-02-01,90
+sousa-pb,SOUSA/PB,PAP,instalacao,2026-02-01,84
 surubim-pe,SURUBIM/PE,LOJA,instalacao,2026-02-01,18
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,ativacao,2026-02-01,20
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,orcamento,2026-02-01,44
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,efetivado,2026-02-01,40
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,instalacao,2026-02-01,36
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,LOJA,ativacao,2026-02-01,110
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,LOJA,instalacao,2026-02-01,32
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,ativacao,2026-02-01,20
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,orcamento,2026-02-01,44
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,efetivado,2026-02-01,40
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,instalacao,2026-02-01,36
 taua-ce,TAUA/CE,LOJA,ativacao,2026-02-01,96
 taua-ce,TAUA/CE,LOJA,instalacao,2026-02-01,40
 taua-ce,TAUA/CE,PAP,ativacao,2026-02-01,20
 taua-ce,TAUA/CE,PAP,orcamento,2026-02-01,44
 taua-ce,TAUA/CE,PAP,efetivado,2026-02-01,40
 taua-ce,TAUA/CE,PAP,instalacao,2026-02-01,36
-teresina-pi,TERESINA / PI,PAP,ativacao,2026-02-01,0
-teresina-pi,TERESINA / PI,PAP,orcamento,2026-02-01,863
-teresina-pi,TERESINA / PI,PAP,efetivado,2026-02-01,755
-teresina-pi,TERESINA / PI,PAP,instalacao,2026-02-01,710
 teresina-pi,TERESINA/PI,LOJA,ativacao,2026-02-01,88
 teresina-pi,TERESINA/PI,LOJA,instalacao,2026-02-01,48
+teresina-pi,TERESINA/PI,PAP,ativacao,2026-02-01,0
+teresina-pi,TERESINA/PI,PAP,orcamento,2026-02-01,785
+teresina-pi,TERESINA/PI,PAP,efetivado,2026-02-01,687
+teresina-pi,TERESINA/PI,PAP,instalacao,2026-02-01,646
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,84
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,32
 tiangua-ce,TIANGUA/CE,PAP,ativacao,2026-02-01,0
 tiangua-ce,TIANGUA/CE,PAP,orcamento,2026-02-01,68
 tiangua-ce,TIANGUA/CE,PAP,efetivado,2026-02-01,60
 tiangua-ce,TIANGUA/CE,PAP,instalacao,2026-02-01,56
-timon-ma,TIMON / MA,PAP,ativacao,2026-02-01,0
-timon-ma,TIMON / MA,PAP,orcamento,2026-02-01,341
-timon-ma,TIMON / MA,PAP,efetivado,2026-02-01,298
-timon-ma,TIMON / MA,PAP,instalacao,2026-02-01,280
 timon-ma,TIMON/MA,LOJA,ativacao,2026-02-01,60
 timon-ma,TIMON/MA,LOJA,instalacao,2026-02-01,30
+timon-ma,TIMON/MA,PAP,ativacao,2026-02-01,0
+timon-ma,TIMON/MA,PAP,orcamento,2026-02-01,263
+timon-ma,TIMON/MA,PAP,efetivado,2026-02-01,230
+timon-ma,TIMON/MA,PAP,instalacao,2026-02-01,216
 tobias-barreto-se,TOBIAS BARRETO/SE,LOJA,instalacao,2026-02-01,24
-toritama-pe,TORITAMA / PE,PAP,ativacao,2026-02-01,0
-toritama-pe,TORITAMA / PE,PAP,orcamento,2026-02-01,136
-toritama-pe,TORITAMA / PE,PAP,efetivado,2026-02-01,120
-toritama-pe,TORITAMA / PE,PAP,instalacao,2026-02-01,112
 toritama-pe,TORITAMA/PE,LOJA,ativacao,2026-02-01,18
 toritama-pe,TORITAMA/PE,LOJA,instalacao,2026-02-01,10
+toritama-pe,TORITAMA/PE,PAP,ativacao,2026-02-01,0
+toritama-pe,TORITAMA/PE,PAP,orcamento,2026-02-01,136
+toritama-pe,TORITAMA/PE,PAP,efetivado,2026-02-01,120
+toritama-pe,TORITAMA/PE,PAP,instalacao,2026-02-01,112
 ubajara-ce,UBAJARA/CE,DONO CIDADE - LOJAS,ativacao,2026-02-01,56
 ubajara-ce,UBAJARA/CE,DONO CIDADE - LOJAS,instalacao,2026-02-01,20
 ubajara-ce,UBAJARA/CE,PAP,ativacao,2026-02-01,10
@@ -1332,10 +1304,6 @@ uirauna-pb,UIRAUNA/PB,PAP,ativacao,2026-02-01,10
 uirauna-pb,UIRAUNA/PB,PAP,orcamento,2026-02-01,22
 uirauna-pb,UIRAUNA/PB,PAP,efetivado,2026-02-01,20
 uirauna-pb,UIRAUNA/PB,PAP,instalacao,2026-02-01,18
-umarizal-rn,UMARIZAL / RN,PAP,ativacao,2026-02-01,10
-umarizal-rn,UMARIZAL / RN,PAP,orcamento,2026-02-01,22
-umarizal-rn,UMARIZAL / RN,PAP,efetivado,2026-02-01,20
-umarizal-rn,UMARIZAL / RN,PAP,instalacao,2026-02-01,18
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,ativacao,2026-02-01,35
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,instalacao,2026-02-01,8
 varzea-alegre-ce,VARZEA ALEGRE/CE,LOJA,ativacao,2026-02-01,114
@@ -1362,10 +1330,6 @@ acu-rn,ACU/RN,DONO CIDADE - LOJAS,ativacao,2026-03-01,66
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,instalacao,2026-03-01,42
 acu-rn,ACU/RN,LOJA,ativacao,2026-03-01,22
 acu-rn,ACU/RN,LOJA,instalacao,2026-03-01,14
-acu-rn,ACU/RN,PAP,ativacao,2026-03-01,30
-acu-rn,ACU/RN,PAP,orcamento,2026-03-01,44
-acu-rn,ACU/RN,PAP,efetivado,2026-03-01,40
-acu-rn,ACU/RN,PAP,instalacao,2026-03-01,36
 agua-nova-rn,AGUA NOVA/RN,PAP,ativacao,2026-03-01,30
 agua-nova-rn,AGUA NOVA/RN,PAP,orcamento,2026-03-01,14
 agua-nova-rn,AGUA NOVA/RN,PAP,efetivado,2026-03-01,13
@@ -1377,16 +1341,16 @@ araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-03-01,30
 araripina-pe,ARARIPINA/PE,PAP,orcamento,2026-03-01,48
 araripina-pe,ARARIPINA/PE,PAP,efetivado,2026-03-01,44
 araripina-pe,ARARIPINA/PE,PAP,instalacao,2026-03-01,40
-arcoverde-pe,ARCOVERDE / PE,PAP,ativacao,2026-03-01,45
-arcoverde-pe,ARCOVERDE / PE,PAP,orcamento,2026-03-01,72
-arcoverde-pe,ARCOVERDE / PE,PAP,efetivado,2026-03-01,66
-arcoverde-pe,ARCOVERDE / PE,PAP,instalacao,2026-03-01,60
 arcoverde-pe,ARCOVERDE/PE,LOJA,ativacao,2026-03-01,13
 arcoverde-pe,ARCOVERDE/PE,LOJA,instalacao,2026-03-01,6
-assu-rn,ASSU / RN,PAP,ativacao,2026-03-01,15
-assu-rn,ASSU / RN,PAP,orcamento,2026-03-01,22
-assu-rn,ASSU / RN,PAP,efetivado,2026-03-01,20
-assu-rn,ASSU / RN,PAP,instalacao,2026-03-01,18
+arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-03-01,30
+arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-03-01,48
+arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-03-01,44
+arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-03-01,40
+assu-rn,ASSU/RN,PAP,ativacao,2026-03-01,30
+assu-rn,ASSU/RN,PAP,orcamento,2026-03-01,44
+assu-rn,ASSU/RN,PAP,efetivado,2026-03-01,40
+assu-rn,ASSU/RN,PAP,instalacao,2026-03-01,36
 banabuiu-ce,BANABUIU/CE,LOJA,ativacao,2026-03-01,52
 banabuiu-ce,BANABUIU/CE,LOJA,instalacao,2026-03-01,24
 barauna-rn,BARAUNA/RN,LOJA,ativacao,2026-03-01,26
@@ -1403,12 +1367,12 @@ bayeux-pb,BAYEUX/PB,PAP,ativacao,2026-03-01,0
 bayeux-pb,BAYEUX/PB,PAP,orcamento,2026-03-01,180
 bayeux-pb,BAYEUX/PB,PAP,efetivado,2026-03-01,160
 bayeux-pb,BAYEUX/PB,PAP,instalacao,2026-03-01,150
-belo-jardim-pe,BELO JARDIM / PE,PAP,ativacao,2026-03-01,15
-belo-jardim-pe,BELO JARDIM / PE,PAP,orcamento,2026-03-01,24
-belo-jardim-pe,BELO JARDIM / PE,PAP,efetivado,2026-03-01,22
-belo-jardim-pe,BELO JARDIM / PE,PAP,instalacao,2026-03-01,20
 belo-jardim-pe,BELO JARDIM/PE,LOJA,ativacao,2026-03-01,52
 belo-jardim-pe,BELO JARDIM/PE,LOJA,instalacao,2026-03-01,24
+belo-jardim-pe,BELO JARDIM/PE,PAP,ativacao,2026-03-01,15
+belo-jardim-pe,BELO JARDIM/PE,PAP,orcamento,2026-03-01,24
+belo-jardim-pe,BELO JARDIM/PE,PAP,efetivado,2026-03-01,22
+belo-jardim-pe,BELO JARDIM/PE,PAP,instalacao,2026-03-01,20
 bezerros-pe,BEZERROS/PE,LOJA,ativacao,2026-03-01,26
 bezerros-pe,BEZERROS/PE,LOJA,instalacao,2026-03-01,12
 bezerros-pe,BEZERROS/PE,PAP,ativacao,2026-03-01,30
@@ -1425,12 +1389,12 @@ brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,ativacao,2026-03-01,15
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,orcamento,2026-03-01,22
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,efetivado,2026-03-01,20
 brejo-santo-ce,BREJO SANTO/CE,QUIOSQUES,instalacao,2026-03-01,18
-cabedelo-pb,CABEDELO / PB,PAP,ativacao,2026-03-01,0
-cabedelo-pb,CABEDELO / PB,PAP,orcamento,2026-03-01,108
-cabedelo-pb,CABEDELO / PB,PAP,efetivado,2026-03-01,96
-cabedelo-pb,CABEDELO / PB,PAP,instalacao,2026-03-01,90
 cabedelo-pb,CABEDELO/PB,LOJA,ativacao,2026-03-01,52
 cabedelo-pb,CABEDELO/PB,LOJA,instalacao,2026-03-01,24
+cabedelo-pb,CABEDELO/PB,PAP,ativacao,2026-03-01,0
+cabedelo-pb,CABEDELO/PB,PAP,orcamento,2026-03-01,108
+cabedelo-pb,CABEDELO/PB,PAP,efetivado,2026-03-01,96
+cabedelo-pb,CABEDELO/PB,PAP,instalacao,2026-03-01,90
 caico-rn,CAICO/RN,LOJA,ativacao,2026-03-01,52
 caico-rn,CAICO/RN,LOJA,instalacao,2026-03-01,24
 caico-rn,CAICO/RN,PAP,ativacao,2026-03-01,15
@@ -1444,30 +1408,30 @@ cajazeiras-pb,CAJAZEIRAS/PB,PAP,orcamento,2026-03-01,44
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,efetivado,2026-03-01,40
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,instalacao,2026-03-01,36
 camocim-ce,CAMOCIM/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,90
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,ativacao,2026-03-01,0
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,orcamento,2026-03-01,328
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,efetivado,2026-03-01,287
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,instalacao,2026-03-01,270
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,ativacao,2026-03-01,66
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,instalacao,2026-03-01,42
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,ativacao,2026-03-01,0
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,orcamento,2026-03-01,234
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,efetivado,2026-03-01,204
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,instalacao,2026-03-01,192
 caninde-ce,CANINDE/CE,LOJA,ativacao,2026-03-01,44
 caninde-ce,CANINDE/CE,LOJA,instalacao,2026-03-01,28
 caninde-ce,CANINDE/CE,PAP,ativacao,2026-03-01,65
 caninde-ce,CANINDE/CE,PAP,orcamento,2026-03-01,95
 caninde-ce,CANINDE/CE,PAP,efetivado,2026-03-01,87
 caninde-ce,CANINDE/CE,PAP,instalacao,2026-03-01,78
-caruaru-pe,CARUARU / PE,PAP,ativacao,2026-03-01,0
-caruaru-pe,CARUARU / PE,PAP,orcamento,2026-03-01,474
-caruaru-pe,CARUARU / PE,PAP,efetivado,2026-03-01,413
-caruaru-pe,CARUARU / PE,PAP,instalacao,2026-03-01,389
 caruaru-pe,CARUARU/PE,LOJA,ativacao,2026-03-01,22
 caruaru-pe,CARUARU/PE,LOJA,instalacao,2026-03-01,14
-cascavel-ce,CASCAVEL / CE,PAP,ativacao,2026-03-01,60
-cascavel-ce,CASCAVEL / CE,PAP,orcamento,2026-03-01,88
-cascavel-ce,CASCAVEL / CE,PAP,efetivado,2026-03-01,80
-cascavel-ce,CASCAVEL / CE,PAP,instalacao,2026-03-01,72
+caruaru-pe,CARUARU/PE,PAP,ativacao,2026-03-01,0
+caruaru-pe,CARUARU/PE,PAP,orcamento,2026-03-01,257
+caruaru-pe,CARUARU/PE,PAP,efetivado,2026-03-01,224
+caruaru-pe,CARUARU/PE,PAP,instalacao,2026-03-01,211
 cascavel-ce,CASCAVEL/CE,LOJA,ativacao,2026-03-01,52
 cascavel-ce,CASCAVEL/CE,LOJA,instalacao,2026-03-01,24
+cascavel-ce,CASCAVEL/CE,PAP,ativacao,2026-03-01,60
+cascavel-ce,CASCAVEL/CE,PAP,orcamento,2026-03-01,88
+cascavel-ce,CASCAVEL/CE,PAP,efetivado,2026-03-01,80
+cascavel-ce,CASCAVEL/CE,PAP,instalacao,2026-03-01,72
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,LOJA,ativacao,2026-03-01,52
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,LOJA,instalacao,2026-03-01,24
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,PAP,ativacao,2026-03-01,30
@@ -1482,12 +1446,12 @@ caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-03-01,204
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-03-01,192
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,ativacao,2026-03-01,70
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,instalacao,2026-03-01,15
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-03-01,30
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-03-01,48
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-03-01,44
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-03-01,40
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-03-01,44
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-03-01,28
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-03-01,30
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-03-01,48
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-03-01,44
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-03-01,40
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-03-01,52
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-03-01,24
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-03-01,15
@@ -1514,10 +1478,6 @@ crato-ce,CRATO/CE,PAP,ativacao,2026-03-01,0
 crato-ce,CRATO/CE,PAP,orcamento,2026-03-01,136
 crato-ce,CRATO/CE,PAP,efetivado,2026-03-01,120
 crato-ce,CRATO/CE,PAP,instalacao,2026-03-01,112
-custodia-pe,CUSTODIA / PE,PAP,ativacao,2026-03-01,15
-custodia-pe,CUSTODIA / PE,PAP,orcamento,2026-03-01,22
-custodia-pe,CUSTODIA / PE,PAP,efetivado,2026-03-01,20
-custodia-pe,CUSTODIA / PE,PAP,instalacao,2026-03-01,18
 custodia-pe,CUSTODIA/PE,LOJA,ativacao,2026-03-01,52
 custodia-pe,CUSTODIA/PE,LOJA,instalacao,2026-03-01,24
 encanto-rn,ENCANTO/RN,PAP,ativacao,2026-03-01,30
@@ -1527,49 +1487,45 @@ encanto-rn,ENCANTO/RN,PAP,instalacao,2026-03-01,10
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-03-01,52
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-03-01,24
 eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-03-01,0
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-03-01,72
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-03-01,64
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-03-01,60
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-03-01,108
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-03-01,96
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-03-01,90
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-03-01,60
 extremoz-rn,EXTREMOZ/RN,PAP,orcamento,2026-03-01,96
 extremoz-rn,EXTREMOZ/RN,PAP,efetivado,2026-03-01,88
 extremoz-rn,EXTREMOZ/RN,PAP,instalacao,2026-03-01,80
-fortaleza-ce,FORTALEZA / CE,NGC,ativacao,2026-03-01,0
-fortaleza-ce,FORTALEZA / CE,NGC,orcamento,2026-03-01,249
-fortaleza-ce,FORTALEZA / CE,NGC,efetivado,2026-03-01,216
-fortaleza-ce,FORTALEZA / CE,NGC,instalacao,2026-03-01,204
-fortaleza-ce,FORTALEZA / CE,PAP,ativacao,2026-03-01,0
-fortaleza-ce,FORTALEZA / CE,PAP,orcamento,2026-03-01,1516
-fortaleza-ce,FORTALEZA / CE,PAP,efetivado,2026-03-01,1321
-fortaleza-ce,FORTALEZA / CE,PAP,instalacao,2026-03-01,1244
 fortaleza-ce,FORTALEZA/CE,LOJA,ativacao,2026-03-01,88
 fortaleza-ce,FORTALEZA/CE,LOJA,instalacao,2026-03-01,56
+fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-03-01,0
+fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-03-01,210
+fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-03-01,182
+fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-03-01,172
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-03-01,0
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-03-01,1199
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-03-01,1045
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-03-01,984
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,ativacao,2026-03-01,560
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,instalacao,2026-03-01,120
-gravata-pe,GRAVATA / PE,PAP,ativacao,2026-03-01,60
-gravata-pe,GRAVATA / PE,PAP,orcamento,2026-03-01,88
-gravata-pe,GRAVATA / PE,PAP,efetivado,2026-03-01,80
-gravata-pe,GRAVATA / PE,PAP,instalacao,2026-03-01,72
 gravata-pe,GRAVATA/PE,LOJA,ativacao,2026-03-01,52
 gravata-pe,GRAVATA/PE,LOJA,instalacao,2026-03-01,24
+gravata-pe,GRAVATA/PE,PAP,ativacao,2026-03-01,45
+gravata-pe,GRAVATA/PE,PAP,orcamento,2026-03-01,66
+gravata-pe,GRAVATA/PE,PAP,efetivado,2026-03-01,60
+gravata-pe,GRAVATA/PE,PAP,instalacao,2026-03-01,54
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,ativacao,2026-03-01,15
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,orcamento,2026-03-01,24
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,efetivado,2026-03-01,22
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,instalacao,2026-03-01,20
-horizonte-ce,HORIZONTE / CE,PAP,ativacao,2026-03-01,0
-horizonte-ce,HORIZONTE / CE,PAP,orcamento,2026-03-01,170
-horizonte-ce,HORIZONTE / CE,PAP,efetivado,2026-03-01,150
-horizonte-ce,HORIZONTE / CE,PAP,instalacao,2026-03-01,140
 horizonte-ce,HORIZONTE/CE,LOJA,ativacao,2026-03-01,66
 horizonte-ce,HORIZONTE/CE,LOJA,instalacao,2026-03-01,42
+horizonte-ce,HORIZONTE/CE,PAP,ativacao,2026-03-01,0
+horizonte-ce,HORIZONTE/CE,PAP,orcamento,2026-03-01,136
+horizonte-ce,HORIZONTE/CE,PAP,efetivado,2026-03-01,120
+horizonte-ce,HORIZONTE/CE,PAP,instalacao,2026-03-01,112
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,26
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,12
-ico-ce,ICO / CE,PAP,ativacao,2026-03-01,30
-ico-ce,ICO / CE,PAP,orcamento,2026-03-01,44
-ico-ce,ICO / CE,PAP,efetivado,2026-03-01,40
-ico-ce,ICO / CE,PAP,instalacao,2026-03-01,36
 ico-ce,ICO/CE,LOJA,ativacao,2026-03-01,66
 ico-ce,ICO/CE,LOJA,instalacao,2026-03-01,42
 iguatu-ce,IGUATU/CE,LOJA,ativacao,2026-03-01,66
@@ -1578,32 +1534,28 @@ iguatu-ce,IGUATU/CE,PAP,ativacao,2026-03-01,0
 iguatu-ce,IGUATU/CE,PAP,orcamento,2026-03-01,144
 iguatu-ce,IGUATU/CE,PAP,efetivado,2026-03-01,128
 iguatu-ce,IGUATU/CE,PAP,instalacao,2026-03-01,120
-ipu-ce,IPU / CE,PAP,ativacao,2026-03-01,45
-ipu-ce,IPU / CE,PAP,orcamento,2026-03-01,72
-ipu-ce,IPU / CE,PAP,efetivado,2026-03-01,66
-ipu-ce,IPU / CE,PAP,instalacao,2026-03-01,60
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
+ipu-ce,IPU/CE,PAP,ativacao,2026-03-01,30
+ipu-ce,IPU/CE,PAP,orcamento,2026-03-01,48
+ipu-ce,IPU/CE,PAP,efetivado,2026-03-01,44
+ipu-ce,IPU/CE,PAP,instalacao,2026-03-01,40
 iracema-ce,IRACEMA/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 iracema-ce,IRACEMA/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
 iracema-ce,IRACEMA/CE,PAP,ativacao,2026-03-01,15
 iracema-ce,IRACEMA/CE,PAP,orcamento,2026-03-01,18
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-03-01,16
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-03-01,15
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-03-01,0
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-03-01,36
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-03-01,32
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-03-01,30
 itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-03-01,35
 itapaje-ce,ITAPAJE/CE,PAP,orcamento,2026-03-01,51
 itapaje-ce,ITAPAJE/CE,PAP,efetivado,2026-03-01,47
 itapaje-ce,ITAPAJE/CE,PAP,instalacao,2026-03-01,42
-itapipoca-ce,ITAPIPOCA / CE,PAP,ativacao,2026-03-01,90
-itapipoca-ce,ITAPIPOCA / CE,PAP,orcamento,2026-03-01,144
-itapipoca-ce,ITAPIPOCA / CE,PAP,efetivado,2026-03-01,132
-itapipoca-ce,ITAPIPOCA / CE,PAP,instalacao,2026-03-01,120
 itapipoca-ce,ITAPIPOCA/CE,LOJA,ativacao,2026-03-01,78
 itapipoca-ce,ITAPIPOCA/CE,LOJA,instalacao,2026-03-01,36
+itapipoca-ce,ITAPIPOCA/CE,PAP,ativacao,2026-03-01,60
+itapipoca-ce,ITAPIPOCA/CE,PAP,orcamento,2026-03-01,96
+itapipoca-ce,ITAPIPOCA/CE,PAP,efetivado,2026-03-01,88
+itapipoca-ce,ITAPIPOCA/CE,PAP,instalacao,2026-03-01,80
 jaguaretama-ce,JAGUARETAMA/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 jaguaretama-ce,JAGUARETAMA/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
 jaguaretama-ce,JAGUARETAMA/CE,PAP,ativacao,2026-03-01,15
@@ -1620,66 +1572,66 @@ jaguaribe-ce,JAGUARIBE/CE,PAP,ativacao,2026-03-01,45
 jaguaribe-ce,JAGUARIBE/CE,PAP,orcamento,2026-03-01,54
 jaguaribe-ce,JAGUARIBE/CE,PAP,efetivado,2026-03-01,48
 jaguaribe-ce,JAGUARIBE/CE,PAP,instalacao,2026-03-01,45
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,ativacao,2026-03-01,0
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,orcamento,2026-03-01,317
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,efetivado,2026-03-01,277
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,instalacao,2026-03-01,261
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,ativacao,2026-03-01,0
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,orcamento,2026-03-01,738
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,efetivado,2026-03-01,644
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,instalacao,2026-03-01,606
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,ativacao,2026-03-01,88
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,instalacao,2026-03-01,56
-juazeiro-ba,JUAZEIRO / BA,PAP,ativacao,2026-03-01,0
-juazeiro-ba,JUAZEIRO / BA,PAP,orcamento,2026-03-01,262
-juazeiro-ba,JUAZEIRO / BA,PAP,efetivado,2026-03-01,228
-juazeiro-ba,JUAZEIRO / BA,PAP,instalacao,2026-03-01,215
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,ativacao,2026-03-01,0
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,orcamento,2026-03-01,432
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,efetivado,2026-03-01,384
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,instalacao,2026-03-01,360
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,ativacao,2026-03-01,0
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,orcamento,2026-03-01,278
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,efetivado,2026-03-01,243
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,instalacao,2026-03-01,229
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-03-01,0
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-03-01,660
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-03-01,576
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-03-01,542
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-03-01,176
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,instalacao,2026-03-01,112
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,ativacao,2026-03-01,0
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,orcamento,2026-03-01,396
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,efetivado,2026-03-01,352
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,instalacao,2026-03-01,330
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,ativacao,2026-03-01,26
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,instalacao,2026-03-01,12
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,ativacao,2026-03-01,30
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,orcamento,2026-03-01,36
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,efetivado,2026-03-01,32
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,instalacao,2026-03-01,30
+juazeiro-ba,JUAZEIRO/BA,PAP,ativacao,2026-03-01,0
+juazeiro-ba,JUAZEIRO/BA,PAP,orcamento,2026-03-01,223
+juazeiro-ba,JUAZEIRO/BA,PAP,efetivado,2026-03-01,194
+juazeiro-ba,JUAZEIRO/BA,PAP,instalacao,2026-03-01,183
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,ativacao,2026-03-01,52
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,instalacao,2026-03-01,24
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,ativacao,2026-03-01,45
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,orcamento,2026-03-01,66
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,efetivado,2026-03-01,60
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE / CE,PAP,instalacao,2026-03-01,54
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-03-01,15
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-03-01,18
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-03-01,16
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-03-01,15
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,78
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,36
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,ativacao,2026-03-01,30
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,orcamento,2026-03-01,44
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,efetivado,2026-03-01,40
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,instalacao,2026-03-01,36
 macaiba-rn,MACAIBA/RN,LOJA,ativacao,2026-03-01,22
 macaiba-rn,MACAIBA/RN,LOJA,instalacao,2026-03-01,14
 macaiba-rn,MACAIBA/RN,PAP,ativacao,2026-03-01,50
 macaiba-rn,MACAIBA/RN,PAP,orcamento,2026-03-01,118
 macaiba-rn,MACAIBA/RN,PAP,efetivado,2026-03-01,107
 macaiba-rn,MACAIBA/RN,PAP,instalacao,2026-03-01,98
-macau-rn,MACAU / RN,PAP,ativacao,2026-03-01,9
-macau-rn,MACAU / RN,PAP,orcamento,2026-03-01,15
-macau-rn,MACAU / RN,PAP,efetivado,2026-03-01,14
-macau-rn,MACAU / RN,PAP,instalacao,2026-03-01,13
-macau-rn,MACAU / RN,QUIOSQUES,ativacao,2026-03-01,20
-macau-rn,MACAU / RN,QUIOSQUES,orcamento,2026-03-01,36
-macau-rn,MACAU / RN,QUIOSQUES,efetivado,2026-03-01,32
-macau-rn,MACAU / RN,QUIOSQUES,instalacao,2026-03-01,30
+macau-rn,MACAU/RN,PAP,ativacao,2026-03-01,9
+macau-rn,MACAU/RN,PAP,orcamento,2026-03-01,15
+macau-rn,MACAU/RN,PAP,efetivado,2026-03-01,14
+macau-rn,MACAU/RN,PAP,instalacao,2026-03-01,13
+macau-rn,MACAU/RN,QUIOSQUES,ativacao,2026-03-01,20
+macau-rn,MACAU/RN,QUIOSQUES,orcamento,2026-03-01,36
+macau-rn,MACAU/RN,QUIOSQUES,efetivado,2026-03-01,32
+macau-rn,MACAU/RN,QUIOSQUES,instalacao,2026-03-01,30
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
 major-sales-rn,MAJOR SALES/RN,PAP,ativacao,2026-03-01,30
 major-sales-rn,MAJOR SALES/RN,PAP,orcamento,2026-03-01,12
 major-sales-rn,MAJOR SALES/RN,PAP,efetivado,2026-03-01,11
 major-sales-rn,MAJOR SALES/RN,PAP,instalacao,2026-03-01,10
-maracanau-ce,MARACANAU / CE,PAP,ativacao,2026-03-01,0
-maracanau-ce,MARACANAU / CE,PAP,orcamento,2026-03-01,234
-maracanau-ce,MARACANAU / CE,PAP,efetivado,2026-03-01,204
-maracanau-ce,MARACANAU / CE,PAP,instalacao,2026-03-01,192
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-03-01,104
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-03-01,48
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-03-01,0
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-03-01,195
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-03-01,170
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-03-01,160
 maracanau-ce,MARACANAU/CE,QUIOSQUES,ativacao,2026-03-01,0
 maracanau-ce,MARACANAU/CE,QUIOSQUES,orcamento,2026-03-01,39
 maracanau-ce,MARACANAU/CE,QUIOSQUES,efetivado,2026-03-01,34
@@ -1687,9 +1639,9 @@ maracanau-ce,MARACANAU/CE,QUIOSQUES,instalacao,2026-03-01,32
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-03-01,44
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-03-01,28
 maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-03-01,0
-maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-03-01,195
-maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-03-01,170
-maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-03-01,160
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-03-01,156
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-03-01,136
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-03-01,128
 milagres-ce,MILAGRES/CE,LOJA,ativacao,2026-03-01,52
 milagres-ce,MILAGRES/CE,LOJA,instalacao,2026-03-01,24
 milagres-ce,MILAGRES/CE,PAP,ativacao,2026-03-01,6
@@ -1714,26 +1666,22 @@ morada-nova-ce,MORADA NOVA/CE,PAP,ativacao,2026-03-01,30
 morada-nova-ce,MORADA NOVA/CE,PAP,orcamento,2026-03-01,44
 morada-nova-ce,MORADA NOVA/CE,PAP,efetivado,2026-03-01,40
 morada-nova-ce,MORADA NOVA/CE,PAP,instalacao,2026-03-01,36
-mossoro-rn,MOSSORO / RN,PAP,ativacao,2026-03-01,0
-mossoro-rn,MOSSORO / RN,PAP,orcamento,2026-03-01,273
-mossoro-rn,MOSSORO / RN,PAP,efetivado,2026-03-01,238
-mossoro-rn,MOSSORO / RN,PAP,instalacao,2026-03-01,224
 mossoro-rn,MOSSORO/RN,LOJA,ativacao,2026-03-01,66
 mossoro-rn,MOSSORO/RN,LOJA,instalacao,2026-03-01,42
-mucambo-ce,MUCAMBO/CE,PAP,ativacao,2026-03-01,2
-mucambo-ce,MUCAMBO/CE,PAP,orcamento,2026-03-01,4
-mucambo-ce,MUCAMBO/CE,PAP,efetivado,2026-03-01,3
-mucambo-ce,MUCAMBO/CE,PAP,instalacao,2026-03-01,3
-natal-rn,NATAL / RN,NGC,ativacao,2026-03-01,0
-natal-rn,NATAL / RN,NGC,orcamento,2026-03-01,383
-natal-rn,NATAL / RN,NGC,efetivado,2026-03-01,334
-natal-rn,NATAL / RN,NGC,instalacao,2026-03-01,314
-natal-rn,NATAL / RN,PAP,ativacao,2026-03-01,0
-natal-rn,NATAL / RN,PAP,orcamento,2026-03-01,702
-natal-rn,NATAL / RN,PAP,efetivado,2026-03-01,612
-natal-rn,NATAL / RN,PAP,instalacao,2026-03-01,576
+mossoro-rn,MOSSORO/RN,PAP,ativacao,2026-03-01,0
+mossoro-rn,MOSSORO/RN,PAP,orcamento,2026-03-01,195
+mossoro-rn,MOSSORO/RN,PAP,efetivado,2026-03-01,170
+mossoro-rn,MOSSORO/RN,PAP,instalacao,2026-03-01,160
 natal-rn,NATAL/RN,LOJA,ativacao,2026-03-01,154
 natal-rn,NATAL/RN,LOJA,instalacao,2026-03-01,98
+natal-rn,NATAL/RN,NGC,ativacao,2026-03-01,0
+natal-rn,NATAL/RN,NGC,orcamento,2026-03-01,383
+natal-rn,NATAL/RN,NGC,efetivado,2026-03-01,334
+natal-rn,NATAL/RN,NGC,instalacao,2026-03-01,314
+natal-rn,NATAL/RN,PAP,ativacao,2026-03-01,0
+natal-rn,NATAL/RN,PAP,orcamento,2026-03-01,663
+natal-rn,NATAL/RN,PAP,efetivado,2026-03-01,578
+natal-rn,NATAL/RN,PAP,instalacao,2026-03-01,544
 natal-rn,NATAL/RN,QUIOSQUE LOJA,ativacao,2026-03-01,210
 natal-rn,NATAL/RN,QUIOSQUE LOJA,instalacao,2026-03-01,45
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,ativacao,2026-03-01,15
@@ -1752,36 +1700,36 @@ ouricuri-pe,OURICURI/PE,PAP,ativacao,2026-03-01,30
 ouricuri-pe,OURICURI/PE,PAP,orcamento,2026-03-01,48
 ouricuri-pe,OURICURI/PE,PAP,efetivado,2026-03-01,44
 ouricuri-pe,OURICURI/PE,PAP,instalacao,2026-03-01,40
-pacajus-ce,PACAJUS / CE,PAP,ativacao,2026-03-01,0
-pacajus-ce,PACAJUS / CE,PAP,orcamento,2026-03-01,79
-pacajus-ce,PACAJUS / CE,PAP,efetivado,2026-03-01,71
-pacajus-ce,PACAJUS / CE,PAP,instalacao,2026-03-01,66
 pacajus-ce,PACAJUS/CE,LOJA,ativacao,2026-03-01,22
 pacajus-ce,PACAJUS/CE,LOJA,instalacao,2026-03-01,14
+pacajus-ce,PACAJUS/CE,PAP,ativacao,2026-03-01,0
+pacajus-ce,PACAJUS/CE,PAP,orcamento,2026-03-01,45
+pacajus-ce,PACAJUS/CE,PAP,efetivado,2026-03-01,41
+pacajus-ce,PACAJUS/CE,PAP,instalacao,2026-03-01,38
 paraipaba-ce,PARAIPABA/CE,LOJA,ativacao,2026-03-01,26
 paraipaba-ce,PARAIPABA/CE,LOJA,instalacao,2026-03-01,12
 paraipaba-ce,PARAIPABA/CE,PAP,ativacao,2026-03-01,45
 paraipaba-ce,PARAIPABA/CE,PAP,orcamento,2026-03-01,72
 paraipaba-ce,PARAIPABA/CE,PAP,efetivado,2026-03-01,66
 paraipaba-ce,PARAIPABA/CE,PAP,instalacao,2026-03-01,60
-parnaiba-pi,PARNAIBA / PI,PAP,ativacao,2026-03-01,0
-parnaiba-pi,PARNAIBA / PI,PAP,orcamento,2026-03-01,362
-parnaiba-pi,PARNAIBA / PI,PAP,efetivado,2026-03-01,317
-parnaiba-pi,PARNAIBA / PI,PAP,instalacao,2026-03-01,298
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,ativacao,2026-03-01,44
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,instalacao,2026-03-01,28
+parnaiba-pi,PARNAIBA/PI,PAP,ativacao,2026-03-01,0
+parnaiba-pi,PARNAIBA/PI,PAP,orcamento,2026-03-01,323
+parnaiba-pi,PARNAIBA/PI,PAP,efetivado,2026-03-01,283
+parnaiba-pi,PARNAIBA/PI,PAP,instalacao,2026-03-01,266
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,ativacao,2026-03-01,110
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,instalacao,2026-03-01,70
 parnamirim-rn,PARNAMIRIM/RN,PAP,ativacao,2026-03-01,0
 parnamirim-rn,PARNAMIRIM/RN,PAP,orcamento,2026-03-01,312
 parnamirim-rn,PARNAMIRIM/RN,PAP,efetivado,2026-03-01,272
 parnamirim-rn,PARNAMIRIM/RN,PAP,instalacao,2026-03-01,256
-patos-pb,PATOS / PB,PAP,ativacao,2026-03-01,0
-patos-pb,PATOS / PB,PAP,orcamento,2026-03-01,180
-patos-pb,PATOS / PB,PAP,efetivado,2026-03-01,160
-patos-pb,PATOS / PB,PAP,instalacao,2026-03-01,150
 patos-pb,PATOS/PB,LOJA,ativacao,2026-03-01,88
 patos-pb,PATOS/PB,LOJA,instalacao,2026-03-01,56
+patos-pb,PATOS/PB,PAP,ativacao,2026-03-01,0
+patos-pb,PATOS/PB,PAP,orcamento,2026-03-01,144
+patos-pb,PATOS/PB,PAP,efetivado,2026-03-01,128
+patos-pb,PATOS/PB,PAP,instalacao,2026-03-01,120
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,ativacao,2026-03-01,78
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,instalacao,2026-03-01,36
 pau-dos-ferros-rn,PAU DOS FERROS/RN,PAP,ativacao,2026-03-01,30
@@ -1816,12 +1764,12 @@ pombal-pb,POMBAL/PB,PAP,ativacao,2026-03-01,60
 pombal-pb,POMBAL/PB,PAP,orcamento,2026-03-01,54
 pombal-pb,POMBAL/PB,PAP,efetivado,2026-03-01,48
 pombal-pb,POMBAL/PB,PAP,instalacao,2026-03-01,45
-quixada-ce,QUIXADA / CE,PAP,ativacao,2026-03-01,75
-quixada-ce,QUIXADA / CE,PAP,orcamento,2026-03-01,120
-quixada-ce,QUIXADA / CE,PAP,efetivado,2026-03-01,110
-quixada-ce,QUIXADA / CE,PAP,instalacao,2026-03-01,100
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,66
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,42
+quixada-ce,QUIXADA/CE,PAP,ativacao,2026-03-01,45
+quixada-ce,QUIXADA/CE,PAP,orcamento,2026-03-01,72
+quixada-ce,QUIXADA/CE,PAP,efetivado,2026-03-01,66
+quixada-ce,QUIXADA/CE,PAP,instalacao,2026-03-01,60
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,22
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,14
 quixeramobim-ce,QUIXERAMOBIM/CE,PAP,ativacao,2026-03-01,45
@@ -1844,12 +1792,12 @@ russas-ce,RUSSAS/CE,PAP,ativacao,2026-03-01,45
 russas-ce,RUSSAS/CE,PAP,orcamento,2026-03-01,66
 russas-ce,RUSSAS/CE,PAP,efetivado,2026-03-01,60
 russas-ce,RUSSAS/CE,PAP,instalacao,2026-03-01,54
-salgueiro-pe,SALGUEIRO / PE,PAP,ativacao,2026-03-01,24
-salgueiro-pe,SALGUEIRO / PE,PAP,orcamento,2026-03-01,38
-salgueiro-pe,SALGUEIRO / PE,PAP,efetivado,2026-03-01,35
-salgueiro-pe,SALGUEIRO / PE,PAP,instalacao,2026-03-01,32
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,ativacao,2026-03-01,26
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,instalacao,2026-03-01,12
+salgueiro-pe,SALGUEIRO/PE,PAP,ativacao,2026-03-01,9
+salgueiro-pe,SALGUEIRO/PE,PAP,orcamento,2026-03-01,14
+salgueiro-pe,SALGUEIRO/PE,PAP,efetivado,2026-03-01,13
+salgueiro-pe,SALGUEIRO/PE,PAP,instalacao,2026-03-01,12
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,ativacao,2026-03-01,52
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,instalacao,2026-03-01,24
 santa-luzia-pb,SANTA LUZIA/PB,PAP,ativacao,2026-03-01,15
@@ -1857,18 +1805,18 @@ santa-luzia-pb,SANTA LUZIA/PB,PAP,orcamento,2026-03-01,24
 santa-luzia-pb,SANTA LUZIA/PB,PAP,efetivado,2026-03-01,22
 santa-luzia-pb,SANTA LUZIA/PB,PAP,instalacao,2026-03-01,20
 santa-quiteria-ce,SANTA QUITERIA/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,90
-santa-rita-pb,SANTA RITA / PB,PAP,ativacao,2026-03-01,0
-santa-rita-pb,SANTA RITA / PB,PAP,orcamento,2026-03-01,216
-santa-rita-pb,SANTA RITA / PB,PAP,efetivado,2026-03-01,192
-santa-rita-pb,SANTA RITA / PB,PAP,instalacao,2026-03-01,180
 santa-rita-pb,SANTA RITA/PB,LOJA,ativacao,2026-03-01,44
 santa-rita-pb,SANTA RITA/PB,LOJA,instalacao,2026-03-01,28
+santa-rita-pb,SANTA RITA/PB,PAP,ativacao,2026-03-01,0
+santa-rita-pb,SANTA RITA/PB,PAP,orcamento,2026-03-01,180
+santa-rita-pb,SANTA RITA/PB,PAP,efetivado,2026-03-01,160
+santa-rita-pb,SANTA RITA/PB,PAP,instalacao,2026-03-01,150
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,26
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,12
-sao-benedito-ce,SAO BENEDITO/CE,PAP,ativacao,2026-03-01,15
-sao-benedito-ce,SAO BENEDITO/CE,PAP,orcamento,2026-03-01,22
-sao-benedito-ce,SAO BENEDITO/CE,PAP,efetivado,2026-03-01,20
-sao-benedito-ce,SAO BENEDITO/CE,PAP,instalacao,2026-03-01,18
+sao-benedito-ce,SAO BENEDITO/CE,PAP,ativacao,2026-03-01,17
+sao-benedito-ce,SAO BENEDITO/CE,PAP,orcamento,2026-03-01,26
+sao-benedito-ce,SAO BENEDITO/CE,PAP,efetivado,2026-03-01,23
+sao-benedito-ce,SAO BENEDITO/CE,PAP,instalacao,2026-03-01,21
 sao-bento-pb,SAO BENTO/PB,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 sao-bento-pb,SAO BENTO/PB,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
 sao-caitano-pe,SAO CAITANO/PE,LOJA,ativacao,2026-03-01,90
@@ -1894,54 +1842,54 @@ senador-pompeu-ce,SENADOR POMPEU/CE,PAP,ativacao,2026-03-01,30
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,orcamento,2026-03-01,44
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,efetivado,2026-03-01,40
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,instalacao,2026-03-01,36
-serra-talhada-pe,SERRA TALHADA / PE,PAP,ativacao,2026-03-01,38
-serra-talhada-pe,SERRA TALHADA / PE,PAP,orcamento,2026-03-01,61
-serra-talhada-pe,SERRA TALHADA / PE,PAP,efetivado,2026-03-01,56
-serra-talhada-pe,SERRA TALHADA / PE,PAP,instalacao,2026-03-01,51
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,ativacao,2026-03-01,52
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,instalacao,2026-03-01,24
-sobral-ce,SOBRAL / CE,PAP,ativacao,2026-03-01,0
-sobral-ce,SOBRAL / CE,PAP,orcamento,2026-03-01,312
-sobral-ce,SOBRAL / CE,PAP,efetivado,2026-03-01,272
-sobral-ce,SOBRAL / CE,PAP,instalacao,2026-03-01,256
+serra-talhada-pe,SERRA TALHADA/PE,PAP,ativacao,2026-03-01,30
+serra-talhada-pe,SERRA TALHADA/PE,PAP,orcamento,2026-03-01,48
+serra-talhada-pe,SERRA TALHADA/PE,PAP,efetivado,2026-03-01,44
+serra-talhada-pe,SERRA TALHADA/PE,PAP,instalacao,2026-03-01,40
 sobral-ce,SOBRAL/CE,LOJA,ativacao,2026-03-01,88
 sobral-ce,SOBRAL/CE,LOJA,instalacao,2026-03-01,56
+sobral-ce,SOBRAL/CE,PAP,ativacao,2026-03-01,0
+sobral-ce,SOBRAL/CE,PAP,orcamento,2026-03-01,273
+sobral-ce,SOBRAL/CE,PAP,efetivado,2026-03-01,238
+sobral-ce,SOBRAL/CE,PAP,instalacao,2026-03-01,224
 sousa-pb,SOUSA/PB,LOJA,ativacao,2026-03-01,44
 sousa-pb,SOUSA/PB,LOJA,instalacao,2026-03-01,28
 sousa-pb,SOUSA/PB,PAP,ativacao,2026-03-01,30
 sousa-pb,SOUSA/PB,PAP,orcamento,2026-03-01,48
 sousa-pb,SOUSA/PB,PAP,efetivado,2026-03-01,44
 sousa-pb,SOUSA/PB,PAP,instalacao,2026-03-01,40
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,ativacao,2026-03-01,30
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,orcamento,2026-03-01,44
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,efetivado,2026-03-01,40
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE / CE,PAP,instalacao,2026-03-01,36
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,LOJA,ativacao,2026-03-01,52
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,LOJA,instalacao,2026-03-01,24
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,ativacao,2026-03-01,30
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,orcamento,2026-03-01,44
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,efetivado,2026-03-01,40
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,PAP,instalacao,2026-03-01,36
 taua-ce,TAUA/CE,LOJA,ativacao,2026-03-01,52
 taua-ce,TAUA/CE,LOJA,instalacao,2026-03-01,24
 taua-ce,TAUA/CE,PAP,ativacao,2026-03-01,30
 taua-ce,TAUA/CE,PAP,orcamento,2026-03-01,44
 taua-ce,TAUA/CE,PAP,efetivado,2026-03-01,40
 taua-ce,TAUA/CE,PAP,instalacao,2026-03-01,36
-teresina-pi,TERESINA / PI,PAP,ativacao,2026-03-01,0
-teresina-pi,TERESINA / PI,PAP,orcamento,2026-03-01,882
-teresina-pi,TERESINA / PI,PAP,efetivado,2026-03-01,768
-teresina-pi,TERESINA / PI,PAP,instalacao,2026-03-01,723
 teresina-pi,TERESINA/PI,LOJA,ativacao,2026-03-01,88
 teresina-pi,TERESINA/PI,LOJA,instalacao,2026-03-01,56
+teresina-pi,TERESINA/PI,PAP,ativacao,2026-03-01,0
+teresina-pi,TERESINA/PI,PAP,orcamento,2026-03-01,780
+teresina-pi,TERESINA/PI,PAP,efetivado,2026-03-01,680
+teresina-pi,TERESINA/PI,PAP,instalacao,2026-03-01,640
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,ativacao,2026-03-01,52
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,instalacao,2026-03-01,24
 tiangua-ce,TIANGUA/CE,PAP,ativacao,2026-03-01,30
 tiangua-ce,TIANGUA/CE,PAP,orcamento,2026-03-01,48
 tiangua-ce,TIANGUA/CE,PAP,efetivado,2026-03-01,44
 tiangua-ce,TIANGUA/CE,PAP,instalacao,2026-03-01,40
-timon-ma,TIMON / MA,PAP,ativacao,2026-03-01,0
-timon-ma,TIMON / MA,PAP,orcamento,2026-03-01,312
-timon-ma,TIMON / MA,PAP,efetivado,2026-03-01,272
-timon-ma,TIMON / MA,PAP,instalacao,2026-03-01,256
 timon-ma,TIMON/MA,LOJA,ativacao,2026-03-01,52
 timon-ma,TIMON/MA,LOJA,instalacao,2026-03-01,24
+timon-ma,TIMON/MA,PAP,ativacao,2026-03-01,0
+timon-ma,TIMON/MA,PAP,orcamento,2026-03-01,273
+timon-ma,TIMON/MA,PAP,efetivado,2026-03-01,238
+timon-ma,TIMON/MA,PAP,instalacao,2026-03-01,224
 toritama-pe,TORITAMA/PE,LOJA,ativacao,2026-03-01,26
 toritama-pe,TORITAMA/PE,LOJA,instalacao,2026-03-01,12
 toritama-pe,TORITAMA/PE,PAP,ativacao,2026-03-01,0
@@ -1960,10 +1908,6 @@ uirauna-pb,UIRAUNA/PB,PAP,ativacao,2026-03-01,15
 uirauna-pb,UIRAUNA/PB,PAP,orcamento,2026-03-01,22
 uirauna-pb,UIRAUNA/PB,PAP,efetivado,2026-03-01,20
 uirauna-pb,UIRAUNA/PB,PAP,instalacao,2026-03-01,18
-umarizal-rn,UMARIZAL / RN,PAP,ativacao,2026-03-01,10
-umarizal-rn,UMARIZAL / RN,PAP,orcamento,2026-03-01,22
-umarizal-rn,UMARIZAL / RN,PAP,efetivado,2026-03-01,20
-umarizal-rn,UMARIZAL / RN,PAP,instalacao,2026-03-01,18
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,ativacao,2026-03-01,39
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,instalacao,2026-03-01,18
 varzea-alegre-ce,VARZEA ALEGRE/CE,LOJA,ativacao,2026-03-01,78
@@ -1988,53 +1932,49 @@ acu-rn,ACU/RN,DONO CIDADE - LOJAS,ativacao,2026-04-01,66
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,instalacao,2026-04-01,42
 acu-rn,ACU/RN,LOJA,ativacao,2026-04-01,22
 acu-rn,ACU/RN,LOJA,instalacao,2026-04-01,14
-acu-rn,ACU/RN,PAP,ativacao,2026-04-01,70
-acu-rn,ACU/RN,PAP,orcamento,2026-04-01,36
-acu-rn,ACU/RN,PAP,efetivado,2026-04-01,32
-acu-rn,ACU/RN,PAP,instalacao,2026-04-01,30
 agua-nova-rn,AGUA NOVA/RN,PAP,ativacao,2026-04-01,40
 agua-nova-rn,AGUA NOVA/RN,PAP,orcamento,2026-04-01,12
 agua-nova-rn,AGUA NOVA/RN,PAP,efetivado,2026-04-01,11
 agua-nova-rn,AGUA NOVA/RN,PAP,instalacao,2026-04-01,10
 apodi-rn,APODI/RN,DONO CIDADE - LOJAS,ativacao,2026-04-01,90
+aquiraz-ce,AQUIRAZ/CE,PAP,ativacao,2026-04-01,50
+aquiraz-ce,AQUIRAZ/CE,PAP,orcamento,2026-04-01,60
+aquiraz-ce,AQUIRAZ/CE,PAP,efetivado,2026-04-01,52
+aquiraz-ce,AQUIRAZ/CE,PAP,instalacao,2026-04-01,50
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,ativacao,2026-04-01,52
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,instalacao,2026-04-01,24
 araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-04-01,70
 araripina-pe,ARARIPINA/PE,PAP,orcamento,2026-04-01,36
 araripina-pe,ARARIPINA/PE,PAP,efetivado,2026-04-01,32
 araripina-pe,ARARIPINA/PE,PAP,instalacao,2026-04-01,30
-arcoverde-pe,ARCOVERDE / PE,PAP,ativacao,2026-04-01,105
-arcoverde-pe,ARCOVERDE / PE,PAP,orcamento,2026-04-01,54
-arcoverde-pe,ARCOVERDE / PE,PAP,efetivado,2026-04-01,48
-arcoverde-pe,ARCOVERDE / PE,PAP,instalacao,2026-04-01,45
 arcoverde-pe,ARCOVERDE/PE,LOJA,ativacao,2026-04-01,26
 arcoverde-pe,ARCOVERDE/PE,LOJA,instalacao,2026-04-01,12
-assu-rn,ASSU / RN,PAP,ativacao,2026-04-01,35
-assu-rn,ASSU / RN,PAP,orcamento,2026-04-01,18
-assu-rn,ASSU / RN,PAP,efetivado,2026-04-01,16
-assu-rn,ASSU / RN,PAP,instalacao,2026-04-01,15
+arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-04-01,70
+arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-04-01,36
+arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-04-01,32
+arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-04-01,30
+assu-rn,ASSU/RN,PAP,ativacao,2026-04-01,70
+assu-rn,ASSU/RN,PAP,orcamento,2026-04-01,36
+assu-rn,ASSU/RN,PAP,efetivado,2026-04-01,32
+assu-rn,ASSU/RN,PAP,instalacao,2026-04-01,30
 banabuiu-ce,BANABUIU/CE,LOJA,ativacao,2026-04-01,52
 banabuiu-ce,BANABUIU/CE,LOJA,instalacao,2026-04-01,24
 banabuiu-ce,BANABUIU/CE,PAP,ativacao,2026-04-01,45
 banabuiu-ce,BANABUIU/CE,PAP,orcamento,2026-04-01,6
 banabuiu-ce,BANABUIU/CE,PAP,efetivado,2026-04-01,5
 banabuiu-ce,BANABUIU/CE,PAP,instalacao,2026-04-01,5
-barbalha-ce,BARBALHA / CE,PAP,ativacao,2026-04-01,80
-barbalha-ce,BARBALHA / CE,PAP,orcamento,2026-04-01,24
-barbalha-ce,BARBALHA / CE,PAP,efetivado,2026-04-01,22
-barbalha-ce,BARBALHA / CE,PAP,instalacao,2026-04-01,20
 barbalha-ce,BARBALHA/CE,LOJA,ativacao,2026-04-01,44
 barbalha-ce,BARBALHA/CE,LOJA,instalacao,2026-04-01,28
+barbalha-ce,BARBALHA/CE,PAP,ativacao,2026-04-01,40
+barbalha-ce,BARBALHA/CE,PAP,orcamento,2026-04-01,12
+barbalha-ce,BARBALHA/CE,PAP,efetivado,2026-04-01,11
+barbalha-ce,BARBALHA/CE,PAP,instalacao,2026-04-01,10
 bayeux-pb,BAYEUX/PB,DONO CIDADE - LOJAS,ativacao,2026-04-01,44
 bayeux-pb,BAYEUX/PB,DONO CIDADE - LOJAS,instalacao,2026-04-01,28
 bayeux-pb,BAYEUX/PB,PAP,ativacao,2026-04-01,150
 bayeux-pb,BAYEUX/PB,PAP,orcamento,2026-04-01,180
 bayeux-pb,BAYEUX/PB,PAP,efetivado,2026-04-01,156
 bayeux-pb,BAYEUX/PB,PAP,instalacao,2026-04-01,150
-belo-jardim-pe,BELO JARDIM / PE,PAP,ativacao,2026-04-01,16
-belo-jardim-pe,BELO JARDIM / PE,PAP,orcamento,2026-04-01,8
-belo-jardim-pe,BELO JARDIM / PE,PAP,efetivado,2026-04-01,8
-belo-jardim-pe,BELO JARDIM / PE,PAP,instalacao,2026-04-01,7
 belo-jardim-pe,BELO JARDIM/PE,LOJA,ativacao,2026-04-01,26
 belo-jardim-pe,BELO JARDIM/PE,LOJA,instalacao,2026-04-01,12
 bezerros-pe,BEZERROS/PE,LOJA,ativacao,2026-04-01,52
@@ -2068,24 +2008,24 @@ cajazeiras-pb,CAJAZEIRAS/PB,PAP,orcamento,2026-04-01,72
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,efetivado,2026-04-01,64
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,instalacao,2026-04-01,60
 camocim-ce,CAMOCIM/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,90
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,ativacao,2026-04-01,225
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,orcamento,2026-04-01,270
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,efetivado,2026-04-01,234
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,instalacao,2026-04-01,225
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,ativacao,2026-04-01,44
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,instalacao,2026-04-01,28
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,ativacao,2026-04-01,175
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,orcamento,2026-04-01,210
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,efetivado,2026-04-01,182
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,instalacao,2026-04-01,175
 caninde-ce,CANINDE/CE,LOJA,ativacao,2026-04-01,44
 caninde-ce,CANINDE/CE,LOJA,instalacao,2026-04-01,28
 caninde-ce,CANINDE/CE,PAP,ativacao,2026-04-01,150
 caninde-ce,CANINDE/CE,PAP,orcamento,2026-04-01,77
 caninde-ce,CANINDE/CE,PAP,efetivado,2026-04-01,68
 caninde-ce,CANINDE/CE,PAP,instalacao,2026-04-01,64
-caruaru-pe,CARUARU / PE,PAP,ativacao,2026-04-01,274
-caruaru-pe,CARUARU / PE,PAP,orcamento,2026-04-01,329
-caruaru-pe,CARUARU / PE,PAP,efetivado,2026-04-01,285
-caruaru-pe,CARUARU / PE,PAP,instalacao,2026-04-01,274
 caruaru-pe,CARUARU/PE,LOJA,ativacao,2026-04-01,22
 caruaru-pe,CARUARU/PE,LOJA,instalacao,2026-04-01,14
+caruaru-pe,CARUARU/PE,PAP,ativacao,2026-04-01,149
+caruaru-pe,CARUARU/PE,PAP,orcamento,2026-04-01,179
+caruaru-pe,CARUARU/PE,PAP,efetivado,2026-04-01,155
+caruaru-pe,CARUARU/PE,PAP,instalacao,2026-04-01,149
 cascavel-ce,CASCAVEL/CE,LOJA,ativacao,2026-04-01,52
 cascavel-ce,CASCAVEL/CE,LOJA,instalacao,2026-04-01,24
 cascavel-ce,CASCAVEL/CE,PAP,ativacao,2026-04-01,105
@@ -2106,12 +2046,12 @@ caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-04-01,181
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-04-01,174
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,ativacao,2026-04-01,65
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,instalacao,2026-04-01,10
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-04-01,70
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-04-01,36
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-04-01,32
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-04-01,30
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-04-01,44
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-04-01,28
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-04-01,70
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-04-01,36
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-04-01,32
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-04-01,30
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-04-01,52
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-04-01,24
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-04-01,40
@@ -2134,10 +2074,6 @@ crato-ce,CRATO/CE,PAP,ativacao,2026-04-01,100
 crato-ce,CRATO/CE,PAP,orcamento,2026-04-01,120
 crato-ce,CRATO/CE,PAP,efetivado,2026-04-01,104
 crato-ce,CRATO/CE,PAP,instalacao,2026-04-01,100
-custodia-pe,CUSTODIA / PE,PAP,ativacao,2026-04-01,66
-custodia-pe,CUSTODIA / PE,PAP,orcamento,2026-04-01,34
-custodia-pe,CUSTODIA / PE,PAP,efetivado,2026-04-01,30
-custodia-pe,CUSTODIA / PE,PAP,instalacao,2026-04-01,28
 custodia-pe,CUSTODIA/PE,LOJA,ativacao,2026-04-01,52
 custodia-pe,CUSTODIA/PE,LOJA,instalacao,2026-04-01,24
 encanto-rn,ENCANTO/RN,PAP,ativacao,2026-04-01,45
@@ -2146,46 +2082,46 @@ encanto-rn,ENCANTO/RN,PAP,efetivado,2026-04-01,5
 encanto-rn,ENCANTO/RN,PAP,instalacao,2026-04-01,5
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-04-01,52
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-04-01,24
-eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-04-01,57
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-04-01,67
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-04-01,58
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-04-01,56
+eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-04-01,82
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-04-01,97
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-04-01,84
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-04-01,81
 extremoz-rn,EXTREMOZ/RN,LOJA,ativacao,2026-04-01,26
 extremoz-rn,EXTREMOZ/RN,LOJA,instalacao,2026-04-01,12
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-04-01,118
 extremoz-rn,EXTREMOZ/RN,PAP,orcamento,2026-04-01,60
 extremoz-rn,EXTREMOZ/RN,PAP,efetivado,2026-04-01,53
 extremoz-rn,EXTREMOZ/RN,PAP,instalacao,2026-04-01,50
-fortaleza-ce,FORTALEZA / CE,NGC,ativacao,2026-04-01,250
-fortaleza-ce,FORTALEZA / CE,NGC,orcamento,2026-04-01,300
-fortaleza-ce,FORTALEZA / CE,NGC,efetivado,2026-04-01,260
-fortaleza-ce,FORTALEZA / CE,NGC,instalacao,2026-04-01,250
-fortaleza-ce,FORTALEZA / CE,PAP,ativacao,2026-04-01,1248
-fortaleza-ce,FORTALEZA / CE,PAP,orcamento,2026-04-01,1501
-fortaleza-ce,FORTALEZA / CE,PAP,efetivado,2026-04-01,1302
-fortaleza-ce,FORTALEZA / CE,PAP,instalacao,2026-04-01,1247
 fortaleza-ce,FORTALEZA/CE,LOJA,ativacao,2026-04-01,110
 fortaleza-ce,FORTALEZA/CE,LOJA,instalacao,2026-04-01,70
+fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-04-01,225
+fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-04-01,270
+fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-04-01,234
+fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-04-01,225
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-04-01,960
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-04-01,1152
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-04-01,1001
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-04-01,959
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,ativacao,2026-04-01,455
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,instalacao,2026-04-01,70
-gravata-pe,GRAVATA / PE,PAP,ativacao,2026-04-01,140
-gravata-pe,GRAVATA / PE,PAP,orcamento,2026-04-01,72
-gravata-pe,GRAVATA / PE,PAP,efetivado,2026-04-01,64
-gravata-pe,GRAVATA / PE,PAP,instalacao,2026-04-01,60
 gravata-pe,GRAVATA/PE,LOJA,ativacao,2026-04-01,52
 gravata-pe,GRAVATA/PE,LOJA,instalacao,2026-04-01,24
+gravata-pe,GRAVATA/PE,PAP,ativacao,2026-04-01,105
+gravata-pe,GRAVATA/PE,PAP,orcamento,2026-04-01,54
+gravata-pe,GRAVATA/PE,PAP,efetivado,2026-04-01,48
+gravata-pe,GRAVATA/PE,PAP,instalacao,2026-04-01,45
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,52
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,24
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,ativacao,2026-04-01,35
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,orcamento,2026-04-01,18
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,efetivado,2026-04-01,16
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,instalacao,2026-04-01,15
-horizonte-ce,HORIZONTE / CE,PAP,ativacao,2026-04-01,85
-horizonte-ce,HORIZONTE / CE,PAP,orcamento,2026-04-01,126
-horizonte-ce,HORIZONTE / CE,PAP,efetivado,2026-04-01,109
-horizonte-ce,HORIZONTE / CE,PAP,instalacao,2026-04-01,105
 horizonte-ce,HORIZONTE/CE,LOJA,ativacao,2026-04-01,44
 horizonte-ce,HORIZONTE/CE,LOJA,instalacao,2026-04-01,28
+horizonte-ce,HORIZONTE/CE,PAP,ativacao,2026-04-01,60
+horizonte-ce,HORIZONTE/CE,PAP,orcamento,2026-04-01,96
+horizonte-ce,HORIZONTE/CE,PAP,efetivado,2026-04-01,83
+horizonte-ce,HORIZONTE/CE,PAP,instalacao,2026-04-01,80
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,26
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,12
 ico-ce,ICO/CE,LOJA,ativacao,2026-04-01,88
@@ -2208,22 +2144,18 @@ iracema-ce,IRACEMA/CE,PAP,ativacao,2026-04-01,45
 iracema-ce,IRACEMA/CE,PAP,orcamento,2026-04-01,6
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-04-01,5
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-04-01,5
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-04-01,25
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-04-01,30
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-04-01,26
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-04-01,25
-itapaje-ce,ITAPAJE / CE,PAP,ativacao,2026-04-01,111
-itapaje-ce,ITAPAJE / CE,PAP,orcamento,2026-04-01,56
-itapaje-ce,ITAPAJE / CE,PAP,efetivado,2026-04-01,50
-itapaje-ce,ITAPAJE / CE,PAP,instalacao,2026-04-01,47
 itapaje-ce,ITAPAJE/CE,LOJA,ativacao,2026-04-01,26
 itapaje-ce,ITAPAJE/CE,LOJA,instalacao,2026-04-01,12
-itapipoca-ce,ITAPIPOCA / CE,PAP,ativacao,2026-04-01,140
-itapipoca-ce,ITAPIPOCA / CE,PAP,orcamento,2026-04-01,72
-itapipoca-ce,ITAPIPOCA / CE,PAP,efetivado,2026-04-01,64
-itapipoca-ce,ITAPIPOCA / CE,PAP,instalacao,2026-04-01,60
+itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-04-01,105
+itapaje-ce,ITAPAJE/CE,PAP,orcamento,2026-04-01,54
+itapaje-ce,ITAPAJE/CE,PAP,efetivado,2026-04-01,48
+itapaje-ce,ITAPAJE/CE,PAP,instalacao,2026-04-01,45
 itapipoca-ce,ITAPIPOCA/CE,LOJA,ativacao,2026-04-01,52
 itapipoca-ce,ITAPIPOCA/CE,LOJA,instalacao,2026-04-01,24
+itapipoca-ce,ITAPIPOCA/CE,PAP,ativacao,2026-04-01,105
+itapipoca-ce,ITAPIPOCA/CE,PAP,orcamento,2026-04-01,54
+itapipoca-ce,ITAPIPOCA/CE,PAP,efetivado,2026-04-01,48
+itapipoca-ce,ITAPIPOCA/CE,PAP,instalacao,2026-04-01,45
 jaguaretama-ce,JAGUARETAMA/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,52
 jaguaretama-ce,JAGUARETAMA/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,24
 jaguaretama-ce,JAGUARETAMA/CE,PAP,ativacao,2026-04-01,45
@@ -2240,34 +2172,34 @@ jaguaribe-ce,JAGUARIBE/CE,PAP,ativacao,2026-04-01,120
 jaguaribe-ce,JAGUARIBE/CE,PAP,orcamento,2026-04-01,36
 jaguaribe-ce,JAGUARIBE/CE,PAP,efetivado,2026-04-01,33
 jaguaribe-ce,JAGUARIBE/CE,PAP,instalacao,2026-04-01,30
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,ativacao,2026-04-01,245
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,orcamento,2026-04-01,294
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,efetivado,2026-04-01,255
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,instalacao,2026-04-01,245
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,ativacao,2026-04-01,428
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,orcamento,2026-04-01,514
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,efetivado,2026-04-01,446
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,instalacao,2026-04-01,429
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,ativacao,2026-04-01,110
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,instalacao,2026-04-01,70
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,ativacao,2026-04-01,325
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,orcamento,2026-04-01,390
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,efetivado,2026-04-01,338
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,instalacao,2026-04-01,325
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,ativacao,2026-04-01,195
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,orcamento,2026-04-01,234
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,efetivado,2026-04-01,203
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,instalacao,2026-04-01,195
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-04-01,403
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-04-01,484
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-04-01,420
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-04-01,404
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-04-01,176
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,instalacao,2026-04-01,112
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,ativacao,2026-04-01,300
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,orcamento,2026-04-01,360
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,efetivado,2026-04-01,312
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,instalacao,2026-04-01,300
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,ativacao,2026-04-01,26
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,instalacao,2026-04-01,12
 juazeiro-ba,JUAZEIRO/BA,PAP,ativacao,2026-04-01,140
 juazeiro-ba,JUAZEIRO/BA,PAP,orcamento,2026-04-01,169
 juazeiro-ba,JUAZEIRO/BA,PAP,efetivado,2026-04-01,146
 juazeiro-ba,JUAZEIRO/BA,PAP,instalacao,2026-04-01,140
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,ativacao,2026-04-01,80
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,orcamento,2026-04-01,24
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,efetivado,2026-04-01,22
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,instalacao,2026-04-01,20
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,ativacao,2026-04-01,26
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,instalacao,2026-04-01,12
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-04-01,40
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-04-01,12
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-04-01,11
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-04-01,10
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,78
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,36
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,ativacao,2026-04-01,80
@@ -2286,20 +2218,20 @@ major-sales-rn,MAJOR SALES/RN,PAP,ativacao,2026-04-01,45
 major-sales-rn,MAJOR SALES/RN,PAP,orcamento,2026-04-01,6
 major-sales-rn,MAJOR SALES/RN,PAP,efetivado,2026-04-01,5
 major-sales-rn,MAJOR SALES/RN,PAP,instalacao,2026-04-01,5
-maracanau-ce,MARACANAU / CE,PAP,ativacao,2026-04-01,128
-maracanau-ce,MARACANAU / CE,PAP,orcamento,2026-04-01,154
-maracanau-ce,MARACANAU / CE,PAP,efetivado,2026-04-01,134
-maracanau-ce,MARACANAU / CE,PAP,instalacao,2026-04-01,129
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-04-01,104
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-04-01,48
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-04-01,128
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-04-01,154
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-04-01,134
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-04-01,129
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,ativacao,2026-04-01,130
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,instalacao,2026-04-01,20
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-04-01,44
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-04-01,28
-maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-04-01,125
-maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-04-01,150
-maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-04-01,130
-maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-04-01,125
+maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-04-01,100
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-04-01,120
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-04-01,104
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-04-01,100
 milagres-ce,MILAGRES/CE,LOJA,ativacao,2026-04-01,26
 milagres-ce,MILAGRES/CE,LOJA,instalacao,2026-04-01,12
 milagres-ce,MILAGRES/CE,PAP,ativacao,2026-04-01,40
@@ -2324,22 +2256,22 @@ morada-nova-ce,MORADA NOVA/CE,PAP,ativacao,2026-04-01,85
 morada-nova-ce,MORADA NOVA/CE,PAP,orcamento,2026-04-01,25
 morada-nova-ce,MORADA NOVA/CE,PAP,efetivado,2026-04-01,23
 morada-nova-ce,MORADA NOVA/CE,PAP,instalacao,2026-04-01,21
-mossoro-rn,MOSSORO / RN,PAP,ativacao,2026-04-01,260
-mossoro-rn,MOSSORO / RN,PAP,orcamento,2026-04-01,310
-mossoro-rn,MOSSORO / RN,PAP,efetivado,2026-04-01,271
-mossoro-rn,MOSSORO / RN,PAP,instalacao,2026-04-01,260
 mossoro-rn,MOSSORO/RN,LOJA,ativacao,2026-04-01,88
 mossoro-rn,MOSSORO/RN,LOJA,instalacao,2026-04-01,56
-natal-rn,NATAL / RN,PAP,ativacao,2026-04-01,391
-natal-rn,NATAL / RN,PAP,orcamento,2026-04-01,470
-natal-rn,NATAL / RN,PAP,efetivado,2026-04-01,407
-natal-rn,NATAL / RN,PAP,instalacao,2026-04-01,391
+mossoro-rn,MOSSORO/RN,PAP,ativacao,2026-04-01,183
+mossoro-rn,MOSSORO/RN,PAP,orcamento,2026-04-01,219
+mossoro-rn,MOSSORO/RN,PAP,efetivado,2026-04-01,192
+mossoro-rn,MOSSORO/RN,PAP,instalacao,2026-04-01,184
 natal-rn,NATAL/RN,LOJA,ativacao,2026-04-01,198
 natal-rn,NATAL/RN,LOJA,instalacao,2026-04-01,126
 natal-rn,NATAL/RN,NGC,ativacao,2026-04-01,213
 natal-rn,NATAL/RN,NGC,orcamento,2026-04-01,258
 natal-rn,NATAL/RN,NGC,efetivado,2026-04-01,223
 natal-rn,NATAL/RN,NGC,instalacao,2026-04-01,214
+natal-rn,NATAL/RN,PAP,ativacao,2026-04-01,366
+natal-rn,NATAL/RN,PAP,orcamento,2026-04-01,440
+natal-rn,NATAL/RN,PAP,efetivado,2026-04-01,381
+natal-rn,NATAL/RN,PAP,instalacao,2026-04-01,366
 natal-rn,NATAL/RN,PAP_VOLANTE,ativacao,2026-04-01,80
 natal-rn,NATAL/RN,PAP_VOLANTE,orcamento,2026-04-01,20
 natal-rn,NATAL/RN,PAP_VOLANTE,efetivado,2026-04-01,17
@@ -2362,36 +2294,36 @@ ouricuri-pe,OURICURI/PE,PAP,ativacao,2026-04-01,70
 ouricuri-pe,OURICURI/PE,PAP,orcamento,2026-04-01,36
 ouricuri-pe,OURICURI/PE,PAP,efetivado,2026-04-01,32
 ouricuri-pe,OURICURI/PE,PAP,instalacao,2026-04-01,30
-pacajus-ce,PACAJUS / CE,PAP,ativacao,2026-04-01,68
-pacajus-ce,PACAJUS / CE,PAP,orcamento,2026-04-01,83
-pacajus-ce,PACAJUS / CE,PAP,efetivado,2026-04-01,72
-pacajus-ce,PACAJUS / CE,PAP,instalacao,2026-04-01,69
 pacajus-ce,PACAJUS/CE,LOJA,ativacao,2026-04-01,66
 pacajus-ce,PACAJUS/CE,LOJA,instalacao,2026-04-01,42
+pacajus-ce,PACAJUS/CE,PAP,ativacao,2026-04-01,43
+pacajus-ce,PACAJUS/CE,PAP,orcamento,2026-04-01,53
+pacajus-ce,PACAJUS/CE,PAP,efetivado,2026-04-01,46
+pacajus-ce,PACAJUS/CE,PAP,instalacao,2026-04-01,44
 paraipaba-ce,PARAIPABA/CE,LOJA,ativacao,2026-04-01,26
 paraipaba-ce,PARAIPABA/CE,LOJA,instalacao,2026-04-01,12
 paraipaba-ce,PARAIPABA/CE,PAP,ativacao,2026-04-01,105
 paraipaba-ce,PARAIPABA/CE,PAP,orcamento,2026-04-01,54
 paraipaba-ce,PARAIPABA/CE,PAP,efetivado,2026-04-01,48
 paraipaba-ce,PARAIPABA/CE,PAP,instalacao,2026-04-01,45
-parnaiba-pi,PARNAIBA / PI,PAP,ativacao,2026-04-01,249
-parnaiba-pi,PARNAIBA / PI,PAP,orcamento,2026-04-01,262
-parnaiba-pi,PARNAIBA / PI,PAP,efetivado,2026-04-01,228
-parnaiba-pi,PARNAIBA / PI,PAP,instalacao,2026-04-01,219
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,ativacao,2026-04-01,44
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,instalacao,2026-04-01,28
+parnaiba-pi,PARNAIBA/PI,PAP,ativacao,2026-04-01,224
+parnaiba-pi,PARNAIBA/PI,PAP,orcamento,2026-04-01,232
+parnaiba-pi,PARNAIBA/PI,PAP,efetivado,2026-04-01,202
+parnaiba-pi,PARNAIBA/PI,PAP,instalacao,2026-04-01,194
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,ativacao,2026-04-01,88
 parnamirim-rn,PARNAMIRIM/RN,DONO CIDADE - LOJAS,instalacao,2026-04-01,56
 parnamirim-rn,PARNAMIRIM/RN,PAP,ativacao,2026-04-01,178
 parnamirim-rn,PARNAMIRIM/RN,PAP,orcamento,2026-04-01,214
 parnamirim-rn,PARNAMIRIM/RN,PAP,efetivado,2026-04-01,186
 parnamirim-rn,PARNAMIRIM/RN,PAP,instalacao,2026-04-01,179
-patos-pb,PATOS / PB,PAP,ativacao,2026-04-01,125
-patos-pb,PATOS / PB,PAP,orcamento,2026-04-01,150
-patos-pb,PATOS / PB,PAP,efetivado,2026-04-01,130
-patos-pb,PATOS / PB,PAP,instalacao,2026-04-01,125
 patos-pb,PATOS/PB,LOJA,ativacao,2026-04-01,88
 patos-pb,PATOS/PB,LOJA,instalacao,2026-04-01,56
+patos-pb,PATOS/PB,PAP,ativacao,2026-04-01,100
+patos-pb,PATOS/PB,PAP,orcamento,2026-04-01,120
+patos-pb,PATOS/PB,PAP,efetivado,2026-04-01,104
+patos-pb,PATOS/PB,PAP,instalacao,2026-04-01,100
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,ativacao,2026-04-01,78
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,instalacao,2026-04-01,36
 pau-dos-ferros-rn,PAU DOS FERROS/RN,PAP,ativacao,2026-04-01,40
@@ -2406,30 +2338,30 @@ pereiro-ce,PEREIRO/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,26
 pereiro-ce,PEREIRO/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,12
 pereiro-ce,PEREIRO/CE,ONLINE,ativacao,2026-04-01,710
 pereiro-ce,PEREIRO/CE,ONLINE,instalacao,2026-04-01,2833
-pesqueira-pe,PESQUEIRA / PE,PAP,ativacao,2026-04-01,86
-pesqueira-pe,PESQUEIRA / PE,PAP,orcamento,2026-04-01,44
-pesqueira-pe,PESQUEIRA / PE,PAP,efetivado,2026-04-01,40
-pesqueira-pe,PESQUEIRA / PE,PAP,instalacao,2026-04-01,37
 pesqueira-pe,PESQUEIRA/PE,LOJA,ativacao,2026-04-01,26
 pesqueira-pe,PESQUEIRA/PE,LOJA,instalacao,2026-04-01,12
-petrolina-pe,PETROLINA / PE,PAP,ativacao,2026-04-01,375
-petrolina-pe,PETROLINA / PE,PAP,orcamento,2026-04-01,450
-petrolina-pe,PETROLINA / PE,PAP,efetivado,2026-04-01,390
-petrolina-pe,PETROLINA / PE,PAP,instalacao,2026-04-01,375
+pesqueira-pe,PESQUEIRA/PE,PAP,ativacao,2026-04-01,70
+pesqueira-pe,PESQUEIRA/PE,PAP,orcamento,2026-04-01,36
+pesqueira-pe,PESQUEIRA/PE,PAP,efetivado,2026-04-01,32
+pesqueira-pe,PESQUEIRA/PE,PAP,instalacao,2026-04-01,30
 petrolina-pe,PETROLINA/PE,DONO CIDADE - LOJAS,ativacao,2026-04-01,52
 petrolina-pe,PETROLINA/PE,DONO CIDADE - LOJAS,instalacao,2026-04-01,24
+petrolina-pe,PETROLINA/PE,PAP,ativacao,2026-04-01,325
+petrolina-pe,PETROLINA/PE,PAP,orcamento,2026-04-01,390
+petrolina-pe,PETROLINA/PE,PAP,efetivado,2026-04-01,338
+petrolina-pe,PETROLINA/PE,PAP,instalacao,2026-04-01,325
 pombal-pb,POMBAL/PB,LOJA,ativacao,2026-04-01,52
 pombal-pb,POMBAL/PB,LOJA,instalacao,2026-04-01,24
 pombal-pb,POMBAL/PB,PAP,ativacao,2026-04-01,74
 pombal-pb,POMBAL/PB,PAP,orcamento,2026-04-01,38
 pombal-pb,POMBAL/PB,PAP,efetivado,2026-04-01,34
 pombal-pb,POMBAL/PB,PAP,instalacao,2026-04-01,32
-quixada-ce,QUIXADA / CE,PAP,ativacao,2026-04-01,160
-quixada-ce,QUIXADA / CE,PAP,orcamento,2026-04-01,48
-quixada-ce,QUIXADA / CE,PAP,efetivado,2026-04-01,44
-quixada-ce,QUIXADA / CE,PAP,instalacao,2026-04-01,40
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,66
 quixada-ce,QUIXADA/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,42
+quixada-ce,QUIXADA/CE,PAP,ativacao,2026-04-01,120
+quixada-ce,QUIXADA/CE,PAP,orcamento,2026-04-01,36
+quixada-ce,QUIXADA/CE,PAP,efetivado,2026-04-01,33
+quixada-ce,QUIXADA/CE,PAP,instalacao,2026-04-01,30
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,22
 quixeramobim-ce,QUIXERAMOBIM/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,14
 quixeramobim-ce,QUIXERAMOBIM/CE,PAP,ativacao,2026-04-01,160
@@ -2452,12 +2384,12 @@ russas-ce,RUSSAS/CE,PAP,ativacao,2026-04-01,120
 russas-ce,RUSSAS/CE,PAP,orcamento,2026-04-01,36
 russas-ce,RUSSAS/CE,PAP,efetivado,2026-04-01,33
 russas-ce,RUSSAS/CE,PAP,instalacao,2026-04-01,30
-salgueiro-pe,SALGUEIRO / PE,PAP,ativacao,2026-04-01,70
-salgueiro-pe,SALGUEIRO / PE,PAP,orcamento,2026-04-01,36
-salgueiro-pe,SALGUEIRO / PE,PAP,efetivado,2026-04-01,32
-salgueiro-pe,SALGUEIRO / PE,PAP,instalacao,2026-04-01,30
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,ativacao,2026-04-01,26
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,instalacao,2026-04-01,12
+salgueiro-pe,SALGUEIRO/PE,PAP,ativacao,2026-04-01,35
+salgueiro-pe,SALGUEIRO/PE,PAP,orcamento,2026-04-01,18
+salgueiro-pe,SALGUEIRO/PE,PAP,efetivado,2026-04-01,16
+salgueiro-pe,SALGUEIRO/PE,PAP,instalacao,2026-04-01,15
 santa-cruz-rn,SANTA CRUZ/RN,DONO CIDADE - LOJAS,ativacao,2026-04-01,90
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,ativacao,2026-04-01,52
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,instalacao,2026-04-01,24
@@ -2501,18 +2433,18 @@ senador-pompeu-ce,SENADOR POMPEU/CE,PAP,ativacao,2026-04-01,80
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,orcamento,2026-04-01,24
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,efetivado,2026-04-01,22
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,instalacao,2026-04-01,20
-serra-talhada-pe,SERRA TALHADA / PE,PAP,ativacao,2026-04-01,105
-serra-talhada-pe,SERRA TALHADA / PE,PAP,orcamento,2026-04-01,54
-serra-talhada-pe,SERRA TALHADA / PE,PAP,efetivado,2026-04-01,48
-serra-talhada-pe,SERRA TALHADA / PE,PAP,instalacao,2026-04-01,45
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,ativacao,2026-04-01,78
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,instalacao,2026-04-01,36
-sobral-ce,SOBRAL / CE,PAP,ativacao,2026-04-01,200
-sobral-ce,SOBRAL / CE,PAP,orcamento,2026-04-01,240
-sobral-ce,SOBRAL / CE,PAP,efetivado,2026-04-01,208
-sobral-ce,SOBRAL / CE,PAP,instalacao,2026-04-01,200
+serra-talhada-pe,SERRA TALHADA/PE,PAP,ativacao,2026-04-01,70
+serra-talhada-pe,SERRA TALHADA/PE,PAP,orcamento,2026-04-01,36
+serra-talhada-pe,SERRA TALHADA/PE,PAP,efetivado,2026-04-01,32
+serra-talhada-pe,SERRA TALHADA/PE,PAP,instalacao,2026-04-01,30
 sobral-ce,SOBRAL/CE,LOJA,ativacao,2026-04-01,88
 sobral-ce,SOBRAL/CE,LOJA,instalacao,2026-04-01,56
+sobral-ce,SOBRAL/CE,PAP,ativacao,2026-04-01,175
+sobral-ce,SOBRAL/CE,PAP,orcamento,2026-04-01,210
+sobral-ce,SOBRAL/CE,PAP,efetivado,2026-04-01,182
+sobral-ce,SOBRAL/CE,PAP,instalacao,2026-04-01,175
 sousa-pb,SOUSA/PB,LOJA,ativacao,2026-04-01,66
 sousa-pb,SOUSA/PB,LOJA,instalacao,2026-04-01,42
 sousa-pb,SOUSA/PB,PAP,ativacao,2026-04-01,70
@@ -2531,24 +2463,24 @@ taua-ce,TAUA/CE,PAP,ativacao,2026-04-01,85
 taua-ce,TAUA/CE,PAP,orcamento,2026-04-01,25
 taua-ce,TAUA/CE,PAP,efetivado,2026-04-01,23
 taua-ce,TAUA/CE,PAP,instalacao,2026-04-01,21
-teresina-pi,TERESINA / PI,PAP,ativacao,2026-04-01,574
-teresina-pi,TERESINA / PI,PAP,orcamento,2026-04-01,687
-teresina-pi,TERESINA / PI,PAP,efetivado,2026-04-01,599
-teresina-pi,TERESINA / PI,PAP,instalacao,2026-04-01,575
 teresina-pi,TERESINA/PI,LOJA,ativacao,2026-04-01,88
 teresina-pi,TERESINA/PI,LOJA,instalacao,2026-04-01,56
+teresina-pi,TERESINA/PI,PAP,ativacao,2026-04-01,489
+teresina-pi,TERESINA/PI,PAP,orcamento,2026-04-01,586
+teresina-pi,TERESINA/PI,PAP,efetivado,2026-04-01,510
+teresina-pi,TERESINA/PI,PAP,instalacao,2026-04-01,490
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,ativacao,2026-04-01,26
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,instalacao,2026-04-01,12
 tiangua-ce,TIANGUA/CE,PAP,ativacao,2026-04-01,70
 tiangua-ce,TIANGUA/CE,PAP,orcamento,2026-04-01,36
 tiangua-ce,TIANGUA/CE,PAP,efetivado,2026-04-01,32
 tiangua-ce,TIANGUA/CE,PAP,instalacao,2026-04-01,30
-timon-ma,TIMON / MA,PAP,ativacao,2026-04-01,225
-timon-ma,TIMON / MA,PAP,orcamento,2026-04-01,270
-timon-ma,TIMON / MA,PAP,efetivado,2026-04-01,234
-timon-ma,TIMON / MA,PAP,instalacao,2026-04-01,225
 timon-ma,TIMON/MA,LOJA,ativacao,2026-04-01,52
 timon-ma,TIMON/MA,LOJA,instalacao,2026-04-01,24
+timon-ma,TIMON/MA,PAP,ativacao,2026-04-01,175
+timon-ma,TIMON/MA,PAP,orcamento,2026-04-01,210
+timon-ma,TIMON/MA,PAP,efetivado,2026-04-01,182
+timon-ma,TIMON/MA,PAP,instalacao,2026-04-01,175
 toritama-pe,TORITAMA/PE,LOJA,ativacao,2026-04-01,52
 toritama-pe,TORITAMA/PE,LOJA,instalacao,2026-04-01,24
 toritama-pe,TORITAMA/PE,PAP,ativacao,2026-04-01,75
@@ -2571,10 +2503,6 @@ uirauna-pb,UIRAUNA/PB,PAP,ativacao,2026-04-01,45
 uirauna-pb,UIRAUNA/PB,PAP,orcamento,2026-04-01,6
 uirauna-pb,UIRAUNA/PB,PAP,efetivado,2026-04-01,5
 uirauna-pb,UIRAUNA/PB,PAP,instalacao,2026-04-01,5
-umarizal-rn,UMARIZAL / RN,PAP,ativacao,2026-04-01,45
-umarizal-rn,UMARIZAL / RN,PAP,orcamento,2026-04-01,6
-umarizal-rn,UMARIZAL / RN,PAP,efetivado,2026-04-01,5
-umarizal-rn,UMARIZAL / RN,PAP,instalacao,2026-04-01,5
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,ativacao,2026-04-01,52
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,instalacao,2026-04-01,24
 varzea-alegre-ce,VARZEA ALEGRE/CE,LOJA,ativacao,2026-04-01,78
@@ -2599,11 +2527,11 @@ acu-rn,ACU/RN,DONO CIDADE - LOJAS,ativacao,2026-05-01,66
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,instalacao,2026-05-01,42
 acu-rn,ACU/RN,LOJA,ativacao,2026-05-01,22
 acu-rn,ACU/RN,LOJA,instalacao,2026-05-01,14
-acu-rn,ACU/RN,PAP,ativacao,2026-05-01,96
-acu-rn,ACU/RN,PAP,orcamento,2026-05-01,54
-acu-rn,ACU/RN,PAP,efetivado,2026-05-01,48
-acu-rn,ACU/RN,PAP,instalacao,2026-05-01,45
 apodi-rn,APODI/RN,DONO CIDADE - LOJAS,ativacao,2026-05-01,90
+aquiraz-ce,AQUIRAZ/CE,PAP,ativacao,2026-05-01,29
+aquiraz-ce,AQUIRAZ/CE,PAP,orcamento,2026-05-01,37
+aquiraz-ce,AQUIRAZ/CE,PAP,efetivado,2026-05-01,32
+aquiraz-ce,AQUIRAZ/CE,PAP,instalacao,2026-05-01,31
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,ativacao,2026-05-01,52
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,instalacao,2026-05-01,24
 araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-05-01,64
@@ -2616,6 +2544,10 @@ arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-05-01,91
 arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-05-01,52
 arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-05-01,46
 arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-05-01,43
+assu-rn,ASSU/RN,PAP,ativacao,2026-05-01,96
+assu-rn,ASSU/RN,PAP,orcamento,2026-05-01,54
+assu-rn,ASSU/RN,PAP,efetivado,2026-05-01,48
+assu-rn,ASSU/RN,PAP,instalacao,2026-05-01,45
 banabuiu-ce,BANABUIU/CE,LOJA,ativacao,2026-05-01,52
 banabuiu-ce,BANABUIU/CE,LOJA,instalacao,2026-05-01,24
 banabuiu-ce,BANABUIU/CE,PAP,ativacao,2026-05-01,41
@@ -2624,12 +2556,12 @@ banabuiu-ce,BANABUIU/CE,PAP,efetivado,2026-05-01,5
 banabuiu-ce,BANABUIU/CE,PAP,instalacao,2026-05-01,5
 barauna-rn,BARAUNA/RN,LOJA,ativacao,2026-05-01,26
 barauna-rn,BARAUNA/RN,LOJA,instalacao,2026-05-01,12
-barbalha-ce,BARBALHA / CE,PAP,ativacao,2026-05-01,72
-barbalha-ce,BARBALHA / CE,PAP,orcamento,2026-05-01,24
-barbalha-ce,BARBALHA / CE,PAP,efetivado,2026-05-01,22
-barbalha-ce,BARBALHA / CE,PAP,instalacao,2026-05-01,20
 barbalha-ce,BARBALHA/CE,LOJA,ativacao,2026-05-01,44
 barbalha-ce,BARBALHA/CE,LOJA,instalacao,2026-05-01,28
+barbalha-ce,BARBALHA/CE,PAP,ativacao,2026-05-01,36
+barbalha-ce,BARBALHA/CE,PAP,orcamento,2026-05-01,12
+barbalha-ce,BARBALHA/CE,PAP,efetivado,2026-05-01,11
+barbalha-ce,BARBALHA/CE,PAP,instalacao,2026-05-01,10
 bayeux-pb,BAYEUX/PB,DONO CIDADE - LOJAS,ativacao,2026-05-01,44
 bayeux-pb,BAYEUX/PB,DONO CIDADE - LOJAS,instalacao,2026-05-01,28
 bayeux-pb,BAYEUX/PB,PAP,ativacao,2026-05-01,118
@@ -2669,24 +2601,24 @@ cajazeiras-pb,CAJAZEIRAS/PB,PAP,orcamento,2026-05-01,90
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,efetivado,2026-05-01,80
 cajazeiras-pb,CAJAZEIRAS/PB,PAP,instalacao,2026-05-01,75
 camocim-ce,CAMOCIM/CE,DONO CIDADE - LOJAS,ativacao,2026-05-01,90
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,ativacao,2026-05-01,287
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,orcamento,2026-05-01,376
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,efetivado,2026-05-01,326
-campina-grande-pb,CAMPINA GRANDE / PB,PAP,instalacao,2026-05-01,313
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,ativacao,2026-05-01,66
 campina-grande-pb,CAMPINA GRANDE/PB,LOJA,instalacao,2026-05-01,42
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,ativacao,2026-05-01,241
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,orcamento,2026-05-01,316
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,efetivado,2026-05-01,274
+campina-grande-pb,CAMPINA GRANDE/PB,PAP,instalacao,2026-05-01,263
 caninde-ce,CANINDE/CE,LOJA,ativacao,2026-05-01,44
 caninde-ce,CANINDE/CE,LOJA,instalacao,2026-05-01,28
 caninde-ce,CANINDE/CE,PAP,ativacao,2026-05-01,104
 caninde-ce,CANINDE/CE,PAP,orcamento,2026-05-01,59
 caninde-ce,CANINDE/CE,PAP,efetivado,2026-05-01,52
 caninde-ce,CANINDE/CE,PAP,instalacao,2026-05-01,49
-caruaru-pe,CARUARU / PE,PAP,ativacao,2026-05-01,249
-caruaru-pe,CARUARU / PE,PAP,orcamento,2026-05-01,328
-caruaru-pe,CARUARU / PE,PAP,efetivado,2026-05-01,286
-caruaru-pe,CARUARU / PE,PAP,instalacao,2026-05-01,274
 caruaru-pe,CARUARU/PE,LOJA,ativacao,2026-05-01,11
 caruaru-pe,CARUARU/PE,LOJA,instalacao,2026-05-01,7
+caruaru-pe,CARUARU/PE,PAP,ativacao,2026-05-01,203
+caruaru-pe,CARUARU/PE,PAP,orcamento,2026-05-01,268
+caruaru-pe,CARUARU/PE,PAP,efetivado,2026-05-01,234
+caruaru-pe,CARUARU/PE,PAP,instalacao,2026-05-01,224
 cascavel-ce,CASCAVEL/CE,LOJA,ativacao,2026-05-01,52
 cascavel-ce,CASCAVEL/CE,LOJA,instalacao,2026-05-01,24
 cascavel-ce,CASCAVEL/CE,PAP,ativacao,2026-05-01,96
@@ -2707,12 +2639,12 @@ caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-05-01,238
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-05-01,228
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,ativacao,2026-05-01,65
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,instalacao,2026-05-01,10
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-05-01,32
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-05-01,18
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-05-01,16
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-05-01,15
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-05-01,22
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-05-01,14
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-05-01,32
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-05-01,18
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-05-01,16
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-05-01,15
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-05-01,52
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-05-01,24
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-05-01,36
@@ -2729,12 +2661,12 @@ crateus-ce,CRATEUS/CE,PAP,ativacao,2026-05-01,142
 crateus-ce,CRATEUS/CE,PAP,orcamento,2026-05-01,47
 crateus-ce,CRATEUS/CE,PAP,efetivado,2026-05-01,43
 crateus-ce,CRATEUS/CE,PAP,instalacao,2026-05-01,39
-crato-ce,CRATO / CE,PAP,ativacao,2026-05-01,115
-crato-ce,CRATO / CE,PAP,orcamento,2026-05-01,150
-crato-ce,CRATO / CE,PAP,efetivado,2026-05-01,130
-crato-ce,CRATO / CE,PAP,instalacao,2026-05-01,125
 crato-ce,CRATO/CE,LOJA,ativacao,2026-05-01,88
 crato-ce,CRATO/CE,LOJA,instalacao,2026-05-01,56
+crato-ce,CRATO/CE,PAP,ativacao,2026-05-01,115
+crato-ce,CRATO/CE,PAP,orcamento,2026-05-01,150
+crato-ce,CRATO/CE,PAP,efetivado,2026-05-01,130
+crato-ce,CRATO/CE,PAP,instalacao,2026-05-01,125
 custodia-pe,CUSTODIA/PE,LOJA,ativacao,2026-05-01,52
 custodia-pe,CUSTODIA/PE,LOJA,instalacao,2026-05-01,24
 encanto-rn,ENCANTO/RN,PAP,ativacao,2026-05-01,41
@@ -2743,26 +2675,26 @@ encanto-rn,ENCANTO/RN,PAP,efetivado,2026-05-01,5
 encanto-rn,ENCANTO/RN,PAP,instalacao,2026-05-01,5
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-05-01,52
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-05-01,24
-eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-05-01,69
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-05-01,90
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-05-01,78
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-05-01,75
+eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-05-01,92
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-05-01,120
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-05-01,104
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-05-01,100
 extremoz-rn,EXTREMOZ/RN,LOJA,ativacao,2026-05-01,26
 extremoz-rn,EXTREMOZ/RN,LOJA,instalacao,2026-05-01,12
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-05-01,128
 extremoz-rn,EXTREMOZ/RN,PAP,orcamento,2026-05-01,72
 extremoz-rn,EXTREMOZ/RN,PAP,efetivado,2026-05-01,64
 extremoz-rn,EXTREMOZ/RN,PAP,instalacao,2026-05-01,60
-fortaleza-ce,FORTALEZA / CE,NGC,ativacao,2026-05-01,212
-fortaleza-ce,FORTALEZA / CE,NGC,orcamento,2026-05-01,277
-fortaleza-ce,FORTALEZA / CE,NGC,efetivado,2026-05-01,240
-fortaleza-ce,FORTALEZA / CE,NGC,instalacao,2026-05-01,231
-fortaleza-ce,FORTALEZA / CE,PAP,ativacao,2026-05-01,1178
-fortaleza-ce,FORTALEZA / CE,PAP,orcamento,2026-05-01,1533
-fortaleza-ce,FORTALEZA / CE,PAP,efetivado,2026-05-01,1332
-fortaleza-ce,FORTALEZA / CE,PAP,instalacao,2026-05-01,1280
 fortaleza-ce,FORTALEZA/CE,LOJA,ativacao,2026-05-01,88
 fortaleza-ce,FORTALEZA/CE,LOJA,instalacao,2026-05-01,56
+fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-05-01,189
+fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-05-01,247
+fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-05-01,214
+fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-05-01,206
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-05-01,1011
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-05-01,1316
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-05-01,1144
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-05-01,1099
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,ativacao,2026-05-01,715
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,instalacao,2026-05-01,110
 gravata-pe,GRAVATA/PE,LOJA,ativacao,2026-05-01,52
@@ -2777,12 +2709,12 @@ guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,ativacao,2026-05-01,32
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,orcamento,2026-05-01,18
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,efetivado,2026-05-01,16
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,PAP,instalacao,2026-05-01,15
-horizonte-ce,HORIZONTE / CE,PAP,ativacao,2026-05-01,110
-horizonte-ce,HORIZONTE / CE,PAP,orcamento,2026-05-01,144
-horizonte-ce,HORIZONTE / CE,PAP,efetivado,2026-05-01,125
-horizonte-ce,HORIZONTE / CE,PAP,instalacao,2026-05-01,120
 horizonte-ce,HORIZONTE/CE,LOJA,ativacao,2026-05-01,66
 horizonte-ce,HORIZONTE/CE,LOJA,instalacao,2026-05-01,42
+horizonte-ce,HORIZONTE/CE,PAP,ativacao,2026-05-01,87
+horizonte-ce,HORIZONTE/CE,PAP,orcamento,2026-05-01,114
+horizonte-ce,HORIZONTE/CE,PAP,efetivado,2026-05-01,99
+horizonte-ce,HORIZONTE/CE,PAP,instalacao,2026-05-01,95
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,ativacao,2026-05-01,26
 ibiapina-ce,IBIAPINA/CE,DONO CIDADE - LOJAS,instalacao,2026-05-01,12
 ibiapina-ce,IBIAPINA/CE,PAP,ativacao,2026-05-01,20
@@ -2795,12 +2727,12 @@ ico-ce,ICO/CE,PAP,ativacao,2026-05-01,36
 ico-ce,ICO/CE,PAP,orcamento,2026-05-01,12
 ico-ce,ICO/CE,PAP,efetivado,2026-05-01,11
 ico-ce,ICO/CE,PAP,instalacao,2026-05-01,10
-iguatu-ce,IGUATU / CE,PAP,ativacao,2026-05-01,192
-iguatu-ce,IGUATU / CE,PAP,orcamento,2026-05-01,108
-iguatu-ce,IGUATU / CE,PAP,efetivado,2026-05-01,96
-iguatu-ce,IGUATU / CE,PAP,instalacao,2026-05-01,90
 iguatu-ce,IGUATU/CE,LOJA,ativacao,2026-05-01,88
 iguatu-ce,IGUATU/CE,LOJA,instalacao,2026-05-01,56
+iguatu-ce,IGUATU/CE,PAP,ativacao,2026-05-01,192
+iguatu-ce,IGUATU/CE,PAP,orcamento,2026-05-01,108
+iguatu-ce,IGUATU/CE,PAP,efetivado,2026-05-01,96
+iguatu-ce,IGUATU/CE,PAP,instalacao,2026-05-01,90
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,ativacao,2026-05-01,52
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,instalacao,2026-05-01,24
 ipu-ce,IPU/CE,PAP,ativacao,2026-05-01,62
@@ -2813,16 +2745,12 @@ iracema-ce,IRACEMA/CE,PAP,ativacao,2026-05-01,82
 iracema-ce,IRACEMA/CE,PAP,orcamento,2026-05-01,12
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-05-01,10
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-05-01,10
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-05-01,23
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-05-01,30
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-05-01,26
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-05-01,25
-itapaje-ce,ITAPAJE / CE,PAP,ativacao,2026-05-01,128
-itapaje-ce,ITAPAJE / CE,PAP,orcamento,2026-05-01,72
-itapaje-ce,ITAPAJE / CE,PAP,efetivado,2026-05-01,64
-itapaje-ce,ITAPAJE / CE,PAP,instalacao,2026-05-01,60
 itapaje-ce,ITAPAJE/CE,LOJA,ativacao,2026-05-01,26
 itapaje-ce,ITAPAJE/CE,LOJA,instalacao,2026-05-01,12
+itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-05-01,96
+itapaje-ce,ITAPAJE/CE,PAP,orcamento,2026-05-01,54
+itapaje-ce,ITAPAJE/CE,PAP,efetivado,2026-05-01,48
+itapaje-ce,ITAPAJE/CE,PAP,instalacao,2026-05-01,45
 itapipoca-ce,ITAPIPOCA/CE,LOJA,ativacao,2026-05-01,52
 itapipoca-ce,ITAPIPOCA/CE,LOJA,instalacao,2026-05-01,24
 itapipoca-ce,ITAPIPOCA/CE,PAP,ativacao,2026-05-01,72
@@ -2845,34 +2773,34 @@ jaguaribe-ce,JAGUARIBE/CE,PAP,ativacao,2026-05-01,108
 jaguaribe-ce,JAGUARIBE/CE,PAP,orcamento,2026-05-01,36
 jaguaribe-ce,JAGUARIBE/CE,PAP,efetivado,2026-05-01,33
 jaguaribe-ce,JAGUARIBE/CE,PAP,instalacao,2026-05-01,30
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,ativacao,2026-05-01,207
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,orcamento,2026-05-01,270
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,efetivado,2026-05-01,234
-joao-pessoa-pb,JOAO PESSOA / PB,NGC,instalacao,2026-05-01,225
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,ativacao,2026-05-01,389
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,orcamento,2026-05-01,509
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,efetivado,2026-05-01,441
-joao-pessoa-pb,JOAO PESSOA / PB,PAP,instalacao,2026-05-01,424
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,ativacao,2026-05-01,110
 joao-pessoa-pb,JOAO PESSOA/PB,LOJA,instalacao,2026-05-01,70
-juazeiro-ba,JUAZEIRO / BA,PAP,ativacao,2026-05-01,177
-juazeiro-ba,JUAZEIRO / BA,PAP,orcamento,2026-05-01,234
-juazeiro-ba,JUAZEIRO / BA,PAP,efetivado,2026-05-01,203
-juazeiro-ba,JUAZEIRO / BA,PAP,instalacao,2026-05-01,195
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,ativacao,2026-05-01,285
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,orcamento,2026-05-01,376
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,efetivado,2026-05-01,326
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,instalacao,2026-05-01,313
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,ativacao,2026-05-01,184
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,orcamento,2026-05-01,240
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,efetivado,2026-05-01,208
+joao-pessoa-pb,JOAO PESSOA/PB,NGC,instalacao,2026-05-01,200
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-05-01,366
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-05-01,479
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-05-01,415
+joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-05-01,399
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-05-01,176
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,instalacao,2026-05-01,112
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,ativacao,2026-05-01,285
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,orcamento,2026-05-01,376
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,efetivado,2026-05-01,326
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,instalacao,2026-05-01,313
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,ativacao,2026-05-01,52
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,instalacao,2026-05-01,24
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,ativacao,2026-05-01,72
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,orcamento,2026-05-01,24
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,efetivado,2026-05-01,22
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA / CE,PAP,instalacao,2026-05-01,20
+juazeiro-ba,JUAZEIRO/BA,PAP,ativacao,2026-05-01,161
+juazeiro-ba,JUAZEIRO/BA,PAP,orcamento,2026-05-01,211
+juazeiro-ba,JUAZEIRO/BA,PAP,efetivado,2026-05-01,183
+juazeiro-ba,JUAZEIRO/BA,PAP,instalacao,2026-05-01,176
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,ativacao,2026-05-01,52
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,instalacao,2026-05-01,24
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-05-01,36
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-05-01,12
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-05-01,11
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-05-01,10
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-05-01,78
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-05-01,36
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,ativacao,2026-05-01,72
@@ -2893,18 +2821,18 @@ major-sales-rn,MAJOR SALES/RN,PAP,efetivado,2026-05-01,5
 major-sales-rn,MAJOR SALES/RN,PAP,instalacao,2026-05-01,5
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-05-01,130
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-05-01,60
-maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-05-01,136
-maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-05-01,179
-maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-05-01,155
-maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-05-01,149
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-05-01,159
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-05-01,209
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-05-01,181
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-05-01,174
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,ativacao,2026-05-01,130
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,instalacao,2026-05-01,20
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-05-01,44
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-05-01,28
-maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-05-01,92
-maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-05-01,120
-maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-05-01,104
-maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-05-01,100
+maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-05-01,69
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-05-01,90
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-05-01,78
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-05-01,75
 milagres-ce,MILAGRES/CE,LOJA,ativacao,2026-05-01,52
 milagres-ce,MILAGRES/CE,LOJA,instalacao,2026-05-01,24
 milagres-ce,MILAGRES/CE,PAP,ativacao,2026-05-01,36
@@ -2929,22 +2857,22 @@ morada-nova-ce,MORADA NOVA/CE,PAP,ativacao,2026-05-01,106
 morada-nova-ce,MORADA NOVA/CE,PAP,orcamento,2026-05-01,35
 morada-nova-ce,MORADA NOVA/CE,PAP,efetivado,2026-05-01,32
 morada-nova-ce,MORADA NOVA/CE,PAP,instalacao,2026-05-01,29
-mossoro-rn,MOSSORO / RN,PAP,ativacao,2026-05-01,262
-mossoro-rn,MOSSORO / RN,PAP,orcamento,2026-05-01,341
-mossoro-rn,MOSSORO / RN,PAP,efetivado,2026-05-01,297
-mossoro-rn,MOSSORO / RN,PAP,instalacao,2026-05-01,285
 mossoro-rn,MOSSORO/RN,LOJA,ativacao,2026-05-01,110
 mossoro-rn,MOSSORO/RN,LOJA,instalacao,2026-05-01,70
-natal-rn,NATAL / RN,PAP,ativacao,2026-05-01,447
-natal-rn,NATAL / RN,PAP,orcamento,2026-05-01,582
-natal-rn,NATAL / RN,PAP,efetivado,2026-05-01,506
-natal-rn,NATAL / RN,PAP,instalacao,2026-05-01,486
+mossoro-rn,MOSSORO/RN,PAP,ativacao,2026-05-01,193
+mossoro-rn,MOSSORO/RN,PAP,orcamento,2026-05-01,251
+mossoro-rn,MOSSORO/RN,PAP,efetivado,2026-05-01,219
+mossoro-rn,MOSSORO/RN,PAP,instalacao,2026-05-01,210
 natal-rn,NATAL/RN,LOJA,ativacao,2026-05-01,176
 natal-rn,NATAL/RN,LOJA,instalacao,2026-05-01,112
 natal-rn,NATAL/RN,NGC,ativacao,2026-05-01,184
 natal-rn,NATAL/RN,NGC,orcamento,2026-05-01,240
 natal-rn,NATAL/RN,NGC,efetivado,2026-05-01,208
 natal-rn,NATAL/RN,NGC,instalacao,2026-05-01,200
+natal-rn,NATAL/RN,PAP,ativacao,2026-05-01,401
+natal-rn,NATAL/RN,PAP,orcamento,2026-05-01,522
+natal-rn,NATAL/RN,PAP,efetivado,2026-05-01,454
+natal-rn,NATAL/RN,PAP,instalacao,2026-05-01,436
 natal-rn,NATAL/RN,QUIOSQUE LOJA,ativacao,2026-05-01,195
 natal-rn,NATAL/RN,QUIOSQUE LOJA,instalacao,2026-05-01,30
 nisia-floresta-rn,NISIA FLORESTA/RN,PAP,ativacao,2026-05-01,36
@@ -2969,12 +2897,12 @@ pacajus-ce,PACAJUS/CE,PAP,ativacao,2026-05-01,69
 pacajus-ce,PACAJUS/CE,PAP,orcamento,2026-05-01,90
 pacajus-ce,PACAJUS/CE,PAP,efetivado,2026-05-01,78
 pacajus-ce,PACAJUS/CE,PAP,instalacao,2026-05-01,75
-paraipaba-ce,PARAIPABA / CE,PAP,ativacao,2026-05-01,128
-paraipaba-ce,PARAIPABA / CE,PAP,orcamento,2026-05-01,72
-paraipaba-ce,PARAIPABA / CE,PAP,efetivado,2026-05-01,64
-paraipaba-ce,PARAIPABA / CE,PAP,instalacao,2026-05-01,60
 paraipaba-ce,PARAIPABA/CE,LOJA,ativacao,2026-05-01,26
 paraipaba-ce,PARAIPABA/CE,LOJA,instalacao,2026-05-01,12
+paraipaba-ce,PARAIPABA/CE,PAP,ativacao,2026-05-01,96
+paraipaba-ce,PARAIPABA/CE,PAP,orcamento,2026-05-01,54
+paraipaba-ce,PARAIPABA/CE,PAP,efetivado,2026-05-01,48
+paraipaba-ce,PARAIPABA/CE,PAP,instalacao,2026-05-01,45
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,ativacao,2026-05-01,44
 parnaiba-pi,PARNAIBA/PI,DONO CIDADE - LOJAS,instalacao,2026-05-01,28
 parnaiba-pi,PARNAIBA/PI,PAP,ativacao,2026-05-01,190
@@ -2987,12 +2915,12 @@ parnamirim-rn,PARNAMIRIM/RN,PAP,ativacao,2026-05-01,205
 parnamirim-rn,PARNAMIRIM/RN,PAP,orcamento,2026-05-01,269
 parnamirim-rn,PARNAMIRIM/RN,PAP,efetivado,2026-05-01,233
 parnamirim-rn,PARNAMIRIM/RN,PAP,instalacao,2026-05-01,224
-patos-pb,PATOS / PB,PAP,ativacao,2026-05-01,138
-patos-pb,PATOS / PB,PAP,orcamento,2026-05-01,180
-patos-pb,PATOS / PB,PAP,efetivado,2026-05-01,156
-patos-pb,PATOS / PB,PAP,instalacao,2026-05-01,150
 patos-pb,PATOS/PB,LOJA,ativacao,2026-05-01,66
 patos-pb,PATOS/PB,LOJA,instalacao,2026-05-01,42
+patos-pb,PATOS/PB,PAP,ativacao,2026-05-01,115
+patos-pb,PATOS/PB,PAP,orcamento,2026-05-01,150
+patos-pb,PATOS/PB,PAP,efetivado,2026-05-01,130
+patos-pb,PATOS/PB,PAP,instalacao,2026-05-01,125
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,ativacao,2026-05-01,104
 pau-dos-ferros-rn,PAU DOS FERROS/RN,DONO CIDADE - LOJAS,instalacao,2026-05-01,48
 pau-dos-ferros-rn,PAU DOS FERROS/RN,PAP,ativacao,2026-05-01,72
@@ -3015,12 +2943,12 @@ pesqueira-pe,PESQUEIRA/PE,PAP,ativacao,2026-05-01,91
 pesqueira-pe,PESQUEIRA/PE,PAP,orcamento,2026-05-01,52
 pesqueira-pe,PESQUEIRA/PE,PAP,efetivado,2026-05-01,46
 pesqueira-pe,PESQUEIRA/PE,PAP,instalacao,2026-05-01,43
-petrolina-pe,PETROLINA / PE,PAP,ativacao,2026-05-01,414
-petrolina-pe,PETROLINA / PE,PAP,orcamento,2026-05-01,540
-petrolina-pe,PETROLINA / PE,PAP,efetivado,2026-05-01,468
-petrolina-pe,PETROLINA / PE,PAP,instalacao,2026-05-01,450
 petrolina-pe,PETROLINA/PE,DONO CIDADE - LOJAS,ativacao,2026-05-01,26
 petrolina-pe,PETROLINA/PE,DONO CIDADE - LOJAS,instalacao,2026-05-01,12
+petrolina-pe,PETROLINA/PE,PAP,ativacao,2026-05-01,391
+petrolina-pe,PETROLINA/PE,PAP,orcamento,2026-05-01,510
+petrolina-pe,PETROLINA/PE,PAP,efetivado,2026-05-01,442
+petrolina-pe,PETROLINA/PE,PAP,instalacao,2026-05-01,425
 pombal-pb,POMBAL/PB,LOJA,ativacao,2026-05-01,52
 pombal-pb,POMBAL/PB,LOJA,instalacao,2026-05-01,24
 pombal-pb,POMBAL/PB,PAP,ativacao,2026-05-01,94
@@ -3055,19 +2983,19 @@ russas-ce,RUSSAS/CE,PAP,ativacao,2026-05-01,108
 russas-ce,RUSSAS/CE,PAP,orcamento,2026-05-01,36
 russas-ce,RUSSAS/CE,PAP,efetivado,2026-05-01,33
 russas-ce,RUSSAS/CE,PAP,instalacao,2026-05-01,30
-salgueiro-pe,SALGUEIRO / PE,PAP,ativacao,2026-05-01,64
-salgueiro-pe,SALGUEIRO / PE,PAP,orcamento,2026-05-01,36
-salgueiro-pe,SALGUEIRO / PE,PAP,efetivado,2026-05-01,32
-salgueiro-pe,SALGUEIRO / PE,PAP,instalacao,2026-05-01,30
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,ativacao,2026-05-01,26
 salgueiro-pe,SALGUEIRO/PE,DONO CIDADE - LOJAS,instalacao,2026-05-01,12
+salgueiro-pe,SALGUEIRO/PE,PAP,ativacao,2026-05-01,32
+salgueiro-pe,SALGUEIRO/PE,PAP,orcamento,2026-05-01,18
+salgueiro-pe,SALGUEIRO/PE,PAP,efetivado,2026-05-01,16
+salgueiro-pe,SALGUEIRO/PE,PAP,instalacao,2026-05-01,15
 santa-cruz-rn,SANTA CRUZ/RN,DONO CIDADE - LOJAS,ativacao,2026-05-01,90
-santa-luzia-pb,SANTA LUZIA / PB,PAP,ativacao,2026-05-01,82
-santa-luzia-pb,SANTA LUZIA / PB,PAP,orcamento,2026-05-01,12
-santa-luzia-pb,SANTA LUZIA / PB,PAP,efetivado,2026-05-01,10
-santa-luzia-pb,SANTA LUZIA / PB,PAP,instalacao,2026-05-01,10
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,ativacao,2026-05-01,52
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,instalacao,2026-05-01,24
+santa-luzia-pb,SANTA LUZIA/PB,PAP,ativacao,2026-05-01,82
+santa-luzia-pb,SANTA LUZIA/PB,PAP,orcamento,2026-05-01,12
+santa-luzia-pb,SANTA LUZIA/PB,PAP,efetivado,2026-05-01,10
+santa-luzia-pb,SANTA LUZIA/PB,PAP,instalacao,2026-05-01,10
 santa-quiteria-ce,SANTA QUITERIA/CE,DONO CIDADE - LOJAS,ativacao,2026-05-01,90
 santa-rita-pb,SANTA RITA/PB,LOJA,ativacao,2026-05-01,44
 santa-rita-pb,SANTA RITA/PB,LOJA,instalacao,2026-05-01,28
@@ -3081,10 +3009,6 @@ sao-benedito-ce,SAO BENEDITO/CE,PAP,ativacao,2026-05-01,64
 sao-benedito-ce,SAO BENEDITO/CE,PAP,orcamento,2026-05-01,36
 sao-benedito-ce,SAO BENEDITO/CE,PAP,efetivado,2026-05-01,32
 sao-benedito-ce,SAO BENEDITO/CE,PAP,instalacao,2026-05-01,30
-sao-bento-pb,SAO BENTO / PB,PAP,ativacao,2026-05-01,36
-sao-bento-pb,SAO BENTO / PB,PAP,orcamento,2026-05-01,12
-sao-bento-pb,SAO BENTO / PB,PAP,efetivado,2026-05-01,11
-sao-bento-pb,SAO BENTO / PB,PAP,instalacao,2026-05-01,10
 sao-caitano-pe,SAO CAITANO/PE,LOJA,ativacao,2026-05-01,90
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,ativacao,2026-05-01,46
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,PAP,orcamento,2026-05-01,60
@@ -3108,18 +3032,18 @@ senador-pompeu-ce,SENADOR POMPEU/CE,PAP,ativacao,2026-05-01,72
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,orcamento,2026-05-01,24
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,efetivado,2026-05-01,22
 senador-pompeu-ce,SENADOR POMPEU/CE,PAP,instalacao,2026-05-01,20
-serra-talhada-pe,SERRA TALHADA / PE,PAP,ativacao,2026-05-01,128
-serra-talhada-pe,SERRA TALHADA / PE,PAP,orcamento,2026-05-01,72
-serra-talhada-pe,SERRA TALHADA / PE,PAP,efetivado,2026-05-01,64
-serra-talhada-pe,SERRA TALHADA / PE,PAP,instalacao,2026-05-01,60
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,ativacao,2026-05-01,78
 serra-talhada-pe,SERRA TALHADA/PE,LOJA,instalacao,2026-05-01,36
-sobral-ce,SOBRAL / CE,PAP,ativacao,2026-05-01,207
-sobral-ce,SOBRAL / CE,PAP,orcamento,2026-05-01,270
-sobral-ce,SOBRAL / CE,PAP,efetivado,2026-05-01,234
-sobral-ce,SOBRAL / CE,PAP,instalacao,2026-05-01,225
+serra-talhada-pe,SERRA TALHADA/PE,PAP,ativacao,2026-05-01,96
+serra-talhada-pe,SERRA TALHADA/PE,PAP,orcamento,2026-05-01,54
+serra-talhada-pe,SERRA TALHADA/PE,PAP,efetivado,2026-05-01,48
+serra-talhada-pe,SERRA TALHADA/PE,PAP,instalacao,2026-05-01,45
 sobral-ce,SOBRAL/CE,LOJA,ativacao,2026-05-01,88
 sobral-ce,SOBRAL/CE,LOJA,instalacao,2026-05-01,56
+sobral-ce,SOBRAL/CE,PAP,ativacao,2026-05-01,184
+sobral-ce,SOBRAL/CE,PAP,orcamento,2026-05-01,240
+sobral-ce,SOBRAL/CE,PAP,efetivado,2026-05-01,208
+sobral-ce,SOBRAL/CE,PAP,instalacao,2026-05-01,200
 sousa-pb,SOUSA/PB,LOJA,ativacao,2026-05-01,33
 sousa-pb,SOUSA/PB,LOJA,instalacao,2026-05-01,21
 sousa-pb,SOUSA/PB,PAP,ativacao,2026-05-01,64
@@ -3138,24 +3062,24 @@ taua-ce,TAUA/CE,PAP,ativacao,2026-05-01,106
 taua-ce,TAUA/CE,PAP,orcamento,2026-05-01,35
 taua-ce,TAUA/CE,PAP,efetivado,2026-05-01,32
 taua-ce,TAUA/CE,PAP,instalacao,2026-05-01,29
-teresina-pi,TERESINA / PI,PAP,ativacao,2026-05-01,563
-teresina-pi,TERESINA / PI,PAP,orcamento,2026-05-01,737
-teresina-pi,TERESINA / PI,PAP,efetivado,2026-05-01,638
-teresina-pi,TERESINA / PI,PAP,instalacao,2026-05-01,613
 teresina-pi,TERESINA/PI,LOJA,ativacao,2026-05-01,88
 teresina-pi,TERESINA/PI,LOJA,instalacao,2026-05-01,56
+teresina-pi,TERESINA/PI,PAP,ativacao,2026-05-01,471
+teresina-pi,TERESINA/PI,PAP,orcamento,2026-05-01,617
+teresina-pi,TERESINA/PI,PAP,efetivado,2026-05-01,534
+teresina-pi,TERESINA/PI,PAP,instalacao,2026-05-01,513
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,ativacao,2026-05-01,26
 tiangua-ce,TIANGUA/CE,DONO CIDADE - LOJAS,instalacao,2026-05-01,12
 tiangua-ce,TIANGUA/CE,PAP,ativacao,2026-05-01,81
 tiangua-ce,TIANGUA/CE,PAP,orcamento,2026-05-01,46
 tiangua-ce,TIANGUA/CE,PAP,efetivado,2026-05-01,41
 tiangua-ce,TIANGUA/CE,PAP,instalacao,2026-05-01,38
-timon-ma,TIMON / MA,PAP,ativacao,2026-05-01,184
-timon-ma,TIMON / MA,PAP,orcamento,2026-05-01,240
-timon-ma,TIMON / MA,PAP,efetivado,2026-05-01,208
-timon-ma,TIMON / MA,PAP,instalacao,2026-05-01,200
 timon-ma,TIMON/MA,LOJA,ativacao,2026-05-01,52
 timon-ma,TIMON/MA,LOJA,instalacao,2026-05-01,24
+timon-ma,TIMON/MA,PAP,ativacao,2026-05-01,161
+timon-ma,TIMON/MA,PAP,orcamento,2026-05-01,210
+timon-ma,TIMON/MA,PAP,efetivado,2026-05-01,182
+timon-ma,TIMON/MA,PAP,instalacao,2026-05-01,175
 toritama-pe,TORITAMA/PE,LOJA,ativacao,2026-05-01,52
 toritama-pe,TORITAMA/PE,LOJA,instalacao,2026-05-01,24
 toritama-pe,TORITAMA/PE,PAP,ativacao,2026-05-01,69
@@ -3174,10 +3098,6 @@ uirauna-pb,UIRAUNA/PB,PAP,ativacao,2026-05-01,41
 uirauna-pb,UIRAUNA/PB,PAP,orcamento,2026-05-01,6
 uirauna-pb,UIRAUNA/PB,PAP,efetivado,2026-05-01,5
 uirauna-pb,UIRAUNA/PB,PAP,instalacao,2026-05-01,5
-umarizal-rn,UMARIZAL / RN,PAP,ativacao,2026-05-01,41
-umarizal-rn,UMARIZAL / RN,PAP,orcamento,2026-05-01,6
-umarizal-rn,UMARIZAL / RN,PAP,efetivado,2026-05-01,5
-umarizal-rn,UMARIZAL / RN,PAP,instalacao,2026-05-01,5
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,ativacao,2026-05-01,52
 umarizal-rn,UMARIZAL/RN,DONO CIDADE - LOJAS,instalacao,2026-05-01,24
 varzea-alegre-ce,VARZEA ALEGRE/CE,LOJA,ativacao,2026-05-01,78
@@ -3202,11 +3122,11 @@ acu-rn,ACU/RN,DONO CIDADE - LOJAS,ativacao,2026-06-01,66
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,instalacao,2026-06-01,42
 acu-rn,ACU/RN,LOJA,ativacao,2026-06-01,22
 acu-rn,ACU/RN,LOJA,instalacao,2026-06-01,14
-acu-rn,ACU/RN,PAP,ativacao,2026-06-01,105
-acu-rn,ACU/RN,PAP,orcamento,2026-06-01,54
-acu-rn,ACU/RN,PAP,efetivado,2026-06-01,48
-acu-rn,ACU/RN,PAP,instalacao,2026-06-01,45
 apodi-rn,APODI/RN,DONO CIDADE - LOJAS,ativacao,2026-06-01,90
+aquiraz-ce,AQUIRAZ/CE,PAP,ativacao,2026-06-01,50
+aquiraz-ce,AQUIRAZ/CE,PAP,orcamento,2026-06-01,60
+aquiraz-ce,AQUIRAZ/CE,PAP,efetivado,2026-06-01,52
+aquiraz-ce,AQUIRAZ/CE,PAP,instalacao,2026-06-01,50
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,ativacao,2026-06-01,26
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,instalacao,2026-06-01,12
 araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-06-01,102
@@ -3219,6 +3139,10 @@ arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-06-01,105
 arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-06-01,54
 arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-06-01,48
 arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-06-01,45
+assu-rn,ASSU/RN,PAP,ativacao,2026-06-01,105
+assu-rn,ASSU/RN,PAP,orcamento,2026-06-01,54
+assu-rn,ASSU/RN,PAP,efetivado,2026-06-01,48
+assu-rn,ASSU/RN,PAP,instalacao,2026-06-01,45
 banabuiu-ce,BANABUIU/CE,LOJA,ativacao,2026-06-01,52
 banabuiu-ce,BANABUIU/CE,LOJA,instalacao,2026-06-01,24
 banabuiu-ce,BANABUIU/CE,PAP,ativacao,2026-06-01,45
@@ -3314,12 +3238,12 @@ caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-06-01,260
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-06-01,250
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,ativacao,2026-06-01,65
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,instalacao,2026-06-01,10
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-06-01,123
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-06-01,64
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-06-01,57
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-06-01,53
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-06-01,44
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-06-01,28
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-06-01,123
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-06-01,64
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-06-01,57
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-06-01,53
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-06-01,26
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-06-01,12
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-06-01,40
@@ -3336,12 +3260,12 @@ crateus-ce,CRATEUS/CE,PAP,ativacao,2026-06-01,160
 crateus-ce,CRATEUS/CE,PAP,orcamento,2026-06-01,48
 crateus-ce,CRATEUS/CE,PAP,efetivado,2026-06-01,44
 crateus-ce,CRATEUS/CE,PAP,instalacao,2026-06-01,40
-crato-ce,CRATO / CE,PAP,ativacao,2026-06-01,175
-crato-ce,CRATO / CE,PAP,orcamento,2026-06-01,90
-crato-ce,CRATO / CE,PAP,efetivado,2026-06-01,80
-crato-ce,CRATO / CE,PAP,instalacao,2026-06-01,75
 crato-ce,CRATO/CE,LOJA,ativacao,2026-06-01,88
 crato-ce,CRATO/CE,LOJA,instalacao,2026-06-01,56
+crato-ce,CRATO/CE,PAP,ativacao,2026-06-01,175
+crato-ce,CRATO/CE,PAP,orcamento,2026-06-01,90
+crato-ce,CRATO/CE,PAP,efetivado,2026-06-01,80
+crato-ce,CRATO/CE,PAP,instalacao,2026-06-01,75
 custodia-pe,CUSTODIA/PE,LOJA,ativacao,2026-06-01,52
 custodia-pe,CUSTODIA/PE,LOJA,instalacao,2026-06-01,24
 encanto-rn,ENCANTO/RN,PAP,ativacao,2026-06-01,45
@@ -3350,26 +3274,26 @@ encanto-rn,ENCANTO/RN,PAP,efetivado,2026-06-01,5
 encanto-rn,ENCANTO/RN,PAP,instalacao,2026-06-01,5
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-06-01,52
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-06-01,24
-eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-06-01,140
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-06-01,72
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-06-01,64
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-06-01,60
+eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-06-01,175
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-06-01,90
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-06-01,80
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-06-01,75
 extremoz-rn,EXTREMOZ/RN,LOJA,ativacao,2026-06-01,26
 extremoz-rn,EXTREMOZ/RN,LOJA,instalacao,2026-06-01,12
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-06-01,105
 extremoz-rn,EXTREMOZ/RN,PAP,orcamento,2026-06-01,54
 extremoz-rn,EXTREMOZ/RN,PAP,efetivado,2026-06-01,48
 extremoz-rn,EXTREMOZ/RN,PAP,instalacao,2026-06-01,45
-fortaleza-ce,FORTALEZA / CE,PAP,ativacao,2026-06-01,1575
-fortaleza-ce,FORTALEZA / CE,PAP,orcamento,2026-06-01,1890
-fortaleza-ce,FORTALEZA / CE,PAP,efetivado,2026-06-01,1638
-fortaleza-ce,FORTALEZA / CE,PAP,instalacao,2026-06-01,1575
 fortaleza-ce,FORTALEZA/CE,LOJA,ativacao,2026-06-01,110
 fortaleza-ce,FORTALEZA/CE,LOJA,instalacao,2026-06-01,70
 fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-06-01,225
 fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-06-01,270
 fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-06-01,234
 fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-06-01,225
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-06-01,1525
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-06-01,1830
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-06-01,1586
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-06-01,1525
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,ativacao,2026-06-01,780
 fortaleza-ce,FORTALEZA/CE,QUIOSQUE LOJA,instalacao,2026-06-01,120
 gravata-pe,GRAVATA/PE,LOJA,ativacao,2026-06-01,52
@@ -3400,12 +3324,12 @@ ico-ce,ICO/CE,PAP,ativacao,2026-06-01,40
 ico-ce,ICO/CE,PAP,orcamento,2026-06-01,12
 ico-ce,ICO/CE,PAP,efetivado,2026-06-01,11
 ico-ce,ICO/CE,PAP,instalacao,2026-06-01,10
-iguatu-ce,IGUATU / CE,PAP,ativacao,2026-06-01,210
-iguatu-ce,IGUATU / CE,PAP,orcamento,2026-06-01,108
-iguatu-ce,IGUATU / CE,PAP,efetivado,2026-06-01,96
-iguatu-ce,IGUATU / CE,PAP,instalacao,2026-06-01,90
 iguatu-ce,IGUATU/CE,LOJA,ativacao,2026-06-01,66
 iguatu-ce,IGUATU/CE,LOJA,instalacao,2026-06-01,42
+iguatu-ce,IGUATU/CE,PAP,ativacao,2026-06-01,210
+iguatu-ce,IGUATU/CE,PAP,orcamento,2026-06-01,108
+iguatu-ce,IGUATU/CE,PAP,efetivado,2026-06-01,96
+iguatu-ce,IGUATU/CE,PAP,instalacao,2026-06-01,90
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,ativacao,2026-06-01,52
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,instalacao,2026-06-01,24
 ipu-ce,IPU/CE,PAP,ativacao,2026-06-01,70
@@ -3418,10 +3342,6 @@ iracema-ce,IRACEMA/CE,PAP,ativacao,2026-06-01,90
 iracema-ce,IRACEMA/CE,PAP,orcamento,2026-06-01,12
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-06-01,10
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-06-01,10
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-06-01,35
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-06-01,18
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-06-01,16
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-06-01,15
 itapaje-ce,ITAPAJE/CE,LOJA,ativacao,2026-06-01,26
 itapaje-ce,ITAPAJE/CE,LOJA,instalacao,2026-06-01,12
 itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-06-01,105
@@ -3460,12 +3380,12 @@ joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-06-01,548
 joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-06-01,659
 joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-06-01,571
 joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-06-01,549
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,ativacao,2026-06-01,417
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,orcamento,2026-06-01,506
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,efetivado,2026-06-01,438
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE / CE,PAP,instalacao,2026-06-01,421
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-06-01,176
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,instalacao,2026-06-01,112
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,ativacao,2026-06-01,417
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,orcamento,2026-06-01,506
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,efetivado,2026-06-01,438
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,PAP,instalacao,2026-06-01,421
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,ativacao,2026-06-01,52
 juazeiro-ba,JUAZEIRO/BA,DONO CIDADE - LOJAS,instalacao,2026-06-01,24
 juazeiro-ba,JUAZEIRO/BA,PAP,ativacao,2026-06-01,184
@@ -3496,20 +3416,20 @@ major-sales-rn,MAJOR SALES/RN,PAP,ativacao,2026-06-01,43
 major-sales-rn,MAJOR SALES/RN,PAP,orcamento,2026-06-01,6
 major-sales-rn,MAJOR SALES/RN,PAP,efetivado,2026-06-01,5
 major-sales-rn,MAJOR SALES/RN,PAP,instalacao,2026-06-01,5
-maracanau-ce,MARACANAU / CE,PAP,ativacao,2026-06-01,200
-maracanau-ce,MARACANAU / CE,PAP,orcamento,2026-06-01,240
-maracanau-ce,MARACANAU / CE,PAP,efetivado,2026-06-01,208
-maracanau-ce,MARACANAU / CE,PAP,instalacao,2026-06-01,200
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-06-01,130
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-06-01,60
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-06-01,225
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-06-01,270
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-06-01,234
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-06-01,225
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,ativacao,2026-06-01,130
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,instalacao,2026-06-01,20
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-06-01,44
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-06-01,28
-maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-06-01,173
-maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-06-01,209
-maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-06-01,181
-maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-06-01,174
+maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-06-01,148
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-06-01,179
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-06-01,155
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-06-01,149
 milagres-ce,MILAGRES/CE,LOJA,ativacao,2026-06-01,26
 milagres-ce,MILAGRES/CE,LOJA,instalacao,2026-06-01,12
 milagres-ce,MILAGRES/CE,PAP,ativacao,2026-06-01,40
@@ -3663,12 +3583,12 @@ salgueiro-pe,SALGUEIRO/PE,PAP,orcamento,2026-06-01,18
 salgueiro-pe,SALGUEIRO/PE,PAP,efetivado,2026-06-01,16
 salgueiro-pe,SALGUEIRO/PE,PAP,instalacao,2026-06-01,15
 santa-cruz-rn,SANTA CRUZ/RN,DONO CIDADE - LOJAS,ativacao,2026-06-01,90
-santa-luzia-pb,SANTA LUZIA / PB,PAP,ativacao,2026-06-01,90
-santa-luzia-pb,SANTA LUZIA / PB,PAP,orcamento,2026-06-01,12
-santa-luzia-pb,SANTA LUZIA / PB,PAP,efetivado,2026-06-01,10
-santa-luzia-pb,SANTA LUZIA / PB,PAP,instalacao,2026-06-01,10
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,ativacao,2026-06-01,52
 santa-luzia-pb,SANTA LUZIA/PB,LOJA,instalacao,2026-06-01,24
+santa-luzia-pb,SANTA LUZIA/PB,PAP,ativacao,2026-06-01,90
+santa-luzia-pb,SANTA LUZIA/PB,PAP,orcamento,2026-06-01,12
+santa-luzia-pb,SANTA LUZIA/PB,PAP,efetivado,2026-06-01,10
+santa-luzia-pb,SANTA LUZIA/PB,PAP,instalacao,2026-06-01,10
 santa-quiteria-ce,SANTA QUITERIA/CE,DONO CIDADE - LOJAS,ativacao,2026-06-01,90
 santa-rita-pb,SANTA RITA/PB,LOJA,ativacao,2026-06-01,44
 santa-rita-pb,SANTA RITA/PB,LOJA,instalacao,2026-06-01,28
@@ -3795,11 +3715,11 @@ acu-rn,ACU/RN,DONO CIDADE - LOJAS,ativacao,2026-07-01,44
 acu-rn,ACU/RN,DONO CIDADE - LOJAS,instalacao,2026-07-01,28
 acu-rn,ACU/RN,LOJA,ativacao,2026-07-01,22
 acu-rn,ACU/RN,LOJA,instalacao,2026-07-01,14
-acu-rn,ACU/RN,PAP,ativacao,2026-07-01,105
-acu-rn,ACU/RN,PAP,orcamento,2026-07-01,54
-acu-rn,ACU/RN,PAP,efetivado,2026-07-01,48
-acu-rn,ACU/RN,PAP,instalacao,2026-07-01,45
 apodi-rn,APODI/RN,DONO CIDADE - LOJAS,ativacao,2026-07-01,90
+aquiraz-ce,AQUIRAZ/CE,PAP,ativacao,2026-07-01,40
+aquiraz-ce,AQUIRAZ/CE,PAP,orcamento,2026-07-01,24
+aquiraz-ce,AQUIRAZ/CE,PAP,efetivado,2026-07-01,22
+aquiraz-ce,AQUIRAZ/CE,PAP,instalacao,2026-07-01,20
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,ativacao,2026-07-01,52
 araripina-pe,ARARIPINA/PE,DONO CIDADE - LOJAS,instalacao,2026-07-01,24
 araripina-pe,ARARIPINA/PE,PAP,ativacao,2026-07-01,160
@@ -3812,6 +3732,10 @@ arcoverde-pe,ARCOVERDE/PE,PAP,ativacao,2026-07-01,105
 arcoverde-pe,ARCOVERDE/PE,PAP,orcamento,2026-07-01,54
 arcoverde-pe,ARCOVERDE/PE,PAP,efetivado,2026-07-01,48
 arcoverde-pe,ARCOVERDE/PE,PAP,instalacao,2026-07-01,45
+assu-rn,ASSU/RN,PAP,ativacao,2026-07-01,105
+assu-rn,ASSU/RN,PAP,orcamento,2026-07-01,54
+assu-rn,ASSU/RN,PAP,efetivado,2026-07-01,48
+assu-rn,ASSU/RN,PAP,instalacao,2026-07-01,45
 aurora-ce,AURORA/CE,PAP,ativacao,2026-07-01,30
 aurora-ce,AURORA/CE,PAP,orcamento,2026-07-01,8
 aurora-ce,AURORA/CE,PAP,efetivado,2026-07-01,8
@@ -3915,12 +3839,12 @@ caucaia-ce,CAUCAIA/CE,PAP,efetivado,2026-07-01,286
 caucaia-ce,CAUCAIA/CE,PAP,instalacao,2026-07-01,260
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,ativacao,2026-07-01,65
 caucaia-ce,CAUCAIA/CE,QUIOSQUE LOJA,instalacao,2026-07-01,10
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,ativacao,2026-07-01,140
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,orcamento,2026-07-01,72
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,efetivado,2026-07-01,64
+ceara-mirim-rn,CEARA MIRIM/RN,PAP,instalacao,2026-07-01,60
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,ativacao,2026-07-01,44
 ceara-mirim-rn,CEARA-MIRIM/RN,LOJA,instalacao,2026-07-01,28
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,ativacao,2026-07-01,140
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,orcamento,2026-07-01,72
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,efetivado,2026-07-01,64
-ceara-mirim-rn,CEARA-MIRIM/RN,PAP,instalacao,2026-07-01,60
 cedro-ce,CEDRO/CE,LOJA,ativacao,2026-07-01,52
 cedro-ce,CEDRO/CE,LOJA,instalacao,2026-07-01,24
 cedro-ce,CEDRO/CE,PAP,ativacao,2026-07-01,40
@@ -3959,10 +3883,10 @@ encanto-rn,ENCANTO/RN,PAP,efetivado,2026-07-01,5
 encanto-rn,ENCANTO/RN,PAP,instalacao,2026-07-01,5
 eusebio-ce,EUSEBIO/CE,LOJA,ativacao,2026-07-01,52
 eusebio-ce,EUSEBIO/CE,LOJA,instalacao,2026-07-01,24
-eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-07-01,162
-eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-07-01,83
-eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-07-01,74
-eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-07-01,69
+eusebio-ce,EUSEBIO/CE,PAP,ativacao,2026-07-01,197
+eusebio-ce,EUSEBIO/CE,PAP,orcamento,2026-07-01,101
+eusebio-ce,EUSEBIO/CE,PAP,efetivado,2026-07-01,90
+eusebio-ce,EUSEBIO/CE,PAP,instalacao,2026-07-01,84
 extremoz-rn,EXTREMOZ/RN,LOJA,ativacao,2026-07-01,26
 extremoz-rn,EXTREMOZ/RN,LOJA,instalacao,2026-07-01,12
 extremoz-rn,EXTREMOZ/RN,PAP,ativacao,2026-07-01,140
@@ -3975,10 +3899,10 @@ fortaleza-ce,FORTALEZA/CE,NGC,ativacao,2026-07-01,400
 fortaleza-ce,FORTALEZA/CE,NGC,orcamento,2026-07-01,240
 fortaleza-ce,FORTALEZA/CE,NGC,efetivado,2026-07-01,220
 fortaleza-ce,FORTALEZA/CE,NGC,instalacao,2026-07-01,200
-fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-07-01,2840
-fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-07-01,1704
-fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-07-01,1562
-fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-07-01,1420
+fortaleza-ce,FORTALEZA/CE,PAP,ativacao,2026-07-01,2800
+fortaleza-ce,FORTALEZA/CE,PAP,orcamento,2026-07-01,1680
+fortaleza-ce,FORTALEZA/CE,PAP,efetivado,2026-07-01,1540
+fortaleza-ce,FORTALEZA/CE,PAP,instalacao,2026-07-01,1400
 fortaleza-ce,FORTALEZA/CE,PAP_VOLANTE,ativacao,2026-07-01,480
 fortaleza-ce,FORTALEZA/CE,PAP_VOLANTE,orcamento,2026-07-01,72
 fortaleza-ce,FORTALEZA/CE,PAP_VOLANTE,efetivado,2026-07-01,66
@@ -4021,6 +3945,10 @@ iguatu-ce,IGUATU/CE,PAP,ativacao,2026-07-01,280
 iguatu-ce,IGUATU/CE,PAP,orcamento,2026-07-01,126
 iguatu-ce,IGUATU/CE,PAP,efetivado,2026-07-01,112
 iguatu-ce,IGUATU/CE,PAP,instalacao,2026-07-01,105
+ipaumirim-ce,IPAUMIRIM/CE,PAP,ativacao,2026-07-01,40
+ipaumirim-ce,IPAUMIRIM/CE,PAP,orcamento,2026-07-01,12
+ipaumirim-ce,IPAUMIRIM/CE,PAP,efetivado,2026-07-01,11
+ipaumirim-ce,IPAUMIRIM/CE,PAP,instalacao,2026-07-01,10
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,ativacao,2026-07-01,52
 ipu-ce,IPU/CE,DONO CIDADE - LOJAS,instalacao,2026-07-01,24
 ipu-ce,IPU/CE,PAP,ativacao,2026-07-01,120
@@ -4037,10 +3965,6 @@ iracema-ce,IRACEMA/CE,PAP,ativacao,2026-07-01,90
 iracema-ce,IRACEMA/CE,PAP,orcamento,2026-07-01,12
 iracema-ce,IRACEMA/CE,PAP,efetivado,2026-07-01,10
 iracema-ce,IRACEMA/CE,PAP,instalacao,2026-07-01,10
-itaitinga-ce,ITAITINGA/CE,PAP,ativacao,2026-07-01,35
-itaitinga-ce,ITAITINGA/CE,PAP,orcamento,2026-07-01,18
-itaitinga-ce,ITAITINGA/CE,PAP,efetivado,2026-07-01,16
-itaitinga-ce,ITAITINGA/CE,PAP,instalacao,2026-07-01,15
 itapaje-ce,ITAPAJE/CE,LOJA,ativacao,2026-07-01,26
 itapaje-ce,ITAPAJE/CE,LOJA,instalacao,2026-07-01,12
 itapaje-ce,ITAPAJE/CE,PAP,ativacao,2026-07-01,120
@@ -4079,8 +4003,6 @@ joao-pessoa-pb,JOAO PESSOA/PB,PAP,ativacao,2026-07-01,1160
 joao-pessoa-pb,JOAO PESSOA/PB,PAP,orcamento,2026-07-01,696
 joao-pessoa-pb,JOAO PESSOA/PB,PAP,efetivado,2026-07-01,638
 joao-pessoa-pb,JOAO PESSOA/PB,PAP,instalacao,2026-07-01,580
-juazeiro-ba,JUAZEIRO / BA,SEM CANAL,ativacao,2026-07-01,65
-juazeiro-ba,JUAZEIRO / BA,SEM CANAL,instalacao,2026-07-01,10
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-07-01,22
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-07-01,14
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,LOJA,ativacao,2026-07-01,176
@@ -4097,10 +4019,10 @@ juazeiro-ba,JUAZEIRO/BA,PAP,efetivado,2026-07-01,242
 juazeiro-ba,JUAZEIRO/BA,PAP,instalacao,2026-07-01,220
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,ativacao,2026-07-01,52
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,LOJA,instalacao,2026-07-01,24
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-07-01,120
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-07-01,36
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-07-01,33
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-07-01,30
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,ativacao,2026-07-01,80
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,orcamento,2026-07-01,24
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,efetivado,2026-07-01,22
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,PAP,instalacao,2026-07-01,20
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,ativacao,2026-07-01,78
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,DONO CIDADE - LOJAS,instalacao,2026-07-01,36
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,PAP,ativacao,2026-07-01,80
@@ -4131,18 +4053,18 @@ major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,ativacao,2026-07-01,52
 major-sales-rn,MAJOR SALES/RN,DONO CIDADE - LOJAS,instalacao,2026-07-01,24
 maracanau-ce,MARACANAU/CE,LOJA,ativacao,2026-07-01,104
 maracanau-ce,MARACANAU/CE,LOJA,instalacao,2026-07-01,48
-maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-07-01,315
-maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-07-01,216
-maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-07-01,198
-maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-07-01,180
+maracanau-ce,MARACANAU/CE,PAP,ativacao,2026-07-01,350
+maracanau-ce,MARACANAU/CE,PAP,orcamento,2026-07-01,240
+maracanau-ce,MARACANAU/CE,PAP,efetivado,2026-07-01,220
+maracanau-ce,MARACANAU/CE,PAP,instalacao,2026-07-01,200
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,ativacao,2026-07-01,65
 maracanau-ce,MARACANAU/CE,QUIOSQUE LOJA,instalacao,2026-07-01,10
 maranguape-ce,MARANGUAPE/CE,LOJA,ativacao,2026-07-01,22
 maranguape-ce,MARANGUAPE/CE,LOJA,instalacao,2026-07-01,14
-maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-07-01,245
-maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-07-01,168
-maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-07-01,154
-maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-07-01,140
+maranguape-ce,MARANGUAPE/CE,PAP,ativacao,2026-07-01,210
+maranguape-ce,MARANGUAPE/CE,PAP,orcamento,2026-07-01,144
+maranguape-ce,MARANGUAPE/CE,PAP,efetivado,2026-07-01,132
+maranguape-ce,MARANGUAPE/CE,PAP,instalacao,2026-07-01,120
 marechal-deodoro-al,MARECHAL DEODORO/AL,LOJA,ativacao,2026-07-01,52
 marechal-deodoro-al,MARECHAL DEODORO/AL,LOJA,instalacao,2026-07-01,24
 marechal-deodoro-al,MARECHAL DEODORO/AL,PAP,ativacao,2026-07-01,135
@@ -4181,10 +4103,6 @@ mossoro-rn,MOSSORO/RN,PAP,ativacao,2026-07-01,600
 mossoro-rn,MOSSORO/RN,PAP,orcamento,2026-07-01,360
 mossoro-rn,MOSSORO/RN,PAP,efetivado,2026-07-01,330
 mossoro-rn,MOSSORO/RN,PAP,instalacao,2026-07-01,300
-mucambo-ce,MUCAMBO/CE,PAP,ativacao,2026-07-01,35
-mucambo-ce,MUCAMBO/CE,PAP,orcamento,2026-07-01,18
-mucambo-ce,MUCAMBO/CE,PAP,efetivado,2026-07-01,16
-mucambo-ce,MUCAMBO/CE,PAP,instalacao,2026-07-01,15
 natal-rn,NATAL/RN,SEM CANAL,ativacao,2026-07-01,22
 natal-rn,NATAL/RN,SEM CANAL,instalacao,2026-07-01,14
 natal-rn,NATAL/RN,LOJA,ativacao,2026-07-01,202
@@ -4335,10 +4253,10 @@ santa-rita-pb,SANTA RITA/PB,PAP,efetivado,2026-07-01,92
 santa-rita-pb,SANTA RITA/PB,PAP,instalacao,2026-07-01,86
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,ativacao,2026-07-01,36
 sao-benedito-ce,SAO BENEDITO/CE,DONO CIDADE - LOJAS,instalacao,2026-07-01,17
-sao-benedito-ce,SAO BENEDITO/CE,PAP,ativacao,2026-07-01,70
-sao-benedito-ce,SAO BENEDITO/CE,PAP,orcamento,2026-07-01,36
-sao-benedito-ce,SAO BENEDITO/CE,PAP,efetivado,2026-07-01,32
-sao-benedito-ce,SAO BENEDITO/CE,PAP,instalacao,2026-07-01,30
+sao-benedito-ce,SAO BENEDITO/CE,PAP,ativacao,2026-07-01,105
+sao-benedito-ce,SAO BENEDITO/CE,PAP,orcamento,2026-07-01,54
+sao-benedito-ce,SAO BENEDITO/CE,PAP,efetivado,2026-07-01,48
+sao-benedito-ce,SAO BENEDITO/CE,PAP,instalacao,2026-07-01,45
 sao-bento-pb,SAO BENTO/PB,DONO CIDADE - LOJAS,ativacao,2026-07-01,52
 sao-bento-pb,SAO BENTO/PB,DONO CIDADE - LOJAS,instalacao,2026-07-01,24
 sao-caitano-pe,SAO CAITANO/PE,LOJA,ativacao,2026-07-01,90
