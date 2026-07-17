@@ -661,11 +661,14 @@ export function paraCsvCidadesOficiais(registros) {
  *  - "orcamento" (Criado): Vendas criadas Combo 1 Chip/Combo 2+ Chip/avulso
  *  - "efetivado" (Efetivado): Vendas efetivadas Combo 1 Chip/Combo 2+ Chip/avulso
  *  - "instalacao" (Instalado): Vendas instalada(s) Combo/Combo 1 Chip/Combo 2+ Chip/avulso
- *  - "ativacao" (Ativado 5G): Vendas Ativadas - 5G
+ *  - "ativacao" (Ativado 5G): "Ativação 5G avulso" OU "Vendas Ativadas - 5G",
+ *    dependendo do canal — ver INDICADOR_ATIVACAO_POR_CANAL, abaixo.
  *
  * Duas bases de entrada:
- *  - Dicionário de Metas: 1 linha por mês×indicador, dá o multiplicador
- *    (FTTH/FWA/5G) de cada indicador naquele mês.
+ *  - Dicionário de Metas: 1 linha por mês×indicador×canal (o dicionário
+ *    ganhou a coluna canal, mas o multiplicador NUNCA varia por canal pro
+ *    mesmo indicador+mês — validado nas 587 linhas atuais — por isso o
+ *    índice de multiplicador continua ignorando canal).
  *  - Fato de Metas por vendedor: 1 linha por vendedor×mês×indicador×canal,
  *    dá a meta-base e a cidade/canal daquele vendedor.
  *
@@ -673,7 +676,8 @@ export function paraCsvCidadesOficiais(registros) {
  * linha do dicionário correspondente (chave: data+indicador); meta
  * calculada = meta-base × multiplicador; a meta final por
  * cidade+canal+categoria+mês é a SOMA das metas calculadas de todo
- * indicador daquela categoria (ver MAPA_INDICADOR_PARA_CATEGORIA_META).
+ * indicador daquela categoria (ver MAPA_INDICADOR_PARA_CATEGORIA_META),
+ * respeitando a regra de indicador-por-canal da Ativação 5G.
  */
 const INDICADORES_POR_CATEGORIA_META = {
   orcamento: ['Vendas criadas Combo 1 Chip - FTTH', 'Vendas criadas Combo 2+ Chip - FTTH', 'Vendas criadas avulso - FTTH'],
@@ -684,7 +688,10 @@ const INDICADORES_POR_CATEGORIA_META = {
     'Vendas instaladas Combo 2+ Chip - FTTH',
     'Vendas instaladas avulso - FTHH', // grafia real da fonte (typo consistente no dicionário e na fato)
   ],
-  ativacao: ['Vendas Ativadas - 5G'],
+  // Os dois indicadores de ativação 5G — qual vale pra qual canal é
+  // decidido por INDICADOR_ATIVACAO_POR_CANAL, não pelo simples
+  // pertencimento a essa lista (diferente das outras 3 categorias).
+  ativacao: ['Ativação 5G avulso', 'Vendas Ativadas - 5G'],
 };
 
 /** "Vendas criadas avulso - FTTH" -> "orcamento", etc. Construído uma vez a partir de INDICADORES_POR_CATEGORIA_META — nunca mantido à mão em paralelo. */
@@ -695,10 +702,29 @@ const MAPA_INDICADOR_PARA_CATEGORIA_META = new Map(
 );
 
 /**
- * Dicionário -> Map("mesRef\u0001indicador" -> multiplicador). Chave
- * duplicada no dicionário vira aviso (mantém a primeira ocorrência) — não
- * é esperado hoje (validado: 0 duplicidade na base de origem), mas o
- * pipeline não pode quebrar silenciosamente se isso mudar.
+ * Confirmado com o negócio: a fonte reporta "Ativação 5G avulso" E "Vendas
+ * Ativadas - 5G" simultaneamente pro canal ONLINE, com valores mensais
+ * diferentes (não é o mesmo evento duplicado) — mas cada canal usa só o
+ * indicador que "pertence" a ele, nunca soma os dois. ONLINE é o único
+ * canal com indicador próprio (`Vendas Ativadas - 5G`) hoje; todo outro
+ * canal (inclusive canal novo que apareça no futuro) cai no padrão
+ * (`Ativação 5G avulso`) — é assim que a fonte reporta pra eles.
+ */
+const INDICADOR_ATIVACAO_POR_CANAL = { ONLINE: 'Vendas Ativadas - 5G' };
+const INDICADOR_ATIVACAO_PADRAO = 'Ativação 5G avulso';
+
+/** Indicador de ativação que reporta pro canal errado (ex.: "Ativação 5G avulso" registrado sob ONLINE, que usa o indicador próprio) é excluído — não é erro, é o indicador do canal vizinho vazando na mesma fonte. */
+function indicadorAtivacaoPertenceAoCanal(indicador, canal) {
+  const esperado = INDICADOR_ATIVACAO_POR_CANAL[canal] ?? INDICADOR_ATIVACAO_PADRAO;
+  return indicador === esperado;
+}
+
+/**
+ * Dicionário -> Map("mesRef\u0001indicador" -> multiplicador). Uma linha
+ * por canal é esperado agora (o dicionário ganhou a coluna canal) — só
+ * gera aviso se o MESMO indicador+mês tiver multiplicador DIFERENTE entre
+ * canais (o que nunca deveria acontecer, validado hoje), não a cada
+ * repetição normal.
  */
 export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
   const avisos = [];
@@ -709,12 +735,18 @@ export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
     const ftth = paraNumero(l.FTTH) || 0;
     const fwa = paraNumero(l.FWA) || 0;
     const g5 = paraNumero(l['5G']) || 0;
+    const multiplicador = Math.max(ftth, fwa, g5);
 
     if (indice.has(chave)) {
-      avisos.push(`Dicionário de metas: indicador "${l.indicador}" duplicado no mês ${l.data} — mantendo o primeiro.`);
+      const anterior = indice.get(chave);
+      if (anterior !== multiplicador) {
+        avisos.push(
+          `Dicionário de metas: indicador "${l.indicador}" no mês ${l.data} tem multiplicador divergente entre canais (${anterior} vs ${multiplicador}, canal "${l.canal}") — mantendo o primeiro.`,
+        );
+      }
       continue;
     }
-    indice.set(chave, Math.max(ftth, fwa, g5));
+    indice.set(chave, multiplicador);
   }
 
   return { indice, avisos };
@@ -730,7 +762,9 @@ export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
  * Linha cujo indicador não pertence a nenhuma categoria conhecida é
  * ignorada silenciosamente — é o comportamento esperado pra qualquer
  * indicador da fato que ainda não tem meta por canal (ex.: Churn, Ticket
- * Médio), não um erro.
+ * Médio), não um erro. Linha de ativação 5G que reporta pro indicador do
+ * canal errado (ver indicadorAtivacaoPertenceAoCanal) também é ignorada
+ * silenciosamente, mesmo critério.
  */
 export function normalizarMetaPorCanal(linhasFato, indiceMultiplicadores) {
   const avisos = [];
@@ -739,6 +773,9 @@ export function normalizarMetaPorCanal(linhasFato, indiceMultiplicadores) {
   for (const l of linhasFato) {
     const categoria = MAPA_INDICADOR_PARA_CATEGORIA_META.get(l.indicador);
     if (!categoria) continue;
+
+    const canal = l.canal || 'SEM CANAL';
+    if (categoria === 'ativacao' && !indicadorAtivacaoPertenceAoCanal(l.indicador, canal)) continue;
 
     const metaBase = paraNumero(l.meta);
     if (Number.isNaN(metaBase)) {
@@ -756,7 +793,6 @@ export function normalizarMetaPorCanal(linhasFato, indiceMultiplicadores) {
     const cidadeSlug = normalizarCidade(l.cidade);
     if (!cidadeSlug) continue; // sem cidade mapeável: fica fora da tabela por cidade (mesmo critério de sempre)
 
-    const canal = l.canal || 'SEM CANAL';
     const chave = cidadeSlug + '\u0001' + canal + '\u0001' + categoria + '\u0001' + l.data;
     const atual = porChave.get(chave) ?? {
       cidadeSlug,

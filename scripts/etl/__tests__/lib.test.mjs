@@ -557,6 +557,46 @@ test('indexarMultiplicadoresDicionarioMetas avisa (sem quebrar) em indicador dup
   assert.equal(indice.get('2026-01-01\u0001X'), 1); // mantém o primeiro
 });
 
+test('indexarMultiplicadoresDicionarioMetas NÃO avisa quando o mesmo indicador+mês repete com o mesmo multiplicador em canais diferentes (dicionário atual: 1 linha por canal)', () => {
+  const linhas = [
+    { data: '2026-01-01', indicador: 'X', canal: 'LOJA', FTTH: '1', FWA: '0', '5G': '2' },
+    { data: '2026-01-01', indicador: 'X', canal: 'PAP', FTTH: '1', FWA: '0', '5G': '2' },
+    { data: '2026-01-01', indicador: 'X', canal: 'ONLINE', FTTH: '1', FWA: '0', '5G': '2' },
+  ];
+  const { indice, avisos } = indexarMultiplicadoresDicionarioMetas(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(indice.get('2026-01-01\u0001X'), 2);
+});
+
+test('normalizarMetaPorCanal: Ativação 5G — canal ONLINE usa "Vendas Ativadas - 5G", ignora "Ativação 5G avulso" reportado sob ONLINE', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-01-01', indicador: 'Vendas Ativadas - 5G', FTTH: '0', FWA: '0', '5G': '1' },
+    { data: '2026-01-01', indicador: 'Ativação 5G avulso', FTTH: '0', FWA: '0', '5G': '1' },
+  ]);
+  const linhasFato = [
+    { data: '2026-01-01', canal: 'ONLINE', indicador: 'Vendas Ativadas - 5G', meta: '20', cidade: 'ACOPIARA/CE' },
+    { data: '2026-01-01', canal: 'ONLINE', indicador: 'Ativação 5G avulso', meta: '999', cidade: 'ACOPIARA/CE' },
+  ];
+  const { registros } = normalizarMetaPorCanal(linhasFato, indice);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].meta, 20);
+});
+
+test('normalizarMetaPorCanal: Ativação 5G — canal fora de ONLINE (ex.: PAP) usa "Ativação 5G avulso"', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-01-01', indicador: 'Ativação 5G avulso', FTTH: '0', FWA: '0', '5G': '1' },
+    { data: '2026-01-01', indicador: 'Vendas Ativadas - 5G', FTTH: '0', FWA: '0', '5G': '1' },
+  ]);
+  const linhasFato = [
+    { data: '2026-01-01', canal: 'PAP', indicador: 'Ativação 5G avulso', meta: '15', cidade: 'ACOPIARA/CE' },
+    { data: '2026-01-01', canal: 'PAP', indicador: 'Vendas Ativadas - 5G', meta: '999', cidade: 'ACOPIARA/CE' },
+  ];
+  const { registros } = normalizarMetaPorCanal(linhasFato, indice);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].meta, 15);
+  assert.equal(registros[0].indicadorId, 'ativacao');
+});
+
 test('normalizarMetaPorCanal: aplica multiplicador e soma os indicadores de "instalacao" por cidade+canal+mês', () => {
   const { indice } = indexarMultiplicadoresDicionarioMetas([
     { data: '2026-01-01', indicador: 'Vendas instalada Combo - FTTH', FTTH: '1', FWA: '0', '5G': '1' },
@@ -590,7 +630,7 @@ test('normalizarMetaPorCanal: categorias diferentes (orcamento/efetivado/instala
     { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas criadas avulso - FTTH', meta: '10', cidade: 'ACOPIARA/CE' },
     { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas efetivadas avulso - FTTH', meta: '8', cidade: 'ACOPIARA/CE' },
     { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas instaladas avulso - FTHH', meta: '6', cidade: 'ACOPIARA/CE' },
-    { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas Ativadas - 5G', meta: '4', cidade: 'ACOPIARA/CE' },
+    { data: '2026-01-01', canal: 'ONLINE', indicador: 'Vendas Ativadas - 5G', meta: '4', cidade: 'ACOPIARA/CE' },
   ];
   const { registros, avisos } = normalizarMetaPorCanal(linhasFato, indice);
   assert.deepEqual(avisos, []);
@@ -640,13 +680,13 @@ test('paraCsvMetaPorCanal + parsearCsv fazem roundtrip sem perda, indicador_id v
     { data: '2026-01-01', indicador: 'Vendas Ativadas - 5G', FTTH: '0', FWA: '0', '5G': '1' },
   ]);
   const { registros } = normalizarMetaPorCanal(
-    [{ data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas Ativadas - 5G', meta: '10', cidade: 'ACOPIARA/CE' }],
+    [{ data: '2026-01-01', canal: 'ONLINE', indicador: 'Vendas Ativadas - 5G', meta: '10', cidade: 'ACOPIARA/CE' }],
     indice,
   );
   const linhas = parsearCsv(paraCsvMetaPorCanal(registros));
   assert.equal(linhas.length, 1);
   assert.equal(linhas[0].cidade_slug, 'acopiara-ce');
-  assert.equal(linhas[0].canal, 'LOJA');
+  assert.equal(linhas[0].canal, 'ONLINE');
   assert.equal(linhas[0].indicador_id, 'ativacao');
   assert.equal(linhas[0].mes_ref, '2026-01-01');
   assert.equal(linhas[0].meta, '10');
