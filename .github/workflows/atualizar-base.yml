@@ -72,8 +72,8 @@ jobs:
       - name: Validar e normalizar (gera public/dados/*.csv e *.json)
         run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv /tmp/cidades-oficiais.csv
 
-      - name: Consolidar Meta de Instalação por canal (gera public/dados/metas-instalacao-por-canal.csv)
-        run: node scripts/etl/consolidarMetaInstaladaPorCanal.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv
+      - name: Consolidar Meta por Canal — Criado/Efetivado/Instalado/Ativado 5G (gera public/dados/metas-por-canal.csv)
+        run: node scripts/etl/consolidarMetaPorCanal.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv
 
       - name: Publicar log de falha como artefato (só roda se o passo acima falhar)
         if: failure()
@@ -92,7 +92,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/dados/indicadores-realizados.csv public/dados/cidades-metadados.csv public/dados/indicadores-realizados-por-canal.csv public/dados/metas-instalacao-ftth.csv public/dados/metas-ativacao-5g.csv public/dados/metas-instalacao-por-canal.csv public/dados/cidades-oficiais.csv public/dados/ultima-atualizacao.json
+          git add public/dados/indicadores-realizados.csv public/dados/cidades-metadados.csv public/dados/indicadores-realizados-por-canal.csv public/dados/metas-instalacao-ftth.csv public/dados/metas-ativacao-5g.csv public/dados/metas-por-canal.csv public/dados/cidades-oficiais.csv public/dados/ultima-atualizacao.json
           if git diff --cached --quiet; then
             echo "Nada mudou na base — nenhum commit necessário."
           else

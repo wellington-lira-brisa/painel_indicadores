@@ -13,10 +13,10 @@ import { carregarMetadadosCidades, metadadosCidadesEmCacheOuNulo } from './cidad
 import { carregarMetasInstalacaoFtth, metasInstalacaoFtthEmCacheOuNulo } from './metaInstalacaoFtthService';
 import { carregarMetasAtivacao5g, metasAtivacao5gEmCacheOuNulo } from './metaAtivacao5gService';
 import {
-  carregarMetaInstaladaPorCanal,
-  metaInstaladaPorCanalEmCacheOuNulo,
-  metaPorCanalDaCidade,
-} from './metaInstaladaPorCanalService';
+  carregarMetaPorCanal,
+  metaPorCanalEmCacheOuNulo,
+  metaPorCanalDoIndicador,
+} from './metaPorCanalService';
 import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
@@ -24,10 +24,15 @@ const DEFINICOES_POR_TECNOLOGIA = { ftth: DEFINICOES_INDICADORES_FTTH, '5g': DEF
 
 // Meta do Indicador por canal (`ind.meses[].metaIndicador`, ver
 // TabelaIndicadores.jsx): fonte própria e conceito distinto da Meta Geral
-// da Cidade (`INDICADOR_META_GERAL_POR_TECNOLOGIA`, abaixo). Só FTTH tem
-// fonte hoje — 5G fica de fora do mapa, então nunca é aplicado (metaIndicador
-// permanece `null`, exibido como "—", igual antes).
-const INDICADOR_META_POR_CANAL_POR_TECNOLOGIA = { ftth: 'instalacao' };
+// da Cidade (`INDICADOR_META_GERAL_POR_TECNOLOGIA`, abaixo). Lista de
+// indicadores cobertos por tecnologia — precisa bater com as categorias
+// de INDICADORES_POR_CATEGORIA_META em csvIndicadores.js. Indicador de
+// uma tecnologia que não está na lista da própria tecnologia continua
+// `metaIndicador: null` ("—"), sem fonte própria ainda.
+const INDICADOR_META_POR_CANAL_POR_TECNOLOGIA = {
+  ftth: ['orcamento', 'efetivado', 'instalacao'],
+  '5g': ['ativacao'],
+};
 
 // Meta Geral da Cidade: qual indicador recebe o valor de metas-instalacao-ftth.csv/
 // metas-ativacao-5g.csv, por tecnologia — ver aplicarMetaGeralCidade() abaixo.
@@ -104,16 +109,16 @@ async function metaGeralCidadeComFallback(tecnologiaId) {
  * Meta do Indicador por canal é complementar no mesmo sentido dos outros:
  * falha no fetch cai pro cache da sessão, e na ausência dele, mapa vazio
  * (metaIndicador fica `null` esse ciclo — "—", nunca inventado). Só busca
- * quando a tecnologia tem fonte (`INDICADOR_META_POR_CANAL_POR_TECNOLOGIA`)
- * — 5G nem tenta, evita fetch inútil.
+ * quando a tecnologia tem pelo menos 1 indicador coberto
+ * (`INDICADOR_META_POR_CANAL_POR_TECNOLOGIA`).
  */
 async function metaPorCanalComFallback(tecnologiaId) {
-  if (!INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId]) return null;
+  if (!INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId]?.length) return null;
   try {
-    return await carregarMetaInstaladaPorCanal();
+    return await carregarMetaPorCanal();
   } catch (excecao) {
     console.error('Falha ao carregar Meta do Indicador por canal, mantendo última base conhecida:', excecao);
-    return metaInstaladaPorCanalEmCacheOuNulo() ?? new Map();
+    return metaPorCanalEmCacheOuNulo() ?? new Map();
   }
 }
 
@@ -268,11 +273,12 @@ function aplicarMetaGeralCidade(cidade, metasCidadeTodas, tecnologiaId) {
 
 /**
  * Preenche a Meta do Indicador por canal (`ind.meses[].metaIndicador`) —
- * só no indicador de `INDICADOR_META_POR_CANAL_POR_TECNOLOGIA` (hoje só
- * "instalacao" no FTTH), somando os canais selecionados no SeletorCanais
- * (vazio = soma todos os canais disponíveis pra essa cidade — ver
- * metaPorCanalDaCidade). Todo outro indicador (Orçamento, Efetivado)
- * continua `metaIndicador: null` ("—"), sem fonte própria ainda.
+ * em todo indicador listado em `INDICADOR_META_POR_CANAL_POR_TECNOLOGIA`
+ * pra essa tecnologia (hoje: orcamento/efetivado/instalacao no FTTH,
+ * ativacao no 5G), somando os canais selecionados no SeletorCanais (vazio
+ * = soma todos os canais disponíveis pra essa cidade+indicador — ver
+ * metaPorCanalDoIndicador). Indicador fora dessa lista continua
+ * `metaIndicador: null` ("—"), sem fonte própria ainda.
  *
  * NUNCA mexe em `m.semanas`: não existe rateio semanal de meta por canal
  * nesta etapa — a linha "· meta" da tabela usa semanas próprias, vazias
@@ -280,18 +286,18 @@ function aplicarMetaGeralCidade(cidade, metasCidadeTodas, tecnologiaId) {
  * herdar a quebra semanal do realizado.
  */
 function aplicarMetaPorCanal(cidade, indiceMetaPorCanal, canaisSelecionados, tecnologiaId) {
-  const idIndicadorMeta = INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId];
-  if (!idIndicadorMeta || !indiceMetaPorCanal) return cidade;
+  const indicadoresCobertos = new Set(INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId] ?? []);
+  if (indicadoresCobertos.size === 0 || !indiceMetaPorCanal) return cidade;
 
   return {
     ...cidade,
     indicadores: cidade.indicadores.map((ind) => {
-      if (ind.id !== idIndicadorMeta) return ind;
+      if (!indicadoresCobertos.has(ind.id)) return ind;
       return {
         ...ind,
         meses: ind.meses.map((m, mesIndex) => ({
           ...m,
-          metaIndicador: metaPorCanalDaCidade(indiceMetaPorCanal, cidade.id, mesIndex, canaisSelecionados),
+          metaIndicador: metaPorCanalDoIndicador(indiceMetaPorCanal, cidade.id, ind.id, mesIndex, canaisSelecionados),
         })),
       };
     }),
@@ -365,14 +371,13 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function listarCidades(canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
         baseRealComFallback(tecnologiaId),
         metadadosCidadesComFallback(),
         metaGeralCidadeComFallback(tecnologiaId),
-        metaPorCanalComFallback(tecnologiaId),
         cidadesOficiaisComFallback(),
       ]);
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
@@ -384,7 +389,10 @@ function criarServicoCidades(tecnologiaId) {
         indiceEfetivo,
         metadadosCidades,
         metaGeralCidade,
-        metaPorCanal,
+        null, // Meta do Indicador por canal: só usada em PaginaCidade/PaginaPlano
+        // (TabelaIndicadores/ListaIndicadoresMobile), nenhuma tela que passa por
+        // listarCidades (Ranking, lista de planos) renderiza metaIndicador — não
+        // vale o fetch aqui. Ver buscarCidade, abaixo, onde ele é buscado de fato.
         canaisSelecionados,
         tecnologiaId,
       ),
