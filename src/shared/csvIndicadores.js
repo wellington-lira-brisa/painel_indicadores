@@ -645,3 +645,113 @@ export function paraCsvCidadesOficiais(registros) {
   );
   return [COLUNAS_SAIDA_CIDADES_OFICIAIS.join(','), ...linhas].join('\n') + '\n';
 }
+
+/**
+ * Meta de Instalação (FTTH) por canal — DIFERENTE da Meta Geral da Cidade
+ * (normalizarMetasInstalacaoFtth, acima): fonte própria, granularidade
+ * própria (cidade+canal+mês, não só cidade+mês), e os dois números NÃO
+ * precisam bater entre si — são conceitos distintos confirmados com o
+ * negócio (Meta Geral da Cidade alimenta Ranking/score; Meta por Canal
+ * alimenta só a tabela da cidade, filtrável pelo SeletorCanais).
+ *
+ * Duas bases de entrada:
+ *  - Dicionário de Metas: 1 linha por mês×indicador, dá o multiplicador
+ *    (FTTH/FWA/5G) de cada indicador naquele mês.
+ *  - Fato de Metas por vendedor: 1 linha por vendedor×mês×indicador×canal,
+ *    dá a meta-base e a cidade/canal daquele vendedor.
+ *
+ * Regra de negócio (confirmada): multiplicador = max(FTTH, FWA, 5G) da
+ * linha do dicionário correspondente (chave: data+indicador); meta
+ * calculada = meta-base × multiplicador; a meta final por
+ * cidade+canal+mês é a SOMA das metas calculadas dos 4 indicadores de
+ * "Vendas Instaladas" (ver INDICADORES_META_INSTALADA_POR_CANAL).
+ */
+const INDICADORES_META_INSTALADA_POR_CANAL = [
+  'Vendas instalada Combo - FTTH',
+  'Vendas instaladas Combo 1 Chip - FTTH',
+  'Vendas instaladas Combo 2+ Chip - FTTH',
+  'Vendas instaladas avulso - FTHH', // grafia real da fonte (typo consistente no dicionário e na fato)
+];
+
+/**
+ * Dicionário -> Map("mesRef\u0001indicador" -> multiplicador). Chave
+ * duplicada no dicionário vira aviso (mantém a primeira ocorrência) — não
+ * é esperado hoje (validado: 0 duplicidade na base de origem), mas o
+ * pipeline não pode quebrar silenciosamente se isso mudar.
+ */
+export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
+  const avisos = [];
+  const indice = new Map();
+
+  for (const l of linhasDicionario) {
+    const chave = l.data + '\u0001' + l.indicador;
+    const ftth = paraNumero(l.FTTH) || 0;
+    const fwa = paraNumero(l.FWA) || 0;
+    const g5 = paraNumero(l['5G']) || 0;
+
+    if (indice.has(chave)) {
+      avisos.push(`Dicionário de metas: indicador "${l.indicador}" duplicado no mês ${l.data} — mantendo o primeiro.`);
+      continue;
+    }
+    indice.set(chave, Math.max(ftth, fwa, g5));
+  }
+
+  return { indice, avisos };
+}
+
+/**
+ * Fato de metas por vendedor -> registros agregados em
+ * cidade+canal+mês (soma dos 4 indicadores de Vendas Instaladas, já
+ * multiplicados). Linha sem cidade mapeável (`normalizarCidade` devolve
+ * null) fica de fora da tabela por cidade — mesmo critério do resto do
+ * pipeline, nunca inventa cidade. Linha cujo indicador não tem regra no
+ * dicionário pro mês vira aviso e é descartada (auditável, não silenciosa).
+ */
+export function normalizarMetaInstaladaPorCanal(linhasFato, indiceMultiplicadores) {
+  const avisos = [];
+  const porChave = new Map(); // "cidadeSlug\u0001canal\u0001mesRef" -> { cidadeSlug, cidadeOrigem, canal, mesRef, meta }
+
+  for (const l of linhasFato) {
+    if (!INDICADORES_META_INSTALADA_POR_CANAL.includes(l.indicador)) continue;
+
+    const metaBase = paraNumero(l.meta);
+    if (Number.isNaN(metaBase)) {
+      avisos.push(`Meta inválida: cidade "${l.cidade}", canal "${l.canal}", indicador "${l.indicador}", mês ${l.data}.`);
+      continue;
+    }
+
+    const chaveDicionario = l.data + '\u0001' + l.indicador;
+    const multiplicador = indiceMultiplicadores.get(chaveDicionario);
+    if (multiplicador === undefined) {
+      avisos.push(`Sem regra no dicionário pro indicador "${l.indicador}" no mês ${l.data} — linha descartada.`);
+      continue;
+    }
+
+    const cidadeSlug = normalizarCidade(l.cidade);
+    if (!cidadeSlug) continue; // sem cidade mapeável: fica fora da tabela por cidade (mesmo critério de sempre)
+
+    const canal = l.canal || 'SEM CANAL';
+    const chave = cidadeSlug + '\u0001' + canal + '\u0001' + l.data;
+    const atual = porChave.get(chave) ?? { cidadeSlug, cidadeOrigem: l.cidade, canal, mesRef: l.data, meta: 0 };
+    atual.meta += metaBase * multiplicador;
+    porChave.set(chave, atual);
+  }
+
+  return { registros: [...porChave.values()], avisos };
+}
+
+const COLUNAS_SAIDA_META_POR_CANAL = ['cidade_slug', 'cidade_origem', 'canal', 'indicador_id', 'mes_ref', 'meta'];
+
+/**
+ * Serializa a saída de `normalizarMetaInstaladaPorCanal()`. `indicador_id`
+ * fixo em "instalacao": hoje só esse indicador tem meta por canal (ver
+ * INDICADOR_META_POR_CANAL_POR_TECNOLOGIA em cidadeService.js) — a coluna
+ * já existe pra quando outro indicador ganhar meta própria, sem precisar
+ * mudar o formato do arquivo.
+ */
+export function paraCsvMetaInstaladaPorCanal(registros) {
+  const linhas = registros.map((r) =>
+    [r.cidadeSlug, r.cidadeOrigem, r.canal, 'instalacao', r.mesRef, r.meta].map(celulaCsv).join(','),
+  );
+  return [COLUNAS_SAIDA_META_POR_CANAL.join(','), ...linhas].join('\n') + '\n';
+}
