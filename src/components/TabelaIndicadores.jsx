@@ -354,13 +354,18 @@ const FragmentoIndicador = memo(function FragmentoIndicador({
         </td>
         {indicesVisiveis.map((i) => {
           const mes = indicador.meses[i];
+          // Semanas PRÓPRIAS da meta, não as do realizado (`mes.semanas`):
+          // ainda não existe rateio semanal de meta, então cada semana
+          // fica `valor: null` ("—"), preservando só numero/datas pra
+          // manter as colunas alinhadas com a linha "realizado" abaixo.
+          const semanasDaMeta = mes.semanas.map((s) => ({ ...s, valor: null }));
           return (
             <CelulasMes
               key={i}
               mesIndice={i}
               valorMensal={mes.metaIndicador}
               unidade={indicador.unidade}
-              semanas={mes.semanas}
+              semanas={semanasDaMeta}
               mostrarSemanas={mostrarSemanas}
               emDestaque={i === indiceMesAtual}
               semanaColapsada={semanaColapsada}

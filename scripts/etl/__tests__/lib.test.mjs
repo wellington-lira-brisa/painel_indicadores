@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, normalizarMetasAtivacao5g, paraCsvMetasAtivacao5g, normalizarCidadesOficiais, paraCsvCidadesOficiais, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
+import { parsearCsv, validar, normalizar, normalizarCidade, paraCsv, normalizarMetadadosCidade, paraCsvMetadados, normalizarPorCanal, paraCsvPorCanal, normalizarMetasInstalacaoFtth, paraCsvMetasInstalacaoFtth, normalizarMetasAtivacao5g, paraCsvMetasAtivacao5g, normalizarCidadesOficiais, paraCsvCidadesOficiais, indexarMultiplicadoresDicionarioMetas, normalizarMetaInstaladaPorCanal, paraCsvMetaInstaladaPorCanal, COLUNAS_OBRIGATORIAS } from '../../../src/shared/csvIndicadores.js';
 
 const CABECALHO = COLUNAS_OBRIGATORIAS.join(',');
 
@@ -534,4 +534,85 @@ test('paraCsvCidadesOficiais + parsearCsv fazem roundtrip de lancamento_comercia
   ]);
   const linhas = parsearCsv(paraCsvCidadesOficiais(registros));
   assert.equal(linhas[0].lancamento_comercial, '2023-07-24');
+});
+
+test('indexarMultiplicadoresDicionarioMetas: multiplicador = max(FTTH, FWA, 5G)', () => {
+  const linhas = [
+    { data: '2026-01-01', indicador: 'Vendas instaladas Combo 2+ Chip - FTTH', FTTH: '1', FWA: '0', '5G': '2' },
+    { data: '2026-01-01', indicador: 'Vendas instaladas avulso - FTHH', FTTH: '1', FWA: '0', '5G': '0' },
+  ];
+  const { indice, avisos } = indexarMultiplicadoresDicionarioMetas(linhas);
+  assert.deepEqual(avisos, []);
+  assert.equal(indice.get('2026-01-01\u0001Vendas instaladas Combo 2+ Chip - FTTH'), 2);
+  assert.equal(indice.get('2026-01-01\u0001Vendas instaladas avulso - FTHH'), 1);
+});
+
+test('indexarMultiplicadoresDicionarioMetas avisa (sem quebrar) em indicador duplicado no mesmo mês', () => {
+  const linhas = [
+    { data: '2026-01-01', indicador: 'X', FTTH: '1', FWA: '0', '5G': '0' },
+    { data: '2026-01-01', indicador: 'X', FTTH: '1', FWA: '0', '5G': '5' },
+  ];
+  const { indice, avisos } = indexarMultiplicadoresDicionarioMetas(linhas);
+  assert.equal(avisos.length, 1);
+  assert.equal(indice.get('2026-01-01\u0001X'), 1); // mantém o primeiro
+});
+
+test('normalizarMetaInstaladaPorCanal: aplica multiplicador e soma os 4 indicadores por cidade+canal+mês', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-01-01', indicador: 'Vendas instalada Combo - FTTH', FTTH: '1', FWA: '0', '5G': '1' },
+    { data: '2026-01-01', indicador: 'Vendas instaladas Combo 2+ Chip - FTTH', FTTH: '1', FWA: '0', '5G': '2' },
+    { data: '2026-01-01', indicador: 'Vendas instaladas avulso - FTHH', FTTH: '1', FWA: '0', '5G': '0' },
+  ]);
+  const linhasFato = [
+    { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas instalada Combo - FTTH', meta: '10', cidade: 'ACOPIARA/CE' },
+    { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas instaladas Combo 2+ Chip - FTTH', meta: '6', cidade: 'ACOPIARA/CE' },
+    { data: '2026-01-01', canal: 'PAP', indicador: 'Vendas instaladas avulso - FTHH', meta: '5', cidade: 'ACOPIARA/CE' },
+  ];
+  const { registros, avisos } = normalizarMetaInstaladaPorCanal(linhasFato, indice);
+  assert.deepEqual(avisos, []);
+  const loja = registros.find((r) => r.canal === 'LOJA');
+  // 10*1 (Combo) + 6*2 (Combo 2+, multiplicador confirmado com o negócio) = 22
+  assert.equal(loja.meta, 22);
+  assert.equal(loja.cidadeSlug, 'acopiara-ce');
+  const pap = registros.find((r) => r.canal === 'PAP');
+  assert.equal(pap.meta, 5); // avulso, multiplicador 1
+});
+
+test('normalizarMetaInstaladaPorCanal descarta (com aviso) linha sem regra no dicionário pro mês', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([]); // dicionário vazio
+  const linhasFato = [
+    { data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas instalada Combo - FTTH', meta: '10', cidade: 'ACOPIARA/CE' },
+  ];
+  const { registros, avisos } = normalizarMetaInstaladaPorCanal(linhasFato, indice);
+  assert.equal(registros.length, 0);
+  assert.equal(avisos.length, 1);
+  assert.match(avisos[0], /Sem regra no dicionário/);
+});
+
+test('normalizarMetaInstaladaPorCanal ignora linha sem cidade mapeável (nunca inventa cidade)', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-01-01', indicador: 'Vendas instalada Combo - FTTH', FTTH: '1', FWA: '0', '5G': '1' },
+  ]);
+  const linhasFato = [
+    { data: '2026-01-01', canal: 'PAP', indicador: 'Vendas instalada Combo - FTTH', meta: '10', cidade: '' },
+  ];
+  const { registros } = normalizarMetaInstaladaPorCanal(linhasFato, indice);
+  assert.equal(registros.length, 0);
+});
+
+test('paraCsvMetaInstaladaPorCanal + parsearCsv fazem roundtrip sem perda, indicador_id fixo "instalacao"', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-01-01', indicador: 'Vendas instalada Combo - FTTH', FTTH: '1', FWA: '0', '5G': '1' },
+  ]);
+  const { registros } = normalizarMetaInstaladaPorCanal(
+    [{ data: '2026-01-01', canal: 'LOJA', indicador: 'Vendas instalada Combo - FTTH', meta: '10', cidade: 'ACOPIARA/CE' }],
+    indice,
+  );
+  const linhas = parsearCsv(paraCsvMetaInstaladaPorCanal(registros));
+  assert.equal(linhas.length, 1);
+  assert.equal(linhas[0].cidade_slug, 'acopiara-ce');
+  assert.equal(linhas[0].canal, 'LOJA');
+  assert.equal(linhas[0].indicador_id, 'instalacao');
+  assert.equal(linhas[0].mes_ref, '2026-01-01');
+  assert.equal(linhas[0].meta, '10');
 });
