@@ -55,6 +55,15 @@ jobs:
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
         run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta cidades_atuais.csv > /tmp/cidades-oficiais.csv
 
+      # Lista fechada de cidades FTTH — fonte PRÓPRIA, separada da planilha
+      # de cidades atuais (que é só 5G). Ver normalizarCidadesOficiais em
+      # src/shared/csvIndicadores.js.
+      - name: Baixar lista oficial de cidades FTTH (Google Drive)
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta cidades_ftth.csv > /tmp/cidades-ftth.csv
+
       # Nomes confirmados na pasta do Drive (ver log de erro do workflow em
       # 17/07/2026: a Service Account listou os 5 arquivos existentes).
       - name: Baixar Dicionário de Metas (Google Drive)
@@ -70,7 +79,7 @@ jobs:
         run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta metas_vendedores_por_cidade.csv > /tmp/metas-vendedores-por-cidade.csv
 
       - name: Validar e normalizar (gera public/dados/*.csv e *.json)
-        run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv /tmp/cidades-oficiais.csv
+        run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv /tmp/cidades-oficiais.csv /tmp/cidades-ftth.csv
 
       - name: Consolidar Meta por Canal — Criado/Efetivado/Instalado/Ativado 5G (gera public/dados/metas-por-canal.csv)
         run: node scripts/etl/consolidarMetaPorCanal.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv

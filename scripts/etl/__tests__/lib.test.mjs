@@ -461,17 +461,28 @@ test('normalizarMetasInstalacaoFtth e normalizarMetasAtivacao5g não vazam dado 
   assert.equal(cinco5g[0].cidadeSlug, 'abaiara-ce');
 });
 
-test('normalizarCidadesOficiais classifica vendeFtth/vende5g/vendeFwa a partir de servico/fwa', () => {
-  const linhas = [
+test('normalizarCidadesOficiais: cidade só na lista FTTH entra com vendeFtth=true, vende5g/vendeFwa=false', () => {
+  const { registros, avisos } = normalizarCidadesOficiais([{ cidade: 'ABREU E LIMA/PE' }], []);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].cidadeSlug, 'abreu-e-lima-pe');
+  assert.equal(registros[0].vendeFtth, true);
+  assert.equal(registros[0].vende5g, false);
+  assert.equal(registros[0].vendeFwa, false);
+});
+
+test('normalizarCidadesOficiais: cidade só na base 5G (cidades_atuais) entra com vendeFtth=false, vende5g/vendeFwa a partir de servico/fwa', () => {
+  const linhasAtuais = [
     { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
     { atuais: 'ACARI/RN', cidades: 'ACARI/RN', servico: '5G ONLY', fwa: 'PENDENTE' },
   ];
-  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  const { registros, avisos } = normalizarCidadesOficiais([], linhasAtuais);
   assert.deepEqual(avisos, []);
   assert.equal(registros.length, 2);
 
+  // "FTTH E 5G" na planilha de 5G NÃO decide vendeFtth — só a lista própria decide (confirmado com o negócio)
   const pereiro = registros.find((r) => r.cidadeSlug === 'pereiro-ce');
-  assert.equal(pereiro.vendeFtth, true);
+  assert.equal(pereiro.vendeFtth, false);
   assert.equal(pereiro.vende5g, true);
   assert.equal(pereiro.vendeFwa, true);
 
@@ -481,21 +492,43 @@ test('normalizarCidadesOficiais classifica vendeFtth/vende5g/vendeFwa a partir d
   assert.equal(acari.vendeFwa, false);
 });
 
-test('normalizarCidadesOficiais avisa (sem quebrar) em cidade duplicada, mantendo a primeira', () => {
-  const linhas = [
-    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
-    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: '5G ONLY', fwa: 'PENDENTE' },
-  ];
-  const { registros, avisos } = normalizarCidadesOficiais(linhas);
-  assert.equal(avisos.length, 1);
+test('normalizarCidadesOficiais: cidade nas duas fontes funde vendeFtth (da lista FTTH) com vende5g/vendeFwa (da base 5G)', () => {
+  const { registros, avisos } = normalizarCidadesOficiais(
+    [{ cidade: 'PEREIRO/CE' }],
+    [{ atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' }],
+  );
+  assert.deepEqual(avisos, []);
   assert.equal(registros.length, 1);
-  assert.equal(registros[0].vendeFtth, true); // da primeira ocorrencia
+  assert.equal(registros[0].vendeFtth, true);
+  assert.equal(registros[0].vende5g, true);
+  assert.equal(registros[0].vendeFwa, true);
+});
+
+test('normalizarCidadesOficiais avisa (sem quebrar) em cidade duplicada dentro da MESMA fonte, mantendo a primeira', () => {
+  const { registros: registrosFtth, avisos: avisosFtth } = normalizarCidadesOficiais(
+    [{ cidade: 'PEREIRO/CE' }, { cidade: 'PEREIRO/CE' }],
+    [],
+  );
+  assert.equal(avisosFtth.length, 1);
+  assert.equal(registrosFtth.length, 1);
+
+  const { registros: registros5g, avisos: avisos5g } = normalizarCidadesOficiais(
+    [],
+    [
+      { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
+      { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: '5G ONLY', fwa: 'PENDENTE' },
+    ],
+  );
+  assert.equal(avisos5g.length, 1);
+  assert.equal(registros5g.length, 1);
+  assert.equal(registros5g[0].vendeFwa, true); // da primeira ocorrência
 });
 
 test('paraCsvCidadesOficiais + parsearCsv fazem roundtrip sem perda', () => {
-  const { registros } = normalizarCidadesOficiais([
-    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' },
-  ]);
+  const { registros } = normalizarCidadesOficiais(
+    [{ cidade: 'PEREIRO/CE' }],
+    [{ atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO' }],
+  );
   const linhas = parsearCsv(paraCsvCidadesOficiais(registros));
   assert.equal(linhas.length, 1);
   assert.equal(linhas[0].cidade_slug, 'pereiro-ce');
@@ -508,7 +541,7 @@ test('normalizarCidadesOficiais extrai lancamento_comercial quando yyyy-mm-dd v�
   const linhas = [
     { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '2023-07-24' },
   ];
-  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  const { registros, avisos } = normalizarCidadesOficiais([], linhas);
   assert.deepEqual(avisos, []);
   assert.equal(registros[0].lancamentoComercial, '2023-07-24');
 });
@@ -518,7 +551,7 @@ test('normalizarCidadesOficiais vira null (com aviso) em lancamento_comercial in
     { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '24/07/2023' },
     { atuais: 'ACARI/RN', cidades: 'ACARI/RN', servico: '5G ONLY', fwa: 'PENDENTE' },
   ];
-  const { registros, avisos } = normalizarCidadesOficiais(linhas);
+  const { registros, avisos } = normalizarCidadesOficiais([], linhas);
   assert.equal(avisos.length, 1);
   assert.match(avisos[0], /lancamento_comercial inválida/);
 
@@ -529,9 +562,10 @@ test('normalizarCidadesOficiais vira null (com aviso) em lancamento_comercial in
 });
 
 test('paraCsvCidadesOficiais + parsearCsv fazem roundtrip de lancamento_comercial sem perda', () => {
-  const { registros } = normalizarCidadesOficiais([
-    { atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '2023-07-24' },
-  ]);
+  const { registros } = normalizarCidadesOficiais(
+    [],
+    [{ atuais: 'PEREIRO/CE', cidades: 'PEREIRO/CE', servico: 'FTTH E 5G', fwa: 'VENDENDO', lancamento_comercial: '2023-07-24' }],
+  );
   const linhas = parsearCsv(paraCsvCidadesOficiais(registros));
   assert.equal(linhas[0].lancamento_comercial, '2023-07-24');
 });

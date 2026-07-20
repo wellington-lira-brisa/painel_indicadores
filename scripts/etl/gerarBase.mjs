@@ -12,15 +12,16 @@
 // é literalmente o commit atual em main — não precisa de lógica extra de
 // rollback (ver RELATORIO.md, seção 13).
 //
-// Uso: node scripts/etl/gerarBase.mjs <caminho-do-csv-baixado> [caminho-do-csv-de-metas] [caminho-do-csv-de-cidades-oficiais]
+// Uso: node scripts/etl/gerarBase.mjs <csv-vendas> [csv-metas] [csv-cidades-atuais-5g] [csv-cidades-ftth]
 //
-// 2º e 3º argumentos são opcionais (mantém compatibilidade com quem
-// chamar só com a base de vendas) — quando informados, geram também
+// 2º-4º argumentos são opcionais (mantém compatibilidade com quem chamar
+// só com a base de vendas) — quando informados, geram também
 // `public/dados/metas-instalacao-ftth.csv` + `public/dados/metas-ativacao-5g.csv`
 // (mesmo arquivo baixado, um normalizador por tecnologia) e
-// `public/dados/cidades-oficiais.csv`, respectivamente. No workflow
-// automatizado (.github/workflows/atualizar-base.yml) os três arquivos
-// são baixados do Drive e este é sempre chamado com os três.
+// `public/dados/cidades-oficiais.csv` (funde as duas fontes de cidade —
+// ver normalizarCidadesOficiais em csvIndicadores.js). No workflow
+// automatizado (.github/workflows/atualizar-base.yml) os quatro arquivos
+// são baixados do Drive e este é sempre chamado com os quatro.
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
@@ -130,12 +131,24 @@ function main() {
     console.log(`Metas de ativação 5G: ${metasAtivacao5g.length} registro(s) em ${SAIDA_METAS_ATIVACAO_5G}.`);
   }
 
-  const caminhoCidadesOficiais = process.argv[4];
+  const caminhoCidadesOficiais = process.argv[4]; // cidades_atuais.csv (5G)
+  const caminhoCidadesFtth = process.argv[5]; // cidades_ftth.csv (FTTH)
   let cidadesOficiaisProcessadas = null;
-  if (caminhoCidadesOficiais) {
-    const textoCidadesOficiais = readFileSync(caminhoCidadesOficiais, 'utf-8');
-    const linhasCidadesOficiais = parsearCsv(textoCidadesOficiais);
-    const { registros: cidadesOficiais, avisos: avisosCidadesOficiais } = normalizarCidadesOficiais(linhasCidadesOficiais);
+  if (caminhoCidadesOficiais || caminhoCidadesFtth) {
+    const linhasCidadesOficiais = caminhoCidadesOficiais
+      ? parsearCsv(readFileSync(caminhoCidadesOficiais, 'utf-8'))
+      : [];
+    const linhasCidadesFtth = caminhoCidadesFtth ? parsearCsv(readFileSync(caminhoCidadesFtth, 'utf-8')) : [];
+    if (!caminhoCidadesFtth) {
+      console.warn('Sem csv-cidades-ftth: nenhuma cidade será marcada vendeFtth=true.');
+    }
+    if (!caminhoCidadesOficiais) {
+      console.warn('Sem csv-cidades-atuais-5g: nenhuma cidade será marcada vende5g=true (nem FWA/lançamento comercial).');
+    }
+    const { registros: cidadesOficiais, avisos: avisosCidadesOficiais } = normalizarCidadesOficiais(
+      linhasCidadesFtth,
+      linhasCidadesOficiais,
+    );
     if (avisosCidadesOficiais.length > 0) {
       console.warn(`${avisosCidadesOficiais.length} aviso(s) de cidades oficiais (não bloqueiam a publicação):`);
       avisosCidadesOficiais.slice(0, 20).forEach((a) => console.warn(`  - ${a}`));

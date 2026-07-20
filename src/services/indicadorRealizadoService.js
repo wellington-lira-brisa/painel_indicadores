@@ -230,9 +230,9 @@ export function baseRealEmCacheOuNula(tecnologia) {
 /**
  * Substitui, em `cidade.indicadores`, o `realizado` mensal e a quebra
  * semanal dos indicadores cobertos pela base real. Tudo o resto do
- * objeto (meta, gerente, regional, crescimento, base ativa) permanece
- * exatamente como veio do mock (ou `null`, pra cidade sintetizada — ver
- * cidadeService.js) — ver o comentário no topo do arquivo.
+ * objeto (meta, gerente, regional, base ativa) permanece exatamente como
+ * veio do mock (ou `null`, pra cidade sintetizada — ver cidadeService.js)
+ * — ver o comentário no topo do arquivo.
  *
  * Se `indice` for `null` (nenhum carregamento bem-sucedido ainda nesta
  * sessão), os indicadores cobertos ficam com `realizado: null` em vez do

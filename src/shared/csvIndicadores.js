@@ -584,43 +584,85 @@ export const paraCsvMetasAtivacao5g = paraCsvMetasInstalacaoFtth;
  * Lista oficial de cidades onde a operação vende (FTTH/5G/FWA) — fonte de
  * ESCOPO do Ranking, diferente da base de vendas (que traz qualquer
  * cidade com atividade registrada, incluindo funil que nunca virou venda
- * — ver normalizarPorCanal/normalizar). Arquivo próprio
- * (`base_mesa_performace_ATUAL.csv`), atualizado mensalmente pelo
- * negócio, colunas: `atuais` (nome da cidade — usa essa, não `cidades`;
- * ver aviso abaixo), `servico` ("FTTH E 5G" | "5G ONLY"), `fwa`
- * ("VENDENDO" | "PENDENTE"), `lancamento_comercial` (data yyyy-mm-dd de
- * quando a cidade começou a vender comercialmente — vira o card
- * "Ativação comercial" da PaginaCidade). Formato inválido/ausente vira
- * `null` (mesmo critério de "—" do resto do painel), sem bloquear a
- * publicação.
+ * — ver normalizarPorCanal/normalizar).
+ *
+ * DUAS fontes independentes, cada uma decide sua própria tecnologia —
+ * confirmado com o negócio (planilha "Cidades Atuais" é só 5G; FTTH tem
+ * lista própria separada, `cidades_ftth.csv`):
+ *  - `cidades_ftth.csv`: lista fechada, 1 coluna (`cidade`, "Nome/UF") —
+ *    presença na lista = `vendeFtth: true`. Sem outro atributo.
+ *  - `cidades_atuais.csv` (planilha "Cidades Atuais", 5G): colunas
+ *    `atuais` (nome da cidade — usa essa, não `cidades`), `servico`
+ *    ("FTTH E 5G" | "5G ONLY" — aqui só decide `vende5g`, nunca
+ *    `vendeFtth`), `fwa` ("VENDENDO" | "PENDENTE"), `lancamento_comercial`
+ *    (data yyyy-mm-dd de quando a cidade começou a vender comercialmente
+ *    — vira o card "Ativação comercial" da PaginaCidade).
+ *
+ * Cidade que só existe numa das duas fontes entra mesmo assim (com a
+ * tecnologia que não tem fonte própria em `false`); cidade nas duas
+ * funde os dois lados. Formato inválido/ausente vira `null` (mesmo
+ * critério de "—" do resto do painel), sem bloquear a publicação.
  *
  * 1 linha por cidade (sem meses/período) — mais simples que
  * `normalizarMetadadosCidade`, não precisa de agregação por chave
  * composta.
  */
-export function normalizarCidadesOficiais(linhas) {
+export function normalizarCidadesOficiais(linhasFtth, linhasAtuais5g) {
   const avisos = [];
   const porCidade = new Map();
+  const vistasFtth = new Set();
+  const vistasAtuais = new Set();
 
-  for (const l of linhas) {
-    const cidadeSlug = normalizarCidade(l.atuais);
+  // FTTH: lista fechada, só nome de cidade (`cidade_ftth.csv`) — nenhum
+  // outro atributo vem daqui. Confirmado com o negócio: a coluna
+  // `servico` de cidades_atuais.csv NÃO decide mais FTTH (aquele arquivo
+  // é só 5G — "FTTH E 5G" ali significa "essa cidade 5G também tem FTTH
+  // pela lista própria", não o contrário).
+  for (const l of linhasFtth) {
+    const cidadeSlug = normalizarCidade(l.cidade);
     if (!cidadeSlug) continue; // mesmo critério do resto do pipeline: nunca inventa cidade
 
-    if (porCidade.has(cidadeSlug)) {
-      avisos.push(`Cidade "${l.atuais}" aparece mais de uma vez na base oficial — mantendo a primeira ocorrência.`);
+    if (vistasFtth.has(cidadeSlug)) {
+      avisos.push(`Cidade "${l.cidade}" aparece mais de uma vez na base FTTH — mantendo a primeira ocorrência.`);
       continue;
     }
+    vistasFtth.add(cidadeSlug);
 
+    porCidade.set(cidadeSlug, {
+      cidadeSlug,
+      cidadeOrigem: l.cidade,
+      vendeFtth: true,
+      vende5g: false,
+      vendeFwa: false,
+      lancamentoComercial: null,
+    });
+  }
+
+  // 5G (cidades_atuais.csv): dá vende5g, FWA e lançamento comercial. Uma
+  // cidade que já veio da lista FTTH só recebe o que falta (nunca reduz
+  // vendeFtth pra false); uma cidade nova (só 5G) entra do zero.
+  for (const l of linhasAtuais5g) {
+    const cidadeSlug = normalizarCidade(l.atuais);
+    if (!cidadeSlug) continue;
+
+    if (vistasAtuais.has(cidadeSlug)) {
+      avisos.push(`Cidade "${l.atuais}" aparece mais de uma vez na base de cidades atuais (5G) — mantendo a primeira ocorrência.`);
+      continue;
+    }
+    vistasAtuais.add(cidadeSlug);
+
+    const vende5gAqui = l.servico === 'FTTH E 5G' || l.servico === '5G ONLY';
     const lancamentoComercial = REGEX_DATA.test(l.lancamento_comercial) ? l.lancamento_comercial : null;
     if (l.lancamento_comercial && !lancamentoComercial) {
       avisos.push(`Cidade "${l.atuais}": lancamento_comercial inválida ("${l.lancamento_comercial}") — exibindo "—".`);
     }
 
+    const existente = porCidade.get(cidadeSlug);
     porCidade.set(cidadeSlug, {
       cidadeSlug,
-      cidadeOrigem: l.atuais,
-      vendeFtth: l.servico === 'FTTH E 5G',
-      vende5g: l.servico === 'FTTH E 5G' || l.servico === '5G ONLY',
+      cidadeOrigem: existente?.cidadeOrigem ?? l.atuais,
+      vendeFtth: existente?.vendeFtth ?? false,
+      vende5g: vende5gAqui,
       vendeFwa: l.fwa === 'VENDENDO',
       lancamentoComercial,
     });

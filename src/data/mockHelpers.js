@@ -82,10 +82,7 @@ export const DEFINICOES_INDICADORES_FTTH = [
   { id: 'instalacao', nome: 'Instalação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
 ];
 
-export const DEFINICOES_INDICADORES_5G = [
-  { id: 'crescimento', nome: 'Crescimento (base)', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: false },
-  { id: 'ativacao', nome: 'Ativação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true },
-];
+export const DEFINICOES_INDICADORES_5G = [{ id: 'ativacao', nome: 'Ativação', unidade: 'abs', melhorQuandoMaior: true, possuiSemanas: true }];
 
 /**
  * Gera os indicadores de uma cidade recém-criada a partir da base real —
