@@ -631,6 +631,31 @@ test('normalizarMetaPorCanal: Ativação 5G — canal fora de ONLINE (ex.: PAP) 
   assert.equal(registros[0].indicadorId, 'ativacao');
 });
 
+test('normalizarMetaPorCanal: "Vendas instaladas avulso - Banda Larga" conta como Instalado quando o dicionário já dá FTTH=1 (corrigido na fonte, sem override no código)', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-03-01', indicador: 'Vendas instaladas avulso - Banda Larga', FTTH: '1', FWA: '0', '5G': '0' },
+  ]);
+  const linhasFato = [
+    { data: '2026-03-01', canal: 'LOJA', indicador: 'Vendas instaladas avulso - Banda Larga', meta: '60', cidade: 'ARACAJU/SE' },
+  ];
+  const { registros, avisos } = normalizarMetaPorCanal(linhasFato, indice);
+  assert.deepEqual(avisos, []);
+  assert.equal(registros.length, 1);
+  assert.equal(registros[0].meta, 60);
+  assert.equal(registros[0].indicadorId, 'instalacao');
+});
+
+test('normalizarMetaPorCanal: sem override — se o dicionário ainda desse 0,0,0 pra "Banda Larga", a meta zeraria (confirma que não sobrou regra escondida)', () => {
+  const { indice } = indexarMultiplicadoresDicionarioMetas([
+    { data: '2026-03-01', indicador: 'Vendas instaladas avulso - Banda Larga', FTTH: '0', FWA: '0', '5G': '0' },
+  ]);
+  const linhasFato = [
+    { data: '2026-03-01', canal: 'LOJA', indicador: 'Vendas instaladas avulso - Banda Larga', meta: '60', cidade: 'ARACAJU/SE' },
+  ];
+  const { registros } = normalizarMetaPorCanal(linhasFato, indice);
+  assert.equal(registros[0].meta, 0); // multiplicador 0 × meta-base — dependeria 100% do dicionário estar certo
+});
+
 test('normalizarMetaPorCanal: aplica multiplicador e soma os indicadores de "instalacao" por cidade+canal+mês', () => {
   const { indice } = indexarMultiplicadoresDicionarioMetas([
     { data: '2026-01-01', indicador: 'Vendas instalada Combo - FTTH', FTTH: '1', FWA: '0', '5G': '1' },

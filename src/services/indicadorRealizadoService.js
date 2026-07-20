@@ -228,20 +228,30 @@ export function baseRealEmCacheOuNula(tecnologia) {
 }
 
 /**
- * Substitui, em `cidade.indicadores`, o `realizado` mensal e a quebra
- * semanal dos indicadores cobertos pela base real. Tudo o resto do
- * objeto (meta, gerente, regional, base ativa) permanece exatamente como
- * veio do mock (ou `null`, pra cidade sintetizada — ver cidadeService.js)
- * — ver o comentário no topo do arquivo.
+ * Substitui, em `cidade.indicadores`, o realizado mensal (e, só quando
+ * `campoDestino === 'realizado'`, a quebra semanal) dos indicadores
+ * cobertos pela base real. Tudo o resto do objeto (meta, gerente,
+ * regional, base ativa) permanece exatamente como veio do mock (ou
+ * `null`, pra cidade sintetizada — ver cidadeService.js) — ver o
+ * comentário no topo do arquivo.
+ *
+ * `campoDestino` (default `'realizado'`) existe pra reaproveitar essa
+ * mesma função nas duas chamadas que `enriquecer()` faz (cidadeService.js):
+ * uma com o índice já recortado por canal (grava em `realizado`, com
+ * semanas), outra com o índice SEMPRE total, canal nenhum (grava em
+ * `realizadoGeral`, sem mexer em semanas — esse campo só alimenta o card
+ * "Média do período", que não mostra quebra semanal). Evita duplicar a
+ * lógica de indicador coberto / índice nulo pras duas variantes.
  *
  * Se `indice` for `null` (nenhum carregamento bem-sucedido ainda nesta
- * sessão), os indicadores cobertos ficam com `realizado: null` em vez do
- * valor mockado: mostrar um número que parece real mas não veio da base
- * real seria pior do que mostrar "—".
+ * sessão), os indicadores cobertos ficam com o campo de destino `null` em
+ * vez do valor mockado: mostrar um número que parece real mas não veio da
+ * base real seria pior do que mostrar "—".
  */
-export function aplicarRealizadosReais(cidade, indice, tecnologia) {
+export function aplicarRealizadosReais(cidade, indice, tecnologia, campoDestino = 'realizado') {
   const cobertos = new Set(INDICADORES_COM_DADO_REAL[tecnologia] ?? []);
   const porIndicador = indice?.get(cidade.id) ?? null;
+  const mexeEmSemanas = campoDestino === 'realizado';
 
   return {
     ...cidade,
@@ -251,11 +261,13 @@ export function aplicarRealizadosReais(cidade, indice, tecnologia) {
       return {
         ...ind,
         meses: ind.meses.map((m, mesIndex) => {
-          const realizado = registro?.meses.get(mesIndex) ?? null;
+          const valorReal = registro?.meses.get(mesIndex) ?? null;
+          if (!mexeEmSemanas) return { ...m, [campoDestino]: valorReal };
+
           const semanasReais = registro?.semanas.get(mesIndex);
           return {
             ...m,
-            realizado,
+            [campoDestino]: valorReal,
             semanas: m.semanas.map((s) => {
               const real = semanasReais?.get(s.numero);
               if (!real) return { ...s, valor: null };

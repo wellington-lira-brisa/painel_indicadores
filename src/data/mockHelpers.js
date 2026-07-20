@@ -61,6 +61,12 @@ export function indicador(id, nome, unidade, melhorQuandoMaior, metas, realizado
       // fonte ser cadastrada. Nunca deve ser preenchida com o valor de `meta`.
       metaIndicador: null,
       realizado,
+      // Realizado SEM filtro de canal — sempre a cidade inteira, mesmo
+      // quando `realizado` (acima) está recortado por canal selecionado.
+      // Serve pro card "Média do período" comparar lado a lado o recorte
+      // por canal com o geral da cidade (ver aplicarRealizadosReais em
+      // cidadeService.js, segunda chamada com campoDestino='realizadoGeral').
+      realizadoGeral: realizado,
       semanas: possuiSemanas
         ? distribuirValorPorSemanas(realizado, semanasDoMesAtual)
         : semanasDoMesAtual.map((semana) => ({ ...semana, valor: null })),

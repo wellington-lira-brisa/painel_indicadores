@@ -308,7 +308,8 @@ function enriquecer(
   cidade,
   statusFwa,
   statusPlanoAtivo,
-  indiceRealizados,
+  indiceRealizadosEfetivo,
+  indiceRealizadosTotal,
   metadadosCidades,
   metaGeralCidade,
   metaPorCanal,
@@ -321,7 +322,18 @@ function enriquecer(
     canaisSelecionados,
     tecnologiaId,
   );
-  const cidadeComDadosReais = aplicarRealizadosReais(cidadeComMetaEMetadados, indiceRealizados, tecnologiaId);
+  // Duas passadas: `realizado` recortado por canal (o que o filtro do
+  // SeletorCanais decidir — igual sempre foi) e `realizadoGeral` SEMPRE
+  // com o índice total, nenhum filtro — pra comparar lado a lado no card
+  // "Média do período" (ver EXPLICACAO_REALIZADO_GERAL_PERIODO em
+  // utils/mediaPeriodo.js).
+  const cidadeComRealizadoPorCanal = aplicarRealizadosReais(cidadeComMetaEMetadados, indiceRealizadosEfetivo, tecnologiaId);
+  const cidadeComDadosReais = aplicarRealizadosReais(
+    cidadeComRealizadoPorCanal,
+    indiceRealizadosTotal,
+    tecnologiaId,
+    'realizadoGeral',
+  );
   return {
     ...cidadeComDadosReais,
     score: scoreCidade(cidadeComDadosReais),
@@ -387,6 +399,7 @@ function criarServicoCidades(tecnologiaId) {
         statusFwa,
         statusPlanoAtivo,
         indiceEfetivo,
+        indice,
         metadadosCidades,
         metaGeralCidade,
         null, // Meta do Indicador por canal: só usada em PaginaCidade/PaginaPlano
@@ -426,6 +439,7 @@ function criarServicoCidades(tecnologiaId) {
       statusFwa,
       statusPlanoAtivo,
       indiceEfetivo,
+      indice,
       metadadosCidades,
       metaGeralCidade,
       metaPorCanal,

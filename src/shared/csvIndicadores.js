@@ -729,6 +729,7 @@ const INDICADORES_POR_CATEGORIA_META = {
     'Vendas instaladas Combo 1 Chip - FTTH',
     'Vendas instaladas Combo 2+ Chip - FTTH',
     'Vendas instaladas avulso - FTHH', // grafia real da fonte (typo consistente no dicionário e na fato)
+    'Vendas instaladas avulso - Banda Larga', // confirmado com o negócio (reunião 20/07/2026): conta como Instalado FTTH; dicionário corrigido na fonte pra dar FTTH=1 pra esse indicador (sem override no código)
   ],
   // Os dois indicadores de ativação 5G — qual vale pra qual canal é
   // decidido por INDICADOR_ATIVACAO_POR_CANAL, não pelo simples

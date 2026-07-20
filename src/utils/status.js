@@ -43,12 +43,12 @@ function razaoAtingimento(melhorQuandoMaior, realizado, meta) {
  * isso devolve `null` — atingimento só aparece na tabela quando a meta do
  * indicador aparecer.
  */
-export function atingimentoIndicador(indicador, campoMeta = 'meta') {
-  const meses = indicador.meses.filter((m) => m.realizado !== null);
+export function atingimentoIndicador(indicador, campoMeta = 'meta', campoRealizado = 'realizado') {
+  const meses = indicador.meses.filter((m) => m[campoRealizado] !== null);
   if (meses.length === 0) return null;
 
   const meta = meses.reduce((acc, m) => acc + (m[campoMeta] ?? 0), 0);
-  const realizado = meses.reduce((acc, m) => acc + m.realizado, 0);
+  const realizado = meses.reduce((acc, m) => acc + m[campoRealizado], 0);
   if (meta === 0) return null;
 
   return razaoAtingimento(indicador.melhorQuandoMaior, realizado, meta);
