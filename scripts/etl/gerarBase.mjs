@@ -23,7 +23,7 @@
 // automatizado (.github/workflows/atualizar-base.yml) os quatro arquivos
 // são baixados do Drive e este é sempre chamado com os quatro.
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { dirname } from 'node:path';
 import {
   parsearCsv,
@@ -44,7 +44,12 @@ import {
 
 const SAIDA_CSV = 'public/dados/indicadores-realizados.csv';
 const SAIDA_METADADOS_CIDADE = 'public/dados/cidades-metadados.csv';
-const SAIDA_POR_CANAL = 'public/dados/indicadores-realizados-por-canal.csv';
+// Por canal é particionado por tecnologia + ano (o front baixa só a
+// partição da sessão — ver nomeArquivoPorCanal em
+// indicadorRealizadoService.js). O agregado único de ~31MB não é mais
+// publicado; escreverPorCanalParticionado remove o legado se existir.
+const PREFIXO_SAIDA_POR_CANAL = 'public/dados/indicadores-realizados-por-canal';
+const SAIDA_POR_CANAL_LEGADO = `${PREFIXO_SAIDA_POR_CANAL}.csv`;
 const SAIDA_METAS_INSTALACAO = 'public/dados/metas-instalacao-ftth.csv';
 const SAIDA_METAS_ATIVACAO_5G = 'public/dados/metas-ativacao-5g.csv';
 const SAIDA_CIDADES_OFICIAIS = 'public/dados/cidades-oficiais.csv';
@@ -53,6 +58,32 @@ const SAIDA_STATUS = 'public/dados/ultima-atualizacao.json';
 function escreverStatus(status) {
   mkdirSync(dirname(SAIDA_STATUS), { recursive: true });
   writeFileSync(SAIDA_STATUS, JSON.stringify(status, null, 2) + '\n', 'utf-8');
+}
+
+/**
+ * Escreve um CSV por (tecnologia, ano) — mesma serialização
+ * (`paraCsvPorCanal`) e mesmo parser no front, só o recorte muda.
+ * Também remove o agregado legado de ~31MB, se existir, pra não deixar
+ * arquivo obsoleto (e pesado) no deploy.
+ */
+function escreverPorCanalParticionado(registros) {
+  const porParticao = new Map();
+  for (const registro of registros) {
+    const ano = String(registro.mesRef).slice(0, 4);
+    const chave = `${registro.tecnologia}-${ano}`;
+    if (!porParticao.has(chave)) porParticao.set(chave, []);
+    porParticao.get(chave).push(registro);
+  }
+
+  for (const [chave, registrosDaParticao] of porParticao) {
+    writeFileSync(`${PREFIXO_SAIDA_POR_CANAL}-${chave}.csv`, paraCsvPorCanal(registrosDaParticao), 'utf-8');
+  }
+
+  if (existsSync(SAIDA_POR_CANAL_LEGADO)) rmSync(SAIDA_POR_CANAL_LEGADO);
+
+  console.log(
+    `Por canal: ${porParticao.size} partição(ões) escrita(s): ${[...porParticao.keys()].sort().join(', ')}`,
+  );
 }
 
 function main() {
@@ -101,7 +132,7 @@ function main() {
   mkdirSync('public/dados', { recursive: true });
   writeFileSync(SAIDA_CSV, paraCsv(registros), 'utf-8');
   writeFileSync(SAIDA_METADADOS_CIDADE, paraCsvMetadados(metadadosCidade), 'utf-8');
-  writeFileSync(SAIDA_POR_CANAL, paraCsvPorCanal(normalizarPorCanal(linhas)), 'utf-8');
+  escreverPorCanalParticionado(normalizarPorCanal(linhas));
 
   const caminhoMetas = process.argv[3];
   let metasProcessadas = null;

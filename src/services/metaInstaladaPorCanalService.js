@@ -1,4 +1,5 @@
 import { parsearCsv } from '../shared/csvIndicadores';
+import { carregarCsvDados } from './dadosProtegidosService';
 import { ANO_PAINEL } from '../data/mockHelpers';
 
 // Meta de Instalação (FTTH) por canal — DIFERENTE da Meta Geral da Cidade
@@ -14,7 +15,7 @@ import { ANO_PAINEL } from '../data/mockHelpers';
 // aconteceu no ETL), por isso carregado sempre, igual
 // metas-instalacao-ftth.csv — não precisa do padrão "arquivo pesado, só
 // busca sob demanda" usado em indicadores-realizados-por-canal.csv.
-const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/metas-instalacao-por-canal.csv`;
+const NOME_ARQUIVO = 'metas-instalacao-por-canal.csv';
 
 /** 'YYYY-MM-DD' -> índice 0-based do mês (jan=0), só quando o ano bate com ANO_PAINEL. Mesmo critério do resto do pipeline. */
 function indiceDoMesNoAnoDoPainel(mesRefIso) {
@@ -43,11 +44,7 @@ let cache = null; // null = ainda não carregado com sucesso nesta sessão
 
 /** `cache: 'no-store'` — mesmo raciocínio dos outros arquivos publicados: pode ser atualizado a qualquer momento. */
 export async function carregarMetaInstaladaPorCanal() {
-  const resposta = await fetch(CAMINHO_CSV, { cache: 'no-store' });
-  if (!resposta.ok) {
-    throw new Error(`Falha ao buscar ${CAMINHO_CSV} (HTTP ${resposta.status}).`);
-  }
-  const texto = await resposta.text();
+  const texto = await carregarCsvDados(NOME_ARQUIVO);
   const indice = indexarPorCidadeECanal(parsearCsv(texto));
   cache = indice;
   return indice;

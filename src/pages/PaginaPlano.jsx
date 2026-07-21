@@ -3,19 +3,15 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   AlertCircle,
   ArrowLeft,
-  CalendarClock,
   CheckCircle2,
-  ClipboardList,
   FileText,
   Image as ImageIcon,
   ImagePlus,
   Loader2,
   MapPin,
   Pencil,
-  Radio,
   RotateCcw,
   Trash2,
-  UserRound,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { PERMISSOES, temPermissao } from '../services/permissaoService';
@@ -229,37 +225,26 @@ export default function PaginaPlano() {
                       className="flex min-h-[36px] items-center gap-1.5 rounded-lg border border-red-200 px-3 text-xs font-semibold text-red-700 hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                     >
                       <Trash2 className="size-3.5" aria-hidden="true" />
-                      Excluir definitivamente
+                      Excluir
                     </button>
                   )}
                 </div>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand-50 text-brand-800">
-                  <ClipboardList className="size-5" aria-hidden="true" />
-                </span>
-                <div className="min-w-0">
-                  <h2 className="text-xl font-bold text-slate-950 sm:text-2xl">Plano de ação</h2>
-                  <p className="mt-1 break-words text-sm text-slate-500">
-                    Detalhamento do plano registrado para{' '}
-                    <span className="font-semibold text-slate-700">{nomeCidade}</span>.
-                  </p>
-                </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2.5">
+                <h2 className="text-xl font-bold text-slate-950 sm:text-2xl">Plano de ação</h2>
                 {statusCidade && <StatusBadge status={statusCidade} />}
                 <BadgeEvidenciaPendente temEvidencias={plano.temEvidencias} />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:min-w-[25rem]">
-              <ResumoPlano
-                Icone={UserRound}
+            <dl className="grid shrink-0 grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-3 lg:flex lg:divide-x lg:divide-slate-200">
+              <ItemResumoPlano
                 rotulo="Responsável"
                 valor={textoSeguro(autor.nome, 'Colaborador')}
                 detalhe={autor.matricula ? `matrícula ${autor.matricula}` : autor.cargo}
               />
-              <ResumoPlano
-                Icone={CalendarClock}
+              <ItemResumoPlano
                 rotulo="Registrado em"
                 valor={formatarDataHora(plano.criadoEm)}
                 detalhe={
@@ -268,8 +253,8 @@ export default function PaginaPlano() {
                     : null
                 }
               />
-              <ResumoPlano Icone={Radio} rotulo="Canal" valor={plano.canal ?? 'Geral da cidade'} />
-            </div>
+              <ItemResumoPlano rotulo="Canal" valor={plano.canal ?? 'Geral da cidade'} />
+            </dl>
           </div>
 
           <div className="mt-4">
@@ -373,7 +358,7 @@ export default function PaginaPlano() {
               <InfoPlano rotulo="Cidade" valor={nomeCidade} />
               <InfoPlano rotulo="Regional" valor={cidade?.regional} />
               <InfoPlano rotulo="Gerente" valor={cidade?.gerente} />
-              <InfoPlano rotulo="Coordenador regional" valor={cidade?.coordenadorRegional} />
+              <InfoPlano rotulo="Coordenação regional" valor={cidade?.coordenacaoRegional} />
               <div className="min-w-0">
                 <dt className="text-xs font-semibold uppercase tracking-wide text-slate-400">Status do plano</dt>
                 <dd className="mt-1.5">
@@ -601,14 +586,11 @@ function CarregandoCampos() {
   );
 }
 
-function ResumoPlano({ Icone, rotulo, valor, detalhe }) {
+function ItemResumoPlano({ rotulo, valor, detalhe }) {
   return (
-    <div className="min-w-0 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 p-3">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-        <Icone className="size-4" aria-hidden="true" />
-        {rotulo}
-      </div>
-      <p className="mt-2 break-words text-sm font-bold text-slate-900">{valor}</p>
+    <div className="min-w-0 lg:px-5 lg:first:pl-0 lg:last:pr-0">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{rotulo}</dt>
+      <dd className="mt-0.5 break-words text-sm font-bold text-slate-900">{valor}</dd>
       {detalhe && <p className="mt-0.5 break-words text-xs text-slate-500">{detalhe}</p>}
     </div>
   );

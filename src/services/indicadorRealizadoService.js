@@ -1,4 +1,5 @@
 import { parsearCsv } from '../shared/csvIndicadores';
+import { carregarCsvDados } from './dadosProtegidosService';
 import { ANO_PAINEL } from '../data/mockHelpers';
 
 // Enquanto não existe uma API real, a base fica versionada no próprio
@@ -13,17 +14,21 @@ import { ANO_PAINEL } from '../data/mockHelpers';
 // — todo o resto deste arquivo (indexação, cache, aplicação sobre a
 // cidade) continua igual, e `cidadeService.js` nem precisa saber que a
 // fonte mudou.
-// import.meta.env.BASE_URL já vem com o `base` configurado em
-// vite.config.js (necessário pro GitHub Pages, que serve o site numa
-// subpasta) e termina com "/" — não hardcodar "/dados/..." direto, senão
-// quebra em qualquer ambiente que não sirva o site na raiz do domínio.
-const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/indicadores-realizados.csv`;
+// Carga via dadosProtegidosService: é lá que se decide entre Storage
+// privado autenticado e arquivo estático — este service só nomeia o arquivo.
+const NOME_ARQUIVO = 'indicadores-realizados.csv';
 
 // Arquivo separado, ~40x maior que o total (ver normalizarPorCanal() em
 // csvIndicadores.js) — só é buscado quando o filtro de canal é usado
 // (ver linhasPorCanalComCache abaixo), nunca no carregamento padrão do
 // Ranking/detalhe de cidade.
-const CAMINHO_CSV_POR_CANAL = `${import.meta.env.BASE_URL}dados/indicadores-realizados-por-canal.csv`;
+// Particionado por tecnologia + ano (ver escreverPorCanalParticionado no
+// ETL): a sessão FTTH nunca baixa linhas de 5G nem de anos fora do
+// painel — era >60% de download/parse desperdiçado no arquivo agregado.
+// O nome é derivado, não fixo, pra partição e consumo nunca divergirem.
+function nomeArquivoPorCanal(tecnologia) {
+  return `indicadores-realizados-por-canal-${tecnologia}-${ANO_PAINEL}.csv`;
+}
 
 // Único conjunto de indicadores que a base real hoje sustenta, por
 // tecnologia (ver RELATORIO.md, seção 5). Qualquer indicador fora daqui
@@ -51,11 +56,7 @@ function indiceDoMesNoAnoDoPainel(mesRefIso) {
  * atualizado" causaria num banco.
  */
 async function buscarLinhasCru(tecnologia) {
-  const resposta = await fetch(CAMINHO_CSV, { cache: 'no-store' });
-  if (!resposta.ok) {
-    throw new Error(`Falha ao buscar ${CAMINHO_CSV} (HTTP ${resposta.status}).`);
-  }
-  const texto = await resposta.text();
+  const texto = await carregarCsvDados(NOME_ARQUIVO);
   const todasAsLinhas = parsearCsv(texto);
   return todasAsLinhas.filter((l) => l.tecnologia === tecnologia);
 }
@@ -151,12 +152,10 @@ function indexarValoresPorCidadeSomando(linhas) {
 }
 
 async function buscarLinhasCruPorCanal(tecnologia) {
-  const resposta = await fetch(CAMINHO_CSV_POR_CANAL, { cache: 'no-store' });
-  if (!resposta.ok) {
-    throw new Error(`Falha ao buscar ${CAMINHO_CSV_POR_CANAL} (HTTP ${resposta.status}).`);
-  }
-  const texto = await resposta.text();
+  const texto = await carregarCsvDados(nomeArquivoPorCanal(tecnologia));
   const todasAsLinhas = parsearCsv(texto);
+  // Defesa: a partição já é por tecnologia, mas manter o filtro custa nada
+  // e blinda contra um arquivo particionado errado no deploy.
   return todasAsLinhas.filter((l) => l.tecnologia === tecnologia);
 }
 

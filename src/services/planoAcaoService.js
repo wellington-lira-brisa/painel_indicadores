@@ -414,7 +414,12 @@ export async function criarPlano(dados) {
     const evidenciasParaRpc = [];
     for (let indice = 0; indice < imagens.length; indice += 1) {
       const { blob, metadados } = imagens[indice];
-      const extensao = EXTENSAO_POR_TIPO[blob.type] ?? 'jpg';
+      const extensao = EXTENSAO_POR_TIPO[blob.type];
+      if (!extensao) {
+        // imagemUpload.js sempre re-encoda pra um dos tipos do mapa; blob fora
+        // dele significa bypass do pipeline de imagem — rejeitar, não adivinhar.
+        throw new Error('Tipo de imagem não suportado.');
+      }
       const caminho = `${dados.criadoPorId}/${id}-${indice}.${extensao}`;
 
       const { error: erroUpload } = await supabase.storage
@@ -506,7 +511,12 @@ export async function anexarEvidenciasPlano(planoId, dados) {
     const evidenciasParaRpc = [];
     for (let indice = 0; indice < imagens.length; indice += 1) {
       const { blob, metadados } = imagens[indice];
-      const extensao = EXTENSAO_POR_TIPO[blob.type] ?? 'jpg';
+      const extensao = EXTENSAO_POR_TIPO[blob.type];
+      if (!extensao) {
+        // imagemUpload.js sempre re-encoda pra um dos tipos do mapa; blob fora
+        // dele significa bypass do pipeline de imagem — rejeitar, não adivinhar.
+        throw new Error('Tipo de imagem não suportado.');
+      }
       // Prefixo com o próprio planoId (não só criadoPorId-timestamp) pra
       // ficar óbvio, só olhando o path no Storage, a quais evidências de
       // qual plano cada arquivo pertence — útil pra auditoria manual.

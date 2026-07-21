@@ -5,13 +5,11 @@ import {
   CalendarClock,
   ChevronRight,
   Clock3,
-  FileText,
   Inbox,
   MapPin,
   Radio,
   RotateCcw,
   Search,
-  SlidersHorizontal,
   UserRound,
   X,
 } from 'lucide-react';
@@ -33,6 +31,7 @@ const STATUS_OPCOES = [
   { valor: 'vermelho', rotulo: 'Críticos' },
   { valor: 'amarelo', rotulo: 'Atenção' },
   { valor: 'verde', rotulo: 'Saudáveis' },
+  { valor: 'sem-dado', rotulo: 'Sem meta' },
   { valor: 'sem-cidade', rotulo: 'Sem cidade' },
 ];
 
@@ -56,7 +55,8 @@ const PRIORIDADE_STATUS = {
   vermelho: 1,
   amarelo: 2,
   verde: 3,
-  'sem-cidade': 4,
+  'sem-dado': 4,
+  'sem-cidade': 5,
 };
 
 const normalizarTexto = normalizarTextoBusca;
@@ -70,7 +70,7 @@ function dataEmMs(iso) {
   return Number.isFinite(tempo) ? tempo : 0;
 }
 
-function limitarTexto(texto, limite = 260) {
+function limitarTexto(texto, limite = 160) {
   const valor = removerMarcacaoMarkdown(texto);
   if (valor.length <= limite) return valor;
   return `${valor.slice(0, limite).trim()}…`;
@@ -95,7 +95,7 @@ function montarPlanoParaBusca(plano, cidadesPorId) {
     cidade?.uf,
     cidade?.regional,
     cidade?.gerente,
-    cidade?.coordenadorRegional,
+    cidade?.coordenacaoRegional,
     STATUS_ROTULOS[statusCidade],
     plano.oQue,
     plano.como,
@@ -115,6 +115,7 @@ function montarPlanoParaBusca(plano, cidadesPorId) {
     statusCidade,
     cidadeNome: cidade?.nome ?? plano.cidadeId ?? 'Cidade não encontrada',
     autorNome: autor.nome ?? 'Colaborador',
+    criadoEmMs: dataEmMs(plano.criadoEm),
     textoBuscaNormalizado: normalizarTexto(textoBusca),
   };
 }
@@ -148,9 +149,13 @@ export default function PaginaListaPlanos() {
   const { planoId } = useParams();
 
   // Defesa contra rota configurada por engano como /planos/:planoId -> PaginaListaPlanos.
-  // Quando existir um planoId na URL, esta tela entrega imediatamente o detalhe do plano.
+  // Guard fica FORA do componente com hooks: retornar antes de useState/useEffect
+  // violaria rules-of-hooks (quantidade de hooks mudaria entre renders).
   if (planoId) return <PaginaPlano />;
+  return <ListaPlanos />;
+}
 
+function ListaPlanos() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [planos, setPlanos] = useState([]);
   const [cidadesPorId, setCidadesPorId] = useState({});
@@ -227,7 +232,7 @@ export default function PaginaListaPlanos() {
         acc[plano.statusCidade] = (acc[plano.statusCidade] ?? 0) + 1;
         return acc;
       },
-      { vermelho: 0, amarelo: 0, verde: 0, 'sem-cidade': 0 },
+      { vermelho: 0, amarelo: 0, verde: 0, 'sem-dado': 0, 'sem-cidade': 0 },
     );
 
     return {
@@ -243,33 +248,36 @@ export default function PaginaListaPlanos() {
     const buscaNormalizada = normalizarTexto(buscaAdiada);
     const tokens = tokenizarBusca(buscaAdiada);
     const ordem = ORDEM_OPCOES.some((opcao) => opcao.valor === ordemSelecionada) ? ordemSelecionada : ORDEM_PADRAO;
+    const ordenarPorRelevancia = ordem === 'relevancia' && tokens.length > 0;
 
-    return planosComCidade
-      .filter((plano) => {
-        const passouNoStatus = statusSelecionado === FILTRO_TODOS || plano.statusCidade === statusSelecionado;
-        const passouNaBusca = tokens.length === 0 || tokens.every((token) => plano.textoBuscaNormalizado.includes(token));
-        return passouNoStatus && passouNaBusca;
-      })
-      .map((plano) => ({
-        ...plano,
-        relevancia: calcularRelevancia(plano, buscaNormalizada, tokens),
-      }))
-      .sort((a, b) => {
-        if (ordem === 'relevancia' && tokens.length > 0) {
-          return b.relevancia - a.relevancia || dataEmMs(b.criadoEm) - dataEmMs(a.criadoEm);
-        }
+    const filtrados = planosComCidade.filter((plano) => {
+      const passouNoStatus = statusSelecionado === FILTRO_TODOS || plano.statusCidade === statusSelecionado;
+      const passouNaBusca = tokens.length === 0 || tokens.every((token) => plano.textoBuscaNormalizado.includes(token));
+      return passouNoStatus && passouNaBusca;
+    });
 
-        if (ordem === 'antigos') return dataEmMs(a.criadoEm) - dataEmMs(b.criadoEm);
-        if (ordem === 'cidade') return a.cidadeNome.localeCompare(b.cidadeNome, 'pt-BR');
-        if (ordem === 'status') {
-          return (
-            (PRIORIDADE_STATUS[a.statusCidade] ?? 99) - (PRIORIDADE_STATUS[b.statusCidade] ?? 99) ||
-            dataEmMs(b.criadoEm) - dataEmMs(a.criadoEm)
-          );
-        }
+    // Relevância só é computada quando a ordenação realmente a usa —
+    // é o cálculo mais caro do pipeline (5 normalizações + N tokens por plano).
+    const comRelevancia = ordenarPorRelevancia
+      ? filtrados.map((plano) => ({ ...plano, relevancia: calcularRelevancia(plano, buscaNormalizada, tokens) }))
+      : filtrados;
 
-        return dataEmMs(b.criadoEm) - dataEmMs(a.criadoEm);
-      });
+    return [...comRelevancia].sort((a, b) => {
+      if (ordenarPorRelevancia) {
+        return b.relevancia - a.relevancia || b.criadoEmMs - a.criadoEmMs;
+      }
+
+      if (ordem === 'antigos') return a.criadoEmMs - b.criadoEmMs;
+      if (ordem === 'cidade') return a.cidadeNome.localeCompare(b.cidadeNome, 'pt-BR');
+      if (ordem === 'status') {
+        return (
+          (PRIORIDADE_STATUS[a.statusCidade] ?? 99) - (PRIORIDADE_STATUS[b.statusCidade] ?? 99) ||
+          b.criadoEmMs - a.criadoEmMs
+        );
+      }
+
+      return b.criadoEmMs - a.criadoEmMs;
+    });
   }, [buscaAdiada, ordemSelecionada, planosComCidade, statusSelecionado]);
 
   const possuiFiltros = Boolean(busca.trim()) || statusSelecionado !== FILTRO_TODOS || ordemSelecionada !== ORDEM_PADRAO;
@@ -309,7 +317,7 @@ export default function PaginaListaPlanos() {
       <CabecalhoPlanos contadores={contadores} />
 
       <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Filtros dos planos">
-        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_12rem_13rem]">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_13rem]">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
             <input
@@ -330,22 +338,6 @@ export default function PaginaListaPlanos() {
               </button>
             )}
           </div>
-
-          <label className="sr-only" htmlFor="status-plano">
-            Filtrar por status
-          </label>
-          <select
-            id="status-plano"
-            value={statusSelecionado}
-            onChange={(evento) => atualizarParametro('status', evento.target.value)}
-            className="h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 outline-none transition focus:border-brand-700 focus:ring-2 focus:ring-brand-700/10"
-          >
-            {filtrosStatusDisponiveis.map((opcao) => (
-              <option key={opcao.valor} value={opcao.valor}>
-                {opcao.rotulo}
-              </option>
-            ))}
-          </select>
 
           <label className="sr-only" htmlFor="ordem-plano">
             Ordenar planos
@@ -434,52 +426,56 @@ export default function PaginaListaPlanos() {
 function CabecalhoPlanos({ contadores }) {
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
-          <p className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-800">
-            <SlidersHorizontal className="size-3.5" aria-hidden="true" />
-            Gestão de planos
-          </p>
-          <h2 className="mt-3 text-xl font-bold text-slate-950 sm:text-2xl">Planos de ação</h2>
+          <h2 className="text-xl font-bold text-slate-950 sm:text-2xl">Planos de ação</h2>
           <p className="mt-1 text-sm leading-6 text-slate-500">
             Acompanhe os planos por cidade, priorize pontos críticos e encontre rapidamente ações pelo conteúdo,
             responsável ou estrutura comercial.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:min-w-[34rem]">
-          <ResumoCard Icone={FileText} rotulo="Planos" valor={contadores.total} />
-          <ResumoCard Icone={MapPin} rotulo="Cidades" valor={contadores.cidades} />
-          <ResumoCard Icone={AlertCircle} rotulo="Críticos" valor={contadores.status.vermelho} destaque="danger" />
-          <ResumoCard Icone={UserRound} rotulo="Autores" valor={contadores.autores} />
-        </div>
+        <dl className="grid shrink-0 grid-cols-2 gap-x-8 gap-y-3 sm:flex sm:divide-x sm:divide-slate-200">
+          <ItemResumo rotulo="Planos" valor={contadores.total} />
+          <ItemResumo rotulo="Cidades" valor={contadores.cidades} />
+          <ItemResumo rotulo="Críticos" valor={contadores.status.vermelho} destaque="danger" />
+          <ItemResumo rotulo="Autores" valor={contadores.autores} />
+        </dl>
       </div>
     </section>
   );
 }
 
-function ResumoCard({ Icone, rotulo, valor, destaque }) {
+function ItemResumo({ rotulo, valor, destaque }) {
   return (
-    <div
-      className={`rounded-xl border p-3 ${
-        destaque === 'danger' ? 'border-red-100 bg-red-50 text-red-900' : 'border-slate-100 bg-slate-50 text-slate-900'
-      }`}
-    >
-      <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-        <Icone className="size-4" aria-hidden="true" />
-        {rotulo}
-      </div>
-      <p className="mt-2 text-2xl font-bold leading-none">{valor}</p>
+    <div className="sm:px-5 sm:first:pl-0 sm:last:pr-0">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{rotulo}</dt>
+      <dd
+        className={`mt-0.5 text-2xl font-bold leading-none tabular-nums ${
+          destaque === 'danger' && valor > 0 ? 'text-red-700' : 'text-slate-900'
+        }`}
+      >
+        {valor}
+      </dd>
     </div>
   );
 }
+
+const COR_ACENTO_STATUS = {
+  verde: 'border-l-emerald-400',
+  amarelo: 'border-l-amber-400',
+  vermelho: 'border-l-red-400',
+  'sem-cidade': 'border-l-slate-200',
+};
 
 function CardPlano({ plano }) {
   return (
     <li>
       <Link
         to={`/planos/${plano.id}`}
-        className="group block rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 sm:p-5"
+        className={`group block rounded-xl border-y border-r border-l-2 border-slate-200 bg-white p-4 shadow-sm transition-colors hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700 sm:p-5 ${
+          COR_ACENTO_STATUS[plano.statusCidade] ?? 'border-l-transparent'
+        }`}
       >
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">

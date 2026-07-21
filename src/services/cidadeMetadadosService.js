@@ -1,10 +1,11 @@
 import { parsearCsv } from '../shared/csvIndicadores';
+import { carregarCsvDados } from './dadosProtegidosService';
 
 // Arquivo separado de `indicadores-realizados.csv` de propósito: é 1
 // linha por cidade (gerência/gerente/coordenação), não 1 por
 // indicador/semana — ver `normalizarMetadadosCidade` em
 // src/shared/csvIndicadores.js e scripts/etl/gerarBase.mjs.
-const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/cidades-metadados.csv`;
+const NOME_ARQUIVO = 'cidades-metadados.csv';
 
 /** Trata string vazia como "sem dado", pra não sobrescrever o mock com "". */
 function paraNuloSeVazio(texto) {
@@ -35,11 +36,7 @@ let cache = null;
  * qualquer momento — mesmo raciocínio do `indicadorRealizadoService.js`.
  */
 export async function carregarMetadadosCidades() {
-  const resposta = await fetch(CAMINHO_CSV, { cache: 'no-store' });
-  if (!resposta.ok) {
-    throw new Error(`Falha ao buscar ${CAMINHO_CSV} (HTTP ${resposta.status}).`);
-  }
-  const texto = await resposta.text();
+  const texto = await carregarCsvDados(NOME_ARQUIVO);
   const indice = indexarMetadadosPorCidade(parsearCsv(texto));
   cache = indice;
   return indice;

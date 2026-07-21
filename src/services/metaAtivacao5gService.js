@@ -1,4 +1,5 @@
 import { parsearCsv } from '../shared/csvIndicadores';
+import { carregarCsvDados } from './dadosProtegidosService';
 import { ANO_PAINEL } from '../data/mockHelpers';
 
 // Meta Geral da Cidade do 5G ("Vendas Ativadas") — mesmo arquivo baixado
@@ -7,7 +8,7 @@ import { ANO_PAINEL } from '../data/mockHelpers';
 // separa por servico+indicador_geral). NÃO decide escopo de cidades
 // (isso é cidades-oficiais.csv); só dá o VALOR da meta pra quem já está
 // no escopo do 5G.
-const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/metas-ativacao-5g.csv`;
+const NOME_ARQUIVO = 'metas-ativacao-5g.csv';
 
 /** 'YYYY-MM-DD' -> índice 0-based do mês (jan=0), só quando o ano bate com ANO_PAINEL. Mesmo critério de indicadorRealizadoService.js. */
 function indiceDoMesNoAnoDoPainel(mesRefIso) {
@@ -33,11 +34,7 @@ let cache = null; // null = ainda não carregado com sucesso nesta sessão
 
 /** `cache: 'no-store'` — mesmo raciocínio dos outros arquivos publicados: pode ser atualizado a qualquer momento. */
 export async function carregarMetasAtivacao5g() {
-  const resposta = await fetch(CAMINHO_CSV, { cache: 'no-store' });
-  if (!resposta.ok) {
-    throw new Error(`Falha ao buscar ${CAMINHO_CSV} (HTTP ${resposta.status}).`);
-  }
-  const texto = await resposta.text();
+  const texto = await carregarCsvDados(NOME_ARQUIVO);
   const indice = indexarMetasPorCidade(parsearCsv(texto));
   cache = indice;
   return indice;

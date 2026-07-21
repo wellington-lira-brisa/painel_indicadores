@@ -1,10 +1,11 @@
 import { parsearCsv } from '../shared/csvIndicadores';
+import { carregarCsvDados } from './dadosProtegidosService';
 
 // Lista oficial de cidades onde a operação vende — fonte de ESCOPO do
 // Ranking (ver normalizarCidadesOficiais em csvIndicadores.js e
 // cidadeService.js). Atualizada mensalmente pelo negócio, baixada do
 // Drive pelo mesmo workflow automatizado (GOOGLE_DRIVE_CIDADES_OFICIAIS_FILE_ID).
-const CAMINHO_CSV = `${import.meta.env.BASE_URL}dados/cidades-oficiais.csv`;
+const NOME_ARQUIVO = 'cidades-oficiais.csv';
 
 /** cidadeSlug -> { cidadeOrigem, vendeFtth, vende5g, vendeFwa, lancamentoComercial } */
 function indexarCidadesOficiais(linhas) {
@@ -26,11 +27,7 @@ let cache = null; // null = ainda não carregado com sucesso nesta sessão
 
 /** `cache: 'no-store'` — mesmo raciocínio dos outros arquivos publicados: pode ser atualizado a qualquer momento. */
 export async function carregarCidadesOficiais() {
-  const resposta = await fetch(CAMINHO_CSV, { cache: 'no-store' });
-  if (!resposta.ok) {
-    throw new Error(`Falha ao buscar ${CAMINHO_CSV} (HTTP ${resposta.status}).`);
-  }
-  const texto = await resposta.text();
+  const texto = await carregarCsvDados(NOME_ARQUIVO);
   const indice = indexarCidadesOficiais(parsearCsv(texto));
   cache = indice;
   return indice;
