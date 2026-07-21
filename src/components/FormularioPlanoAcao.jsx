@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -9,6 +9,8 @@ import {
   localizacaoEvidenciaObrigatoria,
   validarCamposPlanoDetalhado,
 } from '../services/planoAcaoService';
+import { contextoCriacaoPlano } from '../utils/status';
+import { ANO_PAINEL } from '../data/mockHelpers';
 import { useCapturaEvidencias } from '../hooks/useCapturaEvidencias';
 import ModalFormulario from './ModalFormulario';
 import BlocoAnexoEvidencias from './BlocoAnexoEvidencias';
@@ -17,6 +19,8 @@ import LightboxImagem from './LightboxImagem';
 const CampoMarkdown = lazy(() => import('./CampoMarkdown'));
 
 const CAMPOS_VAZIOS = { oQue: '', como: '', quem: '', quandoPrevisto: '' };
+
+const ROTULO_CLASSIFICACAO = { vermelho: 'Crítica', amarelo: 'Atenção', verde: 'Saudável', 'sem-dado': 'Sem dado' };
 
 /**
  * Formulário estruturado do plano de ação: 4 perguntas obrigatórias
@@ -35,14 +39,50 @@ const CAMPOS_VAZIOS = { oQue: '', como: '', quem: '', quandoPrevisto: '' };
  * (BlocoAnexoEvidencias), então o comportamento é idêntico nos dois
  * momentos, só muda quando cada um acontece.
  */
-export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) {
+export default function FormularioPlanoAcao({ cidade, tecnologiaId, carregarCanaisDisponiveis, aoFechar }) {
   const { usuario } = useAuth();
   const navigate = useNavigate();
   const [campos, setCampos] = useState(CAMPOS_VAZIOS);
+  const [canal, setCanal] = useState(''); // '' = sem canal (plano geral da cidade)
+  const [canaisDisponiveis, setCanaisDisponiveis] = useState(null); // null = ainda não carregado
   const [errosCampos, setErrosCampos] = useState({});
   const [indiceLightbox, setIndiceLightbox] = useState(null);
   const [erroGeral, setErroGeral] = useState(null);
   const [enviando, setEnviando] = useState(false);
+
+  // Carrega a lista de canais 1x, na abertura do formulário — mesmo
+  // carregador que o SeletorCanais usa. Quem abriu "Criar plano" está
+  // prestes a decidir se vincula a um canal ou não, então vale a pena
+  // buscar direto, sem esperar um clique extra.
+  useEffect(() => {
+    let cancelado = false;
+    carregarCanaisDisponiveis()
+      .then((opcoes) => {
+        if (!cancelado) setCanaisDisponiveis(opcoes);
+      })
+      .catch((excecao) => {
+        console.error('Falha ao carregar lista de canais:', excecao);
+        if (!cancelado) setCanaisDisponiveis([]);
+      });
+    return () => {
+      cancelado = true;
+    };
+  }, [carregarCanaisDisponiveis]);
+
+  // Contexto de criação (classificação/período/indicadores — ver
+  // migration 20260720120000) é calculado uma vez, na abertura do
+  // formulário — representa o cenário QUANDO O USUÁRIO ABRIU "Criar
+  // plano de ação", não o instante exato do clique em salvar (que pode
+  // ser minutos depois; a base só atualiza por deploy, não muda nesse
+  // meio-tempo, mas fixar aqui deixa a intenção explícita no código).
+  const [contexto] = useState(() => {
+    const { indiceUltimoMesApurado, ...resto } = contextoCriacaoPlano(cidade);
+    return {
+      ...resto,
+      periodoReferenciaFim:
+        indiceUltimoMesApurado === null ? null : `${ANO_PAINEL}-${String(indiceUltimoMesApurado + 1).padStart(2, '0')}-01`,
+    };
+  });
 
   const {
     imagens,
@@ -96,6 +136,8 @@ export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) 
         cidadeId: cidade.id,
         tecnologiaId,
         ...campos,
+        ...contexto,
+        canal: canal || null,
         criadoPorId: usuario.id,
         imagens: imagens.map(({ blob, metadados }) => ({ blob, metadados })),
         localizacaoEvidencia,
@@ -112,7 +154,7 @@ export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) 
   return (
     <ModalFormulario
       titulo="Criar plano de ação"
-      subtitulo={`${cidade.nome} · cidade em situação crítica`}
+      subtitulo={`${cidade.nome} · ${ROTULO_CLASSIFICACAO[contexto.classificacaoNoMomento]}`}
       aoFechar={aoFechar}
     >
       <form onSubmit={aoEnviar} className="flex flex-1 flex-col gap-4 px-4 py-5 sm:px-6" noValidate>
@@ -184,6 +226,29 @@ export default function FormularioPlanoAcao({ cidade, tecnologiaId, aoFechar }) 
               {errosCampos.quandoPrevisto}
             </p>
           )}
+        </div>
+
+        <div>
+          <label htmlFor="canal" className="block text-sm font-medium text-slate-700">
+            Canal (opcional)
+          </label>
+          <p className="mt-0.5 text-xs text-slate-500">
+            Vincule a um canal específico (PAP, Loja, Online...) ou deixe em branco pra um plano geral da cidade.
+          </p>
+          <select
+            id="canal"
+            value={canal}
+            onChange={(e) => setCanal(e.target.value)}
+            disabled={canaisDisponiveis === null}
+            className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-3 text-base focus:border-brand-700 focus:outline-none focus:ring-1 focus:ring-brand-700 disabled:bg-slate-50 disabled:text-slate-400"
+          >
+            <option value="">Sem canal específico (geral da cidade)</option>
+            {canaisDisponiveis?.map((opcao) => (
+              <option key={opcao} value={opcao}>
+                {opcao}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div>

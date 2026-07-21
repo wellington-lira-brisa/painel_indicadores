@@ -76,6 +76,77 @@ export function statusCidade(cidade) {
   return score === null ? 'sem-dado' : classificarAtingimento(score);
 }
 
+/**
+ * Compara a classificação de quando um plano foi criado com a
+ * classificação atual da cidade — é a pergunta central de efetividade
+ * ("esse plano ajudou?"). `sem-dado` nunca entra na ordem (não é melhor
+ * nem pior que as outras, é ausência de informação) — vira `indeterminado`
+ * sempre que aparecer de um dos dois lados.
+ */
+const ORDEM_CLASSIFICACAO = { vermelho: 0, amarelo: 1, verde: 2 };
+
+export function compararClassificacoes(classificacaoNaCriacao, classificacaoAtual) {
+  if (
+    classificacaoNaCriacao == null ||
+    classificacaoAtual == null ||
+    !(classificacaoNaCriacao in ORDEM_CLASSIFICACAO) ||
+    !(classificacaoAtual in ORDEM_CLASSIFICACAO)
+  ) {
+    return 'indeterminado';
+  }
+  if (ORDEM_CLASSIFICACAO[classificacaoAtual] > ORDEM_CLASSIFICACAO[classificacaoNaCriacao]) return 'melhorou';
+  if (ORDEM_CLASSIFICACAO[classificacaoAtual] < ORDEM_CLASSIFICACAO[classificacaoNaCriacao]) return 'piorou';
+  return 'igual';
+}
+
+/**
+ * Contexto de criação de um Plano de Ação: classificação da cidade,
+ * índice (0-based, jan=0) do mês mais recente apurado entre TODOS os
+ * indicadores da cidade, e o detalhe por indicador que compôs esse
+ * score — pra gravar no plano no momento da criação (ver migration
+ * 20260720120000, criarPlano em planoAcaoService.js). Não é recalculado
+ * depois: é um snapshot, lido uma vez no instante do INSERT.
+ *
+ * Devolve o ÍNDICE do mês, não uma data formatada — converter pra data
+ * (`${ANO_PAINEL}-${mes}-01`) é responsabilidade de quem chama (ver
+ * FormularioPlanoAcao.jsx): status.js não depende de mockHelpers.js
+ * (evita acoplar utilitário de cálculo a constante de outra camada, e
+ * mantém este arquivo executável isoladamente pelos testes do Node, sem
+ * arrastar a cadeia de imports de mockHelpers/semanas).
+ *
+ * `indicadoresMotivadores` usa `metaIndicador` (Meta por Canal), NUNCA
+ * `meta` (Meta Geral da Cidade) — Meta Geral só existe pra UM indicador
+ * por tecnologia (Instalação no FTTH, Ativação no 5G); os outros
+ * (Orçamento, Efetivado) sempre teriam `meta` nula e sumiriam da lista
+ * silenciosamente. `classificacaoNoMomento`, por outro lado, continua
+ * vindo de `statusCidade()` (Meta Geral) de propósito — é o mesmo
+ * critério usado no Ranking/StatusBadge em qualquer outro lugar do
+ * painel, não deve divergir só porque este plano tem canal.
+ */
+export function contextoCriacaoPlano(cidade) {
+  const indicesApurados = cidade.indicadores.flatMap((ind) =>
+    ind.meses.reduce((acc, m, i) => (m.realizado !== null ? [...acc, i] : acc), []),
+  );
+  const indiceUltimoMesApurado = indicesApurados.length > 0 ? Math.max(...indicesApurados) : null;
+
+  return {
+    classificacaoNoMomento: statusCidade(cidade),
+    indiceUltimoMesApurado,
+    indicadoresMotivadores: cidade.indicadores.map((ind) => {
+      const atingimento = atingimentoIndicador(ind, 'metaIndicador');
+      const mesesApurados = ind.meses.filter((m) => m.realizado !== null);
+      return {
+        indicadorId: ind.id,
+        nome: ind.nome,
+        meta: mesesApurados.length > 0 ? mesesApurados.reduce((acc, m) => acc + (m.metaIndicador ?? 0), 0) : null,
+        realizado: mesesApurados.length > 0 ? mesesApurados.reduce((acc, m) => acc + m.realizado, 0) : null,
+        atingimento,
+        status: atingimento === null ? null : classificarAtingimento(atingimento),
+      };
+    }),
+  };
+}
+
 /** Último mês com realizado apurado de um indicador, ou null se nenhum. */
 export function ultimoMesApurado(indicador) {
   const apurados = indicador.meses.filter((m) => m.realizado !== null);

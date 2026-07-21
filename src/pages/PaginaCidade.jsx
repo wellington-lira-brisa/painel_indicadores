@@ -131,12 +131,10 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
           </div>
         </div>
 
-        {cidade.status === 'vermelho' && (
-          <BotaoPlanoAcao
-            podeCriar={temPermissao(PERMISSOES.CRIAR_PLANO_ACAO)}
-            aoClicar={() => setFormularioAberto(true)}
-          />
-        )}
+        <BotaoPlanoAcao
+          podeCriar={temPermissao(PERMISSOES.CRIAR_PLANO_ACAO)}
+          aoClicar={() => setFormularioAberto(true)}
+        />
       </div>
 
       <section aria-label="Resumo da cidade" className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-4">
@@ -220,7 +218,12 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
       )}
 
       {formularioAberto && (
-        <FormularioPlanoAcao cidade={cidade} tecnologiaId={tecnologia.id} aoFechar={() => setFormularioAberto(false)} />
+        <FormularioPlanoAcao
+          cidade={cidade}
+          tecnologiaId={tecnologia.id}
+          carregarCanaisDisponiveis={tecnologia.servicoCidades.carregarCanaisDisponiveis}
+          aoFechar={() => setFormularioAberto(false)}
+        />
       )}
     </div>
   );

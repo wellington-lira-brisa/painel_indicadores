@@ -58,11 +58,12 @@ export const LIMITE_QUEM = 200;
 // sem fazer join nenhum com planos_acao_evidencias.
 const COLUNAS_PLANO_LISTA =
   'id, cidade_id, tecnologia_id, indicador_id, criado_por, descricao, o_que, como, quem, quando_previsto, status, tem_evidencias, criado_em, atualizado_em, ' +
+  'classificacao_no_momento, periodo_referencia_fim, canal, ' +
   'colaboradores!criado_por(nome, matricula, cargo)';
 const COLUNAS_PLANO_DETALHE =
   `${COLUNAS_PLANO_LISTA}, imagem_path, imagem_metadados, evidencia_latitude, evidencia_longitude, ` +
   'evidencia_precisao_metros, evidencia_endereco, evidencia_numero, evidencia_bairro, evidencia_cidade, ' +
-  'evidencia_estado, evidencia_cep, evidencia_pais, evidencia_capturada_em, ' +
+  'evidencia_estado, evidencia_cep, evidencia_pais, evidencia_capturada_em, indicadores_motivadores, ' +
   'planos_acao_evidencias(id, imagem_path, imagem_metadados, ordem, criado_em, localizacao_id), ' +
   'planos_acao_evidencia_localizacoes(id, latitude, longitude, precisao_metros, endereco, numero, bairro, cidade, estado, cep, pais, capturada_em)';
 
@@ -163,6 +164,17 @@ function mapearPlano(linha) {
     criadoPor: linha.colaboradores,
     criadoEm: linha.criado_em,
     atualizadoEm: linha.atualizado_em,
+    // Contexto de criação (snapshot imutável — ver migration
+    // 20260720120000). `null` pra todo plano criado antes dessa
+    // migration existir; não dá pra reconstruir contexto histórico que
+    // nunca foi gravado.
+    classificacaoNoMomento: linha.classificacao_no_momento ?? null,
+    periodoReferenciaFim: linha.periodo_referencia_fim ?? null,
+    indicadoresMotivadores: linha.indicadores_motivadores ?? null,
+    // Canal ao qual o plano se refere — null = geral da cidade, não
+    // afeta visibilidade (aparece na tela da cidade independente do
+    // filtro de canal ativo), é só rótulo.
+    canal: linha.canal ?? null,
   };
 }
 
@@ -358,6 +370,10 @@ export function localizacaoEvidenciaObrigatoria(quantidadeImagens, localizacaoEv
  * @param {{ cidadeId: string, tecnologiaId: string, indicadorId?: string,
  *   oQue: string, como: string, quem: string, quandoPrevisto: string,
  *   criadoPorId: string,
+ *   classificacaoNoMomento: 'vermelho'|'amarelo'|'verde'|'sem-dado',
+ *   periodoReferenciaFim: string,
+ *   indicadoresMotivadores: Array<{ indicadorId: string, nome: string, meta: number|null, realizado: number|null, atingimento: number|null, status: string }>,
+ *   canal?: string,
  *   imagens: Array<{ blob: Blob, metadados: object }>,
  *   localizacaoEvidencia: { latitude: number, longitude: number, precisaoMetros?: number, endereco?: string, capturadaEm?: string } | null,
  * }} dados
@@ -370,6 +386,20 @@ export async function criarPlano(dados) {
   }
   if (!dados.tecnologiaId) {
     throw new Error('Tecnologia é obrigatória.');
+  }
+  // Contexto de criação (ver migration 20260720120000) é obrigatório pra
+  // todo plano NOVO — é o que torna possível, no futuro, comparar "estava
+  // crítica quando o plano nasceu" com "está crítica agora". Não dá pra
+  // inferir depois; se o form não mandou, é bug no form, não algo pra
+  // silenciosamente aceitar como null.
+  if (!dados.classificacaoNoMomento) {
+    throw new Error('Classificação da cidade no momento da criação é obrigatória.');
+  }
+  if (!dados.periodoReferenciaFim) {
+    throw new Error('Período de referência é obrigatório.');
+  }
+  if (!dados.indicadoresMotivadores) {
+    throw new Error('Indicadores que motivaram a criação são obrigatórios.');
   }
 
   const imagens = dados.imagens ?? [];
@@ -410,6 +440,10 @@ export async function criarPlano(dados) {
       p_como: como,
       p_quem: quem,
       p_quando_previsto: quandoPrevisto,
+      p_classificacao_no_momento: dados.classificacaoNoMomento,
+      p_periodo_referencia_fim: dados.periodoReferenciaFim,
+      p_indicadores_motivadores: dados.indicadoresMotivadores,
+      p_canal: dados.canal ?? null,
       p_evidencias: evidenciasParaRpc,
       p_evidencia_latitude: dados.localizacaoEvidencia?.latitude ?? null,
       p_evidencia_longitude: dados.localizacaoEvidencia?.longitude ?? null,

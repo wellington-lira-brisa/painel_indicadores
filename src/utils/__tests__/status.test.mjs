@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { atingimentoIndicador, scoreCidade, statusCidade, atingimentoMes, classificarAtingimento } from '../status.js';
+import { atingimentoIndicador, scoreCidade, statusCidade, atingimentoMes, classificarAtingimento, contextoCriacaoPlano, compararClassificacoes } from '../status.js';
 
 function mes(overrides = {}) {
   return { mes: 'JAN', meta: null, metaIndicador: null, realizado: null, semanas: [], ...overrides };
@@ -95,4 +95,86 @@ test('atingimentoMes: null se mês não apurado ou sem meta; calcula normalmente
   assert.equal(atingimentoMes(indicador('instalacao', []), mes({ meta: 100, realizado: null })), null);
   assert.equal(atingimentoMes(indicador('instalacao', []), mes({ meta: 0, realizado: 10 })), null);
   assert.equal(atingimentoMes(indicador('instalacao', []), mes({ meta: 100, realizado: 50 })), 50);
+});
+
+test('contextoCriacaoPlano: classificacaoNoMomento reflete statusCidade, indiceUltimoMesApurado é o mais recente entre TODOS os indicadores', () => {
+  const cidade = {
+    indicadores: [
+      indicador('instalacao', [
+        mes({ meta: 100, realizado: 90 }), // jan, apurado
+        mes({ meta: 100, realizado: 95 }), // fev, apurado
+        mes(), // mar, não apurado
+      ]),
+      indicador('efetivado', [
+        mes({ meta: 50, realizado: 40 }), // jan
+        mes(), // fev, não apurado
+        mes({ meta: 50, realizado: 45 }), // mar, apurado — mais recente que instalacao
+      ]),
+    ],
+  };
+  const contexto = contextoCriacaoPlano(cidade);
+  assert.equal(contexto.classificacaoNoMomento, statusCidade(cidade));
+  assert.equal(contexto.indiceUltimoMesApurado, 2); // mar (índice 2), mesmo só em "efetivado"
+});
+
+test('contextoCriacaoPlano: indiceUltimoMesApurado é null quando nenhum indicador tem mês apurado', () => {
+  const cidade = { indicadores: [indicador('instalacao', [mes(), mes()])] };
+  const contexto = contextoCriacaoPlano(cidade);
+  assert.equal(contexto.indiceUltimoMesApurado, null);
+  assert.equal(contexto.classificacaoNoMomento, 'sem-dado');
+});
+
+test('contextoCriacaoPlano: indicadoresMotivadores soma metaIndicador (Meta por Canal)/realizado só dos meses apurados, atingimento null quando não dá pra calcular', () => {
+  const cidade = {
+    indicadores: [
+      indicador('instalacao', [
+        mes({ metaIndicador: 100, realizado: 90 }),
+        mes({ metaIndicador: 100, realizado: 80 }),
+        mes(),
+      ]),
+      indicador('efetivado', [mes(), mes()]), // nunca apurado
+    ],
+  };
+  const contexto = contextoCriacaoPlano(cidade);
+  const instalacao = contexto.indicadoresMotivadores.find((i) => i.indicadorId === 'instalacao');
+  assert.equal(instalacao.meta, 200);
+  assert.equal(instalacao.realizado, 170);
+  assert.equal(instalacao.atingimento, 85);
+  assert.equal(instalacao.status, 'amarelo');
+
+  const efetivado = contexto.indicadoresMotivadores.find((i) => i.indicadorId === 'efetivado');
+  assert.equal(efetivado.meta, null);
+  assert.equal(efetivado.realizado, null);
+  assert.equal(efetivado.atingimento, null);
+  assert.equal(efetivado.status, null);
+});
+
+test('compararClassificacoes: melhorou/piorou/igual seguem a ordem vermelho < amarelo < verde', () => {
+  assert.equal(compararClassificacoes('verde', 'vermelho'), 'piorou');
+  assert.equal(compararClassificacoes('vermelho', 'verde'), 'melhorou');
+  assert.equal(compararClassificacoes('amarelo', 'amarelo'), 'igual');
+  assert.equal(compararClassificacoes('vermelho', 'amarelo'), 'melhorou');
+  assert.equal(compararClassificacoes('verde', 'amarelo'), 'piorou');
+});
+
+test('compararClassificacoes: indeterminado quando falta classificação ou é "sem-dado" de algum lado', () => {
+  assert.equal(compararClassificacoes(null, 'verde'), 'indeterminado');
+  assert.equal(compararClassificacoes('verde', null), 'indeterminado');
+  assert.equal(compararClassificacoes('sem-dado', 'verde'), 'indeterminado');
+  assert.equal(compararClassificacoes('verde', 'sem-dado'), 'indeterminado');
+});
+
+test('contextoCriacaoPlano: indicador SEM Meta Geral (só metaIndicador — caso real de Orçamento/Efetivado) não fica excluído', () => {
+  // meta (Meta Geral) propositalmente ausente — só metaIndicador (Meta por Canal), igual à realidade de orcamento/efetivado.
+  const cidade = {
+    indicadores: [
+      indicador('orcamento', [mes({ meta: null, metaIndicador: 274, realizado: 674 })]),
+      indicador('efetivado', [mes({ meta: null, metaIndicador: 239, realizado: 499 })]),
+    ],
+  };
+  const contexto = contextoCriacaoPlano(cidade);
+  assert.equal(contexto.indicadoresMotivadores.length, 2); // as duas aparecem, nenhuma some por falta de Meta Geral
+  const orcamento = contexto.indicadoresMotivadores.find((i) => i.indicadorId === 'orcamento');
+  assert.equal(orcamento.meta, 274);
+  assert.equal(orcamento.atingimento, 150); // limitado a 150%, realizado bem acima da meta por canal
 });

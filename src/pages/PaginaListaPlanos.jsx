@@ -8,6 +8,7 @@ import {
   FileText,
   Inbox,
   MapPin,
+  Radio,
   RotateCcw,
   Search,
   SlidersHorizontal,
@@ -38,6 +39,7 @@ const STATUS_ROTULOS = {
   verde: 'Saudável',
   amarelo: 'Atenção',
   vermelho: 'Crítico',
+  'sem-dado': 'Sem meta',
   'sem-cidade': 'Sem cidade',
 };
 
@@ -497,6 +499,12 @@ function CardPlano({ plano }) {
               )}
               <StatusPlanoBadge status={plano.status} />
               <BadgeEvidenciaPendente temEvidencias={plano.temEvidencias} />
+              {plano.canal && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-800">
+                  <Radio className="size-3" aria-hidden="true" />
+                  {plano.canal}
+                </span>
+              )}
             </div>
 
             <p
@@ -524,6 +532,11 @@ function CardPlano({ plano }) {
               )}
               {plano.cidade?.gerente && (
                 <span className="inline-flex items-center gap-1.5">Gerente: {plano.cidade.gerente}</span>
+              )}
+              {plano.classificacaoNoMomento && (
+                <span className="inline-flex items-center gap-1.5">
+                  Criado como: {STATUS_ROTULOS[plano.classificacaoNoMomento]}
+                </span>
               )}
             </div>
           </div>
@@ -563,7 +576,7 @@ function EstadoVazio() {
       <Inbox className="mx-auto size-10 text-slate-300" aria-hidden="true" />
       <p className="mt-3 text-sm font-semibold text-slate-700">Nenhum plano de ação registrado.</p>
       <p className="mt-1 text-xs text-slate-500">
-        Abra uma cidade crítica no ranking e use “Criar plano de ação”.
+        Abra qualquer cidade no ranking e use “Criar plano de ação”.
       </p>
     </div>
   );

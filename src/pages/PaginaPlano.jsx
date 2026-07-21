@@ -12,6 +12,7 @@ import {
   Loader2,
   MapPin,
   Pencil,
+  Radio,
   RotateCcw,
   Trash2,
   UserRound,
@@ -39,6 +40,7 @@ import LightboxImagem from '../components/LightboxImagem';
 import CapturaLocalizacaoEvidencia from '../components/CapturaLocalizacaoEvidencia';
 import ModalAnexarEvidencias from '../components/ModalAnexarEvidencias';
 import ModalConfirmacao from '../components/ModalConfirmacao';
+import ComparativoClassificacaoPlano from '../components/ComparativoClassificacaoPlano';
 
 const VisualizadorMarkdown = lazy(() => import('../components/VisualizadorMarkdown'));
 const CampoMarkdown = lazy(() => import('../components/CampoMarkdown'));
@@ -266,7 +268,16 @@ export default function PaginaPlano() {
                     : null
                 }
               />
+              <ResumoPlano Icone={Radio} rotulo="Canal" valor={plano.canal ?? 'Geral da cidade'} />
             </div>
+          </div>
+
+          <div className="mt-4">
+            <ComparativoClassificacaoPlano
+              classificacaoNaCriacao={plano.classificacaoNoMomento}
+              statusCidadeAgora={statusCidade}
+              indicadoresMotivadores={plano.indicadoresMotivadores}
+            />
           </div>
         </section>
 
