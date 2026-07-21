@@ -102,7 +102,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
           </Link>
           <h2 className="mt-1 text-2xl font-bold text-slate-900">{cidade.nome}</h2>
           <p className="text-sm text-slate-500">
-            Gerente: {cidade.gerente ?? '—'} · Regional: {cidade.regional ?? '—'} · Coord.: {cidade.coordenadorRegional ?? '—'}
+            Gerente: {cidade.gerente ?? '—'} · Regional: {cidade.regional ?? '—'} · Coord.: {cidade.coordenacaoRegional ?? '—'}
           </p>
           {canaisSelecionados.length > 0 && (
             <p className="mt-1 rounded-lg border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-800">
@@ -137,7 +137,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
         />
       </div>
 
-      <section aria-label="Resumo da cidade" className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="Resumo da cidade" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <CardKpi titulo="Atingimento geral" valor={formatarPercentual(cidade.score)} destaque />
         <CardKpi
           titulo="Ativação comercial"
@@ -243,7 +243,7 @@ function EstadoCarregandoCidade() {
         <div className="h-7 w-56 rounded bg-slate-200/70" />
         <div className="h-4 w-72 rounded bg-slate-200/70" />
       </div>
-      <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (
           <div key={i} className="h-20 rounded-xl bg-slate-200/70" />
         ))}
@@ -260,7 +260,7 @@ function BotaoPlanoAcao({ podeCriar, aoClicar }) {
       <button
         type="button"
         onClick={aoClicar}
-        className="inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-red-600 px-4 text-sm font-semibold text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+        className="inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-brand-700 px-4 text-sm font-semibold text-white shadow-sm hover:bg-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
       >
         <ClipboardPlus className="size-4" aria-hidden="true" />
         Criar plano de ação

@@ -112,11 +112,11 @@ export default function TabelaIndicadores({ indicadores, baseAtiva, cidade }) {
 
       <div className="hidden overflow-auto rounded-xl border border-slate-200 bg-white shadow-sm md:block md:max-h-[70vh]">
         <table className="min-w-full text-xs">
-          <thead className="sticky top-0 z-10">
+          <thead className="sticky top-0 z-20">
             <tr className="bg-brand-900 text-white">
               <th
                 rowSpan={mostrarSemanas ? 2 : 1}
-                className={`sticky left-0 bg-brand-900 px-3 py-2 text-left align-bottom font-semibold ${LARGURA_COLUNA_INDICADOR}`}
+                className={`sticky left-0 z-40 border-r border-white/15 bg-brand-900 px-3 py-2 text-left align-bottom font-semibold ${LARGURA_COLUNA_INDICADOR}`}
               >
                 Indicador
               </th>
@@ -318,7 +318,7 @@ const LinhaBaseAtiva = memo(function LinhaBaseAtiva({
 }) {
   return (
     <tr className="bg-brand-50/60">
-      <td className={`sticky left-0 bg-brand-50/60 px-3 py-1.5 font-semibold text-slate-700 ${LARGURA_COLUNA_INDICADOR}`}>
+      <td className={`sticky left-0 z-10 border-r border-slate-200 bg-brand-50 px-3 py-1.5 font-semibold text-slate-700 ${LARGURA_COLUNA_INDICADOR}`}>
         Base Ativa
       </td>
       {indicesVisiveis.map((i, pos) => (
@@ -349,7 +349,7 @@ const FragmentoIndicador = memo(function FragmentoIndicador({
   return (
     <>
       <tr className="bg-slate-50">
-        <td className={`sticky left-0 bg-slate-50 px-3 py-1.5 font-semibold text-slate-700 ${LARGURA_COLUNA_INDICADOR}`}>
+        <td className={`sticky left-0 z-10 border-r border-slate-200 bg-slate-50 px-3 py-1.5 font-semibold text-slate-700 ${LARGURA_COLUNA_INDICADOR}`}>
           {indicador.nome} <span className="font-normal text-slate-400">· meta</span>
         </td>
         {indicesVisiveis.map((i) => {
@@ -377,7 +377,7 @@ const FragmentoIndicador = memo(function FragmentoIndicador({
         </td>
       </tr>
       <tr>
-        <td className={`sticky left-0 bg-white px-3 py-1.5 text-slate-500 ${LARGURA_COLUNA_INDICADOR}`}>realizado</td>
+        <td className={`sticky left-0 z-10 border-r border-slate-200 bg-white px-3 py-1.5 text-slate-500 ${LARGURA_COLUNA_INDICADOR}`}>realizado</td>
         {indicesVisiveis.map((i) => {
           const mes = indicador.meses[i];
           return (
