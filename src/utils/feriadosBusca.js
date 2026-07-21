@@ -1,4 +1,5 @@
 import { obterTodosOsFeriadosParaAno, estados } from '../vendor/feriados/feriadosCalculo';
+import { normalizarTextoBusca } from './textoBusca';
 
 /**
  * Camada de consulta sobre a base de feriados vendorizada
@@ -23,13 +24,7 @@ import { obterTodosOsFeriadosParaAno, estados } from '../vendor/feriados/feriado
 // centésimos de milissegundo. Recalcular isso a cada tecla digitada na
 // busca seria desperdício; o índice é estático (mesma base pra qualquer
 // sessão), então monta uma vez e reusa.
-function normalizarBusca(texto) {
-  return String(texto ?? '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
-}
+const normalizarBusca = normalizarTextoBusca;
 
 const INDICE_MUNICIPIOS = estados.flatMap((estado) =>
   estado.cidades.map((cidade) => ({

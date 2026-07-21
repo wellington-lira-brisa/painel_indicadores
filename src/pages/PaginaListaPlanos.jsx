@@ -18,6 +18,7 @@ import {
 import { listarPlanos } from '../services/planoAcaoService';
 import { listarCidades } from '../services/cidadeService';
 import { formatarDataHora, removerMarcacaoMarkdown } from '../utils/format';
+import { normalizarTextoBusca } from '../utils/textoBusca';
 import StatusBadge from '../components/StatusBadge';
 import StatusPlanoBadge from '../components/StatusPlanoBadge';
 import BadgeEvidenciaPendente from '../components/BadgeEvidenciaPendente';
@@ -58,13 +59,7 @@ const PRIORIDADE_STATUS = {
   'sem-cidade': 4,
 };
 
-function normalizarTexto(valor) {
-  return String(valor ?? '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
-}
+const normalizarTexto = normalizarTextoBusca;
 
 function tokenizarBusca(valor) {
   return normalizarTexto(valor).split(/\s+/).filter(Boolean);

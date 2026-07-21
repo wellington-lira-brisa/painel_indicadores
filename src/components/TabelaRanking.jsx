@@ -68,6 +68,28 @@ export function resumoMetaRealizado(cidade) {
   };
 }
 
+const COR_ACENTO_STATUS = {
+  verde: 'border-l-emerald-400',
+  amarelo: 'border-l-amber-400',
+  vermelho: 'border-l-red-400',
+  'sem-dado': 'border-l-slate-200',
+};
+
+/** Chip de posição: só os 3 primeiros ganham destaque (preenchido); os
+ * demais ficam como número simples, pra não competir visualmente com o
+ * top do ranking — é o "destaque sutil pras primeiras posições" pedido,
+ * sem medalha/emoji (mantém o tom profissional do resto do sistema). */
+function ChipPosicao({ posicao }) {
+  if (posicao <= 3) {
+    return (
+      <span className="inline-flex size-6 items-center justify-center rounded-full bg-brand-100 text-xs font-bold tabular-nums text-brand-700">
+        {posicao}
+      </span>
+    );
+  }
+  return <span className="pl-1 text-sm font-medium tabular-nums text-slate-400">{posicao}</span>;
+}
+
 /**
  * Abaixo de `md`: lista de cards tocáveis, um por cidade.
  * A partir de `md`: tabela comparativa completa.
@@ -97,39 +119,39 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
       </ul>
 
       <div className="hidden overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm md:block">
-        <table className="min-w-full divide-y divide-slate-200 text-sm">
-        <thead className="bg-brand-900 text-left text-xs font-semibold uppercase tracking-wide text-white">
+        <table className="min-w-full divide-y divide-slate-100 text-sm">
+        <thead className="border-b border-slate-200 bg-slate-50 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-500">
           <tr>
-            <th className="px-4 py-3">#</th>
-            <th className="min-w-[10rem] px-4 py-3">Cidade</th>
-            <th className="min-w-[8rem] px-4 py-3">Gerente</th>
-            <th className="whitespace-nowrap px-4 py-3 text-right">
+            <th className="px-4 py-2.5">#</th>
+            <th className="min-w-[10rem] px-4 py-2.5">Cidade</th>
+            <th className="min-w-[8rem] px-4 py-2.5">Gerente</th>
+            <th className="whitespace-nowrap px-4 py-2.5 text-right">
               <span className="inline-flex items-center justify-end gap-1">
                 {rotuloColunaMeta}
                 <IconeInfo texto={EXPLICACAO_META_GERAL} />
               </span>
             </th>
-            <th className="whitespace-nowrap px-4 py-3 text-right">
+            <th className="whitespace-nowrap px-4 py-2.5 text-right">
               <span className="inline-flex items-center justify-end gap-1">
                 Realizado
                 <IconeInfo texto={EXPLICACAO_REALIZADO_GERAL} />
               </span>
             </th>
-            <th className="whitespace-nowrap px-4 py-3">
+            <th className="whitespace-nowrap px-4 py-2.5">
               <span className="inline-flex items-center gap-1">
                 Atingimento
                 <IconeInfo texto={EXPLICACAO_ATINGIMENTO} />
               </span>
             </th>
-            <th className="whitespace-nowrap px-4 py-3 text-right">
+            <th className="whitespace-nowrap px-4 py-2.5 text-right">
               <span className="inline-flex items-center gap-1">
                 Projeção (mês)
                 <IconeInfo texto={EXPLICACAO_PROJECAO_FECHAMENTO} />
               </span>
             </th>
-            <th className="whitespace-nowrap px-4 py-3">Status</th>
-            <th className="whitespace-nowrap px-4 py-3">Plano de ação</th>
-            <th className="whitespace-nowrap px-4 py-3">FWA</th>
+            <th className="whitespace-nowrap px-4 py-2.5">Status</th>
+            <th className="whitespace-nowrap px-4 py-2.5">Plano de ação</th>
+            <th className="whitespace-nowrap px-4 py-2.5">FWA</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100">
@@ -138,12 +160,10 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
             return (
               <tr
                 key={cidade.id}
-                className={`transition-colors hover:bg-brand-50 ${
-                  cidade.status === 'vermelho' ? 'bg-red-50/60' : ''
-                }`}
+                className={`border-l-2 transition-colors hover:bg-slate-50 ${COR_ACENTO_STATUS[cidade.status] ?? 'border-l-transparent'}`}
               >
-                <td className="px-4 py-3 font-semibold text-slate-500">{indice + 1}º</td>
-                <td className="min-w-[10rem] whitespace-nowrap px-4 py-3">
+                <td className="px-4 py-3.5"><ChipPosicao posicao={indice + 1} /></td>
+                <td className="min-w-[10rem] whitespace-nowrap px-4 py-3.5">
                   <Link
                     to={`${rotaBase}/cidades/${cidade.id}${sufixoRota}`}
                     className="font-semibold text-brand-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700"
@@ -151,23 +171,25 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                     {cidade.nome}
                   </Link>
                 </td>
-                <td className="min-w-[8rem] whitespace-nowrap px-4 py-3 text-slate-600">{cidade.gerente ?? '—'}</td>
-                <td className="px-4 py-3 text-right tabular-nums">{formatarValor(resumo.meta)}</td>
-                <td className="px-4 py-3 text-right tabular-nums">{formatarValor(resumo.realizado)}</td>
-                <td className="px-4 py-3">
+                <td className="min-w-[8rem] whitespace-nowrap px-4 py-3.5 text-slate-600">{cidade.gerente ?? '—'}</td>
+                <td className="px-4 py-3.5 text-right font-medium tabular-nums text-slate-700">{formatarValor(resumo.meta)}</td>
+                <td className="px-4 py-3.5 text-right font-medium tabular-nums text-slate-700">{formatarValor(resumo.realizado)}</td>
+                <td className="px-4 py-3.5">
                   <div className="flex items-center gap-3">
                     <div className="w-24 shrink-0">
                       <BarraProgresso percentual={resumo.atingimento} />
                     </div>
-                    <span className="tabular-nums font-medium">{formatarPercentual(resumo.atingimento)}</span>
+                    <span className="w-12 shrink-0 text-right tabular-nums font-semibold text-slate-800">
+                      {formatarPercentual(resumo.atingimento)}
+                    </span>
                   </div>
                 </td>
-                <td className="whitespace-nowrap px-4 py-3 text-right tabular-nums">
+                <td className="whitespace-nowrap px-4 py-3.5 text-right tabular-nums text-slate-600">
                   {formatarValor(resumo.projecaoFechamento, resumo.unidade)}
                 </td>
-                <td className="whitespace-nowrap px-4 py-3"><StatusBadge status={cidade.status} /></td>
-                <td className="whitespace-nowrap px-4 py-3"><BadgePlanoAcao temPlanoAtivo={cidade.temPlanoAtivo} /></td>
-                <td className="whitespace-nowrap px-4 py-3"><BadgeFwa vendeFwa={cidade.vendeFwa} /></td>
+                <td className="whitespace-nowrap px-4 py-3.5"><StatusBadge status={cidade.status} /></td>
+                <td className="whitespace-nowrap px-4 py-3.5"><BadgePlanoAcao temPlanoAtivo={cidade.temPlanoAtivo} /></td>
+                <td className="whitespace-nowrap px-4 py-3.5"><BadgeFwa vendeFwa={cidade.vendeFwa} /></td>
               </tr>
             );
           })}

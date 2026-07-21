@@ -50,7 +50,7 @@ export default function FiltrosCidades({
 
       {aberto && (
         <div className="border-t border-slate-100 p-4">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="filtro-busca" className="block text-xs font-medium text-slate-600">
                 Cidade
@@ -65,6 +65,35 @@ export default function FiltrosCidades({
               />
             </div>
 
+            <div>
+              <span className="block text-xs font-medium text-slate-600">Status</span>
+              <div className="mt-1 flex flex-wrap gap-2">
+                {OPCOES_STATUS.map((opcao) => {
+                  const marcado = filtros.status.includes(opcao.valor);
+                  return (
+                    <button
+                      key={opcao.valor}
+                      type="button"
+                      onClick={() => alternarStatus(opcao.valor)}
+                      aria-pressed={marcado}
+                      className={`min-h-[36px] rounded-full border px-3 text-xs font-semibold ${
+                        marcado
+                          ? 'border-brand-700 bg-brand-50 text-brand-700'
+                          : 'border-slate-300 text-slate-600 hover:bg-slate-50'
+                      }`}
+                    >
+                      {opcao.rotulo}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <p className="mb-3 mt-4 border-t border-slate-100 pt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+            Segmentação
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <label htmlFor="filtro-regional" className="block text-xs font-medium text-slate-600">
                 Gerência Regional
@@ -135,7 +164,12 @@ export default function FiltrosCidades({
                 />
               </div>
             )}
+          </div>
 
+          <p className="mb-3 mt-4 border-t border-slate-100 pt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+            Indicadores
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <label htmlFor="filtro-atingimento" className="block text-xs font-medium text-slate-600">
                 Atingimento mínimo (%)
@@ -199,30 +233,6 @@ export default function FiltrosCidades({
                 <option value="sim">Somente prioritárias</option>
                 <option value="nao">Somente não prioritárias</option>
               </select>
-            </div>
-
-            <div>
-              <span className="block text-xs font-medium text-slate-600">Status</span>
-              <div className="mt-1 flex flex-wrap gap-2">
-                {OPCOES_STATUS.map((opcao) => {
-                  const marcado = filtros.status.includes(opcao.valor);
-                  return (
-                    <button
-                      key={opcao.valor}
-                      type="button"
-                      onClick={() => alternarStatus(opcao.valor)}
-                      aria-pressed={marcado}
-                      className={`min-h-[36px] rounded-full border px-3 text-xs font-semibold ${
-                        marcado
-                          ? 'border-brand-700 bg-brand-50 text-brand-700'
-                          : 'border-slate-300 text-slate-600 hover:bg-slate-50'
-                      }`}
-                    >
-                      {opcao.rotulo}
-                    </button>
-                  );
-                })}
-              </div>
             </div>
           </div>
 

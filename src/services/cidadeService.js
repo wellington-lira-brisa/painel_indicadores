@@ -204,7 +204,6 @@ function criarCidadeSintetica(slug, cidadeOrigem, tecnologiaId, ativacaoComercia
     uf,
     gerente: null,
     regional: null,
-    coordenadorRegional: null,
     ativacaoComercial,
     indicadores: indicadoresVazios(DEFINICOES_POR_TECNOLOGIA[tecnologiaId]),
   };

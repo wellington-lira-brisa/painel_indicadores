@@ -83,9 +83,9 @@ export default function MenuConta() {
         aria-haspopup="menu"
         aria-expanded={aberto}
         aria-label={aberto ? 'Fechar menu' : 'Abrir menu'}
-        className="flex min-h-[44px] items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+        className="flex min-h-[44px] items-center gap-2 rounded-lg px-2 py-1.5 transition-colors hover:bg-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
       >
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-900">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-900">
           {iniciais(usuario.nome)}
         </span>
 
@@ -113,7 +113,7 @@ export default function MenuConta() {
             visivel ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
           }`}
         >
-          <div className="border-b border-slate-100 px-4 py-3 sm:hidden">
+          <div className="border-b border-slate-100 px-3.5 py-3 sm:hidden">
             <p className="truncate text-sm font-semibold text-slate-800">{usuario.nome}</p>
             <p className="text-xs text-slate-500">matrícula {usuario.matricula}</p>
           </div>
@@ -138,7 +138,7 @@ export default function MenuConta() {
             type="button"
             role="menuitem"
             onClick={aoSair}
-            className="flex min-h-[48px] w-full items-center gap-3 px-4 text-sm font-medium text-red-700 hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700"
+            className="flex min-h-[48px] w-full items-center gap-3 border-l-2 border-l-transparent px-3.5 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700"
           >
             <LogOut className="size-4" aria-hidden="true" />
             Sair
@@ -152,7 +152,7 @@ export default function MenuConta() {
 function MenuSecao({ titulo, children }) {
   return (
     <div className="py-1.5">
-      <p className="px-4 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+      <p className="px-3.5 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
         {titulo}
       </p>
       {children}
@@ -168,10 +168,10 @@ function ItemMenu({ to, label, Icone, fim, aoClicar }) {
       role="menuitem"
       onClick={aoClicar}
       className={({ isActive }) =>
-        `flex min-h-[48px] items-center gap-3 px-4 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700 ${
+        `flex min-h-[48px] items-center gap-3 border-l-2 px-3.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700 ${
           isActive
-            ? 'bg-brand-50 font-semibold text-brand-800'
-            : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+            ? 'border-l-brand-700 bg-brand-50 font-semibold text-brand-800'
+            : 'border-l-transparent text-slate-700 hover:bg-slate-50 hover:text-slate-900'
         }`
       }
     >

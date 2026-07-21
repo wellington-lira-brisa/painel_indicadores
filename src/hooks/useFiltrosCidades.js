@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { normalizarTextoBusca } from '../utils/textoBusca';
 
 const CHAVE_LOCALSTORAGE_PADRAO = 'painel-metas:filtros-ranking';
 
@@ -27,7 +28,7 @@ function carregarFiltrosSalvos(chave) {
 }
 
 function cidadeCorrespondeAosFiltros(cidade, filtros, atingimentoMinNumero) {
-  if (filtros.busca && !cidade.nome.toLowerCase().includes(filtros.busca)) return false;
+  if (filtros.busca && !normalizarTextoBusca(cidade.nome).includes(filtros.busca)) return false;
   if (filtros.regional && cidade.regional !== filtros.regional) return false;
   if (filtros.coordenacaoRegional && cidade.coordenacaoRegional !== filtros.coordenacaoRegional) return false;
   if (filtros.gerente && cidade.gerente !== filtros.gerente) return false;
@@ -109,7 +110,7 @@ export function useFiltrosCidades(cidades, chaveArmazenamento = CHAVE_LOCALSTORA
   const cidadesFiltradas = useMemo(() => {
     if (!cidades) return [];
 
-    const buscaNormalizada = filtros.busca.trim().toLowerCase();
+    const buscaNormalizada = normalizarTextoBusca(filtros.busca);
     const atingimentoMinNumero =
       filtros.atingimentoMin === '' || Number.isNaN(Number(filtros.atingimentoMin))
         ? null
