@@ -4,39 +4,53 @@ import { obterTodosOsFeriadosParaAno } from '../vendor/feriados/feriadosCalculo.
  * Lógica pura do rateio de Meta do Indicador por dias úteis. Fonte de
  * verdade do CALENDÁRIO COMERCIAL (o que conta como dia útil pra ratear
  * meta) é a base real (dias-uteis.csv, um ledger de dias JÁ OCORRIDOS —
- * não um calendário pré-computado pro ano inteiro). Pra dias que a base
- * ainda não cobre (sempre o futuro, e o "hoje" de cada atualização),
- * este módulo PROJETA o peso por calendário (ver construirEstimadorPorCalendario)
- * — usando o motor de feriados que o sistema já tem só pra saber QUAIS
- * datas futuras são feriado nacional/estadual, nunca pra substituir dado
- * real já existente na base (ver diasUteisNoIntervalo: base real sempre
- * tem prioridade).
+ * não um calendário pré-computado pro ano inteiro). Pra dias FUTUROS
+ * (depois da última data que a base já tem), este módulo PROJETA o peso
+ * por calendário (ver construirEstimadorPorCalendario) — usando o motor
+ * de feriados que o sistema já tem só pra saber QUAIS datas futuras são
+ * feriado nacional/estadual, nunca pra substituir dado real já existente
+ * na base (base real sempre tem prioridade — ver diasUteisNoIntervalo).
+ *
+ * IMPORTANTE: "dia ausente da base" e "dia futuro" NÃO são a mesma
+ * coisa. A base tem buracos no PASSADO também (algumas UFs — ex.: SE,
+ * AL — têm dias de semana comuns sem registro, mesmo já tendo
+ * acontecido; ver auditoria da base). Esses buracos contam como 0 e
+ * NUNCA são marcados como "projeção" — não existe "quando a base
+ * atualizar" pra um dia que já passou e nunca foi registrado; marcar
+ * como projeção ali seria prometer uma correção que não vai acontecer.
+ * Só dia estritamente APÓS a última data presente na base (`ultimaData`)
+ * é candidato a projeção.
  *
  * Isso é DIFERENTE de reconciliar o passado com o motor de feriados —
  * já vimos que divergem em datas conhecidas (19/03 e 25/03 no CE, por
  * exemplo). Aqui o motor só preenche uma lacuna que a base de verdade
- * estruturalmente não pode ter ainda; assim que o dia real chega na
- * base (próxima atualização do arquivo), ele substitui a estimativa
- * automaticamente — nenhum código precisa mudar.
+ * estruturalmente não pode ter ainda (o futuro); assim que o dia real
+ * chega na base (próxima atualização do arquivo), ele substitui a
+ * estimativa automaticamente — nenhum código precisa mudar.
  */
 
 const DOMINGO = 0;
 const SABADO = 6;
 
+function dataIso(ano, mesIndice, dia) {
+  return `${ano}-${String(mesIndice + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+}
+
 /** Índice: Map<"UF|AAAA-MM-DD", peso>. Peso é o "dias_trabalhado" da
  * base (0, 0.5 ou 1; sábado = 0.5 em geral, 0 em PE — única exceção
- * observada na base). */
+ * observada na base). `ultimaData` é a maior data presente em QUALQUER
+ * linha da base (string AAAA-MM-DD, comparável lexicograficamente) —
+ * usada por diasUteisNoIntervalo pra saber o que é "futuro" de fato,
+ * distinto de um buraco no passado. */
 export function indexarDiasUteis(linhas) {
   const indice = new Map();
+  let ultimaData = null;
   for (const linha of linhas) {
     const chave = `${linha.UF}|${linha.data}`;
     indice.set(chave, Number(linha.dias_trabalhado) || 0);
+    if (ultimaData === null || linha.data > ultimaData) ultimaData = linha.data;
   }
-  return indice;
-}
-
-function dataIso(ano, mesIndice, dia) {
-  return `${ano}-${String(mesIndice + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+  return { indice, ultimaData };
 }
 
 /**
@@ -71,27 +85,31 @@ export function construirEstimadorPorCalendario(ano, uf) {
 
 /**
  * Soma o peso de dias úteis de um intervalo [diaInicio, diaFim] (inclusive,
- * dias do mês) pra uma UF. Base real (`indice`) tem prioridade sempre;
- * dia ausente dela usa `estimarPeso(mesIndice, dia)` se fornecido (ver
- * construirEstimadorPorCalendario), senão conta como 0 (mesmo
- * comportamento de antes, usado nos testes que não passam estimador).
+ * dias do mês) pra uma UF. Ordem de prioridade por dia:
  *
- * Devolve também `temDiaProjetado`: true se PELO MENOS 1 dia do
- * intervalo veio do estimador (não da base real) — usado pra marcar a
- * semana como "projeção" na interface (ver TabelaIndicadores.jsx).
+ * 1. Base real (`indice`) — sempre que existir, usa ela.
+ * 2. Dia estritamente APÓS `ultimaData` (futuro de verdade) — usa
+ *    `estimarPeso`, se fornecido, e marca `temDiaProjetado`.
+ * 3. Dia ausente mas ≤ `ultimaData` (buraco no passado, ex.: SE/AL) —
+ *    conta como 0, NUNCA marca projeção (não existe "vai chegar" pra
+ *    dia que já passou e não foi registrado).
+ *
+ * Sem `ultimaData` (compatibilidade/teste), todo dia ausente é tratado
+ * como (2) — comportamento antigo.
  */
-export function diasUteisNoIntervalo(indice, uf, ano, mesIndice, diaInicio, diaFim, estimarPeso = null) {
+export function diasUteisNoIntervalo(indice, uf, ano, mesIndice, diaInicio, diaFim, estimarPeso = null, ultimaData = null) {
   let soma = 0;
   let temDiaProjetado = false;
   for (let dia = diaInicio; dia <= diaFim; dia += 1) {
-    const chave = `${uf}|${dataIso(ano, mesIndice, dia)}`;
+    const iso = dataIso(ano, mesIndice, dia);
+    const chave = `${uf}|${iso}`;
     if (indice.has(chave)) {
       soma += indice.get(chave);
-    } else if (estimarPeso) {
+    } else if (estimarPeso && (ultimaData === null || iso > ultimaData)) {
       soma += estimarPeso(mesIndice, dia);
       temDiaProjetado = true;
     }
-    // dia ausente sem estimador: soma += 0 (nada a fazer)
+    // ausente e (tem ultimaData e iso <= ultimaData): buraco no passado, soma += 0, sem flag.
   }
   return { soma, temDiaProjetado };
 }
@@ -105,19 +123,18 @@ export function diasUteisNoIntervalo(indice, uf, ano, mesIndice, diaInicio, diaF
  * soma das semanas bate exatamente com `metaTotal`.
  *
  * Cada semana do retorno tem `projecao: true` quando pelo menos 1 dia
- * dela foi estimado por calendário (ainda não confirmado pela base
- * real) — a interface usa isso pra avisar o usuário, nunca escondendo
- * que é uma estimativa.
+ * dela é FUTURO (depois de `ultimaData`) e foi estimado por calendário
+ * — nunca por causa de um buraco no passado (ver diasUteisNoIntervalo).
  *
  * Devolve `null` (nunca um rateio inventado) quando o peso total do mês
- * é 0 — só acontece sem `estimarPeso` (UF sem estimador de calendário
- * disponível) e sem nenhum dado real pro mês inteiro.
+ * é 0 — mês inteiro sem base real e sem estimador (ou totalmente no
+ * passado com buracos em todos os dias).
  */
-export function ratearMetaPorSemanas(metaTotal, semanas, uf, ano, mesIndice, indice, estimarPeso = null) {
+export function ratearMetaPorSemanas(metaTotal, semanas, uf, ano, mesIndice, indice, estimarPeso = null, ultimaData = null) {
   if (metaTotal === null || metaTotal === undefined || !uf) return null;
 
   const porSemana = semanas.map((semana) =>
-    diasUteisNoIntervalo(indice, uf, ano, mesIndice, semana.diaInicio, semana.diaFim, estimarPeso),
+    diasUteisNoIntervalo(indice, uf, ano, mesIndice, semana.diaInicio, semana.diaFim, estimarPeso, ultimaData),
   );
   const pesoTotal = porSemana.reduce((acc, s) => acc + s.soma, 0);
   if (pesoTotal === 0) return null;

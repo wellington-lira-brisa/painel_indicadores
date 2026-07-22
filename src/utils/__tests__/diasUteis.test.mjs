@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { diasUteisNoIntervalo, ratearMetaPorSemanas, construirEstimadorPorCalendario } from '../diasUteis.js';
+import { diasUteisNoIntervalo, ratearMetaPorSemanas, construirEstimadorPorCalendario, indexarDiasUteis } from '../diasUteis.js';
 
 // Índice mínimo controlado (não depende do CSV real): janeiro/2026, CE e PE.
 // Confirma a regra observada na base: seg-sex útil=1, sáb=0.5 (CE) / 0 (PE),
@@ -48,7 +48,7 @@ test('dia ausente sem estimador conta como 0 (nunca inventa 1.0)', () => {
   // SE não tem nenhuma linha nesse índice de teste — todo dia cai no fallback 0.
   const { soma, temDiaProjetado } = diasUteisNoIntervalo(indice, 'SE', 2026, 0, 1, 7);
   assert.equal(soma, 0);
-  assert.equal(temDiaProjetado, false); // sem estimador, não é "projeção", é ausência mesmo
+  assert.equal(temDiaProjetado, false);
 });
 
 test('ratearMetaPorSemanas fecha a soma exatamente com o total mensal', () => {
@@ -92,7 +92,19 @@ test('cidade sem UF conhecida retorna null', () => {
   assert.equal(ratearMetaPorSemanas(100, semanas, null, 2026, 0, indice), null);
 });
 
-// --- Projeção por calendário (mês sem base real ainda / em andamento) ---
+// --- indexarDiasUteis: rastreia a última data (base é ledger, não calendário completo) ---
+
+test('indexarDiasUteis calcula a última data presente, entre UFs diferentes', () => {
+  const linhas = [
+    { UF: 'CE', data: '2026-07-20', dias_trabalhado: '1' },
+    { UF: 'SE', data: '2026-07-21', dias_trabalhado: '1' },
+    { UF: 'CE', data: '2026-07-15', dias_trabalhado: '1' },
+  ];
+  const { ultimaData } = indexarDiasUteis(linhas);
+  assert.equal(ultimaData, '2026-07-21');
+});
+
+// --- Projeção por calendário: só pra dia FUTURO (depois de ultimaData) ---
 
 test('construirEstimadorPorCalendario: sábado=0.5 no geral, 0 em PE', () => {
   const estimadorCe = construirEstimadorPorCalendario(2026, 'CE');
@@ -113,20 +125,41 @@ test('construirEstimadorPorCalendario: feriado nacional conhecido = 0', () => {
   assert.equal(estimador(8, 7), 0); // 2026-09-07, Independência (terça)
 });
 
-test('diasUteisNoIntervalo com estimador: dia ausente vira projeção, dia real nunca é substituído', () => {
+test('dia FUTURO ausente (depois de ultimaData) vira projeção', () => {
   const indice = new Map([['CE|2026-08-03', 1]]); // só 1 dia real: segunda 03/08
   const estimador = construirEstimadorPorCalendario(2026, 'CE');
-  // Intervalo 1-7 ago/2026: sáb(1,0.5) dom(2,0) seg(3, REAL=1) ter(4,1) qua(5,1) qui(6,1) sex(7,1)
-  const { soma, temDiaProjetado } = diasUteisNoIntervalo(indice, 'CE', 2026, 7, 1, 7, estimador);
-  assert.equal(soma, 0.5 + 0 + 1 + 1 + 1 + 1 + 1);
+  const ultimaData = '2026-08-05'; // base "sabe" até dia 5
+  // dia 10 (depois de ultimaData) é futuro de verdade: vira projeção
+  const { soma, temDiaProjetado } = diasUteisNoIntervalo(indice, 'CE', 2026, 7, 10, 10, estimador, ultimaData);
   assert.equal(temDiaProjetado, true);
+  assert.equal(soma, 1); // segunda-feira comum, sem feriado
+});
+
+test('BURACO NO PASSADO (ausente mas <= ultimaData) NUNCA vira projeção — caso real SE/AL', () => {
+  const indice = new Map(); // SE sem nenhum registro nesse intervalo
+  const estimador = construirEstimadorPorCalendario(2026, 'SE');
+  const ultimaData = '2026-07-21'; // base já processou até 21/07 (dia 27/01 já passou)
+  // 27/01/2026 é terça-feira comum que falta na base pra SE (achado real da auditoria) —
+  // já aconteceu (é <= ultimaData), então NUNCA deve virar "projeção".
+  const { soma, temDiaProjetado } = diasUteisNoIntervalo(indice, 'SE', 2026, 0, 27, 27, estimador, ultimaData);
+  assert.equal(temDiaProjetado, false);
+  assert.equal(soma, 0); // conta como 0, mas sem prometer que vai "chegar"
 });
 
 test('ratearMetaPorSemanas: semana 100% real não fica marcada como projeção', () => {
   const indice = new Map();
   for (let dia = 1; dia <= 7; dia += 1) indice.set(`CE|2026-01-0${dia}`, dia === 1 ? 0 : 1);
   const semanas = [{ numero: 1, diaInicio: 1, diaFim: 7 }];
-  const [semana1] = ratearMetaPorSemanas(100, semanas, 'CE', 2026, 0, indice, construirEstimadorPorCalendario(2026, 'CE'));
+  const [semana1] = ratearMetaPorSemanas(
+    100,
+    semanas,
+    'CE',
+    2026,
+    0,
+    indice,
+    construirEstimadorPorCalendario(2026, 'CE'),
+    '2026-01-07',
+  );
   assert.equal(semana1.projecao, false);
 });
 
@@ -136,9 +169,35 @@ test('ratearMetaPorSemanas: mês futuro sem NENHUM dado real vira projeção int
     { numero: 1, diaInicio: 1, diaFim: 7 },
     { numero: 2, diaInicio: 8, diaFim: 14 },
   ];
-  const resultado = ratearMetaPorSemanas(100, semanas, 'CE', 2026, 11, indice, construirEstimadorPorCalendario(2026, 'CE'));
+  const resultado = ratearMetaPorSemanas(
+    100,
+    semanas,
+    'CE',
+    2026,
+    11,
+    indice,
+    construirEstimadorPorCalendario(2026, 'CE'),
+    '2026-07-21', // base só sabe até julho — dezembro é 100% futuro
+  );
   assert.notEqual(resultado, null);
   const soma = resultado.reduce((acc, s) => acc + s.valor, 0);
   assert.equal(Math.round(soma * 100) / 100, 100);
   assert.ok(resultado.every((s) => s.projecao === true));
+});
+
+test('ratearMetaPorSemanas: mês passado com buracos (SE/AL) nunca marca projeção, mesmo com estimador disponível', () => {
+  const indice = new Map(); // simula SE sem nenhum dia registrado em janeiro (pior caso)
+  const semanas = [{ numero: 1, diaInicio: 1, diaFim: 7 }];
+  const resultado = ratearMetaPorSemanas(
+    100,
+    semanas,
+    'SE',
+    2026,
+    0, // janeiro — mês já bem passado
+    indice,
+    construirEstimadorPorCalendario(2026, 'SE'),
+    '2026-07-21',
+  );
+  // Sem nenhum dado real E sem projeção elegível (tudo no passado) -> peso total 0 -> null.
+  assert.equal(resultado, null);
 });

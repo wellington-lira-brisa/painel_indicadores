@@ -140,7 +140,7 @@ async function diasUteisComFallback(tecnologiaId) {
     return await carregarDiasUteis();
   } catch (excecao) {
     console.error('Falha ao carregar base de dias úteis, mantendo última base conhecida:', excecao);
-    return diasUteisEmCacheOuNulo() ?? new Map();
+    return diasUteisEmCacheOuNulo() ?? { indice: new Map(), ultimaData: null };
   }
 }
 
@@ -350,9 +350,10 @@ function aplicarMetaPorCanal(cidade, indiceMetaPorCanal, canaisSelecionados, tec
  * semana, igual mostraria hoje sem esta função, nunca um número
  * inventado.
  */
-function aplicarRateioSemanalMetaIndicador(cidade, indiceDiasUteis, tecnologiaId) {
+function aplicarRateioSemanalMetaIndicador(cidade, diasUteis, tecnologiaId) {
   const indicadoresCobertos = new Set(INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId] ?? []);
-  if (indicadoresCobertos.size === 0 || !indiceDiasUteis || !cidade.uf) return cidade;
+  if (indicadoresCobertos.size === 0 || !diasUteis || !cidade.uf) return cidade;
+  const { indice, ultimaData } = diasUteis;
 
   // 1 estimador por cidade (mesma UF/ano pra todos os indicadores/meses
   // dela) — obterTodosOsFeriadosParaAno já é cacheado internamente por
@@ -373,8 +374,9 @@ function aplicarRateioSemanalMetaIndicador(cidade, indiceDiasUteis, tecnologiaId
             cidade.uf,
             ANO_PAINEL,
             mesIndex,
-            indiceDiasUteis,
+            indice,
             estimarPeso,
+            ultimaData,
           ),
         })),
       };
@@ -391,7 +393,7 @@ function enriquecer(
   metadadosCidades,
   metaGeralCidade,
   metaPorCanal,
-  indiceDiasUteis,
+  diasUteis,
   canaisSelecionados,
   tecnologiaId,
 ) {
@@ -402,7 +404,7 @@ function enriquecer(
       canaisSelecionados,
       tecnologiaId,
     ),
-    indiceDiasUteis,
+    diasUteis,
     tecnologiaId,
   );
   // Duas passadas: `realizado` recortado por canal (o que o filtro do
@@ -505,7 +507,7 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, indiceDiasUteis, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
@@ -528,7 +530,7 @@ function criarServicoCidades(tecnologiaId) {
       metadadosCidades,
       metaGeralCidade,
       metaPorCanal,
-      indiceDiasUteis,
+      diasUteis,
       canaisSelecionados,
       tecnologiaId,
     );
