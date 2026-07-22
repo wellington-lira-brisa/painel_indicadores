@@ -1,4 +1,4 @@
-import { DEFINICOES_INDICADORES_FTTH, DEFINICOES_INDICADORES_5G, indicadoresVazios } from '../data/mockHelpers';
+import { DEFINICOES_INDICADORES_FTTH, DEFINICOES_INDICADORES_5G, indicadoresVazios, ANO_PAINEL } from '../data/mockHelpers';
 import { scoreCidade, statusCidade } from '../utils/status';
 import { listarStatusFwa } from './fwaService';
 import { listarStatusPlanosAtivosPorCidade } from './planoAcaoService';
@@ -18,6 +18,9 @@ import {
   metaPorCanalDoIndicador,
 } from './metaPorCanalService';
 import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
+import { carregarDiasUteis, diasUteisEmCacheOuNulo } from './diasUteisService';
+import { ratearMetaPorSemanas } from '../utils/diasUteis';
+import { semanasDoMes } from '../utils/semanas';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
 const DEFINICOES_POR_TECNOLOGIA = { ftth: DEFINICOES_INDICADORES_FTTH, '5g': DEFINICOES_INDICADORES_5G };
@@ -119,6 +122,25 @@ async function metaPorCanalComFallback(tecnologiaId) {
   } catch (excecao) {
     console.error('Falha ao carregar Meta do Indicador por canal, mantendo última base conhecida:', excecao);
     return metaPorCanalEmCacheOuNulo() ?? new Map();
+  }
+}
+
+/**
+ * Dias úteis (base comercial pro rateio semanal da Meta do Indicador) é
+ * complementar no mesmo sentido dos outros: falha no fetch cai pro cache
+ * da sessão, e na ausência dele, índice vazio (todo rateio semanal fica
+ * `null` esse ciclo — "—", nunca inventado). Só busca quando a
+ * tecnologia tem pelo menos 1 indicador coberto (mesma lista de
+ * INDICADOR_META_POR_CANAL_POR_TECNOLOGIA — sem Meta do Indicador não há
+ * o que ratear).
+ */
+async function diasUteisComFallback(tecnologiaId) {
+  if (!INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId]?.length) return null;
+  try {
+    return await carregarDiasUteis();
+  } catch (excecao) {
+    console.error('Falha ao carregar base de dias úteis, mantendo última base conhecida:', excecao);
+    return diasUteisEmCacheOuNulo() ?? new Map();
   }
 }
 
@@ -279,10 +301,11 @@ function aplicarMetaGeralCidade(cidade, metasCidadeTodas, tecnologiaId) {
  * metaPorCanalDoIndicador). Indicador fora dessa lista continua
  * `metaIndicador: null` ("—"), sem fonte própria ainda.
  *
- * NUNCA mexe em `m.semanas`: não existe rateio semanal de meta por canal
- * nesta etapa — a linha "· meta" da tabela usa semanas próprias, vazias
- * (ver FragmentoIndicador em TabelaIndicadores.jsx), justamente pra não
- * herdar a quebra semanal do realizado.
+ * NUNCA mexe em `m.semanas` nem `m.semanasMetaIndicador`: o rateio
+ * semanal da meta (Metas por Dias Úteis) é responsabilidade de
+ * aplicarRateioSemanalMetaIndicador, que roda DEPOIS desta (precisa do
+ * `metaIndicador` mensal já preenchido). Esta função só define o total
+ * do mês.
  */
 function aplicarMetaPorCanal(cidade, indiceMetaPorCanal, canaisSelecionados, tecnologiaId) {
   const indicadoresCobertos = new Set(INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId] ?? []);
@@ -303,6 +326,47 @@ function aplicarMetaPorCanal(cidade, indiceMetaPorCanal, canaisSelecionados, tec
   };
 }
 
+/**
+ * Preenche o rateio SEMANAL da Meta do Indicador (`ind.meses[].semanasMetaIndicador`)
+ * — implementação de "Metas por Dias Úteis": em vez de semana corrida
+ * (1/4 do mês cada), cada semana recebe a fração de `metaIndicador`
+ * proporcional aos dias úteis reais dela (base comercial, ver
+ * utils/diasUteis.js), então uma semana com feriado ou menos dias úteis
+ * recebe menos meta — mais preciso pra projeção do que semana corrida.
+ *
+ * Roda só nos indicadores que já têm Meta do Indicador real
+ * (`INDICADOR_META_POR_CANAL_POR_TECNOLOGIA`, a mesma lista de
+ * aplicarMetaPorCanal — precisa rodar DEPOIS dela). Sem UF conhecida, ou
+ * mês fora da cobertura da base de dias úteis, `ratearMetaPorSemanas`
+ * devolve `null` — a tabela mostra "—" pra essa semana, igual mostraria
+ * hoje sem esta função, nunca um número inventado.
+ */
+function aplicarRateioSemanalMetaIndicador(cidade, indiceDiasUteis, tecnologiaId) {
+  const indicadoresCobertos = new Set(INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId] ?? []);
+  if (indicadoresCobertos.size === 0 || !indiceDiasUteis || !cidade.uf) return cidade;
+
+  return {
+    ...cidade,
+    indicadores: cidade.indicadores.map((ind) => {
+      if (!indicadoresCobertos.has(ind.id)) return ind;
+      return {
+        ...ind,
+        meses: ind.meses.map((m, mesIndex) => ({
+          ...m,
+          semanasMetaIndicador: ratearMetaPorSemanas(
+            m.metaIndicador,
+            semanasDoMes(ANO_PAINEL, mesIndex),
+            cidade.uf,
+            ANO_PAINEL,
+            mesIndex,
+            indiceDiasUteis,
+          ),
+        })),
+      };
+    }),
+  };
+}
+
 function enriquecer(
   cidade,
   statusFwa,
@@ -312,13 +376,18 @@ function enriquecer(
   metadadosCidades,
   metaGeralCidade,
   metaPorCanal,
+  indiceDiasUteis,
   canaisSelecionados,
   tecnologiaId,
 ) {
-  const cidadeComMetaEMetadados = aplicarMetaPorCanal(
-    aplicarMetaGeralCidade(aplicarMetadadosCidade(cidade, metadadosCidades), metaGeralCidade, tecnologiaId),
-    metaPorCanal,
-    canaisSelecionados,
+  const cidadeComMetaEMetadados = aplicarRateioSemanalMetaIndicador(
+    aplicarMetaPorCanal(
+      aplicarMetaGeralCidade(aplicarMetadadosCidade(cidade, metadadosCidades), metaGeralCidade, tecnologiaId),
+      metaPorCanal,
+      canaisSelecionados,
+      tecnologiaId,
+    ),
+    indiceDiasUteis,
     tecnologiaId,
   );
   // Duas passadas: `realizado` recortado por canal (o que o filtro do
@@ -405,6 +474,7 @@ function criarServicoCidades(tecnologiaId) {
         // (TabelaIndicadores/ListaIndicadoresMobile), nenhuma tela que passa por
         // listarCidades (Ranking, lista de planos) renderiza metaIndicador — não
         // vale o fetch aqui. Ver buscarCidade, abaixo, onde ele é buscado de fato.
+        null, // Dias úteis: mesmo raciocínio — rateio semanal só é usado onde metaIndicador é.
         canaisSelecionados,
         tecnologiaId,
       ),
@@ -420,7 +490,7 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, indiceDiasUteis, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
@@ -428,6 +498,7 @@ function criarServicoCidades(tecnologiaId) {
         metadadosCidadesComFallback(),
         metaGeralCidadeComFallback(tecnologiaId),
         metaPorCanalComFallback(tecnologiaId),
+        diasUteisComFallback(tecnologiaId),
         cidadesOficiaisComFallback(),
       ]);
     const cidade = montarListaCompleta(nomesOriginais, cidadesOficiais).find((c) => c.id === id);
@@ -442,6 +513,7 @@ function criarServicoCidades(tecnologiaId) {
       metadadosCidades,
       metaGeralCidade,
       metaPorCanal,
+      indiceDiasUteis,
       canaisSelecionados,
       tecnologiaId,
     );
