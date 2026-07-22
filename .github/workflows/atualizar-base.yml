@@ -78,11 +78,24 @@ jobs:
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
         run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta metas_vendedores_por_cidade.csv > /tmp/metas-vendedores-por-cidade.csv
 
+      # Calendário comercial (dias úteis) pro rateio semanal de Meta do
+      # Indicador — ver utils/diasUteis.js. É um ledger de dias já
+      # ocorridos (nunca cobre o futuro); publicarDiasUteis.mjs só
+      # valida o formato, não exige cobertura completa do ano.
+      - name: Baixar Dias Úteis (Google Drive)
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: node scripts/etl/baixarBaseGoogleDrive.mjs --pasta dias_acum_uteis.csv > /tmp/dias-uteis.csv
+
       - name: Validar e normalizar (gera public/dados/*.csv e *.json)
         run: node scripts/etl/gerarBase.mjs /tmp/base.csv /tmp/metas.csv /tmp/cidades-oficiais.csv /tmp/cidades-ftth.csv
 
       - name: Consolidar Meta por Canal — Criado/Efetivado/Instalado/Ativado 5G (gera public/dados/metas-por-canal.csv)
         run: node scripts/etl/consolidarMetaPorCanal.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv
+
+      - name: Validar e publicar Dias Úteis (gera public/dados/dias-uteis.csv)
+        run: node scripts/etl/publicarDiasUteis.mjs /tmp/dias-uteis.csv
 
       - name: Publicar log de falha como artefato (só roda se o passo acima falhar)
         if: failure()
@@ -101,7 +114,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/dados/indicadores-realizados.csv public/dados/cidades-metadados.csv public/dados/indicadores-realizados-por-canal.csv public/dados/metas-instalacao-ftth.csv public/dados/metas-ativacao-5g.csv public/dados/metas-por-canal.csv public/dados/cidades-oficiais.csv public/dados/ultima-atualizacao.json
+          git add public/dados/indicadores-realizados.csv public/dados/cidades-metadados.csv public/dados/indicadores-realizados-por-canal.csv public/dados/metas-instalacao-ftth.csv public/dados/metas-ativacao-5g.csv public/dados/metas-por-canal.csv public/dados/cidades-oficiais.csv public/dados/dias-uteis.csv public/dados/ultima-atualizacao.json
           if git diff --cached --quiet; then
             echo "Nada mudou na base — nenhum commit necessário."
           else

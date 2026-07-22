@@ -67,7 +67,7 @@ export function parsearCsv(texto) {
   let campo = '';
   let linha = [];
   let dentroDeAspas = false;
-  const s = texto.replace(/\r\n/g, '\n');
+  const s = texto.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
   const primeiraQuebra = s.indexOf('\n');
   const separador = detectarSeparador(primeiraQuebra === -1 ? s : s.slice(0, primeiraQuebra));
 
@@ -860,4 +860,70 @@ export function paraCsvMetaPorCanal(registros) {
     [r.cidadeSlug, r.cidadeOrigem, r.canal, r.indicadorId, r.mesRef, r.meta].map(celulaCsv).join(','),
   );
   return [COLUNAS_SAIDA_META_POR_CANAL.join(','), ...linhas].join('\n') + '\n';
+}
+
+const COLUNAS_DIAS_UTEIS = [
+  'data',
+  'UF',
+  'dia_semana_num',
+  'flag_feriado',
+  'nome_dia_semana',
+  'dias_trabalhado',
+  'dias_uteis_acumulado',
+];
+const REGEX_DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
+const REGEX_UF = /^[A-Z]{2}$/;
+
+/**
+ * Valida a base de dias úteis (fonte de verdade do calendário comercial
+ * pro rateio semanal de Meta do Indicador — ver utils/diasUteis.js).
+ * NÃO reconcilia com o motor de feriados (vendor/feriados) — são
+ * calendários com propósitos diferentes, já confirmado que divergem em
+ * datas reais (ver comentário em utils/diasUteis.js); esta validação só
+ * garante que o ARQUIVO em si está bem formado, não que concorda com
+ * outra fonte.
+ */
+export function validarDiasUteis(linhas) {
+  const erros = [];
+  const avisos = [];
+
+  if (linhas.length === 0) {
+    erros.push('Base de dias úteis vazia.');
+    return { erros, avisos };
+  }
+
+  for (const coluna of COLUNAS_DIAS_UTEIS) {
+    if (!(coluna in linhas[0])) {
+      erros.push(`Coluna obrigatória "${coluna}" ausente no cabeçalho.`);
+    }
+  }
+  if (erros.length > 0) return { erros, avisos }; // sem as colunas certas, nem vale checar linha a linha
+
+  for (const l of linhas) {
+    if (!REGEX_DATA_ISO.test(l.data)) {
+      erros.push(`Linha ${l._linha}: data "${l.data}" fora do formato AAAA-MM-DD.`);
+    }
+    if (l.UF !== '' && !REGEX_UF.test(l.UF)) {
+      avisos.push(
+        `Linha ${l._linha}: UF "${l.UF}" não é uma sigla de 2 letras — linha será ignorada no rateio (UF vazia ou inválida nunca casa com nenhuma cidade).`,
+      );
+    }
+    if (l.dias_trabalhado !== '' && Number.isNaN(Number(l.dias_trabalhado))) {
+      erros.push(`Linha ${l._linha}: dias_trabalhado "${l.dias_trabalhado}" não é numérico.`);
+    }
+    if (erros.length > 50) break;
+  }
+
+  return { erros: erros.slice(0, 50), avisos: avisos.slice(0, 50) };
+}
+
+/** Re-serializa a base de dias úteis (pass-through validado): mesmas
+ * colunas, ordem e nomes — mas via `celulaCsv` (quoting seguro) e sem
+ * BOM, mesmo que a fonte baixada tenha vindo com um (Excel/Sheets geram
+ * BOM com frequência — `parsearCsv` já tolera isso na leitura, mas
+ * publicar já limpo evita depender disso em quem mais vier a ler o
+ * arquivo, incluindo abrir num editor de planilha manualmente). */
+export function paraCsvDiasUteis(linhas) {
+  const corpo = linhas.map((l) => COLUNAS_DIAS_UTEIS.map((coluna) => celulaCsv(l[coluna])).join(','));
+  return [COLUNAS_DIAS_UTEIS.join(','), ...corpo].join('\n') + '\n';
 }

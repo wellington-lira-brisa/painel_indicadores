@@ -178,7 +178,9 @@ export default function TabelaIndicadores({ indicadores, baseAtiva, cidade }) {
         <p className="border-t border-slate-100 px-3 py-2 text-[11px] text-slate-500">
           Linha superior: meta do indicador (— = ainda não cadastrada) · Linha inferior: realizado
           (— = mês não apurado). As semanas seguem o calendário do próprio mês (4 ou 5, conforme a
-          quantidade de dias) e cada coluna pode ser recolhida individualmente.
+          quantidade de dias) e cada coluna pode ser recolhida individualmente.{' '}
+          <span className="italic text-amber-600">≈ = projeção</span> (dia ainda não confirmado na base de
+          dias úteis; some quando a base atualizar).
         </p>
       </div>
     </div>
@@ -296,11 +298,19 @@ function CelulasMes({
           return (
             <td
               key={semana.numero}
-              className={`text-right tabular-nums text-slate-400 transition-[width,min-width,max-width] duration-200 ease-in-out ${
+              title={
+                semana.projecao
+                  ? 'Projeção: parte dos dias desta semana ainda não está confirmada na base de dias úteis (calculado por calendário — dia útil seg-sex, sábado meio período, feriados nacionais/estaduais). Some quando a base atualizar com o dado real.'
+                  : undefined
+              }
+              className={`text-right tabular-nums transition-[width,min-width,max-width] duration-200 ease-in-out ${
+                semana.projecao ? 'italic text-amber-600' : 'text-slate-400'
+              } ${
                 colapsada ? `${LARGURA_SEMANA_COLAPSADA} overflow-hidden py-1.5` : `${LARGURA_SEMANA_EXPANDIDA} py-1.5`
               }`}
             >
               {!colapsada && formatarValor(semana.valor, unidade)}
+              {!colapsada && semana.projecao && <sup>≈</sup>}
             </td>
           );
         })}

@@ -19,7 +19,7 @@ import {
 } from './metaPorCanalService';
 import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
 import { carregarDiasUteis, diasUteisEmCacheOuNulo } from './diasUteisService';
-import { ratearMetaPorSemanas } from '../utils/diasUteis';
+import { ratearMetaPorSemanas, construirEstimadorPorCalendario } from '../utils/diasUteis';
 import { semanasDoMes } from '../utils/semanas';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
 
@@ -330,20 +330,34 @@ function aplicarMetaPorCanal(cidade, indiceMetaPorCanal, canaisSelecionados, tec
  * Preenche o rateio SEMANAL da Meta do Indicador (`ind.meses[].semanasMetaIndicador`)
  * — implementação de "Metas por Dias Úteis": em vez de semana corrida
  * (1/4 do mês cada), cada semana recebe a fração de `metaIndicador`
- * proporcional aos dias úteis reais dela (base comercial, ver
- * utils/diasUteis.js), então uma semana com feriado ou menos dias úteis
- * recebe menos meta — mais preciso pra projeção do que semana corrida.
+ * proporcional aos dias úteis dela, então uma semana com feriado ou
+ * menos dias úteis recebe menos meta — mais preciso pra projeção do que
+ * semana corrida.
+ *
+ * A base real (`dias-uteis.csv`) é um ledger de dias JÁ OCORRIDOS, não
+ * um calendário do ano inteiro — por isso todo dia sem registro ainda
+ * (mês corrente em andamento, mês futuro) é PROJETADO por calendário
+ * (seg-sex/sábado-exceto-PE/domingo/feriado nacional-estadual — ver
+ * construirEstimadorPorCalendario). Semana com algum dia projetado vem
+ * marcada `projecao: true`; a tabela avisa isso ao usuário (nunca
+ * silenciosamente). Assim que o dia real aparecer na base (próxima
+ * atualização do arquivo), ele substitui a estimativa automaticamente.
  *
  * Roda só nos indicadores que já têm Meta do Indicador real
  * (`INDICADOR_META_POR_CANAL_POR_TECNOLOGIA`, a mesma lista de
- * aplicarMetaPorCanal — precisa rodar DEPOIS dela). Sem UF conhecida, ou
- * mês fora da cobertura da base de dias úteis, `ratearMetaPorSemanas`
- * devolve `null` — a tabela mostra "—" pra essa semana, igual mostraria
- * hoje sem esta função, nunca um número inventado.
+ * aplicarMetaPorCanal — precisa rodar DEPOIS dela). Sem UF conhecida,
+ * `ratearMetaPorSemanas` devolve `null` — a tabela mostra "—" pra essa
+ * semana, igual mostraria hoje sem esta função, nunca um número
+ * inventado.
  */
 function aplicarRateioSemanalMetaIndicador(cidade, indiceDiasUteis, tecnologiaId) {
   const indicadoresCobertos = new Set(INDICADOR_META_POR_CANAL_POR_TECNOLOGIA[tecnologiaId] ?? []);
   if (indicadoresCobertos.size === 0 || !indiceDiasUteis || !cidade.uf) return cidade;
+
+  // 1 estimador por cidade (mesma UF/ano pra todos os indicadores/meses
+  // dela) — obterTodosOsFeriadosParaAno já é cacheado internamente por
+  // UF+ano (ver utils/feriados.js), então isto não repete o cálculo.
+  const estimarPeso = construirEstimadorPorCalendario(ANO_PAINEL, cidade.uf);
 
   return {
     ...cidade,
@@ -360,6 +374,7 @@ function aplicarRateioSemanalMetaIndicador(cidade, indiceDiasUteis, tecnologiaId
             ANO_PAINEL,
             mesIndex,
             indiceDiasUteis,
+            estimarPeso,
           ),
         })),
       };
