@@ -175,28 +175,3 @@ export const EXPLICACAO_META_REALIZADO_GERAL =
 
 export const EXPLICACAO_ATINGIMENTO =
   'Realizado ÷ Meta Geral (colunas ao lado), do mesmo indicador de referência. Não é a média de todos os indicadores da cidade — só desse indicador.';
-
-/** Texto do tooltip (IconeInfo) em toda tela que mostra a Projeção (mês) — um só lugar pra manter a explicação igual em todo canto. */
-export const EXPLICACAO_PROJECAO_FECHAMENTO =
-  'Estimativa de fechamento do mês atual: pega o ritmo médio das semanas já apuradas e extrapola pro total de semanas do mês. Não é meta nem o acumulado do ano — só uma projeção de curto prazo.';
-
-/**
- * Projeção de fechamento do mês corrente de um indicador: ritmo semanal —
- * realizado das semanas JÁ apuradas nesse mês, dividido pela quantidade
- * de semanas apuradas, extrapolado pro total de semanas do mês (4 ou 5,
- * conforme o calendário real — ver utils/semanas.js). `null` quando
- * nenhuma semana do mês tem dado ainda (nada pra projetar, nunca inventa
- * ritmo a partir de zero) ou quando o indicador não tem granularidade
- * semanal (`possuiSemanas: false` — ver mockHelpers.js).
- */
-export function projecaoFechamentoMes(indicador, indiceMes) {
-  const mes = indicador.meses[indiceMes];
-  if (!mes) return null;
-
-  const semanasApuradas = mes.semanas.filter((s) => s.valor !== null);
-  if (semanasApuradas.length === 0) return null;
-
-  const realizadoParcial = semanasApuradas.reduce((acc, s) => acc + s.valor, 0);
-  const ritmoSemanal = realizadoParcial / semanasApuradas.length;
-  return ritmoSemanal * mes.semanas.length;
-}

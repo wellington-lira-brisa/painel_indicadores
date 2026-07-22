@@ -19,6 +19,7 @@ import {
 } from './metaPorCanalService';
 import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
 import { carregarDiasUteis, diasUteisEmCacheOuNulo } from './diasUteisService';
+import { carregarQuintis, quintisEmCacheOuNulo, quintilDaCidade } from './quintilService';
 import { ratearMetaPorSemanas, construirEstimadorPorCalendario } from '../utils/diasUteis';
 import { semanasDoMes } from '../utils/semanas';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
@@ -142,6 +143,27 @@ async function diasUteisComFallback(tecnologiaId) {
     console.error('Falha ao carregar base de dias úteis, mantendo última base conhecida:', excecao);
     return diasUteisEmCacheOuNulo() ?? { indice: new Map(), ultimaData: null };
   }
+}
+
+/**
+ * Quintis (performance individual agregada por cidade) são complementares
+ * no mesmo sentido dos outros: falha no fetch cai pro cache da sessão, e
+ * na ausência dele, null (cidade fica com `quintil: null` — "—" na UI,
+ * nunca inventado). Arquivo pequeno (agregado por cidade), buscado
+ * também no Ranking — é lá que o chip substitui a antiga Projeção.
+ */
+async function quintisComFallback() {
+  try {
+    return await carregarQuintis();
+  } catch (excecao) {
+    console.error('Falha ao carregar quintis por cidade, mantendo última base conhecida:', excecao);
+    return quintisEmCacheOuNulo() ?? null;
+  }
+}
+
+/** Anexa `cidade.quintil` (registro do mês de referência na tecnologia, ou null). */
+function aplicarQuintil(cidade, indiceQuintis, tecnologiaId) {
+  return { ...cidade, quintil: quintilDaCidade(indiceQuintis, cidade.id, tecnologiaId) };
 }
 
 /**
@@ -394,10 +416,11 @@ function enriquecer(
   metaGeralCidade,
   metaPorCanal,
   diasUteis,
+  indiceQuintis,
   canaisSelecionados,
   tecnologiaId,
 ) {
-  const cidadeComMetaEMetadados = aplicarRateioSemanalMetaIndicador(
+  const cidadeComMetaEMetadados = aplicarQuintil(aplicarRateioSemanalMetaIndicador(
     aplicarMetaPorCanal(
       aplicarMetaGeralCidade(aplicarMetadadosCidade(cidade, metadadosCidades), metaGeralCidade, tecnologiaId),
       metaPorCanal,
@@ -406,7 +429,7 @@ function enriquecer(
     ),
     diasUteis,
     tecnologiaId,
-  );
+  ), indiceQuintis, tecnologiaId);
   // Duas passadas: `realizado` recortado por canal (o que o filtro do
   // SeletorCanais decidir — igual sempre foi) e `realizadoGeral` SEMPRE
   // com o índice total, nenhum filtro — pra comparar lado a lado no card
@@ -468,13 +491,14 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function listarCidades(canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, indiceQuintis, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
         baseRealComFallback(tecnologiaId),
         metadadosCidadesComFallback(),
         metaGeralCidadeComFallback(tecnologiaId),
+        quintisComFallback(),
         cidadesOficiaisComFallback(),
       ]);
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
@@ -492,6 +516,7 @@ function criarServicoCidades(tecnologiaId) {
         // listarCidades (Ranking, lista de planos) renderiza metaIndicador — não
         // vale o fetch aqui. Ver buscarCidade, abaixo, onde ele é buscado de fato.
         null, // Dias úteis: mesmo raciocínio — rateio semanal só é usado onde metaIndicador é.
+        indiceQuintis,
         canaisSelecionados,
         tecnologiaId,
       ),
@@ -507,7 +532,7 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, indiceQuintis, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
@@ -516,6 +541,7 @@ function criarServicoCidades(tecnologiaId) {
         metaGeralCidadeComFallback(tecnologiaId),
         metaPorCanalComFallback(tecnologiaId),
         diasUteisComFallback(tecnologiaId),
+        quintisComFallback(),
         cidadesOficiaisComFallback(),
       ]);
     const cidade = montarListaCompleta(nomesOriginais, cidadesOficiais).find((c) => c.id === id);
@@ -531,6 +557,7 @@ function criarServicoCidades(tecnologiaId) {
       metaGeralCidade,
       metaPorCanal,
       diasUteis,
+      indiceQuintis,
       canaisSelecionados,
       tecnologiaId,
     );

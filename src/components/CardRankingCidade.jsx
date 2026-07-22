@@ -5,7 +5,8 @@ import BadgeFwa from './BadgeFwa';
 import BadgePlanoAcao from './BadgePlanoAcao';
 import IconeInfo from './IconeInfo';
 import { formatarPercentual, formatarValor } from '../utils/format';
-import { EXPLICACAO_PROJECAO_FECHAMENTO, EXPLICACAO_META_REALIZADO_GERAL, EXPLICACAO_ATINGIMENTO } from '../utils/status';
+import { EXPLICACAO_META_REALIZADO_GERAL, EXPLICACAO_ATINGIMENTO } from '../utils/status';
+import BadgeQuintil from './BadgeQuintil';
 
 const COR_ACENTO_STATUS = {
   verde: 'border-l-emerald-400',
@@ -62,12 +63,7 @@ export default function CardRankingCidade({ cidade, posicao, resumo, rotaBase = 
             <span className="text-xs">(meta)</span>
             <IconeInfo texto={EXPLICACAO_META_REALIZADO_GERAL} />
           </span>
-          <span className="font-semibold tabular-nums text-slate-700">
-            {formatarValor(resumo.projecaoFechamento, resumo.unidade)}{' '}
-            <span className="inline-flex items-center gap-0.5 text-xs font-normal text-slate-400">
-              (projeção) <IconeInfo texto={EXPLICACAO_PROJECAO_FECHAMENTO} />
-            </span>
-          </span>
+          <BadgeQuintil registro={cidade.quintil} curto />
         </div>
 
         <div className="mt-2 flex flex-wrap items-center gap-2">

@@ -6,14 +6,12 @@ import BadgePlanoAcao from './BadgePlanoAcao';
 import CardRankingCidade from './CardRankingCidade';
 import {
   atingimentoIndicador,
-  projecaoFechamentoMes,
-  EXPLICACAO_PROJECAO_FECHAMENTO,
   EXPLICACAO_META_GERAL,
   EXPLICACAO_REALIZADO_GERAL,
   EXPLICACAO_ATINGIMENTO,
 } from '../utils/status';
-import { indiceMesAtual } from '../utils/tabelaIndicadores';
-import { ANO_PAINEL } from '../data/mockHelpers';
+import { EXPLICACAO_QUINTIL_CIDADE } from '../utils/quintil';
+import BadgeQuintil from './BadgeQuintil';
 import { formatarPercentual, formatarValor } from '../utils/format';
 import IconeInfo from './IconeInfo';
 
@@ -34,11 +32,6 @@ import IconeInfo from './IconeInfo';
  * indicadores com meta): misturar as duas bases faria o percentual
  * exibido não bater com `realizado ÷ meta` da própria linha assim que
  * outro indicador (Orçamento, Efetivado) ganhar meta própria.
- * `projecaoFechamento` (ex-coluna "Tendência") também é do MESMO
- * indicador de referência, mas olha só o MÊS CORRENTE (ritmo semanal
- * extrapolado — ver projecaoFechamentoMes em utils/status.js), diferente
- * de `meta`/`realizado`/`atingimento` acima, que são acumulados do ano
- * inteiro até o último mês apurado.
  */
 export function resumoMetaRealizado(cidade) {
   const candidatos = [
@@ -48,22 +41,20 @@ export function resumoMetaRealizado(cidade) {
     cidade.indicadores[0],
   ].filter(Boolean);
   if (candidatos.length === 0) {
-    return { meta: null, realizado: null, atingimento: null, rotulo: 'Meta', projecaoFechamento: null, unidade: null };
+    return { meta: null, realizado: null, atingimento: null, rotulo: 'Meta', unidade: null };
   }
 
   const referencia = candidatos.find((ind) => ind.meses.some((m) => m.meta > 0)) ?? candidatos[0];
-  const projecaoFechamento = projecaoFechamentoMes(referencia, indiceMesAtual(ANO_PAINEL));
 
   const apurados = referencia.meses.filter((m) => m.realizado !== null);
   if (apurados.length === 0) {
-    return { meta: null, realizado: null, atingimento: null, rotulo: referencia.nome, projecaoFechamento, unidade: referencia.unidade };
+    return { meta: null, realizado: null, atingimento: null, rotulo: referencia.nome, unidade: referencia.unidade };
   }
   return {
     meta: apurados.reduce((acc, m) => acc + m.meta, 0),
     realizado: apurados.reduce((acc, m) => acc + m.realizado, 0),
     atingimento: atingimentoIndicador(referencia),
     rotulo: referencia.nome,
-    projecaoFechamento,
     unidade: referencia.unidade,
   };
 }
@@ -143,10 +134,10 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                 <IconeInfo texto={EXPLICACAO_ATINGIMENTO} />
               </span>
             </th>
-            <th className="whitespace-nowrap px-4 py-2.5 text-right">
+            <th className="whitespace-nowrap px-4 py-2.5">
               <span className="inline-flex items-center gap-1">
-                Projeção (mês)
-                <IconeInfo texto={EXPLICACAO_PROJECAO_FECHAMENTO} />
+                Quintil
+                <IconeInfo texto={EXPLICACAO_QUINTIL_CIDADE} />
               </span>
             </th>
             <th className="whitespace-nowrap px-4 py-2.5">Status</th>
@@ -184,9 +175,7 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                     </span>
                   </div>
                 </td>
-                <td className="whitespace-nowrap px-4 py-3.5 text-right tabular-nums text-slate-600">
-                  {formatarValor(resumo.projecaoFechamento, resumo.unidade)}
-                </td>
+                <td className="whitespace-nowrap px-4 py-3.5"><BadgeQuintil registro={cidade.quintil} curto /></td>
                 <td className="whitespace-nowrap px-4 py-3.5"><StatusBadge status={cidade.status} /></td>
                 <td className="whitespace-nowrap px-4 py-3.5"><BadgePlanoAcao temPlanoAtivo={cidade.temPlanoAtivo} /></td>
                 <td className="whitespace-nowrap px-4 py-3.5"><BadgeFwa vendeFwa={cidade.vendeFwa} /></td>

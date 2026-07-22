@@ -927,3 +927,210 @@ export function paraCsvDiasUteis(linhas) {
   const corpo = linhas.map((l) => COLUNAS_DIAS_UTEIS.map((coluna) => celulaCsv(l[coluna])).join(','));
   return [COLUNAS_DIAS_UTEIS.join(','), ...corpo].join('\n') + '\n';
 }
+
+// ---------------------------------------------------------------------------
+// Sistema de Quintil (performance individual dos vendedores -> cidade)
+// ---------------------------------------------------------------------------
+
+/** Categoria de venda -> tecnologia da página que a consome. */
+const TECNOLOGIA_POR_CATEGORIA_META = { orcamento: 'ftth', efetivado: 'ftth', instalacao: 'ftth', ativacao: '5g' };
+
+/**
+ * Faixas de quintil definidas pelo negócio (percentual de atingimento da
+ * meta): 1º ≥100% · 2º ≥80% · 3º ≥60% · 4º ≥30% · 5º <30%.
+ */
+export function classificarQuintil(atingimento) {
+  if (atingimento === null || atingimento === undefined || Number.isNaN(atingimento)) return null;
+  if (atingimento >= 1.0) return 1;
+  if (atingimento >= 0.8) return 2;
+  if (atingimento >= 0.6) return 3;
+  if (atingimento >= 0.3) return 4;
+  return 5;
+}
+
+/**
+ * Fato de metas+realizado por vendedor -> distribuição de quintis por
+ * cidade+tecnologia+mês, publicada SEM nenhum dado de pessoa (nome,
+ * matrícula e hash ficam no ETL; só o agregado sai — decisão de
+ * privacidade registrada no estudo da feature).
+ *
+ * Atingimento do vendedor (regra fechada com o negócio): soma de
+ * realizado ÷ soma de meta×multiplicador das linhas de VENDA dele na
+ * tecnologia — exatamente os mesmos indicadores/multiplicadores/regra de
+ * ativação-por-canal do pipeline de Meta por Canal
+ * (MAPA_INDICADOR_PARA_CATEGORIA_META etc.). Todas essas linhas são
+ * Qtd/"Maior melhor" (validado na base), então a soma é homogênea.
+ * Churn/Ticket/Portabilidade ficam de fora por design, como no pipeline
+ * de meta. Quintil da cidade = quintil da MÉDIA SIMPLES dos atingimentos
+ * dos vendedores dela (decisão registrada: com times de 1–3 pessoas,
+ * ponderação é pseudo-precisão; a nuance fica no TAM exposto ao lado).
+ *
+ * Vendedor presente no mês/cidade mas sem NENHUMA linha de venda válida
+ * em NENHUMA tecnologia entra em `sem_meta` nas DUAS — é o único caso
+ * genuinamente ambíguo. Vendedor que vende só a OUTRA tecnologia (ex.:
+ * só 5G) fica de fora inteiramente do bucket desta — ele não é "sem
+ * meta de FTTH", só não pertence a esse funil; contá-lo infolaria o
+ * total e o "sem meta" com gente de outro time (achado real na base:
+ * Juazeiro do Norte/CE tem vendedores só-FTTH, só-5G e ambos no mesmo
+ * mês). Isso garante que a soma das faixas SEMPRE bate com o total
+ * PUBLICADO da tecnologia (mesma lição do "158 vs 161" do ranking, agora
+ * aplicada por tecnologia). Linha de venda com meta 0 (existem 46 na
+ * base) é descartada do atingimento com aviso, nunca vira divisão por
+ * zero. Linha sem regra no dicionário pro mês: aviso + descarte, mesmo
+ * contrato de normalizarMetaPorCanal.
+ */
+export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
+  const avisos = [];
+  // vendedor(hash) x cidade x tecnologia x mês -> { meta, realizado } (soma das linhas de venda)
+  const somasPorVendedor = new Map();
+  // todo vendedor visto em cada cidade+mês (mesmo sem linha de venda), pra base do TAM
+  const vendedoresPorCidadeMes = new Map(); // "cidadeSlug\u0001mesRef" -> Map(hash -> Set(tecnologias com venda))
+  const cidadeOrigemPorSlug = new Map();
+
+  for (const l of linhasFato) {
+    const cidadeSlug = normalizarCidade(l.cidade);
+    if (!cidadeSlug) continue; // sem cidade mapeável: fora, mesmo critério de todo o pipeline
+    cidadeOrigemPorSlug.set(cidadeSlug, l.cidade);
+
+    const chaveCidadeMes = cidadeSlug + '\u0001' + l.data;
+    if (!vendedoresPorCidadeMes.has(chaveCidadeMes)) vendedoresPorCidadeMes.set(chaveCidadeMes, new Map());
+    const vendedoresDoMes = vendedoresPorCidadeMes.get(chaveCidadeMes);
+    if (!vendedoresDoMes.has(l.hash_user)) vendedoresDoMes.set(l.hash_user, new Set());
+
+    const categoria = MAPA_INDICADOR_PARA_CATEGORIA_META.get(l.indicador);
+    if (!categoria) continue; // não é indicador de venda (churn/ticket/...): conta só pro total do time
+
+    const canal = l.canal || 'SEM CANAL';
+    if (categoria === 'ativacao' && !indicadorAtivacaoPertenceAoCanal(l.indicador, canal)) continue;
+
+    const meta = paraNumero(l.meta);
+    const realizado = paraNumero(l.realizado);
+    if (Number.isNaN(meta) || Number.isNaN(realizado)) {
+      avisos.push(`Quintil: meta/realizado inválido — cidade "${l.cidade}", indicador "${l.indicador}", mês ${l.data}.`);
+      continue;
+    }
+    if (meta === 0) {
+      avisos.push(`Quintil: meta 0 descartada — cidade "${l.cidade}", indicador "${l.indicador}", mês ${l.data}.`);
+      continue;
+    }
+
+    const multiplicador = indiceMultiplicadores.get(l.data + '\u0001' + l.indicador);
+    if (multiplicador === undefined) {
+      avisos.push(`Quintil: sem regra no dicionário pro indicador "${l.indicador}" no mês ${l.data} — linha descartada.`);
+      continue;
+    }
+
+    const tecnologia = TECNOLOGIA_POR_CATEGORIA_META[categoria];
+    vendedoresDoMes.get(l.hash_user).add(tecnologia);
+
+    const chave = l.hash_user + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + l.data;
+    const atual = somasPorVendedor.get(chave) ?? { meta: 0, realizado: 0 };
+    atual.meta += meta * multiplicador;
+    atual.realizado += realizado;
+    somasPorVendedor.set(chave, atual);
+  }
+
+  // Agrega por cidade+tecnologia+mês
+  const registros = [];
+  for (const [chaveCidadeMes, vendedoresDoMes] of vendedoresPorCidadeMes) {
+    const [cidadeSlug, mesRef] = chaveCidadeMes.split('\u0001');
+    for (const tecnologia of ['ftth', '5g']) {
+      const contagem = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+      let semMeta = 0;
+      let somaAtingimentos = 0;
+      let comAtingimento = 0;
+      let total = 0;
+
+      for (const [hash, tecnologiasComVenda] of vendedoresDoMes) {
+        // Vendedor só entra no bucket desta tecnologia se vende ELA, ou se
+        // não vende NENHUMA das duas (ambíguo — conta como "sem meta" nos
+        // dois buckets, é o único caso genuinamente indefinido). Quem
+        // vende só a OUTRA tecnologia fica de fora inteiramente: não é
+        // "sem meta de FTTH" — ele simplesmente não é FTTH, contá-lo aqui
+        // infla o time e o "sem meta" com gente de outro funil.
+        const vendeEstaTecnologia = tecnologiasComVenda.has(tecnologia);
+        const naoVendeNenhumaTecnologia = tecnologiasComVenda.size === 0;
+        if (!vendeEstaTecnologia && !naoVendeNenhumaTecnologia) continue;
+
+        total += 1;
+        const somas = somasPorVendedor.get(hash + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef);
+        if (!somas || somas.meta === 0) {
+          semMeta += 1;
+          continue;
+        }
+        const atingimento = somas.realizado / somas.meta;
+        contagem[classificarQuintil(atingimento)] += 1;
+        somaAtingimentos += atingimento;
+        comAtingimento += 1;
+      }
+
+      // Reconciliação embutida: por construção q1..q5 + semMeta === total;
+      // qualquer divergência aqui é bug de código, não de dado — checagem barata que trava publicação errada.
+      const somaFaixas = contagem[1] + contagem[2] + contagem[3] + contagem[4] + contagem[5] + semMeta;
+      if (somaFaixas !== total) {
+        throw new Error(`Quintil: reconciliação falhou em ${cidadeSlug}/${tecnologia}/${mesRef}: faixas=${somaFaixas} total=${total}.`);
+      }
+
+      if (comAtingimento === 0) continue; // nenhum vendedor com venda nessa tecnologia nesse mês: não publica linha vazia
+
+      const atingimentoMedio = somaAtingimentos / comAtingimento;
+      registros.push({
+        cidadeSlug,
+        cidadeOrigem: cidadeOrigemPorSlug.get(cidadeSlug),
+        tecnologia,
+        mesRef,
+        totalVendedores: total,
+        q1: contagem[1],
+        q2: contagem[2],
+        q3: contagem[3],
+        q4: contagem[4],
+        q5: contagem[5],
+        semMeta,
+        atingimentoMedio: Math.round(atingimentoMedio * 10000) / 10000,
+        quintilCidade: classificarQuintil(atingimentoMedio),
+      });
+    }
+  }
+
+  return { registros, avisos };
+}
+
+const COLUNAS_SAIDA_QUINTIS = [
+  'cidade_slug',
+  'cidade_origem',
+  'tecnologia',
+  'mes_ref',
+  'total_vendedores',
+  'q1',
+  'q2',
+  'q3',
+  'q4',
+  'q5',
+  'sem_meta',
+  'atingimento_medio',
+  'quintil_cidade',
+];
+
+/** Serializa a saída de `normalizarQuintisPorCidade()` — só agregados por cidade, nenhum dado de pessoa. */
+export function paraCsvQuintis(registros) {
+  const linhas = registros.map((r) =>
+    [
+      r.cidadeSlug,
+      r.cidadeOrigem,
+      r.tecnologia,
+      r.mesRef,
+      r.totalVendedores,
+      r.q1,
+      r.q2,
+      r.q3,
+      r.q4,
+      r.q5,
+      r.semMeta,
+      r.atingimentoMedio,
+      r.quintilCidade,
+    ]
+      .map(celulaCsv)
+      .join(','),
+  );
+  return [COLUNAS_SAIDA_QUINTIS.join(','), ...linhas].join('\n') + '\n';
+}

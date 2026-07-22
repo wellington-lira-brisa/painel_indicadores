@@ -10,13 +10,14 @@ import { usePeriodoAnalise } from '../hooks/usePeriodoAnalise';
 import StatusBadge from '../components/StatusBadge';
 import CardKpi from '../components/CardKpi';
 import IconeInfo from '../components/IconeInfo';
-import { EXPLICACAO_PROJECAO_FECHAMENTO } from '../utils/status';
+import { EXPLICACAO_QUINTIL_CIDADE } from '../utils/quintil';
+import BadgeQuintil from '../components/BadgeQuintil';
+import CardQuintisCidade from '../components/CardQuintisCidade';
 import TabelaIndicadores from '../components/TabelaIndicadores';
 import SeletorPeriodoAnalise from '../components/SeletorPeriodoAnalise';
 import ResumoMediaPeriodo from '../components/ResumoMediaPeriodo';
 import FormularioPlanoAcao from '../components/FormularioPlanoAcao';
 import SeletorCanais from '../components/SeletorCanais';
-import { resumoMetaRealizado } from '../components/TabelaRanking';
 
 /**
  * Detalhe de uma cidade — reutilizado por qualquer tecnologia (FTTH, 5G,
@@ -87,65 +88,82 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
     );
   }
 
-  const resumo = resumoMetaRealizado(cidade);
-
   return (
     <div className={`space-y-6 ${tecnologia.classeTema}`}>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <Link
-            to={(tecnologia.rotaBase || '/') + sufixoRota}
-            className="inline-flex items-center gap-1 text-sm font-medium text-brand-700 hover:underline"
-          >
-            <ArrowLeft className="size-4" aria-hidden="true" />
-            Ranking · {tecnologia.nome}
-          </Link>
-          <h2 className="mt-1 text-2xl font-bold text-slate-900">{cidade.nome}</h2>
-          <p className="text-sm text-slate-500">
-            Gerente: {cidade.gerente ?? '—'} · Regional: {cidade.regional ?? '—'} · Coord.: {cidade.coordenacaoRegional ?? '—'}
-          </p>
-          {canaisSelecionados.length > 0 && (
-            <p className="mt-1 rounded-lg border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-800">
-              Mostrando só: <strong>{canaisSelecionados.join(', ')}</strong> — meta continua sendo a da cidade inteira.
+      <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <Link
+                to={(tecnologia.rotaBase || '/') + sufixoRota}
+                className="inline-flex items-center gap-1 text-sm font-medium text-brand-700 hover:underline"
+              >
+                <ArrowLeft className="size-4" aria-hidden="true" />
+                Ranking · {tecnologia.nome}
+              </Link>
+              <div className="lg:hidden">
+                <BotaoPlanoAcao
+                  podeCriar={temPermissao(PERMISSOES.CRIAR_PLANO_ACAO)}
+                  aoClicar={() => setFormularioAberto(true)}
+                />
+              </div>
+            </div>
+
+            <div className="mt-3 flex flex-wrap items-center gap-2.5">
+              <h2 className="text-xl font-bold text-slate-950 sm:text-2xl">{cidade.nome}</h2>
+              <StatusBadge status={cidade.status} />
+            </div>
+            <p className="mt-1 text-sm text-slate-500">
+              Gerente: {cidade.gerente ?? '—'} · Regional: {cidade.regional ?? '—'} · Coord.: {cidade.coordenacaoRegional ?? '—'}
             </p>
-          )}
-          <div className="mt-2 max-w-xs">
-            <label className="block text-xs font-medium text-slate-600">
-              Canal
-              <span className="ml-1 font-normal text-slate-400">(recalcula o realizado)</span>
-            </label>
-            <SeletorCanais
-              canaisSelecionados={canaisSelecionados}
-              aoAplicar={definirCanaisSelecionados}
-              carregarCanaisDisponiveis={tecnologia.servicoCidades.carregarCanaisDisponiveis}
+
+            <div className="mt-3 max-w-xs">
+              <label className="block text-xs font-medium text-slate-600">
+                Canal
+                <span className="ml-1 font-normal text-slate-400">(recalcula o realizado)</span>
+              </label>
+              <SeletorCanais
+                canaisSelecionados={canaisSelecionados}
+                aoAplicar={definirCanaisSelecionados}
+                carregarCanaisDisponiveis={tecnologia.servicoCidades.carregarCanaisDisponiveis}
+              />
+            </div>
+            {canaisSelecionados.length > 0 && (
+              <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-800">
+                Mostrando só: <strong>{canaisSelecionados.join(', ')}</strong> — meta continua sendo a da cidade inteira.
+              </p>
+            )}
+          </div>
+
+          <div className="hidden shrink-0 lg:block">
+            <BotaoPlanoAcao
+              podeCriar={temPermissao(PERMISSOES.CRIAR_PLANO_ACAO)}
+              aoClicar={() => setFormularioAberto(true)}
             />
           </div>
-          <div className="mt-2 flex items-center gap-3">
-            <StatusBadge status={cidade.status} />
-            <span className="text-sm font-semibold tabular-nums text-slate-700">
-              {formatarValor(resumo.projecaoFechamento, resumo.unidade)}{' '}
-              <span className="inline-flex items-center gap-0.5 text-xs font-normal text-slate-400">
-                (projeção de fechamento do mês · {resumo.rotulo}) <IconeInfo texto={EXPLICACAO_PROJECAO_FECHAMENTO} />
-              </span>
-            </span>
-          </div>
         </div>
-
-        <BotaoPlanoAcao
-          podeCriar={temPermissao(PERMISSOES.CRIAR_PLANO_ACAO)}
-          aoClicar={() => setFormularioAberto(true)}
-        />
-      </div>
-
-      <section aria-label="Resumo da cidade" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <CardKpi titulo="Atingimento geral" valor={formatarPercentual(cidade.score)} destaque />
-        <CardKpi
-          titulo="Ativação comercial"
-          valor={formatarDataSimples(cidade.ativacaoComercial)}
-        />
-        <CardKpi titulo="Indicadores monitorados" valor={cidade.indicadores.length} />
-        <CardKpi titulo="Planos de ação" valor={planos.length} />
       </section>
+
+      <section aria-label="Resumo da cidade" className="grid grid-cols-1 gap-4 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <CardKpi titulo="Atingimento geral" valor={formatarPercentual(cidade.score)} destaque />
+        <dl className="grid grid-cols-2 gap-x-8 gap-y-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm sm:flex sm:items-center sm:divide-x sm:divide-slate-200">
+          <ItemResumoCidade
+            rotulo="Quintil da cidade"
+            valor={<BadgeQuintil registro={cidade.quintil} />}
+            detalhe={
+              <span className="inline-flex items-center gap-0.5">
+                {cidade.quintil ? `${cidade.quintil.totalVendedores} vendedor(es)` : 'sem dado de vendedores'}{' '}
+                <IconeInfo texto={EXPLICACAO_QUINTIL_CIDADE} />
+              </span>
+            }
+          />
+          <ItemResumoCidade rotulo="Ativação comercial" valor={formatarDataSimples(cidade.ativacaoComercial)} />
+          <ItemResumoCidade rotulo="Indicadores" valor={cidade.indicadores.length} />
+          <ItemResumoCidade rotulo="Planos de ação" valor={planos.length} />
+        </dl>
+      </section>
+
+      {cidade.quintil && <CardQuintisCidade registro={cidade.quintil} />}
 
       <section aria-label="Média por período" className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -238,18 +256,23 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
 function EstadoCarregandoCidade() {
   return (
     <div className="animate-pulse space-y-6">
-      <div className="space-y-2">
-        <div className="h-4 w-40 rounded bg-slate-200/70" />
-        <div className="h-7 w-56 rounded bg-slate-200/70" />
-        <div className="h-4 w-72 rounded bg-slate-200/70" />
-      </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="h-20 rounded-xl bg-slate-200/70" />
-        ))}
+      <div className="h-40 rounded-2xl bg-slate-200/70" />
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <div className="h-20 rounded-xl bg-slate-200/70" />
+        <div className="h-20 rounded-xl bg-slate-200/70" />
       </div>
       <div className="h-40 rounded-xl bg-slate-200/70" />
       <div className="h-72 rounded-xl bg-slate-200/70" />
+    </div>
+  );
+}
+
+function ItemResumoCidade({ rotulo, valor, detalhe }) {
+  return (
+    <div className="min-w-0 sm:px-5 sm:first:pl-1.5 sm:last:pr-1.5">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{rotulo}</dt>
+      <dd className="mt-0.5 text-xl font-bold leading-none tabular-nums text-slate-900">{valor}</dd>
+      {detalhe && <p className="mt-1 text-xs text-slate-500">{detalhe}</p>}
     </div>
   );
 }
