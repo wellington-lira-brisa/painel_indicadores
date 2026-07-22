@@ -53,13 +53,14 @@ function TabelaDesvio({ linhas, unidade, titulo }) {
 /**
  * Desvio por canal da cidade (realizado − meta) para o indicador principal
  * da tecnologia — mês atual e acumulado do ano lado a lado.
- * Desvio negativo = canal abaixo da meta (vermelho).
- * Desvio positivo = acima da meta (verde).
+ * Se não houver dado do mês atual (cidade sem atualização recente),
+ * mostra só o acumulado. Oculta o card apenas se não houver nenhum dado.
  */
 export default function CardDesvioPorCanal({ desvio, unidade }) {
-  if (!desvio) return null;
+  if (!desvio?.acumulado?.length) return null;
 
-  const mesAtualLabel = desvio.mesAtual[0]
+  const temMesAtual = desvio.mesAtual?.length > 0;
+  const mesAtualLabel = temMesAtual
     ? rotuloMes(desvio.mesAtual[0].mesRef)
     : 'Mês atual';
 
@@ -68,8 +69,10 @@ export default function CardDesvioPorCanal({ desvio, unidade }) {
       <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
         Impacto por canal
       </h3>
-      <div className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <TabelaDesvio linhas={desvio.mesAtual} unidade={unidade} titulo={mesAtualLabel} />
+      <div className={`mt-3 grid grid-cols-1 gap-5 ${temMesAtual ? 'sm:grid-cols-2' : ''}`}>
+        {temMesAtual && (
+          <TabelaDesvio linhas={desvio.mesAtual} unidade={unidade} titulo={mesAtualLabel} />
+        )}
         <TabelaDesvio linhas={desvio.acumulado} unidade={unidade} titulo="Acumulado no ano" />
       </div>
     </section>
