@@ -100,6 +100,12 @@ jobs:
       - name: Consolidar Quintis por cidade (gera public/dados/quintis-por-cidade.csv)
         run: node scripts/etl/consolidarQuintis.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv
 
+      # Desvio por Canal: desvio absoluto (realizado − meta) por canal × cidade
+      # × tecnologia × mês — só indicadores principais de venda (Instalação
+      # no FTTH, Ativação no 5G). Reusa a fato já baixada, sem download novo.
+      - name: Consolidar Desvio por Canal (gera public/dados/desvio-por-canal.csv)
+        run: node scripts/etl/consolidarDesvioPorCanal.mjs /tmp/metas-vendedores-por-cidade.csv
+
       - name: Validar e publicar Dias Úteis (gera public/dados/dias-uteis.csv)
         run: node scripts/etl/publicarDiasUteis.mjs /tmp/dias-uteis.csv
 

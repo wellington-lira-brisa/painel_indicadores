@@ -1134,3 +1134,74 @@ export function paraCsvQuintis(registros) {
   );
   return [COLUNAS_SAIDA_QUINTIS.join(','), ...linhas].join('\n') + '\n';
 }
+// ---------------------------------------------------------------------------
+// Desvio por Canal (impacto de cada canal no resultado da cidade)
+// ---------------------------------------------------------------------------
+
+/**
+ * Fato de metas+realizado por vendedor -> desvio agregado por
+ * cidade × canal × tecnologia × mês, usando APENAS os indicadores
+ * principais de venda de cada tecnologia (Instalação no FTTH, Ativação
+ * no 5G — mesma classificação do pipeline de Meta por Canal).
+ *
+ * Desvio = Σrealizado − Σmeta (por canal × cidade × mês). Valor
+ * negativo = canal abaixo da meta (déficit); positivo = acima (superávit).
+ * Não usa multiplicador do dicionário: aqui o objetivo é o desvio em
+ * unidades reais (instalações/ativações absolutas), não a meta ponderada
+ * usada no atingimento do painel — são grandezas distintas com propósitos
+ * distintos. Meta 0 e canal-lixo descartados (mesmo critério dos outros
+ * pipelines). Cidade não mapeável fica fora (sem slug = sem cidade).
+ */
+export function normalizarDesvioPorCanal(linhasFato) {
+  const avisos = [];
+  // "cidadeSlug\x01canal\x01tecnologia\x01mesRef" -> { meta, realizado }
+  const porChave = new Map();
+  const cidadeOrigemPorSlug = new Map();
+
+  for (const l of linhasFato) {
+    const cidadeSlug = normalizarCidade(l.cidade);
+    if (!cidadeSlug) continue;
+    cidadeOrigemPorSlug.set(cidadeSlug, l.cidade);
+
+    const canal = l.canal || 'SEM CANAL';
+    if (['CANAL NAO ENCONTRADO', 'SEM CANAL', 'null', ''].includes(canal)) continue;
+
+    const categoria = MAPA_INDICADOR_PARA_CATEGORIA_META.get(l.indicador);
+    if (!categoria) continue; // churn/ticket/portabilidade: fora
+
+    if (categoria === 'ativacao' && !indicadorAtivacaoPertenceAoCanal(l.indicador, canal)) continue;
+
+    const meta = paraNumero(l.meta);
+    const realizado = paraNumero(l.realizado);
+    if (Number.isNaN(meta) || Number.isNaN(realizado)) {
+      avisos.push(`Desvio: meta/realizado inválido — cidade "${l.cidade}", canal "${canal}", indicador "${l.indicador}", mês ${l.data}.`);
+      continue;
+    }
+    if (meta === 0) continue; // meta 0: descarta sem aviso (ruído esperado, já documentado)
+
+    const tecnologia = TECNOLOGIA_POR_CATEGORIA_META[categoria];
+    // Agrupa orçamento/efetivado/instalação todos em 'instalacao' como indicador único da página FTTH;
+    // ativação em '5g'. O usuário vê "Instalação" ou "Ativação" — não a subdivisão interna.
+    const chave = `${cidadeSlug}\x01${canal}\x01${tecnologia}\x01${l.data}`;
+    const atual = porChave.get(chave) ?? { cidadeSlug, cidadeOrigem: l.cidade, canal, tecnologia, mesRef: l.data, meta: 0, realizado: 0 };
+    atual.meta += meta;
+    atual.realizado += realizado;
+    porChave.set(chave, atual);
+  }
+
+  const registros = [...porChave.values()].map((r) => ({
+    ...r,
+    desvio: Math.round((r.realizado - r.meta) * 100) / 100,
+  }));
+
+  return { registros, avisos };
+}
+
+const COLUNAS_SAIDA_DESVIO = ['cidade_slug', 'cidade_origem', 'canal', 'tecnologia', 'mes_ref', 'meta', 'realizado', 'desvio'];
+
+export function paraCsvDesvioPorCanal(registros) {
+  const linhas = registros.map((r) =>
+    [r.cidadeSlug, r.cidadeOrigem, r.canal, r.tecnologia, r.mesRef, r.meta, r.realizado, r.desvio].map(celulaCsv).join(','),
+  );
+  return [COLUNAS_SAIDA_DESVIO.join(','), ...linhas].join('\n') + '\n';
+}

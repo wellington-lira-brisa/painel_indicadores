@@ -20,6 +20,7 @@ import {
 import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
 import { carregarDiasUteis, diasUteisEmCacheOuNulo } from './diasUteisService';
 import { carregarQuintis, quintisEmCacheOuNulo, quintilDaCidade } from './quintilService';
+import { carregarDesvioPorCanal, desvioPorCanalEmCacheOuNulo, desvioDaCidade } from './desvioCanalService';
 import { ratearMetaPorSemanas, construirEstimadorPorCalendario } from '../utils/diasUteis';
 import { semanasDoMes } from '../utils/semanas';
 import { ehCidadePrioritaria } from '../config/cidadesPrioritarias';
@@ -164,6 +165,19 @@ async function quintisComFallback() {
 /** Anexa `cidade.quintil` (registro do mês de referência na tecnologia, ou null). */
 function aplicarQuintil(cidade, indiceQuintis, tecnologiaId) {
   return { ...cidade, quintil: quintilDaCidade(indiceQuintis, cidade.id, tecnologiaId) };
+}
+
+async function desvioCanalComFallback() {
+  try {
+    return await carregarDesvioPorCanal();
+  } catch (excecao) {
+    console.error('Falha ao carregar desvio por canal, mantendo última base conhecida:', excecao);
+    return desvioPorCanalEmCacheOuNulo() ?? null;
+  }
+}
+
+function aplicarDesvioPorCanal(cidade, indiceDesvio, tecnologiaId) {
+  return { ...cidade, desvioPorCanal: desvioDaCidade(indiceDesvio, cidade.id, tecnologiaId) };
 }
 
 /**
@@ -417,10 +431,11 @@ function enriquecer(
   metaPorCanal,
   diasUteis,
   indiceQuintis,
+  indiceDesvio,
   canaisSelecionados,
   tecnologiaId,
 ) {
-  const cidadeComMetaEMetadados = aplicarQuintil(aplicarRateioSemanalMetaIndicador(
+  const cidadeComMetaEMetadados = aplicarDesvioPorCanal(aplicarQuintil(aplicarRateioSemanalMetaIndicador(
     aplicarMetaPorCanal(
       aplicarMetaGeralCidade(aplicarMetadadosCidade(cidade, metadadosCidades), metaGeralCidade, tecnologiaId),
       metaPorCanal,
@@ -429,7 +444,7 @@ function enriquecer(
     ),
     diasUteis,
     tecnologiaId,
-  ), indiceQuintis, tecnologiaId);
+  ), indiceQuintis, tecnologiaId), indiceDesvio, tecnologiaId);
   // Duas passadas: `realizado` recortado por canal (o que o filtro do
   // SeletorCanais decidir — igual sempre foi) e `realizadoGeral` SEMPRE
   // com o índice total, nenhum filtro — pra comparar lado a lado no card
@@ -517,6 +532,7 @@ function criarServicoCidades(tecnologiaId) {
         // vale o fetch aqui. Ver buscarCidade, abaixo, onde ele é buscado de fato.
         null, // Dias úteis: mesmo raciocínio — rateio semanal só é usado onde metaIndicador é.
         indiceQuintis,
+        null, // Desvio por canal: só na página da cidade, não no Ranking.
         canaisSelecionados,
         tecnologiaId,
       ),
@@ -532,7 +548,7 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, indiceQuintis, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, indiceQuintis, indiceDesvio, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
@@ -542,6 +558,7 @@ function criarServicoCidades(tecnologiaId) {
         metaPorCanalComFallback(tecnologiaId),
         diasUteisComFallback(tecnologiaId),
         quintisComFallback(),
+        desvioCanalComFallback(),
         cidadesOficiaisComFallback(),
       ]);
     const cidade = montarListaCompleta(nomesOriginais, cidadesOficiais).find((c) => c.id === id);
@@ -558,6 +575,7 @@ function criarServicoCidades(tecnologiaId) {
       metaPorCanal,
       diasUteis,
       indiceQuintis,
+      indiceDesvio,
       canaisSelecionados,
       tecnologiaId,
     );

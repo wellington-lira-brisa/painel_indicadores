@@ -31,7 +31,6 @@ export const QUINTIL_COR_BARRA = {
 };
 
 export const EXPLICACAO_QUINTIL_CIDADE =
-  'Quintil da cidade: classificação da média de atingimento individual dos vendedores da cidade na tecnologia ' +
-  '(1º ≥100% · 2º ≥80% · 3º ≥60% · 4º ≥30% · 5º <30%). O atingimento de cada vendedor usa os mesmos indicadores ' +
-  'de venda e multiplicadores do dicionário de metas. O time considerado aqui é só quem vende esta tecnologia ' +
-  '(quem vende só a outra fica fora da conta). "Sem meta" = vendedor sem meta de venda em nenhuma tecnologia no mês.';
+  'Classificação da cidade com base no atingimento de meta dos vendedores. ' +
+  'Q1 = acima de 100% · Q2 = acima de 80% · Q3 = acima de 60% · Q4 = acima de 30% · Q5 = abaixo de 30%. ' +
+  'Considera apenas vendedores desta tecnologia.';
