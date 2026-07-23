@@ -19,7 +19,14 @@ import {
 } from './metaPorCanalService';
 import { carregarCidadesOficiais, cidadesOficiaisEmCacheOuNulo } from './cidadesOficiaisService';
 import { carregarDiasUteis, diasUteisEmCacheOuNulo } from './diasUteisService';
-import { carregarQuintis, quintisEmCacheOuNulo, quintilDaCidade } from './quintilService';
+import {
+  carregarQuintis,
+  carregarQuintisVendedores,
+  quintisEmCacheOuNulo,
+  quintisVendedoresEmCacheOuNulo,
+  quintilDaCidade,
+  vendedoresQuintilDaCidade,
+} from './quintilService';
 import { carregarDesvioPorCanal, desvioPorCanalEmCacheOuNulo, desvioDaCidade } from './desvioCanalService';
 import { ratearMetaPorSemanas, construirEstimadorPorCalendario } from '../utils/diasUteis';
 import { semanasDoMes } from '../utils/semanas';
@@ -159,6 +166,15 @@ async function quintisComFallback() {
   } catch (excecao) {
     console.error('Falha ao carregar quintis por cidade, mantendo última base conhecida:', excecao);
     return quintisEmCacheOuNulo() ?? null;
+  }
+}
+
+async function quintisVendedoresComFallback() {
+  try {
+    return await carregarQuintisVendedores();
+  } catch (excecao) {
+    console.error('Falha ao carregar quintis por vendedor, mantendo última base conhecida:', excecao);
+    return quintisVendedoresEmCacheOuNulo() ?? new Map();
   }
 }
 
@@ -548,7 +564,7 @@ function criarServicoCidades(tecnologiaId) {
   }
 
   async function buscarCidade(id, canaisSelecionados = []) {
-    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, indiceQuintis, indiceDesvio, cidadesOficiais] =
+    const [statusFwa, statusPlanoAtivo, { indice, nomesOriginais }, metadadosCidades, metaGeralCidade, metaPorCanal, diasUteis, indiceQuintis, indiceQuintisVendedores, indiceDesvio, cidadesOficiais] =
       await Promise.all([
         statusFwaComFallback(),
         statusPlanoAtivoComFallback(tecnologiaId),
@@ -558,13 +574,14 @@ function criarServicoCidades(tecnologiaId) {
         metaPorCanalComFallback(tecnologiaId),
         diasUteisComFallback(tecnologiaId),
         quintisComFallback(),
+        quintisVendedoresComFallback(),
         desvioCanalComFallback(),
         cidadesOficiaisComFallback(),
       ]);
     const cidade = montarListaCompleta(nomesOriginais, cidadesOficiais).find((c) => c.id === id);
     if (!cidade) return null;
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
-    return enriquecer(
+    const cidadeEnriquecida = enriquecer(
       cidade,
       statusFwa,
       statusPlanoAtivo,
@@ -579,6 +596,19 @@ function criarServicoCidades(tecnologiaId) {
       canaisSelecionados,
       tecnologiaId,
     );
+    if (!cidadeEnriquecida.quintil) return cidadeEnriquecida;
+    return {
+      ...cidadeEnriquecida,
+      quintil: {
+        ...cidadeEnriquecida.quintil,
+        vendedores: vendedoresQuintilDaCidade(
+          indiceQuintisVendedores,
+          cidade.id,
+          tecnologiaId,
+          cidadeEnriquecida.quintil.mesRef,
+        ),
+      },
+    };
   }
 
   return { listarCidades, listarRanking, buscarCidade, carregarCanaisDisponiveis: () => carregarCanaisDisponiveisDaTecnologia(tecnologiaId) };

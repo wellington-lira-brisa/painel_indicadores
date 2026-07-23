@@ -1,3 +1,4 @@
+import { ArrowDownRight, ArrowUpRight, Minus } from 'lucide-react';
 import { formatarValor } from '../utils/format';
 
 const MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
@@ -7,57 +8,118 @@ function rotuloMes(mesRef) {
   return `${MESES_CURTOS[Number(mes) - 1]}/${ano}`;
 }
 
-function corDesvio(desvio) {
-  if (desvio > 0) return 'text-emerald-600';
-  if (desvio < 0) return 'text-red-500';
-  return 'text-slate-500';
+function ordenarPorImpacto(linhas) {
+  return [...linhas].sort((a, b) => Math.abs(b.desvio) - Math.abs(a.desvio));
 }
 
-/**
- * Uma linha por canal: nome do canal em destaque, meta/realizado discretos,
- * desvio colorido em evidência. Área de toque confortável (min-h 44px).
- */
-function LinhaCanal({ r, unidade }) {
+function estiloImpacto(desvio) {
+  if (desvio > 0) {
+    return {
+      Icone: ArrowUpRight,
+      texto: 'text-emerald-700',
+      fundo: 'bg-emerald-50',
+      barra: 'bg-emerald-500',
+      rotulo: 'Acima da meta',
+    };
+  }
+
+  if (desvio < 0) {
+    return {
+      Icone: ArrowDownRight,
+      texto: 'text-red-600',
+      fundo: 'bg-red-50',
+      barra: 'bg-red-400',
+      rotulo: 'Abaixo da meta',
+    };
+  }
+
+  return {
+    Icone: Minus,
+    texto: 'text-slate-600',
+    fundo: 'bg-slate-100',
+    barra: 'bg-slate-400',
+    rotulo: 'Na meta',
+  };
+}
+
+function LinhaCanal({ registro, unidade, maiorImpacto }) {
+  const estilo = estiloImpacto(registro.desvio);
+  const largura = maiorImpacto > 0
+    ? Math.max((Math.abs(registro.desvio) / maiorImpacto) * 100, 4)
+    : 0;
+
   return (
-    <li className="flex min-h-[44px] items-center justify-between gap-3 py-2.5">
-      <span className="text-sm font-semibold text-slate-800">{r.canal}</span>
-      <div className="flex items-center gap-4">
-        <div className="text-right">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Meta</p>
-          <p className="text-xs tabular-nums text-slate-500">{formatarValor(r.meta, unidade)}</p>
+    <li className="rounded-lg border border-slate-100 bg-slate-50/60 p-3">
+      <div className="flex min-w-0 items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate text-sm font-semibold text-slate-800">{registro.canal}</p>
+          <p className="mt-0.5 text-[11px] text-slate-500">{estilo.rotulo}</p>
         </div>
-        <div className="text-right">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Realizado</p>
-          <p className="text-xs tabular-nums text-slate-600">{formatarValor(r.realizado, unidade)}</p>
-        </div>
-        <div className="min-w-[3rem] text-right">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Desvio</p>
-          <p className={`text-sm font-bold tabular-nums ${corDesvio(r.desvio)}`}>
-            {r.desvio > 0 ? '+' : ''}{formatarValor(r.desvio, unidade)}
-          </p>
-        </div>
+
+        <span className={`inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-sm font-bold tabular-nums ${estilo.fundo} ${estilo.texto}`}>
+          <estilo.Icone className="size-3.5" strokeWidth={2.25} aria-hidden="true" />
+          {registro.desvio > 0 ? '+' : ''}
+          {formatarValor(registro.desvio, unidade)}
+        </span>
       </div>
+
+      <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-slate-200" aria-hidden="true">
+        <div
+          className={`h-full rounded-full ${estilo.barra}`}
+          style={{ width: `${largura}%` }}
+        />
+      </div>
+
+      <dl className="mt-2 grid grid-cols-2 gap-3">
+        <div className="flex items-baseline justify-between gap-2">
+          <dt className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Meta</dt>
+          <dd className="text-xs font-medium tabular-nums text-slate-600">
+            {formatarValor(registro.meta, unidade)}
+          </dd>
+        </div>
+        <div className="flex items-baseline justify-between gap-2 border-l border-slate-200 pl-3">
+          <dt className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Realizado</dt>
+          <dd className="text-xs font-semibold tabular-nums text-slate-700">
+            {formatarValor(registro.realizado, unidade)}
+          </dd>
+        </div>
+      </dl>
     </li>
   );
 }
 
 function BlocoCanais({ linhas, unidade, titulo }) {
   if (!linhas?.length) return null;
+
+  const canaisOrdenados = ordenarPorImpacto(linhas);
+  const maiorImpacto = Math.max(...canaisOrdenados.map((registro) => Math.abs(registro.desvio)), 0);
+
   return (
-    <div>
-      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{titulo}</p>
-      <ul className="divide-y divide-slate-100">
-        {linhas.map((r) => <LinhaCanal key={r.canal} r={r} unidade={unidade} />)}
-      </ul>
+    <div className="min-w-0">
+      <div className="mb-2.5 flex items-center justify-between gap-3">
+        <h4 className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{titulo}</h4>
+        <span className="text-[11px] tabular-nums text-slate-400">
+          {canaisOrdenados.length} {canaisOrdenados.length === 1 ? 'canal' : 'canais'}
+        </span>
+      </div>
+
+      <ol className="space-y-2" aria-label={`${titulo}: canais por impacto`}>
+        {canaisOrdenados.map((registro) => (
+          <LinhaCanal
+            key={registro.canal}
+            registro={registro}
+            unidade={unidade}
+            maiorImpacto={maiorImpacto}
+          />
+        ))}
+      </ol>
     </div>
   );
 }
 
 /**
- * Desvio por canal da cidade (realizado − meta) para o indicador principal
- * da tecnologia — mês atual e acumulado do ano.
- * Layout em lista vertical com hierarquia clara: canal em destaque,
- * meta/realizado discretos, desvio em cor e tamanho maiores.
+ * Impacto por canal da cidade (realizado − meta) para o indicador principal
+ * da tecnologia, no mês atual e no acumulado do ano.
  */
 export default function CardDesvioPorCanal({ desvio, unidade }) {
   if (!desvio?.acumulado?.length) return null;
@@ -66,11 +128,33 @@ export default function CardDesvioPorCanal({ desvio, unidade }) {
   const mesAtualLabel = temMesAtual ? rotuloMes(desvio.mesAtual[0].mesRef) : null;
 
   return (
-    <section aria-label="Desvio por canal" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-        Impacto por canal
-      </h3>
-      <div className={`mt-3 ${temMesAtual ? 'grid grid-cols-1 gap-6 sm:grid-cols-2' : ''}`}>
+    <section
+      aria-labelledby="titulo-impacto-canal"
+      className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+    >
+      <header className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+        <div>
+          <h3 id="titulo-impacto-canal" className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+            Impacto por canal
+          </h3>
+          <p className="mt-1 text-xs text-slate-500">
+            Diferença entre realizado e meta, do maior impacto para o menor.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3 text-[11px] text-slate-500" aria-label="Legenda">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-emerald-500" aria-hidden="true" />
+            Acima
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-red-400" aria-hidden="true" />
+            Abaixo
+          </span>
+        </div>
+      </header>
+
+      <div className={`mt-4 ${temMesAtual ? 'grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6' : ''}`}>
         {temMesAtual && (
           <BlocoCanais linhas={desvio.mesAtual} unidade={unidade} titulo={mesAtualLabel} />
         )}

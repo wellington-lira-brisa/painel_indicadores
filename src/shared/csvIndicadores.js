@@ -950,9 +950,10 @@ export function classificarQuintil(atingimento) {
 
 /**
  * Fato de metas+realizado por vendedor -> distribuição de quintis por
- * cidade+tecnologia+mês, publicada SEM nenhum dado de pessoa (nome,
- * matrícula e hash ficam no ETL; só o agregado sai — decisão de
- * privacidade registrada no estudo da feature).
+ * cidade+tecnologia+mês. A mesma passagem também devolve uma saída
+ * individual enxuta para a página da cidade: somente nome, meta,
+ * realizado, atingimento e quintil. Matrícula e hash continuam restritos
+ * ao ETL e nunca são publicados.
  *
  * Atingimento do vendedor (regra fechada com o negócio): soma de
  * realizado ÷ soma de meta×multiplicador das linhas de VENDA dele na
@@ -983,6 +984,9 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
   const avisos = [];
   // vendedor(hash) x cidade x tecnologia x mês -> { meta, realizado } (soma das linhas de venda)
   const somasPorVendedor = new Map();
+  // Nome de exibição do vendedor. A chave inclui cidade+mês porque a mesma
+  // pessoa pode mudar de lotação ou ter o nome corrigido entre competências.
+  const nomesPorVendedor = new Map();
   // todo vendedor visto em cada cidade+mês (mesmo sem linha de venda), pra base do TAM
   const vendedoresPorCidadeMes = new Map(); // "cidadeSlug\u0001mesRef" -> Map(hash -> Set(tecnologias com venda))
   const cidadeOrigemPorSlug = new Map();
@@ -996,6 +1000,10 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     if (!vendedoresPorCidadeMes.has(chaveCidadeMes)) vendedoresPorCidadeMes.set(chaveCidadeMes, new Map());
     const vendedoresDoMes = vendedoresPorCidadeMes.get(chaveCidadeMes);
     if (!vendedoresDoMes.has(l.hash_user)) vendedoresDoMes.set(l.hash_user, new Set());
+    nomesPorVendedor.set(
+      l.hash_user + '\u0001' + chaveCidadeMes,
+      String(l.vendedor ?? '').trim() || 'Vendedor sem identificação',
+    );
 
     const categoria = MAPA_INDICADOR_PARA_CATEGORIA_META.get(l.indicador);
     if (!categoria) continue; // não é indicador de venda (churn/ticket/...): conta só pro total do time
@@ -1032,6 +1040,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
 
   // Agrega por cidade+tecnologia+mês
   const registros = [];
+  const vendedores = [];
   for (const [chaveCidadeMes, vendedoresDoMes] of vendedoresPorCidadeMes) {
     const [cidadeSlug, mesRef] = chaveCidadeMes.split('\u0001');
     for (const tecnologia of ['ftth', '5g']) {
@@ -1053,15 +1062,37 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
         if (!vendeEstaTecnologia && !naoVendeNenhumaTecnologia) continue;
 
         total += 1;
+        const vendedor = nomesPorVendedor.get(hash + '\u0001' + chaveCidadeMes) ?? 'Vendedor sem identificação';
         const somas = somasPorVendedor.get(hash + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef);
         if (!somas || somas.meta === 0) {
           semMeta += 1;
+          vendedores.push({
+            cidadeSlug,
+            tecnologia,
+            mesRef,
+            vendedor,
+            meta: null,
+            realizado: null,
+            atingimento: null,
+            quintil: null,
+          });
           continue;
         }
         const atingimento = somas.realizado / somas.meta;
-        contagem[classificarQuintil(atingimento)] += 1;
+        const quintil = classificarQuintil(atingimento);
+        contagem[quintil] += 1;
         somaAtingimentos += atingimento;
         comAtingimento += 1;
+        vendedores.push({
+          cidadeSlug,
+          tecnologia,
+          mesRef,
+          vendedor,
+          meta: Math.round(somas.meta * 100) / 100,
+          realizado: Math.round(somas.realizado * 100) / 100,
+          atingimento: Math.round(atingimento * 10000) / 10000,
+          quintil,
+        });
       }
 
       // Reconciliação embutida: por construção q1..q5 + semMeta === total;
@@ -1092,7 +1123,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     }
   }
 
-  return { registros, avisos };
+  return { registros, vendedores, avisos };
 }
 
 const COLUNAS_SAIDA_QUINTIS = [
@@ -1111,7 +1142,7 @@ const COLUNAS_SAIDA_QUINTIS = [
   'quintil_cidade',
 ];
 
-/** Serializa a saída de `normalizarQuintisPorCidade()` — só agregados por cidade, nenhum dado de pessoa. */
+/** Serializa a saída agregada de `normalizarQuintisPorCidade()`. */
 export function paraCsvQuintis(registros) {
   const linhas = registros.map((r) =>
     [
@@ -1133,6 +1164,36 @@ export function paraCsvQuintis(registros) {
       .join(','),
   );
   return [COLUNAS_SAIDA_QUINTIS.join(','), ...linhas].join('\n') + '\n';
+}
+
+const COLUNAS_SAIDA_QUINTIS_VENDEDORES = [
+  'cidade_slug',
+  'tecnologia',
+  'mes_ref',
+  'vendedor',
+  'meta',
+  'realizado',
+  'atingimento',
+  'quintil',
+];
+
+/** Serializa o detalhamento usado apenas na página da cidade. */
+export function paraCsvQuintisVendedores(vendedores) {
+  const linhas = vendedores.map((r) =>
+    [
+      r.cidadeSlug,
+      r.tecnologia,
+      r.mesRef,
+      r.vendedor,
+      r.meta,
+      r.realizado,
+      r.atingimento,
+      r.quintil,
+    ]
+      .map(celulaCsv)
+      .join(','),
+  );
+  return [COLUNAS_SAIDA_QUINTIS_VENDEDORES.join(','), ...linhas].join('\n') + '\n';
 }
 // ---------------------------------------------------------------------------
 // Desvio por Canal (impacto de cada canal no resultado da cidade)

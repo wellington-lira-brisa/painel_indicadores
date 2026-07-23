@@ -94,10 +94,10 @@ jobs:
       - name: Consolidar Meta por Canal — Criado/Efetivado/Instalado/Ativado 5G (gera public/dados/metas-por-canal.csv)
         run: node scripts/etl/consolidarMetaPorCanal.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv
 
-      # Sistema de Quintil: mesma dupla de arquivos do passo acima (a fato
-      # agora traz a coluna `realizado`). Publica SÓ o agregado por cidade
-      # — nome/matrícula/hash de vendedor nunca saem do workflow.
-      - name: Consolidar Quintis por cidade (gera public/dados/quintis-por-cidade.csv)
+      # Sistema de Quintil: reutiliza a mesma fato do passo acima. Publica
+      # o agregado por cidade e o detalhamento enxuto por vendedor; matrícula,
+      # hash e a base crua continuam restritos ao workflow.
+      - name: Consolidar Quintis por cidade e vendedor
         run: node scripts/etl/consolidarQuintis.mjs /tmp/dicionario-metas.csv /tmp/metas-vendedores-por-cidade.csv
 
       # Desvio por Canal: desvio absoluto (realizado − meta) por canal × cidade

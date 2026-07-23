@@ -1,4 +1,11 @@
-import { QUINTIL_COR_BARRA, QUINTIL_ROTULOS_CURTOS, EXPLICACAO_QUINTIL_CIDADE } from '../utils/quintil';
+import { Users } from 'lucide-react';
+import {
+  QUINTIL_COR_BADGE,
+  QUINTIL_COR_BARRA,
+  QUINTIL_ROTULOS_CURTOS,
+  EXPLICACAO_QUINTIL_CIDADE,
+} from '../utils/quintil';
+import { formatarPercentual, formatarValor } from '../utils/format';
 import IconeInfo from './IconeInfo';
 
 const MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
@@ -7,6 +14,110 @@ const MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 's
 function rotuloMes(mesRef) {
   const [ano, mes] = mesRef.split('-');
   return `${MESES_CURTOS[Number(mes) - 1]}/${ano}`;
+}
+
+function estiloLinha(quintil) {
+  if (quintil === 5) return 'border-l-red-400 bg-red-50/30';
+  if (quintil === 4) return 'border-l-orange-400 bg-orange-50/30';
+  if (quintil === 1) return 'border-l-emerald-400';
+  if (quintil === 2) return 'border-l-lime-400';
+  if (quintil === 3) return 'border-l-amber-400';
+  return 'border-l-slate-300';
+}
+
+function BadgeQuintilVendedor({ quintil }) {
+  if (!quintil) {
+    return (
+      <span className="inline-flex rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600">
+        Sem meta
+      </span>
+    );
+  }
+
+  return (
+    <span className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-bold ${QUINTIL_COR_BADGE[quintil]}`}>
+      {QUINTIL_ROTULOS_CURTOS[quintil]}
+    </span>
+  );
+}
+
+function ValorVendedor({ rotulo, valor, percentual = false, destaque = false }) {
+  return (
+    <div className="min-w-0">
+      <span className="block text-[9px] font-medium uppercase tracking-wide text-slate-400 sm:sr-only">
+        {rotulo}
+      </span>
+      <span className={`block truncate text-xs tabular-nums ${destaque ? 'font-bold text-slate-800' : 'font-medium text-slate-600'}`}>
+        {valor === null
+          ? '—'
+          : percentual
+            ? formatarPercentual(valor * 100)
+            : formatarValor(valor, 'Qtd')}
+      </span>
+    </div>
+  );
+}
+
+function TabelaVendedores({ vendedores = [] }) {
+  return (
+    <div className="mt-4 border-t border-slate-100 pt-4">
+      <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h4 className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800">
+            <Users className="size-3.5 text-slate-400" aria-hidden="true" />
+            Colaboradores
+          </h4>
+          <p className="mt-0.5 text-[11px] text-slate-500">Ordenados do melhor quintil para o que exige mais atenção.</p>
+        </div>
+        {vendedores.length > 0 && (
+          <span className="text-[11px] tabular-nums text-slate-400">
+            {vendedores.length} {vendedores.length === 1 ? 'vendedor' : 'vendedores'}
+          </span>
+        )}
+      </div>
+
+      {vendedores.length === 0 ? (
+        <p className="rounded-lg bg-slate-50 px-3 py-2.5 text-xs text-slate-500">
+          Detalhamento individual ainda não disponível para este período.
+        </p>
+      ) : (
+        <div className="overflow-hidden rounded-lg border border-slate-200">
+          <div className="hidden grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 sm:grid">
+            <span>Colaborador</span>
+            <span>Quintil</span>
+            <span className="text-right">Meta</span>
+            <span className="text-right">Realizado</span>
+            <span className="text-right">Atingimento</span>
+          </div>
+
+          <ul className="divide-y divide-slate-100" aria-label="Desempenho dos colaboradores por quintil">
+            {vendedores.map((vendedor, indice) => (
+              <li
+                key={`${vendedor.vendedor}-${indice}`}
+                className={`grid grid-cols-3 gap-x-3 gap-y-2 border-l-2 px-3 py-3 sm:grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] sm:items-center sm:gap-3 sm:py-2.5 ${estiloLinha(vendedor.quintil)}`}
+              >
+                <span className="col-span-2 min-w-0 truncate text-sm font-semibold text-slate-800 sm:col-span-1" title={vendedor.vendedor}>
+                  {vendedor.vendedor}
+                </span>
+                <span className="justify-self-end sm:justify-self-start">
+                  <BadgeQuintilVendedor quintil={vendedor.quintil} />
+                </span>
+                <span className="sm:text-right">
+                  <ValorVendedor rotulo="Meta" valor={vendedor.meta} />
+                </span>
+                <span className="sm:text-right">
+                  <ValorVendedor rotulo="Realizado" valor={vendedor.realizado} />
+                </span>
+                <span className="sm:text-right">
+                  <ValorVendedor rotulo="Atingimento" valor={vendedor.atingimento} percentual destaque />
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
 }
 
 /**
@@ -61,6 +172,8 @@ export default function CardQuintisCidade({ registro }) {
           </li>
         )}
       </ul>
+
+      <TabelaVendedores vendedores={registro.vendedores} />
     </section>
   );
 }

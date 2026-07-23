@@ -2,12 +2,20 @@ import { parsearCsv } from '../shared/csvIndicadores';
 import { carregarCsvDados } from './dadosProtegidosService';
 
 const NOME_ARQUIVO = 'quintis-por-cidade.csv';
+const NOME_ARQUIVO_VENDEDORES = 'quintis-vendedores.csv';
 
 let cache = null; // null = ainda não carregado com sucesso nesta sessão
+let cacheVendedores = null;
 
 function paraInteiro(texto) {
   const n = Number(texto);
   return Number.isFinite(n) ? n : 0;
+}
+
+function paraNumeroOpcional(texto) {
+  if (texto === null || texto === undefined || texto === '') return null;
+  const n = Number(texto);
+  return Number.isFinite(n) ? n : null;
 }
 
 /**
@@ -63,4 +71,49 @@ export function quintisEmCacheOuNulo() {
 /** Registro de quintil da cidade na tecnologia, ou null se a cidade não tem dado. */
 export function quintilDaCidade(indice, cidadeSlug, tecnologiaId) {
   return indice?.get(`${cidadeSlug}|${tecnologiaId}`) ?? null;
+}
+
+function indexarQuintisVendedores(linhas) {
+  const indice = new Map();
+  for (const l of linhas) {
+    const chave = `${l.cidade_slug}|${l.tecnologia}|${l.mes_ref}`;
+    if (!indice.has(chave)) indice.set(chave, []);
+    indice.get(chave).push({
+      vendedor: l.vendedor || 'Vendedor sem identificação',
+      meta: paraNumeroOpcional(l.meta),
+      realizado: paraNumeroOpcional(l.realizado),
+      atingimento: paraNumeroOpcional(l.atingimento),
+      quintil: paraInteiro(l.quintil) || null,
+    });
+  }
+
+  for (const vendedores of indice.values()) {
+    vendedores.sort(
+      (a, b) =>
+        (a.quintil ?? 99) - (b.quintil ?? 99) ||
+        (b.atingimento ?? -1) - (a.atingimento ?? -1) ||
+        a.vendedor.localeCompare(b.vendedor, 'pt-BR'),
+    );
+  }
+  return indice;
+}
+
+/**
+ * Detalhamento carregado somente na página da cidade. O Ranking continua
+ * usando apenas o arquivo agregado e não paga o custo desta base.
+ */
+export async function carregarQuintisVendedores() {
+  if (cacheVendedores) return cacheVendedores;
+  const texto = await carregarCsvDados(NOME_ARQUIVO_VENDEDORES);
+  cacheVendedores = indexarQuintisVendedores(parsearCsv(texto));
+  return cacheVendedores;
+}
+
+export function quintisVendedoresEmCacheOuNulo() {
+  return cacheVendedores;
+}
+
+export function vendedoresQuintilDaCidade(indice, cidadeSlug, tecnologiaId, mesRef) {
+  if (!mesRef) return [];
+  return indice?.get(`${cidadeSlug}|${tecnologiaId}|${mesRef}`) ?? [];
 }
