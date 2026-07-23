@@ -1,12 +1,10 @@
-// Gera public/dados/quintis-por-cidade.csv a partir do Dicionário de
-// Metas e da Fato de Metas por vendedor (que agora traz também a coluna
-// `realizado`) — mesmos dois arquivos já baixados do Drive pro pipeline
-// de Meta por Canal; nenhum download novo.
+// Gera o agregado por cidade e o detalhamento enxuto por vendedor a
+// partir dos mesmos dois arquivos já baixados do Drive; nenhum download
+// novo.
 //
-// PRIVACIDADE: a fato tem nome, matrícula e hash de cada vendedor. NADA
-// disso é publicado — só a distribuição agregada por cidade (ver
-// normalizarQuintisPorCidade em src/shared/csvIndicadores.js). A base
-// crua nunca vai pro repositório, mesma regra dos demais.
+// PRIVACIDADE: o detalhamento publica apenas nome e métricas de
+// performance necessárias à tela. Matrícula, hash e a base crua nunca
+// saem do ETL.
 //
 // Uso: node scripts/etl/consolidarQuintis.mjs <dicionario.csv> <fato-vendedores.csv>
 //
@@ -18,9 +16,11 @@ import {
   indexarMultiplicadoresDicionarioMetas,
   normalizarQuintisPorCidade,
   paraCsvQuintis,
+  paraCsvQuintisVendedores,
 } from '../../src/shared/csvIndicadores.js';
 
 const SAIDA_CSV = 'public/dados/quintis-por-cidade.csv';
+const SAIDA_VENDEDORES_CSV = 'public/dados/quintis-vendedores.csv';
 
 function main() {
   const [caminhoDicionario, caminhoFato] = process.argv.slice(2);
@@ -40,7 +40,7 @@ function main() {
 
   // normalizarQuintisPorCidade LANÇA se a reconciliação interna
   // (q1..q5 + sem_meta === total de vendedores) falhar — nada é escrito.
-  const { registros, avisos } = normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores);
+  const { registros, vendedores, avisos } = normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores);
   if (avisos.length > 0) {
     console.warn(`${avisos.length} aviso(s) na consolidação de quintis (não bloqueiam a publicação):`);
     avisos.slice(0, 20).forEach((a) => console.warn(`  - ${a}`));
@@ -53,11 +53,13 @@ function main() {
 
   mkdirSync('public/dados', { recursive: true });
   writeFileSync(SAIDA_CSV, paraCsvQuintis(registros), 'utf-8');
+  writeFileSync(SAIDA_VENDEDORES_CSV, paraCsvQuintisVendedores(vendedores), 'utf-8');
 
   const meses = [...new Set(registros.map((r) => r.mesRef))].sort();
   const cidades = new Set(registros.map((r) => r.cidadeSlug)).size;
   console.log(
-    `Gerado com sucesso: ${registros.length} registro(s) (cidade×tecnologia×mês) em ${SAIDA_CSV}. ` +
+    `Gerado com sucesso: ${registros.length} agregado(s) em ${SAIDA_CSV} e ` +
+      `${vendedores.length} vendedor(es) em ${SAIDA_VENDEDORES_CSV}. ` +
       `${cidades} cidade(s), meses ${meses[0]} a ${meses[meses.length - 1]}.`,
   );
 }
