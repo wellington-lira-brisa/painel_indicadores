@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import StatusBadge from './StatusBadge';
 import BarraProgresso from './BarraProgresso';
-import BadgeFwa from './BadgeFwa';
 import BadgePlanoAcao from './BadgePlanoAcao';
 import CardRankingCidade from './CardRankingCidade';
 import {
@@ -142,7 +141,6 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
             </th>
             <th className="whitespace-nowrap px-4 py-2.5">Status</th>
             <th className="whitespace-nowrap px-4 py-2.5">Plano de ação</th>
-            <th className="whitespace-nowrap px-4 py-2.5">FWA</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100">
@@ -178,7 +176,6 @@ export default function TabelaRanking({ cidades, rotaBase = '', sufixoRota = '' 
                 <td className="whitespace-nowrap px-4 py-3.5"><BadgeQuintil registro={cidade.quintil} curto /></td>
                 <td className="whitespace-nowrap px-4 py-3.5"><StatusBadge status={cidade.status} /></td>
                 <td className="whitespace-nowrap px-4 py-3.5"><BadgePlanoAcao temPlanoAtivo={cidade.temPlanoAtivo} /></td>
-                <td className="whitespace-nowrap px-4 py-3.5"><BadgeFwa vendeFwa={cidade.vendeFwa} /></td>
               </tr>
             );
           })}
