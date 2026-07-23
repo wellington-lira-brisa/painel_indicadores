@@ -92,6 +92,31 @@ test('CSV individual preserva canal, nome e métricas sem publicar hash ou matr�
   assert.equal('matricula' in registro, false);
 });
 
+test('identificador público do vendedor permanece estável entre os meses', () => {
+  const multiplicadores = new Map([
+    ...MULT_1,
+    ['2026-08-01\u0001Vendas instaladas Combo 1 Chip - FTTH', 1],
+  ]);
+  const { vendedores } = normalizarQuintisPorCidade(
+    [
+      linha({ hash_user: 'ana', vendedor: 'Ana', data: '2026-07-01' }),
+      linha({ hash_user: 'bruno', vendedor: 'Bruno', data: '2026-07-01' }),
+      linha({ hash_user: 'ana', vendedor: 'Ana', data: '2026-08-01' }),
+    ],
+    multiplicadores,
+  );
+
+  const idsAna = new Set(
+    vendedores
+      .filter((v) => v.vendedor === 'Ana' && v.tecnologia === 'ftth')
+      .map((v) => v.vendedorId),
+  );
+  const idBruno = vendedores.find((v) => v.vendedor === 'Bruno' && v.tecnologia === 'ftth').vendedorId;
+
+  assert.equal(idsAna.size, 1);
+  assert.notEqual([...idsAna][0], idBruno);
+});
+
 test('filtro de um canal recalcula cada vendedor antes de classificar o quintil', () => {
   const linhas = [
     linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'PAP', meta: '10', realizado: '10' }),

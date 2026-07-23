@@ -26,6 +26,7 @@ import {
   quintisVendedoresEmCacheOuNulo,
   quintilDaCidade,
   quintilDaCidadePorCanais,
+  historicoVendedoresQuintilDaCidade,
   vendedoresQuintilDaCidade,
 } from './quintilService';
 import { carregarDesvioPorCanal, desvioPorCanalEmCacheOuNulo, desvioDaCidade } from './desvioCanalService';
@@ -622,6 +623,13 @@ function criarServicoCidades(tecnologiaId) {
       quintil: {
         ...cidadeEnriquecida.quintil,
         vendedores: vendedoresQuintilDaCidade(
+          indiceQuintisVendedores,
+          cidade.id,
+          tecnologiaId,
+          cidadeEnriquecida.quintil.mesRef,
+          canaisSelecionados,
+        ),
+        historicoVendedores: historicoVendedoresQuintilDaCidade(
           indiceQuintisVendedores,
           cidade.id,
           tecnologiaId,

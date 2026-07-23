@@ -1,4 +1,9 @@
 import { calcularQuintilVendedores, parsearCsv } from '../shared/csvIndicadores';
+import {
+  MESES_PADRAO_HISTORICO_QUINTIL,
+  mesesConsecutivosAte,
+  montarHistoricoVendedores,
+} from '../utils/historicoQuintil';
 import { carregarCsvDados } from './dadosProtegidosService';
 
 const NOME_ARQUIVO = 'quintis-por-cidade.csv';
@@ -13,12 +18,10 @@ function paraInteiro(texto) {
 }
 
 /**
- * Índice: Map("cidadeSlug|tecnologia" -> registro do mês de referência).
- * O arquivo tem todos os meses; o painel mostra UM quintil por cidade —
- * o do mês corrente quando existir, senão o mês mais recente disponível
- * (cidade que ainda não apurou o mês novo continua mostrando o anterior,
- * com o mês explícito no registro pra UI indicar — nunca um quintil de
- * origem invisível).
+ * Índice: Map("cidadeSlug|tecnologia" -> registro atual + histórico).
+ * O mês corrente continua sendo preferido; na ausência dele, usa o mais
+ * recente disponível. O histórico completo fica no mesmo registro, sem
+ * nova carga ou consulta.
  */
 function indexarQuintis(linhas) {
   const porChave = new Map(); // "slug|tec" -> lista de registros
@@ -46,7 +49,8 @@ function indexarQuintis(linhas) {
   for (const [chave, registros] of porChave) {
     registros.sort((a, b) => (a.mesRef < b.mesRef ? -1 : 1));
     const doMesAtual = registros.find((r) => r.mesRef === mesAtualIso);
-    indice.set(chave, doMesAtual ?? registros[registros.length - 1]);
+    const atual = doMesAtual ?? registros[registros.length - 1];
+    indice.set(chave, { ...atual, historico: registros });
   }
   return indice;
 }
@@ -103,23 +107,54 @@ export function quintisVendedoresEmCacheOuNulo() {
 }
 
 export function quintilDaCidadePorCanais(indice, cidadeSlug, tecnologiaId, canaisSelecionados) {
-  const porMes = indice?.get(cidadeSlug);
+  const porMes = indice?.get(cidadeSlug) ?? new Map();
   if (!porMes) return null;
 
   const hoje = new Date();
   const mesAtualIso = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-01`;
-  const mesesDesc = [...porMes.keys()].sort((a, b) => (a < b ? 1 : -1));
-  const candidatos = [mesAtualIso, ...mesesDesc.filter((mes) => mes !== mesAtualIso)];
+  const historico = [...porMes.keys()]
+    .sort()
+    .map((mesRef) => {
+      const calculado = calcularQuintilVendedores(
+        porMes.get(mesRef) ?? [],
+        tecnologiaId,
+        canaisSelecionados,
+      );
+      if (!calculado) return null;
+      const { vendedores: _vendedores, ...resumo } = calculado;
+      return { ...resumo, mesRef };
+    })
+    .filter(Boolean);
 
-  for (const mesRef of candidatos) {
+  if (historico.length === 0) return null;
+  const atual = historico.find((registro) => registro.mesRef === mesAtualIso) ?? historico.at(-1);
+  return { ...atual, historico };
+}
+
+export function historicoVendedoresQuintilDaCidade(
+  indice,
+  cidadeSlug,
+  tecnologiaId,
+  mesRefAtual,
+  canaisSelecionados = [],
+  quantidadeMeses = MESES_PADRAO_HISTORICO_QUINTIL,
+) {
+  if (!mesRefAtual) {
+    return { meses: [], vendedores: [], movimentos: { melhoraram: 0, estaveis: 0, cairam: 0, semComparacao: 0 } };
+  }
+
+  const porMes = indice?.get(cidadeSlug) ?? new Map();
+  const resultadosPorMes = new Map();
+  for (const mesRef of mesesConsecutivosAte(mesRefAtual, quantidadeMeses)) {
     const calculado = calcularQuintilVendedores(
       porMes.get(mesRef) ?? [],
       tecnologiaId,
       canaisSelecionados,
     );
-    if (calculado) return { ...calculado, mesRef };
+    if (calculado) resultadosPorMes.set(mesRef, calculado);
   }
-  return null;
+
+  return montarHistoricoVendedores(resultadosPorMes, mesRefAtual, quantidadeMeses);
 }
 
 export function vendedoresQuintilDaCidade(
