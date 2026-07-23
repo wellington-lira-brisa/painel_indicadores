@@ -1074,6 +1074,25 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
 
     if (categoria === 'ativacao' && !indicadorAtivacaoPertenceAoCanal(l.indicador, canal)) continue;
 
+    const tecnologia = TECNOLOGIA_POR_CATEGORIA_META[categoria];
+    // Vendedor conta como "vende FTTH" a partir de QUALQUER categoria FTTH
+    // (Criado, Efetivado ou Instalado) — decide só se ele pertence ao
+    // bucket da tecnologia, nunca quanto ele vendeu.
+    contextoVendedor.tecnologias.add(tecnologia);
+    contextoVendedor.canais.get(canal).add(tecnologia);
+
+    // Meta e realizado do QUINTIL usam SOMENTE a categoria "Instalado" em
+    // FTTH (e "Ativação" em 5G, que não tem essa subdivisão). Criado e
+    // Efetivado são estágios anteriores do MESMO funil de venda, não
+    // indicadores adicionais — somá-los ao Instalado infla a meta em até
+    // 3x (achado real: GUILHERME LUIZ ANGELO DA SILVA, 2026-07, meta
+    // exibida 33 = 12 Criado + 11 Efetivado + 10 Instalado, quando deveria
+    // ser 10). Regra de negócio confirmada: quintil usa apenas Instalado,
+    // mesmo quando Criado/Efetivado têm valor preenchido — nunca soma,
+    // nunca faz fallback aqui (fallback de meta ausente é responsabilidade
+    // da fonte/dicionário, não deste cálculo).
+    if (categoria === 'orcamento' || categoria === 'efetivado') continue;
+
     const meta = paraNumero(l.meta);
     const realizado = paraNumero(l.realizado);
     if (Number.isNaN(meta) || Number.isNaN(realizado)) {
@@ -1090,10 +1109,6 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
       avisos.push(`Quintil: sem regra no dicionário pro indicador "${l.indicador}" no mês ${l.data} — linha descartada.`);
       continue;
     }
-
-    const tecnologia = TECNOLOGIA_POR_CATEGORIA_META[categoria];
-    contextoVendedor.tecnologias.add(tecnologia);
-    contextoVendedor.canais.get(canal).add(tecnologia);
 
     const chave = chaveVendedor + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + l.data;
     const atual = somasPorVendedor.get(chave) ?? { meta: 0, realizado: 0 };

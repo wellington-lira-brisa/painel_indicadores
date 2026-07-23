@@ -26,6 +26,8 @@ const MULT_1 = new Map([
   ['2026-07-01\u0001Vendas instaladas Combo 1 Chip - FTTH', 1],
   ['2026-07-01\u0001Vendas instalada Combo - FTTH', 1],
   ['2026-07-01\u0001Ativação 5G avulso', 1],
+  ['2026-07-01\u0001Vendas criadas Combo 1 Chip - FTTH', 1],
+  ['2026-07-01\u0001Vendas efetivadas Combo 1 Chip - FTTH', 1],
 ]);
 
 function linha(extra) {
@@ -374,4 +376,39 @@ test('hash_user não-vazio com múltiplas matrículas no mesmo mês gera aviso (
   const { avisos, registros } = normalizarQuintisPorCidade(linhas, MULT_1);
   assert.ok(avisos.some((a) => a.includes('colidiu') && a.includes('mais de uma matrícula')));
   assert.ok(registros.length > 0); // aviso não bloqueia a publicação
+});
+
+// Achado real na base (auditoria 2026-07): GUILHERME LUIZ ANGELO DA SILVA,
+// julho/2026 — meta de Criado=12, Efetivado=11, Instalado=10. O painel
+// mostrava meta=33 (soma das três) quando a regra de negócio confirmada é:
+// o quintil usa SOMENTE a meta de Instalado — Criado e Efetivado são
+// estágios anteriores do mesmo funil, nunca indicadores a somar.
+test('quintil usa apenas a meta de Instalado, nunca soma Criado + Efetivado + Instalado', () => {
+  const linhas = [
+    linha({ indicador: 'Vendas criadas Combo 1 Chip - FTTH', meta: '12', realizado: '9' }),
+    linha({ indicador: 'Vendas efetivadas Combo 1 Chip - FTTH', meta: '11', realizado: '9' }),
+    linha({ indicador: 'Vendas instaladas Combo 1 Chip - FTTH', meta: '10', realizado: '9' }),
+  ];
+  const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+  const ftth = vendedores.find((v) => v.tecnologia === 'ftth');
+
+  assert.equal(ftth.meta, 10); // nunca 33 (12+11+10)
+  assert.equal(ftth.realizado, 9); // nunca 27 (9+9+9)
+  assert.equal(ftth.atingimento, 0.9);
+});
+
+// Vendedor que só tem linhas de Criado/Efetivado (sem Instalado ainda
+// publicado no mês) continua pertencendo ao bucket FTTH — mas sem meta de
+// Instalado, cai em "sem meta" (não silenciosamente ignorado, não usa
+// Criado/Efetivado como substituto). Como nenhum vendedor da cidade tem
+// atingimento calculável, a linha do agregado nem é publicada (mesmo
+// contrato de "meta 0 é descartada", já validado acima).
+test('vendedor com só Criado/Efetivado (sem Instalado) conta como sem_meta em FTTH', () => {
+  const linhas = [
+    linha({ indicador: 'Vendas criadas Combo 1 Chip - FTTH', meta: '12', realizado: '9' }),
+    linha({ indicador: 'Vendas efetivadas Combo 1 Chip - FTTH', meta: '11', realizado: '9' }),
+  ];
+  const { registros, vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+  assert.equal(registros.find((r) => r.tecnologia === 'ftth'), undefined); // ninguém com atingimento: linha não publicada
+  assert.equal(vendedores.find((v) => v.tecnologia === 'ftth').meta, null); // detalhamento continua expondo o vendedor como sem_meta
 });
