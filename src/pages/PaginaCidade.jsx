@@ -13,6 +13,7 @@ import IconeInfo from '../components/IconeInfo';
 import { EXPLICACAO_QUINTIL_CIDADE } from '../utils/quintil';
 import BadgeQuintil from '../components/BadgeQuintil';
 import CardQuintisCidade from '../components/CardQuintisCidade';
+import CardDesvioPorCanal from '../components/CardDesvioPorCanal';
 import TabelaIndicadores from '../components/TabelaIndicadores';
 import SeletorPeriodoAnalise from '../components/SeletorPeriodoAnalise';
 import ResumoMediaPeriodo from '../components/ResumoMediaPeriodo';
@@ -87,6 +88,9 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
       </div>
     );
   }
+
+  const indicadorPrincipal = cidade.indicadores.find((ind) => ind.possuiSemanas) ?? cidade.indicadores[0];
+  const unidadeIndicador = indicadorPrincipal?.unidade ?? 'Qtd';
 
   return (
     <div className={`space-y-6 ${tecnologia.classeTema}`}>
@@ -164,6 +168,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
       </section>
 
       {cidade.quintil && <CardQuintisCidade registro={cidade.quintil} />}
+      <CardDesvioPorCanal desvio={cidade.desvioPorCanal} unidade={unidadeIndicador} />
 
       <section aria-label="Média por período" className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">

@@ -1,4 +1,28 @@
-import exifr from 'exifr';
+import exifr from "exifr";
+
+const CAMPOS_EXIF_RELEVANTES = [
+  "Make",
+  "Model",
+  "Software",
+  "DateTimeOriginal",
+  "CreateDate",
+  "ModifyDate",
+  "ExposureTime",
+  "FNumber",
+  "ISO",
+  "FocalLength",
+  "Flash",
+  "ExifImageWidth",
+  "ExifImageHeight",
+  "Orientation",
+];
+
+const CAMPOS_GPS_NECESSARIOS = [
+  "GPSLatitude",
+  "GPSLatitudeRef",
+  "GPSLongitude",
+  "GPSLongitudeRef",
+];
 
 /**
  * Extrai metadados EXIF do arquivo ORIGINAL, antes da compressão — o
@@ -19,7 +43,13 @@ export async function extrairMetadadosExif(arquivo) {
   };
 
   try {
-    const exif = await exifr.parse(arquivo, { gps: true });
+    // `pick` impede a biblioteca de percorrer e materializar dezenas de
+    // tags que nunca são exibidas nem armazenadas. GPS continua incluído
+    // porque faz parte da auditoria da origem da foto.
+    const exif = await exifr.parse(arquivo, {
+      gps: true,
+      pick: [...CAMPOS_EXIF_RELEVANTES, ...CAMPOS_GPS_NECESSARIOS],
+    });
     if (!exif || Object.keys(exif).length === 0) return base;
 
     const marca = exif.Make?.trim();
@@ -30,7 +60,7 @@ export async function extrairMetadadosExif(arquivo) {
       ...base,
       possuiExif: true,
       dataCaptura: dataCaptura ? new Date(dataCaptura).toISOString() : null,
-      dispositivo: [marca, modelo].filter(Boolean).join(' ') || null,
+      dispositivo: [marca, modelo].filter(Boolean).join(" ") || null,
       software: exif.Software ?? null,
       localizacao:
         exif.latitude !== undefined && exif.longitude !== undefined
@@ -44,18 +74,13 @@ export async function extrairMetadadosExif(arquivo) {
   }
 }
 
-const CAMPOS_EXIF_RELEVANTES = [
-  'Make', 'Model', 'Software', 'DateTimeOriginal', 'CreateDate', 'ModifyDate',
-  'ExposureTime', 'FNumber', 'ISO', 'FocalLength', 'Flash',
-  'ExifImageWidth', 'ExifImageHeight', 'Orientation',
-];
-
 function selecionarCamposExif(exif) {
   const selecionados = {};
   CAMPOS_EXIF_RELEVANTES.forEach((campo) => {
     if (exif[campo] !== undefined) {
       const valor = exif[campo];
-      selecionados[campo] = valor instanceof Date ? valor.toISOString() : String(valor);
+      selecionados[campo] =
+        valor instanceof Date ? valor.toISOString() : String(valor);
     }
   });
   return Object.keys(selecionados).length > 0 ? selecionados : null;

@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Calendar } from 'lucide-react';
 import { feriadosDaCidadeNoMes } from '../utils/feriados';
+import { diasUteisNoIntervalo, construirEstimadorPorCalendario } from '../utils/diasUteis';
+import { diasUteisEmCacheOuNulo } from '../services/diasUteisService';
 
 /** Respiro mínimo entre o popover e a borda da viewport. */
 const MARGEM_VIEWPORT = 8;
+
+const ROTULO_TIPO = { NACIONAL: 'Nacional', ESTADUAL: 'Estadual', MUNICIPAL: 'Municipal' };
 
 /** dd/mm a partir das partes locais da data — evita o bug de fuso do toISOString(). */
 function formatarDataFeriado(data) {
@@ -12,19 +16,31 @@ function formatarDataFeriado(data) {
   return `${dia}/${mes}`;
 }
 
+/** Total de dias úteis do mês — reutiliza o índice já em cache (carregado em
+ * buscarCidade), sem fetch adicional. Usa o estimador de calendário pra dias
+ * futuros, mesma regra do rateio semanal de meta. Retorna null quando o cache
+ * ainda não está disponível (ex.: página de feriados sem cidade carregada). */
+function totalDiasUteisMes(cidade, ano, mesIndice) {
+  const cache = diasUteisEmCacheOuNulo();
+  if (!cache || !cidade?.uf) return null;
+  const { indice, ultimaData } = cache;
+  const diasNoMes = new Date(ano, mesIndice + 1, 0).getDate();
+  const estimarPeso = construirEstimadorPorCalendario(ano, cidade.uf);
+  const { soma } = diasUteisNoIntervalo(indice, cidade.uf, ano, mesIndice, 1, diasNoMes, estimarPeso, ultimaData);
+  return soma;
+}
+
 /**
  * Indicador discreto de feriados do mês no cabeçalho da tabela/card: só o
- * ícone + contagem; a lista completa (nome e data) aparece num popover ao
- * clicar. Não aparece nada quando o mês não tem feriado, pra não poluir a
- * interface.
+ * ícone + contagem; a lista completa (nome, data, tipo) aparece num popover ao
+ * clicar, junto com o total de dias úteis do mês (mesma fonte de verdade do
+ * rateio semanal de meta). Não aparece nada quando o mês não tem feriado.
  *
  * Posicionamento em `position: fixed`, calculado a partir do botão (não
  * `absolute` ancorado no próprio container): o container geralmente fica
- * perto da borda esquerda da tela (coluna de mês numa tabela/card estreito),
- * então `right-0` relativo a ele empurrava o popover pra fora da viewport —
- * era exatamente o corte visto no celular. Calcular contra a viewport e
- * clampar dentro dela resolve para qualquer posição do botão, em qualquer
- * tamanho de tela, sem depender de breakpoints.
+ * perto da borda esquerda da tela, então `right-0` relativo a ele empurrava
+ * o popover pra fora da viewport no celular. Calcular contra a viewport e
+ * clampar dentro dela resolve para qualquer posição do botão.
  */
 export default function FeriadosMes({ cidade, ano, mesIndice, className = 'text-white/70 hover:bg-white/10 hover:text-white' }) {
   const [aberto, setAberto] = useState(false);
@@ -35,17 +51,12 @@ export default function FeriadosMes({ cidade, ano, mesIndice, className = 'text-
 
   const fechar = useCallback(() => setAberto(false), []);
 
-  // Roda antes do navegador pintar o frame: mede o botão e o popover recém
-  // montado e já commita a posição final, sem flash na posição errada.
   useLayoutEffect(() => {
     if (!aberto) return;
     const retanguloBotao = botaoRef.current?.getBoundingClientRect();
     const larguraPopover = popoverRef.current?.offsetWidth;
     if (!retanguloBotao || !larguraPopover) return;
 
-    // Ancora à direita do botão por padrão; se estourar a borda esquerda da
-    // tela, ancora à esquerda dele em vez disso — nunca as duas margens ao
-    // mesmo tempo (o popover é mais estreito que a viewport, não o contrário).
     let esquerda = retanguloBotao.right - larguraPopover;
     if (esquerda < MARGEM_VIEWPORT) {
       esquerda = retanguloBotao.left;
@@ -68,9 +79,6 @@ export default function FeriadosMes({ cidade, ano, mesIndice, className = 'text-
       if (evento.key === 'Escape') fechar();
     }
 
-    // Fecha (em vez de reposicionar) em scroll/resize: é um popover de
-    // consulta pontual, não uma UI que precisa acompanhar o botão — fechar
-    // é mais simples e não tem chance de ficar com posição desatualizada.
     document.addEventListener('mousedown', aoClicarFora);
     document.addEventListener('keydown', aoTeclarEscape);
     window.addEventListener('scroll', fechar, true);
@@ -84,6 +92,9 @@ export default function FeriadosMes({ cidade, ano, mesIndice, className = 'text-
   }, [aberto, fechar]);
 
   if (feriados.length === 0) return null;
+
+  // Calculado só quando o popover está aberto — zero custo enquanto fechado.
+  const diasUteis = aberto ? totalDiasUteisMes(cidade, ano, mesIndice) : null;
 
   return (
     <span className="relative inline-block normal-case">
@@ -112,14 +123,27 @@ export default function FeriadosMes({ cidade, ano, mesIndice, className = 'text-
           }}
           className="z-30 w-56 max-w-[calc(100vw-1rem)] rounded-lg border border-slate-200 bg-white p-2 text-left text-xs font-normal text-slate-700 shadow-lg"
         >
-          <ul className="space-y-1">
+          <ul className="space-y-1.5">
             {feriados.map((feriado, i) => (
               <li key={i} className="flex items-start justify-between gap-2">
-                <span>{feriado.descricao.replace(/<br\s*\/?>/gi, ' ')}</span>
+                <div className="min-w-0">
+                  <span className="block leading-snug">{feriado.descricao.replace(/<br\s*\/?>/gi, ' ')}</span>
+                  {feriado.tipo && (
+                    <span className="text-[10px] text-slate-400">{ROTULO_TIPO[feriado.tipo] ?? feriado.tipo}</span>
+                  )}
+                </div>
                 <span className="shrink-0 tabular-nums text-slate-400">{formatarDataFeriado(feriado.data)}</span>
               </li>
             ))}
           </ul>
+          {diasUteis !== null && (
+            <div className="mt-2 border-t border-slate-100 pt-1.5 flex items-center justify-between text-[10px] text-slate-500">
+              <span>Dias úteis no mês</span>
+              <span className="tabular-nums font-semibold text-slate-700">
+                {diasUteis % 1 === 0 ? diasUteis : diasUteis.toFixed(1)}
+              </span>
+            </div>
+          )}
         </div>
       )}
     </span>

@@ -1,7 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { extrairMetadadosExif } from '../utils/exif';
-import { prepararImagemParaUpload } from '../utils/imagemUpload';
-import { buscarEnderecoPorCoordenadas, capturarLocalizacaoAtual } from '../utils/geolocalizacao';
+import { useEffect, useRef, useState } from "react";
+import { extrairMetadadosExif } from "../utils/exif";
+import { prepararImagemParaUpload } from "../utils/imagemUpload";
+import {
+  buscarEnderecoPorCoordenadas,
+  capturarLocalizacaoAtual,
+} from "../utils/geolocalizacao";
 
 /**
  * Estado + lógica de "selecionar imagens e capturar localização" —
@@ -20,7 +23,7 @@ export function useCapturaEvidencias() {
   // Localização é do LOTE de evidências, não de uma imagem específica —
   // por isso vive fora do array `imagens`.
   const [localizacaoEvidencia, setLocalizacaoEvidencia] = useState(null);
-  const [statusLocalizacao, setStatusLocalizacao] = useState('ocioso'); // 'ocioso' | 'capturando' | 'sucesso' | 'erro'
+  const [statusLocalizacao, setStatusLocalizacao] = useState("ocioso"); // 'ocioso' | 'capturando' | 'sucesso' | 'erro'
   const [erroLocalizacao, setErroLocalizacao] = useState(null);
 
   // Revoga todos os object URLs de preview só no unmount — remoção/troca
@@ -39,20 +42,25 @@ export function useCapturaEvidencias() {
 
   async function aoSelecionarImagens(evento) {
     const arquivos = Array.from(evento.target.files ?? []);
-    evento.target.value = ''; // permite reselecionar os mesmos arquivos depois
+    evento.target.value = ""; // permite reselecionar os mesmos arquivos depois
     if (arquivos.length === 0) return;
 
     setErroImagens(null);
     setProcessandoImagem(true);
 
-    const resultados = await Promise.all(
-      arquivos.map(async (arquivo) => {
+    const resultados = [];
+
+    try {
+      // Processar uma foto por vez limita o pico de memória. Uma foto de
+      // celular com 12 MP ocupa perto de 48 MB quando decodificada em RGBA;
+      // Promise.all multiplicava esse custo pela quantidade selecionada.
+      for (const arquivo of arquivos) {
         try {
-          const [preparo, metadadosExif] = await Promise.all([
-            prepararImagemParaUpload(arquivo),
-            extrairMetadadosExif(arquivo),
-          ]);
-          return {
+          const preparo = await prepararImagemParaUpload(arquivo);
+          // Só lê EXIF depois de liberar bitmap/canvas. Além de reduzir o
+          // pico de memória, evita trabalho em arquivo que nem foi decodificado.
+          const metadadosExif = await extrairMetadadosExif(arquivo);
+          resultados.push({
             ok: true,
             imagem: {
               id: crypto.randomUUID(),
@@ -62,27 +70,36 @@ export function useCapturaEvidencias() {
                 ...metadadosExif,
                 tamanhoOriginalBytes: preparo.tamanhoOriginalBytes,
                 tamanhoFinalBytes: preparo.tamanhoFinalBytes,
+                larguraOriginal: preparo.larguraOriginal,
+                alturaOriginal: preparo.alturaOriginal,
                 larguraFinal: preparo.largura,
                 alturaFinal: preparo.altura,
+                tipoMimeOriginal: preparo.tipoMimeOriginal,
                 tipoMimeFinal: preparo.tipoMimeFinal,
+                qualidadeFinal: preparo.qualidadeFinal,
+                reducaoPercentual: preparo.reducaoPercentual,
+                tempoProcessamentoMs: preparo.tempoProcessamentoMs,
               },
             },
-          };
+          });
         } catch (excecao) {
-          return { ok: false, erro: `${arquivo.name}: ${excecao.message}` };
+          resultados.push({
+            ok: false,
+            erro: `${arquivo.name}: ${excecao.message}`,
+          });
         }
-      }),
-    );
+      }
+    } finally {
+      setProcessandoImagem(false);
+    }
 
-    // Preserva a ordem de seleção mesmo com processamento em paralelo —
-    // .map já mantém a ordem do array original, independente de qual
-    // arquivo terminou de processar primeiro.
+    // O loop preserva a ordem de seleção inclusive quando algum arquivo falha.
     const novasImagens = resultados.filter((r) => r.ok).map((r) => r.imagem);
     const erros = resultados.filter((r) => !r.ok).map((r) => r.erro);
 
-    if (novasImagens.length > 0) setImagens((atual) => [...atual, ...novasImagens]);
-    if (erros.length > 0) setErroImagens(erros.join(' · '));
-    setProcessandoImagem(false);
+    if (novasImagens.length > 0)
+      setImagens((atual) => [...atual, ...novasImagens]);
+    if (erros.length > 0) setErroImagens(erros.join(" · "));
   }
 
   function removerImagem(id) {
@@ -97,7 +114,7 @@ export function useCapturaEvidencias() {
     // esqueceu de recapturar caso reanexe uma imagem depois.
     if (restante.length === 0) {
       setLocalizacaoEvidencia(null);
-      setStatusLocalizacao('ocioso');
+      setStatusLocalizacao("ocioso");
       setErroLocalizacao(null);
     }
   }
@@ -110,15 +127,18 @@ export function useCapturaEvidencias() {
    * válida mesmo assim.
    */
   async function aoClicarCapturarLocalizacao() {
-    setStatusLocalizacao('capturando');
+    setStatusLocalizacao("capturando");
     setErroLocalizacao(null);
 
     try {
       const posicao = await capturarLocalizacaoAtual();
       setLocalizacaoEvidencia(posicao);
-      setStatusLocalizacao('sucesso');
+      setStatusLocalizacao("sucesso");
 
-      const endereco = await buscarEnderecoPorCoordenadas(posicao.latitude, posicao.longitude);
+      const endereco = await buscarEnderecoPorCoordenadas(
+        posicao.latitude,
+        posicao.longitude,
+      );
       if (endereco) {
         setLocalizacaoEvidencia((atual) =>
           atual
@@ -138,7 +158,7 @@ export function useCapturaEvidencias() {
       }
     } catch (excecao) {
       setErroLocalizacao(excecao.message);
-      setStatusLocalizacao('erro');
+      setStatusLocalizacao("erro");
     }
   }
 
@@ -150,7 +170,7 @@ export function useCapturaEvidencias() {
     setErroImagens(null);
     setProcessandoImagem(false);
     setLocalizacaoEvidencia(null);
-    setStatusLocalizacao('ocioso');
+    setStatusLocalizacao("ocioso");
     setErroLocalizacao(null);
   }
 

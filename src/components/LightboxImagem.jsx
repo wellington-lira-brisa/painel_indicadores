@@ -1,6 +1,13 @@
-import { memo, useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, Info, X, ZoomIn, ZoomOut } from 'lucide-react';
-import PainelMetadadosImagem from './PainelMetadadosImagem';
+import { memo, useEffect, useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Info,
+  X,
+  ZoomIn,
+  ZoomOut,
+} from "lucide-react";
+import PainelMetadadosImagem from "./PainelMetadadosImagem";
 
 /**
  * Visualização ampliada de uma evidência.
@@ -38,7 +45,7 @@ import PainelMetadadosImagem from './PainelMetadadosImagem';
  */
 function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
   const [indice, setIndice] = useState(indiceInicial);
-  const [abaMobile, setAbaMobile] = useState('imagem');
+  const [abaMobile, setAbaMobile] = useState("imagem");
   const [imagemAmpliada, setImagemAmpliada] = useState(false);
   const temMultiplas = itens.length > 1;
   const item = itens[indice];
@@ -55,12 +62,12 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
 
   useEffect(() => {
     function aoTeclar(evento) {
-      if (evento.key === 'Escape') aoFechar();
-      if (evento.key === 'ArrowRight' && temMultiplas) irParaProxima();
-      if (evento.key === 'ArrowLeft' && temMultiplas) irParaAnterior();
+      if (evento.key === "Escape") aoFechar();
+      if (evento.key === "ArrowRight" && temMultiplas) irParaProxima();
+      if (evento.key === "ArrowLeft" && temMultiplas) irParaAnterior();
     }
-    document.addEventListener('keydown', aoTeclar);
-    return () => document.removeEventListener('keydown', aoTeclar);
+    document.addEventListener("keydown", aoTeclar);
+    return () => document.removeEventListener("keydown", aoTeclar);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temMultiplas, aoFechar]);
 
@@ -68,7 +75,7 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
   // no mobile, senão dá pra ficar preso na aba "Detalhes" navegando entre
   // fotos sem perceber que trocou.
   useEffect(() => {
-    setAbaMobile('imagem');
+    setAbaMobile("imagem");
   }, [indice]);
 
   if (!item) return null;
@@ -81,9 +88,14 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
       aria-label={`Imagem ${indice + 1} de ${itens.length}`}
       onClick={aoFechar}
     >
-      <div className="flex shrink-0 items-center justify-between px-4 py-3 sm:px-6" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="flex shrink-0 items-center justify-between px-4 py-3 sm:px-6"
+        onClick={(e) => e.stopPropagation()}
+      >
         <p className="text-sm font-medium text-white/70">
-          {temMultiplas ? `Evidência ${indice + 1} de ${itens.length}` : 'Evidência'}
+          {temMultiplas
+            ? `Evidência ${indice + 1} de ${itens.length}`
+            : "Evidência"}
         </p>
         <button
           type="button"
@@ -100,23 +112,30 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
           duas áreas já convivem lado a lado, então as abas ficam ocultas
           e ambas renderizam ao mesmo tempo. */}
       {item.metadados && (
-        <div className="flex shrink-0 gap-1 px-4 pb-2 sm:px-6 lg:hidden" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="flex shrink-0 gap-1 px-4 pb-2 sm:px-6 lg:hidden"
+          onClick={(e) => e.stopPropagation()}
+        >
           <button
             type="button"
-            onClick={() => setAbaMobile('imagem')}
-            aria-pressed={abaMobile === 'imagem'}
+            onClick={() => setAbaMobile("imagem")}
+            aria-pressed={abaMobile === "imagem"}
             className={`flex-1 rounded-lg py-2 text-sm font-semibold ${
-              abaMobile === 'imagem' ? 'bg-white text-slate-900' : 'bg-white/10 text-white/70'
+              abaMobile === "imagem"
+                ? "bg-white text-slate-900"
+                : "bg-white/10 text-white/70"
             }`}
           >
             Imagem
           </button>
           <button
             type="button"
-            onClick={() => setAbaMobile('detalhes')}
-            aria-pressed={abaMobile === 'detalhes'}
+            onClick={() => setAbaMobile("detalhes")}
+            aria-pressed={abaMobile === "detalhes"}
             className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-sm font-semibold ${
-              abaMobile === 'detalhes' ? 'bg-white text-slate-900' : 'bg-white/10 text-white/70'
+              abaMobile === "detalhes"
+                ? "bg-white text-slate-900"
+                : "bg-white/10 text-white/70"
             }`}
           >
             <Info className="size-4" aria-hidden="true" />
@@ -125,10 +144,13 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
         </div>
       )}
 
-      <div className="flex min-h-0 flex-1 flex-col lg:flex-row" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="flex min-h-0 flex-1 flex-col lg:flex-row"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div
           className={`relative min-h-0 flex-1 items-center justify-center overflow-auto p-4 [touch-action:pan-x_pan-y] sm:p-6 lg:flex ${
-            abaMobile === 'imagem' ? 'flex' : 'hidden lg:flex'
+            abaMobile === "imagem" ? "flex" : "hidden lg:flex"
           }`}
         >
           {temMultiplas && (
@@ -146,15 +168,18 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
             <button
               type="button"
               onClick={() => setImagemAmpliada((v) => !v)}
-              aria-label={imagemAmpliada ? 'Reduzir imagem' : 'Ampliar imagem'}
+              aria-label={imagemAmpliada ? "Reduzir imagem" : "Ampliar imagem"}
               aria-pressed={imagemAmpliada}
               className="m-auto block cursor-zoom-in"
             >
               <img
                 src={item.url}
                 alt={`Evidência ${indice + 1} de ${itens.length}`}
+                decoding="async"
                 className={`rounded-lg object-contain shadow-2xl transition-transform duration-150 ${
-                  imagemAmpliada ? 'max-w-none scale-[2.5] cursor-zoom-out' : 'max-h-[70vh] max-w-full lg:max-h-full'
+                  imagemAmpliada
+                    ? "max-w-none scale-[2.5] cursor-zoom-out"
+                    : "max-h-[70vh] max-w-full lg:max-h-full"
                 }`}
               />
             </button>
@@ -173,8 +198,12 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
 
           {item.url && (
             <span className="pointer-events-none fixed bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-black/40 px-2.5 py-1 text-xs text-white/80 lg:flex">
-              {imagemAmpliada ? <ZoomOut className="size-3.5" /> : <ZoomIn className="size-3.5" />}
-              {imagemAmpliada ? 'Clique para reduzir' : 'Clique para ampliar'}
+              {imagemAmpliada ? (
+                <ZoomOut className="size-3.5" />
+              ) : (
+                <ZoomIn className="size-3.5" />
+              )}
+              {imagemAmpliada ? "Clique para reduzir" : "Clique para ampliar"}
             </span>
           )}
         </div>
@@ -186,7 +215,7 @@ function LightboxImagem({ itens, indiceInicial, criadoPor, aoFechar }) {
             competindo com a imagem). */}
         <div
           className={`w-full min-h-0 flex-1 overflow-y-auto border-t border-white/10 bg-white lg:block lg:w-96 lg:flex-none lg:border-l lg:border-t-0 ${
-            abaMobile === 'detalhes' ? 'block' : 'hidden'
+            abaMobile === "detalhes" ? "block" : "hidden"
           }`}
         >
           <PainelMetadadosImagem

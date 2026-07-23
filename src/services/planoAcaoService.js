@@ -1,8 +1,15 @@
-import { supabase } from './supabaseClient';
-import { tratarErro } from './supabaseHelpers';
-import { validarCamposSensiveis, mensagemBloqueioSensivel } from '../utils/validacaoConteudoSensivel';
-import { normalizarStatusPlano, statusPlanoValido, STATUS_PLANO } from '../utils/statusPlano';
-import { linkGoogleMaps } from '../utils/geolocalizacao';
+import { supabase } from "./supabaseClient";
+import { tratarErro } from "./supabaseHelpers";
+import {
+  validarCamposSensiveis,
+  mensagemBloqueioSensivel,
+} from "../utils/validacaoConteudoSensivel";
+import {
+  normalizarStatusPlano,
+  statusPlanoValido,
+  STATUS_PLANO,
+} from "../utils/statusPlano";
+import { linkGoogleMaps } from "../utils/geolocalizacao";
 
 /**
  * Status que contam como "plano de ação ativo" pro indicador do Ranking.
@@ -11,7 +18,11 @@ import { linkGoogleMaps } from '../utils/geolocalizacao';
  * como coberta por um que já encerrou. `parado` também fica de fora: é uma
  * ação estagnada, sinal de atenção, não de cobertura.
  */
-const STATUS_PLANO_ATIVO = [STATUS_PLANO.NAO_INICIADO, STATUS_PLANO.EM_ANDAMENTO, STATUS_PLANO.AGUARDANDO];
+const STATUS_PLANO_ATIVO = [
+  STATUS_PLANO.NAO_INICIADO,
+  STATUS_PLANO.EM_ANDAMENTO,
+  STATUS_PLANO.AGUARDANDO,
+];
 
 /**
  * Mapa { [cidadeId]: boolean } indicando se a cidade tem pelo menos um
@@ -23,13 +34,13 @@ const STATUS_PLANO_ATIVO = [STATUS_PLANO.NAO_INICIADO, STATUS_PLANO.EM_ANDAMENTO
  * tecnologia novos aparecem no próximo carregamento, sem mudança de código.
  */
 export async function listarStatusPlanosAtivosPorCidade(tecnologiaId) {
-  if (!tecnologiaId) throw new Error('Tecnologia é obrigatória.');
+  if (!tecnologiaId) throw new Error("Tecnologia é obrigatória.");
 
   const { data, error } = await supabase
-    .from('planos_acao')
-    .select('cidade_id, status')
-    .eq('tecnologia_id', tecnologiaId);
-  tratarErro(error, 'Não foi possível carregar o status dos planos de ação.');
+    .from("planos_acao")
+    .select("cidade_id, status")
+    .eq("tecnologia_id", tecnologiaId);
+  tratarErro(error, "Não foi possível carregar o status dos planos de ação.");
 
   const ativoPorCidade = {};
   data.forEach((linha) => {
@@ -40,9 +51,13 @@ export async function listarStatusPlanosAtivosPorCidade(tecnologiaId) {
   return ativoPorCidade;
 }
 
-const BUCKET = 'plano-evidencias';
+const BUCKET = "plano-evidencias";
 const VALIDADE_URL_ASSINADA_SEGUNDOS = 300; // 5 min — suficiente pra visualizar a página, sem URL permanente
-const EXTENSAO_POR_TIPO = { 'image/webp': 'webp', 'image/jpeg': 'jpg', 'image/png': 'png' };
+const EXTENSAO_POR_TIPO = {
+  "image/webp": "webp",
+  "image/jpeg": "jpg",
+  "image/png": "png",
+};
 
 // Mesmos limites das constraints CHECK da migration 20260708120000 — se um
 // mudar, o outro precisa acompanhar.
@@ -57,15 +72,15 @@ export const LIMITE_QUEM = 200;
 // exatamente o que a listagem precisa pra sinalizar "evidência pendente"
 // sem fazer join nenhum com planos_acao_evidencias.
 const COLUNAS_PLANO_LISTA =
-  'id, cidade_id, tecnologia_id, indicador_id, criado_por, descricao, o_que, como, quem, quando_previsto, status, tem_evidencias, criado_em, atualizado_em, ' +
-  'classificacao_no_momento, periodo_referencia_fim, canal, ' +
-  'colaboradores!criado_por(nome, matricula, cargo)';
+  "id, cidade_id, tecnologia_id, indicador_id, criado_por, descricao, o_que, como, quem, quando_previsto, status, tem_evidencias, criado_em, atualizado_em, " +
+  "classificacao_no_momento, periodo_referencia_fim, canal, " +
+  "colaboradores!criado_por(nome, matricula, cargo)";
 const COLUNAS_PLANO_DETALHE =
   `${COLUNAS_PLANO_LISTA}, imagem_path, imagem_metadados, evidencia_latitude, evidencia_longitude, ` +
-  'evidencia_precisao_metros, evidencia_endereco, evidencia_numero, evidencia_bairro, evidencia_cidade, ' +
-  'evidencia_estado, evidencia_cep, evidencia_pais, evidencia_capturada_em, indicadores_motivadores, ' +
-  'planos_acao_evidencias(id, imagem_path, imagem_metadados, ordem, criado_em, localizacao_id), ' +
-  'planos_acao_evidencia_localizacoes(id, latitude, longitude, precisao_metros, endereco, numero, bairro, cidade, estado, cep, pais, capturada_em)';
+  "evidencia_precisao_metros, evidencia_endereco, evidencia_numero, evidencia_bairro, evidencia_cidade, " +
+  "evidencia_estado, evidencia_cep, evidencia_pais, evidencia_capturada_em, indicadores_motivadores, " +
+  "planos_acao_evidencias(id, imagem_path, imagem_metadados, ordem, criado_em, localizacao_id), " +
+  "planos_acao_evidencia_localizacoes(id, latitude, longitude, precisao_metros, endereco, numero, bairro, cidade, estado, cep, pais, capturada_em)";
 
 /**
  * Converte a linha do Postgres (snake_case) para o formato usado pelos
@@ -81,12 +96,15 @@ function mapearPlano(linha) {
   // Histórico de localizações — 1 por lote de anexação (ver migration
   // 20260710130000), mais antiga primeiro: é a ordem que a tela usa pra
   // empilhar (nova localização aparece embaixo das anteriores).
-  const localizacoesRelacionadas = linha.planos_acao_evidencia_localizacoes ?? [];
+  const localizacoesRelacionadas =
+    linha.planos_acao_evidencia_localizacoes ?? [];
   const localizacoesEvidencia = [...localizacoesRelacionadas]
     .sort((a, b) => new Date(a.capturada_em) - new Date(b.capturada_em))
     .map((l) => mapearLocalizacao(l));
 
-  const localizacaoPorId = Object.fromEntries(localizacoesEvidencia.map((l) => [l.id, l]));
+  const localizacaoPorId = Object.fromEntries(
+    localizacoesEvidencia.map((l) => [l.id, l]),
+  );
 
   const evidenciasRelacionadas = linha.planos_acao_evidencias ?? [];
   const evidencias =
@@ -105,7 +123,15 @@ function mapearPlano(linha) {
             localizacaoEvidencia: localizacaoPorId[e.localizacao_id] ?? null,
           }))
       : linha.imagem_path
-        ? [{ id: null, imagemPath: linha.imagem_path, metadados: linha.imagem_metadados ?? null, criadoEm: linha.criado_em, localizacaoEvidencia: null }]
+        ? [
+            {
+              id: null,
+              imagemPath: linha.imagem_path,
+              metadados: linha.imagem_metadados ?? null,
+              criadoEm: linha.criado_em,
+              localizacaoEvidencia: null,
+            },
+          ]
         : [];
 
   // Fallback pras colunas legadas (evidencia_latitude etc. em planos_acao)
@@ -143,7 +169,9 @@ function mapearPlano(linha) {
     como: linha.como,
     quem: linha.quem,
     quandoPrevisto: linha.quando_previsto,
-    estruturado: Boolean(linha.o_que || linha.como || linha.quem || linha.quando_previsto),
+    estruturado: Boolean(
+      linha.o_que || linha.como || linha.quem || linha.quando_previsto,
+    ),
     // Normalizado no client como segunda rede de segurança — a migration
     // 20260708130000 já reescreve valores legados no banco, mas o front
     // não deve quebrar caso rode contra um ambiente sem a migration ainda.
@@ -156,7 +184,12 @@ function mapearPlano(linha) {
     temEvidencias: linha.tem_evidencias ?? evidencias.length > 0,
     // Histórico completo — mais antiga primeiro. É o que a tela do plano
     // usa pra listar "uma localização por anexação".
-    localizacoesEvidencia: localizacoesEvidencia.length > 0 ? localizacoesEvidencia : localizacaoLegada ? [localizacaoLegada] : [],
+    localizacoesEvidencia:
+      localizacoesEvidencia.length > 0
+        ? localizacoesEvidencia
+        : localizacaoLegada
+          ? [localizacaoLegada]
+          : [],
     // Mantido por retrocompatibilidade com qualquer trecho que ainda
     // espere UMA localização (a mais recente) em vez do histórico —
     // sempre deriva do mesmo dado, nunca uma fonte própria.
@@ -204,10 +237,16 @@ const PADRAO_DATA = /^\d{4}-\d{2}-\d{2}$/;
 // Só existe porque o detector genérico trabalha com rótulos de exibição
 // (pensados pra mensagem), não com nomes de campo — esta é a única ponte
 // entre os dois vocabulários, mantida num único lugar.
-const ROTULO_SENSIVEL_PARA_CAMPO = { 'O quê': 'oQue', Como: 'como', Quem: 'quem' };
+const ROTULO_SENSIVEL_PARA_CAMPO = {
+  "O quê": "oQue",
+  Como: "como",
+  Quem: "quem",
+};
 
 function validarTextoCurto(errosPorCampo, chave, valorBruto, rotulo, limite) {
-  const texto = String(valorBruto ?? '').replace(/\r\n/g, '\n').trim();
+  const texto = String(valorBruto ?? "")
+    .replace(/\r\n/g, "\n")
+    .trim();
   if (!texto) {
     errosPorCampo[chave] = `${rotulo} é obrigatório.`;
     return null;
@@ -220,9 +259,10 @@ function validarTextoCurto(errosPorCampo, chave, valorBruto, rotulo, limite) {
 }
 
 function validarData(errosPorCampo, chave, valorBruto) {
-  const valor = String(valorBruto ?? '').trim();
+  const valor = String(valorBruto ?? "").trim();
   if (!valor || !PADRAO_DATA.test(valor)) {
-    errosPorCampo[chave] = 'Quando é obrigatório — informe a data prevista para execução.';
+    errosPorCampo[chave] =
+      "Quando é obrigatório — informe a data prevista para execução.";
     return null;
   }
   return valor;
@@ -242,16 +282,43 @@ function validarData(errosPorCampo, chave, valorBruto) {
  * @returns {{ valido: boolean, errosPorCampo: Record<string,string>,
  *   valores: { oQue: string, como: string, quem: string, quandoPrevisto: string } | null }}
  */
-export function validarCamposPlanoDetalhado({ oQue, como, quem, quandoPrevisto }) {
+export function validarCamposPlanoDetalhado({
+  oQue,
+  como,
+  quem,
+  quandoPrevisto,
+}) {
   const errosPorCampo = {};
 
-  const oQueValido = validarTextoCurto(errosPorCampo, 'oQue', oQue, 'O quê', LIMITE_O_QUE);
-  const comoValido = validarTextoCurto(errosPorCampo, 'como', como, 'Como', LIMITE_COMO);
-  const quemValido = validarTextoCurto(errosPorCampo, 'quem', quem, 'Quem', LIMITE_QUEM);
-  const quandoValido = validarData(errosPorCampo, 'quandoPrevisto', quandoPrevisto);
+  const oQueValido = validarTextoCurto(
+    errosPorCampo,
+    "oQue",
+    oQue,
+    "O quê",
+    LIMITE_O_QUE,
+  );
+  const comoValido = validarTextoCurto(
+    errosPorCampo,
+    "como",
+    como,
+    "Como",
+    LIMITE_COMO,
+  );
+  const quemValido = validarTextoCurto(
+    errosPorCampo,
+    "quem",
+    quem,
+    "Quem",
+    LIMITE_QUEM,
+  );
+  const quandoValido = validarData(
+    errosPorCampo,
+    "quandoPrevisto",
+    quandoPrevisto,
+  );
 
   const candidatosSensiveis = {};
-  if (oQueValido) candidatosSensiveis['O quê'] = oQueValido;
+  if (oQueValido) candidatosSensiveis["O quê"] = oQueValido;
   if (comoValido) candidatosSensiveis.Como = comoValido;
   if (quemValido) candidatosSensiveis.Quem = quemValido;
 
@@ -260,14 +327,23 @@ export function validarCamposPlanoDetalhado({ oQue, como, quem, quandoPrevisto }
     const campo = ROTULO_SENSIVEL_PARA_CAMPO[rotulo];
     // Não citamos o tipo (CPF, RG, cartão...) na mensagem — ver comentário
     // em mensagemBloqueioSensivel sobre por que isso é deliberado.
-    if (campo) errosPorCampo[campo] = 'Este campo pode conter dados pessoais ou sensíveis. Revise o conteúdo antes de salvar.';
+    if (campo)
+      errosPorCampo[campo] =
+        "Este campo pode conter dados pessoais ou sensíveis. Revise o conteúdo antes de salvar.";
   });
 
   const valido = Object.keys(errosPorCampo).length === 0;
   return {
     valido,
     errosPorCampo,
-    valores: valido ? { oQue: oQueValido, como: comoValido, quem: quemValido, quandoPrevisto: quandoValido } : null,
+    valores: valido
+      ? {
+          oQue: oQueValido,
+          como: comoValido,
+          quem: quemValido,
+          quandoPrevisto: quandoValido,
+        }
+      : null,
   };
 }
 
@@ -310,16 +386,16 @@ async function comSignedUrls(plano) {
  */
 export async function listarPlanos({ limite = 100, tecnologiaId } = {}) {
   let consulta = supabase
-    .from('planos_acao')
+    .from("planos_acao")
     .select(COLUNAS_PLANO_LISTA)
-    .order('criado_em', { ascending: false })
+    .order("criado_em", { ascending: false })
     .range(0, limite - 1);
 
-  if (tecnologiaId) consulta = consulta.eq('tecnologia_id', tecnologiaId);
+  if (tecnologiaId) consulta = consulta.eq("tecnologia_id", tecnologiaId);
 
   const { data, error } = await consulta;
 
-  tratarErro(error, 'Não foi possível carregar os planos de ação.');
+  tratarErro(error, "Não foi possível carregar os planos de ação.");
   return data.map(mapearPlano);
 }
 
@@ -329,27 +405,30 @@ export async function listarPlanos({ limite = 100, tecnologiaId } = {}) {
  * cidade (e vice-versa) — exatamente o bug que motivou essa separação.
  */
 export async function listarPlanosPorCidade(cidadeId, tecnologiaId) {
-  if (!tecnologiaId) throw new Error('Tecnologia é obrigatória.');
+  if (!tecnologiaId) throw new Error("Tecnologia é obrigatória.");
 
   const { data, error } = await supabase
-    .from('planos_acao')
+    .from("planos_acao")
     .select(COLUNAS_PLANO_LISTA)
-    .eq('cidade_id', cidadeId)
-    .eq('tecnologia_id', tecnologiaId)
-    .order('criado_em', { ascending: false });
+    .eq("cidade_id", cidadeId)
+    .eq("tecnologia_id", tecnologiaId)
+    .order("criado_em", { ascending: false });
 
-  tratarErro(error, 'Não foi possível carregar os planos de ação desta cidade.');
+  tratarErro(
+    error,
+    "Não foi possível carregar os planos de ação desta cidade.",
+  );
   return data.map(mapearPlano);
 }
 
 export async function buscarPlano(id) {
   const { data, error } = await supabase
-    .from('planos_acao')
+    .from("planos_acao")
     .select(COLUNAS_PLANO_DETALHE)
-    .eq('id', id)
+    .eq("id", id)
     .maybeSingle();
 
-  tratarErro(error, 'Não foi possível carregar o plano de ação.');
+  tratarErro(error, "Não foi possível carregar o plano de ação.");
   return comSignedUrls(mapearPlano(data));
 }
 
@@ -362,7 +441,10 @@ export async function buscarPlano(id) {
  * (criar_plano_com_evidencias), que aplica isso de novo,
  * independentemente do que o client mandar.
  */
-export function localizacaoEvidenciaObrigatoria(quantidadeImagens, localizacaoEvidencia) {
+export function localizacaoEvidenciaObrigatoria(
+  quantidadeImagens,
+  localizacaoEvidencia,
+) {
   return quantidadeImagens > 0 && !localizacaoEvidencia;
 }
 
@@ -382,10 +464,10 @@ export async function criarPlano(dados) {
   const { oQue, como, quem, quandoPrevisto } = validarCamposPlano(dados);
 
   if (!dados.cidadeId || !dados.criadoPorId) {
-    throw new Error('Cidade e usuário autenticado são obrigatórios.');
+    throw new Error("Cidade e usuário autenticado são obrigatórios.");
   }
   if (!dados.tecnologiaId) {
-    throw new Error('Tecnologia é obrigatória.');
+    throw new Error("Tecnologia é obrigatória.");
   }
   // Contexto de criação (ver migration 20260720120000) é obrigatório pra
   // todo plano NOVO — é o que torna possível, no futuro, comparar "estava
@@ -393,18 +475,22 @@ export async function criarPlano(dados) {
   // inferir depois; se o form não mandou, é bug no form, não algo pra
   // silenciosamente aceitar como null.
   if (!dados.classificacaoNoMomento) {
-    throw new Error('Classificação da cidade no momento da criação é obrigatória.');
+    throw new Error(
+      "Classificação da cidade no momento da criação é obrigatória.",
+    );
   }
   if (!dados.periodoReferenciaFim) {
-    throw new Error('Período de referência é obrigatório.');
+    throw new Error("Período de referência é obrigatório.");
   }
   if (!dados.indicadoresMotivadores) {
-    throw new Error('Indicadores que motivaram a criação são obrigatórios.');
+    throw new Error("Indicadores que motivaram a criação são obrigatórios.");
   }
 
   const imagens = dados.imagens ?? [];
-  if (localizacaoEvidenciaObrigatoria(imagens.length, dados.localizacaoEvidencia)) {
-    throw new Error('Localização é obrigatória quando há evidências anexadas.');
+  if (
+    localizacaoEvidenciaObrigatoria(imagens.length, dados.localizacaoEvidencia)
+  ) {
+    throw new Error("Localização é obrigatória quando há evidências anexadas.");
   }
 
   const id = crypto.randomUUID();
@@ -418,17 +504,28 @@ export async function criarPlano(dados) {
       if (!extensao) {
         // imagemUpload.js sempre re-encoda pra um dos tipos do mapa; blob fora
         // dele significa bypass do pipeline de imagem — rejeitar, não adivinhar.
-        throw new Error('Tipo de imagem não suportado.');
+        throw new Error("Tipo de imagem não suportado.");
       }
       const caminho = `${dados.criadoPorId}/${id}-${indice}.${extensao}`;
 
+      const inicioUpload = performance.now();
       const { error: erroUpload } = await supabase.storage
         .from(BUCKET)
         .upload(caminho, blob, { contentType: blob.type });
-      if (erroUpload) throw new Error('Falha ao enviar uma das imagens. Tente novamente.');
+      if (erroUpload)
+        throw new Error("Falha ao enviar uma das imagens. Tente novamente.");
 
       caminhosEnviados.push(caminho);
-      evidenciasParaRpc.push({ imagem_path: caminho, imagem_metadados: metadados ?? null, ordem: indice });
+      evidenciasParaRpc.push({
+        imagem_path: caminho,
+        imagem_metadados: metadados
+          ? {
+              ...metadados,
+              tempoUploadMs: Math.round(performance.now() - inicioUpload),
+            }
+          : null,
+        ordem: indice,
+      });
     }
 
     // Plano + evidências + localização são criados numa única transação no
@@ -436,39 +533,48 @@ export async function criarPlano(dados) {
     // é lá, não aqui, que a regra "localização obrigatória com evidência"
     // realmente é garantida, mesmo que este service tenha um bug ou seja
     // contornado por outra via de escrita no futuro.
-    const { error: erroRpc } = await supabase.rpc('criar_plano_com_evidencias', {
-      p_id: id,
-      p_cidade_id: dados.cidadeId,
-      p_tecnologia_id: dados.tecnologiaId,
-      p_indicador_id: dados.indicadorId ?? null,
-      p_o_que: oQue,
-      p_como: como,
-      p_quem: quem,
-      p_quando_previsto: quandoPrevisto,
-      p_classificacao_no_momento: dados.classificacaoNoMomento,
-      p_periodo_referencia_fim: dados.periodoReferenciaFim,
-      p_indicadores_motivadores: dados.indicadoresMotivadores,
-      p_canal: dados.canal ?? null,
-      p_evidencias: evidenciasParaRpc,
-      p_evidencia_latitude: dados.localizacaoEvidencia?.latitude ?? null,
-      p_evidencia_longitude: dados.localizacaoEvidencia?.longitude ?? null,
-      p_evidencia_precisao_metros: dados.localizacaoEvidencia?.precisaoMetros ?? null,
-      p_evidencia_endereco: dados.localizacaoEvidencia?.endereco ?? null,
-      p_evidencia_capturada_em: dados.localizacaoEvidencia?.capturadaEm ?? null,
-      p_evidencia_numero: dados.localizacaoEvidencia?.numero ?? null,
-      p_evidencia_bairro: dados.localizacaoEvidencia?.bairro ?? null,
-      p_evidencia_cidade: dados.localizacaoEvidencia?.cidade ?? null,
-      p_evidencia_estado: dados.localizacaoEvidencia?.estado ?? null,
-      p_evidencia_cep: dados.localizacaoEvidencia?.cep ?? null,
-      p_evidencia_pais: dados.localizacaoEvidencia?.pais ?? null,
-    });
+    const { error: erroRpc } = await supabase.rpc(
+      "criar_plano_com_evidencias",
+      {
+        p_id: id,
+        p_cidade_id: dados.cidadeId,
+        p_tecnologia_id: dados.tecnologiaId,
+        p_indicador_id: dados.indicadorId ?? null,
+        p_o_que: oQue,
+        p_como: como,
+        p_quem: quem,
+        p_quando_previsto: quandoPrevisto,
+        p_classificacao_no_momento: dados.classificacaoNoMomento,
+        p_periodo_referencia_fim: dados.periodoReferenciaFim,
+        p_indicadores_motivadores: dados.indicadoresMotivadores,
+        p_canal: dados.canal ?? null,
+        p_evidencias: evidenciasParaRpc,
+        p_evidencia_latitude: dados.localizacaoEvidencia?.latitude ?? null,
+        p_evidencia_longitude: dados.localizacaoEvidencia?.longitude ?? null,
+        p_evidencia_precisao_metros:
+          dados.localizacaoEvidencia?.precisaoMetros ?? null,
+        p_evidencia_endereco: dados.localizacaoEvidencia?.endereco ?? null,
+        p_evidencia_capturada_em:
+          dados.localizacaoEvidencia?.capturadaEm ?? null,
+        p_evidencia_numero: dados.localizacaoEvidencia?.numero ?? null,
+        p_evidencia_bairro: dados.localizacaoEvidencia?.bairro ?? null,
+        p_evidencia_cidade: dados.localizacaoEvidencia?.cidade ?? null,
+        p_evidencia_estado: dados.localizacaoEvidencia?.estado ?? null,
+        p_evidencia_cep: dados.localizacaoEvidencia?.cep ?? null,
+        p_evidencia_pais: dados.localizacaoEvidencia?.pais ?? null,
+      },
+    );
 
-    if (erroRpc) throw new Error(erroRpc.message || 'Não foi possível salvar o plano de ação.');
+    if (erroRpc)
+      throw new Error(
+        erroRpc.message || "Não foi possível salvar o plano de ação.",
+      );
 
     return await buscarPlano(id);
   } catch (excecao) {
     // Evita imagens órfãs no Storage se algo falhar depois do upload.
-    if (caminhosEnviados.length > 0) await supabase.storage.from(BUCKET).remove(caminhosEnviados);
+    if (caminhosEnviados.length > 0)
+      await supabase.storage.from(BUCKET).remove(caminhosEnviados);
     throw excecao;
   }
 }
@@ -496,14 +602,17 @@ const LIMITE_DESCRICAO_LEGADO = 8000;
  *     cep?: string, pais?: string, capturadaEm?: string } }} dados
  */
 export async function anexarEvidenciasPlano(planoId, dados) {
-  if (!planoId) throw new Error('Plano é obrigatório.');
+  if (!planoId) throw new Error("Plano é obrigatório.");
 
   const imagens = dados.imagens ?? [];
-  if (imagens.length === 0) throw new Error('Selecione ao menos uma imagem para anexar.');
-  if (localizacaoEvidenciaObrigatoria(imagens.length, dados.localizacaoEvidencia)) {
-    throw new Error('Localização é obrigatória quando há evidências anexadas.');
+  if (imagens.length === 0)
+    throw new Error("Selecione ao menos uma imagem para anexar.");
+  if (
+    localizacaoEvidenciaObrigatoria(imagens.length, dados.localizacaoEvidencia)
+  ) {
+    throw new Error("Localização é obrigatória quando há evidências anexadas.");
   }
-  if (!dados.criadoPorId) throw new Error('Usuário autenticado é obrigatório.');
+  if (!dados.criadoPorId) throw new Error("Usuário autenticado é obrigatório.");
 
   const caminhosEnviados = [];
 
@@ -515,28 +624,39 @@ export async function anexarEvidenciasPlano(planoId, dados) {
       if (!extensao) {
         // imagemUpload.js sempre re-encoda pra um dos tipos do mapa; blob fora
         // dele significa bypass do pipeline de imagem — rejeitar, não adivinhar.
-        throw new Error('Tipo de imagem não suportado.');
+        throw new Error("Tipo de imagem não suportado.");
       }
       // Prefixo com o próprio planoId (não só criadoPorId-timestamp) pra
       // ficar óbvio, só olhando o path no Storage, a quais evidências de
       // qual plano cada arquivo pertence — útil pra auditoria manual.
       const caminho = `${dados.criadoPorId}/${planoId}-${Date.now()}-${indice}.${extensao}`;
 
+      const inicioUpload = performance.now();
       const { error: erroUpload } = await supabase.storage
         .from(BUCKET)
         .upload(caminho, blob, { contentType: blob.type });
-      if (erroUpload) throw new Error('Falha ao enviar uma das imagens. Tente novamente.');
+      if (erroUpload)
+        throw new Error("Falha ao enviar uma das imagens. Tente novamente.");
 
       caminhosEnviados.push(caminho);
-      evidenciasParaRpc.push({ imagem_path: caminho, imagem_metadados: metadados ?? null });
+      evidenciasParaRpc.push({
+        imagem_path: caminho,
+        imagem_metadados: metadados
+          ? {
+              ...metadados,
+              tempoUploadMs: Math.round(performance.now() - inicioUpload),
+            }
+          : null,
+      });
     }
 
-    const { error: erroRpc } = await supabase.rpc('anexar_evidencias_plano', {
+    const { error: erroRpc } = await supabase.rpc("anexar_evidencias_plano", {
       p_plano_id: planoId,
       p_evidencias: evidenciasParaRpc,
       p_evidencia_latitude: dados.localizacaoEvidencia?.latitude ?? null,
       p_evidencia_longitude: dados.localizacaoEvidencia?.longitude ?? null,
-      p_evidencia_precisao_metros: dados.localizacaoEvidencia?.precisaoMetros ?? null,
+      p_evidencia_precisao_metros:
+        dados.localizacaoEvidencia?.precisaoMetros ?? null,
       p_evidencia_endereco: dados.localizacaoEvidencia?.endereco ?? null,
       p_evidencia_numero: dados.localizacaoEvidencia?.numero ?? null,
       p_evidencia_bairro: dados.localizacaoEvidencia?.bairro ?? null,
@@ -547,24 +667,34 @@ export async function anexarEvidenciasPlano(planoId, dados) {
       p_evidencia_capturada_em: dados.localizacaoEvidencia?.capturadaEm ?? null,
     });
 
-    if (erroRpc) throw new Error(erroRpc.message || 'Não foi possível anexar as evidências.');
+    if (erroRpc)
+      throw new Error(
+        erroRpc.message || "Não foi possível anexar as evidências.",
+      );
 
     return await buscarPlano(planoId);
   } catch (excecao) {
-    if (caminhosEnviados.length > 0) await supabase.storage.from(BUCKET).remove(caminhosEnviados);
+    if (caminhosEnviados.length > 0)
+      await supabase.storage.from(BUCKET).remove(caminhosEnviados);
     throw excecao;
   }
 }
 
 /** Validação do campo livre legado — só usada ao editar planos criados antes da versão estruturada. */
 function validarDescricaoLegado(valorBruto) {
-  const descricao = String(valorBruto ?? '').replace(/\r\n/g, '\n').trim();
-  if (!descricao) throw new Error('Descrição do plano é obrigatória.');
+  const descricao = String(valorBruto ?? "")
+    .replace(/\r\n/g, "\n")
+    .trim();
+  if (!descricao) throw new Error("Descrição do plano é obrigatória.");
   if (descricao.length > LIMITE_DESCRICAO_LEGADO) {
-    throw new Error(`A descrição não pode passar de ${LIMITE_DESCRICAO_LEGADO} caracteres.`);
+    throw new Error(
+      `A descrição não pode passar de ${LIMITE_DESCRICAO_LEGADO} caracteres.`,
+    );
   }
 
-  const { valido, ocorrencias } = validarCamposSensiveis({ Descrição: descricao });
+  const { valido, ocorrencias } = validarCamposSensiveis({
+    Descrição: descricao,
+  });
   if (!valido) throw new Error(mensagemBloqueioSensivel(ocorrencias));
 
   return descricao;
@@ -573,12 +703,15 @@ function validarDescricaoLegado(valorBruto) {
 /** Recarrega o plano após uma RPC de escrita — RPCs de update retornam void por design (ver migration 20260708140000). */
 async function buscarESincronizarPlano(planoId) {
   const { data, error } = await supabase
-    .from('planos_acao')
+    .from("planos_acao")
     .select(COLUNAS_PLANO_DETALHE)
-    .eq('id', planoId)
+    .eq("id", planoId)
     .single();
 
-  tratarErro(error, 'Alteração salva, mas não foi possível recarregar o plano atualizado.');
+  tratarErro(
+    error,
+    "Alteração salva, mas não foi possível recarregar o plano atualizado.",
+  );
   return comSignedUrls(mapearPlano(data));
 }
 
@@ -602,15 +735,17 @@ async function buscarESincronizarPlano(planoId) {
  * @param {object} dados - campos estruturados OU { descricao }, mais `motivo` opcional
  */
 export async function atualizarPlano(planoId, dados) {
-  if (!planoId) throw new Error('Plano é obrigatório.');
+  if (!planoId) throw new Error("Plano é obrigatório.");
 
-  const ehEdicaoEstruturada = ['oQue', 'como', 'quem', 'quandoPrevisto'].some((chave) => chave in dados);
-  const motivo = String(dados.motivo ?? '').trim() || null;
+  const ehEdicaoEstruturada = ["oQue", "como", "quem", "quandoPrevisto"].some(
+    (chave) => chave in dados,
+  );
+  const motivo = String(dados.motivo ?? "").trim() || null;
 
   let erroRpc;
   if (ehEdicaoEstruturada) {
     const { oQue, como, quem, quandoPrevisto } = validarCamposPlano(dados);
-    ({ error: erroRpc } = await supabase.rpc('atualizar_plano_estruturado', {
+    ({ error: erroRpc } = await supabase.rpc("atualizar_plano_estruturado", {
       p_plano_id: planoId,
       p_o_que: oQue,
       p_como: como,
@@ -620,14 +755,14 @@ export async function atualizarPlano(planoId, dados) {
     }));
   } else {
     const descricaoValidada = validarDescricaoLegado(dados.descricao);
-    ({ error: erroRpc } = await supabase.rpc('atualizar_plano_legado', {
+    ({ error: erroRpc } = await supabase.rpc("atualizar_plano_legado", {
       p_plano_id: planoId,
       p_descricao: descricaoValidada,
       p_motivo: motivo,
     }));
   }
 
-  tratarErro(erroRpc, 'Não foi possível salvar as alterações do plano.');
+  tratarErro(erroRpc, "Não foi possível salvar as alterações do plano.");
   return buscarESincronizarPlano(planoId);
 }
 
@@ -639,16 +774,16 @@ export async function atualizarPlano(planoId, dados) {
  * que já tem espaço reservado pra isso.
  */
 export async function atualizarStatusPlano(planoId, status, motivo = null) {
-  if (!planoId) throw new Error('Plano é obrigatório.');
-  if (!statusPlanoValido(status)) throw new Error('Status inválido.');
+  if (!planoId) throw new Error("Plano é obrigatório.");
+  if (!statusPlanoValido(status)) throw new Error("Status inválido.");
 
-  const { error } = await supabase.rpc('atualizar_status_plano', {
+  const { error } = await supabase.rpc("atualizar_status_plano", {
     p_plano_id: planoId,
     p_status: status,
     p_motivo: motivo,
   });
 
-  tratarErro(error, 'Não foi possível atualizar o status do plano.');
+  tratarErro(error, "Não foi possível atualizar o status do plano.");
   return buscarESincronizarPlano(planoId);
 }
 
@@ -659,16 +794,26 @@ export async function atualizarStatusPlano(planoId, status, motivo = null) {
  * inacessível pela UI), preferível a um registro quebrado no app.
  */
 export async function excluirPlano(plano) {
-  if (!plano?.id) throw new Error('Plano inválido.');
+  if (!plano?.id) throw new Error("Plano inválido.");
 
-  const { error } = await supabase.from('planos_acao').delete().eq('id', plano.id);
-  tratarErro(error, 'Não foi possível excluir o plano de ação.');
+  const { error } = await supabase
+    .from("planos_acao")
+    .delete()
+    .eq("id", plano.id);
+  tratarErro(error, "Não foi possível excluir o plano de ação.");
 
-  const caminhos = (plano.evidencias ?? []).map((evidencia) => evidencia.imagemPath).filter(Boolean);
+  const caminhos = (plano.evidencias ?? [])
+    .map((evidencia) => evidencia.imagemPath)
+    .filter(Boolean);
   if (caminhos.length > 0) {
-    const { error: erroStorage } = await supabase.storage.from(BUCKET).remove(caminhos);
+    const { error: erroStorage } = await supabase.storage
+      .from(BUCKET)
+      .remove(caminhos);
     if (erroStorage) {
-      console.error('Plano excluído, mas uma ou mais imagens de evidência não foram removidas do Storage:', erroStorage);
+      console.error(
+        "Plano excluído, mas uma ou mais imagens de evidência não foram removidas do Storage:",
+        erroStorage,
+      );
     }
   }
 }

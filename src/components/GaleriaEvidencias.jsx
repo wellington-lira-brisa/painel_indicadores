@@ -1,4 +1,4 @@
-import { ImageOff, Images, X } from 'lucide-react';
+import { ImageOff, Images, X } from "lucide-react";
 
 /**
  * Grid responsivo de miniaturas das evidências anexadas. `aoRemover` é
@@ -12,7 +12,8 @@ export default function GaleriaEvidencias({ itens, aoRemover, aoAbrirImagem }) {
     <div>
       <p className="mb-2 inline-flex items-center gap-1.5 text-xs font-medium text-slate-500">
         <Images className="size-3.5" aria-hidden="true" />
-        {itens.length} {itens.length === 1 ? 'imagem anexada' : 'imagens anexadas'}
+        {itens.length}{" "}
+        {itens.length === 1 ? "imagem anexada" : "imagens anexadas"}
       </p>
       <ul className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
         {itens.map((item, indice) => (
@@ -30,6 +31,7 @@ export default function GaleriaEvidencias({ itens, aoRemover, aoAbrirImagem }) {
                 <img
                   src={item.url}
                   alt={`Evidência ${indice + 1}`}
+                  decoding="async"
                   className="size-full object-cover transition hover:scale-105"
                 />
               ) : (

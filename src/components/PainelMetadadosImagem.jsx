@@ -1,17 +1,25 @@
-import { memo } from 'react';
-import { AlertTriangle, CheckCircle2, MapPin } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
-import { PERMISSOES } from '../services/permissaoService';
-import { formatarDataHora, formatarBytes } from '../utils/format';
-import LinhaInfo from './LinhaInfo';
+import { memo } from "react";
+import { AlertTriangle, CheckCircle2, MapPin } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { PERMISSOES } from "../services/permissaoService";
+import { formatarDataHora, formatarBytes } from "../utils/format";
+import LinhaInfo from "./LinhaInfo";
 
 function Secao({ titulo, children }) {
   return (
     <div className="border-b border-slate-100 px-4 py-4 last:border-b-0 sm:px-5">
-      <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">{titulo}</h4>
+      <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+        {titulo}
+      </h4>
       <dl className="mt-2 divide-y divide-slate-100">{children}</dl>
     </div>
   );
+}
+
+function formatarDuracao(ms) {
+  if (ms == null) return "—";
+  if (ms < 1000) return `${Math.round(ms)} ms`;
+  return `${(ms / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} s`;
 }
 
 /**
@@ -25,16 +33,27 @@ function Secao({ titulo, children }) {
  * passado pra cada evidência do lote, já que representam "quem/quando/onde
  * anexou", não algo específico de um arquivo.
  */
-function PainelMetadadosImagem({ metadados, nomeArquivo, criadoEm, criadoPor, localizacaoCapturada = null }) {
+function PainelMetadadosImagem({
+  metadados,
+  nomeArquivo,
+  criadoEm,
+  criadoPor,
+  localizacaoCapturada = null,
+}) {
   const { temPermissao } = useAuth();
-  const podeVerDadosSensiveis = temPermissao(PERMISSOES.VISUALIZAR_DADOS_SENSIVEIS);
+  const podeVerDadosSensiveis = temPermissao(
+    PERMISSOES.VISUALIZAR_DADOS_SENSIVEIS,
+  );
 
   if (!metadados) return null;
 
   return (
     <div>
       <div className="border-b border-slate-100 px-4 py-4 sm:px-5">
-        <h3 className="truncate text-sm font-semibold text-slate-800" title={nomeArquivo ?? metadados.nomeOriginal}>
+        <h3
+          className="truncate text-sm font-semibold text-slate-800"
+          title={nomeArquivo ?? metadados.nomeOriginal}
+        >
           {nomeArquivo ?? metadados.nomeOriginal}
         </h3>
         {metadados.possuiExif ? (
@@ -44,18 +63,23 @@ function PainelMetadadosImagem({ metadados, nomeArquivo, criadoEm, criadoPor, lo
           </p>
         ) : (
           <p className="mt-2 inline-flex items-start gap-1.5 rounded-md bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800">
-            <AlertTriangle className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+            <AlertTriangle
+              className="mt-0.5 size-3.5 shrink-0"
+              aria-hidden="true"
+            />
             Sem EXIF — origem da foto não confirmada.
           </p>
         )}
       </div>
 
       <Secao titulo="Evidência">
-        <LinhaInfo rotulo="Enviado em">{criadoEm ? formatarDataHora(criadoEm) : '—'}</LinhaInfo>
-        <LinhaInfo rotulo="Colaborador">{criadoPor?.nome ?? '—'}</LinhaInfo>
+        <LinhaInfo rotulo="Enviado em">
+          {criadoEm ? formatarDataHora(criadoEm) : "—"}
+        </LinhaInfo>
+        <LinhaInfo rotulo="Colaborador">{criadoPor?.nome ?? "—"}</LinhaInfo>
         <LinhaInfo rotulo="Localização capturada" quebrarLinha>
           {!localizacaoCapturada ? (
-            '—'
+            "—"
           ) : podeVerDadosSensiveis ? (
             <span className="inline-flex items-center gap-1">
               <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
@@ -69,21 +93,32 @@ function PainelMetadadosImagem({ metadados, nomeArquivo, criadoEm, criadoPor, lo
         {localizacaoCapturada && podeVerDadosSensiveis && (
           <>
             <LinhaInfo rotulo="Coordenadas">
-              {localizacaoCapturada.latitude.toFixed(6)}, {localizacaoCapturada.longitude.toFixed(6)}
+              {localizacaoCapturada.latitude.toFixed(6)},{" "}
+              {localizacaoCapturada.longitude.toFixed(6)}
             </LinhaInfo>
             {localizacaoCapturada.precisaoMetros != null && (
-              <LinhaInfo rotulo="Precisão do GPS">±{Math.round(localizacaoCapturada.precisaoMetros)} m</LinhaInfo>
+              <LinhaInfo rotulo="Precisão do GPS">
+                ±{Math.round(localizacaoCapturada.precisaoMetros)} m
+              </LinhaInfo>
             )}
             {(localizacaoCapturada.bairro || localizacaoCapturada.cidade) && (
               <LinhaInfo rotulo="Bairro / Cidade" quebrarLinha>
-                {[localizacaoCapturada.bairro, localizacaoCapturada.cidade].filter(Boolean).join(' · ')}
+                {[localizacaoCapturada.bairro, localizacaoCapturada.cidade]
+                  .filter(Boolean)
+                  .join(" · ")}
               </LinhaInfo>
             )}
-            {(localizacaoCapturada.estado || localizacaoCapturada.cep || localizacaoCapturada.pais) && (
+            {(localizacaoCapturada.estado ||
+              localizacaoCapturada.cep ||
+              localizacaoCapturada.pais) && (
               <LinhaInfo rotulo="Estado / CEP / País" quebrarLinha>
-                {[localizacaoCapturada.estado, localizacaoCapturada.cep, localizacaoCapturada.pais]
+                {[
+                  localizacaoCapturada.estado,
+                  localizacaoCapturada.cep,
+                  localizacaoCapturada.pais,
+                ]
                   .filter(Boolean)
-                  .join(' · ')}
+                  .join(" · ")}
               </LinhaInfo>
             )}
             {localizacaoCapturada.linkGoogleMaps && (
@@ -104,27 +139,63 @@ function PainelMetadadosImagem({ metadados, nomeArquivo, criadoEm, criadoPor, lo
       </Secao>
 
       <Secao titulo="Arquivo">
-        <LinhaInfo rotulo="Tamanho original">{formatarBytes(metadados.tamanhoOriginalBytes)}</LinhaInfo>
-        <LinhaInfo rotulo="Após compressão">{formatarBytes(metadados.tamanhoFinalBytes)}</LinhaInfo>
+        <LinhaInfo rotulo="Tamanho original">
+          {formatarBytes(metadados.tamanhoOriginalBytes)}
+        </LinhaInfo>
+        <LinhaInfo rotulo="Após compressão">
+          {formatarBytes(metadados.tamanhoFinalBytes)}
+        </LinhaInfo>
+        {metadados.reducaoPercentual > 0 && (
+          <LinhaInfo rotulo="Redução obtida">
+            {metadados.reducaoPercentual.toLocaleString("pt-BR")}%
+          </LinhaInfo>
+        )}
+        {metadados.larguraOriginal && metadados.alturaOriginal && (
+          <LinhaInfo rotulo="Dimensões originais">
+            {metadados.larguraOriginal} × {metadados.alturaOriginal} px
+          </LinhaInfo>
+        )}
         <LinhaInfo rotulo="Dimensões">
           {metadados.larguraFinal && metadados.alturaFinal
             ? `${metadados.larguraFinal} × ${metadados.alturaFinal} px`
-            : '—'}
+            : "—"}
         </LinhaInfo>
-        <LinhaInfo rotulo="Tipo">{metadados.tipoMimeFinal ?? '—'}</LinhaInfo>
+        <LinhaInfo rotulo="Formato final">
+          {metadados.tipoMimeFinal ?? "—"}
+        </LinhaInfo>
+        {metadados.qualidadeFinal != null && (
+          <LinhaInfo rotulo="Qualidade de saída">
+            {Math.round(metadados.qualidadeFinal * 100)}%
+          </LinhaInfo>
+        )}
+        {metadados.tempoProcessamentoMs != null && (
+          <LinhaInfo rotulo="Otimização local">
+            {formatarDuracao(metadados.tempoProcessamentoMs)}
+          </LinhaInfo>
+        )}
+        {metadados.tempoUploadMs != null && (
+          <LinhaInfo rotulo="Tempo de upload">
+            {formatarDuracao(metadados.tempoUploadMs)}
+          </LinhaInfo>
+        )}
       </Secao>
 
       <Secao titulo="Origem da foto (EXIF)">
-        <LinhaInfo rotulo="Data da captura">{formatarDataHora(metadados.dataCaptura)}</LinhaInfo>
-        <LinhaInfo rotulo="Dispositivo">{metadados.dispositivo ?? '—'}</LinhaInfo>
-        <LinhaInfo rotulo="Software">{metadados.software ?? '—'}</LinhaInfo>
+        <LinhaInfo rotulo="Data da captura">
+          {formatarDataHora(metadados.dataCaptura)}
+        </LinhaInfo>
+        <LinhaInfo rotulo="Dispositivo">
+          {metadados.dispositivo ?? "—"}
+        </LinhaInfo>
+        <LinhaInfo rotulo="Software">{metadados.software ?? "—"}</LinhaInfo>
         <LinhaInfo rotulo="Localização" quebrarLinha>
           {!metadados.localizacao ? (
-            '—'
+            "—"
           ) : podeVerDadosSensiveis ? (
             <span className="inline-flex items-center gap-1">
               <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
-              {metadados.localizacao.latitude.toFixed(5)}, {metadados.localizacao.longitude.toFixed(5)}
+              {metadados.localizacao.latitude.toFixed(5)},{" "}
+              {metadados.localizacao.longitude.toFixed(5)}
             </span>
           ) : (
             <span className="text-slate-400">Restrito</span>
@@ -139,9 +210,14 @@ function PainelMetadadosImagem({ metadados, nomeArquivo, criadoEm, criadoPor, lo
           </summary>
           <dl className="mt-2 rounded-lg bg-slate-50 p-3">
             {Object.entries(metadados.exifBruto).map(([campo, valor]) => (
-              <div key={campo} className="flex justify-between gap-4 py-0.5 text-xs">
+              <div
+                key={campo}
+                className="flex justify-between gap-4 py-0.5 text-xs"
+              >
                 <dt className="shrink-0 font-mono text-slate-500">{campo}</dt>
-                <dd className="min-w-0 flex-1 break-words text-right text-slate-700">{String(valor)}</dd>
+                <dd className="min-w-0 flex-1 break-words text-right text-slate-700">
+                  {String(valor)}
+                </dd>
               </div>
             ))}
           </dl>

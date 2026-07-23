@@ -13,67 +13,68 @@ function corDesvio(desvio) {
   return 'text-slate-500';
 }
 
-function CelulaDesvio({ valor, unidade }) {
+/**
+ * Uma linha por canal: nome do canal em destaque, meta/realizado discretos,
+ * desvio colorido em evidência. Área de toque confortável (min-h 44px).
+ */
+function LinhaCanal({ r, unidade }) {
   return (
-    <span className={`tabular-nums font-semibold ${corDesvio(valor)}`}>
-      {valor > 0 ? '+' : ''}{formatarValor(valor, unidade)}
-    </span>
+    <li className="flex min-h-[44px] items-center justify-between gap-3 py-2.5">
+      <span className="text-sm font-semibold text-slate-800">{r.canal}</span>
+      <div className="flex items-center gap-4">
+        <div className="text-right">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Meta</p>
+          <p className="text-xs tabular-nums text-slate-500">{formatarValor(r.meta, unidade)}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Realizado</p>
+          <p className="text-xs tabular-nums text-slate-600">{formatarValor(r.realizado, unidade)}</p>
+        </div>
+        <div className="min-w-[3rem] text-right">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Desvio</p>
+          <p className={`text-sm font-bold tabular-nums ${corDesvio(r.desvio)}`}>
+            {r.desvio > 0 ? '+' : ''}{formatarValor(r.desvio, unidade)}
+          </p>
+        </div>
+      </div>
+    </li>
   );
 }
 
-function TabelaDesvio({ linhas, unidade, titulo }) {
-  if (!linhas?.length) return <p className="text-xs text-slate-400 italic">Sem dado para {titulo}.</p>;
+function BlocoCanais({ linhas, unidade, titulo }) {
+  if (!linhas?.length) return null;
   return (
     <div>
-      <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">{titulo}</p>
-      <table className="w-full text-xs">
-        <thead>
-          <tr className="border-b border-slate-100 text-left text-slate-400">
-            <th className="pb-1 font-medium">Canal</th>
-            <th className="pb-1 text-right font-medium">Meta</th>
-            <th className="pb-1 text-right font-medium">Realizado</th>
-            <th className="pb-1 text-right font-medium">Desvio</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-slate-50">
-          {linhas.map((r) => (
-            <tr key={r.canal}>
-              <td className="py-1.5 font-medium text-slate-700">{r.canal}</td>
-              <td className="py-1.5 text-right tabular-nums text-slate-500">{formatarValor(r.meta, unidade)}</td>
-              <td className="py-1.5 text-right tabular-nums text-slate-600">{formatarValor(r.realizado, unidade)}</td>
-              <td className="py-1.5 text-right"><CelulaDesvio valor={r.desvio} unidade={unidade} /></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{titulo}</p>
+      <ul className="divide-y divide-slate-100">
+        {linhas.map((r) => <LinhaCanal key={r.canal} r={r} unidade={unidade} />)}
+      </ul>
     </div>
   );
 }
 
 /**
  * Desvio por canal da cidade (realizado − meta) para o indicador principal
- * da tecnologia — mês atual e acumulado do ano lado a lado.
- * Se não houver dado do mês atual (cidade sem atualização recente),
- * mostra só o acumulado. Oculta o card apenas se não houver nenhum dado.
+ * da tecnologia — mês atual e acumulado do ano.
+ * Layout em lista vertical com hierarquia clara: canal em destaque,
+ * meta/realizado discretos, desvio em cor e tamanho maiores.
  */
 export default function CardDesvioPorCanal({ desvio, unidade }) {
   if (!desvio?.acumulado?.length) return null;
 
   const temMesAtual = desvio.mesAtual?.length > 0;
-  const mesAtualLabel = temMesAtual
-    ? rotuloMes(desvio.mesAtual[0].mesRef)
-    : 'Mês atual';
+  const mesAtualLabel = temMesAtual ? rotuloMes(desvio.mesAtual[0].mesRef) : null;
 
   return (
-    <section aria-label="Desvio por canal" className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm">
+    <section aria-label="Desvio por canal" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
         Impacto por canal
       </h3>
-      <div className={`mt-3 grid grid-cols-1 gap-5 ${temMesAtual ? 'sm:grid-cols-2' : ''}`}>
+      <div className={`mt-3 ${temMesAtual ? 'grid grid-cols-1 gap-6 sm:grid-cols-2' : ''}`}>
         {temMesAtual && (
-          <TabelaDesvio linhas={desvio.mesAtual} unidade={unidade} titulo={mesAtualLabel} />
+          <BlocoCanais linhas={desvio.mesAtual} unidade={unidade} titulo={mesAtualLabel} />
         )}
-        <TabelaDesvio linhas={desvio.acumulado} unidade={unidade} titulo="Acumulado no ano" />
+        <BlocoCanais linhas={desvio.acumulado} unidade={unidade} titulo="Acumulado no ano" />
       </div>
     </section>
   );
