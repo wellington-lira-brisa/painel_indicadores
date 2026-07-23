@@ -1,6 +1,7 @@
-// Gera o agregado por cidade e o detalhamento enxuto por vendedor a
-// partir dos mesmos dois arquivos já baixados do Drive; nenhum download
-// novo.
+// Gera o agregado por cidade e o detalhamento enxuto por
+// vendedor×canal, usado para recalcular o quintil quando o painel filtra
+// um ou vários canais. Reutiliza os mesmos dois arquivos já baixados do
+// Drive; nenhum download novo.
 //
 // PRIVACIDADE: o detalhamento publica apenas nome e métricas de
 // performance necessárias à tela. Matrícula, hash e a base crua nunca
@@ -59,7 +60,7 @@ function main() {
   const cidades = new Set(registros.map((r) => r.cidadeSlug)).size;
   console.log(
     `Gerado com sucesso: ${registros.length} agregado(s) em ${SAIDA_CSV} e ` +
-      `${vendedores.length} vendedor(es) em ${SAIDA_VENDEDORES_CSV}. ` +
+      `${vendedores.length} registro(s) de vendedor×canal em ${SAIDA_VENDEDORES_CSV}. ` +
       `${cidades} cidade(s), meses ${meses[0]} a ${meses[meses.length - 1]}.`,
   );
 }

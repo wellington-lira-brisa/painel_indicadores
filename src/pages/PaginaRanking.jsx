@@ -84,8 +84,8 @@ export default function PaginaRanking({ tecnologia = TECNOLOGIAS.ftth }) {
 
       {canaisSelecionados.length > 0 && (
         <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
-          Mostrando realizado e atingimento só de: <strong>{canaisSelecionados.join(', ')}</strong>. A meta continua
-          sendo a meta total da cidade.
+          Mostrando realizado, atingimento e quintil só de: <strong>{canaisSelecionados.join(', ')}</strong>. A meta
+          geral continua sendo a meta total da cidade.
         </p>
       )}
 

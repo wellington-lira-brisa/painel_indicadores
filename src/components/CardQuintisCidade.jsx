@@ -1,4 +1,5 @@
-import { Users } from 'lucide-react';
+import { useId, useState } from 'react';
+import { ChevronDown, Users } from 'lucide-react';
 import {
   QUINTIL_COR_BADGE,
   QUINTIL_COR_BARRA,
@@ -41,6 +42,23 @@ function BadgeQuintilVendedor({ quintil }) {
   );
 }
 
+function CanaisVendedor({ canais = [] }) {
+  if (canais.length === 0) return null;
+
+  return (
+    <span className="inline-flex flex-wrap items-center gap-1">
+      {canais.map((canal) => (
+        <span
+          key={canal}
+          className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-slate-500"
+        >
+          {canal}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function ValorVendedor({ rotulo, valor, percentual = false, destaque = false }) {
   return (
     <div className="min-w-0">
@@ -59,9 +77,12 @@ function ValorVendedor({ rotulo, valor, percentual = false, destaque = false }) 
 }
 
 function TabelaVendedores({ vendedores = [] }) {
+  const [expandida, setExpandida] = useState(true);
+  const conteudoId = useId();
+
   return (
     <div className="mt-4 border-t border-slate-100 pt-4">
-      <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+      <div className={`flex flex-wrap items-center justify-between gap-2 ${expandida ? 'mb-2.5' : ''}`}>
         <div>
           <h4 className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800">
             <Users className="size-3.5 text-slate-400" aria-hidden="true" />
@@ -69,51 +90,73 @@ function TabelaVendedores({ vendedores = [] }) {
           </h4>
           <p className="mt-0.5 text-[11px] text-slate-500">Ordenados do melhor quintil para o que exige mais atenção.</p>
         </div>
-        {vendedores.length > 0 && (
-          <span className="text-[11px] tabular-nums text-slate-400">
-            {vendedores.length} {vendedores.length === 1 ? 'vendedor' : 'vendedores'}
-          </span>
-        )}
+        <div className="flex items-center gap-2">
+          {vendedores.length > 0 && (
+            <span className="text-[11px] tabular-nums text-slate-400">
+              {vendedores.length} {vendedores.length === 1 ? 'vendedor' : 'vendedores'}
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={() => setExpandida((valorAtual) => !valorAtual)}
+            aria-expanded={expandida}
+            aria-controls={conteudoId}
+            className="inline-flex min-h-8 items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 text-[11px] font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          >
+            {expandida ? 'Recolher' : 'Expandir'}
+            <ChevronDown
+              className={`size-3.5 transition-transform duration-200 ${expandida ? 'rotate-180' : ''}`}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
       </div>
 
-      {vendedores.length === 0 ? (
-        <p className="rounded-lg bg-slate-50 px-3 py-2.5 text-xs text-slate-500">
-          Detalhamento individual ainda não disponível para este período.
-        </p>
-      ) : (
-        <div className="overflow-hidden rounded-lg border border-slate-200">
-          <div className="hidden grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 sm:grid">
-            <span>Colaborador</span>
-            <span>Quintil</span>
-            <span className="text-right">Meta</span>
-            <span className="text-right">Realizado</span>
-            <span className="text-right">Atingimento</span>
-          </div>
+      {expandida && (
+        <div id={conteudoId}>
+          {vendedores.length === 0 ? (
+            <p className="rounded-lg bg-slate-50 px-3 py-2.5 text-xs text-slate-500">
+              Detalhamento individual ainda não disponível para este período.
+            </p>
+          ) : (
+            <div className="overflow-hidden rounded-lg border border-slate-200">
+              <div className="hidden grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 sm:grid">
+                <span>Colaborador</span>
+                <span>Quintil</span>
+                <span className="text-right">Meta</span>
+                <span className="text-right">Realizado</span>
+                <span className="text-right">Atingimento</span>
+              </div>
 
-          <ul className="divide-y divide-slate-100" aria-label="Desempenho dos colaboradores por quintil">
-            {vendedores.map((vendedor, indice) => (
-              <li
-                key={`${vendedor.vendedor}-${indice}`}
-                className={`grid grid-cols-3 gap-x-3 gap-y-2 border-l-2 px-3 py-3 sm:grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] sm:items-center sm:gap-3 sm:py-2.5 ${estiloLinha(vendedor.quintil)}`}
-              >
-                <span className="col-span-2 min-w-0 truncate text-sm font-semibold text-slate-800 sm:col-span-1" title={vendedor.vendedor}>
-                  {vendedor.vendedor}
-                </span>
-                <span className="justify-self-end sm:justify-self-start">
-                  <BadgeQuintilVendedor quintil={vendedor.quintil} />
-                </span>
-                <span className="sm:text-right">
-                  <ValorVendedor rotulo="Meta" valor={vendedor.meta} />
-                </span>
-                <span className="sm:text-right">
-                  <ValorVendedor rotulo="Realizado" valor={vendedor.realizado} />
-                </span>
-                <span className="sm:text-right">
-                  <ValorVendedor rotulo="Atingimento" valor={vendedor.atingimento} percentual destaque />
-                </span>
-              </li>
-            ))}
-          </ul>
+              <ul className="divide-y divide-slate-100" aria-label="Desempenho dos colaboradores por quintil">
+                {vendedores.map((vendedor, indice) => (
+                  <li
+                    key={`${vendedor.vendedor}-${indice}`}
+                    className={`grid grid-cols-3 gap-x-3 gap-y-2 border-l-2 px-3 py-3 sm:grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] sm:items-center sm:gap-3 sm:py-2.5 ${estiloLinha(vendedor.quintil)}`}
+                  >
+                    <span className="col-span-2 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 sm:col-span-1">
+                      <span className="min-w-0 truncate text-sm font-semibold text-slate-800" title={vendedor.vendedor}>
+                        {vendedor.vendedor}
+                      </span>
+                      <CanaisVendedor canais={vendedor.canais} />
+                    </span>
+                    <span className="justify-self-end sm:justify-self-start">
+                      <BadgeQuintilVendedor quintil={vendedor.quintil} />
+                    </span>
+                    <span className="sm:text-right">
+                      <ValorVendedor rotulo="Meta" valor={vendedor.meta} />
+                    </span>
+                    <span className="sm:text-right">
+                      <ValorVendedor rotulo="Realizado" valor={vendedor.realizado} />
+                    </span>
+                    <span className="sm:text-right">
+                      <ValorVendedor rotulo="Atingimento" valor={vendedor.atingimento} percentual destaque />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>

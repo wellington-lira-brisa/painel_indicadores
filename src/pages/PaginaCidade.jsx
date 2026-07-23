@@ -124,7 +124,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
             <div className="mt-3 max-w-xs">
               <label className="block text-xs font-medium text-slate-600">
                 Canal
-                <span className="ml-1 font-normal text-slate-400">(recalcula o realizado)</span>
+                <span className="ml-1 font-normal text-slate-400">(recalcula realizado e quintil)</span>
               </label>
               <SeletorCanais
                 canaisSelecionados={canaisSelecionados}
@@ -134,7 +134,8 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
             </div>
             {canaisSelecionados.length > 0 && (
               <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-800">
-                Mostrando só: <strong>{canaisSelecionados.join(', ')}</strong> — meta continua sendo a da cidade inteira.
+                Mostrando realizado e quintil de: <strong>{canaisSelecionados.join(', ')}</strong> — a meta geral
+                continua sendo a da cidade inteira.
               </p>
             )}
           </div>

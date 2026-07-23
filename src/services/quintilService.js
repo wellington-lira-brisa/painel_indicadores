@@ -1,4 +1,4 @@
-import { parsearCsv } from '../shared/csvIndicadores';
+import { calcularQuintilVendedores, parsearCsv } from '../shared/csvIndicadores';
 import { carregarCsvDados } from './dadosProtegidosService';
 
 const NOME_ARQUIVO = 'quintis-por-cidade.csv';
@@ -10,12 +10,6 @@ let cacheVendedores = null;
 function paraInteiro(texto) {
   const n = Number(texto);
   return Number.isFinite(n) ? n : 0;
-}
-
-function paraNumeroOpcional(texto) {
-  if (texto === null || texto === undefined || texto === '') return null;
-  const n = Number(texto);
-  return Number.isFinite(n) ? n : null;
 }
 
 /**
@@ -76,31 +70,26 @@ export function quintilDaCidade(indice, cidadeSlug, tecnologiaId) {
 function indexarQuintisVendedores(linhas) {
   const indice = new Map();
   for (const l of linhas) {
-    const chave = `${l.cidade_slug}|${l.tecnologia}|${l.mes_ref}`;
-    if (!indice.has(chave)) indice.set(chave, []);
-    indice.get(chave).push({
+    if (!l.cidade_slug || !l.mes_ref) continue;
+    if (!indice.has(l.cidade_slug)) indice.set(l.cidade_slug, new Map());
+    const porMes = indice.get(l.cidade_slug);
+    if (!porMes.has(l.mes_ref)) porMes.set(l.mes_ref, []);
+    porMes.get(l.mes_ref).push({
+      vendedorId: l.vendedor_id || l.vendedor,
       vendedor: l.vendedor || 'Vendedor sem identificação',
-      meta: paraNumeroOpcional(l.meta),
-      realizado: paraNumeroOpcional(l.realizado),
-      atingimento: paraNumeroOpcional(l.atingimento),
-      quintil: paraInteiro(l.quintil) || null,
+      canal: l.canal || null,
+      tecnologia: l.tecnologia,
+      meta: l.meta,
+      realizado: l.realizado,
     });
-  }
-
-  for (const vendedores of indice.values()) {
-    vendedores.sort(
-      (a, b) =>
-        (a.quintil ?? 99) - (b.quintil ?? 99) ||
-        (b.atingimento ?? -1) - (a.atingimento ?? -1) ||
-        a.vendedor.localeCompare(b.vendedor, 'pt-BR'),
-    );
   }
   return indice;
 }
 
 /**
- * Detalhamento carregado somente na página da cidade. O Ranking continua
- * usando apenas o arquivo agregado e não paga o custo desta base.
+ * Detalhamento carregado na página da cidade e, no Ranking, somente
+ * quando há filtro de canal. Sem filtro, o Ranking continua usando apenas
+ * o agregado leve.
  */
 export async function carregarQuintisVendedores() {
   if (cacheVendedores) return cacheVendedores;
@@ -113,7 +102,39 @@ export function quintisVendedoresEmCacheOuNulo() {
   return cacheVendedores;
 }
 
-export function vendedoresQuintilDaCidade(indice, cidadeSlug, tecnologiaId, mesRef) {
+export function quintilDaCidadePorCanais(indice, cidadeSlug, tecnologiaId, canaisSelecionados) {
+  const porMes = indice?.get(cidadeSlug);
+  if (!porMes) return null;
+
+  const hoje = new Date();
+  const mesAtualIso = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-01`;
+  const mesesDesc = [...porMes.keys()].sort((a, b) => (a < b ? 1 : -1));
+  const candidatos = [mesAtualIso, ...mesesDesc.filter((mes) => mes !== mesAtualIso)];
+
+  for (const mesRef of candidatos) {
+    const calculado = calcularQuintilVendedores(
+      porMes.get(mesRef) ?? [],
+      tecnologiaId,
+      canaisSelecionados,
+    );
+    if (calculado) return { ...calculado, mesRef };
+  }
+  return null;
+}
+
+export function vendedoresQuintilDaCidade(
+  indice,
+  cidadeSlug,
+  tecnologiaId,
+  mesRef,
+  canaisSelecionados = [],
+) {
   if (!mesRef) return [];
-  return indice?.get(`${cidadeSlug}|${tecnologiaId}|${mesRef}`) ?? [];
+  return (
+    calcularQuintilVendedores(
+      indice?.get(cidadeSlug)?.get(mesRef) ?? [],
+      tecnologiaId,
+      canaisSelecionados,
+    )?.vendedores ?? []
+  );
 }
