@@ -1,510 +1,510 @@
 cidade_slug,cidade_origem,tecnologia,mes_ref,total_vendedores,q1,q2,q3,q4,q5,sem_meta,atingimento_medio,quintil_cidade
-acarau-ce,ACARAU/CE,ftth,2026-01-01,5,2,0,0,1,2,0,0.6111,3
+acarau-ce,ACARAU/CE,ftth,2026-01-01,5,2,0,0,1,2,0,0.6222,3
 acarau-ce,ACARAU/CE,5g,2026-01-01,5,0,1,1,3,0,0,0.555,4
-acopiara-ce,ACOPIARA/CE,ftth,2026-01-01,3,2,0,1,0,0,0,1.2325,1
+acopiara-ce,ACOPIARA/CE,ftth,2026-01-01,3,2,1,0,0,0,0,1.2602,1
 acopiara-ce,ACOPIARA/CE,5g,2026-01-01,3,0,1,0,2,0,0,0.6333,3
 acu-rn,ACU/RN,ftth,2026-01-01,4,2,2,0,0,0,0,1.7398,1
 acu-rn,ACU/RN,5g,2026-01-01,4,2,2,0,0,0,0,1.1807,1
-agua-nova-rn,AGUA NOVA/RN,ftth,2026-01-01,1,0,1,0,0,0,0,0.8,2
+agua-nova-rn,AGUA NOVA/RN,ftth,2026-01-01,1,0,1,0,0,0,0,0.8889,2
 agua-nova-rn,AGUA NOVA/RN,5g,2026-01-01,1,0,0,1,0,0,0,0.7,3
 alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-01-01,2,2,0,0,0,0,0,1.125,1
 altos-pi,ALTOS/PI,ftth,2026-01-01,3,2,0,0,0,0,1,1.2917,1
-apodi-rn,APODI/RN,ftth,2026-01-01,1,1,0,0,0,0,0,2,1
-apodi-rn,APODI/RN,5g,2026-01-01,2,1,1,0,0,0,0,1,1
+apodi-rn,APODI/RN,ftth,2026-01-01,1,1,0,0,0,0,0,2.1875,1
+apodi-rn,APODI/RN,5g,2026-01-01,3,1,1,0,0,0,1,1,1
 aracaju-se,ARACAJU/SE,ftth,2026-01-01,3,2,1,0,0,0,0,1.127,1
 arapiraca-al,ARAPIRACA/AL,ftth,2026-01-01,3,2,0,0,0,0,1,1.3,1
-araripina-pe,ARARIPINA/PE,ftth,2026-01-01,4,3,0,0,1,0,0,1.6203,1
-araripina-pe,ARARIPINA/PE,5g,2026-01-01,2,2,0,0,0,0,0,1.15,1
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-01-01,3,3,0,0,0,0,0,2.7681,1
-arcoverde-pe,ARCOVERDE/PE,5g,2026-01-01,1,1,0,0,0,0,0,1,1
+araripina-pe,ARARIPINA/PE,ftth,2026-01-01,4,3,0,0,1,0,0,1.6762,1
+araripina-pe,ARARIPINA/PE,5g,2026-01-01,4,2,0,0,0,0,2,1.15,1
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-01-01,3,3,0,0,0,0,0,2.8095,1
+arcoverde-pe,ARCOVERDE/PE,5g,2026-01-01,3,1,0,0,0,0,2,1,1
 banabuiu-ce,BANABUIU/CE,ftth,2026-01-01,2,1,0,0,0,0,1,1.6667,1
 banabuiu-ce,BANABUIU/CE,5g,2026-01-01,2,0,1,0,0,0,1,0.8085,2
 barauna-rn,BARAUNA/RN,ftth,2026-01-01,1,1,0,0,0,0,0,2.1538,1
 barauna-rn,BARAUNA/RN,5g,2026-01-01,1,1,0,0,0,0,0,1.7941,1
-barbalha-ce,BARBALHA/CE,ftth,2026-01-01,3,1,0,0,0,1,1,0.9716,2
+barbalha-ce,BARBALHA/CE,ftth,2026-01-01,3,1,0,0,0,1,1,0.9871,2
 barbalha-ce,BARBALHA/CE,5g,2026-01-01,3,1,0,0,1,0,1,0.7472,3
-bayeux-pb,BAYEUX/PB,ftth,2026-01-01,7,4,1,1,0,0,1,1.3254,1
-bayeux-pb,BAYEUX/PB,5g,2026-01-01,2,1,0,0,0,0,1,1.1333,1
-belo-jardim-pe,BELO JARDIM/PE,ftth,2026-01-01,6,4,0,0,0,1,1,0.8785,2
-belo-jardim-pe,BELO JARDIM/PE,5g,2026-01-01,3,0,0,0,0,2,1,0.2273,5
-bezerros-pe,BEZERROS/PE,ftth,2026-01-01,4,3,1,0,0,0,0,1.4706,1
+bayeux-pb,BAYEUX/PB,ftth,2026-01-01,7,4,1,1,0,0,1,1.4079,1
+bayeux-pb,BAYEUX/PB,5g,2026-01-01,7,1,0,0,0,0,6,1.1333,1
+belo-jardim-pe,BELO JARDIM/PE,ftth,2026-01-01,6,4,0,0,0,1,1,0.9146,2
+belo-jardim-pe,BELO JARDIM/PE,5g,2026-01-01,6,0,0,0,0,2,4,0.2273,5
+bezerros-pe,BEZERROS/PE,ftth,2026-01-01,4,3,1,0,0,0,0,1.4984,1
 bezerros-pe,BEZERROS/PE,5g,2026-01-01,4,2,0,0,0,2,0,1.165,1
 bom-conselho-pe,BOM CONSELHO/PE,ftth,2026-01-01,2,1,0,0,1,0,0,0.7857,3
 bom-conselho-pe,BOM CONSELHO/PE,5g,2026-01-01,2,0,0,2,0,0,0,0.6333,3
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-01-01,5,4,0,0,1,0,0,1.325,1
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-01-01,5,4,0,0,1,0,0,1.4139,1
 brejo-santo-ce,BREJO SANTO/CE,5g,2026-01-01,5,4,1,0,0,0,0,1.9105,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-01-01,3,3,0,0,0,0,0,2.3769,1
-cabedelo-pb,CABEDELO/PB,5g,2026-01-01,2,1,0,0,1,0,0,0.9,2
+cabedelo-pb,CABEDELO/PB,ftth,2026-01-01,3,3,0,0,0,0,0,2.4222,1
+cabedelo-pb,CABEDELO/PB,5g,2026-01-01,3,1,0,0,1,0,1,0.9,2
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-01-01,2,1,0,0,0,0,1,1.4,1
-caico-rn,CAICO/RN,ftth,2026-01-01,4,2,0,1,1,0,0,1.2322,1
-caico-rn,CAICO/RN,5g,2026-01-01,2,1,0,0,1,0,0,0.8167,2
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-01-01,6,3,1,0,2,0,0,1.5132,1
-cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-01-01,3,1,0,0,1,1,0,0.5938,4
+caico-rn,CAICO/RN,ftth,2026-01-01,4,2,0,1,1,0,0,1.3005,1
+caico-rn,CAICO/RN,5g,2026-01-01,4,1,0,0,1,0,2,0.8167,2
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-01-01,6,3,1,0,2,0,0,1.5695,1
+cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-01-01,6,1,0,0,1,1,3,0.5938,4
 camacari-ba,CAMACARI/BA,ftth,2026-01-01,3,1,0,0,1,0,1,1.1563,1
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-01-01,9,2,0,4,2,1,0,0.8233,2
-campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-01-01,3,1,0,0,1,1,0,0.563,4
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-01-01,9,2,1,3,2,1,0,0.8638,2
+campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-01-01,9,1,0,0,1,1,6,0.563,4
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-01-01,2,2,0,0,0,0,0,1.1111,1
-caninde-ce,CANINDE/CE,ftth,2026-01-01,7,2,1,0,2,1,1,0.8175,2
+caninde-ce,CANINDE/CE,ftth,2026-01-01,7,2,1,1,1,1,1,0.8777,2
 caninde-ce,CANINDE/CE,5g,2026-01-01,7,1,1,1,3,0,1,0.6101,3
-caruaru-pe,CARUARU/PE,ftth,2026-01-01,12,2,4,1,1,3,1,0.8469,2
-caruaru-pe,CARUARU/PE,5g,2026-01-01,2,1,0,0,0,0,1,1.619,1
-cascavel-ce,CASCAVEL/CE,ftth,2026-01-01,5,2,0,0,2,0,1,0.9206,2
+caruaru-pe,CARUARU/PE,ftth,2026-01-01,12,4,2,1,1,3,1,0.9096,2
+caruaru-pe,CARUARU/PE,5g,2026-01-01,12,1,0,0,0,0,11,1.619,1
+cascavel-ce,CASCAVEL/CE,ftth,2026-01-01,5,2,0,0,2,0,1,0.9706,2
 cascavel-ce,CASCAVEL/CE,5g,2026-01-01,5,4,0,0,0,0,1,1.6964,1
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-01-01,4,2,0,1,1,0,0,1.8333,1
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-01-01,4,2,0,1,1,0,0,1.8611,1
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-01-01,4,2,0,0,1,1,0,0.6547,3
 catu-ba,CATU/BA,ftth,2026-01-01,1,1,0,0,0,0,0,1.1667,1
-caucaia-ce,CAUCAIA/CE,ftth,2026-01-01,8,5,1,0,2,0,0,1.0444,1
-caucaia-ce,CAUCAIA/CE,5g,2026-01-01,2,1,0,1,0,0,0,0.9158,2
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-01-01,3,3,0,0,0,0,0,1.5125,1
-ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-01-01,2,2,0,0,0,0,0,1.2889,1
-cedro-ce,CEDRO/CE,ftth,2026-01-01,3,1,1,0,1,0,0,0.7833,3
+caucaia-ce,CAUCAIA/CE,ftth,2026-01-01,8,5,1,1,1,0,0,1.1127,1
+caucaia-ce,CAUCAIA/CE,5g,2026-01-01,8,1,0,1,0,0,6,0.9158,2
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-01-01,3,3,0,0,0,0,0,1.5498,1
+ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-01-01,3,2,0,0,0,0,1,1.2889,1
+cedro-ce,CEDRO/CE,ftth,2026-01-01,3,1,1,0,1,0,0,0.7963,3
 cedro-ce,CEDRO/CE,5g,2026-01-01,3,0,2,0,0,1,0,0.5686,4
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-01-01,1,0,1,0,0,0,0,0.9184,2
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-01-01,1,1,0,0,0,0,0,1,1
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-01-01,1,1,0,0,0,0,0,3,1
-crateus-ce,CRATEUS/CE,ftth,2026-01-01,6,3,0,1,1,0,1,1.1334,1
-crateus-ce,CRATEUS/CE,5g,2026-01-01,2,1,0,0,0,0,1,1.6222,1
-crato-ce,CRATO/CE,ftth,2026-01-01,7,2,1,1,2,1,0,1.2223,1
-crato-ce,CRATO/CE,5g,2026-01-01,2,2,0,0,0,0,0,1.1429,1
-custodia-pe,CUSTODIA/PE,ftth,2026-01-01,3,2,0,0,1,0,0,0.9961,2
+crateus-ce,CRATEUS/CE,ftth,2026-01-01,6,3,0,2,0,0,1,1.2017,1
+crateus-ce,CRATEUS/CE,5g,2026-01-01,6,1,0,0,0,0,5,1.6222,1
+crato-ce,CRATO/CE,ftth,2026-01-01,7,2,2,1,1,1,0,1.2587,1
+crato-ce,CRATO/CE,5g,2026-01-01,7,2,0,0,0,0,5,1.1429,1
+custodia-pe,CUSTODIA/PE,ftth,2026-01-01,3,2,0,0,1,0,0,1.0109,1
 custodia-pe,CUSTODIA/PE,5g,2026-01-01,3,1,2,0,0,0,0,0.9863,2
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,ftth,2026-01-01,2,0,1,1,0,0,0,0.7857,3
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,5g,2026-01-01,2,0,0,0,1,1,0,0.4,4
 dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-01-01,2,1,0,0,1,0,0,1.0625,1
 escada-pe,ESCADA/PE,ftth,2026-01-01,2,1,0,0,1,0,0,0.7917,3
 estancia-se,ESTANCIA/SE,ftth,2026-01-01,2,1,0,0,0,0,1,1.2,1
-eusebio-ce,EUSEBIO/CE,ftth,2026-01-01,6,5,0,1,0,0,0,1.4474,1
-eusebio-ce,EUSEBIO/CE,5g,2026-01-01,2,2,0,0,0,0,0,1.2679,1
-extremoz-rn,EXTREMOZ/RN,ftth,2026-01-01,4,4,0,0,0,0,0,1.224,1
+eusebio-ce,EUSEBIO/CE,ftth,2026-01-01,6,5,0,1,0,0,0,1.5152,1
+eusebio-ce,EUSEBIO/CE,5g,2026-01-01,6,2,0,0,0,0,4,1.2679,1
+extremoz-rn,EXTREMOZ/RN,ftth,2026-01-01,4,4,0,0,0,0,0,1.3414,1
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-01-01,2,1,0,0,0,0,1,1,1
-fortaleza-ce,FORTALEZA/CE,ftth,2026-01-01,42,25,3,6,4,3,1,1.267,1
-fortaleza-ce,FORTALEZA/CE,5g,2026-01-01,4,2,0,1,0,0,1,1.2402,1
+fortaleza-ce,FORTALEZA/CE,ftth,2026-01-01,42,26,4,4,5,2,1,1.3516,1
+fortaleza-ce,FORTALEZA/CE,5g,2026-01-01,42,2,0,1,0,0,39,1.2402,1
 garanhuns-pe,GARANHUNS/PE,ftth,2026-01-01,2,2,0,0,0,0,0,1.6667,1
-gravata-pe,GRAVATA/PE,ftth,2026-01-01,5,1,0,0,3,1,0,0.88,2
+gravata-pe,GRAVATA/PE,ftth,2026-01-01,5,1,0,0,3,1,0,0.9056,2
 gravata-pe,GRAVATA/PE,5g,2026-01-01,5,3,1,0,0,1,0,0.8933,2
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-01-01,3,1,0,0,1,1,0,0.9097,2
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-01-01,2,1,0,1,0,0,0,0.9,2
-horizonte-ce,HORIZONTE/CE,ftth,2026-01-01,7,4,0,0,1,2,0,1.3347,1
-horizonte-ce,HORIZONTE/CE,5g,2026-01-01,3,3,0,0,0,0,0,1.321,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-01-01,3,1,0,0,1,1,0,0.9159,2
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-01-01,3,1,0,1,0,0,1,0.9,2
+horizonte-ce,HORIZONTE/CE,ftth,2026-01-01,7,4,0,0,1,2,0,1.3666,1
+horizonte-ce,HORIZONTE/CE,5g,2026-01-01,7,3,0,0,0,0,4,1.321,1
 ibiapina-ce,IBIAPINA/CE,ftth,2026-01-01,1,1,0,0,0,0,0,1.2,1
 ibiapina-ce,IBIAPINA/CE,5g,2026-01-01,1,0,0,0,0,1,0,0.0435,5
 ico-ce,ICO/CE,ftth,2026-01-01,3,3,0,0,0,0,0,1.2708,1
 ico-ce,ICO/CE,5g,2026-01-01,3,0,3,0,0,0,0,0.9273,2
-iguatu-ce,IGUATU/CE,ftth,2026-01-01,9,8,0,0,0,1,0,2.1091,1
-iguatu-ce,IGUATU/CE,5g,2026-01-01,5,5,0,0,0,0,0,1.0833,1
-ipu-ce,IPU/CE,ftth,2026-01-01,4,3,0,1,0,0,0,2.1074,1
-ipu-ce,IPU/CE,5g,2026-01-01,2,0,1,1,0,0,0,0.8846,2
-iracema-ce,IRACEMA/CE,ftth,2026-01-01,3,2,0,0,0,1,0,2.1824,1
+iguatu-ce,IGUATU/CE,ftth,2026-01-01,9,8,0,0,0,1,0,2.1619,1
+iguatu-ce,IGUATU/CE,5g,2026-01-01,9,5,0,0,0,0,4,1.0833,1
+ipu-ce,IPU/CE,ftth,2026-01-01,4,3,1,0,0,0,0,2.1261,1
+ipu-ce,IPU/CE,5g,2026-01-01,4,0,1,1,0,0,2,0.8846,2
+iracema-ce,IRACEMA/CE,ftth,2026-01-01,3,2,0,0,0,1,0,2.1879,1
 iracema-ce,IRACEMA/CE,5g,2026-01-01,3,1,1,0,1,0,0,0.7708,3
-itapaje-ce,ITAPAJE/CE,ftth,2026-01-01,4,1,0,0,3,0,0,0.8748,2
+itapaje-ce,ITAPAJE/CE,ftth,2026-01-01,4,1,0,1,2,0,0,0.9088,2
 itapaje-ce,ITAPAJE/CE,5g,2026-01-01,4,2,0,0,2,0,0,1.235,1
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-01-01,6,4,0,0,2,0,0,1.1671,1
-itapipoca-ce,ITAPIPOCA/CE,5g,2026-01-01,3,3,0,0,0,0,0,1.1316,1
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-01-01,6,4,0,0,2,0,0,1.1971,1
+itapipoca-ce,ITAPIPOCA/CE,5g,2026-01-01,6,3,0,0,0,0,3,1.1316,1
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-01-01,2,2,0,0,0,0,0,1.275,1
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-01-01,3,1,0,0,1,0,1,1.6811,1
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-01-01,3,1,0,0,1,0,1,1.7059,1
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-01-01,3,1,1,0,0,0,1,1.7005,1
-jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-01-01,1,0,0,0,1,0,0,0.35,4
+jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-01-01,1,0,0,0,1,0,0,0.3889,4
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-01-01,1,1,0,0,0,0,0,3.8,1
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-01-01,7,3,1,1,1,1,0,0.8619,2
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-01-01,7,3,1,1,1,1,0,0.9048,2
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-01-01,7,2,1,0,3,1,0,0.6223,3
 jeremoabo-ba,JEREMOABO/BA,ftth,2026-01-01,2,2,0,0,0,0,0,1.6111,1
 jeremoabo-ba,JEREMOABO/BA,5g,2026-01-01,2,2,0,0,0,0,0,1.05,1
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-01-01,27,16,2,1,2,5,1,1.2806,1
-joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-01-01,5,2,2,0,0,0,1,0.9882,2
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-01-01,25,10,2,6,5,2,0,1.0065,1
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-01-01,9,2,2,3,2,0,0,0.7879,3
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-01-01,9,8,0,0,1,0,0,1.9728,1
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-01-01,27,17,1,1,5,2,1,1.3628,1
+joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-01-01,27,2,2,0,0,0,23,0.9882,2
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-01-01,25,10,4,7,2,2,0,1.0537,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-01-01,25,2,2,3,2,0,16,0.7879,3
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-01-01,9,8,0,0,1,0,0,2.0955,1
 lagarto-se,LAGARTO/SE,ftth,2026-01-01,1,1,0,0,0,0,0,1.5385,1
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-01-01,3,2,0,0,1,0,0,1.225,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-01-01,3,2,0,0,1,0,0,1.2361,1
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-01-01,3,0,1,0,1,1,0,0.451,4
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-01-01,6,3,1,0,1,0,1,1.25,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-01-01,6,4,0,0,1,0,1,1.3,1
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-01-01,6,3,0,0,2,0,1,0.8638,2
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-01-01,2,2,0,0,0,0,0,1.1667,1
-luis-correia-pi,LUIS CORREIA/PI,ftth,2026-01-01,1,0,0,1,0,0,0,0.7826,3
-macaiba-rn,MACAIBA/RN,ftth,2026-01-01,6,3,0,1,1,1,0,1.1324,1
-macaiba-rn,MACAIBA/RN,5g,2026-01-01,1,1,0,0,0,0,0,1.25,1
-macau-rn,MACAU/RN,ftth,2026-01-01,2,1,0,0,1,0,0,0.7959,3
+luis-correia-pi,LUIS CORREIA/PI,ftth,2026-01-01,1,0,1,0,0,0,0,0.8571,2
+macaiba-rn,MACAIBA/RN,ftth,2026-01-01,6,3,0,1,1,1,0,1.2001,1
+macaiba-rn,MACAIBA/RN,5g,2026-01-01,6,1,0,0,0,0,5,1.25,1
+macau-rn,MACAU/RN,ftth,2026-01-01,2,1,0,0,1,0,0,0.8667,2
 macau-rn,MACAU/RN,5g,2026-01-01,2,1,0,0,1,0,0,0.975,2
 maceio-al,MACEIO/AL,ftth,2026-01-01,1,1,0,0,0,0,0,1.25,1
-major-sales-rn,MAJOR SALES/RN,ftth,2026-01-01,3,2,0,0,1,0,0,2.0444,1
+major-sales-rn,MAJOR SALES/RN,ftth,2026-01-01,3,2,0,0,1,0,0,2.0889,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-01-01,3,2,0,0,0,1,0,0.8462,2
-maracanau-ce,MARACANAU/CE,ftth,2026-01-01,10,6,1,1,0,2,0,1.2457,1
-maracanau-ce,MARACANAU/CE,5g,2026-01-01,4,1,2,1,0,0,0,0.9731,2
-maranguape-ce,MARANGUAPE/CE,ftth,2026-01-01,10,5,0,1,0,4,0,0.9466,2
-maranguape-ce,MARANGUAPE/CE,5g,2026-01-01,2,2,0,0,0,0,0,1.1563,1
-milagres-ce,MILAGRES/CE,ftth,2026-01-01,3,2,0,0,1,0,0,1.4213,1
+maracanau-ce,MARACANAU/CE,ftth,2026-01-01,10,6,2,0,0,2,0,1.3063,1
+maracanau-ce,MARACANAU/CE,5g,2026-01-01,10,1,2,1,0,0,6,0.9731,2
+maranguape-ce,MARANGUAPE/CE,ftth,2026-01-01,10,5,0,1,0,4,0,1.0044,1
+maranguape-ce,MARANGUAPE/CE,5g,2026-01-01,10,2,0,0,0,0,8,1.1563,1
+milagres-ce,MILAGRES/CE,ftth,2026-01-01,3,2,0,0,1,0,0,1.4343,1
 milagres-ce,MILAGRES/CE,5g,2026-01-01,3,1,1,0,0,1,0,0.725,3
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-01-01,3,1,0,1,1,0,0,0.9135,2
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-01-01,3,1,0,2,0,0,0,0.9339,2
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-01-01,3,0,1,0,0,2,0,0.3981,4
-mombaca-ce,MOMBACA/CE,ftth,2026-01-01,4,3,1,0,0,0,0,1.175,1
+mombaca-ce,MOMBACA/CE,ftth,2026-01-01,4,3,1,0,0,0,0,1.2389,1
 mombaca-ce,MOMBACA/CE,5g,2026-01-01,4,1,0,1,2,0,0,0.6625,3
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-01-01,5,3,0,1,1,0,0,1.3278,1
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-01-01,5,3,0,1,1,0,0,1.3889,1
 morada-nova-ce,MORADA NOVA/CE,5g,2026-01-01,5,4,0,0,1,0,0,1.2211,1
-mossoro-rn,MOSSORO/RN,ftth,2026-01-01,15,6,1,1,1,5,1,0.7934,3
-mossoro-rn,MOSSORO/RN,5g,2026-01-01,4,3,0,0,0,0,1,2.053,1
-natal-rn,NATAL/RN,ftth,2026-01-01,37,18,4,4,7,4,0,1.1093,1
-natal-rn,NATAL/RN,5g,2026-01-01,7,5,0,1,0,1,0,1.1449,1
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-01-01,2,0,0,0,1,1,0,0.225,5
+mossoro-rn,MOSSORO/RN,ftth,2026-01-01,15,6,1,1,1,5,1,0.8432,2
+mossoro-rn,MOSSORO/RN,5g,2026-01-01,15,3,0,0,0,0,12,2.053,1
+natal-rn,NATAL/RN,ftth,2026-01-01,37,19,5,2,8,3,0,1.1826,1
+natal-rn,NATAL/RN,5g,2026-01-01,37,5,0,1,0,1,30,1.1449,1
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-01-01,2,0,0,0,1,1,0,0.25,5
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-01-01,2,0,1,1,0,0,0,0.7,3
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-01-01,3,2,0,0,0,0,1,1.9643,1
 olho-d-agua-das-flores-al,OLHO D'AGUA DAS FLORES/AL,ftth,2026-01-01,2,1,0,0,0,1,0,1,1
 olho-d-agua-das-flores-al,OLHO D'AGUA DAS FLORES/AL,5g,2026-01-01,2,0,0,1,0,1,0,0.4,4
-oros-ce,OROS/CE,ftth,2026-01-01,3,3,0,0,0,0,0,3.3857,1
+oros-ce,OROS/CE,ftth,2026-01-01,3,3,0,0,0,0,0,3.4339,1
 oros-ce,OROS/CE,5g,2026-01-01,3,2,0,0,0,1,0,0.8594,2
-ouricuri-pe,OURICURI/PE,ftth,2026-01-01,5,3,1,0,0,1,0,1.2696,1
-ouricuri-pe,OURICURI/PE,5g,2026-01-01,2,0,0,0,2,0,0,0.5263,4
-pacajus-ce,PACAJUS/CE,ftth,2026-01-01,4,3,1,0,0,0,0,1.833,1
-pacajus-ce,PACAJUS/CE,5g,2026-01-01,2,2,0,0,0,0,0,1.5,1
+ouricuri-pe,OURICURI/PE,ftth,2026-01-01,5,4,0,0,0,1,0,1.3143,1
+ouricuri-pe,OURICURI/PE,5g,2026-01-01,5,0,0,0,2,0,3,0.5263,4
+pacajus-ce,PACAJUS/CE,ftth,2026-01-01,4,4,0,0,0,0,0,1.906,1
+pacajus-ce,PACAJUS/CE,5g,2026-01-01,4,2,0,0,0,0,2,1.5,1
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-01-01,2,1,0,0,0,0,1,1.4783,1
-paraipaba-ce,PARAIPABA/CE,ftth,2026-01-01,4,3,0,0,0,0,1,1.7418,1
-paraipaba-ce,PARAIPABA/CE,5g,2026-01-01,2,1,0,0,0,0,1,1.38,1
-parnaiba-pi,PARNAIBA/PI,ftth,2026-01-01,12,6,1,2,1,1,1,1.4174,1
-parnaiba-pi,PARNAIBA/PI,5g,2026-01-01,2,1,0,0,0,0,1,1.3684,1
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-01-01,12,9,0,1,0,1,1,1.6158,1
-parnamirim-rn,PARNAMIRIM/RN,5g,2026-01-01,5,2,0,2,0,0,1,1.3455,1
-patos-pb,PATOS/PB,ftth,2026-01-01,9,4,1,2,1,0,1,2.0607,1
-patos-pb,PATOS/PB,5g,2026-01-01,4,3,0,0,0,0,1,1.4741,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-01-01,6,4,0,0,1,1,0,1.1954,1
+paraipaba-ce,PARAIPABA/CE,ftth,2026-01-01,4,3,0,0,0,0,1,1.8308,1
+paraipaba-ce,PARAIPABA/CE,5g,2026-01-01,4,1,0,0,0,0,3,1.38,1
+parnaiba-pi,PARNAIBA/PI,ftth,2026-01-01,12,7,0,3,0,1,1,1.5349,1
+parnaiba-pi,PARNAIBA/PI,5g,2026-01-01,12,1,0,0,0,0,11,1.3684,1
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-01-01,12,9,0,1,0,1,1,1.6806,1
+parnamirim-rn,PARNAMIRIM/RN,5g,2026-01-01,12,2,0,2,0,0,8,1.3455,1
+patos-pb,PATOS/PB,ftth,2026-01-01,9,5,1,2,0,0,1,2.1083,1
+patos-pb,PATOS/PB,5g,2026-01-01,9,3,0,0,0,0,6,1.4741,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-01-01,6,4,0,1,0,1,0,1.2315,1
 pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-01-01,6,3,0,0,0,3,0,0.66,3
 paulista-pe,PAULISTA/PE,ftth,2026-01-01,3,2,0,0,0,1,0,1.2083,1
 paulo-afonso-ba,PAULO AFONSO/BA,ftth,2026-01-01,2,1,0,1,0,0,0,1.1846,1
 paulo-afonso-ba,PAULO AFONSO/BA,5g,2026-01-01,2,1,1,0,0,0,0,1.1167,1
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-01-01,3,1,0,0,0,1,1,1.075,1
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-01-01,3,1,0,0,0,1,1,1.0833,1
 pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-01-01,3,1,1,0,0,0,1,1.1831,1
 pereiro-ce,PEREIRO/CE,ftth,2026-01-01,71,62,0,1,0,0,8,1.8993,1
-pereiro-ce,PEREIRO/CE,5g,2026-01-01,38,1,0,1,6,22,8,0.1706,5
+pereiro-ce,PEREIRO/CE,5g,2026-01-01,71,1,0,1,6,22,41,0.1706,5
 pesqueira-pe,PESQUEIRA/PE,ftth,2026-01-01,2,1,0,0,0,1,0,0.5833,4
-pesqueira-pe,PESQUEIRA/PE,5g,2026-01-01,1,0,0,0,1,0,0,0.3636,4
-petrolina-pe,PETROLINA/PE,ftth,2026-01-01,10,8,0,0,0,1,1,1.4852,1
-petrolina-pe,PETROLINA/PE,5g,2026-01-01,2,1,0,0,0,0,1,1.375,1
+pesqueira-pe,PESQUEIRA/PE,5g,2026-01-01,2,0,0,0,1,0,1,0.3636,4
+petrolina-pe,PETROLINA/PE,ftth,2026-01-01,10,8,0,0,0,1,1,1.6084,1
+petrolina-pe,PETROLINA/PE,5g,2026-01-01,10,1,0,0,0,0,9,1.375,1
 picos-pi,PICOS/PI,ftth,2026-01-01,1,1,0,0,0,0,0,1.625,1
 piranhas-al,PIRANHAS/AL,ftth,2026-01-01,1,1,0,0,0,0,0,1.3333,1
 piranhas-al,PIRANHAS/AL,5g,2026-01-01,1,0,0,0,0,1,0,0.2,5
 piripiri-pi,PIRIPIRI/PI,ftth,2026-01-01,3,2,0,0,0,0,1,1.1364,1
-pombal-pb,POMBAL/PB,ftth,2026-01-01,4,1,0,1,1,0,1,0.9238,2
+pombal-pb,POMBAL/PB,ftth,2026-01-01,4,1,1,0,1,0,1,0.9683,2
 pombal-pb,POMBAL/PB,5g,2026-01-01,4,0,0,0,3,0,1,0.4159,4
-quixada-ce,QUIXADA/CE,ftth,2026-01-01,6,3,1,0,1,1,0,1.2106,1
-quixada-ce,QUIXADA/CE,5g,2026-01-01,4,2,0,1,0,1,0,0.7571,3
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-01-01,6,4,0,1,0,1,0,1.4255,1
-quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-01-01,2,1,0,1,0,0,0,0.8583,2
-quixere-ce,QUIXERE/CE,ftth,2026-01-01,4,2,2,0,0,0,0,1.15,1
+quixada-ce,QUIXADA/CE,ftth,2026-01-01,6,3,1,0,1,1,0,1.2313,1
+quixada-ce,QUIXADA/CE,5g,2026-01-01,6,2,0,1,0,1,2,0.7571,3
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-01-01,6,4,0,1,0,1,0,1.4969,1
+quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-01-01,6,1,0,1,0,0,4,0.8583,2
+quixere-ce,QUIXERE/CE,ftth,2026-01-01,4,4,0,0,0,0,0,1.2,1
 quixere-ce,QUIXERE/CE,5g,2026-01-01,4,1,2,0,1,0,0,0.7625,3
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-01-01,1,0,1,0,0,0,0,0.9796,2
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-01-01,1,1,0,0,0,0,0,1.0667,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-01-01,1,0,0,0,0,1,0,0,5
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-01-01,2,0,1,0,0,0,1,0.9167,2
 rio-largo-al,RIO LARGO/AL,ftth,2026-01-01,3,2,1,0,0,0,0,1.2796,1
-russas-ce,RUSSAS/CE,ftth,2026-01-01,6,3,2,0,0,1,0,1.0167,1
+russas-ce,RUSSAS/CE,ftth,2026-01-01,6,5,0,0,0,1,0,1.0741,1
 russas-ce,RUSSAS/CE,5g,2026-01-01,6,3,1,0,1,1,0,0.8417,2
 salgueiro-pe,SALGUEIRO/PE,ftth,2026-01-01,2,1,0,0,0,0,1,3.1667,1
 salgueiro-pe,SALGUEIRO/PE,5g,2026-01-01,2,1,0,0,0,0,1,1.075,1
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-01-01,1,1,0,0,0,0,0,1.8824,1
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-01-01,3,2,0,1,0,0,0,0.9539,2
-santa-luzia-pb,SANTA LUZIA/PB,5g,2026-01-01,2,0,0,0,2,0,0,0.4032,4
-santa-rita-pb,SANTA RITA/PB,ftth,2026-01-01,7,4,2,0,0,1,0,1.5807,1
-santa-rita-pb,SANTA RITA/PB,5g,2026-01-01,2,2,0,0,0,0,0,1.7253,1
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-01-01,3,2,0,1,0,0,0,0.987,2
+santa-luzia-pb,SANTA LUZIA/PB,5g,2026-01-01,3,0,0,0,2,0,1,0.4032,4
+santa-rita-pb,SANTA RITA/PB,ftth,2026-01-01,7,5,1,0,0,1,0,1.6429,1
+santa-rita-pb,SANTA RITA/PB,5g,2026-01-01,7,2,0,0,0,0,5,1.7253,1
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-01-01,1,1,0,0,0,0,0,1.3846,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-01-01,3,0,0,1,2,0,0,0.5056,4
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-01-01,3,0,0,1,2,0,0,0.5222,4
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-01-01,3,2,0,0,1,0,0,0.9884,2
 sao-bento-pb,SAO BENTO/PB,ftth,2026-01-01,1,1,0,0,0,0,0,3.5455,1
 sao-bento-pb,SAO BENTO/PB,5g,2026-01-01,1,1,0,0,0,0,0,1.22,1
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-01-01,2,0,2,0,0,0,0,0.9463,2
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-01-01,4,1,0,1,0,1,1,0.9786,2
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-01-01,2,2,0,0,0,0,0,1.0357,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-01-01,4,1,0,1,0,1,1,1.0026,1
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-01-01,4,2,0,0,0,1,1,1.0524,1
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-01-01,2,1,1,0,0,0,0,1.3438,1
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-01-01,6,2,1,1,1,1,0,0.7115,3
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-01-01,6,2,1,1,1,1,0,0.7393,3
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-01-01,6,3,1,0,1,1,0,0.7333,3
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-01-01,4,3,0,0,1,0,0,1.3563,1
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-01-01,4,3,0,0,1,0,0,1.3833,1
 senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-01-01,4,3,1,0,0,0,0,2.7472,1
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-01-01,5,3,0,1,0,0,1,1.0965,1
-serra-talhada-pe,SERRA TALHADA/PE,5g,2026-01-01,2,0,1,0,0,0,1,0.963,2
-sobral-ce,SOBRAL/CE,ftth,2026-01-01,14,11,1,2,0,0,0,1.6952,1
-sobral-ce,SOBRAL/CE,5g,2026-01-01,5,2,1,1,0,1,0,0.9069,2
-sousa-pb,SOUSA/PB,ftth,2026-01-01,5,4,0,0,1,0,0,1.3464,1
-sousa-pb,SOUSA/PB,5g,2026-01-01,3,1,0,1,1,0,0,0.7111,3
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-01-01,5,3,0,1,0,0,1,1.1741,1
+serra-talhada-pe,SERRA TALHADA/PE,5g,2026-01-01,5,0,1,0,0,0,4,0.963,2
+sobral-ce,SOBRAL/CE,ftth,2026-01-01,14,11,2,1,0,0,0,1.7844,1
+sobral-ce,SOBRAL/CE,5g,2026-01-01,14,2,1,1,0,1,9,0.9069,2
+sousa-pb,SOUSA/PB,ftth,2026-01-01,5,4,0,0,1,0,0,1.411,1
+sousa-pb,SOUSA/PB,5g,2026-01-01,5,1,0,1,1,0,2,0.7111,3
 surubim-pe,SURUBIM/PE,ftth,2026-01-01,2,0,0,0,2,0,0,0.4,4
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-01-01,3,2,1,0,0,0,0,2.3167,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-01-01,3,3,0,0,0,0,0,2.3519,1
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-01-01,3,2,0,1,0,0,0,0.9533,2
-taua-ce,TAUA/CE,ftth,2026-01-01,4,4,0,0,0,0,0,1.4083,1
+taua-ce,TAUA/CE,ftth,2026-01-01,4,4,0,0,0,0,0,1.4792,1
 taua-ce,TAUA/CE,5g,2026-01-01,4,1,1,1,1,0,0,1.1115,1
-teresina-pi,TERESINA/PI,ftth,2026-01-01,26,19,5,0,0,2,0,1.3371,1
-teresina-pi,TERESINA/PI,5g,2026-01-01,4,4,0,0,0,0,0,1.6581,1
-tiangua-ce,TIANGUA/CE,ftth,2026-01-01,5,3,0,0,1,1,0,1.4749,1
-tiangua-ce,TIANGUA/CE,5g,2026-01-01,2,2,0,0,0,0,0,1.125,1
-timon-ma,TIMON/MA,ftth,2026-01-01,7,3,1,2,0,0,1,1.0869,1
-timon-ma,TIMON/MA,5g,2026-01-01,2,1,0,0,0,0,1,1.2308,1
+teresina-pi,TERESINA/PI,ftth,2026-01-01,26,20,4,0,1,1,0,1.4359,1
+teresina-pi,TERESINA/PI,5g,2026-01-01,26,4,0,0,0,0,22,1.6581,1
+tiangua-ce,TIANGUA/CE,ftth,2026-01-01,5,3,0,0,1,1,0,1.5159,1
+tiangua-ce,TIANGUA/CE,5g,2026-01-01,5,2,0,0,0,0,3,1.125,1
+timon-ma,TIMON/MA,ftth,2026-01-01,7,4,2,0,0,0,1,1.1646,1
+timon-ma,TIMON/MA,5g,2026-01-01,7,1,0,0,0,0,6,1.2308,1
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-01-01,1,1,0,0,0,0,0,1.6,1
-toritama-pe,TORITAMA/PE,ftth,2026-01-01,5,5,0,0,0,0,0,1.8304,1
-toritama-pe,TORITAMA/PE,5g,2026-01-01,1,0,0,1,0,0,0,0.7826,3
+toritama-pe,TORITAMA/PE,ftth,2026-01-01,5,5,0,0,0,0,0,1.9571,1
+toritama-pe,TORITAMA/PE,5g,2026-01-01,5,0,0,1,0,0,4,0.7826,3
 ubajara-ce,UBAJARA/CE,ftth,2026-01-01,2,1,0,1,0,0,0,2,1
 ubajara-ce,UBAJARA/CE,5g,2026-01-01,2,1,0,0,1,0,0,0.6875,3
-uirauna-pb,UIRAUNA/PB,ftth,2026-01-01,4,1,0,1,1,1,0,1.2208,1
+uirauna-pb,UIRAUNA/PB,ftth,2026-01-01,4,1,0,2,0,1,0,1.2361,1
 uirauna-pb,UIRAUNA/PB,5g,2026-01-01,4,1,1,1,1,0,0,0.8096,2
 umarizal-rn,UMARIZAL/RN,ftth,2026-01-01,2,2,0,0,0,0,0,2.3333,1
 umarizal-rn,UMARIZAL/RN,5g,2026-01-01,2,1,0,0,0,1,0,0.5577,4
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-01-01,5,2,1,0,1,1,0,0.7333,3
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-01-01,5,2,1,1,0,1,0,0.7644,3
 varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-01-01,5,1,1,1,0,2,0,0.5106,4
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-01-01,2,1,1,0,0,0,0,1.125,1
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-01-01,2,1,0,0,0,1,0,0.7813,3
-acarau-ce,ACARAU/CE,ftth,2026-02-01,5,3,1,1,0,0,0,1.1112,1
+acarau-ce,ACARAU/CE,ftth,2026-02-01,5,4,1,0,0,0,0,1.1745,1
 acarau-ce,ACARAU/CE,5g,2026-02-01,5,3,0,0,2,0,0,0.94,2
-acopiara-ce,ACOPIARA/CE,ftth,2026-02-01,4,2,0,0,2,0,0,1.1208,1
+acopiara-ce,ACOPIARA/CE,ftth,2026-02-01,4,2,0,0,2,0,0,1.1417,1
 acopiara-ce,ACOPIARA/CE,5g,2026-02-01,4,1,0,1,2,0,0,0.6429,3
 acu-rn,ACU/RN,ftth,2026-02-01,4,1,1,0,1,0,1,0.902,2
 acu-rn,ACU/RN,5g,2026-02-01,4,2,0,1,0,0,1,1.025,1
-agua-nova-rn,AGUA NOVA/RN,ftth,2026-02-01,1,0,1,0,0,0,0,0.95,2
+agua-nova-rn,AGUA NOVA/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1.0556,1
 agua-nova-rn,AGUA NOVA/RN,5g,2026-02-01,1,1,0,0,0,0,0,1.9,1
 alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-02-01,2,2,0,0,0,0,0,1.1389,1
 altos-pi,ALTOS/PI,ftth,2026-02-01,3,2,1,0,0,0,0,1.6333,1
 apodi-rn,APODI/RN,5g,2026-02-01,2,0,1,1,0,0,0,0.7885,3
 aracaju-se,ARACAJU/SE,ftth,2026-02-01,3,0,2,0,0,0,1,0.9286,2
 arapiraca-al,ARAPIRACA/AL,ftth,2026-02-01,3,2,0,0,0,0,1,1.2727,1
-araripina-pe,ARARIPINA/PE,ftth,2026-02-01,4,4,0,0,0,0,0,1.9674,1
-araripina-pe,ARARIPINA/PE,5g,2026-02-01,2,1,0,0,1,0,0,0.8158,2
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-02-01,3,2,1,0,0,0,0,1.1908,1
-arcoverde-pe,ARCOVERDE/PE,5g,2026-02-01,1,0,0,0,1,0,0,0.4286,4
-assu-rn,ASSU/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1.1739,1
+araripina-pe,ARARIPINA/PE,ftth,2026-02-01,4,4,0,0,0,0,0,2.0357,1
+araripina-pe,ARARIPINA/PE,5g,2026-02-01,4,1,0,0,1,0,2,0.8158,2
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-02-01,3,3,0,0,0,0,0,1.2707,1
+arcoverde-pe,ARCOVERDE/PE,5g,2026-02-01,3,0,0,0,1,0,2,0.4286,4
+assu-rn,ASSU/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1.2857,1
 banabuiu-ce,BANABUIU/CE,ftth,2026-02-01,2,2,0,0,0,0,0,3.1667,1
 banabuiu-ce,BANABUIU/CE,5g,2026-02-01,2,1,0,1,0,0,0,0.84,2
 barauna-rn,BARAUNA/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1.8462,1
 barauna-rn,BARAUNA/RN,5g,2026-02-01,1,1,0,0,0,0,0,1.1667,1
-barbalha-ce,BARBALHA/CE,ftth,2026-02-01,3,1,1,0,0,1,0,0.8399,2
+barbalha-ce,BARBALHA/CE,ftth,2026-02-01,3,1,1,0,0,1,0,0.8455,2
 barbalha-ce,BARBALHA/CE,5g,2026-02-01,3,1,1,1,0,0,0,1.107,1
-bayeux-pb,BAYEUX/PB,ftth,2026-02-01,6,4,1,0,0,1,0,1.1787,1
-bayeux-pb,BAYEUX/PB,5g,2026-02-01,2,1,0,0,1,0,0,0.8222,2
-belo-jardim-pe,BELO JARDIM/PE,ftth,2026-02-01,5,2,0,1,0,1,1,1.1242,1
-belo-jardim-pe,BELO JARDIM/PE,5g,2026-02-01,3,0,0,0,1,1,1,0.3409,4
-bezerros-pe,BEZERROS/PE,ftth,2026-02-01,4,2,2,0,0,0,0,1.348,1
+bayeux-pb,BAYEUX/PB,ftth,2026-02-01,6,5,0,0,0,1,0,1.2503,1
+bayeux-pb,BAYEUX/PB,5g,2026-02-01,6,1,0,0,1,0,4,0.8222,2
+belo-jardim-pe,BELO JARDIM/PE,ftth,2026-02-01,5,2,1,0,0,1,1,1.1429,1
+belo-jardim-pe,BELO JARDIM/PE,5g,2026-02-01,5,0,0,0,1,1,3,0.3409,4
+bezerros-pe,BEZERROS/PE,ftth,2026-02-01,4,2,2,0,0,0,0,1.395,1
 bezerros-pe,BEZERROS/PE,5g,2026-02-01,4,2,2,0,0,0,0,1.185,1
 bom-conselho-pe,BOM CONSELHO/PE,ftth,2026-02-01,2,0,1,0,1,0,0,0.625,3
 bom-conselho-pe,BOM CONSELHO/PE,5g,2026-02-01,2,0,1,1,0,0,0,0.7667,3
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-02-01,6,4,1,0,0,0,1,1.1833,1
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-02-01,6,5,0,0,0,0,1,1.2778,1
 brejo-santo-ce,BREJO SANTO/CE,5g,2026-02-01,6,4,0,1,0,0,1,1.8712,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-02-01,5,5,0,0,0,0,0,1.6318,1
-cabedelo-pb,CABEDELO/PB,5g,2026-02-01,2,0,0,0,2,0,0,0.3889,4
+cabedelo-pb,CABEDELO/PB,ftth,2026-02-01,5,5,0,0,0,0,0,1.6985,1
+cabedelo-pb,CABEDELO/PB,5g,2026-02-01,5,0,0,0,2,0,3,0.3889,4
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-02-01,2,2,0,0,0,0,0,1.5938,1
-caico-rn,CAICO/RN,ftth,2026-02-01,3,2,0,1,0,0,0,1.6095,1
-caico-rn,CAICO/RN,5g,2026-02-01,2,2,0,0,0,0,0,1.3659,1
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-02-01,5,3,0,0,1,0,1,1,1
-cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-02-01,3,1,0,0,1,0,1,1.0303,1
+caico-rn,CAICO/RN,ftth,2026-02-01,3,2,0,1,0,0,0,1.6323,1
+caico-rn,CAICO/RN,5g,2026-02-01,3,2,0,0,0,0,1,1.3659,1
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-02-01,5,3,0,0,1,0,1,1.0489,1
+cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-02-01,5,1,0,0,1,0,3,1.0303,1
 camacari-ba,CAMACARI/BA,ftth,2026-02-01,3,2,0,0,0,0,1,1.6765,1
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-02-01,9,6,1,1,0,1,0,1.1101,1
-campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-02-01,3,0,0,1,0,2,0,0.2754,5
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-02-01,9,6,1,1,0,1,0,1.1898,1
+campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-02-01,9,0,0,1,0,2,6,0.2754,5
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-02-01,2,1,0,0,0,0,1,1.3,1
-caninde-ce,CANINDE/CE,ftth,2026-02-01,7,2,0,2,3,0,0,1.156,1
+caninde-ce,CANINDE/CE,ftth,2026-02-01,7,2,0,2,3,0,0,1.1941,1
 caninde-ce,CANINDE/CE,5g,2026-02-01,7,2,0,4,1,0,0,0.8657,2
-caruaru-pe,CARUARU/PE,ftth,2026-02-01,11,4,1,0,3,2,1,0.9754,2
-caruaru-pe,CARUARU/PE,5g,2026-02-01,2,1,0,0,0,0,1,1.14,1
-cascavel-ce,CASCAVEL/CE,ftth,2026-02-01,5,1,1,0,2,1,0,0.88,2
+caruaru-pe,CARUARU/PE,ftth,2026-02-01,11,4,1,0,3,2,1,1.0408,1
+caruaru-pe,CARUARU/PE,5g,2026-02-01,11,1,0,0,0,0,10,1.14,1
+cascavel-ce,CASCAVEL/CE,ftth,2026-02-01,5,2,0,1,1,1,0,0.9222,2
 cascavel-ce,CASCAVEL/CE,5g,2026-02-01,5,4,0,0,0,1,0,1.28,1
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-02-01,5,2,3,0,0,0,0,1.33,1
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-02-01,5,4,1,0,0,0,0,1.3889,1
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-02-01,5,4,1,0,0,0,0,1.1695,1
 catu-ba,CATU/BA,ftth,2026-02-01,1,0,0,0,1,0,0,0.5385,4
-caucaia-ce,CAUCAIA/CE,ftth,2026-02-01,8,6,1,0,0,1,0,1.3222,1
-caucaia-ce,CAUCAIA/CE,5g,2026-02-01,2,1,1,0,0,0,0,1.0333,1
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-02-01,5,4,0,1,0,0,0,1.1652,1
-ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-02-01,2,2,0,0,0,0,0,1.3021,1
-cedro-ce,CEDRO/CE,ftth,2026-02-01,3,1,0,0,2,0,0,1.181,1
+caucaia-ce,CAUCAIA/CE,ftth,2026-02-01,8,7,0,0,0,1,0,1.4079,1
+caucaia-ce,CAUCAIA/CE,5g,2026-02-01,8,1,1,0,0,0,6,1.0333,1
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-02-01,5,4,1,0,0,0,0,1.2248,1
+ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-02-01,5,2,0,0,0,0,3,1.3021,1
+cedro-ce,CEDRO/CE,ftth,2026-02-01,3,1,0,0,2,0,0,1.1958,1
 cedro-ce,CEDRO/CE,5g,2026-02-01,3,2,0,0,1,0,0,0.8333,2
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-02-01,1,0,0,0,0,1,0,0.2449,5
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-02-01,1,0,0,0,0,1,0,0.2667,5
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-02-01,1,0,1,0,0,0,0,0.8,2
-crateus-ce,CRATEUS/CE,ftth,2026-02-01,6,5,1,0,0,0,0,1.7118,1
-crateus-ce,CRATEUS/CE,5g,2026-02-01,2,2,0,0,0,0,0,1.2571,1
-crato-ce,CRATO/CE,ftth,2026-02-01,7,2,4,0,1,0,0,1.2121,1
-crato-ce,CRATO/CE,5g,2026-02-01,2,2,0,0,0,0,0,1.1364,1
-custodia-pe,CUSTODIA/PE,ftth,2026-02-01,3,2,0,0,1,0,0,0.9738,2
+crateus-ce,CRATEUS/CE,ftth,2026-02-01,6,5,1,0,0,0,0,1.7967,1
+crateus-ce,CRATEUS/CE,5g,2026-02-01,6,2,0,0,0,0,4,1.2571,1
+crato-ce,CRATO/CE,ftth,2026-02-01,7,5,1,0,1,0,0,1.2653,1
+crato-ce,CRATO/CE,5g,2026-02-01,7,2,0,0,0,0,5,1.1364,1
+custodia-pe,CUSTODIA/PE,ftth,2026-02-01,3,2,0,0,1,0,0,0.9868,2
 custodia-pe,CUSTODIA/PE,5g,2026-02-01,3,1,1,1,0,0,0,1.037,1
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,ftth,2026-02-01,2,0,0,0,2,0,0,0.5417,4
 delmiro-gouveia-al,DELMIRO GOUVEIA/AL,5g,2026-02-01,2,0,0,0,1,1,0,0.3333,4
 dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-02-01,2,1,1,0,0,0,0,1.2353,1
-encanto-rn,ENCANTO/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1.6923,1
+encanto-rn,ENCANTO/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1.8333,1
 encanto-rn,ENCANTO/RN,5g,2026-02-01,1,1,0,0,0,0,0,1.75,1
 escada-pe,ESCADA/PE,ftth,2026-02-01,2,2,0,0,0,0,0,1.1818,1
 estancia-se,ESTANCIA/SE,ftth,2026-02-01,1,1,0,0,0,0,0,1.25,1
-eusebio-ce,EUSEBIO/CE,ftth,2026-02-01,6,4,1,0,0,1,0,1.111,1
-eusebio-ce,EUSEBIO/CE,5g,2026-02-01,2,0,1,1,0,0,0,0.7941,3
-extremoz-rn,EXTREMOZ/RN,ftth,2026-02-01,4,3,0,0,1,0,0,1.3533,1
+eusebio-ce,EUSEBIO/CE,ftth,2026-02-01,6,5,0,0,0,1,0,1.1708,1
+eusebio-ce,EUSEBIO/CE,5g,2026-02-01,6,0,1,1,0,0,4,0.7941,3
+extremoz-rn,EXTREMOZ/RN,ftth,2026-02-01,4,3,0,1,0,0,0,1.4821,1
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-02-01,2,1,0,1,0,0,0,0.9615,2
-fortaleza-ce,FORTALEZA/CE,ftth,2026-02-01,46,13,4,6,10,13,0,0.6937,3
-fortaleza-ce,FORTALEZA/CE,5g,2026-02-01,7,2,0,0,2,3,0,0.5007,4
+fortaleza-ce,FORTALEZA/CE,ftth,2026-02-01,46,17,0,10,7,12,0,0.7488,3
+fortaleza-ce,FORTALEZA/CE,5g,2026-02-01,46,2,0,0,2,3,39,0.5007,4
 garanhuns-pe,GARANHUNS/PE,ftth,2026-02-01,2,1,0,0,0,0,1,1.0857,1
-gravata-pe,GRAVATA/PE,ftth,2026-02-01,5,1,1,0,2,1,0,1.1529,1
+gravata-pe,GRAVATA/PE,ftth,2026-02-01,5,1,1,1,1,1,0,1.1762,1
 gravata-pe,GRAVATA/PE,5g,2026-02-01,5,1,0,1,1,2,0,0.5178,4
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-02-01,3,1,0,1,0,0,1,1.4143,1
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-02-01,2,1,0,0,0,0,1,1.1875,1
-horizonte-ce,HORIZONTE/CE,ftth,2026-02-01,8,3,1,0,2,2,0,0.7178,3
-horizonte-ce,HORIZONTE/CE,5g,2026-02-01,3,2,1,0,0,0,0,0.9778,2
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-02-01,3,1,0,1,0,0,1,1.4484,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-02-01,3,1,0,0,0,0,2,1.1875,1
+horizonte-ce,HORIZONTE/CE,ftth,2026-02-01,8,4,0,1,1,2,0,0.7411,3
+horizonte-ce,HORIZONTE/CE,5g,2026-02-01,8,2,1,0,0,0,5,0.9778,2
 ibiapina-ce,IBIAPINA/CE,ftth,2026-02-01,1,1,0,0,0,0,0,2.2,1
 ibiapina-ce,IBIAPINA/CE,5g,2026-02-01,1,0,0,0,1,0,0,0.3077,4
 ico-ce,ICO/CE,ftth,2026-02-01,3,3,0,0,0,0,0,2.4545,1
 ico-ce,ICO/CE,5g,2026-02-01,3,1,2,0,0,0,0,1.0179,1
-iguatu-ce,IGUATU/CE,ftth,2026-02-01,9,8,0,0,0,0,1,1.946,1
-iguatu-ce,IGUATU/CE,5g,2026-02-01,5,3,0,1,0,0,1,1.0153,1
-ipu-ce,IPU/CE,ftth,2026-02-01,4,2,1,0,0,1,0,0.9643,2
-ipu-ce,IPU/CE,5g,2026-02-01,2,0,0,2,0,0,0,0.6667,3
-iracema-ce,IRACEMA/CE,ftth,2026-02-01,3,1,0,1,1,0,0,0.8707,2
+iguatu-ce,IGUATU/CE,ftth,2026-02-01,9,8,0,0,0,0,1,2.0221,1
+iguatu-ce,IGUATU/CE,5g,2026-02-01,9,3,0,1,0,0,5,1.0153,1
+ipu-ce,IPU/CE,ftth,2026-02-01,4,2,1,0,0,1,0,1.0073,1
+ipu-ce,IPU/CE,5g,2026-02-01,4,0,0,2,0,0,2,0.6667,3
+iracema-ce,IRACEMA/CE,ftth,2026-02-01,3,1,0,1,1,0,0,0.8889,2
 iracema-ce,IRACEMA/CE,5g,2026-02-01,3,1,1,0,0,1,0,0.9167,2
 itabaiana-se,ITABAIANA/SE,ftth,2026-02-01,1,0,0,0,1,0,0,0.4444,4
-itapaje-ce,ITAPAJE/CE,ftth,2026-02-01,4,3,1,0,0,0,0,1.3404,1
+itapaje-ce,ITAPAJE/CE,ftth,2026-02-01,4,4,0,0,0,0,0,1.4209,1
 itapaje-ce,ITAPAJE/CE,5g,2026-02-01,4,3,0,1,0,0,0,1.0214,1
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-02-01,6,5,0,0,0,1,0,1.6061,1
-itapipoca-ce,ITAPIPOCA/CE,5g,2026-02-01,3,2,0,0,0,1,0,0.75,3
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-02-01,6,5,0,0,0,1,0,1.6807,1
+itapipoca-ce,ITAPIPOCA/CE,5g,2026-02-01,6,2,0,0,0,1,3,0.75,3
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-02-01,2,0,1,0,1,0,0,0.6115,3
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-02-01,3,1,0,1,1,0,0,1.1,1
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-02-01,3,1,0,1,1,0,0,1.1185,1
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-02-01,3,2,0,0,0,1,0,1.1952,1
-jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-02-01,1,0,0,1,0,0,0,0.75,3
+jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-02-01,1,0,1,0,0,0,0,0.8333,2
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-02-01,1,1,0,0,0,0,0,2.6,1
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-02-01,6,1,0,0,1,4,0,0.5,4
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-02-01,6,1,0,0,1,4,0,0.5185,4
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-02-01,6,4,1,1,0,0,0,1.2109,1
 jeremoabo-ba,JEREMOABO/BA,ftth,2026-02-01,2,2,0,0,0,0,0,1.5,1
 jeremoabo-ba,JEREMOABO/BA,5g,2026-02-01,2,2,0,0,0,0,0,1.0556,1
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-02-01,29,17,4,4,2,1,1,1.2923,1
-joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-02-01,6,0,3,0,2,0,1,0.7022,3
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-02-01,24,15,1,5,1,2,0,1.1933,1
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-02-01,9,2,1,0,5,1,0,0.6897,3
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-02-01,8,7,0,0,1,0,0,2.0236,1
-juazeiro-ba,JUAZEIRO/BA,5g,2026-02-01,2,2,0,0,0,0,0,1.6154,1
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-02-01,29,20,2,3,2,1,1,1.3886,1
+joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-02-01,29,0,3,0,2,0,24,0.7022,3
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-02-01,24,16,1,4,1,2,0,1.2564,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-02-01,24,2,1,0,5,1,15,0.6897,3
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-02-01,8,7,0,0,1,0,0,2.1276,1
+juazeiro-ba,JUAZEIRO/BA,5g,2026-02-01,8,2,0,0,0,0,6,1.6154,1
 lagarto-se,LAGARTO/SE,ftth,2026-02-01,1,1,0,0,0,0,0,1,1
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-02-01,3,2,0,1,0,0,0,1.2024,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-02-01,3,2,1,0,0,0,0,1.2302,1
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-02-01,3,1,0,1,1,0,0,0.8074,2
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-02-01,5,5,0,0,0,0,0,1.7067,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-02-01,5,5,0,0,0,0,0,1.7556,1
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-02-01,5,4,1,0,0,0,0,1.24,1
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-02-01,2,1,0,0,0,1,0,0.5556,4
-luis-correia-pi,LUIS CORREIA/PI,ftth,2026-02-01,1,0,0,0,1,0,0,0.3913,4
-macaiba-rn,MACAIBA/RN,ftth,2026-02-01,6,3,1,1,1,0,0,1.2509,1
-macaiba-rn,MACAIBA/RN,5g,2026-02-01,1,1,0,0,0,0,0,1.46,1
-macau-rn,MACAU/RN,ftth,2026-02-01,2,0,0,0,1,1,0,0.2143,5
+luis-correia-pi,LUIS CORREIA/PI,ftth,2026-02-01,1,0,0,0,1,0,0,0.4286,4
+macaiba-rn,MACAIBA/RN,ftth,2026-02-01,6,3,1,2,0,0,0,1.3312,1
+macaiba-rn,MACAIBA/RN,5g,2026-02-01,6,1,0,0,0,0,5,1.46,1
+macau-rn,MACAU/RN,ftth,2026-02-01,2,0,0,0,1,1,0,0.2333,5
 macau-rn,MACAU/RN,5g,2026-02-01,2,0,0,0,1,1,0,0.2,5
 maceio-al,MACEIO/AL,ftth,2026-02-01,1,0,1,0,0,0,0,0.9048,2
-major-sales-rn,MAJOR SALES/RN,ftth,2026-02-01,4,2,0,1,0,1,0,1.5938,1
+major-sales-rn,MAJOR SALES/RN,ftth,2026-02-01,4,2,0,1,0,1,0,1.6295,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-02-01,4,2,0,0,0,2,0,0.5315,4
 mamanguape-pb,MAMANGUAPE/PB,ftth,2026-02-01,1,0,0,0,0,1,0,0,5
-maracanau-ce,MARACANAU/CE,ftth,2026-02-01,13,3,2,2,3,2,1,0.9889,2
-maracanau-ce,MARACANAU/CE,5g,2026-02-01,7,3,0,1,2,0,1,0.8212,2
-maranguape-ce,MARANGUAPE/CE,ftth,2026-02-01,8,3,1,0,2,2,0,0.7591,3
-maranguape-ce,MARANGUAPE/CE,5g,2026-02-01,2,1,1,0,0,0,0,0.9333,2
+maracanau-ce,MARACANAU/CE,ftth,2026-02-01,13,3,2,4,1,2,1,1.0295,1
+maracanau-ce,MARACANAU/CE,5g,2026-02-01,13,3,0,1,2,0,7,0.8212,2
+maranguape-ce,MARANGUAPE/CE,ftth,2026-02-01,8,3,1,0,2,2,0,0.8141,2
+maranguape-ce,MARANGUAPE/CE,5g,2026-02-01,8,1,1,0,0,0,6,0.9333,2
 marco-ce,MARCO/CE,ftth,2026-02-01,1,0,0,0,0,1,0,0,5
 marco-ce,MARCO/CE,5g,2026-02-01,1,0,1,0,0,0,0,0.9,2
 milagres-ce,MILAGRES/CE,ftth,2026-02-01,3,1,1,0,0,1,0,0.9412,2
 milagres-ce,MILAGRES/CE,5g,2026-02-01,3,2,0,1,0,0,0,0.9766,2
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-02-01,3,1,1,0,0,0,1,2.0039,1
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-02-01,3,1,1,0,0,0,1,2.0512,1
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-02-01,3,1,1,0,0,0,1,0.9135,2
-mombaca-ce,MOMBACA/CE,ftth,2026-02-01,4,3,0,0,1,0,0,1.45,1
+mombaca-ce,MOMBACA/CE,ftth,2026-02-01,4,3,0,0,1,0,0,1.4944,1
 mombaca-ce,MOMBACA/CE,5g,2026-02-01,4,2,0,2,0,0,0,0.96,2
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-02-01,5,4,0,0,0,0,1,1.4888,1
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-02-01,5,4,0,0,0,0,1,1.5958,1
 morada-nova-ce,MORADA NOVA/CE,5g,2026-02-01,5,4,0,0,0,0,1,1.8782,1
-mossoro-rn,MOSSORO/RN,ftth,2026-02-01,12,1,3,2,4,2,0,0.6571,3
-mossoro-rn,MOSSORO/RN,5g,2026-02-01,4,3,1,0,0,0,0,1.1417,1
-natal-rn,NATAL/RN,ftth,2026-02-01,39,23,4,4,5,3,0,1.1838,1
-natal-rn,NATAL/RN,5g,2026-02-01,7,4,1,2,0,0,0,1.0549,1
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-02-01,2,0,1,0,1,0,0,0.7,3
+mossoro-rn,MOSSORO/RN,ftth,2026-02-01,12,2,2,3,4,1,0,0.6964,3
+mossoro-rn,MOSSORO/RN,5g,2026-02-01,12,3,1,0,0,0,8,1.1417,1
+natal-rn,NATAL/RN,ftth,2026-02-01,39,26,2,5,4,2,0,1.2629,1
+natal-rn,NATAL/RN,5g,2026-02-01,39,4,1,2,0,0,32,1.0549,1
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-02-01,2,1,0,0,1,0,0,0.7778,3
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-02-01,2,1,0,0,0,1,0,0.9,2
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-02-01,3,2,0,0,0,0,1,1.2,1
 olho-d-agua-das-flores-al,OLHO D'AGUA DAS FLORES/AL,ftth,2026-02-01,2,1,0,0,1,0,0,0.9444,2
 olho-d-agua-das-flores-al,OLHO D'AGUA DAS FLORES/AL,5g,2026-02-01,2,0,1,0,0,1,0,0.5,4
-oros-ce,OROS/CE,ftth,2026-02-01,3,2,0,0,0,0,1,1.8583,1
+oros-ce,OROS/CE,ftth,2026-02-01,3,2,0,0,0,0,1,1.9167,1
 oros-ce,OROS/CE,5g,2026-02-01,3,2,0,0,0,0,1,1.2125,1
-ouricuri-pe,OURICURI/PE,ftth,2026-02-01,4,3,1,0,0,0,0,1.25,1
-ouricuri-pe,OURICURI/PE,5g,2026-02-01,2,0,0,0,1,1,0,0.3158,4
-pacajus-ce,PACAJUS/CE,ftth,2026-02-01,4,4,0,0,0,0,0,2.1332,1
-pacajus-ce,PACAJUS/CE,5g,2026-02-01,2,2,0,0,0,0,0,1.2222,1
+ouricuri-pe,OURICURI/PE,ftth,2026-02-01,4,3,1,0,0,0,0,1.3214,1
+ouricuri-pe,OURICURI/PE,5g,2026-02-01,4,0,0,0,1,1,2,0.3158,4
+pacajus-ce,PACAJUS/CE,ftth,2026-02-01,4,4,0,0,0,0,0,2.2232,1
+pacajus-ce,PACAJUS/CE,5g,2026-02-01,4,2,0,0,0,0,2,1.2222,1
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-02-01,2,0,1,0,0,0,1,0.8095,2
 paracuru-ce,PARACURU/CE,ftth,2026-02-01,1,0,0,0,0,1,0,0,5
-paraipaba-ce,PARAIPABA/CE,ftth,2026-02-01,5,2,1,0,1,0,1,1.1284,1
-paraipaba-ce,PARAIPABA/CE,5g,2026-02-01,2,0,0,1,0,0,1,0.7969,3
-parnaiba-pi,PARNAIBA/PI,ftth,2026-02-01,12,8,1,2,1,0,0,1.559,1
-parnaiba-pi,PARNAIBA/PI,5g,2026-02-01,2,2,0,0,0,0,0,1.2,1
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-02-01,14,11,2,1,0,0,0,1.9254,1
-parnamirim-rn,PARNAMIRIM/RN,5g,2026-02-01,5,5,0,0,0,0,0,1.2565,1
-patos-pb,PATOS/PB,ftth,2026-02-01,9,7,1,1,0,0,0,1.5506,1
-patos-pb,PATOS/PB,5g,2026-02-01,4,1,1,1,0,1,0,0.7925,3
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-02-01,6,2,2,2,0,0,0,1.1996,1
+paraipaba-ce,PARAIPABA/CE,ftth,2026-02-01,5,2,1,0,1,0,1,1.1983,1
+paraipaba-ce,PARAIPABA/CE,5g,2026-02-01,5,0,0,1,0,0,4,0.7969,3
+parnaiba-pi,PARNAIBA/PI,ftth,2026-02-01,12,8,3,0,1,0,0,1.6741,1
+parnaiba-pi,PARNAIBA/PI,5g,2026-02-01,12,2,0,0,0,0,10,1.2,1
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-02-01,14,13,1,0,0,0,0,2.007,1
+parnamirim-rn,PARNAMIRIM/RN,5g,2026-02-01,14,5,0,0,0,0,9,1.2565,1
+patos-pb,PATOS/PB,ftth,2026-02-01,9,7,1,1,0,0,0,1.6074,1
+patos-pb,PATOS/PB,5g,2026-02-01,9,1,1,1,0,1,5,0.7925,3
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-02-01,6,3,2,1,0,0,0,1.2505,1
 pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-02-01,6,4,1,1,0,0,0,1.2869,1
 paulista-pe,PAULISTA/PE,ftth,2026-02-01,3,2,0,0,0,0,1,1.25,1
 paulo-afonso-ba,PAULO AFONSO/BA,ftth,2026-02-01,2,2,0,0,0,0,0,1.1,1
 paulo-afonso-ba,PAULO AFONSO/BA,5g,2026-02-01,2,2,0,0,0,0,0,1.25,1
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-02-01,3,1,0,0,1,0,1,1.2583,1
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-02-01,3,1,0,0,1,0,1,1.2778,1
 pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-02-01,3,1,0,1,0,0,1,0.9286,2
-pereiro-ce,PEREIRO/CE,ftth,2026-02-01,71,60,2,3,0,1,5,1.8243,1
-pereiro-ce,PEREIRO/CE,5g,2026-02-01,36,0,0,4,4,23,5,0.1676,5
-pesqueira-pe,PESQUEIRA/PE,ftth,2026-02-01,2,1,0,0,1,0,0,0.7783,3
-pesqueira-pe,PESQUEIRA/PE,5g,2026-02-01,1,0,0,0,1,0,0,0.5455,4
-petrolina-pe,PETROLINA/PE,ftth,2026-02-01,9,8,1,0,0,0,0,1.5249,1
-petrolina-pe,PETROLINA/PE,5g,2026-02-01,2,2,0,0,0,0,0,1.5,1
+pereiro-ce,PEREIRO/CE,ftth,2026-02-01,72,60,2,3,0,1,6,1.8243,1
+pereiro-ce,PEREIRO/CE,5g,2026-02-01,72,0,0,4,4,23,41,0.1676,5
+pesqueira-pe,PESQUEIRA/PE,ftth,2026-02-01,2,1,0,0,1,0,0,0.8283,2
+pesqueira-pe,PESQUEIRA/PE,5g,2026-02-01,2,0,0,0,1,0,1,0.5455,4
+petrolina-pe,PETROLINA/PE,ftth,2026-02-01,9,8,1,0,0,0,0,1.6279,1
+petrolina-pe,PETROLINA/PE,5g,2026-02-01,9,2,0,0,0,0,7,1.5,1
 picos-pi,PICOS/PI,ftth,2026-02-01,1,1,0,0,0,0,0,1.1,1
 piranhas-al,PIRANHAS/AL,ftth,2026-02-01,1,1,0,0,0,0,0,1,1
 piranhas-al,PIRANHAS/AL,5g,2026-02-01,1,1,0,0,0,0,0,1.0667,1
 piripiri-pi,PIRIPIRI/PI,ftth,2026-02-01,3,1,1,0,0,0,1,1.0455,1
-pombal-pb,POMBAL/PB,ftth,2026-02-01,4,4,0,0,0,0,0,1.475,1
+pombal-pb,POMBAL/PB,ftth,2026-02-01,4,4,0,0,0,0,0,1.5444,1
 pombal-pb,POMBAL/PB,5g,2026-02-01,4,1,0,2,1,0,0,0.7946,3
-quixada-ce,QUIXADA/CE,ftth,2026-02-01,7,4,0,1,1,0,1,1.3246,1
-quixada-ce,QUIXADA/CE,5g,2026-02-01,4,1,1,1,0,0,1,0.9924,2
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-02-01,5,5,0,0,0,0,0,2.0365,1
-quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-02-01,2,1,1,0,0,0,0,0.9615,2
-quixere-ce,QUIXERE/CE,ftth,2026-02-01,4,3,0,1,0,0,0,1.3795,1
+quixada-ce,QUIXADA/CE,ftth,2026-02-01,7,4,0,1,1,0,1,1.3846,1
+quixada-ce,QUIXADA/CE,5g,2026-02-01,7,1,1,1,0,0,4,0.9924,2
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-02-01,5,5,0,0,0,0,0,2.1519,1
+quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-02-01,5,1,1,0,0,0,3,0.9615,2
+quixere-ce,QUIXERE/CE,ftth,2026-02-01,4,3,0,1,0,0,0,1.4268,1
 quixere-ce,QUIXERE/CE,5g,2026-02-01,4,1,1,0,2,0,0,0.9118,2
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-02-01,1,0,1,0,0,0,0,0.9184,2
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-02-01,1,1,0,0,0,0,0,1,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-02-01,1,1,0,0,0,0,0,1.8,1
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-02-01,2,2,0,0,0,0,0,1.25,1
 rio-largo-al,RIO LARGO/AL,ftth,2026-02-01,3,2,0,0,1,0,0,1.0185,1
-russas-ce,RUSSAS/CE,ftth,2026-02-01,6,2,3,0,1,0,0,1.175,1
+russas-ce,RUSSAS/CE,ftth,2026-02-01,6,4,1,0,1,0,0,1.2361,1
 russas-ce,RUSSAS/CE,5g,2026-02-01,6,5,0,1,0,0,0,1.2242,1
 salgueiro-pe,SALGUEIRO/PE,ftth,2026-02-01,2,1,0,0,0,0,1,2.2857,1
 salgueiro-pe,SALGUEIRO/PE,5g,2026-02-01,2,0,1,0,0,0,1,0.8293,2
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-02-01,1,1,0,0,0,0,0,1.2941,1
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-02-01,3,1,1,0,0,0,1,1.2768,1
-santa-luzia-pb,SANTA LUZIA/PB,5g,2026-02-01,2,0,1,0,0,0,1,0.8966,2
-santa-rita-pb,SANTA RITA/PB,ftth,2026-02-01,7,4,0,1,1,1,0,1.2676,1
-santa-rita-pb,SANTA RITA/PB,5g,2026-02-01,2,1,0,1,0,0,0,0.95,2
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-02-01,3,1,1,0,0,0,1,1.3544,1
+santa-luzia-pb,SANTA LUZIA/PB,5g,2026-02-01,3,0,1,0,0,0,2,0.8966,2
+santa-rita-pb,SANTA RITA/PB,ftth,2026-02-01,7,4,0,1,1,1,0,1.3306,1
+santa-rita-pb,SANTA RITA/PB,5g,2026-02-01,7,1,0,1,0,0,5,0.95,2
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-02-01,1,1,0,0,0,0,0,1.8571,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-02-01,3,1,1,0,1,0,0,0.85,2
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-02-01,3,1,1,1,0,0,0,0.8704,2
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-02-01,3,1,0,1,1,0,0,0.8104,2
 sao-bento-pb,SAO BENTO/PB,ftth,2026-02-01,1,1,0,0,0,0,0,2.8333,1
 sao-bento-pb,SAO BENTO/PB,5g,2026-02-01,1,1,0,0,0,0,0,1.2857,1
 sao-caitano-pe,SAO CAITANO/PE,5g,2026-02-01,2,1,0,0,1,0,0,0.6563,3
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-02-01,3,0,1,2,0,0,0,0.7429,3
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-02-01,4,2,0,1,0,0,1,1.5282,1
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-02-01,3,0,2,1,0,0,0,0.8125,2
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-02-01,4,2,0,1,0,0,1,1.5726,1
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-02-01,4,1,0,0,2,0,1,0.6979,3
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-02-01,2,1,0,1,0,0,0,0.8824,2
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-02-01,6,2,1,0,1,2,0,0.642,3
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-02-01,6,2,1,0,1,2,0,0.6689,3
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-02-01,6,3,1,2,0,0,0,1.1782,1
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-02-01,4,3,1,0,0,0,0,1.7125,1
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-02-01,4,3,1,0,0,0,0,1.7639,1
 senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-02-01,4,2,0,2,0,0,0,1.3208,1
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-02-01,5,3,1,0,1,0,0,1.6795,1
-serra-talhada-pe,SERRA TALHADA/PE,5g,2026-02-01,2,1,0,1,0,0,0,1.3571,1
-sobral-ce,SOBRAL/CE,ftth,2026-02-01,14,12,0,1,0,0,1,1.6398,1
-sobral-ce,SOBRAL/CE,5g,2026-02-01,6,2,1,1,0,1,1,0.8554,2
-sousa-pb,SOUSA/PB,ftth,2026-02-01,6,5,0,1,0,0,0,1.992,1
-sousa-pb,SOUSA/PB,5g,2026-02-01,3,0,1,2,0,0,0,0.8027,2
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-02-01,5,3,1,0,1,0,0,1.7454,1
+serra-talhada-pe,SERRA TALHADA/PE,5g,2026-02-01,5,1,0,1,0,0,3,1.3571,1
+sobral-ce,SOBRAL/CE,ftth,2026-02-01,14,12,0,1,0,0,1,1.7288,1
+sobral-ce,SOBRAL/CE,5g,2026-02-01,14,2,1,1,0,1,9,0.8554,2
+sousa-pb,SOUSA/PB,ftth,2026-02-01,6,5,0,1,0,0,0,2.05,1
+sousa-pb,SOUSA/PB,5g,2026-02-01,6,0,1,2,0,0,3,0.8027,2
 surubim-pe,SURUBIM/PE,ftth,2026-02-01,2,0,1,0,1,0,0,0.6111,3
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-02-01,4,2,1,1,0,0,0,1.4375,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-02-01,4,2,1,1,0,0,0,1.4792,1
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-02-01,4,2,2,0,0,0,0,1.1886,1
-taua-ce,TAUA/CE,ftth,2026-02-01,4,4,0,0,0,0,0,1.45,1
+taua-ce,TAUA/CE,ftth,2026-02-01,4,4,0,0,0,0,0,1.5139,1
 taua-ce,TAUA/CE,5g,2026-02-01,4,2,1,1,0,0,0,1.0104,1
-teresina-pi,TERESINA/PI,ftth,2026-02-01,25,14,5,5,1,0,0,1.3532,1
-teresina-pi,TERESINA/PI,5g,2026-02-01,4,3,0,1,0,0,0,2,1
-tiangua-ce,TIANGUA/CE,ftth,2026-02-01,4,3,0,0,1,0,0,1.7391,1
-tiangua-ce,TIANGUA/CE,5g,2026-02-01,2,1,0,1,0,0,0,0.8571,2
-timon-ma,TIMON/MA,ftth,2026-02-01,9,7,0,1,0,1,0,1.3899,1
-timon-ma,TIMON/MA,5g,2026-02-01,2,2,0,0,0,0,0,1.3667,1
+teresina-pi,TERESINA/PI,ftth,2026-02-01,25,17,5,2,1,0,0,1.4473,1
+teresina-pi,TERESINA/PI,5g,2026-02-01,25,3,0,1,0,0,21,2,1
+tiangua-ce,TIANGUA/CE,ftth,2026-02-01,4,3,0,0,1,0,0,1.7857,1
+tiangua-ce,TIANGUA/CE,5g,2026-02-01,4,1,0,1,0,0,2,0.8571,2
+timon-ma,TIMON/MA,ftth,2026-02-01,9,7,1,0,1,0,0,1.475,1
+timon-ma,TIMON/MA,5g,2026-02-01,9,2,0,0,0,0,7,1.3667,1
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-02-01,1,1,0,0,0,0,0,1.125,1
-toritama-pe,TORITAMA/PE,ftth,2026-02-01,5,3,0,1,1,0,0,1.3939,1
-toritama-pe,TORITAMA/PE,5g,2026-02-01,1,0,1,0,0,0,0,0.8889,2
-ubajara-ce,UBAJARA/CE,ftth,2026-02-01,3,2,0,1,0,0,0,1.3833,1
+toritama-pe,TORITAMA/PE,ftth,2026-02-01,5,3,1,0,1,0,0,1.4771,1
+toritama-pe,TORITAMA/PE,5g,2026-02-01,5,0,1,0,0,0,4,0.8889,2
+ubajara-ce,UBAJARA/CE,ftth,2026-02-01,3,2,1,0,0,0,0,1.4111,1
 ubajara-ce,UBAJARA/CE,5g,2026-02-01,3,0,1,1,0,1,0,0.5905,4
-uirauna-pb,UIRAUNA/PB,ftth,2026-02-01,3,0,1,0,1,1,0,0.4738,4
+uirauna-pb,UIRAUNA/PB,ftth,2026-02-01,3,0,1,0,1,1,0,0.5053,4
 uirauna-pb,UIRAUNA/PB,5g,2026-02-01,3,1,1,0,1,0,0,0.8,3
 umarizal-rn,UMARIZAL/RN,ftth,2026-02-01,2,1,0,0,0,0,1,2,1
 umarizal-rn,UMARIZAL/RN,5g,2026-02-01,2,1,0,0,0,0,1,1,1
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-02-01,5,2,0,1,1,1,0,0.675,3
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-02-01,5,2,0,1,1,1,0,0.7028,3
 varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-02-01,5,0,0,2,2,1,0,0.4926,4
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-02-01,2,1,0,0,1,0,0,1.0313,1
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-02-01,2,2,0,0,0,0,0,1.0938,1
-acarau-ce,ACARAU/CE,ftth,2026-03-01,4,1,2,1,0,0,0,0.9083,2
+acarau-ce,ACARAU/CE,ftth,2026-03-01,4,2,1,1,0,0,0,0.95,2
 acarau-ce,ACARAU/CE,5g,2026-03-01,4,2,1,1,0,0,0,1.0013,1
-acopiara-ce,ACOPIARA/CE,ftth,2026-03-01,4,2,0,2,0,0,0,0.9583,2
+acopiara-ce,ACOPIARA/CE,ftth,2026-03-01,4,2,0,2,0,0,0,0.9944,2
 acopiara-ce,ACOPIARA/CE,5g,2026-03-01,4,2,1,1,0,0,0,0.9679,2
 acu-rn,ACU/RN,ftth,2026-03-01,4,3,0,0,1,0,0,1.75,1
 acu-rn,ACU/RN,5g,2026-03-01,4,4,0,0,0,0,0,2.2386,1
-agua-nova-rn,AGUA NOVA/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.3077,1
+agua-nova-rn,AGUA NOVA/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.4167,1
 agua-nova-rn,AGUA NOVA/RN,5g,2026-03-01,1,1,0,0,0,0,0,1.2667,1
 alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-03-01,2,2,0,0,0,0,0,1.3,1
 altos-pi,ALTOS/PI,ftth,2026-03-01,3,0,1,0,1,1,0,0.5741,4
@@ -512,487 +512,487 @@ apodi-rn,APODI/RN,ftth,2026-03-01,2,0,0,0,0,2,0,0.0333,5
 apodi-rn,APODI/RN,5g,2026-03-01,2,1,1,0,0,0,0,1.1,1
 aracaju-se,ARACAJU/SE,ftth,2026-03-01,3,1,1,1,0,0,0,1,1
 arapiraca-al,ARAPIRACA/AL,ftth,2026-03-01,3,0,0,0,2,0,1,0.475,4
-araripina-pe,ARARIPINA/PE,ftth,2026-03-01,4,2,0,0,1,0,1,1.4192,1
+araripina-pe,ARARIPINA/PE,ftth,2026-03-01,4,2,0,0,1,0,1,1.4722,1
 araripina-pe,ARARIPINA/PE,5g,2026-03-01,4,3,0,0,0,0,1,1.9137,1
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-03-01,3,3,0,0,0,0,0,1.803,1
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-03-01,3,3,0,0,0,0,0,1.9,1
 arcoverde-pe,ARCOVERDE/PE,5g,2026-03-01,3,3,0,0,0,0,0,1.2991,1
-assu-rn,ASSU/RN,ftth,2026-03-01,2,1,1,0,0,0,0,0.925,2
+assu-rn,ASSU/RN,ftth,2026-03-01,2,1,1,0,0,0,0,1.0278,1
 assu-rn,ASSU/RN,5g,2026-03-01,2,1,0,1,0,0,0,0.8667,2
 banabuiu-ce,BANABUIU/CE,ftth,2026-03-01,2,2,0,0,0,0,0,3.2667,1
 banabuiu-ce,BANABUIU/CE,5g,2026-03-01,2,2,0,0,0,0,0,1.2308,1
 barauna-rn,BARAUNA/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.2,1
 barauna-rn,BARAUNA/RN,5g,2026-03-01,1,1,0,0,0,0,0,1,1
-barbalha-ce,BARBALHA/CE,ftth,2026-03-01,3,2,1,0,0,0,0,1.2463,1
+barbalha-ce,BARBALHA/CE,ftth,2026-03-01,3,2,1,0,0,0,0,1.2778,1
 barbalha-ce,BARBALHA/CE,5g,2026-03-01,3,3,0,0,0,0,0,1.3596,1
-bayeux-pb,BAYEUX/PB,ftth,2026-03-01,7,5,0,2,0,0,0,1.6067,1
-bayeux-pb,BAYEUX/PB,5g,2026-03-01,2,2,0,0,0,0,0,1.3409,1
-belo-jardim-pe,BELO JARDIM/PE,ftth,2026-03-01,4,2,1,0,0,0,1,1.1172,1
+bayeux-pb,BAYEUX/PB,ftth,2026-03-01,7,5,0,2,0,0,0,1.7016,1
+bayeux-pb,BAYEUX/PB,5g,2026-03-01,7,2,0,0,0,0,5,1.3409,1
+belo-jardim-pe,BELO JARDIM/PE,ftth,2026-03-01,4,2,1,0,0,0,1,1.1444,1
 belo-jardim-pe,BELO JARDIM/PE,5g,2026-03-01,4,1,0,0,2,0,1,0.9325,2
-bezerros-pe,BEZERROS/PE,ftth,2026-03-01,4,1,2,0,0,0,1,1.4611,1
+bezerros-pe,BEZERROS/PE,ftth,2026-03-01,4,3,0,0,0,0,1,1.5296,1
 bezerros-pe,BEZERROS/PE,5g,2026-03-01,4,2,1,0,0,0,1,1.3615,1
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-03-01,6,5,0,0,0,0,1,1.52,1
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-03-01,6,5,0,0,0,0,1,1.6267,1
 brejo-santo-ce,BREJO SANTO/CE,5g,2026-03-01,6,5,0,0,0,0,1,1.5585,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-03-01,5,3,1,0,0,1,0,1.0237,1
-cabedelo-pb,CABEDELO/PB,5g,2026-03-01,2,0,0,0,2,0,0,0.4423,4
+cabedelo-pb,CABEDELO/PB,ftth,2026-03-01,5,3,1,0,0,1,0,1.0933,1
+cabedelo-pb,CABEDELO/PB,5g,2026-03-01,5,0,0,0,2,0,3,0.4423,4
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-03-01,2,2,0,0,0,0,0,1.4,1
-caico-rn,CAICO/RN,ftth,2026-03-01,3,2,0,0,1,0,0,1.3222,1
+caico-rn,CAICO/RN,ftth,2026-03-01,3,2,0,0,1,0,0,1.3389,1
 caico-rn,CAICO/RN,5g,2026-03-01,3,3,0,0,0,0,0,1.8256,1
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-03-01,5,3,1,0,0,0,1,1.7458,1
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-03-01,5,4,0,0,0,0,1,1.8028,1
 cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-03-01,5,3,1,0,0,0,1,1.4199,1
 camacari-ba,CAMACARI/BA,ftth,2026-03-01,3,1,0,1,0,0,1,0.95,2
 camocim-ce,CAMOCIM/CE,ftth,2026-03-01,2,0,0,0,0,2,0,0,5
 camocim-ce,CAMOCIM/CE,5g,2026-03-01,2,1,0,0,0,1,0,0.5778,4
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-03-01,9,6,0,1,1,1,0,0.9929,2
-campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-03-01,3,2,1,0,0,0,0,1,1
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-03-01,9,6,0,1,1,1,0,1.0525,1
+campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-03-01,9,2,1,0,0,0,6,1,1
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-03-01,2,1,0,1,0,0,0,0.8333,2
-caninde-ce,CANINDE/CE,ftth,2026-03-01,7,2,1,2,1,1,0,1.0952,1
+caninde-ce,CANINDE/CE,ftth,2026-03-01,7,3,1,1,1,1,0,1.1429,1
 caninde-ce,CANINDE/CE,5g,2026-03-01,7,5,1,0,1,0,0,1.4186,1
-caruaru-pe,CARUARU/PE,ftth,2026-03-01,9,4,2,2,0,1,0,1.1517,1
-caruaru-pe,CARUARU/PE,5g,2026-03-01,1,1,0,0,0,0,0,2.0455,1
-cascavel-ce,CASCAVEL/CE,ftth,2026-03-01,6,1,2,0,2,1,0,0.8417,2
+caruaru-pe,CARUARU/PE,ftth,2026-03-01,9,4,2,2,0,1,0,1.2122,1
+caruaru-pe,CARUARU/PE,5g,2026-03-01,9,1,0,0,0,0,8,2.0455,1
+cascavel-ce,CASCAVEL/CE,ftth,2026-03-01,6,2,1,0,2,1,0,0.8833,2
 cascavel-ce,CASCAVEL/CE,5g,2026-03-01,6,5,0,0,0,1,0,1.2342,1
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-03-01,4,3,1,0,0,0,0,1.8333,1
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-03-01,4,4,0,0,0,0,0,1.8889,1
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-03-01,4,4,0,0,0,0,0,1.5397,1
 catu-ba,CATU/BA,ftth,2026-03-01,1,0,0,0,1,0,0,0.5556,4
-caucaia-ce,CAUCAIA/CE,ftth,2026-03-01,10,8,0,1,0,1,0,1.3351,1
-caucaia-ce,CAUCAIA/CE,5g,2026-03-01,3,2,0,0,1,0,0,3.9061,1
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-03-01,4,2,0,0,2,0,0,0.9495,2
+caucaia-ce,CAUCAIA/CE,ftth,2026-03-01,10,8,0,1,0,1,0,1.4183,1
+caucaia-ce,CAUCAIA/CE,5g,2026-03-01,10,2,0,0,1,0,7,3.9061,1
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-03-01,4,2,0,1,1,0,0,0.9722,2
 ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-03-01,4,3,0,0,0,1,0,1.9068,1
-cedro-ce,CEDRO/CE,ftth,2026-03-01,3,2,0,1,0,0,0,1,1
+cedro-ce,CEDRO/CE,ftth,2026-03-01,3,2,0,1,0,0,0,1.037,1
 cedro-ce,CEDRO/CE,5g,2026-03-01,3,1,1,1,0,0,0,0.8051,2
 chorozinho-ce,CHOROZINHO/CE,ftth,2026-03-01,1,0,0,0,0,1,0,0,5
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1,1
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.1,1
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-03-01,1,1,0,0,0,0,0,1.0667,1
-crateus-ce,CRATEUS/CE,ftth,2026-03-01,5,3,1,0,1,0,0,1.6636,1
+crateus-ce,CRATEUS/CE,ftth,2026-03-01,5,3,1,0,1,0,0,1.71,1
 crateus-ce,CRATEUS/CE,5g,2026-03-01,5,4,1,0,0,0,0,1.3979,1
-crato-ce,CRATO/CE,ftth,2026-03-01,6,3,1,1,1,0,0,1.7842,1
-crato-ce,CRATO/CE,5g,2026-03-01,2,2,0,0,0,0,0,3.25,1
+crato-ce,CRATO/CE,ftth,2026-03-01,6,4,1,0,1,0,0,1.836,1
+crato-ce,CRATO/CE,5g,2026-03-01,6,2,0,0,0,0,4,3.25,1
 custodia-pe,CUSTODIA/PE,ftth,2026-03-01,2,1,0,0,1,0,0,1.2667,1
 custodia-pe,CUSTODIA/PE,5g,2026-03-01,2,1,0,1,0,0,0,0.8077,2
 dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-03-01,2,0,0,1,1,0,0,0.5,4
-encanto-rn,ENCANTO/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.5455,1
+encanto-rn,ENCANTO/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.7,1
 encanto-rn,ENCANTO/RN,5g,2026-03-01,1,1,0,0,0,0,0,1.1333,1
 escada-pe,ESCADA/PE,ftth,2026-03-01,2,1,0,0,1,0,0,0.75,3
 estancia-se,ESTANCIA/SE,ftth,2026-03-01,2,1,1,0,0,0,0,1.275,1
-eusebio-ce,EUSEBIO/CE,ftth,2026-03-01,5,3,1,0,0,1,0,1.3156,1
-eusebio-ce,EUSEBIO/CE,5g,2026-03-01,2,2,0,0,0,0,0,1.2115,1
-extremoz-rn,EXTREMOZ/RN,ftth,2026-03-01,4,1,1,1,1,0,0,0.8295,2
+eusebio-ce,EUSEBIO/CE,ftth,2026-03-01,5,3,1,0,0,1,0,1.3733,1
+eusebio-ce,EUSEBIO/CE,5g,2026-03-01,5,2,0,0,0,0,3,1.2115,1
+extremoz-rn,EXTREMOZ/RN,ftth,2026-03-01,4,2,1,1,0,0,0,0.9125,2
 extremoz-rn,EXTREMOZ/RN,5g,2026-03-01,4,4,0,0,0,0,0,1.45,1
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-03-01,2,1,0,0,1,0,0,0.7222,3
-fortaleza-ce,FORTALEZA/CE,ftth,2026-03-01,53,19,5,7,14,7,1,0.8235,2
-fortaleza-ce,FORTALEZA/CE,5g,2026-03-01,13,8,2,1,0,1,1,1.4778,1
+fortaleza-ce,FORTALEZA/CE,ftth,2026-03-01,53,22,4,7,12,7,1,0.8819,2
+fortaleza-ce,FORTALEZA/CE,5g,2026-03-01,53,8,2,1,0,1,41,1.4778,1
 garanhuns-pe,GARANHUNS/PE,ftth,2026-03-01,2,2,0,0,0,0,0,1.7,1
-gravata-pe,GRAVATA/PE,ftth,2026-03-01,5,1,0,0,2,2,0,0.6233,3
+gravata-pe,GRAVATA/PE,ftth,2026-03-01,5,1,0,0,2,2,0,0.6422,3
 gravata-pe,GRAVATA/PE,5g,2026-03-01,5,1,0,2,2,0,0,0.6718,3
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-03-01,3,1,0,1,0,1,0,0.8758,2
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-03-01,3,1,0,1,0,1,0,0.8833,2
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-03-01,3,3,0,0,0,0,0,1.6333,1
-horizonte-ce,HORIZONTE/CE,ftth,2026-03-01,7,6,0,0,1,0,0,1.7443,1
-horizonte-ce,HORIZONTE/CE,5g,2026-03-01,3,3,0,0,0,0,0,2.4394,1
+horizonte-ce,HORIZONTE/CE,ftth,2026-03-01,7,6,0,0,1,0,0,1.8197,1
+horizonte-ce,HORIZONTE/CE,5g,2026-03-01,7,3,0,0,0,0,4,2.4394,1
 ibiapina-ce,IBIAPINA/CE,ftth,2026-03-01,1,0,1,0,0,0,0,0.9333,2
 ibiapina-ce,IBIAPINA/CE,5g,2026-03-01,1,0,0,0,0,1,0,0.2692,5
 ico-ce,ICO/CE,ftth,2026-03-01,3,3,0,0,0,0,0,3.4815,1
 ico-ce,ICO/CE,5g,2026-03-01,3,3,0,0,0,0,0,2.5455,1
-iguatu-ce,IGUATU/CE,ftth,2026-03-01,9,7,0,0,0,0,2,2.53,1
-iguatu-ce,IGUATU/CE,5g,2026-03-01,5,3,0,0,0,0,2,1.8333,1
-ipu-ce,IPU/CE,ftth,2026-03-01,4,2,1,0,1,0,0,1.2848,1
+iguatu-ce,IGUATU/CE,ftth,2026-03-01,9,7,0,0,0,0,2,2.6349,1
+iguatu-ce,IGUATU/CE,5g,2026-03-01,9,3,0,0,0,0,6,1.8333,1
+ipu-ce,IPU/CE,ftth,2026-03-01,4,2,1,0,1,0,0,1.3167,1
 ipu-ce,IPU/CE,5g,2026-03-01,4,3,1,0,0,0,0,1.6231,1
-iracema-ce,IRACEMA/CE,ftth,2026-03-01,3,1,1,1,0,0,0,0.9932,2
+iracema-ce,IRACEMA/CE,ftth,2026-03-01,3,2,0,1,0,0,0,1.0222,1
 iracema-ce,IRACEMA/CE,5g,2026-03-01,3,1,0,0,2,0,0,0.6983,3
 itabaiana-se,ITABAIANA/SE,ftth,2026-03-01,1,0,0,1,0,0,0,0.7778,3
-itapaje-ce,ITAPAJE/CE,ftth,2026-03-01,4,1,1,0,1,0,1,0.9,2
+itapaje-ce,ITAPAJE/CE,ftth,2026-03-01,4,2,0,1,0,0,1,1,1
 itapaje-ce,ITAPAJE/CE,5g,2026-03-01,4,1,0,0,2,0,1,0.6222,3
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-03-01,7,3,2,0,0,2,0,1.2156,1
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-03-01,7,4,1,0,0,2,0,1.2571,1
 itapipoca-ce,ITAPIPOCA/CE,5g,2026-03-01,7,4,0,3,0,0,0,1.7421,1
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-03-01,2,1,0,1,0,0,0,0.8333,2
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-03-01,3,0,2,1,0,0,0,0.8154,2
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-03-01,3,1,1,1,0,0,0,0.8444,2
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-03-01,3,2,1,0,0,0,0,1.2538,1
-jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-03-01,1,1,0,0,0,0,0,1.4694,1
+jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-03-01,1,1,0,0,0,0,0,1.6,1
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-03-01,1,1,0,0,0,0,0,2.4,1
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-03-01,6,4,0,0,1,1,0,1.1179,1
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-03-01,6,4,0,0,1,1,0,1.1778,1
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-03-01,6,6,0,0,0,0,0,2.1026,1
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-03-01,31,18,3,4,3,1,2,1.3313,1
-joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-03-01,6,4,0,0,0,0,2,1.6818,1
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-03-01,20,17,0,2,0,0,1,1.736,1
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-03-01,9,8,0,0,0,0,1,1.9773,1
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-03-01,9,6,0,0,0,2,1,1.5821,1
-juazeiro-ba,JUAZEIRO/BA,5g,2026-03-01,2,0,1,0,0,0,1,0.9231,2
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-03-01,31,20,2,4,2,1,2,1.4209,1
+joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-03-01,31,4,0,0,0,0,27,1.6818,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-03-01,20,17,0,2,0,0,1,1.8082,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-03-01,20,8,0,0,0,0,12,1.9773,1
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-03-01,9,6,0,0,0,2,1,1.6813,1
+juazeiro-ba,JUAZEIRO/BA,5g,2026-03-01,9,0,1,0,0,0,8,0.9231,2
 lagarto-se,LAGARTO/SE,ftth,2026-03-01,1,0,0,1,0,0,0,0.7222,3
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-03-01,3,3,0,0,0,0,0,1.2118,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-03-01,3,3,0,0,0,0,0,1.2444,1
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-03-01,3,1,0,2,0,0,0,0.8427,2
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-03-01,5,4,1,0,0,0,0,1.8667,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-03-01,5,5,0,0,0,0,0,1.9111,1
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-03-01,5,5,0,0,0,0,0,1.5272,1
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-03-01,2,0,0,0,2,0,0,0.4444,4
-macaiba-rn,MACAIBA/RN,ftth,2026-03-01,6,2,1,1,1,1,0,1.1913,1
-macaiba-rn,MACAIBA/RN,5g,2026-03-01,5,4,0,1,0,0,0,1.8067,1
-macau-rn,MACAU/RN,ftth,2026-03-01,2,0,0,0,0,2,0,0.0918,5
+macaiba-rn,MACAIBA/RN,ftth,2026-03-01,6,2,2,0,1,1,0,1.2481,1
+macaiba-rn,MACAIBA/RN,5g,2026-03-01,6,4,0,1,0,0,1,1.8067,1
+macau-rn,MACAU/RN,ftth,2026-03-01,2,0,0,0,0,2,0,0.1,5
 macau-rn,MACAU/RN,5g,2026-03-01,2,0,1,0,1,0,0,0.7194,3
 maceio-al,MACEIO/AL,ftth,2026-03-01,1,0,0,0,1,0,0,0.55,4
-major-sales-rn,MAJOR SALES/RN,ftth,2026-03-01,3,2,0,0,1,0,0,2.1131,1
+major-sales-rn,MAJOR SALES/RN,ftth,2026-03-01,3,2,0,0,1,0,0,2.1556,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-03-01,3,1,1,0,0,1,0,0.7248,3
-maracanau-ce,MARACANAU/CE,ftth,2026-03-01,10,3,2,0,4,1,0,0.8171,2
-maracanau-ce,MARACANAU/CE,5g,2026-03-01,4,4,0,0,0,0,0,3.8173,1
-maranguape-ce,MARANGUAPE/CE,ftth,2026-03-01,6,5,0,0,1,0,0,1.5571,1
-maranguape-ce,MARANGUAPE/CE,5g,2026-03-01,2,2,0,0,0,0,0,2.6364,1
+maracanau-ce,MARACANAU/CE,ftth,2026-03-01,10,3,2,0,4,1,0,0.8525,2
+maracanau-ce,MARACANAU/CE,5g,2026-03-01,10,4,0,0,0,0,6,3.8173,1
+maranguape-ce,MARANGUAPE/CE,ftth,2026-03-01,6,5,0,0,1,0,0,1.6563,1
+maranguape-ce,MARANGUAPE/CE,5g,2026-03-01,6,2,0,0,0,0,4,2.6364,1
 marechal-deodoro-al,MARECHAL DEODORO/AL,ftth,2026-03-01,2,0,0,1,1,0,0,0.5833,4
-milagres-ce,MILAGRES/CE,ftth,2026-03-01,3,3,0,0,0,0,0,2.4889,1
+milagres-ce,MILAGRES/CE,ftth,2026-03-01,3,3,0,0,0,0,0,2.5333,1
 milagres-ce,MILAGRES/CE,5g,2026-03-01,3,2,0,1,0,0,0,1.359,1
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-03-01,3,2,0,1,0,0,0,1.9778,1
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-03-01,3,2,0,1,0,0,0,2,1
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-03-01,3,1,2,0,0,0,0,0.9359,2
-mombaca-ce,MOMBACA/CE,ftth,2026-03-01,4,0,2,0,2,0,0,0.6208,3
+mombaca-ce,MOMBACA/CE,ftth,2026-03-01,4,0,2,0,2,0,0,0.6528,3
 mombaca-ce,MOMBACA/CE,5g,2026-03-01,4,2,1,1,0,0,0,1.0205,1
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-03-01,4,4,0,0,0,0,0,2.1792,1
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-03-01,4,4,0,0,0,0,0,2.2583,1
 morada-nova-ce,MORADA NOVA/CE,5g,2026-03-01,4,4,0,0,0,0,0,2.8635,1
-mossoro-rn,MOSSORO/RN,ftth,2026-03-01,9,5,0,0,2,1,1,1.1028,1
-mossoro-rn,MOSSORO/RN,5g,2026-03-01,4,3,0,0,0,0,1,4.3636,1
-natal-rn,NATAL/RN,ftth,2026-03-01,38,19,3,4,5,7,0,1.0547,1
-natal-rn,NATAL/RN,5g,2026-03-01,10,7,0,0,2,1,0,2.4239,1
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-03-01,1,0,0,1,0,0,0,0.75,3
+mossoro-rn,MOSSORO/RN,ftth,2026-03-01,9,5,0,0,3,0,1,1.1684,1
+mossoro-rn,MOSSORO/RN,5g,2026-03-01,9,3,0,0,0,0,6,4.3636,1
+natal-rn,NATAL/RN,ftth,2026-03-01,38,20,2,5,6,5,0,1.129,1
+natal-rn,NATAL/RN,5g,2026-03-01,38,7,0,0,2,1,28,2.4239,1
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-03-01,1,0,1,0,0,0,0,0.8333,2
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-03-01,1,1,0,0,0,0,0,1.6,1
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-03-01,3,2,0,0,0,0,1,1.3,1
-oros-ce,OROS/CE,ftth,2026-03-01,3,1,1,0,1,0,0,0.9955,2
+oros-ce,OROS/CE,ftth,2026-03-01,3,1,1,0,1,0,0,1.0444,1
 oros-ce,OROS/CE,5g,2026-03-01,3,1,2,0,0,0,0,1.0436,1
-ouricuri-pe,OURICURI/PE,ftth,2026-03-01,4,2,1,1,0,0,0,1.1758,1
+ouricuri-pe,OURICURI/PE,ftth,2026-03-01,4,3,1,0,0,0,0,1.2167,1
 ouricuri-pe,OURICURI/PE,5g,2026-03-01,4,0,0,1,2,1,0,0.3468,4
-pacajus-ce,PACAJUS/CE,ftth,2026-03-01,4,3,0,0,0,0,1,2.634,1
-pacajus-ce,PACAJUS/CE,5g,2026-03-01,2,1,0,0,0,0,1,3.9545,1
+pacajus-ce,PACAJUS/CE,ftth,2026-03-01,4,3,0,0,0,0,1,2.7418,1
+pacajus-ce,PACAJUS/CE,5g,2026-03-01,4,1,0,0,0,0,3,3.9545,1
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-03-01,2,1,0,0,0,1,0,0.8,3
-paraipaba-ce,PARAIPABA/CE,ftth,2026-03-01,5,2,0,0,1,1,1,0.8106,2
+paraipaba-ce,PARAIPABA/CE,ftth,2026-03-01,5,2,0,0,2,0,1,0.8583,2
 paraipaba-ce,PARAIPABA/CE,5g,2026-03-01,5,3,0,0,1,0,1,0.9987,2
-parnaiba-pi,PARNAIBA/PI,ftth,2026-03-01,11,9,1,1,0,0,0,1.5321,1
-parnaiba-pi,PARNAIBA/PI,5g,2026-03-01,2,2,0,0,0,0,0,1.6818,1
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-03-01,13,13,0,0,0,0,0,2.1201,1
-parnamirim-rn,PARNAMIRIM/RN,5g,2026-03-01,5,5,0,0,0,0,0,2.6091,1
-patos-pb,PATOS/PB,ftth,2026-03-01,8,7,0,1,0,0,0,2.093,1
-patos-pb,PATOS/PB,5g,2026-03-01,4,4,0,0,0,0,0,1.7045,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-03-01,4,2,1,0,1,0,0,1.8551,1
+parnaiba-pi,PARNAIBA/PI,ftth,2026-03-01,11,9,1,1,0,0,0,1.6441,1
+parnaiba-pi,PARNAIBA/PI,5g,2026-03-01,11,2,0,0,0,0,9,1.6818,1
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-03-01,13,13,0,0,0,0,0,2.2083,1
+parnamirim-rn,PARNAMIRIM/RN,5g,2026-03-01,13,5,0,0,0,0,8,2.6091,1
+patos-pb,PATOS/PB,ftth,2026-03-01,8,7,1,0,0,0,0,2.1556,1
+patos-pb,PATOS/PB,5g,2026-03-01,8,4,0,0,0,0,4,1.7045,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-03-01,4,2,1,0,1,0,0,1.8792,1
 pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-03-01,4,4,0,0,0,0,0,2.5218,1
 paulista-pe,PAULISTA/PE,ftth,2026-03-01,3,1,0,0,0,1,1,0.8333,2
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-03-01,3,0,0,0,1,1,1,0.2,5
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-03-01,3,0,0,0,1,1,1,0.2222,5
 pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-03-01,3,0,0,1,0,1,1,0.3667,4
 pereiro-ce,PEREIRO/CE,ftth,2026-03-01,71,57,3,2,2,0,7,1.7234,1
-pereiro-ce,PEREIRO/CE,5g,2026-03-01,37,2,0,0,0,28,7,0.1381,5
-pesqueira-pe,PESQUEIRA/PE,ftth,2026-03-01,3,1,1,0,0,1,0,1.1293,1
+pereiro-ce,PEREIRO/CE,5g,2026-03-01,71,2,0,0,0,28,41,0.1381,5
+pesqueira-pe,PESQUEIRA/PE,ftth,2026-03-01,3,2,0,0,0,1,0,1.1662,1
 pesqueira-pe,PESQUEIRA/PE,5g,2026-03-01,3,2,0,1,0,0,0,1.462,1
-petrolina-pe,PETROLINA/PE,ftth,2026-03-01,8,7,1,0,0,0,0,1.7524,1
-petrolina-pe,PETROLINA/PE,5g,2026-03-01,2,0,0,1,1,0,0,0.6538,3
+petrolina-pe,PETROLINA/PE,ftth,2026-03-01,8,7,1,0,0,0,0,1.8776,1
+petrolina-pe,PETROLINA/PE,5g,2026-03-01,8,0,0,1,1,0,6,0.6538,3
 picos-pi,PICOS/PI,ftth,2026-03-01,1,0,0,1,0,0,0,0.6111,3
 piripiri-pi,PIRIPIRI/PI,ftth,2026-03-01,3,1,1,0,0,0,1,1.0278,1
-pombal-pb,POMBAL/PB,ftth,2026-03-01,5,4,0,0,1,0,0,1.1325,1
+pombal-pb,POMBAL/PB,ftth,2026-03-01,5,4,0,0,1,0,0,1.2,1
 pombal-pb,POMBAL/PB,5g,2026-03-01,5,1,2,0,2,0,0,0.8823,2
-quixada-ce,QUIXADA/CE,ftth,2026-03-01,7,4,0,2,0,0,1,1.9503,1
+quixada-ce,QUIXADA/CE,ftth,2026-03-01,7,4,1,1,0,0,1,1.9935,1
 quixada-ce,QUIXADA/CE,5g,2026-03-01,7,6,0,0,0,0,1,1.6843,1
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-03-01,5,4,0,0,0,0,1,2.1831,1
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-03-01,5,4,0,0,0,0,1,2.2819,1
 quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-03-01,5,4,0,0,0,0,1,2.1682,1
-quixere-ce,QUIXERE/CE,ftth,2026-03-01,4,1,1,2,0,0,0,0.8708,2
+quixere-ce,QUIXERE/CE,ftth,2026-03-01,4,1,2,1,0,0,0,0.9083,2
 quixere-ce,QUIXERE/CE,5g,2026-03-01,4,3,1,0,0,0,0,1.4776,1
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.0408,1
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-03-01,1,1,0,0,0,0,0,1.1333,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-03-01,1,1,0,0,0,0,0,2.2,1
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-03-01,2,0,0,1,1,0,0,0.5556,4
 rio-largo-al,RIO LARGO/AL,ftth,2026-03-01,3,1,0,2,0,0,0,0.8833,2
-russas-ce,RUSSAS/CE,ftth,2026-03-01,5,3,0,1,0,0,1,1.725,1
+russas-ce,RUSSAS/CE,ftth,2026-03-01,5,3,1,0,0,0,1,1.8056,1
 russas-ce,RUSSAS/CE,5g,2026-03-01,5,4,0,0,0,0,1,1.8032,1
 salgueiro-pe,SALGUEIRO/PE,ftth,2026-03-01,3,1,0,0,0,1,1,1.0667,1
 salgueiro-pe,SALGUEIRO/PE,5g,2026-03-01,3,1,0,0,0,1,1,1.0385,1
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-03-01,1,1,0,0,0,0,0,1.2222,1
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-03-01,3,2,1,0,0,0,0,1.3556,1
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-03-01,3,2,1,0,0,0,0,1.3889,1
 santa-luzia-pb,SANTA LUZIA/PB,5g,2026-03-01,3,1,1,0,0,1,0,0.9085,2
 santa-quiteria-ce,SANTA QUITERIA/CE,ftth,2026-03-01,2,0,0,0,0,2,0,0,5
 santa-quiteria-ce,SANTA QUITERIA/CE,5g,2026-03-01,2,0,0,0,0,2,0,0.0333,5
-santa-rita-pb,SANTA RITA/PB,ftth,2026-03-01,7,3,0,2,1,1,0,1.1937,1
-santa-rita-pb,SANTA RITA/PB,5g,2026-03-01,2,2,0,0,0,0,0,1.7727,1
+santa-rita-pb,SANTA RITA/PB,ftth,2026-03-01,7,3,2,0,1,1,0,1.2349,1
+santa-rita-pb,SANTA RITA/PB,5g,2026-03-01,7,2,0,0,0,0,5,1.7727,1
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-03-01,1,1,0,0,0,0,0,1.5556,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-03-01,4,1,1,0,1,0,1,0.7611,3
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-03-01,4,1,1,0,1,0,1,0.8111,2
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-03-01,4,1,0,1,0,1,1,0.5829,4
 sao-bento-pb,SAO BENTO/PB,ftth,2026-03-01,2,2,0,0,0,0,0,2.3333,1
 sao-bento-pb,SAO BENTO/PB,5g,2026-03-01,2,2,0,0,0,0,0,1.6731,1
 sao-caitano-pe,SAO CAITANO/PE,ftth,2026-03-01,2,0,0,0,0,2,0,0.0333,5
 sao-caitano-pe,SAO CAITANO/PE,5g,2026-03-01,2,0,0,0,1,1,0,0.3222,4
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-03-01,2,1,1,0,0,0,0,1.0857,1
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-03-01,4,2,1,0,0,0,1,1.4278,1
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-03-01,2,1,1,0,0,0,0,1.1875,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-03-01,4,3,0,0,0,0,1,1.463,1
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-03-01,4,1,1,1,0,0,1,0.8556,2
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-03-01,2,1,0,0,1,0,0,0.925,2
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-03-01,5,3,1,0,0,1,0,0.961,2
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-03-01,5,3,1,0,0,1,0,1.0033,1
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-03-01,5,5,0,0,0,0,0,1.9221,1
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-03-01,4,3,1,0,0,0,0,2.225,1
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-03-01,4,4,0,0,0,0,0,2.2944,1
 senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-03-01,4,4,0,0,0,0,0,1.5917,1
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-03-01,4,2,0,1,1,0,0,1.8106,1
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-03-01,4,2,1,0,1,0,0,1.8583,1
 serra-talhada-pe,SERRA TALHADA/PE,5g,2026-03-01,4,3,0,1,0,0,0,1.2417,1
-sobral-ce,SOBRAL/CE,ftth,2026-03-01,12,11,0,0,0,0,1,1.7616,1
-sobral-ce,SOBRAL/CE,5g,2026-03-01,5,3,1,0,0,0,1,1.6818,1
-sousa-pb,SOUSA/PB,ftth,2026-03-01,5,4,0,0,0,0,1,2.1528,1
+sobral-ce,SOBRAL/CE,ftth,2026-03-01,12,11,0,0,0,0,1,1.8605,1
+sobral-ce,SOBRAL/CE,5g,2026-03-01,12,3,1,0,0,0,8,1.6818,1
+sousa-pb,SOUSA/PB,ftth,2026-03-01,5,4,0,0,0,0,1,2.2153,1
 sousa-pb,SOUSA/PB,5g,2026-03-01,5,4,0,0,0,0,1,1.7712,1
 surubim-pe,SURUBIM/PE,ftth,2026-03-01,2,0,0,0,1,0,1,0.5556,4
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-03-01,4,2,1,1,0,0,0,1.9833,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-03-01,4,2,1,1,0,0,0,2.0222,1
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-03-01,4,4,0,0,0,0,0,1.6288,1
-taua-ce,TAUA/CE,ftth,2026-03-01,4,4,0,0,0,0,0,2.1958,1
+taua-ce,TAUA/CE,ftth,2026-03-01,4,4,0,0,0,0,0,2.2806,1
 taua-ce,TAUA/CE,5g,2026-03-01,4,3,1,0,0,0,0,1.6122,1
-teresina-pi,TERESINA/PI,ftth,2026-03-01,24,19,1,0,3,1,0,1.5452,1
-teresina-pi,TERESINA/PI,5g,2026-03-01,4,4,0,0,0,0,0,1.5455,1
-tiangua-ce,TIANGUA/CE,ftth,2026-03-01,4,2,1,0,1,0,0,2.0856,1
+teresina-pi,TERESINA/PI,ftth,2026-03-01,24,20,0,0,3,1,0,1.6667,1
+teresina-pi,TERESINA/PI,5g,2026-03-01,24,4,0,0,0,0,20,1.5455,1
+tiangua-ce,TIANGUA/CE,ftth,2026-03-01,4,2,1,0,1,0,0,2.1208,1
 tiangua-ce,TIANGUA/CE,5g,2026-03-01,4,3,0,0,1,0,0,1.0705,1
-timon-ma,TIMON/MA,ftth,2026-03-01,9,8,1,0,0,0,0,1.5471,1
-timon-ma,TIMON/MA,5g,2026-03-01,2,0,0,1,1,0,0,0.5769,4
+timon-ma,TIMON/MA,ftth,2026-03-01,9,8,1,0,0,0,0,1.6519,1
+timon-ma,TIMON/MA,5g,2026-03-01,9,0,0,1,1,0,7,0.5769,4
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-03-01,1,1,0,0,0,0,0,1.45,1
-toritama-pe,TORITAMA/PE,ftth,2026-03-01,4,3,0,0,1,0,0,1.679,1
-toritama-pe,TORITAMA/PE,5g,2026-03-01,1,1,0,0,0,0,0,1,1
-ubajara-ce,UBAJARA/CE,ftth,2026-03-01,3,2,0,1,0,0,0,1.1833,1
+toritama-pe,TORITAMA/PE,ftth,2026-03-01,4,3,0,0,1,0,0,1.769,1
+toritama-pe,TORITAMA/PE,5g,2026-03-01,4,1,0,0,0,0,3,1,1
+ubajara-ce,UBAJARA/CE,ftth,2026-03-01,3,2,0,1,0,0,0,1.2259,1
 ubajara-ce,UBAJARA/CE,5g,2026-03-01,3,1,0,1,1,0,0,0.9051,2
-uirauna-pb,UIRAUNA/PB,ftth,2026-03-01,3,0,2,0,0,1,0,0.7167,3
+uirauna-pb,UIRAUNA/PB,ftth,2026-03-01,3,1,1,0,0,1,0,0.7519,3
 uirauna-pb,UIRAUNA/PB,5g,2026-03-01,3,3,0,0,0,0,0,1.0573,1
 umarizal-rn,UMARIZAL/RN,ftth,2026-03-01,2,1,0,1,0,0,0,0.975,2
 umarizal-rn,UMARIZAL/RN,5g,2026-03-01,2,1,0,1,0,0,0,0.9038,2
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-03-01,5,5,0,0,0,0,0,1.25,1
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-03-01,5,5,0,0,0,0,0,1.3,1
 varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-03-01,5,1,3,1,0,0,0,0.8482,2
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-03-01,2,1,0,0,1,0,0,0.9722,2
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-03-01,2,0,0,1,1,0,0,0.6111,3
-acarau-ce,ACARAU/CE,ftth,2026-04-01,4,1,0,2,0,1,0,1.0223,1
+acarau-ce,ACARAU/CE,ftth,2026-04-01,4,1,1,1,1,0,0,1.0417,1
 acarau-ce,ACARAU/CE,5g,2026-04-01,4,1,1,0,2,0,0,0.764,3
-acopiara-ce,ACOPIARA/CE,ftth,2026-04-01,4,3,1,0,0,0,0,1.4106,1
+acopiara-ce,ACOPIARA/CE,ftth,2026-04-01,4,4,0,0,0,0,0,1.4583,1
 acopiara-ce,ACOPIARA/CE,5g,2026-04-01,4,2,0,0,2,0,0,0.7221,3
 acu-rn,ACU/RN,ftth,2026-04-01,4,1,0,3,0,0,0,1.3056,1
 acu-rn,ACU/RN,5g,2026-04-01,4,4,0,0,0,0,0,1.8182,1
-agua-nova-rn,AGUA NOVA/RN,ftth,2026-04-01,1,0,1,0,0,0,0,0.8182,2
+agua-nova-rn,AGUA NOVA/RN,ftth,2026-04-01,1,0,1,0,0,0,0,0.9,2
 agua-nova-rn,AGUA NOVA/RN,5g,2026-04-01,1,1,0,0,0,0,0,1,1
 alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-04-01,2,1,0,0,0,1,0,0.925,2
 altos-pi,ALTOS/PI,ftth,2026-04-01,3,1,0,0,0,1,1,0.6389,3
 apodi-rn,APODI/RN,ftth,2026-04-01,2,0,0,0,0,2,0,0.1,5
 apodi-rn,APODI/RN,5g,2026-04-01,2,1,1,0,0,0,0,1.1111,1
-aquiraz-ce,AQUIRAZ/CE,ftth,2026-04-01,2,2,0,0,0,0,0,1.0741,1
+aquiraz-ce,AQUIRAZ/CE,ftth,2026-04-01,2,2,0,0,0,0,0,1.16,1
 aquiraz-ce,AQUIRAZ/CE,5g,2026-04-01,2,0,1,1,0,0,0,0.74,3
 aracaju-se,ARACAJU/SE,ftth,2026-04-01,3,3,0,0,0,0,0,1.3167,1
 arapiraca-al,ARAPIRACA/AL,ftth,2026-04-01,3,0,0,1,1,1,0,0.3667,4
-araripina-pe,ARARIPINA/PE,ftth,2026-04-01,4,3,0,1,0,0,0,1.3412,1
+araripina-pe,ARARIPINA/PE,ftth,2026-04-01,4,3,0,1,0,0,0,1.3833,1
 araripina-pe,ARARIPINA/PE,5g,2026-04-01,4,1,1,0,2,0,0,0.7082,3
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-04-01,3,2,1,0,0,0,0,1.1791,1
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-04-01,3,3,0,0,0,0,0,1.2444,1
 arcoverde-pe,ARCOVERDE/PE,5g,2026-04-01,3,2,1,0,0,0,0,0.9333,2
-assu-rn,ASSU/RN,ftth,2026-04-01,2,1,1,0,0,0,0,1.0714,1
+assu-rn,ASSU/RN,ftth,2026-04-01,2,2,0,0,0,0,0,1.1667,1
 assu-rn,ASSU/RN,5g,2026-04-01,2,1,1,0,0,0,0,0.9857,2
-banabuiu-ce,BANABUIU/CE,ftth,2026-04-01,3,3,0,0,0,0,0,2.6861,1
+banabuiu-ce,BANABUIU/CE,ftth,2026-04-01,3,3,0,0,0,0,0,2.7111,1
 banabuiu-ce,BANABUIU/CE,5g,2026-04-01,3,2,1,0,0,0,0,1.0296,1
-barbalha-ce,BARBALHA/CE,ftth,2026-04-01,3,3,0,0,0,0,0,1.8519,1
+barbalha-ce,BARBALHA/CE,ftth,2026-04-01,3,3,0,0,0,0,0,1.8852,1
 barbalha-ce,BARBALHA/CE,5g,2026-04-01,3,2,0,1,0,0,0,1.4015,1
-bayeux-pb,BAYEUX/PB,ftth,2026-04-01,8,4,3,0,1,0,0,1.125,1
+bayeux-pb,BAYEUX/PB,ftth,2026-04-01,8,4,3,0,1,0,0,1.1939,1
 bayeux-pb,BAYEUX/PB,5g,2026-04-01,8,5,2,0,0,1,0,0.9514,2
 belo-jardim-pe,BELO JARDIM/PE,ftth,2026-04-01,3,1,0,0,0,0,2,1.8667,1
 belo-jardim-pe,BELO JARDIM/PE,5g,2026-04-01,3,0,0,0,0,1,2,0.2308,5
-bezerros-pe,BEZERROS/PE,ftth,2026-04-01,4,2,1,1,0,0,0,1.7133,1
+bezerros-pe,BEZERROS/PE,ftth,2026-04-01,4,2,2,0,0,0,0,1.75,1
 bezerros-pe,BEZERROS/PE,5g,2026-04-01,4,2,2,0,0,0,0,1.0195,1
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-04-01,6,5,0,0,0,0,1,1.7055,1
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-04-01,6,5,0,0,0,0,1,1.82,1
 brejo-santo-ce,BREJO SANTO/CE,5g,2026-04-01,6,5,0,0,0,0,1,1.1423,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-04-01,4,2,1,1,0,0,0,1.0222,1
+cabedelo-pb,CABEDELO/PB,ftth,2026-04-01,4,2,1,1,0,0,0,1.0533,1
 cabedelo-pb,CABEDELO/PB,5g,2026-04-01,4,0,0,0,3,1,0,0.3362,4
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-04-01,2,1,1,0,0,0,0,1.275,1
-caico-rn,CAICO/RN,ftth,2026-04-01,4,3,0,0,0,1,0,1.2575,1
+caico-rn,CAICO/RN,ftth,2026-04-01,4,3,0,0,0,1,0,1.2833,1
 caico-rn,CAICO/RN,5g,2026-04-01,4,3,0,0,0,1,0,1.0577,1
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-04-01,7,3,1,2,1,0,0,1.1549,1
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-04-01,7,4,2,0,1,0,0,1.2,1
 cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-04-01,7,4,1,2,0,0,0,1.0082,1
 camacari-ba,CAMACARI/BA,ftth,2026-04-01,3,2,0,0,0,0,1,1.475,1
 camocim-ce,CAMOCIM/CE,ftth,2026-04-01,2,0,0,0,0,2,0,0,5
 camocim-ce,CAMOCIM/CE,5g,2026-04-01,2,1,0,1,0,0,0,0.8667,2
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-04-01,10,7,1,0,1,0,1,1.1564,1
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-04-01,10,7,1,0,1,0,1,1.2281,1
 campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-04-01,10,3,4,0,1,1,1,0.837,2
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-04-01,2,1,0,1,0,0,0,0.8056,2
-caninde-ce,CANINDE/CE,ftth,2026-04-01,7,3,0,0,2,2,0,0.824,2
+caninde-ce,CANINDE/CE,ftth,2026-04-01,7,3,0,0,2,2,0,0.8548,2
 caninde-ce,CANINDE/CE,5g,2026-04-01,7,3,0,0,4,0,0,0.861,2
-caruaru-pe,CARUARU/PE,ftth,2026-04-01,7,1,2,2,2,0,0,1.0208,1
+caruaru-pe,CARUARU/PE,ftth,2026-04-01,7,3,0,2,2,0,0,1.0698,1
 caruaru-pe,CARUARU/PE,5g,2026-04-01,7,3,2,0,2,0,0,0.9057,2
-cascavel-ce,CASCAVEL/CE,ftth,2026-04-01,5,3,0,1,1,0,0,1.0433,1
+cascavel-ce,CASCAVEL/CE,ftth,2026-04-01,5,3,0,1,1,0,0,1.0933,1
 cascavel-ce,CASCAVEL/CE,5g,2026-04-01,5,2,2,0,1,0,0,0.9486,2
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-04-01,4,4,0,0,0,0,0,1.997,1
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-04-01,4,4,0,0,0,0,0,2.0833,1
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-04-01,4,2,2,0,0,0,0,0.9721,2
 catu-ba,CATU/BA,ftth,2026-04-01,1,0,0,0,0,1,0,0.2778,5
-caucaia-ce,CAUCAIA/CE,ftth,2026-04-01,10,4,3,0,1,1,1,0.9266,2
+caucaia-ce,CAUCAIA/CE,ftth,2026-04-01,10,4,3,0,1,1,1,0.9921,2
 caucaia-ce,CAUCAIA/CE,5g,2026-04-01,10,2,1,2,3,1,1,0.843,2
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-04-01,4,3,1,0,0,0,0,1.1412,1
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-04-01,4,3,1,0,0,0,0,1.1833,1
 ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-04-01,4,4,0,0,0,0,0,1.6893,1
-cedro-ce,CEDRO/CE,ftth,2026-04-01,3,2,0,0,1,0,0,1.0768,1
+cedro-ce,CEDRO/CE,ftth,2026-04-01,3,2,0,0,1,0,0,1.1222,1
 cedro-ce,CEDRO/CE,5g,2026-04-01,3,0,2,1,0,0,0,0.834,2
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-04-01,1,0,0,0,1,0,0,0.5625,4
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-04-01,1,0,0,1,0,0,0,0.6,3
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-04-01,1,0,1,0,0,0,0,0.9333,2
-crateus-ce,CRATEUS/CE,ftth,2026-04-01,6,2,2,1,0,0,1,1.2842,1
+crateus-ce,CRATEUS/CE,ftth,2026-04-01,6,3,1,1,0,0,1,1.3333,1
 crateus-ce,CRATEUS/CE,5g,2026-04-01,6,1,0,1,1,2,1,0.5304,4
-crato-ce,CRATO/CE,ftth,2026-04-01,6,5,0,1,0,0,0,2.037,1
+crato-ce,CRATO/CE,ftth,2026-04-01,6,5,1,0,0,0,0,2.1111,1
 crato-ce,CRATO/CE,5g,2026-04-01,6,3,2,0,1,0,0,1.3448,1
 custodia-pe,CUSTODIA/PE,ftth,2026-04-01,2,1,0,1,0,0,0,1.4,1
 custodia-pe,CUSTODIA/PE,5g,2026-04-01,2,0,0,1,1,0,0,0.5192,4
 dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-04-01,2,1,0,0,0,0,1,1.55,1
-encanto-rn,ENCANTO/RN,ftth,2026-04-01,1,0,1,0,0,0,0,0.9375,2
+encanto-rn,ENCANTO/RN,ftth,2026-04-01,1,1,0,0,0,0,0,1,1
 encanto-rn,ENCANTO/RN,5g,2026-04-01,1,1,0,0,0,0,0,1,1
 escada-pe,ESCADA/PE,ftth,2026-04-01,2,1,0,0,1,0,0,0.75,3
 estancia-se,ESTANCIA/SE,ftth,2026-04-01,2,2,0,0,0,0,0,1.25,1
-eusebio-ce,EUSEBIO/CE,ftth,2026-04-01,6,3,2,1,0,0,0,1.1546,1
+eusebio-ce,EUSEBIO/CE,ftth,2026-04-01,6,4,1,1,0,0,0,1.2,1
 eusebio-ce,EUSEBIO/CE,5g,2026-04-01,6,3,1,0,1,1,0,0.9019,2
-extremoz-rn,EXTREMOZ/RN,ftth,2026-04-01,5,0,2,2,1,0,0,0.7962,3
+extremoz-rn,EXTREMOZ/RN,ftth,2026-04-01,5,2,2,0,1,0,0,0.8533,2
 extremoz-rn,EXTREMOZ/RN,5g,2026-04-01,5,4,0,0,1,0,0,0.9648,2
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-04-01,2,2,0,0,0,0,0,1,1
-fortaleza-ce,FORTALEZA/CE,ftth,2026-04-01,66,24,10,2,11,17,2,0.8221,2
+fortaleza-ce,FORTALEZA/CE,ftth,2026-04-01,66,27,9,2,11,15,2,0.8777,2
 fortaleza-ce,FORTALEZA/CE,5g,2026-04-01,66,21,3,3,8,29,2,0.6291,3
 garanhuns-pe,GARANHUNS/PE,ftth,2026-04-01,2,1,0,0,0,0,1,1.7,1
-gravata-pe,GRAVATA/PE,ftth,2026-04-01,5,2,0,0,0,3,0,0.8835,2
+gravata-pe,GRAVATA/PE,ftth,2026-04-01,5,2,0,0,0,3,0,0.8933,2
 gravata-pe,GRAVATA/PE,5g,2026-04-01,5,0,0,2,3,0,0,0.5598,4
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-04-01,3,2,0,0,0,1,0,1.3946,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-04-01,3,2,0,0,0,1,0,1.4,1
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-04-01,3,2,0,0,1,0,0,1.2711,1
-horizonte-ce,HORIZONTE/CE,ftth,2026-04-01,7,4,0,0,1,1,1,1.7438,1
+horizonte-ce,HORIZONTE/CE,ftth,2026-04-01,7,4,0,0,2,0,1,1.7941,1
 horizonte-ce,HORIZONTE/CE,5g,2026-04-01,7,3,0,0,1,2,1,1.2033,1
 ibiapina-ce,IBIAPINA/CE,ftth,2026-04-01,1,0,0,1,0,0,0,0.6667,3
 ibiapina-ce,IBIAPINA/CE,5g,2026-04-01,1,0,0,0,0,1,0,0.1154,5
 ico-ce,ICO/CE,ftth,2026-04-01,4,3,0,0,0,1,0,2.3333,1
 ico-ce,ICO/CE,5g,2026-04-01,4,3,0,0,1,0,0,1.6477,1
-iguatu-ce,IGUATU/CE,ftth,2026-04-01,9,7,0,0,0,0,2,2.6085,1
+iguatu-ce,IGUATU/CE,ftth,2026-04-01,9,7,0,0,0,0,2,2.6889,1
 iguatu-ce,IGUATU/CE,5g,2026-04-01,9,6,1,0,0,0,2,1.3922,1
-ipu-ce,IPU/CE,ftth,2026-04-01,4,2,1,0,1,0,0,1.0393,1
+ipu-ce,IPU/CE,ftth,2026-04-01,4,2,1,0,1,0,0,1.0583,1
 ipu-ce,IPU/CE,5g,2026-04-01,4,1,2,0,0,1,0,0.7566,3
-iracema-ce,IRACEMA/CE,ftth,2026-04-01,3,2,0,0,0,0,1,2.3896,1
+iracema-ce,IRACEMA/CE,ftth,2026-04-01,3,2,0,0,0,0,1,2.4333,1
 iracema-ce,IRACEMA/CE,5g,2026-04-01,3,1,0,1,0,0,1,0.9402,2
 itabaiana-se,ITABAIANA/SE,ftth,2026-04-01,1,1,0,0,0,0,0,1,1
-itapaje-ce,ITAPAJE/CE,ftth,2026-04-01,4,1,1,1,1,0,0,0.751,3
+itapaje-ce,ITAPAJE/CE,ftth,2026-04-01,4,1,1,1,1,0,0,0.8,2
 itapaje-ce,ITAPAJE/CE,5g,2026-04-01,4,1,0,1,2,0,0,0.6777,3
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-04-01,6,4,1,0,0,0,1,1.7559,1
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-04-01,6,4,1,0,0,0,1,1.8267,1
 itapipoca-ce,ITAPIPOCA/CE,5g,2026-04-01,6,5,0,0,0,0,1,1.8367,1
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-04-01,2,0,0,1,1,0,0,0.6389,3
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-04-01,3,1,1,1,0,0,0,0.9083,2
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-04-01,3,1,1,1,0,0,0,0.9333,2
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-04-01,3,1,2,0,0,0,0,1.0088,1
 jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-04-01,1,1,0,0,0,0,0,1,1
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-04-01,1,1,0,0,0,0,0,1.4,1
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-04-01,6,5,1,0,0,0,0,1.4747,1
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-04-01,6,5,1,0,0,0,0,1.5444,1
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-04-01,6,5,0,0,1,0,0,1.074,1
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-04-01,31,17,3,3,6,1,1,1.237,1
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-04-01,31,18,3,5,4,0,1,1.3056,1
 joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-04-01,31,9,3,7,9,2,1,0.7557,3
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-04-01,21,18,0,1,1,0,1,1.6352,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-04-01,21,18,0,2,0,0,1,1.7087,1
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-04-01,21,18,1,1,0,0,1,1.3956,1
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-04-01,8,6,0,0,0,1,1,1.84,1
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-04-01,8,6,0,0,0,1,1,1.9581,1
 juazeiro-ba,JUAZEIRO/BA,5g,2026-04-01,8,5,1,0,0,1,1,0.916,2
 lagarto-se,LAGARTO/SE,ftth,2026-04-01,1,1,0,0,0,0,0,1.1667,1
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-04-01,3,2,0,0,0,0,1,1.3909,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-04-01,3,2,0,0,0,0,1,1.45,1
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-04-01,3,1,1,0,0,0,1,0.976,2
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-04-01,5,5,0,0,0,0,0,2.0812,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-04-01,5,5,0,0,0,0,0,2.1267,1
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-04-01,5,5,0,0,0,0,0,1.4181,1
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-04-01,2,0,0,0,1,1,0,0.3889,4
-macaiba-rn,MACAIBA/RN,ftth,2026-04-01,5,1,1,2,1,0,0,1.3855,1
+macaiba-rn,MACAIBA/RN,ftth,2026-04-01,5,2,1,1,1,0,0,1.4356,1
 macaiba-rn,MACAIBA/RN,5g,2026-04-01,5,3,1,1,0,0,0,1.6678,1
 maceio-al,MACEIO/AL,ftth,2026-04-01,1,1,0,0,0,0,0,1.1,1
-major-sales-rn,MAJOR SALES/RN,ftth,2026-04-01,3,3,0,0,0,0,0,3.2569,1
+major-sales-rn,MAJOR SALES/RN,ftth,2026-04-01,3,3,0,0,0,0,0,3.3111,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-04-01,3,0,3,0,0,0,0,0.886,2
-maracanau-ce,MARACANAU/CE,ftth,2026-04-01,13,5,3,0,2,2,1,0.8772,2
+maracanau-ce,MARACANAU/CE,ftth,2026-04-01,13,5,3,1,1,2,1,0.9167,2
 maracanau-ce,MARACANAU/CE,5g,2026-04-01,13,6,1,3,1,1,1,1.3549,1
-maranguape-ce,MARANGUAPE/CE,ftth,2026-04-01,6,5,0,0,1,0,0,1.6667,1
+maranguape-ce,MARANGUAPE/CE,ftth,2026-04-01,6,5,0,1,0,0,0,1.7644,1
 maranguape-ce,MARANGUAPE/CE,5g,2026-04-01,6,4,1,1,0,0,0,1.2064,1
 marechal-deodoro-al,MARECHAL DEODORO/AL,ftth,2026-04-01,2,2,0,0,0,0,0,1.1389,1
-milagres-ce,MILAGRES/CE,ftth,2026-04-01,3,2,0,0,0,0,1,2.0152,1
+milagres-ce,MILAGRES/CE,ftth,2026-04-01,3,2,0,0,0,0,1,2.0833,1
 milagres-ce,MILAGRES/CE,5g,2026-04-01,3,2,0,0,0,0,1,1.474,1
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-04-01,3,3,0,0,0,0,0,1.8303,1
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-04-01,3,3,0,0,0,0,0,1.8667,1
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-04-01,3,2,1,0,0,0,0,1.0103,1
-mombaca-ce,MOMBACA/CE,ftth,2026-04-01,4,0,3,0,0,1,0,0.7745,3
+mombaca-ce,MOMBACA/CE,ftth,2026-04-01,4,2,1,0,0,1,0,0.8167,2
 mombaca-ce,MOMBACA/CE,5g,2026-04-01,4,4,0,0,0,0,0,1.2231,1
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-04-01,5,5,0,0,0,0,0,2.1503,1
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-04-01,5,5,0,0,0,0,0,2.2467,1
 morada-nova-ce,MORADA NOVA/CE,5g,2026-04-01,5,4,0,0,0,1,0,1.1765,1
-mossoro-rn,MOSSORO/RN,ftth,2026-04-01,13,5,1,1,5,1,0,1.1091,1
+mossoro-rn,MOSSORO/RN,ftth,2026-04-01,13,5,1,2,4,1,0,1.1646,1
 mossoro-rn,MOSSORO/RN,5g,2026-04-01,13,7,2,1,0,3,0,1.1804,1
-natal-rn,NATAL/RN,ftth,2026-04-01,39,27,0,5,0,6,1,1.3803,1
+natal-rn,NATAL/RN,ftth,2026-04-01,39,27,1,4,2,4,1,1.4627,1
 natal-rn,NATAL/RN,5g,2026-04-01,39,20,5,3,5,5,1,1.2366,1
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-04-01,1,0,1,0,0,0,0,0.9091,2
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-04-01,1,1,0,0,0,0,0,1,1
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-04-01,1,0,0,0,1,0,0,0.575,4
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-04-01,3,0,1,0,0,0,2,0.85,2
-oros-ce,OROS/CE,ftth,2026-04-01,3,1,1,0,1,0,0,1.8639,1
+oros-ce,OROS/CE,ftth,2026-04-01,3,1,1,0,1,0,0,1.9556,1
 oros-ce,OROS/CE,5g,2026-04-01,3,2,1,0,0,0,0,1.0835,1
-ouricuri-pe,OURICURI/PE,ftth,2026-04-01,4,1,0,3,0,0,0,0.7854,3
+ouricuri-pe,OURICURI/PE,ftth,2026-04-01,4,1,1,2,0,0,0,0.8167,2
 ouricuri-pe,OURICURI/PE,5g,2026-04-01,4,0,0,1,2,1,0,0.3231,4
-pacajus-ce,PACAJUS/CE,ftth,2026-04-01,5,5,0,0,0,0,0,1.9804,1
+pacajus-ce,PACAJUS/CE,ftth,2026-04-01,5,5,0,0,0,0,0,2.0304,1
 pacajus-ce,PACAJUS/CE,5g,2026-04-01,5,5,0,0,0,0,0,1.3545,1
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-04-01,2,2,0,0,0,0,0,1.075,1
-paraipaba-ce,PARAIPABA/CE,ftth,2026-04-01,5,1,1,1,0,1,1,0.6276,3
+paraipaba-ce,PARAIPABA/CE,ftth,2026-04-01,5,1,1,1,0,1,1,0.6833,3
 paraipaba-ce,PARAIPABA/CE,5g,2026-04-01,5,1,0,3,0,0,1,0.8113,2
-parnaiba-pi,PARNAIBA/PI,ftth,2026-04-01,11,7,0,2,1,1,0,1.4094,1
+parnaiba-pi,PARNAIBA/PI,ftth,2026-04-01,11,7,0,3,0,1,0,1.5103,1
 parnaiba-pi,PARNAIBA/PI,5g,2026-04-01,11,6,2,2,1,0,0,1.1203,1
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-04-01,13,10,0,1,1,0,1,2.0972,1
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-04-01,13,10,1,0,1,0,1,2.1609,1
 parnamirim-rn,PARNAMIRIM/RN,5g,2026-04-01,13,5,1,2,4,0,1,1.189,1
-patos-pb,PATOS/PB,ftth,2026-04-01,8,6,0,0,2,0,0,1.8148,1
+patos-pb,PATOS/PB,ftth,2026-04-01,8,6,0,0,2,0,0,1.8644,1
 patos-pb,PATOS/PB,5g,2026-04-01,8,7,1,0,0,0,0,1.2843,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-04-01,4,3,0,1,0,0,0,1.5591,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-04-01,4,3,0,1,0,0,0,1.575,1
 pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-04-01,4,4,0,0,0,0,0,1.8,1
 paulista-pe,PAULISTA/PE,ftth,2026-04-01,3,1,1,0,0,0,1,0.9722,2
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-04-01,3,0,0,1,0,0,2,0.7347,3
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-04-01,3,0,1,0,0,0,2,0.8,2
 pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-04-01,3,1,0,0,0,0,2,1.2,1
 pereiro-ce,PEREIRO/CE,ftth,2026-04-01,74,61,1,4,1,1,6,1.6476,1
-pereiro-ce,PEREIRO/CE,5g,2026-04-01,37,3,0,1,2,25,6,0.1968,5
-pesqueira-pe,PESQUEIRA/PE,ftth,2026-04-01,3,0,1,0,1,1,0,0.5787,4
+pereiro-ce,PEREIRO/CE,5g,2026-04-01,74,3,0,1,2,25,43,0.1968,5
+pesqueira-pe,PESQUEIRA/PE,ftth,2026-04-01,3,1,0,0,1,1,0,0.6222,3
 pesqueira-pe,PESQUEIRA/PE,5g,2026-04-01,3,1,0,1,1,0,0,0.7029,3
-petrolina-pe,PETROLINA/PE,ftth,2026-04-01,15,11,0,1,2,1,0,1.4538,1
+petrolina-pe,PETROLINA/PE,ftth,2026-04-01,15,11,0,2,1,1,0,1.5502,1
 petrolina-pe,PETROLINA/PE,5g,2026-04-01,15,10,1,1,1,2,0,0.924,2
 picos-pi,PICOS/PI,ftth,2026-04-01,1,1,0,0,0,0,0,1,1
 piripiri-pi,PIRIPIRI/PI,ftth,2026-04-01,3,1,0,0,1,1,0,0.6481,3
-pombal-pb,POMBAL/PB,ftth,2026-04-01,5,4,0,0,1,0,0,1.0352,1
+pombal-pb,POMBAL/PB,ftth,2026-04-01,5,4,0,0,1,0,0,1.0733,1
 pombal-pb,POMBAL/PB,5g,2026-04-01,5,2,1,1,1,0,0,0.8229,2
-quixada-ce,QUIXADA/CE,ftth,2026-04-01,7,6,0,0,0,0,1,1.7609,1
+quixada-ce,QUIXADA/CE,ftth,2026-04-01,7,6,0,0,0,0,1,1.8185,1
 quixada-ce,QUIXADA/CE,5g,2026-04-01,7,6,0,0,0,0,1,1.2727,1
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-04-01,6,5,0,0,0,0,1,1.8889,1
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-04-01,6,5,0,0,0,0,1,2.0089,1
 quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-04-01,6,3,0,2,0,0,1,1.5805,1
-quixere-ce,QUIXERE/CE,ftth,2026-04-01,4,2,2,0,0,0,0,1.1106,1
+quixere-ce,QUIXERE/CE,ftth,2026-04-01,4,3,1,0,0,0,0,1.1583,1
 quixere-ce,QUIXERE/CE,5g,2026-04-01,4,2,2,0,0,0,0,0.9404,2
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-04-01,1,1,0,0,0,0,0,2.0625,1
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-04-01,1,1,0,0,0,0,0,2.2,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-04-01,1,1,0,0,0,0,0,1.1111,1
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-04-01,2,0,0,0,0,2,0,0.1944,5
 rio-largo-al,RIO LARGO/AL,ftth,2026-04-01,3,3,0,0,0,0,0,1.1667,1
-russas-ce,RUSSAS/CE,ftth,2026-04-01,5,4,1,0,0,0,0,1.4897,1
+russas-ce,RUSSAS/CE,ftth,2026-04-01,5,5,0,0,0,0,0,1.5533,1
 russas-ce,RUSSAS/CE,5g,2026-04-01,5,5,0,0,0,0,0,1.3865,1
-salgueiro-pe,SALGUEIRO/PE,ftth,2026-04-01,3,1,0,0,1,0,1,1.081,1
+salgueiro-pe,SALGUEIRO/PE,ftth,2026-04-01,3,1,0,0,1,0,1,1.1,1
 salgueiro-pe,SALGUEIRO/PE,5g,2026-04-01,3,0,1,0,1,0,1,0.6945,3
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-04-01,1,1,0,0,0,0,0,1.5,1
 santa-cruz-rn,SANTA CRUZ/RN,ftth,2026-04-01,2,0,0,0,0,2,0,0,5
 santa-cruz-rn,SANTA CRUZ/RN,5g,2026-04-01,2,0,0,0,1,1,0,0.2667,5
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-04-01,3,3,0,0,0,0,0,1.8528,1
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-04-01,3,3,0,0,0,0,0,1.9111,1
 santa-luzia-pb,SANTA LUZIA/PB,5g,2026-04-01,3,3,0,0,0,0,0,1.1051,1
 santa-quiteria-ce,SANTA QUITERIA/CE,ftth,2026-04-01,2,0,0,0,0,2,0,0.0667,5
 santa-quiteria-ce,SANTA QUITERIA/CE,5g,2026-04-01,2,0,0,0,2,0,0,0.4,4
-santa-rita-pb,SANTA RITA/PB,ftth,2026-04-01,5,3,0,0,2,0,0,1.4593,1
+santa-rita-pb,SANTA RITA/PB,ftth,2026-04-01,5,3,0,0,2,0,0,1.496,1
 santa-rita-pb,SANTA RITA/PB,5g,2026-04-01,5,3,0,0,0,2,0,1.1051,1
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-04-01,1,1,0,0,0,0,0,1.2222,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-04-01,4,0,0,1,2,1,0,0.4774,4
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-04-01,4,0,0,1,2,1,0,0.4958,4
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-04-01,4,0,0,2,2,0,0,0.6213,3
 sao-caitano-pe,SAO CAITANO/PE,ftth,2026-04-01,2,0,0,0,0,2,0,0.0667,5
 sao-caitano-pe,SAO CAITANO/PE,5g,2026-04-01,2,0,0,0,2,0,0,0.4444,4
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-04-01,2,0,1,1,0,0,0,0.7778,3
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-04-01,2,0,1,1,0,0,0,0.84,2
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,5g,2026-04-01,2,2,0,0,0,0,0,1.02,1
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-04-01,4,4,0,0,0,0,0,1.3935,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-04-01,4,4,0,0,0,0,0,1.4167,1
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-04-01,4,2,0,0,2,0,0,0.8736,2
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-04-01,2,0,1,0,0,0,1,0.95,2
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-04-01,5,3,1,1,0,0,0,1.0752,1
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-04-01,5,4,0,1,0,0,0,1.1133,1
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-04-01,5,4,1,0,0,0,0,1.4877,1
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-04-01,4,3,1,0,0,0,0,1.4045,1
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-04-01,4,3,1,0,0,0,0,1.475,1
 senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-04-01,4,4,0,0,0,0,0,1.4428,1
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-04-01,5,2,0,1,1,1,0,1.0174,1
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-04-01,5,2,1,0,1,1,0,1.0533,1
 serra-talhada-pe,SERRA TALHADA/PE,5g,2026-04-01,5,3,1,0,1,0,0,1.0495,1
-sobral-ce,SOBRAL/CE,ftth,2026-04-01,12,9,1,0,1,0,1,1.4411,1
+sobral-ce,SOBRAL/CE,ftth,2026-04-01,12,9,1,1,0,0,1,1.4998,1
 sobral-ce,SOBRAL/CE,5g,2026-04-01,12,8,3,0,0,0,1,1.2086,1
-sousa-pb,SOUSA/PB,ftth,2026-04-01,5,4,0,0,0,1,0,1.6354,1
+sousa-pb,SOUSA/PB,ftth,2026-04-01,5,4,0,0,0,1,0,1.68,1
 sousa-pb,SOUSA/PB,5g,2026-04-01,5,4,0,0,0,1,0,1.1184,1
 surubim-pe,SURUBIM/PE,ftth,2026-04-01,2,0,0,0,0,2,0,0.2778,5
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-04-01,4,2,0,1,0,1,0,1.0591,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-04-01,4,2,0,1,0,1,0,1.075,1
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-04-01,4,2,0,2,0,0,0,1.0127,1
-taua-ce,TAUA/CE,ftth,2026-04-01,5,4,1,0,0,0,0,1.7273,1
+taua-ce,TAUA/CE,ftth,2026-04-01,5,5,0,0,0,0,0,1.78,1
 taua-ce,TAUA/CE,5g,2026-04-01,5,2,2,1,0,0,0,0.96,2
-teresina-pi,TERESINA/PI,ftth,2026-04-01,25,20,1,1,3,0,0,1.5036,1
+teresina-pi,TERESINA/PI,ftth,2026-04-01,25,20,1,2,2,0,0,1.6032,1
 teresina-pi,TERESINA/PI,5g,2026-04-01,25,9,5,3,6,2,0,0.7879,3
-tiangua-ce,TIANGUA/CE,ftth,2026-04-01,4,3,0,0,0,0,1,1.8073,1
+tiangua-ce,TIANGUA/CE,ftth,2026-04-01,4,3,0,0,0,0,1,1.8889,1
 tiangua-ce,TIANGUA/CE,5g,2026-04-01,4,2,1,0,0,0,1,1.2623,1
-timon-ma,TIMON/MA,ftth,2026-04-01,9,7,2,0,0,0,0,1.4798,1
+timon-ma,TIMON/MA,ftth,2026-04-01,9,7,2,0,0,0,0,1.5674,1
 timon-ma,TIMON/MA,5g,2026-04-01,9,6,1,2,0,0,0,0.9954,2
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-04-01,1,1,0,0,0,0,0,1.45,1
-toritama-pe,TORITAMA/PE,ftth,2026-04-01,5,3,0,1,1,0,0,1.0459,1
+toritama-pe,TORITAMA/PE,ftth,2026-04-01,5,3,1,0,1,0,0,1.0827,1
 toritama-pe,TORITAMA/PE,5g,2026-04-01,5,1,0,2,2,0,0,0.6726,3
-ubajara-ce,UBAJARA/CE,ftth,2026-04-01,4,0,1,2,1,0,0,0.6735,3
+ubajara-ce,UBAJARA/CE,ftth,2026-04-01,4,0,2,1,1,0,0,0.6917,3
 ubajara-ce,UBAJARA/CE,5g,2026-04-01,4,1,0,1,2,0,0,0.656,3
-uirauna-pb,UIRAUNA/PB,ftth,2026-04-01,3,1,0,1,0,1,0,0.6861,3
+uirauna-pb,UIRAUNA/PB,ftth,2026-04-01,3,1,0,1,0,1,0,0.7111,3
 uirauna-pb,UIRAUNA/PB,5g,2026-04-01,3,3,0,0,0,0,0,1.0627,1
 umarizal-rn,UMARIZAL/RN,ftth,2026-04-01,2,0,0,1,1,0,0,0.6,3
 umarizal-rn,UMARIZAL/RN,5g,2026-04-01,2,1,0,1,0,0,0,0.8462,2
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-04-01,5,1,2,2,0,0,0,0.9261,2
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-04-01,5,2,1,2,0,0,0,0.9733,2
 varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-04-01,5,2,2,0,1,0,0,0.9123,2
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-04-01,2,1,0,0,0,1,0,1.1389,1
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-04-01,2,1,0,0,0,1,0,0.6667,3
-acarau-ce,ACARAU/CE,ftth,2026-05-01,4,1,0,1,2,0,0,0.9182,2
+acarau-ce,ACARAU/CE,ftth,2026-05-01,4,1,1,1,1,0,0,0.95,2
 acarau-ce,ACARAU/CE,5g,2026-05-01,4,1,2,1,0,0,0,1.0011,1
-acopiara-ce,ACOPIARA/CE,ftth,2026-05-01,3,2,0,0,0,0,1,2.0333,1
+acopiara-ce,ACOPIARA/CE,ftth,2026-05-01,3,2,0,0,0,0,1,2.0833,1
 acopiara-ce,ACOPIARA/CE,5g,2026-05-01,3,2,0,0,0,0,1,1.047,1
 acu-rn,ACU/RN,ftth,2026-05-01,4,2,1,1,0,0,0,1.2778,1
 acu-rn,ACU/RN,5g,2026-05-01,4,4,0,0,0,0,0,1.9205,1
@@ -1000,244 +1000,244 @@ alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-05-01,2,2,0,0,0,0,0,1.125,1
 altos-pi,ALTOS/PI,ftth,2026-05-01,3,1,0,1,0,1,0,0.6667,3
 apodi-rn,APODI/RN,ftth,2026-05-01,2,0,0,0,0,2,0,0,5
 apodi-rn,APODI/RN,5g,2026-05-01,2,2,0,0,0,0,0,1.4778,1
-aquiraz-ce,AQUIRAZ/CE,ftth,2026-05-01,2,2,0,0,0,0,0,2.1988,1
+aquiraz-ce,AQUIRAZ/CE,ftth,2026-05-01,2,2,0,0,0,0,0,2.34,1
 aquiraz-ce,AQUIRAZ/CE,5g,2026-05-01,2,2,0,0,0,0,0,1.4022,1
 aracaju-se,ARACAJU/SE,ftth,2026-05-01,3,3,0,0,0,0,0,1.1167,1
 arapiraca-al,ARAPIRACA/AL,ftth,2026-05-01,3,0,1,0,0,0,2,0.9,2
-araripina-pe,ARARIPINA/PE,ftth,2026-05-01,4,3,0,0,0,1,0,1.3575,1
+araripina-pe,ARARIPINA/PE,ftth,2026-05-01,4,3,0,0,0,1,0,1.3833,1
 araripina-pe,ARARIPINA/PE,5g,2026-05-01,4,2,0,0,2,0,0,0.7482,3
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-05-01,4,2,1,0,0,1,0,1.0871,1
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-05-01,4,3,0,0,0,1,0,1.1333,1
 arcoverde-pe,ARCOVERDE/PE,5g,2026-05-01,4,1,2,1,0,0,0,0.9351,2
-assu-rn,ASSU/RN,ftth,2026-05-01,3,1,1,1,0,0,0,0.9592,2
+assu-rn,ASSU/RN,ftth,2026-05-01,3,2,1,0,0,0,0,1.0444,1
 assu-rn,ASSU/RN,5g,2026-05-01,3,2,0,1,0,0,0,1,1
-banabuiu-ce,BANABUIU/CE,ftth,2026-05-01,3,3,0,0,0,0,0,2.9097,1
+banabuiu-ce,BANABUIU/CE,ftth,2026-05-01,3,3,0,0,0,0,0,2.9556,1
 banabuiu-ce,BANABUIU/CE,5g,2026-05-01,3,2,1,0,0,0,0,1.0522,1
 barauna-rn,BARAUNA/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.2,1
 barauna-rn,BARAUNA/RN,5g,2026-05-01,1,1,0,0,0,0,0,1.9231,1
-barbalha-ce,BARBALHA/CE,ftth,2026-05-01,3,3,0,0,0,0,0,1.6162,1
+barbalha-ce,BARBALHA/CE,ftth,2026-05-01,3,3,0,0,0,0,0,1.6556,1
 barbalha-ce,BARBALHA/CE,5g,2026-05-01,3,2,1,0,0,0,0,1.3207,1
-bayeux-pb,BAYEUX/PB,ftth,2026-05-01,8,6,0,1,0,1,0,1.287,1
+bayeux-pb,BAYEUX/PB,ftth,2026-05-01,8,6,1,0,0,1,0,1.3633,1
 bayeux-pb,BAYEUX/PB,5g,2026-05-01,8,6,0,1,0,1,0,1.0452,1
 belo-jardim-pe,BELO JARDIM/PE,ftth,2026-05-01,3,1,0,0,0,1,1,1.0667,1
 belo-jardim-pe,BELO JARDIM/PE,5g,2026-05-01,3,0,0,1,0,1,1,0.3077,4
-bezerros-pe,BEZERROS/PE,ftth,2026-05-01,4,1,2,1,0,0,0,1.3286,1
+bezerros-pe,BEZERROS/PE,ftth,2026-05-01,4,2,2,0,0,0,0,1.3667,1
 bezerros-pe,BEZERROS/PE,5g,2026-05-01,4,2,1,0,0,1,0,0.7963,3
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-05-01,6,5,0,0,0,0,1,2.0776,1
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-05-01,6,5,0,0,0,0,1,2.2267,1
 brejo-santo-ce,BREJO SANTO/CE,5g,2026-05-01,6,5,0,0,0,0,1,1.1863,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-05-01,4,2,1,1,0,0,0,1.0741,1
+cabedelo-pb,CABEDELO/PB,ftth,2026-05-01,4,2,1,1,0,0,0,1.12,1
 cabedelo-pb,CABEDELO/PB,5g,2026-05-01,4,1,0,0,2,1,0,0.7019,3
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-05-01,2,1,1,0,0,0,0,1.15,1
-caico-rn,CAICO/RN,ftth,2026-05-01,4,2,1,0,0,1,0,1.3116,1
+caico-rn,CAICO/RN,ftth,2026-05-01,4,3,0,0,0,1,0,1.3333,1
 caico-rn,CAICO/RN,5g,2026-05-01,4,2,0,1,0,1,0,1.2819,1
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-05-01,8,4,3,1,0,0,0,1.0095,1
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-05-01,8,6,1,1,0,0,0,1.0667,1
 cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-05-01,8,6,0,0,2,0,0,0.9456,2
 camacari-ba,CAMACARI/BA,ftth,2026-05-01,3,2,0,0,0,0,1,1.025,1
 camocim-ce,CAMOCIM/CE,ftth,2026-05-01,2,0,0,0,0,2,0,0.0667,5
 camocim-ce,CAMOCIM/CE,5g,2026-05-01,2,1,0,1,0,0,0,1.0111,1
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-05-01,14,7,1,0,1,5,0,0.8208,2
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-05-01,14,7,1,0,1,5,0,0.8723,2
 campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-05-01,14,3,3,1,3,4,0,0.5934,4
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-05-01,2,1,0,0,1,0,0,0.75,3
-caninde-ce,CANINDE/CE,ftth,2026-05-01,6,2,0,1,2,1,0,0.9189,2
+caninde-ce,CANINDE/CE,ftth,2026-05-01,6,2,0,1,2,1,0,0.9426,2
 caninde-ce,CANINDE/CE,5g,2026-05-01,6,3,0,0,3,0,0,0.9063,2
-caruaru-pe,CARUARU/PE,ftth,2026-05-01,11,1,2,0,4,4,0,0.789,3
+caruaru-pe,CARUARU/PE,ftth,2026-05-01,11,3,0,0,6,2,0,0.8224,2
 caruaru-pe,CARUARU/PE,5g,2026-05-01,11,6,1,1,2,1,0,1.0798,1
-cascavel-ce,CASCAVEL/CE,ftth,2026-05-01,5,1,0,1,3,0,0,0.8329,2
+cascavel-ce,CASCAVEL/CE,ftth,2026-05-01,5,1,1,2,1,0,0,0.8667,2
 cascavel-ce,CASCAVEL/CE,5g,2026-05-01,5,1,2,2,0,0,0,0.9365,2
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-05-01,4,4,0,0,0,0,0,1.8121,1
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-05-01,4,4,0,0,0,0,0,1.8667,1
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-05-01,4,1,2,1,0,0,0,0.937,2
 catu-ba,CATU/BA,ftth,2026-05-01,1,0,0,0,1,0,0,0.4444,4
-caucaia-ce,CAUCAIA/CE,ftth,2026-05-01,13,6,3,1,2,1,0,0.9048,2
+caucaia-ce,CAUCAIA/CE,ftth,2026-05-01,13,7,2,1,2,1,0,0.9633,2
 caucaia-ce,CAUCAIA/CE,5g,2026-05-01,13,10,0,1,0,2,0,1.6292,1
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-05-01,3,2,0,0,0,0,1,1.8651,1
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-05-01,3,2,0,0,0,0,1,1.9222,1
 ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-05-01,3,2,0,0,0,0,1,3.5028,1
-cedro-ce,CEDRO/CE,ftth,2026-05-01,3,1,0,1,0,1,0,0.6444,3
+cedro-ce,CEDRO/CE,ftth,2026-05-01,3,1,0,1,0,1,0,0.6778,3
 cedro-ce,CEDRO/CE,5g,2026-05-01,3,1,2,0,0,0,0,1.0036,1
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.3125,1
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.4,1
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-05-01,1,1,0,0,0,0,0,1.1707,1
-crateus-ce,CRATEUS/CE,ftth,2026-05-01,6,3,0,0,1,2,0,1.2172,1
+crateus-ce,CRATEUS/CE,ftth,2026-05-01,6,3,0,0,2,1,0,1.2481,1
 crateus-ce,CRATEUS/CE,5g,2026-05-01,6,3,0,1,1,1,0,1.0918,1
-crato-ce,CRATO/CE,ftth,2026-05-01,9,6,0,0,3,0,0,1.3045,1
+crato-ce,CRATO/CE,ftth,2026-05-01,9,6,0,1,2,0,0,1.3427,1
 crato-ce,CRATO/CE,5g,2026-05-01,9,3,0,4,2,0,0,0.9548,2
 custodia-pe,CUSTODIA/PE,ftth,2026-05-01,2,2,0,0,0,0,0,1.8667,1
 custodia-pe,CUSTODIA/PE,5g,2026-05-01,2,2,0,0,0,0,0,1.0577,1
 dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-05-01,2,0,1,1,0,0,0,0.7833,3
-encanto-rn,ENCANTO/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.125,1
+encanto-rn,ENCANTO/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.2,1
 encanto-rn,ENCANTO/RN,5g,2026-05-01,1,1,0,0,0,0,0,1.2439,1
 escada-pe,ESCADA/PE,ftth,2026-05-01,2,1,0,0,0,1,0,0.7778,3
 estancia-se,ESTANCIA/SE,ftth,2026-05-01,2,2,0,0,0,0,0,1.325,1
-eusebio-ce,EUSEBIO/CE,ftth,2026-05-01,6,5,0,0,0,1,0,1.4222,1
+eusebio-ce,EUSEBIO/CE,ftth,2026-05-01,6,5,0,0,0,1,0,1.4844,1
 eusebio-ce,EUSEBIO/CE,5g,2026-05-01,6,3,0,2,1,0,0,1.311,1
-extremoz-rn,EXTREMOZ/RN,ftth,2026-05-01,5,2,2,0,1,0,0,0.9502,2
+extremoz-rn,EXTREMOZ/RN,ftth,2026-05-01,5,4,0,1,0,0,0,1.0133,1
 extremoz-rn,EXTREMOZ/RN,5g,2026-05-01,5,5,0,0,0,0,0,1.412,1
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-05-01,2,0,1,0,1,0,0,0.6389,3
-fortaleza-ce,FORTALEZA/CE,ftth,2026-05-01,72,18,6,8,20,18,2,0.6803,3
+fortaleza-ce,FORTALEZA/CE,ftth,2026-05-01,72,19,9,6,22,14,2,0.7203,3
 fortaleza-ce,FORTALEZA/CE,5g,2026-05-01,72,28,4,7,10,21,2,0.8568,2
 garanhuns-pe,GARANHUNS/PE,ftth,2026-05-01,2,2,0,0,0,0,0,1.375,1
-gravata-pe,GRAVATA/PE,ftth,2026-05-01,5,1,1,0,3,0,0,0.926,2
+gravata-pe,GRAVATA/PE,ftth,2026-05-01,5,1,1,0,3,0,0,0.9467,2
 gravata-pe,GRAVATA/PE,5g,2026-05-01,5,0,1,0,4,0,0,0.5524,4
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-05-01,3,2,0,0,0,1,0,1.2649,1
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-05-01,3,2,0,0,0,1,0,1.2667,1
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-05-01,3,3,0,0,0,0,0,1.3141,1
-horizonte-ce,HORIZONTE/CE,ftth,2026-05-01,7,3,1,0,1,2,0,1.2063,1
+horizonte-ce,HORIZONTE/CE,ftth,2026-05-01,7,4,0,0,1,2,0,1.2279,1
 horizonte-ce,HORIZONTE/CE,5g,2026-05-01,7,3,0,3,0,1,0,1.1382,1
 ibiapina-ce,IBIAPINA/CE,ftth,2026-05-01,2,0,0,0,0,2,0,0.1333,5
 ibiapina-ce,IBIAPINA/CE,5g,2026-05-01,2,0,0,0,1,1,0,0.2077,5
-ico-ce,ICO/CE,ftth,2026-05-01,5,4,0,1,0,0,0,1.9717,1
+ico-ce,ICO/CE,ftth,2026-05-01,5,4,0,1,0,0,0,2.0044,1
 ico-ce,ICO/CE,5g,2026-05-01,5,5,0,0,0,0,0,1.6914,1
-iguatu-ce,IGUATU/CE,ftth,2026-05-01,11,9,0,1,0,0,1,2.0431,1
+iguatu-ce,IGUATU/CE,ftth,2026-05-01,11,9,1,0,0,0,1,2.1111,1
 iguatu-ce,IGUATU/CE,5g,2026-05-01,11,10,0,0,0,0,1,1.3335,1
-ipu-ce,IPU/CE,ftth,2026-05-01,4,2,0,0,1,1,0,0.7074,3
+ipu-ce,IPU/CE,ftth,2026-05-01,4,2,0,0,1,1,0,0.7381,3
 ipu-ce,IPU/CE,5g,2026-05-01,4,2,0,1,1,0,0,1.0368,1
-iracema-ce,IRACEMA/CE,ftth,2026-05-01,4,1,2,0,0,1,0,1.0688,1
+iracema-ce,IRACEMA/CE,ftth,2026-05-01,4,3,0,0,0,1,0,1.1,1
 iracema-ce,IRACEMA/CE,5g,2026-05-01,4,1,1,0,2,0,0,0.7136,3
 itabaiana-se,ITABAIANA/SE,ftth,2026-05-01,1,0,0,1,0,0,0,0.6111,3
-itapaje-ce,ITAPAJE/CE,ftth,2026-05-01,4,3,0,0,1,0,0,1.1707,1
+itapaje-ce,ITAPAJE/CE,ftth,2026-05-01,4,3,0,0,1,0,0,1.2333,1
 itapaje-ce,ITAPAJE/CE,5g,2026-05-01,4,3,0,1,0,0,0,1.0361,1
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-05-01,6,5,0,0,0,0,1,2.1504,1
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-05-01,6,5,0,0,0,0,1,2.2333,1
 itapipoca-ce,ITAPIPOCA/CE,5g,2026-05-01,6,5,0,0,0,0,1,2.3442,1
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-05-01,2,0,1,0,1,0,0,0.7222,3
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-05-01,3,2,0,1,0,0,0,1.8097,1
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-05-01,3,2,0,1,0,0,0,1.8889,1
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-05-01,3,2,0,0,1,0,0,0.9894,2
-jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-05-01,1,1,0,0,0,0,0,2.0625,1
+jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-05-01,1,1,0,0,0,0,0,2.2,1
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-05-01,1,1,0,0,0,0,0,1.0789,1
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-05-01,6,3,1,2,0,0,0,1.0545,1
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-05-01,6,3,2,1,0,0,0,1.1,1
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-05-01,6,5,0,0,1,0,0,1.2418,1
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-05-01,31,17,3,2,5,2,2,1.3064,1
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-05-01,31,19,3,2,4,1,2,1.3877,1
 joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-05-01,31,15,3,6,3,2,2,0.9677,2
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-05-01,22,20,0,0,1,0,1,1.8144,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-05-01,22,20,0,0,1,0,1,1.906,1
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-05-01,22,21,0,0,0,0,1,1.5684,1
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-05-01,10,8,0,0,0,2,0,1.3804,1
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-05-01,10,8,0,0,0,2,0,1.456,1
 juazeiro-ba,JUAZEIRO/BA,5g,2026-05-01,10,7,0,0,1,2,0,0.9961,2
 lagarto-se,LAGARTO/SE,ftth,2026-05-01,1,1,0,0,0,0,0,1,1
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-05-01,3,2,0,0,1,0,0,1.1354,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-05-01,3,2,0,0,1,0,0,1.1778,1
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-05-01,3,1,0,0,2,0,0,0.7165,3
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-05-01,5,5,0,0,0,0,0,1.9394,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-05-01,5,5,0,0,0,0,0,1.9867,1
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-05-01,5,5,0,0,0,0,0,1.4491,1
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-05-01,2,0,0,0,1,1,0,0.2778,5
-macaiba-rn,MACAIBA/RN,ftth,2026-05-01,6,2,2,0,2,0,0,1.2887,1
+macaiba-rn,MACAIBA/RN,ftth,2026-05-01,6,3,1,0,2,0,0,1.3259,1
 macaiba-rn,MACAIBA/RN,5g,2026-05-01,6,4,1,1,0,0,0,1.5777,1
 maceio-al,MACEIO/AL,ftth,2026-05-01,1,1,0,0,0,0,0,1.45,1
-major-sales-rn,MAJOR SALES/RN,ftth,2026-05-01,3,3,0,0,0,0,0,2.0111,1
+major-sales-rn,MAJOR SALES/RN,ftth,2026-05-01,3,3,0,0,0,0,0,2.0444,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-05-01,3,1,1,0,0,1,0,0.8324,2
-maracanau-ce,MARACANAU/CE,ftth,2026-05-01,14,2,4,2,2,4,0,0.6997,3
+maracanau-ce,MARACANAU/CE,ftth,2026-05-01,14,3,4,1,3,3,0,0.7319,3
 maracanau-ce,MARACANAU/CE,5g,2026-05-01,14,7,1,3,1,2,0,1.3277,1
-maranguape-ce,MARANGUAPE/CE,ftth,2026-05-01,5,3,0,0,1,1,0,1.637,1
+maranguape-ce,MARANGUAPE/CE,ftth,2026-05-01,5,3,0,0,1,1,0,1.7342,1
 maranguape-ce,MARANGUAPE/CE,5g,2026-05-01,5,4,1,0,0,0,0,1.5047,1
 marechal-deodoro-al,MARECHAL DEODORO/AL,ftth,2026-05-01,2,1,1,0,0,0,0,0.9444,2
-milagres-ce,MILAGRES/CE,ftth,2026-05-01,3,1,0,0,1,1,0,0.5556,4
+milagres-ce,MILAGRES/CE,ftth,2026-05-01,3,1,0,0,1,1,0,0.5889,4
 milagres-ce,MILAGRES/CE,5g,2026-05-01,3,1,0,0,2,0,0,0.6524,3
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-05-01,4,2,1,1,0,0,0,1.4197,1
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-05-01,4,2,2,0,0,0,0,1.4583,1
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-05-01,4,4,0,0,0,0,0,1.1293,1
-mombaca-ce,MOMBACA/CE,ftth,2026-05-01,4,0,2,0,2,0,0,0.7259,3
+mombaca-ce,MOMBACA/CE,ftth,2026-05-01,4,2,0,0,2,0,0,0.7667,3
 mombaca-ce,MOMBACA/CE,5g,2026-05-01,4,2,1,1,0,0,0,1.0325,1
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-05-01,5,5,0,0,0,0,0,1.9588,1
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-05-01,5,5,0,0,0,0,0,2.0644,1
 morada-nova-ce,MORADA NOVA/CE,5g,2026-05-01,5,5,0,0,0,0,0,1.5802,1
-mossoro-rn,MOSSORO/RN,ftth,2026-05-01,14,5,1,2,3,3,0,0.9145,2
+mossoro-rn,MOSSORO/RN,ftth,2026-05-01,14,5,1,3,2,3,0,0.9716,2
 mossoro-rn,MOSSORO/RN,5g,2026-05-01,14,13,0,1,0,0,0,1.541,1
-natal-rn,NATAL/RN,ftth,2026-05-01,39,25,0,3,5,4,2,1.3432,1
+natal-rn,NATAL/RN,ftth,2026-05-01,39,25,0,3,5,4,2,1.4174,1
 natal-rn,NATAL/RN,5g,2026-05-01,39,25,4,3,2,3,2,1.5366,1
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-05-01,1,0,0,0,1,0,0,0.5455,4
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-05-01,1,0,0,1,0,0,0,0.6,3
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-05-01,1,0,0,0,1,0,0,0.5278,4
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-05-01,3,2,0,0,0,0,1,1,1
-oros-ce,OROS/CE,ftth,2026-05-01,3,2,0,1,0,0,0,1.8722,1
+oros-ce,OROS/CE,ftth,2026-05-01,3,2,0,1,0,0,0,1.9556,1
 oros-ce,OROS/CE,5g,2026-05-01,3,2,0,1,0,0,0,0.9869,2
-ouricuri-pe,OURICURI/PE,ftth,2026-05-01,5,1,1,0,1,1,1,0.7673,3
+ouricuri-pe,OURICURI/PE,ftth,2026-05-01,5,2,0,1,0,1,1,0.8,2
 ouricuri-pe,OURICURI/PE,5g,2026-05-01,5,0,0,1,1,2,1,0.3143,4
-pacajus-ce,PACAJUS/CE,ftth,2026-05-01,6,5,0,0,0,1,0,2.1235,1
+pacajus-ce,PACAJUS/CE,ftth,2026-05-01,6,5,0,0,0,1,0,2.1689,1
 pacajus-ce,PACAJUS/CE,5g,2026-05-01,6,6,0,0,0,0,0,1.3083,1
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-05-01,2,1,1,0,0,0,0,0.975,2
-paraipaba-ce,PARAIPABA/CE,ftth,2026-05-01,5,1,0,0,2,1,1,0.5357,4
+paraipaba-ce,PARAIPABA/CE,ftth,2026-05-01,5,1,0,0,2,1,1,0.5833,4
 paraipaba-ce,PARAIPABA/CE,5g,2026-05-01,5,2,1,0,0,1,1,0.9063,2
-parnaiba-pi,PARNAIBA/PI,ftth,2026-05-01,11,10,0,0,1,0,0,1.6977,1
+parnaiba-pi,PARNAIBA/PI,ftth,2026-05-01,11,10,0,0,1,0,0,1.802,1
 parnaiba-pi,PARNAIBA/PI,5g,2026-05-01,11,8,1,2,0,0,0,1.3659,1
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-05-01,14,10,2,1,0,1,0,1.8264,1
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-05-01,14,12,0,1,1,0,0,1.8884,1
 parnamirim-rn,PARNAMIRIM/RN,5g,2026-05-01,14,10,1,1,2,0,0,1.3873,1
-patos-pb,PATOS/PB,ftth,2026-05-01,9,5,1,0,2,0,1,1.7083,1
+patos-pb,PATOS/PB,ftth,2026-05-01,9,6,0,0,2,0,1,1.755,1
 patos-pb,PATOS/PB,5g,2026-05-01,9,8,0,0,0,0,1,1.6134,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-05-01,6,2,1,0,3,0,0,1.0495,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-05-01,6,2,1,1,2,0,0,1.0722,1
 pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-05-01,6,5,1,0,0,0,0,1.6403,1
 paulista-pe,PAULISTA/PE,ftth,2026-05-01,3,1,1,0,0,0,1,1.1944,1
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-05-01,3,1,0,0,1,0,1,1.5116,1
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-05-01,3,1,0,0,1,0,1,1.5333,1
 pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-05-01,3,2,0,0,0,0,1,1.3053,1
 pereiro-ce,PEREIRO/CE,ftth,2026-05-01,76,62,2,3,2,5,2,1.5348,1
-pereiro-ce,PEREIRO/CE,5g,2026-05-01,36,3,0,2,9,20,2,0.3199,4
-pesqueira-pe,PESQUEIRA/PE,ftth,2026-05-01,4,0,2,0,1,1,0,0.5367,4
+pereiro-ce,PEREIRO/CE,5g,2026-05-01,76,3,0,2,9,20,42,0.3199,4
+pesqueira-pe,PESQUEIRA/PE,ftth,2026-05-01,4,1,1,0,1,1,0,0.5667,4
 pesqueira-pe,PESQUEIRA/PE,5g,2026-05-01,4,2,1,0,1,0,0,0.9025,2
-petrolina-pe,PETROLINA/PE,ftth,2026-05-01,19,11,1,1,5,0,1,1.1498,1
+petrolina-pe,PETROLINA/PE,ftth,2026-05-01,19,12,1,1,4,0,1,1.2311,1
 petrolina-pe,PETROLINA/PE,5g,2026-05-01,19,14,1,1,1,1,1,1.2384,1
 picos-pi,PICOS/PI,ftth,2026-05-01,1,0,0,1,0,0,0,0.6667,3
 piripiri-pi,PIRIPIRI/PI,ftth,2026-05-01,3,1,0,1,1,0,0,0.7037,3
-pombal-pb,POMBAL/PB,ftth,2026-05-01,5,1,3,0,1,0,0,0.9233,2
+pombal-pb,POMBAL/PB,ftth,2026-05-01,5,4,0,0,1,0,0,0.9733,2
 pombal-pb,POMBAL/PB,5g,2026-05-01,5,4,1,0,0,0,0,1.1274,1
-quixada-ce,QUIXADA/CE,ftth,2026-05-01,7,5,1,0,0,0,1,1.9798,1
+quixada-ce,QUIXADA/CE,ftth,2026-05-01,7,6,0,0,0,0,1,2.0389,1
 quixada-ce,QUIXADA/CE,5g,2026-05-01,7,6,0,0,0,0,1,1.5896,1
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-05-01,6,5,1,0,0,0,0,2.0606,1
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-05-01,6,6,0,0,0,0,0,2.15,1
 quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-05-01,6,6,0,0,0,0,0,1.7521,1
-quixere-ce,QUIXERE/CE,ftth,2026-05-01,4,1,1,1,0,1,0,0.7606,3
+quixere-ce,QUIXERE/CE,ftth,2026-05-01,4,2,0,1,0,1,0,0.7833,3
 quixere-ce,QUIXERE/CE,5g,2026-05-01,4,2,0,0,1,1,0,0.7318,3
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.125,1
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-05-01,1,1,0,0,0,0,0,1.2,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-05-01,1,1,0,0,0,0,0,1.1951,1
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-05-01,2,0,0,0,2,0,0,0.4444,4
 rio-largo-al,RIO LARGO/AL,ftth,2026-05-01,3,2,1,0,0,0,0,1.1833,1
-russas-ce,RUSSAS/CE,ftth,2026-05-01,5,4,1,0,0,0,0,1.7273,1
+russas-ce,RUSSAS/CE,ftth,2026-05-01,5,5,0,0,0,0,0,1.82,1
 russas-ce,RUSSAS/CE,5g,2026-05-01,5,5,0,0,0,0,0,1.6927,1
-salgueiro-pe,SALGUEIRO/PE,ftth,2026-05-01,3,1,1,0,0,0,1,1.1565,1
+salgueiro-pe,SALGUEIRO/PE,ftth,2026-05-01,3,2,0,0,0,0,1,1.2,1
 salgueiro-pe,SALGUEIRO/PE,5g,2026-05-01,3,2,0,0,0,0,1,1.3822,1
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-05-01,1,1,0,0,0,0,0,1.3889,1
 santa-cruz-rn,SANTA CRUZ/RN,ftth,2026-05-01,2,0,0,0,0,2,0,0,5
 santa-cruz-rn,SANTA CRUZ/RN,5g,2026-05-01,2,0,0,0,2,0,0,0.3778,4
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-05-01,4,4,0,0,0,0,0,1.7708,1
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-05-01,4,4,0,0,0,0,0,1.8333,1
 santa-luzia-pb,SANTA LUZIA/PB,5g,2026-05-01,4,2,2,0,0,0,0,1.0026,1
 santa-quiteria-ce,SANTA QUITERIA/CE,ftth,2026-05-01,2,0,0,0,0,2,0,0.1333,5
 santa-quiteria-ce,SANTA QUITERIA/CE,5g,2026-05-01,2,1,0,0,0,1,0,0.7,3
-santa-rita-pb,SANTA RITA/PB,ftth,2026-05-01,5,3,0,0,0,2,0,1.2667,1
+santa-rita-pb,SANTA RITA/PB,ftth,2026-05-01,5,3,0,0,0,2,0,1.2916,1
 santa-rita-pb,SANTA RITA/PB,5g,2026-05-01,5,2,3,0,0,0,0,1.2565,1
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-05-01,1,1,0,0,0,0,0,1.6111,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-05-01,4,0,1,0,2,1,0,0.517,4
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-05-01,4,0,1,0,2,1,0,0.5333,4
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-05-01,4,0,2,1,1,0,0,0.8041,2
 sao-caitano-pe,SAO CAITANO/PE,ftth,2026-05-01,2,0,0,0,0,2,0,0.1333,5
 sao-caitano-pe,SAO CAITANO/PE,5g,2026-05-01,2,0,0,0,2,0,0,0.3889,4
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-05-01,2,1,0,0,1,0,0,1.2222,1
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-05-01,2,1,0,0,1,0,0,1.32,1
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,5g,2026-05-01,2,2,0,0,0,0,0,1.3261,1
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-05-01,5,3,1,0,1,0,0,1.0427,1
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-05-01,5,4,0,0,1,0,0,1.0667,1
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-05-01,5,0,4,1,0,0,0,0.8486,2
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-05-01,2,1,0,1,0,0,0,1.125,1
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-05-01,5,2,2,0,1,0,0,0.8691,2
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-05-01,5,2,2,1,0,0,0,0.9,2
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-05-01,5,4,0,1,0,0,0,1.3436,1
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-05-01,4,3,0,0,0,0,1,2.4727,1
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-05-01,4,3,0,0,0,0,1,2.6,1
 senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-05-01,4,3,0,0,0,0,1,1.9758,1
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-05-01,6,1,1,2,0,2,0,1.1488,1
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-05-01,6,2,1,1,0,2,0,1.1778,1
 serra-talhada-pe,SERRA TALHADA/PE,5g,2026-05-01,6,4,0,2,0,0,0,1.2624,1
-sobral-ce,SOBRAL/CE,ftth,2026-05-01,13,8,0,1,3,0,1,1.2068,1
+sobral-ce,SOBRAL/CE,ftth,2026-05-01,13,8,0,2,2,0,1,1.2685,1
 sobral-ce,SOBRAL/CE,5g,2026-05-01,13,9,1,2,0,0,1,1.1976,1
-sousa-pb,SOUSA/PB,ftth,2026-05-01,5,4,0,0,0,0,1,1.4399,1
+sousa-pb,SOUSA/PB,ftth,2026-05-01,5,4,0,0,0,0,1,1.4889,1
 sousa-pb,SOUSA/PB,5g,2026-05-01,5,4,0,0,0,0,1,1.3324,1
 surubim-pe,SURUBIM/PE,ftth,2026-05-01,2,0,0,0,1,1,0,0.3333,4
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-05-01,4,1,1,1,0,0,1,1.1818,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-05-01,4,1,2,0,0,0,1,1.2333,1
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-05-01,4,1,2,0,0,0,1,1.0798,1
-taua-ce,TAUA/CE,ftth,2026-05-01,5,4,0,0,0,0,1,2.1523,1
+taua-ce,TAUA/CE,ftth,2026-05-01,5,4,0,0,0,0,1,2.2833,1
 taua-ce,TAUA/CE,5g,2026-05-01,5,4,0,0,0,0,1,1.5358,1
-teresina-pi,TERESINA/PI,ftth,2026-05-01,25,21,4,0,0,0,0,1.6907,1
+teresina-pi,TERESINA/PI,ftth,2026-05-01,25,21,4,0,0,0,0,1.8091,1
 teresina-pi,TERESINA/PI,5g,2026-05-01,25,11,7,1,5,1,0,0.9311,2
-tiangua-ce,TIANGUA/CE,ftth,2026-05-01,5,2,1,0,1,0,1,1.2441,1
+tiangua-ce,TIANGUA/CE,ftth,2026-05-01,5,2,1,0,1,0,1,1.3083,1
 tiangua-ce,TIANGUA/CE,5g,2026-05-01,5,4,0,0,0,0,1,1.4892,1
-timon-ma,TIMON/MA,ftth,2026-05-01,9,8,0,0,1,0,0,1.6477,1
+timon-ma,TIMON/MA,ftth,2026-05-01,9,8,0,1,0,0,0,1.7393,1
 timon-ma,TIMON/MA,5g,2026-05-01,9,5,2,1,0,1,0,0.9091,2
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-05-01,1,1,0,0,0,0,0,2,1
-toritama-pe,TORITAMA/PE,ftth,2026-05-01,5,4,0,0,1,0,0,1.5378,1
+toritama-pe,TORITAMA/PE,ftth,2026-05-01,5,4,0,0,1,0,0,1.5947,1
 toritama-pe,TORITAMA/PE,5g,2026-05-01,5,3,0,0,2,0,0,1.0833,1
-ubajara-ce,UBAJARA/CE,ftth,2026-05-01,4,2,0,0,2,0,0,0.9833,2
+ubajara-ce,UBAJARA/CE,ftth,2026-05-01,4,2,0,1,1,0,0,1.0083,1
 ubajara-ce,UBAJARA/CE,5g,2026-05-01,4,0,0,2,2,0,0,0.5828,4
-uirauna-pb,UIRAUNA/PB,ftth,2026-05-01,3,1,0,1,1,0,0,0.7653,3
+uirauna-pb,UIRAUNA/PB,ftth,2026-05-01,3,1,0,2,0,0,0,0.7778,3
 uirauna-pb,UIRAUNA/PB,5g,2026-05-01,3,1,1,1,0,0,0,0.9647,2
 umarizal-rn,UMARIZAL/RN,ftth,2026-05-01,2,1,0,0,0,1,0,0.6667,3
 umarizal-rn,UMARIZAL/RN,5g,2026-05-01,2,1,0,1,0,0,0,0.9808,2
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-05-01,5,2,0,2,1,0,0,1.1543,1
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-05-01,5,2,2,0,1,0,0,1.1883,1
 varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-05-01,5,2,2,0,1,0,0,0.9001,2
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-05-01,2,1,1,0,0,0,0,1.0833,1
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-05-01,2,1,0,0,0,1,0,0.6944,3
-acarau-ce,ACARAU/CE,ftth,2026-06-01,4,1,1,2,0,0,0,0.8318,2
+acarau-ce,ACARAU/CE,ftth,2026-06-01,4,1,2,1,0,0,0,0.8667,2
 acarau-ce,ACARAU/CE,5g,2026-06-01,4,3,1,0,0,0,0,1.0333,1
-acopiara-ce,ACOPIARA/CE,ftth,2026-06-01,4,3,1,0,0,0,0,1.2083,1
+acopiara-ce,ACOPIARA/CE,ftth,2026-06-01,4,4,0,0,0,0,0,1.2583,1
 acopiara-ce,ACOPIARA/CE,5g,2026-06-01,4,0,2,2,0,0,0,0.8184,2
 acu-rn,ACU/RN,ftth,2026-06-01,4,3,0,0,0,1,0,1.2222,1
 acu-rn,ACU/RN,5g,2026-06-01,4,3,0,0,0,1,0,1.8864,1
@@ -1245,500 +1245,500 @@ alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-06-01,2,1,0,0,0,1,0,0.975,2
 altos-pi,ALTOS/PI,ftth,2026-06-01,3,0,0,1,2,0,0,0.5741,4
 apodi-rn,APODI/RN,ftth,2026-06-01,2,0,0,0,0,2,0,0,5
 apodi-rn,APODI/RN,5g,2026-06-01,2,2,0,0,0,0,0,1.1667,1
-aquiraz-ce,AQUIRAZ/CE,ftth,2026-06-01,2,0,1,1,0,0,0,0.7407,3
+aquiraz-ce,AQUIRAZ/CE,ftth,2026-06-01,2,0,1,1,0,0,0,0.8,2
 aquiraz-ce,AQUIRAZ/CE,5g,2026-06-01,2,0,1,1,0,0,0,0.76,3
 aracaju-se,ARACAJU/SE,ftth,2026-06-01,3,2,0,0,0,0,1,1.2,1
 arapiraca-al,ARAPIRACA/AL,ftth,2026-06-01,3,0,0,0,1,1,1,0.25,5
-araripina-pe,ARARIPINA/PE,ftth,2026-06-01,5,1,0,1,1,1,1,1.0087,1
+araripina-pe,ARARIPINA/PE,ftth,2026-06-01,5,1,1,0,1,1,1,1.0429,1
 araripina-pe,ARARIPINA/PE,5g,2026-06-01,5,3,0,1,0,0,1,1.3423,1
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-06-01,4,3,0,0,0,1,0,1.1303,1
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-06-01,4,3,0,0,0,1,0,1.1833,1
 arcoverde-pe,ARCOVERDE/PE,5g,2026-06-01,4,2,1,1,0,0,0,0.8712,2
-assu-rn,ASSU/RN,ftth,2026-06-01,3,2,0,1,0,0,0,1.0204,1
+assu-rn,ASSU/RN,ftth,2026-06-01,3,2,1,0,0,0,0,1.1111,1
 assu-rn,ASSU/RN,5g,2026-06-01,3,2,1,0,0,0,0,1.0571,1
-banabuiu-ce,BANABUIU/CE,ftth,2026-06-01,3,3,0,0,0,0,0,3.2306,1
+banabuiu-ce,BANABUIU/CE,ftth,2026-06-01,3,3,0,0,0,0,0,3.2889,1
 banabuiu-ce,BANABUIU/CE,5g,2026-06-01,3,0,1,2,0,0,0,0.7781,3
 barauna-rn,BARAUNA/RN,ftth,2026-06-01,1,1,0,0,0,0,0,2,1
 barauna-rn,BARAUNA/RN,5g,2026-06-01,1,1,0,0,0,0,0,2.1154,1
-barbalha-ce,BARBALHA/CE,ftth,2026-06-01,5,2,1,0,1,1,0,0.9792,2
+barbalha-ce,BARBALHA/CE,ftth,2026-06-01,5,2,1,0,1,1,0,1.0022,1
 barbalha-ce,BARBALHA/CE,5g,2026-06-01,5,2,3,0,0,0,0,1.0903,1
-bayeux-pb,BAYEUX/PB,ftth,2026-06-01,9,1,3,3,1,1,0,0.6878,3
+bayeux-pb,BAYEUX/PB,ftth,2026-06-01,9,3,2,2,1,1,0,0.7358,3
 bayeux-pb,BAYEUX/PB,5g,2026-06-01,9,3,3,2,1,0,0,0.8716,2
 belo-jardim-pe,BELO JARDIM/PE,ftth,2026-06-01,4,1,1,1,0,1,0,0.6333,3
 belo-jardim-pe,BELO JARDIM/PE,5g,2026-06-01,4,0,0,0,2,2,0,0.2379,5
-bezerros-pe,BEZERROS/PE,ftth,2026-06-01,4,3,0,0,0,1,0,1.1908,1
+bezerros-pe,BEZERROS/PE,ftth,2026-06-01,4,3,0,0,0,1,0,1.2167,1
 bezerros-pe,BEZERROS/PE,5g,2026-06-01,4,2,0,1,1,0,0,0.8879,2
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-06-01,6,5,0,0,0,0,1,2.2533,1
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-06-01,6,5,0,0,0,0,1,2.3933,1
 brejo-santo-ce,BREJO SANTO/CE,5g,2026-06-01,6,5,0,0,0,0,1,1.2185,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-06-01,4,0,3,0,0,0,1,0.9438,2
+cabedelo-pb,CABEDELO/PB,ftth,2026-06-01,4,2,1,0,0,0,1,1,1
 cabedelo-pb,CABEDELO/PB,5g,2026-06-01,4,2,0,0,1,0,1,0.7916,3
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-06-01,2,1,0,0,1,0,0,0.9,2
-caico-rn,CAICO/RN,ftth,2026-06-01,4,2,1,1,0,0,0,1.8772,1
+caico-rn,CAICO/RN,ftth,2026-06-01,4,3,1,0,0,0,0,1.9167,1
 caico-rn,CAICO/RN,5g,2026-06-01,4,4,0,0,0,0,0,1.8964,1
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-06-01,8,7,1,0,0,0,0,1.5861,1
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-06-01,8,8,0,0,0,0,0,1.65,1
 cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-06-01,8,2,4,0,1,1,0,0.8096,2
 camacari-ba,CAMACARI/BA,ftth,2026-06-01,3,1,0,0,0,0,2,2.05,1
 camocim-ce,CAMOCIM/CE,ftth,2026-06-01,2,0,0,0,0,2,0,0,5
 camocim-ce,CAMOCIM/CE,5g,2026-06-01,2,1,1,0,0,0,0,0.9778,2
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-06-01,15,8,0,1,2,4,0,0.8278,2
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-06-01,15,8,1,0,2,4,0,0.8782,2
 campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-06-01,15,7,2,1,1,4,0,0.734,3
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-06-01,2,1,0,1,0,0,0,0.8611,2
-caninde-ce,CANINDE/CE,ftth,2026-06-01,6,3,0,0,3,0,0,0.9989,2
+caninde-ce,CANINDE/CE,ftth,2026-06-01,6,3,0,0,3,0,0,1.0333,1
 caninde-ce,CANINDE/CE,5g,2026-06-01,6,2,1,0,2,1,0,0.7879,3
-caruaru-pe,CARUARU/PE,ftth,2026-06-01,10,1,0,1,3,5,0,0.6963,3
+caruaru-pe,CARUARU/PE,ftth,2026-06-01,10,1,1,0,3,5,0,0.7182,3
 caruaru-pe,CARUARU/PE,5g,2026-06-01,10,3,0,2,5,0,0,0.8164,2
-cascavel-ce,CASCAVEL/CE,ftth,2026-06-01,6,2,1,0,2,1,0,0.8063,2
+cascavel-ce,CASCAVEL/CE,ftth,2026-06-01,6,2,1,1,1,1,0,0.8444,2
 cascavel-ce,CASCAVEL/CE,5g,2026-06-01,6,3,0,1,2,0,0,0.9725,2
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-06-01,4,3,1,0,0,0,0,1.8106,1
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-06-01,4,4,0,0,0,0,0,1.8583,1
 catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-06-01,4,3,1,0,0,0,0,1.1126,1
 catu-ba,CATU/BA,ftth,2026-06-01,1,0,0,0,1,0,0,0.4444,4
-caucaia-ce,CAUCAIA/CE,ftth,2026-06-01,13,3,3,2,4,1,0,0.8872,2
+caucaia-ce,CAUCAIA/CE,ftth,2026-06-01,13,3,3,3,3,1,0,0.9337,2
 caucaia-ce,CAUCAIA/CE,5g,2026-06-01,13,10,2,0,0,1,0,1.5569,1
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-06-01,6,3,1,1,1,0,0,1.1897,1
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-06-01,6,4,1,1,0,0,0,1.2412,1
 ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-06-01,6,5,0,1,0,0,0,1.8306,1
-cedro-ce,CEDRO/CE,ftth,2026-06-01,3,2,0,0,0,0,1,1.1909,1
+cedro-ce,CEDRO/CE,ftth,2026-06-01,3,2,0,0,0,0,1,1.25,1
 cedro-ce,CEDRO/CE,5g,2026-06-01,3,2,0,0,0,0,1,1.2558,1
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-06-01,1,0,0,1,0,0,0,0.75,3
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-06-01,1,0,1,0,0,0,0,0.8,2
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-06-01,1,0,0,1,0,0,0,0.6889,3
-crateus-ce,CRATEUS/CE,ftth,2026-06-01,6,3,0,0,2,1,0,1.396,1
+crateus-ce,CRATEUS/CE,ftth,2026-06-01,6,3,0,2,0,1,0,1.4444,1
 crateus-ce,CRATEUS/CE,5g,2026-06-01,6,3,0,0,1,2,0,0.9804,2
-crato-ce,CRATO/CE,ftth,2026-06-01,9,4,3,2,0,0,0,1.3706,1
+crato-ce,CRATO/CE,ftth,2026-06-01,9,6,3,0,0,0,0,1.4123,1
 crato-ce,CRATO/CE,5g,2026-06-01,9,5,3,0,1,0,0,1.0726,1
 custodia-pe,CUSTODIA/PE,ftth,2026-06-01,2,0,1,0,0,1,0,0.4667,4
 custodia-pe,CUSTODIA/PE,5g,2026-06-01,2,1,0,0,1,0,0,0.8462,2
 dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-06-01,2,0,0,2,0,0,0,0.675,3
-encanto-rn,ENCANTO/RN,ftth,2026-06-01,1,1,0,0,0,0,0,1.875,1
+encanto-rn,ENCANTO/RN,ftth,2026-06-01,1,1,0,0,0,0,0,2,1
 encanto-rn,ENCANTO/RN,5g,2026-06-01,1,1,0,0,0,0,0,1.1333,1
 escada-pe,ESCADA/PE,ftth,2026-06-01,2,1,0,0,1,0,0,0.75,3
 estancia-se,ESTANCIA/SE,ftth,2026-06-01,2,0,0,1,1,0,0,0.525,4
-eusebio-ce,EUSEBIO/CE,ftth,2026-06-01,7,3,0,1,2,1,0,0.7627,3
+eusebio-ce,EUSEBIO/CE,ftth,2026-06-01,7,3,0,1,2,1,0,0.8,2
 eusebio-ce,EUSEBIO/CE,5g,2026-06-01,7,2,1,0,2,2,0,0.7684,3
-extremoz-rn,EXTREMOZ/RN,ftth,2026-06-01,4,0,4,0,0,0,0,0.9041,2
+extremoz-rn,EXTREMOZ/RN,ftth,2026-06-01,4,2,2,0,0,0,0,0.9667,2
 extremoz-rn,EXTREMOZ/RN,5g,2026-06-01,4,4,0,0,0,0,0,1.2962,1
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-06-01,2,0,0,0,1,1,0,0.3889,4
-fortaleza-ce,FORTALEZA/CE,ftth,2026-06-01,87,16,7,6,28,30,0,0.5762,4
+fortaleza-ce,FORTALEZA/CE,ftth,2026-06-01,87,16,9,10,25,27,0,0.6093,3
 fortaleza-ce,FORTALEZA/CE,5g,2026-06-01,87,32,11,10,12,22,0,0.8134,2
 garanhuns-pe,GARANHUNS/PE,ftth,2026-06-01,2,2,0,0,0,0,0,1.1,1
-gravata-pe,GRAVATA/PE,ftth,2026-06-01,5,2,0,0,0,3,0,0.6601,3
+gravata-pe,GRAVATA/PE,ftth,2026-06-01,5,2,0,0,0,3,0,0.6667,3
 gravata-pe,GRAVATA/PE,5g,2026-06-01,5,0,0,1,3,1,0,0.418,4
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-06-01,4,0,0,0,3,1,0,0.3465,4
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-06-01,4,0,0,0,3,1,0,0.3571,4
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-06-01,4,2,0,1,0,1,0,0.8924,2
-horizonte-ce,HORIZONTE/CE,ftth,2026-06-01,7,3,0,1,2,1,0,1.0862,1
+horizonte-ce,HORIZONTE/CE,ftth,2026-06-01,7,3,1,0,2,1,0,1.1079,1
 horizonte-ce,HORIZONTE/CE,5g,2026-06-01,7,3,0,1,1,2,0,1.1594,1
-ibiapina-ce,IBIAPINA/CE,ftth,2026-06-01,2,0,0,0,0,1,1,0.0909,5
+ibiapina-ce,IBIAPINA/CE,ftth,2026-06-01,2,0,0,0,0,1,1,0.1,5
 ibiapina-ce,IBIAPINA/CE,5g,2026-06-01,2,0,0,1,0,0,1,0.6,3
-ico-ce,ICO/CE,ftth,2026-06-01,5,4,0,1,0,0,0,2.5414,1
+ico-ce,ICO/CE,ftth,2026-06-01,5,4,0,1,0,0,0,2.5778,1
 ico-ce,ICO/CE,5g,2026-06-01,5,5,0,0,0,0,0,1.5609,1
-iguatu-ce,IGUATU/CE,ftth,2026-06-01,10,8,1,0,0,0,1,2.3102,1
+iguatu-ce,IGUATU/CE,ftth,2026-06-01,10,9,0,0,0,0,1,2.3827,1
 iguatu-ce,IGUATU/CE,5g,2026-06-01,10,9,0,0,0,0,1,1.3084,1
-ipu-ce,IPU/CE,ftth,2026-06-01,4,3,0,0,0,1,0,0.8908,2
+ipu-ce,IPU/CE,ftth,2026-06-01,4,3,0,0,0,1,0,0.9167,2
 ipu-ce,IPU/CE,5g,2026-06-01,4,3,0,1,0,0,0,1.0912,1
-iracema-ce,IRACEMA/CE,ftth,2026-06-01,4,2,0,0,0,1,1,1.4597,1
+iracema-ce,IRACEMA/CE,ftth,2026-06-01,4,2,0,0,0,1,1,1.4889,1
 iracema-ce,IRACEMA/CE,5g,2026-06-01,4,2,0,0,0,1,1,0.8191,2
 itabaiana-se,ITABAIANA/SE,ftth,2026-06-01,1,0,0,1,0,0,0,0.6667,3
-itapaje-ce,ITAPAJE/CE,ftth,2026-06-01,4,2,0,0,2,0,0,0.833,2
+itapaje-ce,ITAPAJE/CE,ftth,2026-06-01,4,2,0,1,1,0,0,0.8833,2
 itapaje-ce,ITAPAJE/CE,5g,2026-06-01,4,1,0,1,2,0,0,0.739,3
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-06-01,7,5,0,0,0,1,1,1.6787,1
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-06-01,7,5,0,0,0,1,1,1.7414,1
 itapipoca-ce,ITAPIPOCA/CE,5g,2026-06-01,7,5,0,1,0,0,1,1.6605,1
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-06-01,2,1,0,1,0,0,0,0.8333,2
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-06-01,3,1,0,0,2,0,0,1.3111,1
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-06-01,3,1,0,0,2,0,0,1.3778,1
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-06-01,3,2,0,0,1,0,0,0.9487,2
-jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-06-01,1,1,0,0,0,0,0,1.125,1
+jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-06-01,1,1,0,0,0,0,0,1.2,1
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-06-01,1,0,1,0,0,0,0,0.8889,2
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.6218,1
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.68,1
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-06-01,5,5,0,0,0,0,0,1.1869,1
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-06-01,37,21,4,2,7,3,0,1.1947,1
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-06-01,37,22,4,2,6,3,0,1.2651,1
 joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-06-01,37,17,5,7,6,2,0,0.8636,2
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-06-01,26,18,3,1,3,0,1,1.4609,1
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-06-01,26,20,2,0,3,0,1,1.5202,1
 juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-06-01,26,17,4,3,1,0,1,1.2709,1
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-06-01,10,5,1,0,3,1,0,1.1842,1
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-06-01,10,6,0,1,2,1,0,1.24,1
 juazeiro-ba,JUAZEIRO/BA,5g,2026-06-01,10,6,2,1,0,1,0,0.9132,2
 lagarto-se,LAGARTO/SE,ftth,2026-06-01,1,0,1,0,0,0,0,0.8333,2
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-06-01,4,2,0,0,0,1,1,1.0617,1
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-06-01,4,2,0,0,0,1,1,1.1143,1
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-06-01,4,2,0,0,1,0,1,0.8821,2
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.817,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.8733,1
 limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-06-01,5,5,0,0,0,0,0,1.4335,1
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-06-01,2,0,0,0,1,1,0,0.3333,4
-macaiba-rn,MACAIBA/RN,ftth,2026-06-01,7,2,2,2,1,0,0,0.8597,2
+macaiba-rn,MACAIBA/RN,ftth,2026-06-01,7,4,2,0,1,0,0,0.9079,2
 macaiba-rn,MACAIBA/RN,5g,2026-06-01,7,5,1,0,1,0,0,1.5525,1
 maceio-al,MACEIO/AL,ftth,2026-06-01,1,0,0,1,0,0,0,0.65,3
-major-sales-rn,MAJOR SALES/RN,ftth,2026-06-01,3,1,0,1,1,0,0,1.1917,1
+major-sales-rn,MAJOR SALES/RN,ftth,2026-06-01,3,1,0,1,1,0,0,1.2,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-06-01,3,1,0,0,1,1,0,0.6193,3
-maracanau-ce,MARACANAU/CE,ftth,2026-06-01,16,2,1,2,4,7,0,0.5095,4
+maracanau-ce,MARACANAU/CE,ftth,2026-06-01,16,2,1,3,3,7,0,0.5321,4
 maracanau-ce,MARACANAU/CE,5g,2026-06-01,16,9,1,0,5,1,0,1.3247,1
-maranguape-ce,MARANGUAPE/CE,ftth,2026-06-01,8,4,0,2,0,2,0,1.1556,1
+maranguape-ce,MARANGUAPE/CE,ftth,2026-06-01,8,4,1,1,1,1,0,1.2265,1
 maranguape-ce,MARANGUAPE/CE,5g,2026-06-01,8,7,0,0,1,0,0,1.3566,1
 marechal-deodoro-al,MARECHAL DEODORO/AL,ftth,2026-06-01,2,0,1,0,0,1,0,0.5833,4
-milagres-ce,MILAGRES/CE,ftth,2026-06-01,3,2,0,0,0,0,1,1.3,1
+milagres-ce,MILAGRES/CE,ftth,2026-06-01,3,2,0,0,0,0,1,1.35,1
 milagres-ce,MILAGRES/CE,5g,2026-06-01,3,2,0,0,0,0,1,1.0702,1
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-06-01,4,2,2,0,0,0,0,2.1985,1
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-06-01,4,3,1,0,0,0,0,2.2417,1
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-06-01,4,3,1,0,0,0,0,0.988,2
-mombaca-ce,MOMBACA/CE,ftth,2026-06-01,4,0,2,2,0,0,0,0.8439,2
+mombaca-ce,MOMBACA/CE,ftth,2026-06-01,4,1,2,1,0,0,0,0.8833,2
 mombaca-ce,MOMBACA/CE,5g,2026-06-01,4,3,0,0,1,0,0,0.9536,2
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.5685,1
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.6667,1
 morada-nova-ce,MORADA NOVA/CE,5g,2026-06-01,5,5,0,0,0,0,0,1.2946,1
-mossoro-rn,MOSSORO/RN,ftth,2026-06-01,15,4,2,5,2,2,0,0.8726,2
+mossoro-rn,MOSSORO/RN,ftth,2026-06-01,15,5,2,5,1,2,0,0.9229,2
 mossoro-rn,MOSSORO/RN,5g,2026-06-01,15,13,0,2,0,0,0,1.6052,1
-natal-rn,NATAL/RN,ftth,2026-06-01,44,21,2,3,9,9,0,1.1398,1
+natal-rn,NATAL/RN,ftth,2026-06-01,44,23,1,5,7,8,0,1.2053,1
 natal-rn,NATAL/RN,5g,2026-06-01,44,25,7,4,5,3,0,1.2248,1
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-06-01,1,0,0,1,0,0,0,0.7273,3
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-06-01,1,0,1,0,0,0,0,0.8,2
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-06-01,1,0,0,0,1,0,0,0.575,4
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-06-01,3,1,0,1,0,0,1,1.025,1
-oros-ce,OROS/CE,ftth,2026-06-01,3,3,0,0,0,0,0,2.1833,1
+oros-ce,OROS/CE,ftth,2026-06-01,3,3,0,0,0,0,0,2.2667,1
 oros-ce,OROS/CE,5g,2026-06-01,3,1,0,2,0,0,0,0.9154,2
-ouricuri-pe,OURICURI/PE,ftth,2026-06-01,5,1,1,1,0,1,1,1.0313,1
+ouricuri-pe,OURICURI/PE,ftth,2026-06-01,5,1,1,1,0,1,1,1.0667,1
 ouricuri-pe,OURICURI/PE,5g,2026-06-01,5,1,2,0,0,1,1,0.7115,3
-pacajus-ce,PACAJUS/CE,ftth,2026-06-01,5,4,0,0,1,0,0,2.8612,1
+pacajus-ce,PACAJUS/CE,ftth,2026-06-01,5,4,0,0,1,0,0,2.92,1
 pacajus-ce,PACAJUS/CE,5g,2026-06-01,5,3,1,0,1,0,0,1.3074,1
 palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-06-01,2,1,0,0,0,1,0,0.675,3
-paraipaba-ce,PARAIPABA/CE,ftth,2026-06-01,5,2,0,0,1,0,2,1,1
+paraipaba-ce,PARAIPABA/CE,ftth,2026-06-01,5,2,0,0,1,0,2,1.0889,1
 paraipaba-ce,PARAIPABA/CE,5g,2026-06-01,5,2,1,0,0,0,2,1.1905,1
-parnaiba-pi,PARNAIBA/PI,ftth,2026-06-01,12,6,3,1,2,0,0,1.3395,1
+parnaiba-pi,PARNAIBA/PI,ftth,2026-06-01,12,6,4,1,1,0,0,1.4304,1
 parnaiba-pi,PARNAIBA/PI,5g,2026-06-01,12,7,1,2,2,0,0,0.9624,2
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-06-01,15,12,0,0,0,2,1,1.9153,1
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-06-01,15,12,0,0,0,2,1,1.9924,1
 parnamirim-rn,PARNAMIRIM/RN,5g,2026-06-01,15,12,0,1,0,1,1,1.4836,1
-patos-pb,PATOS/PB,ftth,2026-06-01,10,5,2,1,1,0,1,1.3888,1
+patos-pb,PATOS/PB,ftth,2026-06-01,10,7,1,0,1,0,1,1.442,1
 patos-pb,PATOS/PB,5g,2026-06-01,10,7,1,0,0,1,1,1.2023,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-06-01,6,4,0,0,1,0,1,1.3697,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-06-01,6,4,0,0,1,0,1,1.4133,1
 pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-06-01,6,4,0,1,0,0,1,1.7781,1
 paulista-pe,PAULISTA/PE,ftth,2026-06-01,3,1,1,0,0,0,1,1.0278,1
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-06-01,3,1,0,0,1,0,1,1.1531,1
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-06-01,3,1,0,0,1,0,1,1.1667,1
 pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-06-01,3,2,0,0,0,0,1,1.5516,1
 pereiro-ce,PEREIRO/CE,ftth,2026-06-01,2,0,2,0,0,0,0,0.8667,2
 pereiro-ce,PEREIRO/CE,5g,2026-06-01,2,1,0,0,1,0,0,0.8462,2
-pesqueira-pe,PESQUEIRA/PE,ftth,2026-06-01,4,1,0,1,2,0,0,0.6412,3
+pesqueira-pe,PESQUEIRA/PE,ftth,2026-06-01,4,1,0,1,2,0,0,0.6833,3
 pesqueira-pe,PESQUEIRA/PE,5g,2026-06-01,4,2,1,0,1,0,0,0.9176,2
-petrolina-pe,PETROLINA/PE,ftth,2026-06-01,22,11,2,2,2,5,0,0.9667,2
+petrolina-pe,PETROLINA/PE,ftth,2026-06-01,22,13,1,2,1,5,0,1.0352,1
 petrolina-pe,PETROLINA/PE,5g,2026-06-01,22,11,3,2,5,1,0,0.8429,2
 picos-pi,PICOS/PI,ftth,2026-06-01,1,0,0,0,0,1,0,0.2778,5
 piripiri-pi,PIRIPIRI/PI,ftth,2026-06-01,3,1,0,0,1,1,0,0.5556,4
-pombal-pb,POMBAL/PB,ftth,2026-06-01,5,0,3,2,0,0,0,0.7976,3
+pombal-pb,POMBAL/PB,ftth,2026-06-01,5,1,3,1,0,0,0,0.84,2
 pombal-pb,POMBAL/PB,5g,2026-06-01,5,4,1,0,0,0,0,1.0666,1
-quixada-ce,QUIXADA/CE,ftth,2026-06-01,8,7,0,0,0,0,1,2.0599,1
+quixada-ce,QUIXADA/CE,ftth,2026-06-01,8,7,0,0,0,0,1,2.146,1
 quixada-ce,QUIXADA/CE,5g,2026-06-01,8,7,0,0,0,0,1,1.1455,1
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-06-01,7,7,0,0,0,0,0,1.8873,1
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-06-01,7,7,0,0,0,0,0,1.9921,1
 quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-06-01,7,7,0,0,0,0,0,1.5431,1
-quixere-ce,QUIXERE/CE,ftth,2026-06-01,4,2,0,0,1,0,1,1.1535,1
+quixere-ce,QUIXERE/CE,ftth,2026-06-01,4,2,0,1,0,0,1,1.2111,1
 quixere-ce,QUIXERE/CE,5g,2026-06-01,4,1,1,0,1,0,1,0.8186,2
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-06-01,1,1,0,0,0,0,0,1.3125,1
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-06-01,1,1,0,0,0,0,0,1.4,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-06-01,1,1,0,0,0,0,0,1.0222,1
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-06-01,2,0,0,0,2,0,0,0.5417,4
 rio-largo-al,RIO LARGO/AL,ftth,2026-06-01,3,1,0,2,0,0,0,0.8333,2
-russas-ce,RUSSAS/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.5503,1
+russas-ce,RUSSAS/CE,ftth,2026-06-01,5,5,0,0,0,0,0,1.6467,1
 russas-ce,RUSSAS/CE,5g,2026-06-01,5,5,0,0,0,0,0,1.6358,1
-salgueiro-pe,SALGUEIRO/PE,ftth,2026-06-01,3,2,0,0,0,1,0,0.9655,2
+salgueiro-pe,SALGUEIRO/PE,ftth,2026-06-01,3,2,0,0,0,1,0,1,1
 salgueiro-pe,SALGUEIRO/PE,5g,2026-06-01,3,2,0,1,0,0,0,1.2919,1
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-06-01,1,0,0,0,1,0,0,0.5,4
 santa-cruz-rn,SANTA CRUZ/RN,ftth,2026-06-01,2,0,0,0,0,2,0,0,5
 santa-cruz-rn,SANTA CRUZ/RN,5g,2026-06-01,2,0,0,0,2,0,0,0.3889,4
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-06-01,4,3,1,0,0,0,0,1.3292,1
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-06-01,4,4,0,0,0,0,0,1.3667,1
 santa-luzia-pb,SANTA LUZIA/PB,5g,2026-06-01,4,2,1,1,0,0,0,0.9904,2
 santa-quiteria-ce,SANTA QUITERIA/CE,ftth,2026-06-01,2,0,0,0,0,2,0,0.0333,5
 santa-quiteria-ce,SANTA QUITERIA/CE,5g,2026-06-01,2,1,0,0,0,1,0,0.6,3
-santa-rita-pb,SANTA RITA/PB,ftth,2026-06-01,6,4,0,1,0,1,0,1.3595,1
+santa-rita-pb,SANTA RITA/PB,ftth,2026-06-01,6,4,0,1,0,1,0,1.4052,1
 santa-rita-pb,SANTA RITA/PB,5g,2026-06-01,6,4,2,0,0,0,0,1.2527,1
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-06-01,1,1,0,0,0,0,0,1.1667,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-06-01,4,0,1,1,2,0,0,0.6575,3
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-06-01,4,0,1,1,2,0,0,0.6833,3
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-06-01,4,2,2,0,0,0,0,1.0448,1
 sao-caitano-pe,SAO CAITANO/PE,ftth,2026-06-01,2,0,0,0,0,2,0,0.0333,5
 sao-caitano-pe,SAO CAITANO/PE,5g,2026-06-01,2,0,0,0,0,2,0,0.2111,5
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-06-01,4,0,3,0,1,0,0,0.7971,3
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-06-01,4,3,0,0,1,0,0,0.8667,2
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,5g,2026-06-01,4,2,1,1,0,0,0,1.0071,1
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-06-01,5,2,0,1,0,1,1,0.8214,2
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-06-01,5,2,0,1,0,1,1,0.85,2
 sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-06-01,5,1,1,2,0,0,1,0.956,2
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-06-01,2,1,0,1,0,0,0,1.15,1
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-06-01,5,2,0,1,1,0,1,0.8848,2
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-06-01,5,2,1,1,0,0,1,0.9167,2
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-06-01,5,2,0,2,0,0,1,1.5774,1
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-06-01,4,4,0,0,0,0,0,2.1106,1
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-06-01,4,4,0,0,0,0,0,2.2083,1
 senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-06-01,4,4,0,0,0,0,0,1.337,1
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-06-01,6,2,1,2,0,1,0,1.2388,1
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-06-01,6,2,2,1,0,1,0,1.2778,1
 serra-talhada-pe,SERRA TALHADA/PE,5g,2026-06-01,6,4,1,1,0,0,0,1.2145,1
-sobral-ce,SOBRAL/CE,ftth,2026-06-01,14,11,0,0,1,2,0,1.3466,1
+sobral-ce,SOBRAL/CE,ftth,2026-06-01,14,11,0,1,0,2,0,1.4105,1
 sobral-ce,SOBRAL/CE,5g,2026-06-01,14,10,0,0,2,2,0,1.0043,1
-sousa-pb,SOUSA/PB,ftth,2026-06-01,5,3,0,1,0,0,1,1.3009,1
+sousa-pb,SOUSA/PB,ftth,2026-06-01,5,3,1,0,0,0,1,1.3431,1
 sousa-pb,SOUSA/PB,5g,2026-06-01,5,2,2,0,0,0,1,1.1101,1
 surubim-pe,SURUBIM/PE,ftth,2026-06-01,2,0,0,0,1,1,0,0.4167,4
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-06-01,4,1,2,0,0,0,1,1.4202,1
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-06-01,4,2,1,0,0,0,1,1.4778,1
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-06-01,4,1,1,1,0,0,1,1.0769,1
-taua-ce,TAUA/CE,ftth,2026-06-01,6,5,1,0,0,0,0,1.303,1
+taua-ce,TAUA/CE,ftth,2026-06-01,6,5,1,0,0,0,0,1.3667,1
 taua-ce,TAUA/CE,5g,2026-06-01,6,4,2,0,0,0,0,0.9814,2
-teresina-pi,TERESINA/PI,ftth,2026-06-01,28,21,2,1,4,0,0,1.4848,1
+teresina-pi,TERESINA/PI,ftth,2026-06-01,28,21,3,1,3,0,0,1.5853,1
 teresina-pi,TERESINA/PI,5g,2026-06-01,28,16,4,3,3,2,0,0.9762,2
-tiangua-ce,TIANGUA/CE,ftth,2026-06-01,5,4,0,0,0,1,0,1.7309,1
+tiangua-ce,TIANGUA/CE,ftth,2026-06-01,5,4,0,0,0,1,0,1.7733,1
 tiangua-ce,TIANGUA/CE,5g,2026-06-01,5,3,1,1,0,0,0,1.0666,1
-timon-ma,TIMON/MA,ftth,2026-06-01,10,9,0,0,1,0,0,1.6004,1
+timon-ma,TIMON/MA,ftth,2026-06-01,10,9,0,0,1,0,0,1.6833,1
 timon-ma,TIMON/MA,5g,2026-06-01,10,5,4,0,0,1,0,0.9516,2
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-06-01,2,2,0,0,0,0,0,1.15,1
-toritama-pe,TORITAMA/PE,ftth,2026-06-01,5,2,2,0,0,1,0,1.1284,1
+toritama-pe,TORITAMA/PE,ftth,2026-06-01,5,2,2,0,0,1,0,1.16,1
 toritama-pe,TORITAMA/PE,5g,2026-06-01,5,0,1,3,1,0,0,0.6516,3
-ubajara-ce,UBAJARA/CE,ftth,2026-06-01,4,1,2,1,0,0,0,0.8667,2
+ubajara-ce,UBAJARA/CE,ftth,2026-06-01,4,2,1,1,0,0,0,0.9167,2
 ubajara-ce,UBAJARA/CE,5g,2026-06-01,4,0,1,0,3,0,0,0.5587,4
-uirauna-pb,UIRAUNA/PB,ftth,2026-06-01,3,0,1,0,1,1,0,0.5431,4
+uirauna-pb,UIRAUNA/PB,ftth,2026-06-01,3,0,1,1,0,1,0,0.5556,4
 uirauna-pb,UIRAUNA/PB,5g,2026-06-01,3,0,3,0,0,0,0,0.9245,2
 umarizal-rn,UMARIZAL/RN,ftth,2026-06-01,2,0,0,1,1,0,0,0.6,3
 umarizal-rn,UMARIZAL/RN,5g,2026-06-01,2,1,0,0,1,0,0,0.7692,3
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-06-01,5,1,0,1,2,1,0,0.5276,4
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-06-01,5,1,0,1,2,1,0,0.5467,4
 varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-06-01,5,2,0,0,2,1,0,0.719,3
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-06-01,2,1,0,0,1,0,0,0.9444,2
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-06-01,2,1,0,0,0,1,0,0.5556,4
-acarau-ce,ACARAU/CE,ftth,2026-07-01,4,1,0,0,1,1,1,1.1616,1
+acarau-ce,ACARAU/CE,ftth,2026-07-01,4,1,0,1,1,0,1,1.2333,1
 acarau-ce,ACARAU/CE,5g,2026-07-01,4,1,0,2,0,0,1,0.8256,2
-acopiara-ce,ACOPIARA/CE,ftth,2026-07-01,4,2,0,0,1,1,0,1.0924,1
-acopiara-ce,ACOPIARA/CE,5g,2026-07-01,4,0,1,1,2,0,0,0.5971,4
+acopiara-ce,ACOPIARA/CE,ftth,2026-07-01,4,2,0,0,2,0,0,1.1333,1
+acopiara-ce,ACOPIARA/CE,5g,2026-07-01,4,0,1,1,2,0,0,0.6226,3
 acu-rn,ACU/RN,ftth,2026-07-01,4,3,0,0,0,0,1,1.4074,1
-acu-rn,ACU/RN,5g,2026-07-01,4,3,0,0,0,0,1,1.9848,1
+acu-rn,ACU/RN,5g,2026-07-01,4,3,0,0,0,0,1,2,1
 alagoinhas-ba,ALAGOINHAS/BA,ftth,2026-07-01,2,0,0,1,0,1,0,0.325,4
-altos-pi,ALTOS/PI,ftth,2026-07-01,3,0,0,0,3,0,0,0.4259,4
+altos-pi,ALTOS/PI,ftth,2026-07-01,3,0,0,0,3,0,0,0.4444,4
 apodi-rn,APODI/RN,ftth,2026-07-01,2,0,0,0,0,2,0,0,5
-apodi-rn,APODI/RN,5g,2026-07-01,2,1,1,0,0,0,0,0.9333,2
-aquiraz-ce,AQUIRAZ/CE,ftth,2026-07-01,1,1,0,0,0,0,0,1,1
+apodi-rn,APODI/RN,5g,2026-07-01,2,1,1,0,0,0,0,0.9444,2
+aquiraz-ce,AQUIRAZ/CE,ftth,2026-07-01,1,1,0,0,0,0,0,1.1,1
 aquiraz-ce,AQUIRAZ/CE,5g,2026-07-01,1,0,0,0,0,1,0,0.025,5
 aracaju-se,ARACAJU/SE,ftth,2026-07-01,3,1,1,0,1,0,0,0.7667,3
 arapiraca-al,ARAPIRACA/AL,ftth,2026-07-01,3,0,0,0,1,2,0,0.2,5
-araripina-pe,ARARIPINA/PE,ftth,2026-07-01,6,1,0,0,3,2,0,0.4744,4
+araripina-pe,ARARIPINA/PE,ftth,2026-07-01,6,1,0,1,2,2,0,0.4889,4
 araripina-pe,ARARIPINA/PE,5g,2026-07-01,6,0,1,0,3,2,0,0.3827,4
-arcoverde-pe,ARCOVERDE/PE,ftth,2026-07-01,5,0,2,2,0,1,0,0.6707,3
+arcoverde-pe,ARCOVERDE/PE,ftth,2026-07-01,5,1,1,2,0,1,0,0.7067,3
 arcoverde-pe,ARCOVERDE/PE,5g,2026-07-01,5,0,1,2,2,0,0,0.6479,3
-assu-rn,ASSU/RN,ftth,2026-07-01,3,0,1,1,1,0,0,0.6531,3
+assu-rn,ASSU/RN,ftth,2026-07-01,3,1,0,1,1,0,0,0.7111,3
 assu-rn,ASSU/RN,5g,2026-07-01,3,0,0,1,2,0,0,0.5905,4
 aurora-ce,AURORA/CE,ftth,2026-07-01,1,0,0,0,0,1,0,0,5
 aurora-ce,AURORA/CE,5g,2026-07-01,1,0,0,1,0,0,0,0.7333,3
-banabuiu-ce,BANABUIU/CE,ftth,2026-07-01,3,2,0,0,0,0,1,2.1229,1
-banabuiu-ce,BANABUIU/CE,5g,2026-07-01,3,0,2,0,0,0,1,0.9171,2
+banabuiu-ce,BANABUIU/CE,ftth,2026-07-01,3,2,0,0,0,0,1,2.1667,1
+banabuiu-ce,BANABUIU/CE,5g,2026-07-01,3,0,2,0,0,0,1,0.9282,2
 barauna-rn,BARAUNA/RN,ftth,2026-07-01,2,0,0,0,1,1,0,0.2667,5
 barauna-rn,BARAUNA/RN,5g,2026-07-01,2,1,0,0,0,1,0,0.8692,2
-barbalha-ce,BARBALHA/CE,ftth,2026-07-01,5,2,1,0,1,1,0,0.9798,2
-barbalha-ce,BARBALHA/CE,5g,2026-07-01,5,2,0,1,2,0,0,0.838,2
-bayeux-pb,BAYEUX/PB,ftth,2026-07-01,8,1,1,0,4,2,0,0.568,4
+barbalha-ce,BARBALHA/CE,ftth,2026-07-01,5,2,1,0,1,1,0,1.0311,1
+barbalha-ce,BARBALHA/CE,5g,2026-07-01,5,2,0,1,2,0,0,0.8604,2
+bayeux-pb,BAYEUX/PB,ftth,2026-07-01,8,1,1,1,3,2,0,0.6,3
 bayeux-pb,BAYEUX/PB,5g,2026-07-01,8,1,1,1,3,2,0,0.5529,4
-belo-jardim-pe,BELO JARDIM/PE,ftth,2026-07-01,5,0,1,1,0,3,0,0.3322,4
+belo-jardim-pe,BELO JARDIM/PE,ftth,2026-07-01,5,0,1,1,0,3,0,0.3333,4
 belo-jardim-pe,BELO JARDIM/PE,5g,2026-07-01,5,0,0,0,1,4,0,0.1703,5
-bezerros-pe,BEZERROS/PE,ftth,2026-07-01,5,1,1,1,1,1,0,0.8106,2
-bezerros-pe,BEZERROS/PE,5g,2026-07-01,5,0,2,1,2,0,0,0.6369,3
-brejo-santo-ce,BREJO SANTO/CE,ftth,2026-07-01,5,3,1,0,0,0,1,1.8561,1
-brejo-santo-ce,BREJO SANTO/CE,5g,2026-07-01,5,1,2,1,0,0,1,1.1045,1
-cabedelo-pb,CABEDELO/PB,ftth,2026-07-01,5,1,1,1,1,1,0,0.6327,3
+bezerros-pe,BEZERROS/PE,ftth,2026-07-01,5,1,1,2,0,1,0,0.84,2
+bezerros-pe,BEZERROS/PE,5g,2026-07-01,5,0,2,1,2,0,0,0.6484,3
+brejo-santo-ce,BREJO SANTO/CE,ftth,2026-07-01,5,4,0,0,0,0,1,1.9583,1
+brejo-santo-ce,BREJO SANTO/CE,5g,2026-07-01,5,1,2,1,0,0,1,1.1141,1
+cabedelo-pb,CABEDELO/PB,ftth,2026-07-01,5,1,2,0,1,1,0,0.6533,3
 cabedelo-pb,CABEDELO/PB,5g,2026-07-01,5,0,0,0,3,2,0,0.2868,5
 cabo-de-santo-agostinho-pe,CABO DE SANTO AGOSTINHO/PE,ftth,2026-07-01,2,0,1,0,0,1,0,0.6,3
-caico-rn,CAICO/RN,ftth,2026-07-01,7,2,1,1,3,0,0,0.9776,2
-caico-rn,CAICO/RN,5g,2026-07-01,7,2,2,2,1,0,0,0.9853,2
-cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-07-01,8,3,2,1,1,0,1,1.5456,1
-cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-07-01,8,1,0,4,2,0,1,0.6901,3
-camacari-ba,CAMACARI/BA,ftth,2026-07-01,3,2,0,0,0,0,1,1,1
+caico-rn,CAICO/RN,ftth,2026-07-01,7,3,0,1,3,0,0,1.0063,1
+caico-rn,CAICO/RN,5g,2026-07-01,7,2,2,3,0,0,0,1.0004,1
+cajazeiras-pb,CAJAZEIRAS/PB,ftth,2026-07-01,8,4,1,2,0,0,1,1.6095,1
+cajazeiras-pb,CAJAZEIRAS/PB,5g,2026-07-01,8,1,0,4,2,0,1,0.7082,3
+camacari-ba,CAMACARI/BA,ftth,2026-07-01,3,2,0,0,0,0,1,1.0385,1
 camocim-ce,CAMOCIM/CE,ftth,2026-07-01,2,0,0,0,0,2,0,0,5
 camocim-ce,CAMOCIM/CE,5g,2026-07-01,2,1,0,1,0,0,0,0.8556,2
-campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-07-01,17,1,1,3,5,6,1,0.405,4
+campina-grande-pb,CAMPINA GRANDE/PB,ftth,2026-07-01,17,1,3,4,2,6,1,0.4368,4
 campina-grande-pb,CAMPINA GRANDE/PB,5g,2026-07-01,17,0,5,3,2,6,1,0.4685,4
 campo-maior-pi,CAMPO MAIOR/PI,ftth,2026-07-01,2,0,0,0,0,2,0,0.25,5
-caninde-ce,CANINDE/CE,ftth,2026-07-01,6,2,1,1,0,2,0,0.8265,2
-caninde-ce,CANINDE/CE,5g,2026-07-01,6,2,1,0,1,2,0,0.7322,3
-caruaru-pe,CARUARU/PE,ftth,2026-07-01,13,2,0,1,3,7,0,0.6762,3
-caruaru-pe,CARUARU/PE,5g,2026-07-01,13,2,1,4,3,3,0,0.7481,3
-cascavel-ce,CASCAVEL/CE,ftth,2026-07-01,7,1,1,1,3,1,0,0.8086,2
+caninde-ce,CANINDE/CE,ftth,2026-07-01,6,3,0,1,0,2,0,0.8556,2
+caninde-ce,CANINDE/CE,5g,2026-07-01,6,2,1,0,1,2,0,0.7364,3
+caruaru-pe,CARUARU/PE,ftth,2026-07-01,13,2,1,0,3,7,0,0.6974,3
+caruaru-pe,CARUARU/PE,5g,2026-07-01,13,2,1,4,3,3,0,0.754,3
+cascavel-ce,CASCAVEL/CE,ftth,2026-07-01,7,2,0,2,2,1,0,0.8476,2
 cascavel-ce,CASCAVEL/CE,5g,2026-07-01,7,1,0,1,2,3,0,0.4685,4
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-07-01,5,1,1,1,1,1,0,0.9067,2
-catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-07-01,5,2,0,2,0,1,0,0.8,2
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,ftth,2026-07-01,5,2,1,0,1,1,0,0.9933,2
+catole-do-rocha-pb,CATOLE DO ROCHA/PB,5g,2026-07-01,5,2,0,2,0,1,0,0.8254,2
 catu-ba,CATU/BA,ftth,2026-07-01,1,0,0,0,1,0,0,0.3889,4
-caucaia-ce,CAUCAIA/CE,ftth,2026-07-01,16,2,1,1,4,7,1,0.5768,4
-caucaia-ce,CAUCAIA/CE,5g,2026-07-01,16,1,5,4,2,3,1,0.9753,2
-ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-07-01,6,2,1,1,2,0,0,0.9637,2
-ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-07-01,6,3,2,1,0,0,0,1.3567,1
-cedro-ce,CEDRO/CE,ftth,2026-07-01,3,2,0,0,1,0,0,1.002,1
+caucaia-ce,CAUCAIA/CE,ftth,2026-07-01,16,2,2,2,4,5,1,0.6156,3
+caucaia-ce,CAUCAIA/CE,5g,2026-07-01,16,1,5,4,2,3,1,0.9841,2
+ceara-mirim-rn,CEARA-MIRIM/RN,ftth,2026-07-01,6,3,0,1,2,0,0,1,1
+ceara-mirim-rn,CEARA-MIRIM/RN,5g,2026-07-01,6,3,2,1,0,0,0,1.3643,1
+cedro-ce,CEDRO/CE,ftth,2026-07-01,3,2,0,0,1,0,0,1.0889,1
 cedro-ce,CEDRO/CE,5g,2026-07-01,3,1,0,1,1,0,0,0.7327,3
-coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-07-01,1,0,1,0,0,0,0,0.9375,2
+coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,ftth,2026-07-01,1,1,0,0,0,0,0,1,1
 coronel-joao-pessoa-rn,CORONEL JOAO PESSOA/RN,5g,2026-07-01,1,0,0,0,1,0,0,0.4667,4
-crateus-ce,CRATEUS/CE,ftth,2026-07-01,6,3,0,0,0,3,0,1.1475,1
-crateus-ce,CRATEUS/CE,5g,2026-07-01,6,1,1,1,0,3,0,0.6391,3
-crato-ce,CRATO/CE,ftth,2026-07-01,7,3,0,1,1,2,0,1.2423,1
-crato-ce,CRATO/CE,5g,2026-07-01,7,4,2,0,1,0,0,0.9617,2
-custodia-pe,CUSTODIA/PE,ftth,2026-07-01,4,1,0,0,0,3,0,0.3208,4
+crateus-ce,CRATEUS/CE,ftth,2026-07-01,6,3,0,0,0,3,0,1.2,1
+crateus-ce,CRATEUS/CE,5g,2026-07-01,6,1,1,1,0,3,0,0.6455,3
+crato-ce,CRATO/CE,ftth,2026-07-01,7,3,0,2,0,2,0,1.254,1
+crato-ce,CRATO/CE,5g,2026-07-01,7,4,2,0,1,0,0,0.9682,2
+custodia-pe,CUSTODIA/PE,ftth,2026-07-01,4,1,0,0,0,3,0,0.3227,4
 custodia-pe,CUSTODIA/PE,5g,2026-07-01,4,2,0,2,0,0,0,0.9336,2
-dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-07-01,2,0,0,1,1,0,0,0.575,4
-doutor-severiano-rn,DOUTOR SEVERIANO/RN,ftth,2026-07-01,1,0,1,0,0,0,0,0.9375,2
+dias-d-avila-ba,DIAS D'AVILA/BA,ftth,2026-07-01,2,0,0,1,1,0,0,0.6,3
+doutor-severiano-rn,DOUTOR SEVERIANO/RN,ftth,2026-07-01,1,1,0,0,0,0,0,1,1
 doutor-severiano-rn,DOUTOR SEVERIANO/RN,5g,2026-07-01,1,0,0,0,1,0,0,0.5111,4
-encanto-rn,ENCANTO/RN,ftth,2026-07-01,1,1,0,0,0,0,0,2.4375,1
+encanto-rn,ENCANTO/RN,ftth,2026-07-01,1,1,0,0,0,0,0,2.6,1
 encanto-rn,ENCANTO/RN,5g,2026-07-01,1,0,1,0,0,0,0,0.9778,2
 escada-pe,ESCADA/PE,ftth,2026-07-01,2,0,0,0,1,1,0,0.3611,4
 estancia-se,ESTANCIA/SE,ftth,2026-07-01,2,0,0,1,1,0,0,0.65,3
-eusebio-ce,EUSEBIO/CE,ftth,2026-07-01,8,2,0,1,0,5,0,0.5211,4
-eusebio-ce,EUSEBIO/CE,5g,2026-07-01,8,1,1,1,3,2,0,0.7609,3
-extremoz-rn,EXTREMOZ/RN,ftth,2026-07-01,5,0,1,2,2,0,0,0.6476,3
-extremoz-rn,EXTREMOZ/RN,5g,2026-07-01,5,1,2,1,1,0,0,0.8732,2
+eusebio-ce,EUSEBIO/CE,ftth,2026-07-01,8,2,0,1,0,5,0,0.5556,4
+eusebio-ce,EUSEBIO/CE,5g,2026-07-01,8,1,1,2,2,2,0,0.7717,3
+extremoz-rn,EXTREMOZ/RN,ftth,2026-07-01,5,1,0,3,1,0,0,0.7067,3
+extremoz-rn,EXTREMOZ/RN,5g,2026-07-01,5,1,2,1,1,0,0,0.8809,2
 feira-de-santana-ba,FEIRA DE SANTANA/BA,ftth,2026-07-01,2,0,0,0,1,0,1,0.5,4
-fortaleza-ce,FORTALEZA/CE,ftth,2026-07-01,103,6,5,4,30,58,0,0.3442,4
-fortaleza-ce,FORTALEZA/CE,5g,2026-07-01,103,10,13,19,23,38,0,0.5387,4
+fortaleza-ce,FORTALEZA/CE,ftth,2026-07-01,103,8,4,8,31,52,0,0.3683,4
+fortaleza-ce,FORTALEZA/CE,5g,2026-07-01,103,10,13,19,23,38,0,0.5437,4
 garanhuns-pe,GARANHUNS/PE,ftth,2026-07-01,2,0,0,2,0,0,0,0.725,3
-gravata-pe,GRAVATA/PE,ftth,2026-07-01,6,1,0,0,0,4,1,0.5513,4
-gravata-pe,GRAVATA/PE,5g,2026-07-01,6,0,0,2,2,1,1,0.4396,4
-guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-07-01,4,1,0,0,0,3,0,0.3459,4
+gravata-pe,GRAVATA/PE,ftth,2026-07-01,6,1,0,0,0,4,1,0.56,4
+gravata-pe,GRAVATA/PE,5g,2026-07-01,6,0,0,2,2,1,1,0.4453,4
+guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,ftth,2026-07-01,4,1,0,0,0,3,0,0.35,4
 guaraciaba-do-norte-ce,GUARACIABA DO NORTE/CE,5g,2026-07-01,4,0,2,0,2,0,0,0.5663,4
-horizonte-ce,HORIZONTE/CE,ftth,2026-07-01,9,3,0,1,2,3,0,0.964,2
+horizonte-ce,HORIZONTE/CE,ftth,2026-07-01,9,3,1,0,2,3,0,0.9827,2
 horizonte-ce,HORIZONTE/CE,5g,2026-07-01,9,3,0,0,1,5,0,0.6082,3
-ibiapina-ce,IBIAPINA/CE,ftth,2026-07-01,2,0,0,0,1,1,0,0.1818,5
+ibiapina-ce,IBIAPINA/CE,ftth,2026-07-01,2,0,0,0,1,1,0,0.2,5
 ibiapina-ce,IBIAPINA/CE,5g,2026-07-01,2,0,0,0,0,2,0,0.1769,5
-ico-ce,ICO/CE,ftth,2026-07-01,6,4,1,0,0,0,1,1.9091,1
-ico-ce,ICO/CE,5g,2026-07-01,6,3,1,1,0,0,1,1.3927,1
-iguatu-ce,IGUATU/CE,ftth,2026-07-01,11,5,2,3,0,1,0,1.5438,1
-iguatu-ce,IGUATU/CE,5g,2026-07-01,11,4,3,2,2,0,0,0.9665,2
+ico-ce,ICO/CE,ftth,2026-07-01,6,5,0,0,0,0,1,1.96,1
+ico-ce,ICO/CE,5g,2026-07-01,6,3,1,1,0,0,1,1.3972,1
+iguatu-ce,IGUATU/CE,ftth,2026-07-01,11,7,2,1,0,1,0,1.5919,1
+iguatu-ce,IGUATU/CE,5g,2026-07-01,11,4,3,2,2,0,0,0.9711,2
 ipaumirim-ce,IPAUMIRIM/CE,ftth,2026-07-01,1,0,0,0,0,1,0,0,5
-ipaumirim-ce,IPAUMIRIM/CE,5g,2026-07-01,1,1,0,0,0,0,0,2.1,1
-ipu-ce,IPU/CE,ftth,2026-07-01,5,0,1,0,2,2,0,0.3559,4
+ipaumirim-ce,IPAUMIRIM/CE,5g,2026-07-01,1,1,0,0,0,0,0,2.125,1
+ipu-ce,IPU/CE,ftth,2026-07-01,5,1,0,0,2,2,0,0.3733,4
 ipu-ce,IPU/CE,5g,2026-07-01,5,1,0,1,2,1,0,0.5177,4
 ipueiras-ce,IPUEIRAS/CE,ftth,2026-07-01,3,0,0,0,0,3,0,0,5
-ipueiras-ce,IPUEIRAS/CE,5g,2026-07-01,3,1,1,1,0,0,0,0.8333,2
-iracema-ce,IRACEMA/CE,ftth,2026-07-01,4,0,2,0,1,1,0,0.5677,4
-iracema-ce,IRACEMA/CE,5g,2026-07-01,4,0,1,0,2,1,0,0.4135,4
+ipueiras-ce,IPUEIRAS/CE,5g,2026-07-01,3,1,1,1,0,0,0,0.8444,2
+iracema-ce,IRACEMA/CE,ftth,2026-07-01,4,1,1,0,1,1,0,0.5833,4
+iracema-ce,IRACEMA/CE,5g,2026-07-01,4,0,1,0,2,1,0,0.419,4
 itabaiana-se,ITABAIANA/SE,ftth,2026-07-01,2,0,0,0,2,0,0,0.4444,4
-itapaje-ce,ITAPAJE/CE,ftth,2026-07-01,4,3,0,0,1,0,0,1.0833,1
-itapaje-ce,ITAPAJE/CE,5g,2026-07-01,4,0,2,0,2,0,0,0.637,3
-itapipoca-ce,ITAPIPOCA/CE,ftth,2026-07-01,6,4,0,0,0,1,1,1.2833,1
+itapaje-ce,ITAPAJE/CE,ftth,2026-07-01,4,3,0,0,1,0,0,1.15,1
+itapaje-ce,ITAPAJE/CE,5g,2026-07-01,4,0,2,0,2,0,0,0.6495,3
+itapipoca-ce,ITAPIPOCA/CE,ftth,2026-07-01,6,4,0,0,0,1,1,1.3333,1
 itapipoca-ce,ITAPIPOCA/CE,5g,2026-07-01,6,2,2,1,0,0,1,1.1132,1
 jaboatao-dos-guararapes-pe,JABOATAO DOS GUARARAPES/PE,ftth,2026-07-01,2,0,0,1,1,0,0,0.6389,3
-jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-07-01,4,1,0,0,1,2,0,0.4146,4
+jaguaretama-ce,JAGUARETAMA/CE,ftth,2026-07-01,4,1,0,0,1,2,0,0.4333,4
 jaguaretama-ce,JAGUARETAMA/CE,5g,2026-07-01,4,0,0,3,1,0,0,0.6162,3
-jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-07-01,1,1,0,0,0,0,0,1.5,1
+jaguaribara-ce,JAGUARIBARA/CE,ftth,2026-07-01,1,1,0,0,0,0,0,1.6,1
 jaguaribara-ce,JAGUARIBARA/CE,5g,2026-07-01,1,0,1,0,0,0,0,0.8222,2
-jaguaribe-ce,JAGUARIBE/CE,ftth,2026-07-01,6,4,0,0,1,0,1,1.1741,1
+jaguaribe-ce,JAGUARIBE/CE,ftth,2026-07-01,6,4,0,1,0,0,1,1.2467,1
 jaguaribe-ce,JAGUARIBE/CE,5g,2026-07-01,6,2,1,0,2,0,1,0.965,2
-joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-07-01,44,6,2,6,14,16,0,0.4457,4
-joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-07-01,44,5,5,8,10,16,0,0.4837,4
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-07-01,24,7,3,2,7,4,1,0.8658,2
-juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-07-01,24,8,3,6,5,1,1,0.8413,2
-juazeiro-ba,JUAZEIRO/BA,ftth,2026-07-01,13,2,0,2,1,8,0,0.5247,4
-juazeiro-ba,JUAZEIRO/BA,5g,2026-07-01,13,0,2,2,4,5,0,0.4212,4
+joao-pessoa-pb,JOAO PESSOA/PB,ftth,2026-07-01,45,6,5,4,13,17,0,0.4737,4
+joao-pessoa-pb,JOAO PESSOA/PB,5g,2026-07-01,45,5,6,8,9,17,0,0.4767,4
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,ftth,2026-07-01,24,8,2,6,6,1,1,0.9012,2
+juazeiro-do-norte-ce,JUAZEIRO DO NORTE/CE,5g,2026-07-01,24,8,3,6,5,1,1,0.8512,2
+juazeiro-ba,JUAZEIRO/BA,ftth,2026-07-01,13,2,2,0,2,7,0,0.5474,4
+juazeiro-ba,JUAZEIRO/BA,5g,2026-07-01,13,0,2,2,4,5,0,0.4241,4
 lagarto-se,LAGARTO/SE,ftth,2026-07-01,1,0,0,1,0,0,0,0.6667,3
-lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-07-01,4,1,1,0,2,0,0,0.8439,2
+lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,ftth,2026-07-01,4,1,1,1,1,0,0,0.8917,2
 lavras-da-mangabeira-ce,LAVRAS DA MANGABEIRA/CE,5g,2026-07-01,4,1,0,1,1,1,0,0.6226,3
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-07-01,5,5,0,0,0,0,0,1.6,1
-limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-07-01,5,4,1,0,0,0,0,1.1127,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,ftth,2026-07-01,5,5,0,0,0,0,0,1.6867,1
+limoeiro-do-norte-ce,LIMOEIRO DO NORTE/CE,5g,2026-07-01,5,4,1,0,0,0,0,1.1227,1
 limoeiro-pe,LIMOEIRO/PE,ftth,2026-07-01,2,0,0,0,1,1,0,0.3278,4
-macaiba-rn,MACAIBA/RN,ftth,2026-07-01,7,1,2,0,3,0,1,0.8908,2
+macaiba-rn,MACAIBA/RN,ftth,2026-07-01,7,2,1,1,2,0,1,0.9481,2
 macaiba-rn,MACAIBA/RN,5g,2026-07-01,7,1,0,3,2,0,1,1.2604,1
-macau-rn,MACAU/RN,ftth,2026-07-01,1,0,0,0,1,0,0,0.4545,4
-macau-rn,MACAU/RN,5g,2026-07-01,1,0,1,0,0,0,0,0.875,2
-maceio-al,MACEIO/AL,ftth,2026-07-01,39,8,2,6,9,14,0,0.6391,3
-maceio-al,MACEIO/AL,5g,2026-07-01,39,4,2,7,15,11,0,0.5113,4
+macau-rn,MACAU/RN,ftth,2026-07-01,1,0,0,0,1,0,0,0.5,4
+macau-rn,MACAU/RN,5g,2026-07-01,1,0,1,0,0,0,0,0.9,2
+maceio-al,MACEIO/AL,ftth,2026-07-01,39,8,7,2,10,12,0,0.701,3
+maceio-al,MACEIO/AL,5g,2026-07-01,39,4,2,8,14,11,0,0.5158,4
 major-sales-rn,MAJOR SALES/RN,ftth,2026-07-01,2,1,0,0,1,0,0,1.8667,1
 major-sales-rn,MAJOR SALES/RN,5g,2026-07-01,2,1,0,0,0,1,0,0.5769,4
-maracanau-ce,MARACANAU/CE,ftth,2026-07-01,17,2,1,4,3,5,2,0.4968,4
-maracanau-ce,MARACANAU/CE,5g,2026-07-01,17,3,1,2,4,5,2,0.7348,3
-maranguape-ce,MARANGUAPE/CE,ftth,2026-07-01,8,3,1,0,0,3,1,0.733,3
-maranguape-ce,MARANGUAPE/CE,5g,2026-07-01,8,2,0,4,1,0,1,0.7996,3
-marechal-deodoro-al,MARECHAL DEODORO/AL,ftth,2026-07-01,5,1,1,1,1,1,0,0.6188,3
-marechal-deodoro-al,MARECHAL DEODORO/AL,5g,2026-07-01,5,0,1,0,1,3,0,0.3738,4
+maracanau-ce,MARACANAU/CE,ftth,2026-07-01,17,2,2,4,2,5,2,0.5256,4
+maracanau-ce,MARACANAU/CE,5g,2026-07-01,17,3,1,2,4,5,2,0.7405,3
+maranguape-ce,MARANGUAPE/CE,ftth,2026-07-01,8,4,0,0,0,3,1,0.796,3
+maranguape-ce,MARANGUAPE/CE,5g,2026-07-01,8,2,0,4,1,0,1,0.8037,2
+marechal-deodoro-al,MARECHAL DEODORO/AL,ftth,2026-07-01,5,1,2,0,1,1,0,0.6433,3
+marechal-deodoro-al,MARECHAL DEODORO/AL,5g,2026-07-01,5,0,1,0,1,3,0,0.3783,4
 massape-ce,MASSAPE/CE,ftth,2026-07-01,2,0,0,0,0,2,0,0,5
 massape-ce,MASSAPE/CE,5g,2026-07-01,2,0,0,0,2,0,0,0.3889,4
-milagres-ce,MILAGRES/CE,ftth,2026-07-01,3,1,0,1,0,0,1,1.8515,1
+milagres-ce,MILAGRES/CE,ftth,2026-07-01,3,1,0,1,0,0,1,2.0167,1
 milagres-ce,MILAGRES/CE,5g,2026-07-01,3,1,0,0,1,0,1,0.974,2
-missao-velha-ce,MISSAO VELHA/CE,ftth,2026-07-01,4,2,0,1,1,0,0,1.5394,1
+missao-velha-ce,MISSAO VELHA/CE,ftth,2026-07-01,4,2,1,0,1,0,0,1.5667,1
 missao-velha-ce,MISSAO VELHA/CE,5g,2026-07-01,4,2,0,1,1,0,0,0.8827,2
-mombaca-ce,MOMBACA/CE,ftth,2026-07-01,4,1,1,1,1,0,0,0.8493,2
-mombaca-ce,MOMBACA/CE,5g,2026-07-01,4,0,1,2,1,0,0,0.6788,3
-morada-nova-ce,MORADA NOVA/CE,ftth,2026-07-01,5,1,1,0,3,0,0,0.7455,3
+mombaca-ce,MOMBACA/CE,ftth,2026-07-01,4,2,0,1,1,0,0,0.8833,2
+mombaca-ce,MOMBACA/CE,5g,2026-07-01,4,0,1,2,1,0,0,0.6885,3
+morada-nova-ce,MORADA NOVA/CE,ftth,2026-07-01,5,1,1,1,2,0,0,0.78,3
 morada-nova-ce,MORADA NOVA/CE,5g,2026-07-01,5,3,1,1,0,0,0,1.0873,1
-mossoro-rn,MOSSORO/RN,ftth,2026-07-01,20,2,1,3,5,8,1,0.5104,4
-mossoro-rn,MOSSORO/RN,5g,2026-07-01,20,4,7,2,5,1,1,1.06,1
-natal-rn,NATAL/RN,ftth,2026-07-01,56,12,5,7,11,20,1,0.6148,3
-natal-rn,NATAL/RN,5g,2026-07-01,56,11,3,7,23,11,1,0.6987,3
-nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-07-01,2,0,0,0,1,1,0,0.2727,5
+mossoro-rn,MOSSORO/RN,ftth,2026-07-01,20,3,2,1,6,7,1,0.5386,4
+mossoro-rn,MOSSORO/RN,5g,2026-07-01,20,4,7,2,5,1,1,1.0733,1
+natal-rn,NATAL/RN,ftth,2026-07-01,56,14,5,8,10,18,1,0.6542,3
+natal-rn,NATAL/RN,5g,2026-07-01,56,11,3,9,21,11,1,0.7036,3
+nisia-floresta-rn,NISIA FLORESTA/RN,ftth,2026-07-01,2,0,0,1,0,1,0,0.3,4
 nisia-floresta-rn,NISIA FLORESTA/RN,5g,2026-07-01,2,0,0,0,1,1,0,0.25,5
 nossa-senhora-do-socorro-se,NOSSA SENHORA DO SOCORRO/SE,ftth,2026-07-01,3,1,0,0,1,0,1,0.85,2
-oros-ce,OROS/CE,ftth,2026-07-01,3,1,0,0,1,1,0,1.5167,1
+oros-ce,OROS/CE,ftth,2026-07-01,3,1,0,0,1,1,0,1.6,1
 oros-ce,OROS/CE,5g,2026-07-01,3,1,0,1,1,0,0,0.7308,3
-ouricuri-pe,OURICURI/PE,ftth,2026-07-01,6,0,0,1,2,3,0,0.293,5
+ouricuri-pe,OURICURI/PE,ftth,2026-07-01,6,0,1,0,2,3,0,0.3111,4
 ouricuri-pe,OURICURI/PE,5g,2026-07-01,6,0,1,0,1,4,0,0.3375,4
-pacajus-ce,PACAJUS/CE,ftth,2026-07-01,7,4,1,1,0,1,0,1.4253,1
+pacajus-ce,PACAJUS/CE,ftth,2026-07-01,7,5,1,0,0,1,0,1.4603,1
 pacajus-ce,PACAJUS/CE,5g,2026-07-01,7,1,2,1,2,1,0,0.6648,3
-palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-07-01,2,0,1,0,1,0,0,0.625,3
-paraipaba-ce,PARAIPABA/CE,ftth,2026-07-01,5,1,0,1,1,0,2,0.8571,2
+palmeira-dos-indios-al,PALMEIRA DOS INDIOS/AL,ftth,2026-07-01,2,0,1,0,1,0,0,0.65,3
+paraipaba-ce,PARAIPABA/CE,ftth,2026-07-01,5,1,1,0,1,0,2,0.9556,2
 paraipaba-ce,PARAIPABA/CE,5g,2026-07-01,5,1,0,1,1,0,2,0.7583,3
-parnaiba-pi,PARNAIBA/PI,ftth,2026-07-01,12,3,2,0,5,2,0,0.713,3
-parnaiba-pi,PARNAIBA/PI,5g,2026-07-01,12,2,1,2,5,2,0,0.633,3
-parnamirim-rn,PARNAMIRIM/RN,ftth,2026-07-01,17,3,3,4,5,1,1,1.3791,1
-parnamirim-rn,PARNAMIRIM/RN,5g,2026-07-01,17,5,0,4,6,1,1,0.8774,2
-patos-pb,PATOS/PB,ftth,2026-07-01,10,4,0,3,2,0,1,1.1663,1
-patos-pb,PATOS/PB,5g,2026-07-01,10,3,4,1,1,0,1,1.0985,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-07-01,7,5,1,1,0,0,0,1.3576,1
-pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-07-01,7,3,2,1,1,0,0,1.0453,1
+parnaiba-pi,PARNAIBA/PI,ftth,2026-07-01,12,4,1,1,6,0,0,0.7713,3
+parnaiba-pi,PARNAIBA/PI,5g,2026-07-01,12,2,1,3,4,2,0,0.635,3
+parnamirim-rn,PARNAMIRIM/RN,ftth,2026-07-01,17,4,4,4,3,1,1,1.4503,1
+parnamirim-rn,PARNAMIRIM/RN,5g,2026-07-01,17,5,0,4,6,1,1,0.8862,2
+patos-pb,PATOS/PB,ftth,2026-07-01,10,4,2,2,1,0,1,1.2074,1
+patos-pb,PATOS/PB,5g,2026-07-01,10,3,4,1,1,0,1,1.104,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,ftth,2026-07-01,7,5,1,1,0,0,0,1.4381,1
+pau-dos-ferros-rn,PAU DOS FERROS/RN,5g,2026-07-01,7,3,2,1,1,0,0,1.0508,1
 paulista-pe,PAULISTA/PE,ftth,2026-07-01,3,1,0,1,0,0,1,0.8889,2
-pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-07-01,3,1,0,0,1,0,1,1.3531,1
-pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-07-01,3,1,0,0,1,0,1,1.1319,1
+pedra-branca-ce,PEDRA BRANCA/CE,ftth,2026-07-01,3,1,0,0,1,0,1,1.4333,1
+pedra-branca-ce,PEDRA BRANCA/CE,5g,2026-07-01,3,1,0,0,1,0,1,1.1511,1
 pereiro-ce,PEREIRO/CE,ftth,2026-07-01,3,0,0,1,1,1,0,0.4,4
 pereiro-ce,PEREIRO/CE,5g,2026-07-01,3,0,1,1,0,1,0,0.5128,4
-pesqueira-pe,PESQUEIRA/PE,ftth,2026-07-01,4,1,1,0,0,2,0,0.552,4
-pesqueira-pe,PESQUEIRA/PE,5g,2026-07-01,4,0,2,1,0,1,0,0.6766,3
-petrolina-pe,PETROLINA/PE,ftth,2026-07-01,22,1,2,2,9,8,0,0.4543,4
+pesqueira-pe,PESQUEIRA/PE,ftth,2026-07-01,4,1,1,0,0,2,0,0.5833,4
+pesqueira-pe,PESQUEIRA/PE,5g,2026-07-01,4,0,3,0,0,1,0,0.6981,3
+petrolina-pe,PETROLINA/PE,ftth,2026-07-01,22,3,1,3,8,7,0,0.5,4
 petrolina-pe,PETROLINA/PE,5g,2026-07-01,22,1,3,4,11,3,0,0.5177,4
 picos-pi,PICOS/PI,ftth,2026-07-01,1,0,0,0,1,0,0,0.4444,4
 piripiri-pi,PIRIPIRI/PI,ftth,2026-07-01,3,0,0,1,0,2,0,0.2963,5
-pombal-pb,POMBAL/PB,ftth,2026-07-01,5,1,1,1,0,1,1,0.7384,3
-pombal-pb,POMBAL/PB,5g,2026-07-01,5,1,1,1,0,1,1,0.6899,3
-quixada-ce,QUIXADA/CE,ftth,2026-07-01,9,4,1,1,2,1,0,0.9551,2
-quixada-ce,QUIXADA/CE,5g,2026-07-01,9,1,3,5,0,0,0,0.7818,3
-quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-07-01,8,6,1,1,0,0,0,1.5958,1
-quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-07-01,8,4,2,2,0,0,0,1.2932,1
-quixere-ce,QUIXERE/CE,ftth,2026-07-01,4,1,0,2,0,0,1,0.8242,2
+pombal-pb,POMBAL/PB,ftth,2026-07-01,5,1,1,1,0,1,1,0.7833,3
+pombal-pb,POMBAL/PB,5g,2026-07-01,5,1,1,1,0,1,1,0.6962,3
+quixada-ce,QUIXADA/CE,ftth,2026-07-01,9,4,2,1,2,0,0,0.9864,2
+quixada-ce,QUIXADA/CE,5g,2026-07-01,9,1,3,5,0,0,0,0.8053,2
+quixeramobim-ce,QUIXERAMOBIM/CE,ftth,2026-07-01,8,7,0,1,0,0,0,1.6696,1
+quixeramobim-ce,QUIXERAMOBIM/CE,5g,2026-07-01,8,4,2,2,0,0,0,1.2989,1
+quixere-ce,QUIXERE/CE,ftth,2026-07-01,4,1,0,2,0,0,1,0.8667,2
 quixere-ce,QUIXERE/CE,5g,2026-07-01,4,1,0,2,0,0,1,0.8006,2
-rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-07-01,1,1,0,0,0,0,0,1.5,1
+rafael-fernandes-rn,RAFAEL FERNANDES/RN,ftth,2026-07-01,1,1,0,0,0,0,0,1.6,1
 rafael-fernandes-rn,RAFAEL FERNANDES/RN,5g,2026-07-01,1,0,1,0,0,0,0,0.8667,2
 ribeira-do-pombal-ba,RIBEIRA DO POMBAL/BA,ftth,2026-07-01,2,0,0,0,1,1,0,0.25,5
-rio-largo-al,RIO LARGO/AL,ftth,2026-07-01,8,2,0,0,2,4,0,0.5909,4
-rio-largo-al,RIO LARGO/AL,5g,2026-07-01,8,0,0,2,3,3,0,0.384,4
-russas-ce,RUSSAS/CE,ftth,2026-07-01,4,2,0,1,0,0,1,1.8485,1
-russas-ce,RUSSAS/CE,5g,2026-07-01,4,2,0,1,0,0,1,1.4885,1
-salgueiro-pe,SALGUEIRO/PE,ftth,2026-07-01,4,2,0,0,1,1,0,0.7908,3
-salgueiro-pe,SALGUEIRO/PE,5g,2026-07-01,4,1,1,0,1,1,0,0.8149,2
+rio-largo-al,RIO LARGO/AL,ftth,2026-07-01,8,2,0,1,1,4,0,0.6139,3
+rio-largo-al,RIO LARGO/AL,5g,2026-07-01,8,0,0,2,3,3,0,0.3867,4
+russas-ce,RUSSAS/CE,ftth,2026-07-01,4,2,0,1,0,0,1,1.9667,1
+russas-ce,RUSSAS/CE,5g,2026-07-01,4,2,0,1,0,0,1,1.5096,1
+salgueiro-pe,SALGUEIRO/PE,ftth,2026-07-01,4,2,0,0,1,1,0,0.8167,2
+salgueiro-pe,SALGUEIRO/PE,5g,2026-07-01,4,2,0,0,1,1,0,0.8438,2
 santa-cruz-do-capibaribe-pe,SANTA CRUZ DO CAPIBARIBE/PE,ftth,2026-07-01,2,0,1,0,0,1,0,0.4444,4
 santa-cruz-rn,SANTA CRUZ/RN,ftth,2026-07-01,2,0,0,0,0,2,0,0.0333,5
 santa-cruz-rn,SANTA CRUZ/RN,5g,2026-07-01,2,0,0,0,1,1,0,0.3111,4
-santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-07-01,3,3,0,0,0,0,0,1.4514,1
-santa-luzia-pb,SANTA LUZIA/PB,5g,2026-07-01,3,1,1,1,0,0,0,0.8595,2
+santa-luzia-pb,SANTA LUZIA/PB,ftth,2026-07-01,3,3,0,0,0,0,0,1.4889,1
+santa-luzia-pb,SANTA LUZIA/PB,5g,2026-07-01,3,1,1,1,0,0,0,0.8744,2
 santa-quiteria-ce,SANTA QUITERIA/CE,ftth,2026-07-01,2,0,0,0,0,2,0,0,5
 santa-quiteria-ce,SANTA QUITERIA/CE,5g,2026-07-01,2,0,0,1,0,1,0,0.3889,4
-santa-rita-pb,SANTA RITA/PB,ftth,2026-07-01,8,2,1,1,1,3,0,0.7019,3
+santa-rita-pb,SANTA RITA/PB,ftth,2026-07-01,8,3,1,0,1,3,0,0.7285,3
 santa-rita-pb,SANTA RITA/PB,5g,2026-07-01,8,3,1,1,1,2,0,0.6778,3
 santo-amaro-ba,SANTO AMARO/BA,ftth,2026-07-01,1,1,0,0,0,0,0,1.0556,1
-sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-07-01,5,0,1,2,0,2,0,0.5007,4
+sao-benedito-ce,SAO BENEDITO/CE,ftth,2026-07-01,5,0,3,0,0,2,0,0.5448,4
 sao-benedito-ce,SAO BENEDITO/CE,5g,2026-07-01,5,1,1,0,2,1,0,0.6332,3
-sao-bento-pb,SAO BENTO/PB,ftth,2026-07-01,2,1,0,1,0,0,0,1.4667,1
-sao-bento-pb,SAO BENTO/PB,5g,2026-07-01,2,1,1,0,0,0,0,1.0962,1
+sao-bento-pb,SAO BENTO/PB,ftth,2026-07-01,2,1,0,1,0,0,0,1.5333,1
+sao-bento-pb,SAO BENTO/PB,5g,2026-07-01,2,1,1,0,0,0,0,1.1346,1
 sao-caitano-pe,SAO CAITANO/PE,ftth,2026-07-01,2,0,0,0,0,2,0,0,5
 sao-caitano-pe,SAO CAITANO/PE,5g,2026-07-01,2,0,0,0,0,2,0,0.0556,5
-sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-07-01,4,1,0,1,2,0,0,0.6582,3
+sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,ftth,2026-07-01,4,1,0,1,2,0,0,0.7167,3
 sao-goncalo-do-amarante-rn,SAO GONCALO DO AMARANTE/RN,5g,2026-07-01,4,0,1,1,1,1,0,0.6071,3
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-07-01,5,2,0,2,1,0,0,0.9039,2
-sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-07-01,5,1,0,1,2,1,0,0.6149,3
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,ftth,2026-07-01,5,2,1,1,1,0,0,0.9289,2
+sao-jose-de-mipibu-rn,SAO JOSE DE MIPIBU/RN,5g,2026-07-01,5,1,0,2,1,1,0,0.6207,3
 sao-miguel-dos-campos-al,SAO MIGUEL DOS CAMPOS/AL,ftth,2026-07-01,2,1,0,0,0,0,1,1,1
-sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-07-01,5,1,1,1,1,1,0,0.6885,3
+sao-miguel-rn,SAO MIGUEL/RN,ftth,2026-07-01,5,1,1,1,1,1,0,0.7467,3
 sao-miguel-rn,SAO MIGUEL/RN,5g,2026-07-01,5,2,0,1,2,0,0,1.0255,1
-senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-07-01,4,4,0,0,0,0,0,1.5576,1
-senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-07-01,4,1,2,1,0,0,0,0.8635,2
-serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-07-01,6,2,0,2,0,1,1,1.101,1
-serra-talhada-pe,SERRA TALHADA/PE,5g,2026-07-01,6,3,2,0,0,0,1,1.3521,1
-sobral-ce,SOBRAL/CE,ftth,2026-07-01,14,3,3,1,6,1,0,0.7955,3
-sobral-ce,SOBRAL/CE,5g,2026-07-01,14,3,1,3,5,2,0,0.7342,3
-sousa-pb,SOUSA/PB,ftth,2026-07-01,4,1,1,1,0,1,0,0.72,3
-sousa-pb,SOUSA/PB,5g,2026-07-01,4,0,1,2,1,0,0,0.7188,3
-surubim-pe,SURUBIM/PE,ftth,2026-07-01,2,0,0,0,2,0,0,0.3611,4
-tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-07-01,4,2,0,0,2,0,0,0.9045,2
+senador-pompeu-ce,SENADOR POMPEU/CE,ftth,2026-07-01,4,4,0,0,0,0,0,1.6167,1
+senador-pompeu-ce,SENADOR POMPEU/CE,5g,2026-07-01,4,1,2,1,0,0,0,0.8793,2
+serra-talhada-pe,SERRA TALHADA/PE,ftth,2026-07-01,6,2,1,1,0,1,1,1.1467,1
+serra-talhada-pe,SERRA TALHADA/PE,5g,2026-07-01,6,4,1,0,0,0,1,1.3578,1
+sobral-ce,SOBRAL/CE,ftth,2026-07-01,14,3,3,2,5,1,0,0.8405,2
+sobral-ce,SOBRAL/CE,5g,2026-07-01,14,3,1,3,5,2,0,0.7362,3
+sousa-pb,SOUSA/PB,ftth,2026-07-01,4,2,0,1,0,1,0,0.7444,3
+sousa-pb,SOUSA/PB,5g,2026-07-01,4,0,1,2,1,0,0,0.7301,3
+surubim-pe,SURUBIM/PE,ftth,2026-07-01,2,0,0,0,2,0,0,0.3889,4
+tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,ftth,2026-07-01,4,2,0,0,2,0,0,0.9583,2
 tabuleiro-do-norte-ce,TABULEIRO DO NORTE/CE,5g,2026-07-01,4,2,0,1,1,0,0,0.7918,3
-taua-ce,TAUA/CE,ftth,2026-07-01,6,3,0,2,0,0,1,1.2533,1
-taua-ce,TAUA/CE,5g,2026-07-01,6,2,1,2,0,0,1,0.865,2
-teresina-pi,TERESINA/PI,ftth,2026-07-01,31,9,2,9,7,4,0,0.8327,2
-teresina-pi,TERESINA/PI,5g,2026-07-01,31,11,4,6,8,2,0,0.7545,3
-tiangua-ce,TIANGUA/CE,ftth,2026-07-01,5,2,1,0,0,2,0,1.0971,1
+taua-ce,TAUA/CE,ftth,2026-07-01,6,3,2,0,0,0,1,1.3533,1
+taua-ce,TAUA/CE,5g,2026-07-01,6,2,1,2,0,0,1,0.88,2
+teresina-pi,TERESINA/PI,ftth,2026-07-01,31,9,7,8,7,0,0,0.9038,2
+teresina-pi,TERESINA/PI,5g,2026-07-01,31,11,4,6,8,2,0,0.7577,3
+tiangua-ce,TIANGUA/CE,ftth,2026-07-01,5,3,0,0,0,2,0,1.1479,1
 tiangua-ce,TIANGUA/CE,5g,2026-07-01,5,2,1,2,0,0,0,0.9004,2
-timon-ma,TIMON/MA,ftth,2026-07-01,10,1,1,2,4,1,1,0.6823,3
-timon-ma,TIMON/MA,5g,2026-07-01,10,0,0,3,1,5,1,0.3951,4
+timon-ma,TIMON/MA,ftth,2026-07-01,10,1,1,3,3,1,1,0.7315,3
+timon-ma,TIMON/MA,5g,2026-07-01,10,0,0,3,2,4,1,0.4021,4
 tobias-barreto-se,TOBIAS BARRETO/SE,ftth,2026-07-01,2,1,0,1,0,0,0,0.875,2
-toritama-pe,TORITAMA/PE,ftth,2026-07-01,4,1,0,0,2,1,0,0.8503,2
-toritama-pe,TORITAMA/PE,5g,2026-07-01,4,0,1,2,0,1,0,0.6049,3
-ubajara-ce,UBAJARA/CE,ftth,2026-07-01,4,1,1,1,1,0,0,0.7955,3
-ubajara-ce,UBAJARA/CE,5g,2026-07-01,4,0,0,2,2,0,0,0.4857,4
-uirauna-pb,UIRAUNA/PB,ftth,2026-07-01,4,1,1,0,1,1,0,0.85,2
+toritama-pe,TORITAMA/PE,ftth,2026-07-01,4,1,0,0,2,1,0,0.8667,2
+toritama-pe,TORITAMA/PE,5g,2026-07-01,4,0,1,2,0,1,0,0.6217,3
+ubajara-ce,UBAJARA/CE,ftth,2026-07-01,4,1,2,0,1,0,0,0.825,2
+ubajara-ce,UBAJARA/CE,5g,2026-07-01,4,0,0,2,2,0,0,0.4912,4
+uirauna-pb,UIRAUNA/PB,ftth,2026-07-01,4,2,0,0,1,1,0,0.9,2
 uirauna-pb,UIRAUNA/PB,5g,2026-07-01,4,0,1,1,2,0,0,0.6344,3
 umarizal-rn,UMARIZAL/RN,ftth,2026-07-01,2,0,1,0,0,1,0,0.5333,4
 umarizal-rn,UMARIZAL/RN,5g,2026-07-01,2,0,0,1,1,0,0,0.4615,4
-varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-07-01,5,1,1,0,2,0,1,0.7076,3
-varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-07-01,5,0,1,2,1,0,1,0.6387,3
+varzea-alegre-ce,VARZEA ALEGRE/CE,ftth,2026-07-01,5,2,0,0,2,0,1,0.775,3
+varzea-alegre-ce,VARZEA ALEGRE/CE,5g,2026-07-01,5,0,2,1,1,0,1,0.6483,3
 vicosa-do-ceara-ce,VICOSA DO CEARA/CE,ftth,2026-07-01,2,1,0,0,0,1,0,0.6111,3
 vitoria-de-santo-antao-pe,VITORIA DE SANTO ANTAO/PE,ftth,2026-07-01,2,0,1,0,0,1,0,0.5,4
