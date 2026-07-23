@@ -304,3 +304,74 @@ test('vendedor sem NENHUMA venda (só churn) conta como sem_meta nas DUAS tecnol
   assert.equal(g5.totalVendedores, 2); // vendedor-5g + so-churn
   assert.equal(g5.semMeta, 1);
 });
+
+// Achado real na base (auditoria 2026-07): 18 vendedores publicados com
+// hash_user vazio ("") na fonte, incluindo dois pares que colidiram no
+// mesmo mês em cidades diferentes — MARIA JOSENIR (matrícula 30342) e
+// RAYSA (matrícula 31778), ambas em 2026-07 com hash_user="". Antes do
+// fix, as duas eram tratadas como o mesmo "vendedor" (mesma chave ''),
+// somando meta/realizado de pessoas diferentes num quintil só.
+test('hash_user vazio nunca funde vendedores diferentes no mesmo mês', () => {
+  const linhas = [
+    linha({
+      hash_user: '',
+      vendedor: 'MARIA JOSENIR PEREIRA DA SILVA',
+      matricula: '30342',
+      cidade: 'JOAO PESSOA / PB',
+      meta: '10',
+      realizado: '10', // 100% -> Q1
+    }),
+    linha({
+      hash_user: '',
+      vendedor: 'RAYSA D JULIA MENDES DOS SANTOS',
+      matricula: '31778',
+      cidade: 'SANTA RITA / PB',
+      meta: '10',
+      realizado: '1', // 10% -> Q5
+    }),
+  ];
+  const { vendedores, avisos } = normalizarQuintisPorCidade(linhas, MULT_1);
+  const ftth = vendedores.filter((v) => v.tecnologia === 'ftth');
+
+  const maria = ftth.find((v) => v.vendedor === 'MARIA JOSENIR PEREIRA DA SILVA');
+  const raysa = ftth.find((v) => v.vendedor === 'RAYSA D JULIA MENDES DOS SANTOS');
+
+  assert.ok(maria, 'Maria deve aparecer como vendedor próprio');
+  assert.ok(raysa, 'Raysa deve aparecer como vendedor próprio');
+  assert.notEqual(maria.vendedorId, raysa.vendedorId); // nunca a mesma pessoa
+  assert.equal(maria.meta, 10);
+  assert.equal(maria.realizado, 10);
+  assert.equal(maria.quintil, 1); // não pode virar (10+1)/(10+10)=52% -> Q4
+  assert.equal(raysa.quintil, 5);
+  assert.ok(avisos.some((a) => a.includes('hash_user vazio')));
+});
+
+// Mesmo hash_user vazio, mesma cidade e mesmo mês, só o nome muda: ainda
+// assim precisa continuar separado (a chave de fallback é nome+cidade+mês,
+// não só cidade+mês).
+test('hash_user vazio: duas pessoas na MESMA cidade/mês continuam separadas', () => {
+  const linhas = [
+    linha({ hash_user: '', vendedor: 'ANA MAYARA', matricula: '11111', meta: '10', realizado: '10' }),
+    linha({ hash_user: '', vendedor: 'BRUNA SILVA', matricula: '11111', meta: '10', realizado: '0' }),
+  ];
+  const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+  const ftth = vendedores.filter((v) => v.tecnologia === 'ftth');
+  assert.equal(new Set(ftth.map((v) => v.vendedorId)).size, 2);
+  assert.equal(ftth.find((v) => v.vendedor === 'ANA MAYARA').quintil, 1);
+  assert.equal(ftth.find((v) => v.vendedor === 'BRUNA SILVA').quintil, 5);
+});
+
+// Achado real na base: hash_user NÃO-vazio "eb54f09d..." associado a duas
+// matrículas diferentes (29790 e 29957) no mesmo mês (2026-02 e 2026-03).
+// Aqui a chave de agrupamento permanece o hash (não há sinal suficiente
+// pra decidir separar sem arriscar quebrar o caso são), mas o pipeline
+// deve avisar — nunca falhar silenciosamente.
+test('hash_user não-vazio com múltiplas matrículas no mesmo mês gera aviso (não bloqueia publicação)', () => {
+  const linhas = [
+    linha({ hash_user: 'colidiu', matricula: '29790', vendedor: 'Pessoa A', meta: '10', realizado: '10' }),
+    linha({ hash_user: 'colidiu', matricula: '29957', vendedor: 'Pessoa B', meta: '10', realizado: '5' }),
+  ];
+  const { avisos, registros } = normalizarQuintisPorCidade(linhas, MULT_1);
+  assert.ok(avisos.some((a) => a.includes('colidiu') && a.includes('mais de uma matrícula')));
+  assert.ok(registros.length > 0); // aviso não bloqueia a publicação
+});

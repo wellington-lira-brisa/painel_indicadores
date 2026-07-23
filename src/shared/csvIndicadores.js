@@ -997,8 +997,39 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
   // Identificador opaco e estável dentro de toda a publicação. O mesmo
   // hash recebe o mesmo id em todos os meses e cidades, permitindo o
   // histórico sem publicar hash, matrícula ou outro identificador bruto.
+  //
+  // hash_user vazio/ausente NÃO é uma chave válida: a base real tem linhas
+  // de vendedores distintos publicadas com hash_user="" simultaneamente
+  // (achado real: MARIA JOSENIR e RAYSA, ambas em 2026-07 com hash vazio),
+  // e colapsar todas sob a mesma chave '' juntaria pessoas diferentes num
+  // único "vendedor" fantasma, corrompendo quintil e histórico de ambas.
+  // Para essas linhas, a chave de agrupamento cai para nome+cidade+mês:
+  // não é estável entre meses (não há garantia de estabilidade sem hash),
+  // mas nunca junta duas pessoas diferentes dentro do mesmo mês/cidade.
   const vendedorIdPorHash = new Map();
   const cidadeOrigemPorSlug = new Map();
+  // hash_user não-vazio -> Set(matrícula) vistas naquele hash, por mês.
+  // Detecta colisão de hash entre pessoas distintas (achado real na base:
+  // um mesmo hash servindo a duas matrículas diferentes no mesmo mês,
+  // ex. 2026-02/03). É raro (dado de origem, não bug de pipeline) — vira
+  // aviso, não altera a chave de agrupamento nem bloqueia a publicação.
+  const matriculasPorHashMes = new Map();
+
+  /**
+   * hash_user confiável -> usa o hash (estável entre meses/cidades).
+   * hash_user vazio/ausente -> chave isolada por linha (nome+cidade+mês):
+   * nunca reutilizada entre pessoas diferentes, mesmo que o nome se repita
+   * (nomes homônimos entre cidades distintas já eram tratados à parte pela
+   * própria chave incluir cidade).
+   */
+  function chaveAgrupamento(l, cidadeSlug, chaveCidadeMes) {
+    const hash = String(l.hash_user ?? '').trim();
+    if (hash) return hash;
+    avisos.push(
+      `Quintil: hash_user vazio — vendedor "${l.vendedor}" tratado sem identificação estável entre meses (cidade "${l.cidade}", mês ${l.data}).`,
+    );
+    return `SEM-HASH\u0001${chaveCidadeMes}\u0001${String(l.vendedor ?? '').trim()}`;
+  }
 
   for (const l of linhasFato) {
     const cidadeSlug = normalizarCidade(l.cidade);
@@ -1006,19 +1037,35 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     cidadeOrigemPorSlug.set(cidadeSlug, l.cidade);
 
     const chaveCidadeMes = cidadeSlug + '\u0001' + l.data;
+    const chaveVendedor = chaveAgrupamento(l, cidadeSlug, chaveCidadeMes);
+
+    const hashBruto = String(l.hash_user ?? '').trim();
+    const matriculaBruta = String(l.matricula ?? '').trim();
+    if (hashBruto && matriculaBruta) {
+      const chaveHashMes = hashBruto + '\u0001' + l.data;
+      if (!matriculasPorHashMes.has(chaveHashMes)) matriculasPorHashMes.set(chaveHashMes, new Set());
+      const matriculasVistas = matriculasPorHashMes.get(chaveHashMes);
+      if (matriculasVistas.size > 0 && !matriculasVistas.has(matriculaBruta)) {
+        avisos.push(
+          `Quintil: hash_user "${hashBruto}" associado a mais de uma matrícula no mês ${l.data} (matrículas: ${[...matriculasVistas, matriculaBruta].join(', ')}) — possível colisão de hash na base de origem.`,
+        );
+      }
+      matriculasVistas.add(matriculaBruta);
+    }
+
     if (!vendedoresPorCidadeMes.has(chaveCidadeMes)) vendedoresPorCidadeMes.set(chaveCidadeMes, new Map());
     const vendedoresDoMes = vendedoresPorCidadeMes.get(chaveCidadeMes);
-    if (!vendedoresDoMes.has(l.hash_user)) {
-      vendedoresDoMes.set(l.hash_user, { tecnologias: new Set(), canais: new Map() });
+    if (!vendedoresDoMes.has(chaveVendedor)) {
+      vendedoresDoMes.set(chaveVendedor, { tecnologias: new Set(), canais: new Map() });
     }
-    if (!vendedorIdPorHash.has(l.hash_user)) {
-      vendedorIdPorHash.set(l.hash_user, `v${vendedorIdPorHash.size + 1}`);
+    if (!vendedorIdPorHash.has(chaveVendedor)) {
+      vendedorIdPorHash.set(chaveVendedor, `v${vendedorIdPorHash.size + 1}`);
     }
-    const contextoVendedor = vendedoresDoMes.get(l.hash_user);
+    const contextoVendedor = vendedoresDoMes.get(chaveVendedor);
     const canal = l.canal || 'SEM CANAL';
     if (!contextoVendedor.canais.has(canal)) contextoVendedor.canais.set(canal, new Set());
     nomesPorVendedor.set(
-      l.hash_user + '\u0001' + chaveCidadeMes,
+      chaveVendedor + '\u0001' + chaveCidadeMes,
       String(l.vendedor ?? '').trim() || 'Vendedor sem identificação',
     );
 
@@ -1048,7 +1095,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     contextoVendedor.tecnologias.add(tecnologia);
     contextoVendedor.canais.get(canal).add(tecnologia);
 
-    const chave = l.hash_user + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + l.data;
+    const chave = chaveVendedor + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + l.data;
     const atual = somasPorVendedor.get(chave) ?? { meta: 0, realizado: 0 };
     atual.meta += meta * multiplicador;
     atual.realizado += realizado;
@@ -1073,7 +1120,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
       let comAtingimento = 0;
       let total = 0;
 
-      for (const [hash, contextoVendedor] of vendedoresDoMes) {
+      for (const [chaveVendedorLoop, contextoVendedor] of vendedoresDoMes) {
         const tecnologiasComVenda = contextoVendedor.tecnologias;
         // Vendedor só entra no bucket desta tecnologia se vende ELA, ou se
         // não vende NENHUMA das duas (ambíguo — conta como "sem meta" nos
@@ -1086,7 +1133,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
         if (!vendeEstaTecnologia && !naoVendeNenhumaTecnologia) continue;
 
         total += 1;
-        const somas = somasPorVendedor.get(hash + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef);
+        const somas = somasPorVendedor.get(chaveVendedorLoop + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef);
         if (!somas || somas.meta === 0) {
           semMeta += 1;
           continue;
@@ -1129,14 +1176,14 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     // explícita como null para o front poder distinguir "sem venda nesta
     // tecnologia" de "venda só na outra tecnologia" depois de combinar
     // qualquer subconjunto de canais.
-    for (const [hash, contextoVendedor] of vendedoresDoMes) {
-      const vendedorId = vendedorIdPorHash.get(hash);
-      const vendedor = nomesPorVendedor.get(hash + '\u0001' + chaveCidadeMes) ?? 'Vendedor sem identificação';
+    for (const [chaveVendedorLoop, contextoVendedor] of vendedoresDoMes) {
+      const vendedorId = vendedorIdPorHash.get(chaveVendedorLoop);
+      const vendedor = nomesPorVendedor.get(chaveVendedorLoop + '\u0001' + chaveCidadeMes) ?? 'Vendedor sem identificação';
 
       for (const canal of contextoVendedor.canais.keys()) {
         for (const tecnologia of ['ftth', '5g']) {
           const chaveCanal =
-            hash + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef + '\u0001' + canal;
+            chaveVendedorLoop + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef + '\u0001' + canal;
           const somas = somasPorVendedorCanal.get(chaveCanal);
           const atingimento = somas?.meta ? somas.realizado / somas.meta : null;
           vendedores.push({

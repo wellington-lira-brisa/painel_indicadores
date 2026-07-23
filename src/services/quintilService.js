@@ -106,7 +106,30 @@ export function quintisVendedoresEmCacheOuNulo() {
   return cacheVendedores;
 }
 
-export function quintilDaCidadePorCanais(indice, cidadeSlug, tecnologiaId, canaisSelecionados) {
+/**
+ * Cache simples por chamada de `buscarCidade` (não module-level — nunca
+ * deve vazar entre cidades ou sessões). As três funções abaixo
+ * (`quintilDaCidadePorCanais`, `vendedoresQuintilDaCidade`,
+ * `historicoVendedoresQuintilDaCidade`) recalculavam o MESMO mês atual
+ * até 3x quando havia filtro de canal: cada uma chamava
+ * `calcularQuintilVendedores` do zero. `criarCacheQuintilVendedores()`
+ * cria um cache descartável que o chamador (cidadeService) passa para as
+ * três, garantindo no máximo 1 cálculo por (cidade, mês, tecnologia,
+ * canais) dentro da mesma requisição.
+ */
+export function criarCacheQuintilVendedores() {
+  return new Map();
+}
+
+function calcularQuintilVendedoresCacheado(cache, linhas, tecnologiaId, canaisSelecionados, chaveExtra) {
+  const chave = `${chaveExtra}\u0001${tecnologiaId}\u0001${[...canaisSelecionados].sort().join(',')}`;
+  if (cache?.has(chave)) return cache.get(chave);
+  const resultado = calcularQuintilVendedores(linhas, tecnologiaId, canaisSelecionados);
+  if (cache) cache.set(chave, resultado);
+  return resultado;
+}
+
+export function quintilDaCidadePorCanais(indice, cidadeSlug, tecnologiaId, canaisSelecionados, cache = null) {
   const porMes = indice?.get(cidadeSlug) ?? new Map();
   if (!porMes) return null;
 
@@ -115,10 +138,12 @@ export function quintilDaCidadePorCanais(indice, cidadeSlug, tecnologiaId, canai
   const historico = [...porMes.keys()]
     .sort()
     .map((mesRef) => {
-      const calculado = calcularQuintilVendedores(
+      const calculado = calcularQuintilVendedoresCacheado(
+        cache,
         porMes.get(mesRef) ?? [],
         tecnologiaId,
         canaisSelecionados,
+        cidadeSlug + '\u0001' + mesRef,
       );
       if (!calculado) return null;
       const { vendedores: _vendedores, ...resumo } = calculado;
@@ -138,6 +163,7 @@ export function historicoVendedoresQuintilDaCidade(
   mesRefAtual,
   canaisSelecionados = [],
   quantidadeMeses = MESES_PADRAO_HISTORICO_QUINTIL,
+  cache = null,
 ) {
   if (!mesRefAtual) {
     return { meses: [], vendedores: [], movimentos: { melhoraram: 0, estaveis: 0, cairam: 0, semComparacao: 0 } };
@@ -146,10 +172,12 @@ export function historicoVendedoresQuintilDaCidade(
   const porMes = indice?.get(cidadeSlug) ?? new Map();
   const resultadosPorMes = new Map();
   for (const mesRef of mesesConsecutivosAte(mesRefAtual, quantidadeMeses)) {
-    const calculado = calcularQuintilVendedores(
+    const calculado = calcularQuintilVendedoresCacheado(
+      cache,
       porMes.get(mesRef) ?? [],
       tecnologiaId,
       canaisSelecionados,
+      cidadeSlug + '\u0001' + mesRef,
     );
     if (calculado) resultadosPorMes.set(mesRef, calculado);
   }
@@ -163,13 +191,16 @@ export function vendedoresQuintilDaCidade(
   tecnologiaId,
   mesRef,
   canaisSelecionados = [],
+  cache = null,
 ) {
   if (!mesRef) return [];
   return (
-    calcularQuintilVendedores(
+    calcularQuintilVendedoresCacheado(
+      cache,
       indice?.get(cidadeSlug)?.get(mesRef) ?? [],
       tecnologiaId,
       canaisSelecionados,
+      cidadeSlug + '\u0001' + mesRef,
     )?.vendedores ?? []
   );
 }

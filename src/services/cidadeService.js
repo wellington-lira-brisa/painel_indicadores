@@ -28,6 +28,7 @@ import {
   quintilDaCidadePorCanais,
   historicoVendedoresQuintilDaCidade,
   vendedoresQuintilDaCidade,
+  criarCacheQuintilVendedores,
 } from './quintilService';
 import { carregarDesvioPorCanal, desvioPorCanalEmCacheOuNulo, desvioDaCidade } from './desvioCanalService';
 import { ratearMetaPorSemanas, construirEstimadorPorCalendario } from '../utils/diasUteis';
@@ -187,6 +188,7 @@ function aplicarQuintil(
   indiceQuintisVendedores,
   canaisSelecionados,
   tecnologiaId,
+  cacheQuintilVendedores,
 ) {
   const quintil =
     canaisSelecionados.length > 0
@@ -195,6 +197,7 @@ function aplicarQuintil(
           cidade.id,
           tecnologiaId,
           canaisSelecionados,
+          cacheQuintilVendedores,
         )
       : quintilDaCidade(indiceQuintis, cidade.id, tecnologiaId);
   return { ...cidade, quintil };
@@ -468,6 +471,7 @@ function enriquecer(
   indiceDesvio,
   canaisSelecionados,
   tecnologiaId,
+  cacheQuintilVendedores = null,
 ) {
   const cidadeComMetaEMetadados = aplicarDesvioPorCanal(aplicarQuintil(aplicarRateioSemanalMetaIndicador(
     aplicarMetaPorCanal(
@@ -478,7 +482,7 @@ function enriquecer(
     ),
     diasUteis,
     tecnologiaId,
-  ), indiceQuintis, indiceQuintisVendedores, canaisSelecionados, tecnologiaId), indiceDesvio, tecnologiaId);
+  ), indiceQuintis, indiceQuintisVendedores, canaisSelecionados, tecnologiaId, cacheQuintilVendedores), indiceDesvio, tecnologiaId);
   // Duas passadas: `realizado` recortado por canal (o que o filtro do
   // SeletorCanais decidir — igual sempre foi) e `realizadoGeral` SEMPRE
   // com o índice total, nenhum filtro — pra comparar lado a lado no card
@@ -601,6 +605,11 @@ function criarServicoCidades(tecnologiaId) {
     const cidade = montarListaCompleta(nomesOriginais, cidadesOficiais).find((c) => c.id === id);
     if (!cidade) return null;
     const indiceEfetivo = await indicePorCanalComFallback(tecnologiaId, canaisSelecionados, indice);
+    // Cache de execução única: quintilDaCidadePorCanais, vendedoresQuintilDaCidade
+    // e historicoVendedoresQuintilDaCidade recalculavam o mesmo mês atual até
+    // 3x cada quando havia filtro de canal. Um cache por chamada de
+    // buscarCidade garante no máximo 1 cálculo por (cidade, mês, canais).
+    const cacheQuintilVendedores = criarCacheQuintilVendedores();
     const cidadeEnriquecida = enriquecer(
       cidade,
       statusFwa,
@@ -616,6 +625,7 @@ function criarServicoCidades(tecnologiaId) {
       indiceDesvio,
       canaisSelecionados,
       tecnologiaId,
+      cacheQuintilVendedores,
     );
     if (!cidadeEnriquecida.quintil) return cidadeEnriquecida;
     return {
@@ -628,6 +638,7 @@ function criarServicoCidades(tecnologiaId) {
           tecnologiaId,
           cidadeEnriquecida.quintil.mesRef,
           canaisSelecionados,
+          cacheQuintilVendedores,
         ),
         historicoVendedores: historicoVendedoresQuintilDaCidade(
           indiceQuintisVendedores,
@@ -635,6 +646,8 @@ function criarServicoCidades(tecnologiaId) {
           tecnologiaId,
           cidadeEnriquecida.quintil.mesRef,
           canaisSelecionados,
+          undefined,
+          cacheQuintilVendedores,
         ),
       },
     };
