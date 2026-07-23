@@ -1,8 +1,8 @@
 // ETL da base real de vendas (FTTH/5G) -> tabela indicadores_realizados.
 //
-// Este arquivo Ã© intencionalmente livre de I/O (sem fetch, sem fs, sem
-// Supabase): recebe texto/objetos, devolve objetos. Isso Ã© o que permite
-// testar validaÃ§Ã£o e normalizaÃ§Ã£o com `node --test` sem precisar de rede
+// Este arquivo é intencionalmente livre de I/O (sem fetch, sem fs, sem
+// Supabase): recebe texto/objetos, devolve objetos. Isso é o que permite
+// testar validação e normalização com `node --test` sem precisar de rede
 // nem de credenciais (ver __tests__/lib.test.mjs).
 
 export const COLUNAS_OBRIGATORIAS = [
@@ -23,9 +23,9 @@ export const COLUNAS_OBRIGATORIAS = [
   'realizado_mes',
 ];
 
-// Ãšnico mapeamento servico+status_venda -> (tecnologia, indicador) que a
-// base oficial hoje sustenta (ver RELATORIO.md, seÃ§Ã£o 5). Qualquer
-// combinaÃ§Ã£o fora daqui Ã© uma linha "nÃ£o reconhecida": a validaÃ§Ã£o falha
+// Único mapeamento servico+status_venda -> (tecnologia, indicador) que a
+// base oficial hoje sustenta (ver RELATORIO.md, seção 5). Qualquer
+// combinação fora daqui é uma linha "não reconhecida": a validação falha
 // o workflow em vez de publicar um indicador inventado.
 export const MAPA_INDICADOR = {
   '5G|Assinado': { tecnologia: '5g', indicadorId: 'ativacao' },
@@ -35,12 +35,12 @@ export const MAPA_INDICADOR = {
 };
 
 const REGEX_DATA = /^\d{4}-\d{2}-\d{2}$/;
-const VALOR_NAO_MAPEADO = 'NÃƒO MAPEADO';
+const VALOR_NAO_MAPEADO = 'NÃO MAPEADO';
 
 /**
- * O export em produÃ§Ã£o usa `decimal=","` (padrÃ£o BR/Spark) â€” "3,5" deve
- * virar 3.5, nÃ£o NaN. SÃ³ troca vÃ­rgula por ponto quando nÃ£o hÃ¡ ponto jÃ¡
- * presente (evita quebrar um valor que por algum motivo jÃ¡ viesse com
+ * O export em produção usa `decimal=","` (padrão BR/Spark) — "3,5" deve
+ * virar 3.5, não NaN. Só troca vírgula por ponto quando não há ponto já
+ * presente (evita quebrar um valor que por algum motivo já viesse com
  * ponto decimal).
  */
 function paraNumero(texto) {
@@ -49,7 +49,7 @@ function paraNumero(texto) {
   return Number(normalizado);
 }
 
-/** Descobre o separador olhando sÃ³ a primeira linha (cabeÃ§alho): conta ocorrÃªncias de cada candidato e usa o mais frequente. Cobre vÃ­rgula (padrÃ£o RFC4180), ponto e vÃ­rgula (comum em export BR, jÃ¡ que "," Ã© separador decimal) e tab. */
+/** Descobre o separador olhando só a primeira linha (cabeçalho): conta ocorrências de cada candidato e usa o mais frequente. Cobre vírgula (padrão RFC4180), ponto e vírgula (comum em export BR, já que "," é separador decimal) e tab. */
 function detectarSeparador(primeiraLinha) {
   const candidatos = [',', ';', '\t'];
   let melhor = ',';
@@ -61,7 +61,7 @@ function detectarSeparador(primeiraLinha) {
   return melhor;
 }
 
-/** Parser CSV mÃ­nimo (RFC4180: aspas duplas e vÃ­rgula/quebra de linha dentro de campo), com separador auto-detectado. */
+/** Parser CSV mínimo (RFC4180: aspas duplas e vírgula/quebra de linha dentro de campo), com separador auto-detectado. */
 export function parsearCsv(texto) {
   const linhas = [];
   let campo = '';
@@ -93,7 +93,7 @@ export function parsearCsv(texto) {
 
   const cabecalho = linhasNaoVazias[0];
   return linhasNaoVazias.slice(1).map((valores, indice) => {
-    const obj = { _linha: indice + 2 }; // +2 = 1 pelo header, 1 por Ã­ndice 1-based
+    const obj = { _linha: indice + 2 }; // +2 = 1 pelo header, 1 por índice 1-based
     cabecalho.forEach((coluna, i) => { obj[coluna.trim()] = (valores[i] ?? '').trim(); });
     return obj;
   });
@@ -110,8 +110,8 @@ function slugificar(texto) {
 }
 
 /**
- * "ARARIPINA / PE" -> "araripina-pe". Devolve null se nÃ£o der pra separar
- * cidade e UF (formato inesperado) â€” quem chama decide o que fazer (hoje:
+ * "ARARIPINA / PE" -> "araripina-pe". Devolve null se não der pra separar
+ * cidade e UF (formato inesperado) — quem chama decide o que fazer (hoje:
  * publica com cidade_slug null, nunca inventa uma cidade).
  */
 export function normalizarCidade(cidadeBruta) {
@@ -124,28 +124,28 @@ export function normalizarCidade(cidadeBruta) {
 }
 
 /**
- * Valida a base crua (linhas jÃ¡ parseadas do CSV, ainda como strings).
- * Devolve { erros, avisos }. `erros` nÃ£o vazio = workflow deve falhar e
- * preservar a Ãºltima versÃ£o publicada (ver publicar.mjs).
+ * Valida a base crua (linhas já parseadas do CSV, ainda como strings).
+ * Devolve { erros, avisos }. `erros` não vazio = workflow deve falhar e
+ * preservar a última versão publicada (ver publicar.mjs).
  */
 export function validar(linhas) {
   const erros = [];
   const avisos = [];
 
   if (linhas.length === 0) {
-    erros.push('Base vazia ou ilegÃ­vel.');
+    erros.push('Base vazia ou ilegível.');
     return { erros, avisos };
   }
 
   const colunasPresentes = new Set(Object.keys(linhas[0]));
   for (const coluna of COLUNAS_OBRIGATORIAS) {
-    if (!colunasPresentes.has(coluna)) erros.push(`Coluna obrigatÃ³ria ausente: ${coluna}`);
+    if (!colunasPresentes.has(coluna)) erros.push(`Coluna obrigatória ausente: ${coluna}`);
   }
-  if (erros.length > 0) return { erros, avisos }; // sem colunas, nÃ£o faz sentido validar linha a linha
+  if (erros.length > 0) return { erros, avisos }; // sem colunas, não faz sentido validar linha a linha
 
   const VOLUME_MINIMO_ESPERADO = 100;
   if (linhas.length < VOLUME_MINIMO_ESPERADO) {
-    erros.push(`Volume de linhas abaixo do mÃ­nimo esperado (${linhas.length} < ${VOLUME_MINIMO_ESPERADO}).`);
+    erros.push(`Volume de linhas abaixo do mínimo esperado (${linhas.length} < ${VOLUME_MINIMO_ESPERADO}).`);
   }
 
   const combinacoesConhecidas = new Set(Object.keys(MAPA_INDICADOR));
@@ -159,45 +159,45 @@ export function validar(linhas) {
   for (const l of linhas) {
     const idLinha = `linha ${l._linha}`;
 
-    // nulos em colunas obrigatÃ³rias (cidade Ã© a Ãºnica que pode ser vazia â€” vira aviso, nÃ£o erro)
+    // nulos em colunas obrigatórias (cidade é a única que pode ser vazia — vira aviso, não erro)
     for (const coluna of COLUNAS_OBRIGATORIAS) {
       if (coluna === 'cidade') continue;
       if (l[coluna] === '' || l[coluna] === undefined) {
         erros.push(`${idLinha}: valor ausente na coluna "${coluna}".`);
       }
     }
-    if (!l.cidade) avisos.push(`${idLinha}: cidade nÃ£o informada.`);
+    if (!l.cidade) avisos.push(`${idLinha}: cidade não informada.`);
 
     // datas
-    if (!REGEX_DATA.test(l.mes_ref)) erros.push(`${idLinha}: mes_ref invÃ¡lida ("${l.mes_ref}").`);
-    if (!REGEX_DATA.test(l.primeiro_dia_semana)) erros.push(`${idLinha}: primeiro_dia_semana invÃ¡lida.`);
-    if (!REGEX_DATA.test(l.ultimo_dia_semana)) erros.push(`${idLinha}: ultimo_dia_semana invÃ¡lida.`);
+    if (!REGEX_DATA.test(l.mes_ref)) erros.push(`${idLinha}: mes_ref inválida ("${l.mes_ref}").`);
+    if (!REGEX_DATA.test(l.primeiro_dia_semana)) erros.push(`${idLinha}: primeiro_dia_semana inválida.`);
+    if (!REGEX_DATA.test(l.ultimo_dia_semana)) erros.push(`${idLinha}: ultimo_dia_semana inválida.`);
     if (REGEX_DATA.test(l.primeiro_dia_semana) && REGEX_DATA.test(l.ultimo_dia_semana)) {
       if (l.primeiro_dia_semana > l.ultimo_dia_semana) {
         erros.push(`${idLinha}: primeiro_dia_semana posterior a ultimo_dia_semana.`);
       }
     }
 
-    // combinaÃ§Ã£o servico+status conhecida
+    // combinação servico+status conhecida
     const chave = `${l.servico}|${l.status_venda}`;
     if (!combinacoesConhecidas.has(chave)) {
-      erros.push(`${idLinha}: combinaÃ§Ã£o servico/status_venda nÃ£o reconhecida ("${chave}").`);
+      erros.push(`${idLinha}: combinação servico/status_venda não reconhecida ("${chave}").`);
     } else if (chave.startsWith('INTERNET')) {
       temFtth = true;
     } else {
       temCincoG = true;
     }
 
-    // numÃ©ricos e negativos
+    // numéricos e negativos
     const semana = paraNumero(l.realizado_semana);
     const mensal = paraNumero(l.realizado_mes);
     if (l.realizado_semana === '' || Number.isNaN(semana)) {
-      erros.push(`${idLinha}: realizado_semana nÃ£o Ã© numÃ©rico ("${l.realizado_semana}").`);
+      erros.push(`${idLinha}: realizado_semana não é numérico ("${l.realizado_semana}").`);
     } else if (semana < 0) {
       erros.push(`${idLinha}: realizado_semana negativo (${semana}).`);
     }
     if (l.realizado_mes === '' || Number.isNaN(mensal)) {
-      erros.push(`${idLinha}: realizado_mes nÃ£o Ã© numÃ©rico ("${l.realizado_mes}").`);
+      erros.push(`${idLinha}: realizado_mes não é numérico ("${l.realizado_mes}").`);
     } else if (mensal < 0) {
       erros.push(`${idLinha}: realizado_mes negativo (${mensal}).`);
     }
@@ -209,7 +209,7 @@ export function validar(linhas) {
     }
     vistos.add(assinatura);
 
-    // divergÃªncia semana x mÃªs (soma das semanas do mesmo grupo bate com realizado_mes?)
+    // divergência semana x mês (soma das semanas do mesmo grupo bate com realizado_mes?)
     const grupo = [l.mes_ref, l.cidade, l.servico, l.status_venda, l.canal_geral, l.origem].join('\u0001');
     if (!Number.isNaN(semana)) {
       totalPorGrupoSemana.set(grupo, (totalPorGrupoSemana.get(grupo) ?? 0) + semana);
@@ -232,17 +232,17 @@ export function validar(linhas) {
     }
   }
 
-  if (!temFtth) erros.push('Base nÃ£o contÃ©m nenhum dado de FTTH (servico=INTERNET).');
-  if (!temCincoG) erros.push('Base nÃ£o contÃ©m nenhum dado de 5G (servico=5G).');
+  if (!temFtth) erros.push('Base não contém nenhum dado de FTTH (servico=INTERNET).');
+  if (!temCincoG) erros.push('Base não contém nenhum dado de 5G (servico=5G).');
 
   return { erros, avisos };
 }
 
 /**
- * Agrega linhas cruas (jÃ¡ validadas) em registros prontos pra
+ * Agrega linhas cruas (já validadas) em registros prontos pra
  * indicadores_realizados: soma canal_geral/origem, gera uma linha mensal
- * (semana_mes null) e uma por semana. Assume `validar()` sem erros â€”
- * chamar sem validar antes Ã© erro do chamador, nÃ£o algo que este cÃ³digo
+ * (semana_mes null) e uma por semana. Assume `validar()` sem erros —
+ * chamar sem validar antes é erro do chamador, não algo que este código
  * deva adivinhar.
  */
 export function normalizar(linhas) {
@@ -251,7 +251,7 @@ export function normalizar(linhas) {
 
   for (const l of linhas) {
     const mapa = MAPA_INDICADOR[`${l.servico}|${l.status_venda}`];
-    if (!mapa) continue; // jÃ¡ reportado por validar(); normalizar() nÃ£o republica erro
+    if (!mapa) continue; // já reportado por validar(); normalizar() não republica erro
 
     const cidadeSlug = normalizarCidade(l.cidade);
     const cidadeChaveAgrupamento = cidadeSlug ?? `__bruta__${l.cidade}`;
@@ -278,18 +278,18 @@ export function normalizar(linhas) {
         indicadorId: mapa.indicadorId,
         mesRef: l.mes_ref,
         semanaMes: Number(l.semana_mes),
-        // datas REAIS da semana, direto da base (nÃ£o os blocos fixos de 7
-        // dias que o app usa pra semana fictÃ­cia â€” ver utils/semanas.js).
-        // Ã‰ isso que corrige o rÃ³tulo errado da coluna de semana no front.
+        // datas REAIS da semana, direto da base (não os blocos fixos de 7
+        // dias que o app usa pra semana fictícia — ver utils/semanas.js).
+        // É isso que corrige o rótulo errado da coluna de semana no front.
         primeiroDiaSemana: l.primeiro_dia_semana,
         ultimoDiaSemana: l.ultimo_dia_semana,
         valor: 0,
       });
     }
 
-    // realizado_mes Ã© repetido em toda linha-semana do mesmo grupo (verificado
-    // na validaÃ§Ã£o), entÃ£o soma-lo por canal aqui (nÃ£o por linha) evita
-    // multiplicar o mensal pelo nÃºmero de semanas do mÃªs.
+    // realizado_mes é repetido em toda linha-semana do mesmo grupo (verificado
+    // na validação), então soma-lo por canal aqui (não por linha) evita
+    // multiplicar o mensal pelo número de semanas do mês.
     const chaveCanalMensal = chaveMensal + '\u0001' + l.canal_geral + '\u0001' + l.origem;
     if (!mensal.get(chaveMensal)._canaisSomados) mensal.get(chaveMensal)._canaisSomados = new Set();
     const registroMensal = mensal.get(chaveMensal);
@@ -306,18 +306,18 @@ export function normalizar(linhas) {
 }
 
 /**
- * Mesma agregaÃ§Ã£o de `normalizar()`, mas SEM somar canal_geral â€” usada sÃ³
+ * Mesma agregação de `normalizar()`, mas SEM somar canal_geral — usada só
  * pra gerar o arquivo separado que alimenta o filtro de canal
- * (`indicadores-realizados-por-canal.csv`). Arquivo Ã  parte, nÃ£o uma
+ * (`indicadores-realizados-por-canal.csv`). Arquivo à parte, não uma
  * coluna a mais no arquivo principal, porque o caso comum (sem filtro de
- * canal) nÃ£o deve pagar o custo de um arquivo ~40x maior â€” ver
- * `indicadorRealizadoService.js`, que sÃ³ busca este aqui quando o filtro
- * de canal Ã© usado.
+ * canal) não deve pagar o custo de um arquivo ~40x maior — ver
+ * `indicadorRealizadoService.js`, que só busca este aqui quando o filtro
+ * de canal é usado.
  *
- * O dedup de `realizado_mes` (repetido em toda linha-semana do mesmo mÃªs)
- * agora Ã© por "canal + origem" dentro da CHAVE MENSAL (que jÃ¡ inclui
- * canal) â€” antes era isso mesmo, sÃ³ que dentro de uma chave que somava
- * todos os canais juntos; aqui cada canal fica com sua prÃ³pria linha.
+ * O dedup de `realizado_mes` (repetido em toda linha-semana do mesmo mês)
+ * agora é por "canal + origem" dentro da CHAVE MENSAL (que já inclui
+ * canal) — antes era isso mesmo, só que dentro de uma chave que somava
+ * todos os canais juntos; aqui cada canal fica com sua própria linha.
  */
 export function normalizarPorCanal(linhas) {
   const mensal = new Map();
@@ -368,7 +368,7 @@ export function normalizarPorCanal(linhas) {
         valor: 0,
       });
     }
-    // valor semanal nÃ£o se repete entre semanas (diferente do mensal), nÃ£o precisa de dedup.
+    // valor semanal não se repete entre semanas (diferente do mensal), não precisa de dedup.
     semanal.get(chaveSemanal).valor += paraNumero(l.realizado_semana);
   }
 
@@ -389,7 +389,7 @@ const COLUNAS_SAIDA_POR_CANAL = [
   'valor',
 ];
 
-/** Serializa a saÃ­da de `normalizarPorCanal()` â€” mesmo parser (`parsearCsv`) lÃª os dois arquivos, sÃ³ muda o conjunto de colunas. */
+/** Serializa a saída de `normalizarPorCanal()` — mesmo parser (`parsearCsv`) lê os dois arquivos, só muda o conjunto de colunas. */
 export function paraCsvPorCanal(registros) {
   const linhas = registros.map((r) =>
     [
@@ -411,18 +411,18 @@ export function paraCsvPorCanal(registros) {
 }
 
 /**
- * Colunas de metainformaÃ§Ã£o de cidade (gerÃªncia regional, gerente e
- * coordenaÃ§Ã£o) â€” opcionais: bases antigas sem essas colunas continuam
- * funcionando, sÃ³ nÃ£o geram metadado nenhum (front cai no que jÃ¡ tinha:
+ * Colunas de metainformação de cidade (gerência regional, gerente e
+ * coordenação) — opcionais: bases antigas sem essas colunas continuam
+ * funcionando, só não geram metadado nenhum (front cai no que já tinha:
  * mock ou `null`, ver cidadeService.js). Nunca em COLUNAS_OBRIGATORIAS
  * por causa disso.
  *
- * Cada cidade deveria ter sÃ³ um valor de cada campo na base inteira (nÃ£o
- * Ã© algo que muda por semana/mÃªs). Se a base trouxer valores diferentes
- * pra uma mesma cidade â€” inconsistÃªncia de cadastro, nÃ£o erro de
- * parsing â€” mantÃ©m o primeiro valor nÃ£o-"NÃƒO MAPEADO" encontrado (ordem
+ * Cada cidade deveria ter só um valor de cada campo na base inteira (não
+ * é algo que muda por semana/mês). Se a base trouxer valores diferentes
+ * pra uma mesma cidade — inconsistência de cadastro, não erro de
+ * parsing — mantém o primeiro valor não-"NÃO MAPEADO" encontrado (ordem
  * de leitura do CSV) e devolve um aviso, sem derrubar o workflow: dado
- * de gerÃªncia Ã© complementar, nÃ£o pode bloquear a publicaÃ§Ã£o de vendas.
+ * de gerência é complementar, não pode bloquear a publicação de vendas.
  */
 export function normalizarMetadadosCidade(linhas) {
   const avisos = [];
@@ -436,7 +436,7 @@ export function normalizarMetadadosCidade(linhas) {
 
   for (const l of linhas) {
     const cidadeSlug = normalizarCidade(l.cidade);
-    if (!cidadeSlug) continue; // sem cidade mapeada: mesmo critÃ©rio de normalizar()
+    if (!cidadeSlug) continue; // sem cidade mapeada: mesmo critério de normalizar()
 
     if (!porCidade.has(cidadeSlug)) {
       porCidade.set(cidadeSlug, { cidadeOrigem: l.cidade, gerenciaCidade: null, gerenteCidade: null, coordenacao: null });
@@ -451,7 +451,7 @@ export function normalizarMetadadosCidade(linhas) {
         registro[campoDestino] = bruto;
       } else if (registro[campoDestino] !== bruto) {
         avisos.push(
-          `Cidade "${l.cidade}": valores divergentes em "${colunaOrigem}" ("${registro[campoDestino]}" vs "${bruto}") â€” mantendo o primeiro.`,
+          `Cidade "${l.cidade}": valores divergentes em "${colunaOrigem}" ("${registro[campoDestino]}" vs "${bruto}") — mantendo o primeiro.`,
         );
       }
     }
@@ -462,7 +462,7 @@ export function normalizarMetadadosCidade(linhas) {
 
 const COLUNAS_SAIDA_METADADOS = ['cidade_slug', 'cidade_origem', 'gerencia_cidade', 'gerente_cidade', 'coordenacao'];
 
-/** Serializa a saÃ­da de `normalizarMetadadosCidade()` â€” arquivo separado (`cidades-metadados.csv`) porque Ã© 1 linha por cidade, nÃ£o 1 por indicador/semana como `indicadores-realizados.csv`. */
+/** Serializa a saída de `normalizarMetadadosCidade()` — arquivo separado (`cidades-metadados.csv`) porque é 1 linha por cidade, não 1 por indicador/semana como `indicadores-realizados.csv`. */
 export function paraCsvMetadados(registros) {
   const linhas = registros.map((r) =>
     [r.cidadeSlug, r.cidadeOrigem, r.gerenciaCidade, r.gerenteCidade, r.coordenacao].map(celulaCsv).join(','),
@@ -489,9 +489,9 @@ function celulaCsv(valor) {
 }
 
 /**
- * Serializa a saÃ­da de `normalizar()` de volta pra CSV â€” Ã© o arquivo que
+ * Serializa a saída de `normalizar()` de volta pra CSV — é o arquivo que
  * o workflow escreve em `public/dados/indicadores-realizados.csv` e que o
- * front lÃª com `parsearCsv()` (mesmo parser, mesmo shape de coluna: Ã© o
+ * front lê com `parsearCsv()` (mesmo parser, mesmo shape de coluna: é o
  * que garante que gerar e ler nunca ficam dessincronizados).
  */
 export function paraCsv(registros) {
@@ -514,20 +514,20 @@ export function paraCsv(registros) {
 }
 
 /**
- * Metas de "Vendas Instaladas"/"Vendas Ativadas" por cidade/mÃªs â€” fonte
- * separada da base de vendas (arquivo prÃ³prio, formato:
+ * Metas de "Vendas Instaladas"/"Vendas Ativadas" por cidade/mês — fonte
+ * separada da base de vendas (arquivo próprio, formato:
  * `data,cidade,indicador,indicador_geral,servico,meta,categoria,...`).
  * Mesmo arquivo cobre as duas tecnologias hoje (a query de origem virou
- * `WHERE indicador_geral IN ('Vendas Instaladas', 'Vendas Ativadas')`) â€”
- * por isso a normalizaÃ§Ã£o em si vive numa funÃ§Ã£o compartilhada
- * (`normalizarMetasCidade`), e cada tecnologia sÃ³ declara o prÃ³prio
- * filtro. O filtro continua restrito e explÃ­cito: sÃ³ entra o que bate
+ * `WHERE indicador_geral IN ('Vendas Instaladas', 'Vendas Ativadas')`) —
+ * por isso a normalização em si vive numa função compartilhada
+ * (`normalizarMetasCidade`), e cada tecnologia só declara o próprio
+ * filtro. O filtro continua restrito e explícito: só entra o que bate
  * `servico`+`indicadorGeral` exatos, `categoria === 'venda'`,
- * `stutus === 'Ativo'` â€” qualquer outra linha (FWA, Banda Larga,
- * indicador desativado) Ã© ignorada, nÃ£o misturada.
+ * `stutus === 'Ativo'` — qualquer outra linha (FWA, Banda Larga,
+ * indicador desativado) é ignorada, não misturada.
  *
- * `data` jÃ¡ vem como primeiro dia do mÃªs ("2026-01-01") â€” mesmo formato
- * de `mes_ref` no resto do pipeline, nÃ£o precisa conversÃ£o.
+ * `data` já vem como primeiro dia do mês ("2026-01-01") — mesmo formato
+ * de `mes_ref` no resto do pipeline, não precisa conversão.
  */
 function normalizarMetasCidade(linhas, { servico, indicadorGeral }) {
   const avisos = [];
@@ -540,7 +540,7 @@ function normalizarMetasCidade(linhas, { servico, indicadorGeral }) {
     if (l.stutus !== 'Ativo') continue;
 
     const cidadeSlug = normalizarCidade(l.cidade);
-    if (!cidadeSlug) continue; // mesmo critÃ©rio do resto do pipeline: nunca inventa cidade
+    if (!cidadeSlug) continue; // mesmo critério do resto do pipeline: nunca inventa cidade
 
     const meta = paraNumero(l.meta);
     if (Number.isNaN(meta)) continue;
@@ -549,7 +549,7 @@ function normalizarMetasCidade(linhas, { servico, indicadorGeral }) {
     if (porChave.has(chave)) {
       const anterior = porChave.get(chave).meta;
       if (anterior !== meta) {
-        avisos.push(`Cidade "${l.cidade}", mÃªs ${l.data}: meta divergente (${anterior} vs ${meta}) â€” mantendo a primeira.`);
+        avisos.push(`Cidade "${l.cidade}", mês ${l.data}: meta divergente (${anterior} vs ${meta}) — mantendo a primeira.`);
       }
       continue;
     }
@@ -559,52 +559,52 @@ function normalizarMetasCidade(linhas, { servico, indicadorGeral }) {
   return { registros: [...porChave.values()], avisos };
 }
 
-/** Meta Geral da Cidade â€” FTTH ("Vendas Instaladas"). Comportamento idÃªntico a antes da 5G existir. */
+/** Meta Geral da Cidade — FTTH ("Vendas Instaladas"). Comportamento idêntico a antes da 5G existir. */
 export function normalizarMetasInstalacaoFtth(linhas) {
   return normalizarMetasCidade(linhas, { servico: 'FTTH', indicadorGeral: 'Vendas Instaladas' });
 }
 
-/** Meta Geral da Cidade â€” 5G ("Vendas Ativadas"). Mesmo arquivo de origem que o FTTH, filtro prÃ³prio. */
+/** Meta Geral da Cidade — 5G ("Vendas Ativadas"). Mesmo arquivo de origem que o FTTH, filtro próprio. */
 export function normalizarMetasAtivacao5g(linhas) {
   return normalizarMetasCidade(linhas, { servico: '5G', indicadorGeral: 'Vendas Ativadas' });
 }
 
 const COLUNAS_SAIDA_METAS_INSTALACAO = ['cidade_slug', 'cidade_origem', 'mes_ref', 'meta'];
 
-/** Serializa a saÃ­da de `normalizarMetasInstalacaoFtth()`/`normalizarMetasAtivacao5g()` â€” mesmo parser (`parsearCsv`) lÃª de volta. */
+/** Serializa a saída de `normalizarMetasInstalacaoFtth()`/`normalizarMetasAtivacao5g()` — mesmo parser (`parsearCsv`) lê de volta. */
 export function paraCsvMetasInstalacaoFtth(registros) {
   const linhas = registros.map((r) => [r.cidadeSlug, r.cidadeOrigem, r.mesRef, r.meta].map(celulaCsv).join(','));
   return [COLUNAS_SAIDA_METAS_INSTALACAO.join(','), ...linhas].join('\n') + '\n';
 }
 
-/** Mesmo formato de `paraCsvMetasInstalacaoFtth` â€” nome prÃ³prio sÃ³ pra deixar o output (`gerarBase.mjs`) explÃ­cito sobre qual arquivo estÃ¡ escrevendo. */
+/** Mesmo formato de `paraCsvMetasInstalacaoFtth` — nome próprio só pra deixar o output (`gerarBase.mjs`) explícito sobre qual arquivo está escrevendo. */
 export const paraCsvMetasAtivacao5g = paraCsvMetasInstalacaoFtth;
 
 /**
- * Lista oficial de cidades onde a operaÃ§Ã£o vende (FTTH/5G/FWA) â€” fonte de
+ * Lista oficial de cidades onde a operação vende (FTTH/5G/FWA) — fonte de
  * ESCOPO do Ranking, diferente da base de vendas (que traz qualquer
  * cidade com atividade registrada, incluindo funil que nunca virou venda
- * â€” ver normalizarPorCanal/normalizar).
+ * — ver normalizarPorCanal/normalizar).
  *
- * DUAS fontes independentes, cada uma decide sua prÃ³pria tecnologia â€”
- * confirmado com o negÃ³cio (planilha "Cidades Atuais" Ã© sÃ³ 5G; FTTH tem
- * lista prÃ³pria separada, `cidades_ftth.csv`):
- *  - `cidades_ftth.csv`: lista fechada, 1 coluna (`cidade`, "Nome/UF") â€”
- *    presenÃ§a na lista = `vendeFtth: true`. Sem outro atributo.
+ * DUAS fontes independentes, cada uma decide sua própria tecnologia —
+ * confirmado com o negócio (planilha "Cidades Atuais" é só 5G; FTTH tem
+ * lista própria separada, `cidades_ftth.csv`):
+ *  - `cidades_ftth.csv`: lista fechada, 1 coluna (`cidade`, "Nome/UF") —
+ *    presença na lista = `vendeFtth: true`. Sem outro atributo.
  *  - `cidades_atuais.csv` (planilha "Cidades Atuais", 5G): colunas
- *    `atuais` (nome da cidade â€” usa essa, nÃ£o `cidades`), `servico`
- *    ("FTTH E 5G" | "5G ONLY" â€” aqui sÃ³ decide `vende5g`, nunca
+ *    `atuais` (nome da cidade — usa essa, não `cidades`), `servico`
+ *    ("FTTH E 5G" | "5G ONLY" — aqui só decide `vende5g`, nunca
  *    `vendeFtth`), `fwa` ("VENDENDO" | "PENDENTE"), `lancamento_comercial`
- *    (data yyyy-mm-dd de quando a cidade comeÃ§ou a vender comercialmente
- *    â€” vira o card "AtivaÃ§Ã£o comercial" da PaginaCidade).
+ *    (data yyyy-mm-dd de quando a cidade começou a vender comercialmente
+ *    — vira o card "Ativação comercial" da PaginaCidade).
  *
- * Cidade que sÃ³ existe numa das duas fontes entra mesmo assim (com a
- * tecnologia que nÃ£o tem fonte prÃ³pria em `false`); cidade nas duas
- * funde os dois lados. Formato invÃ¡lido/ausente vira `null` (mesmo
- * critÃ©rio de "â€”" do resto do painel), sem bloquear a publicaÃ§Ã£o.
+ * Cidade que só existe numa das duas fontes entra mesmo assim (com a
+ * tecnologia que não tem fonte própria em `false`); cidade nas duas
+ * funde os dois lados. Formato inválido/ausente vira `null` (mesmo
+ * critério de "—" do resto do painel), sem bloquear a publicação.
  *
- * 1 linha por cidade (sem meses/perÃ­odo) â€” mais simples que
- * `normalizarMetadadosCidade`, nÃ£o precisa de agregaÃ§Ã£o por chave
+ * 1 linha por cidade (sem meses/período) — mais simples que
+ * `normalizarMetadadosCidade`, não precisa de agregação por chave
  * composta.
  */
 export function normalizarCidadesOficiais(linhasFtth, linhasAtuais5g) {
@@ -613,17 +613,17 @@ export function normalizarCidadesOficiais(linhasFtth, linhasAtuais5g) {
   const vistasFtth = new Set();
   const vistasAtuais = new Set();
 
-  // FTTH: lista fechada, sÃ³ nome de cidade (`cidade_ftth.csv`) â€” nenhum
-  // outro atributo vem daqui. Confirmado com o negÃ³cio: a coluna
-  // `servico` de cidades_atuais.csv NÃƒO decide mais FTTH (aquele arquivo
-  // Ã© sÃ³ 5G â€” "FTTH E 5G" ali significa "essa cidade 5G tambÃ©m tem FTTH
-  // pela lista prÃ³pria", nÃ£o o contrÃ¡rio).
+  // FTTH: lista fechada, só nome de cidade (`cidade_ftth.csv`) — nenhum
+  // outro atributo vem daqui. Confirmado com o negócio: a coluna
+  // `servico` de cidades_atuais.csv NÃO decide mais FTTH (aquele arquivo
+  // é só 5G — "FTTH E 5G" ali significa "essa cidade 5G também tem FTTH
+  // pela lista própria", não o contrário).
   for (const l of linhasFtth) {
     const cidadeSlug = normalizarCidade(l.cidade);
-    if (!cidadeSlug) continue; // mesmo critÃ©rio do resto do pipeline: nunca inventa cidade
+    if (!cidadeSlug) continue; // mesmo critério do resto do pipeline: nunca inventa cidade
 
     if (vistasFtth.has(cidadeSlug)) {
-      avisos.push(`Cidade "${l.cidade}" aparece mais de uma vez na base FTTH â€” mantendo a primeira ocorrÃªncia.`);
+      avisos.push(`Cidade "${l.cidade}" aparece mais de uma vez na base FTTH — mantendo a primeira ocorrência.`);
       continue;
     }
     vistasFtth.add(cidadeSlug);
@@ -638,15 +638,15 @@ export function normalizarCidadesOficiais(linhasFtth, linhasAtuais5g) {
     });
   }
 
-  // 5G (cidades_atuais.csv): dÃ¡ vende5g, FWA e lanÃ§amento comercial. Uma
-  // cidade que jÃ¡ veio da lista FTTH sÃ³ recebe o que falta (nunca reduz
-  // vendeFtth pra false); uma cidade nova (sÃ³ 5G) entra do zero.
+  // 5G (cidades_atuais.csv): dá vende5g, FWA e lançamento comercial. Uma
+  // cidade que já veio da lista FTTH só recebe o que falta (nunca reduz
+  // vendeFtth pra false); uma cidade nova (só 5G) entra do zero.
   for (const l of linhasAtuais5g) {
     const cidadeSlug = normalizarCidade(l.atuais);
     if (!cidadeSlug) continue;
 
     if (vistasAtuais.has(cidadeSlug)) {
-      avisos.push(`Cidade "${l.atuais}" aparece mais de uma vez na base de cidades atuais (5G) â€” mantendo a primeira ocorrÃªncia.`);
+      avisos.push(`Cidade "${l.atuais}" aparece mais de uma vez na base de cidades atuais (5G) — mantendo a primeira ocorrência.`);
       continue;
     }
     vistasAtuais.add(cidadeSlug);
@@ -654,7 +654,7 @@ export function normalizarCidadesOficiais(linhasFtth, linhasAtuais5g) {
     const vende5gAqui = l.servico === 'FTTH E 5G' || l.servico === '5G ONLY';
     const lancamentoComercial = REGEX_DATA.test(l.lancamento_comercial) ? l.lancamento_comercial : null;
     if (l.lancamento_comercial && !lancamentoComercial) {
-      avisos.push(`Cidade "${l.atuais}": lancamento_comercial invÃ¡lida ("${l.lancamento_comercial}") â€” exibindo "â€”".`);
+      avisos.push(`Cidade "${l.atuais}": lancamento_comercial inválida ("${l.lancamento_comercial}") — exibindo "—".`);
     }
 
     const existente = porCidade.get(cidadeSlug);
@@ -680,7 +680,7 @@ const COLUNAS_SAIDA_CIDADES_OFICIAIS = [
   'lancamento_comercial',
 ];
 
-/** Serializa a saÃ­da de `normalizarCidadesOficiais()` â€” mesmo parser (`parsearCsv`) lÃª de volta. */
+/** Serializa a saída de `normalizarCidadesOficiais()` — mesmo parser (`parsearCsv`) lê de volta. */
 export function paraCsvCidadesOficiais(registros) {
   const linhas = registros.map((r) =>
     [r.cidadeSlug, r.cidadeOrigem, r.vendeFtth, r.vende5g, r.vendeFwa, r.lancamentoComercial].map(celulaCsv).join(','),
@@ -689,37 +689,37 @@ export function paraCsvCidadesOficiais(registros) {
 }
 
 /**
- * Meta por canal â€” DIFERENTE da Meta Geral da Cidade
+ * Meta por canal — DIFERENTE da Meta Geral da Cidade
  * (normalizarMetasInstalacaoFtth/normalizarMetasAtivacao5g, acima): fonte
- * prÃ³pria, granularidade prÃ³pria (cidade+canal+mÃªs, nÃ£o sÃ³ cidade+mÃªs), e
- * os nÃºmeros NÃƒO precisam bater entre si â€” sÃ£o conceitos distintos
- * confirmados com o negÃ³cio (Meta Geral da Cidade alimenta Ranking/score;
+ * própria, granularidade própria (cidade+canal+mês, não só cidade+mês), e
+ * os números NÃO precisam bater entre si — são conceitos distintos
+ * confirmados com o negócio (Meta Geral da Cidade alimenta Ranking/score;
  * Meta por Canal alimenta a Meta do Indicador na tabela da cidade,
- * filtrÃ¡vel pelo SeletorCanais).
+ * filtrável pelo SeletorCanais).
  *
- * Cobre 4 categorias hoje, cada uma Ã© a soma de um subconjunto de
- * indicadores do DicionÃ¡rio de Metas â€” o mesmo indicador nunca pertence a
+ * Cobre 4 categorias hoje, cada uma é a soma de um subconjunto de
+ * indicadores do Dicionário de Metas — o mesmo indicador nunca pertence a
  * mais de uma categoria:
  *  - "orcamento" (Criado): Vendas criadas Combo 1 Chip/Combo 2+ Chip/avulso
  *  - "efetivado" (Efetivado): Vendas efetivadas Combo 1 Chip/Combo 2+ Chip/avulso
  *  - "instalacao" (Instalado): Vendas instalada(s) Combo/Combo 1 Chip/Combo 2+ Chip/avulso
- *  - "ativacao" (Ativado 5G): "AtivaÃ§Ã£o 5G avulso" OU "Vendas Ativadas - 5G",
- *    dependendo do canal â€” ver INDICADOR_ATIVACAO_POR_CANAL, abaixo.
+ *  - "ativacao" (Ativado 5G): "Ativação 5G avulso" OU "Vendas Ativadas - 5G",
+ *    dependendo do canal — ver INDICADOR_ATIVACAO_POR_CANAL, abaixo.
  *
  * Duas bases de entrada:
- *  - DicionÃ¡rio de Metas: 1 linha por mÃªsÃ—indicadorÃ—canal (o dicionÃ¡rio
+ *  - Dicionário de Metas: 1 linha por mês×indicador×canal (o dicionário
  *    ganhou a coluna canal, mas o multiplicador NUNCA varia por canal pro
- *    mesmo indicador+mÃªs â€” validado nas 587 linhas atuais â€” por isso o
- *    Ã­ndice de multiplicador continua ignorando canal).
- *  - Fato de Metas por vendedor: 1 linha por vendedorÃ—mÃªsÃ—indicadorÃ—canal,
- *    dÃ¡ a meta-base e a cidade/canal daquele vendedor.
+ *    mesmo indicador+mês — validado nas 587 linhas atuais — por isso o
+ *    índice de multiplicador continua ignorando canal).
+ *  - Fato de Metas por vendedor: 1 linha por vendedor×mês×indicador×canal,
+ *    dá a meta-base e a cidade/canal daquele vendedor.
  *
- * Regra de negÃ³cio (confirmada): multiplicador = max(FTTH, FWA, 5G) da
- * linha do dicionÃ¡rio correspondente (chave: data+indicador); meta
- * calculada = meta-base Ã— multiplicador; a meta final por
- * cidade+canal+categoria+mÃªs Ã© a SOMA das metas calculadas de todo
+ * Regra de negócio (confirmada): multiplicador = max(FTTH, FWA, 5G) da
+ * linha do dicionário correspondente (chave: data+indicador); meta
+ * calculada = meta-base × multiplicador; a meta final por
+ * cidade+canal+categoria+mês é a SOMA das metas calculadas de todo
  * indicador daquela categoria (ver MAPA_INDICADOR_PARA_CATEGORIA_META),
- * respeitando a regra de indicador-por-canal da AtivaÃ§Ã£o 5G.
+ * respeitando a regra de indicador-por-canal da Ativação 5G.
  */
 const INDICADORES_POR_CATEGORIA_META = {
   orcamento: ['Vendas criadas Combo 1 Chip - FTTH', 'Vendas criadas Combo 2+ Chip - FTTH', 'Vendas criadas avulso - FTTH'],
@@ -728,16 +728,16 @@ const INDICADORES_POR_CATEGORIA_META = {
     'Vendas instalada Combo - FTTH',
     'Vendas instaladas Combo 1 Chip - FTTH',
     'Vendas instaladas Combo 2+ Chip - FTTH',
-    'Vendas instaladas avulso - FTHH', // grafia real da fonte (typo consistente no dicionÃ¡rio e na fato)
-    'Vendas instaladas avulso - Banda Larga', // confirmado com o negÃ³cio (reuniÃ£o 20/07/2026): conta como Instalado FTTH; dicionÃ¡rio corrigido na fonte pra dar FTTH=1 pra esse indicador (sem override no cÃ³digo)
+    'Vendas instaladas avulso - FTHH', // grafia real da fonte (typo consistente no dicionário e na fato)
+    'Vendas instaladas avulso - Banda Larga', // confirmado com o negócio (reunião 20/07/2026): conta como Instalado FTTH; dicionário corrigido na fonte pra dar FTTH=1 pra esse indicador (sem override no código)
   ],
-  // Os dois indicadores de ativaÃ§Ã£o 5G â€” qual vale pra qual canal Ã©
-  // decidido por INDICADOR_ATIVACAO_POR_CANAL, nÃ£o pelo simples
+  // Os dois indicadores de ativação 5G — qual vale pra qual canal é
+  // decidido por INDICADOR_ATIVACAO_POR_CANAL, não pelo simples
   // pertencimento a essa lista (diferente das outras 3 categorias).
-  ativacao: ['AtivaÃ§Ã£o 5G avulso', 'Vendas Ativadas - 5G'],
+  ativacao: ['Ativação 5G avulso', 'Vendas Ativadas - 5G'],
 };
 
-/** "Vendas criadas avulso - FTTH" -> "orcamento", etc. ConstruÃ­do uma vez a partir de INDICADORES_POR_CATEGORIA_META â€” nunca mantido Ã  mÃ£o em paralelo. */
+/** "Vendas criadas avulso - FTTH" -> "orcamento", etc. Construído uma vez a partir de INDICADORES_POR_CATEGORIA_META — nunca mantido à mão em paralelo. */
 const MAPA_INDICADOR_PARA_CATEGORIA_META = new Map(
   Object.entries(INDICADORES_POR_CATEGORIA_META).flatMap(([categoria, indicadores]) =>
     indicadores.map((indicador) => [indicador, categoria]),
@@ -745,29 +745,29 @@ const MAPA_INDICADOR_PARA_CATEGORIA_META = new Map(
 );
 
 /**
- * Confirmado com o negÃ³cio: a fonte reporta "AtivaÃ§Ã£o 5G avulso" E "Vendas
+ * Confirmado com o negócio: a fonte reporta "Ativação 5G avulso" E "Vendas
  * Ativadas - 5G" simultaneamente pro canal ONLINE, com valores mensais
- * diferentes (nÃ£o Ã© o mesmo evento duplicado) â€” mas cada canal usa sÃ³ o
- * indicador que "pertence" a ele, nunca soma os dois. ONLINE Ã© o Ãºnico
- * canal com indicador prÃ³prio (`Vendas Ativadas - 5G`) hoje; todo outro
- * canal (inclusive canal novo que apareÃ§a no futuro) cai no padrÃ£o
- * (`AtivaÃ§Ã£o 5G avulso`) â€” Ã© assim que a fonte reporta pra eles.
+ * diferentes (não é o mesmo evento duplicado) — mas cada canal usa só o
+ * indicador que "pertence" a ele, nunca soma os dois. ONLINE é o único
+ * canal com indicador próprio (`Vendas Ativadas - 5G`) hoje; todo outro
+ * canal (inclusive canal novo que apareça no futuro) cai no padrão
+ * (`Ativação 5G avulso`) — é assim que a fonte reporta pra eles.
  */
 const INDICADOR_ATIVACAO_POR_CANAL = { ONLINE: 'Vendas Ativadas - 5G' };
-const INDICADOR_ATIVACAO_PADRAO = 'AtivaÃ§Ã£o 5G avulso';
+const INDICADOR_ATIVACAO_PADRAO = 'Ativação 5G avulso';
 
-/** Indicador de ativaÃ§Ã£o que reporta pro canal errado (ex.: "AtivaÃ§Ã£o 5G avulso" registrado sob ONLINE, que usa o indicador prÃ³prio) Ã© excluÃ­do â€” nÃ£o Ã© erro, Ã© o indicador do canal vizinho vazando na mesma fonte. */
+/** Indicador de ativação que reporta pro canal errado (ex.: "Ativação 5G avulso" registrado sob ONLINE, que usa o indicador próprio) é excluído — não é erro, é o indicador do canal vizinho vazando na mesma fonte. */
 function indicadorAtivacaoPertenceAoCanal(indicador, canal) {
   const esperado = INDICADOR_ATIVACAO_POR_CANAL[canal] ?? INDICADOR_ATIVACAO_PADRAO;
   return indicador === esperado;
 }
 
 /**
- * DicionÃ¡rio -> Map("mesRef\u0001indicador" -> multiplicador). Uma linha
- * por canal Ã© esperado agora (o dicionÃ¡rio ganhou a coluna canal) â€” sÃ³
- * gera aviso se o MESMO indicador+mÃªs tiver multiplicador DIFERENTE entre
- * canais (o que nunca deveria acontecer, validado hoje), nÃ£o a cada
- * repetiÃ§Ã£o normal.
+ * Dicionário -> Map("mesRef\u0001indicador" -> multiplicador). Uma linha
+ * por canal é esperado agora (o dicionário ganhou a coluna canal) — só
+ * gera aviso se o MESMO indicador+mês tiver multiplicador DIFERENTE entre
+ * canais (o que nunca deveria acontecer, validado hoje), não a cada
+ * repetição normal.
  */
 export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
   const avisos = [];
@@ -784,7 +784,7 @@ export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
       const anterior = indice.get(chave);
       if (anterior !== multiplicador) {
         avisos.push(
-          `DicionÃ¡rio de metas: indicador "${l.indicador}" no mÃªs ${l.data} tem multiplicador divergente entre canais (${anterior} vs ${multiplicador}, canal "${l.canal}") â€” mantendo o primeiro.`,
+          `Dicionário de metas: indicador "${l.indicador}" no mês ${l.data} tem multiplicador divergente entre canais (${anterior} vs ${multiplicador}, canal "${l.canal}") — mantendo o primeiro.`,
         );
       }
       continue;
@@ -797,17 +797,17 @@ export function indexarMultiplicadoresDicionarioMetas(linhasDicionario) {
 
 /**
  * Fato de metas por vendedor -> registros agregados em
- * cidade+canal+categoria+mÃªs (soma de todo indicador daquela categoria,
- * jÃ¡ multiplicado). Linha sem cidade mapeÃ¡vel (`normalizarCidade` devolve
- * null) fica de fora da tabela por cidade â€” mesmo critÃ©rio do resto do
- * pipeline, nunca inventa cidade. Linha cujo indicador nÃ£o tem regra no
- * dicionÃ¡rio pro mÃªs vira aviso e Ã© descartada (auditÃ¡vel, nÃ£o silenciosa).
- * Linha cujo indicador nÃ£o pertence a nenhuma categoria conhecida Ã©
- * ignorada silenciosamente â€” Ã© o comportamento esperado pra qualquer
- * indicador da fato que ainda nÃ£o tem meta por canal (ex.: Churn, Ticket
- * MÃ©dio), nÃ£o um erro. Linha de ativaÃ§Ã£o 5G que reporta pro indicador do
- * canal errado (ver indicadorAtivacaoPertenceAoCanal) tambÃ©m Ã© ignorada
- * silenciosamente, mesmo critÃ©rio.
+ * cidade+canal+categoria+mês (soma de todo indicador daquela categoria,
+ * já multiplicado). Linha sem cidade mapeável (`normalizarCidade` devolve
+ * null) fica de fora da tabela por cidade — mesmo critério do resto do
+ * pipeline, nunca inventa cidade. Linha cujo indicador não tem regra no
+ * dicionário pro mês vira aviso e é descartada (auditável, não silenciosa).
+ * Linha cujo indicador não pertence a nenhuma categoria conhecida é
+ * ignorada silenciosamente — é o comportamento esperado pra qualquer
+ * indicador da fato que ainda não tem meta por canal (ex.: Churn, Ticket
+ * Médio), não um erro. Linha de ativação 5G que reporta pro indicador do
+ * canal errado (ver indicadorAtivacaoPertenceAoCanal) também é ignorada
+ * silenciosamente, mesmo critério.
  */
 export function normalizarMetaPorCanal(linhasFato, indiceMultiplicadores) {
   const avisos = [];
@@ -822,19 +822,19 @@ export function normalizarMetaPorCanal(linhasFato, indiceMultiplicadores) {
 
     const metaBase = paraNumero(l.meta);
     if (Number.isNaN(metaBase)) {
-      avisos.push(`Meta invÃ¡lida: cidade "${l.cidade}", canal "${l.canal}", indicador "${l.indicador}", mÃªs ${l.data}.`);
+      avisos.push(`Meta inválida: cidade "${l.cidade}", canal "${l.canal}", indicador "${l.indicador}", mês ${l.data}.`);
       continue;
     }
 
     const chaveDicionario = l.data + '\u0001' + l.indicador;
     const multiplicador = indiceMultiplicadores.get(chaveDicionario);
     if (multiplicador === undefined) {
-      avisos.push(`Sem regra no dicionÃ¡rio pro indicador "${l.indicador}" no mÃªs ${l.data} â€” linha descartada.`);
+      avisos.push(`Sem regra no dicionário pro indicador "${l.indicador}" no mês ${l.data} — linha descartada.`);
       continue;
     }
 
     const cidadeSlug = normalizarCidade(l.cidade);
-    if (!cidadeSlug) continue; // sem cidade mapeÃ¡vel: fica fora da tabela por cidade (mesmo critÃ©rio de sempre)
+    if (!cidadeSlug) continue; // sem cidade mapeável: fica fora da tabela por cidade (mesmo critério de sempre)
 
     const chave = cidadeSlug + '\u0001' + canal + '\u0001' + categoria + '\u0001' + l.data;
     const atual = porChave.get(chave) ?? {
@@ -854,7 +854,7 @@ export function normalizarMetaPorCanal(linhasFato, indiceMultiplicadores) {
 
 const COLUNAS_SAIDA_META_POR_CANAL = ['cidade_slug', 'cidade_origem', 'canal', 'indicador_id', 'mes_ref', 'meta'];
 
-/** Serializa a saÃ­da de `normalizarMetaPorCanal()` â€” `indicador_id` agora vem do prÃ³prio registro (orcamento/efetivado/instalacao/ativacao), nÃ£o Ã© mais fixo. */
+/** Serializa a saída de `normalizarMetaPorCanal()` — `indicador_id` agora vem do próprio registro (orcamento/efetivado/instalacao/ativacao), não é mais fixo. */
 export function paraCsvMetaPorCanal(registros) {
   const linhas = registros.map((r) =>
     [r.cidadeSlug, r.cidadeOrigem, r.canal, r.indicadorId, r.mesRef, r.meta].map(celulaCsv).join(','),
@@ -875,12 +875,12 @@ const REGEX_DATA_ISO = /^\d{4}-\d{2}-\d{2}$/;
 const REGEX_UF = /^[A-Z]{2}$/;
 
 /**
- * Valida a base de dias Ãºteis (fonte de verdade do calendÃ¡rio comercial
- * pro rateio semanal de Meta do Indicador â€” ver utils/diasUteis.js).
- * NÃƒO reconcilia com o motor de feriados (vendor/feriados) â€” sÃ£o
- * calendÃ¡rios com propÃ³sitos diferentes, jÃ¡ confirmado que divergem em
- * datas reais (ver comentÃ¡rio em utils/diasUteis.js); esta validaÃ§Ã£o sÃ³
- * garante que o ARQUIVO em si estÃ¡ bem formado, nÃ£o que concorda com
+ * Valida a base de dias úteis (fonte de verdade do calendário comercial
+ * pro rateio semanal de Meta do Indicador — ver utils/diasUteis.js).
+ * NÃO reconcilia com o motor de feriados (vendor/feriados) — são
+ * calendários com propósitos diferentes, já confirmado que divergem em
+ * datas reais (ver comentário em utils/diasUteis.js); esta validação só
+ * garante que o ARQUIVO em si está bem formado, não que concorda com
  * outra fonte.
  */
 export function validarDiasUteis(linhas) {
@@ -888,13 +888,13 @@ export function validarDiasUteis(linhas) {
   const avisos = [];
 
   if (linhas.length === 0) {
-    erros.push('Base de dias Ãºteis vazia.');
+    erros.push('Base de dias úteis vazia.');
     return { erros, avisos };
   }
 
   for (const coluna of COLUNAS_DIAS_UTEIS) {
     if (!(coluna in linhas[0])) {
-      erros.push(`Coluna obrigatÃ³ria "${coluna}" ausente no cabeÃ§alho.`);
+      erros.push(`Coluna obrigatória "${coluna}" ausente no cabeçalho.`);
     }
   }
   if (erros.length > 0) return { erros, avisos }; // sem as colunas certas, nem vale checar linha a linha
@@ -905,11 +905,11 @@ export function validarDiasUteis(linhas) {
     }
     if (l.UF !== '' && !REGEX_UF.test(l.UF)) {
       avisos.push(
-        `Linha ${l._linha}: UF "${l.UF}" nÃ£o Ã© uma sigla de 2 letras â€” linha serÃ¡ ignorada no rateio (UF vazia ou invÃ¡lida nunca casa com nenhuma cidade).`,
+        `Linha ${l._linha}: UF "${l.UF}" não é uma sigla de 2 letras — linha será ignorada no rateio (UF vazia ou inválida nunca casa com nenhuma cidade).`,
       );
     }
     if (l.dias_trabalhado !== '' && Number.isNaN(Number(l.dias_trabalhado))) {
-      erros.push(`Linha ${l._linha}: dias_trabalhado "${l.dias_trabalhado}" nÃ£o Ã© numÃ©rico.`);
+      erros.push(`Linha ${l._linha}: dias_trabalhado "${l.dias_trabalhado}" não é numérico.`);
     }
     if (erros.length > 50) break;
   }
@@ -917,11 +917,11 @@ export function validarDiasUteis(linhas) {
   return { erros: erros.slice(0, 50), avisos: avisos.slice(0, 50) };
 }
 
-/** Re-serializa a base de dias Ãºteis (pass-through validado): mesmas
- * colunas, ordem e nomes â€” mas via `celulaCsv` (quoting seguro) e sem
+/** Re-serializa a base de dias úteis (pass-through validado): mesmas
+ * colunas, ordem e nomes — mas via `celulaCsv` (quoting seguro) e sem
  * BOM, mesmo que a fonte baixada tenha vindo com um (Excel/Sheets geram
- * BOM com frequÃªncia â€” `parsearCsv` jÃ¡ tolera isso na leitura, mas
- * publicar jÃ¡ limpo evita depender disso em quem mais vier a ler o
+ * BOM com frequência — `parsearCsv` já tolera isso na leitura, mas
+ * publicar já limpo evita depender disso em quem mais vier a ler o
  * arquivo, incluindo abrir num editor de planilha manualmente). */
 export function paraCsvDiasUteis(linhas) {
   const corpo = linhas.map((l) => COLUNAS_DIAS_UTEIS.map((coluna) => celulaCsv(l[coluna])).join(','));
@@ -932,12 +932,12 @@ export function paraCsvDiasUteis(linhas) {
 // Sistema de Quintil (performance individual dos vendedores -> cidade)
 // ---------------------------------------------------------------------------
 
-/** Categoria de venda -> tecnologia da pÃ¡gina que a consome. */
+/** Categoria de venda -> tecnologia da página que a consome. */
 const TECNOLOGIA_POR_CATEGORIA_META = { orcamento: 'ftth', efetivado: 'ftth', instalacao: 'ftth', ativacao: '5g' };
 
 /**
- * Faixas de quintil definidas pelo negÃ³cio (percentual de atingimento da
- * meta): 1Âº â‰¥100% Â· 2Âº â‰¥80% Â· 3Âº â‰¥60% Â· 4Âº â‰¥30% Â· 5Âº <30%.
+ * Faixas de quintil definidas pelo negócio (percentual de atingimento da
+ * meta): 1º ≥100% · 2º ≥80% · 3º ≥60% · 4º ≥30% · 5º <30%.
  */
 export function classificarQuintil(atingimento) {
   if (atingimento === null || atingimento === undefined || Number.isNaN(atingimento)) return null;
@@ -949,56 +949,56 @@ export function classificarQuintil(atingimento) {
 }
 
 /**
- * Fato de metas+realizado por vendedor -> distribuiÃ§Ã£o de quintis por
- * cidade+tecnologia+mÃªs. A mesma passagem tambÃ©m devolve uma saÃ­da
- * individual enxuta por canal para a pÃ¡gina da cidade e para o Ranking:
+ * Fato de metas+realizado por vendedor -> distribuição de quintis por
+ * cidade+tecnologia+mês. A mesma passagem também devolve uma saída
+ * individual enxuta por canal para a página da cidade e para o Ranking:
  * identificador opaco local, nome, canal, meta, realizado, atingimento e
- * quintil. MatrÃ­cula e hash continuam restritos ao ETL e nunca sÃ£o
+ * quintil. Matrícula e hash continuam restritos ao ETL e nunca são
  * publicados.
  *
- * Atingimento do vendedor (regra fechada com o negÃ³cio): soma de
- * realizado Ã· soma de metaÃ—multiplicador das linhas de VENDA dele na
- * tecnologia â€” exatamente os mesmos indicadores/multiplicadores/regra de
- * ativaÃ§Ã£o-por-canal do pipeline de Meta por Canal
- * (MAPA_INDICADOR_PARA_CATEGORIA_META etc.). Todas essas linhas sÃ£o
- * Qtd/"Maior melhor" (validado na base), entÃ£o a soma Ã© homogÃªnea.
+ * Atingimento do vendedor (regra fechada com o negócio): soma de
+ * realizado ÷ soma de meta×multiplicador das linhas de VENDA dele na
+ * tecnologia — exatamente os mesmos indicadores/multiplicadores/regra de
+ * ativação-por-canal do pipeline de Meta por Canal
+ * (MAPA_INDICADOR_PARA_CATEGORIA_META etc.). Todas essas linhas são
+ * Qtd/"Maior melhor" (validado na base), então a soma é homogênea.
  * Churn/Ticket/Portabilidade ficam de fora por design, como no pipeline
- * de meta. Quintil da cidade = quintil da MÃ‰DIA SIMPLES dos atingimentos
- * dos vendedores dela (decisÃ£o registrada: com times de 1â€“3 pessoas,
- * ponderaÃ§Ã£o Ã© pseudo-precisÃ£o; a nuance fica no TAM exposto ao lado).
+ * de meta. Quintil da cidade = quintil da MÉDIA SIMPLES dos atingimentos
+ * dos vendedores dela (decisão registrada: com times de 1–3 pessoas,
+ * ponderação é pseudo-precisão; a nuance fica no TAM exposto ao lado).
  *
- * Vendedor presente no mÃªs/cidade mas sem NENHUMA linha de venda vÃ¡lida
- * em NENHUMA tecnologia entra em `sem_meta` nas DUAS â€” Ã© o Ãºnico caso
- * genuinamente ambÃ­guo. Vendedor que vende sÃ³ a OUTRA tecnologia (ex.:
- * sÃ³ 5G) fica de fora inteiramente do bucket desta â€” ele nÃ£o Ã© "sem
- * meta de FTTH", sÃ³ nÃ£o pertence a esse funil; contÃ¡-lo infolaria o
+ * Vendedor presente no mês/cidade mas sem NENHUMA linha de venda válida
+ * em NENHUMA tecnologia entra em `sem_meta` nas DUAS — é o único caso
+ * genuinamente ambíguo. Vendedor que vende só a OUTRA tecnologia (ex.:
+ * só 5G) fica de fora inteiramente do bucket desta — ele não é "sem
+ * meta de FTTH", só não pertence a esse funil; contá-lo infolaria o
  * total e o "sem meta" com gente de outro time (achado real na base:
- * Juazeiro do Norte/CE tem vendedores sÃ³-FTTH, sÃ³-5G e ambos no mesmo
- * mÃªs). Isso garante que a soma das faixas SEMPRE bate com o total
- * PUBLICADO da tecnologia (mesma liÃ§Ã£o do "158 vs 161" do ranking, agora
+ * Juazeiro do Norte/CE tem vendedores só-FTTH, só-5G e ambos no mesmo
+ * mês). Isso garante que a soma das faixas SEMPRE bate com o total
+ * PUBLICADO da tecnologia (mesma lição do "158 vs 161" do ranking, agora
  * aplicada por tecnologia). Linha de venda com meta 0 (existem 46 na
- * base) Ã© descartada do atingimento com aviso, nunca vira divisÃ£o por
- * zero. Linha sem regra no dicionÃ¡rio pro mÃªs: aviso + descarte, mesmo
+ * base) é descartada do atingimento com aviso, nunca vira divisão por
+ * zero. Linha sem regra no dicionário pro mês: aviso + descarte, mesmo
  * contrato de normalizarMetaPorCanal.
  */
 export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
   const avisos = [];
-  // vendedor(hash) x cidade x tecnologia x mÃªs -> { meta, realizado } (soma das linhas de venda)
+  // vendedor(hash) x cidade x tecnologia x mês -> { meta, realizado } (soma das linhas de venda)
   const somasPorVendedor = new Map();
-  // Mesma soma, preservando o canal. Ã‰ a fonte do recÃ¡lculo exato quando
-  // um ou vÃ¡rios canais sÃ£o selecionados no painel.
+  // Mesma soma, preservando o canal. É a fonte do recálculo exato quando
+  // um ou vários canais são selecionados no painel.
   const somasPorVendedorCanal = new Map();
-  // Nome de exibiÃ§Ã£o do vendedor. A chave inclui cidade+mÃªs porque a mesma
-  // pessoa pode mudar de lotaÃ§Ã£o ou ter o nome corrigido entre competÃªncias.
+  // Nome de exibição do vendedor. A chave inclui cidade+mês porque a mesma
+  // pessoa pode mudar de lotação ou ter o nome corrigido entre competências.
   const nomesPorVendedor = new Map();
-  // Todo vendedor visto em cada cidade+mÃªs (mesmo sem linha de venda),
-  // guardando tecnologias vÃ¡lidas no total e dentro de cada canal.
+  // Todo vendedor visto em cada cidade+mês (mesmo sem linha de venda),
+  // guardando tecnologias válidas no total e dentro de cada canal.
   const vendedoresPorCidadeMes = new Map();
   const cidadeOrigemPorSlug = new Map();
 
   for (const l of linhasFato) {
     const cidadeSlug = normalizarCidade(l.cidade);
-    if (!cidadeSlug) continue; // sem cidade mapeÃ¡vel: fora, mesmo critÃ©rio de todo o pipeline
+    if (!cidadeSlug) continue; // sem cidade mapeável: fora, mesmo critério de todo o pipeline
     cidadeOrigemPorSlug.set(cidadeSlug, l.cidade);
 
     const chaveCidadeMes = cidadeSlug + '\u0001' + l.data;
@@ -1012,28 +1012,28 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     if (!contextoVendedor.canais.has(canal)) contextoVendedor.canais.set(canal, new Set());
     nomesPorVendedor.set(
       l.hash_user + '\u0001' + chaveCidadeMes,
-      String(l.vendedor ?? '').trim() || 'Vendedor sem identificaÃ§Ã£o',
+      String(l.vendedor ?? '').trim() || 'Vendedor sem identificação',
     );
 
     const categoria = MAPA_INDICADOR_PARA_CATEGORIA_META.get(l.indicador);
-    if (!categoria) continue; // nÃ£o Ã© indicador de venda (churn/ticket/...): conta sÃ³ pro total do time
+    if (!categoria) continue; // não é indicador de venda (churn/ticket/...): conta só pro total do time
 
     if (categoria === 'ativacao' && !indicadorAtivacaoPertenceAoCanal(l.indicador, canal)) continue;
 
     const meta = paraNumero(l.meta);
     const realizado = paraNumero(l.realizado);
     if (Number.isNaN(meta) || Number.isNaN(realizado)) {
-      avisos.push(`Quintil: meta/realizado invÃ¡lido â€” cidade "${l.cidade}", indicador "${l.indicador}", mÃªs ${l.data}.`);
+      avisos.push(`Quintil: meta/realizado inválido — cidade "${l.cidade}", indicador "${l.indicador}", mês ${l.data}.`);
       continue;
     }
     if (meta === 0) {
-      avisos.push(`Quintil: meta 0 descartada â€” cidade "${l.cidade}", indicador "${l.indicador}", mÃªs ${l.data}.`);
+      avisos.push(`Quintil: meta 0 descartada — cidade "${l.cidade}", indicador "${l.indicador}", mês ${l.data}.`);
       continue;
     }
 
     const multiplicador = indiceMultiplicadores.get(l.data + '\u0001' + l.indicador);
     if (multiplicador === undefined) {
-      avisos.push(`Quintil: sem regra no dicionÃ¡rio pro indicador "${l.indicador}" no mÃªs ${l.data} â€” linha descartada.`);
+      avisos.push(`Quintil: sem regra no dicionário pro indicador "${l.indicador}" no mês ${l.data} — linha descartada.`);
       continue;
     }
 
@@ -1054,7 +1054,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     somasPorVendedorCanal.set(chaveCanal, atualCanal);
   }
 
-  // Agrega por cidade+tecnologia+mÃªs
+  // Agrega por cidade+tecnologia+mês
   const registros = [];
   const vendedores = [];
   for (const [chaveCidadeMes, vendedoresDoMes] of vendedoresPorCidadeMes) {
@@ -1068,11 +1068,11 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
 
       for (const [hash, contextoVendedor] of vendedoresDoMes) {
         const tecnologiasComVenda = contextoVendedor.tecnologias;
-        // Vendedor sÃ³ entra no bucket desta tecnologia se vende ELA, ou se
-        // nÃ£o vende NENHUMA das duas (ambÃ­guo â€” conta como "sem meta" nos
-        // dois buckets, Ã© o Ãºnico caso genuinamente indefinido). Quem
-        // vende sÃ³ a OUTRA tecnologia fica de fora inteiramente: nÃ£o Ã©
-        // "sem meta de FTTH" â€” ele simplesmente nÃ£o Ã© FTTH, contÃ¡-lo aqui
+        // Vendedor só entra no bucket desta tecnologia se vende ELA, ou se
+        // não vende NENHUMA das duas (ambíguo — conta como "sem meta" nos
+        // dois buckets, é o único caso genuinamente indefinido). Quem
+        // vende só a OUTRA tecnologia fica de fora inteiramente: não é
+        // "sem meta de FTTH" — ele simplesmente não é FTTH, contá-lo aqui
         // infla o time e o "sem meta" com gente de outro funil.
         const vendeEstaTecnologia = tecnologiasComVenda.has(tecnologia);
         const naoVendeNenhumaTecnologia = tecnologiasComVenda.size === 0;
@@ -1091,14 +1091,14 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
         comAtingimento += 1;
       }
 
-      // ReconciliaÃ§Ã£o embutida: por construÃ§Ã£o q1..q5 + semMeta === total;
-      // qualquer divergÃªncia aqui Ã© bug de cÃ³digo, nÃ£o de dado â€” checagem barata que trava publicaÃ§Ã£o errada.
+      // Reconciliação embutida: por construção q1..q5 + semMeta === total;
+      // qualquer divergência aqui é bug de código, não de dado — checagem barata que trava publicação errada.
       const somaFaixas = contagem[1] + contagem[2] + contagem[3] + contagem[4] + contagem[5] + semMeta;
       if (somaFaixas !== total) {
-        throw new Error(`Quintil: reconciliaÃ§Ã£o falhou em ${cidadeSlug}/${tecnologia}/${mesRef}: faixas=${somaFaixas} total=${total}.`);
+        throw new Error(`Quintil: reconciliação falhou em ${cidadeSlug}/${tecnologia}/${mesRef}: faixas=${somaFaixas} total=${total}.`);
       }
 
-      if (comAtingimento === 0) continue; // nenhum vendedor com venda nessa tecnologia nesse mÃªs: nÃ£o publica linha vazia
+      if (comAtingimento === 0) continue; // nenhum vendedor com venda nessa tecnologia nesse mês: não publica linha vazia
 
       const atingimentoMedio = somaAtingimentos / comAtingimento;
       registros.push({
@@ -1118,15 +1118,15 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
       });
     }
 
-    // Duas linhas por vendedorÃ—canal (FTTH e 5G). A ausÃªncia de soma fica
-    // explÃ­cita como null para o front poder distinguir "sem venda nesta
-    // tecnologia" de "venda sÃ³ na outra tecnologia" depois de combinar
+    // Duas linhas por vendedor×canal (FTTH e 5G). A ausência de soma fica
+    // explícita como null para o front poder distinguir "sem venda nesta
+    // tecnologia" de "venda só na outra tecnologia" depois de combinar
     // qualquer subconjunto de canais.
     let sequenciaVendedor = 0;
     for (const [hash, contextoVendedor] of vendedoresDoMes) {
       sequenciaVendedor += 1;
       const vendedorId = `v${sequenciaVendedor}`;
-      const vendedor = nomesPorVendedor.get(hash + '\u0001' + chaveCidadeMes) ?? 'Vendedor sem identificaÃ§Ã£o';
+      const vendedor = nomesPorVendedor.get(hash + '\u0001' + chaveCidadeMes) ?? 'Vendedor sem identificação';
 
       for (const canal of contextoVendedor.canais.keys()) {
         for (const tecnologia of ['ftth', '5g']) {
@@ -1155,9 +1155,9 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
 }
 
 /**
- * Recalcula vendedores e distribuiÃ§Ã£o da cidade depois de combinar os
- * canais selecionados. A classificaÃ§Ã£o usa as mesmas faixas e a mesma
- * fÃ³rmula do agregado publicado: Î£realizado Ã· Î£meta por vendedor e mÃ©dia
+ * Recalcula vendedores e distribuição da cidade depois de combinar os
+ * canais selecionados. A classificação usa as mesmas faixas e a mesma
+ * fórmula do agregado publicado: Σrealizado ÷ Σmeta por vendedor e média
  * simples dos atingimentos individuais.
  */
 export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados = []) {
@@ -1172,7 +1172,7 @@ export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados
     if (!vendedorId) continue;
     if (!porVendedor.has(vendedorId)) {
       porVendedor.set(vendedorId, {
-        vendedor: l.vendedor || 'Vendedor sem identificaÃ§Ã£o',
+        vendedor: l.vendedor || 'Vendedor sem identificação',
         canais: new Set(),
         ftth: { temMeta: false, meta: 0, realizado: 0 },
         '5g': { temMeta: false, meta: 0, realizado: 0 },
@@ -1272,7 +1272,7 @@ const COLUNAS_SAIDA_QUINTIS = [
   'quintil_cidade',
 ];
 
-/** Serializa a saÃ­da agregada de `normalizarQuintisPorCidade()`. */
+/** Serializa a saída agregada de `normalizarQuintisPorCidade()`. */
 export function paraCsvQuintis(registros) {
   const linhas = registros.map((r) =>
     [
@@ -1309,7 +1309,7 @@ const COLUNAS_SAIDA_QUINTIS_VENDEDORES = [
   'quintil',
 ];
 
-/** Serializa o detalhamento usado apenas na pÃ¡gina da cidade. */
+/** Serializa o detalhamento usado apenas na página da cidade. */
 export function paraCsvQuintisVendedores(vendedores) {
   const linhas = vendedores.map((r) =>
     [
@@ -1335,17 +1335,17 @@ export function paraCsvQuintisVendedores(vendedores) {
 
 /**
  * Fato de metas+realizado por vendedor -> desvio agregado por
- * cidade Ã— canal Ã— tecnologia Ã— mÃªs, usando APENAS os indicadores
- * principais de venda de cada tecnologia (InstalaÃ§Ã£o no FTTH, AtivaÃ§Ã£o
- * no 5G â€” mesma classificaÃ§Ã£o do pipeline de Meta por Canal).
+ * cidade × canal × tecnologia × mês, usando APENAS os indicadores
+ * principais de venda de cada tecnologia (Instalação no FTTH, Ativação
+ * no 5G — mesma classificação do pipeline de Meta por Canal).
  *
- * Desvio = Î£realizado âˆ’ Î£meta (por canal Ã— cidade Ã— mÃªs). Valor
- * negativo = canal abaixo da meta (dÃ©ficit); positivo = acima (superÃ¡vit).
- * NÃ£o usa multiplicador do dicionÃ¡rio: aqui o objetivo Ã© o desvio em
- * unidades reais (instalaÃ§Ãµes/ativaÃ§Ãµes absolutas), nÃ£o a meta ponderada
- * usada no atingimento do painel â€” sÃ£o grandezas distintas com propÃ³sitos
- * distintos. Meta 0 e canal-lixo descartados (mesmo critÃ©rio dos outros
- * pipelines). Cidade nÃ£o mapeÃ¡vel fica fora (sem slug = sem cidade).
+ * Desvio = Σrealizado − Σmeta (por canal × cidade × mês). Valor
+ * negativo = canal abaixo da meta (déficit); positivo = acima (superávit).
+ * Não usa multiplicador do dicionário: aqui o objetivo é o desvio em
+ * unidades reais (instalações/ativações absolutas), não a meta ponderada
+ * usada no atingimento do painel — são grandezas distintas com propósitos
+ * distintos. Meta 0 e canal-lixo descartados (mesmo critério dos outros
+ * pipelines). Cidade não mapeável fica fora (sem slug = sem cidade).
  */
 export function normalizarDesvioPorCanal(linhasFato) {
   const avisos = [];
@@ -1369,14 +1369,14 @@ export function normalizarDesvioPorCanal(linhasFato) {
     const meta = paraNumero(l.meta);
     const realizado = paraNumero(l.realizado);
     if (Number.isNaN(meta) || Number.isNaN(realizado)) {
-      avisos.push(`Desvio: meta/realizado invÃ¡lido â€” cidade "${l.cidade}", canal "${canal}", indicador "${l.indicador}", mÃªs ${l.data}.`);
+      avisos.push(`Desvio: meta/realizado inválido — cidade "${l.cidade}", canal "${canal}", indicador "${l.indicador}", mês ${l.data}.`);
       continue;
     }
-    if (meta === 0) continue; // meta 0: descarta sem aviso (ruÃ­do esperado, jÃ¡ documentado)
+    if (meta === 0) continue; // meta 0: descarta sem aviso (ruído esperado, já documentado)
 
     const tecnologia = TECNOLOGIA_POR_CATEGORIA_META[categoria];
-    // Agrupa orÃ§amento/efetivado/instalaÃ§Ã£o todos em 'instalacao' como indicador Ãºnico da pÃ¡gina FTTH;
-    // ativaÃ§Ã£o em '5g'. O usuÃ¡rio vÃª "InstalaÃ§Ã£o" ou "AtivaÃ§Ã£o" â€” nÃ£o a subdivisÃ£o interna.
+    // Agrupa orçamento/efetivado/instalação todos em 'instalacao' como indicador único da página FTTH;
+    // ativação em '5g'. O usuário vê "Instalação" ou "Ativação" — não a subdivisão interna.
     const chave = `${cidadeSlug}\x01${canal}\x01${tecnologia}\x01${l.data}`;
     const atual = porChave.get(chave) ?? { cidadeSlug, cidadeOrigem: l.cidade, canal, tecnologia, mesRef: l.data, meta: 0, realizado: 0 };
     atual.meta += meta;

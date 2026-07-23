@@ -1,6 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classificarQuintil, normalizarQuintisPorCidade } from '../csvIndicadores.js';
+import {
+  calcularQuintilVendedores,
+  classificarQuintil,
+  normalizarQuintisPorCidade,
+  paraCsvQuintisVendedores,
+  parsearCsv,
+} from '../csvIndicadores.js';
 
 test('classificarQuintil: fronteiras exatas da regra de negócio', () => {
   assert.equal(classificarQuintil(1.5), 1);
@@ -48,6 +54,135 @@ test('vendedor com Σreal/Σmeta = 100% cai no Q1; agrega múltiplas linhas de v
   assert.equal(ftth.totalVendedores, 1);
   assert.equal(ftth.q1, 1); // (5+15)/(10+10) = 100%
   assert.equal(ftth.quintilCidade, 1);
+});
+
+test('detalhamento individual reutiliza exatamente as somas do quintil agregado', () => {
+  const linhas = [
+    linha({ vendedor: 'Ana Lima', meta: '10', realizado: '5' }),
+    linha({ vendedor: 'Ana Lima', indicador: 'Vendas instalada Combo - FTTH', meta: '10', realizado: '15' }),
+  ];
+  const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+  const ana = vendedores.find((v) => v.tecnologia === 'ftth');
+
+  assert.equal(ana.vendedor, 'Ana Lima');
+  assert.equal(ana.meta, 20);
+  assert.equal(ana.realizado, 20);
+  assert.equal(ana.atingimento, 1);
+  assert.equal(ana.quintil, 1);
+  assert.equal(ana.canal, 'LOJA');
+  assert.equal(ana.vendedorId, 'v1');
+});
+
+test('CSV individual preserva canal, nome e métricas sem publicar hash ou matrícula', () => {
+  const { vendedores } = normalizarQuintisPorCidade(
+    [linha({ vendedor: 'José da Silva', meta: '10', realizado: '8' })],
+    MULT_1,
+  );
+  const csv = paraCsvQuintisVendedores(vendedores);
+  const [registro] = parsearCsv(csv);
+
+  assert.equal(registro.vendedor_id, 'v1');
+  assert.equal(registro.vendedor, 'José da Silva');
+  assert.equal(registro.canal, 'LOJA');
+  assert.equal(registro.meta, '10');
+  assert.equal(registro.realizado, '8');
+  assert.equal(registro.atingimento, '0.8');
+  assert.equal(registro.quintil, '2');
+  assert.equal('hash_user' in registro, false);
+  assert.equal('matricula' in registro, false);
+});
+
+test('filtro de um canal recalcula cada vendedor antes de classificar o quintil', () => {
+  const linhas = [
+    linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'PAP', meta: '10', realizado: '10' }),
+    linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'LOJA', meta: '10', realizado: '0' }),
+    linha({ hash_user: 'bruno', vendedor: 'Bruno', canal: 'PAP', meta: '10', realizado: '5' }),
+    linha({ hash_user: 'bruno', vendedor: 'Bruno', canal: 'LOJA', meta: '10', realizado: '10' }),
+  ];
+  const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+
+  const pap = calcularQuintilVendedores(vendedores, 'ftth', ['PAP']);
+  assert.equal(pap.totalVendedores, 2);
+  assert.equal(pap.q1, 1); // Ana: 10/10
+  assert.equal(pap.q4, 1); // Bruno: 5/10
+  assert.equal(pap.quintilCidade, 3); // média simples: (100% + 50%) / 2 = 75%
+  assert.deepEqual(pap.vendedores[0].canais, ['PAP']);
+
+  const loja = calcularQuintilVendedores(vendedores, 'ftth', ['LOJA']);
+  assert.equal(loja.q1, 1); // Bruno: 10/10
+  assert.equal(loja.q5, 1); // Ana: 0/10
+  assert.equal(loja.quintilCidade, 4); // média simples: 50%
+  assert.deepEqual(loja.vendedores[0].canais, ['LOJA']);
+});
+
+test('filtro de múltiplos canais soma meta e realizado do vendedor antes de classificar', () => {
+  const linhas = [
+    linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'PAP', meta: '10', realizado: '10' }),
+    linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'LOJA', meta: '10', realizado: '0' }),
+  ];
+  const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+  const filtrado = calcularQuintilVendedores(vendedores, 'ftth', ['PAP', 'LOJA']);
+
+  assert.equal(filtrado.totalVendedores, 1);
+  assert.equal(filtrado.vendedores[0].meta, 20);
+  assert.equal(filtrado.vendedores[0].realizado, 10);
+  assert.equal(filtrado.vendedores[0].atingimento, 0.5);
+  assert.equal(filtrado.vendedores[0].quintil, 4);
+  assert.deepEqual(filtrado.vendedores[0].canais, ['LOJA', 'PAP']);
+});
+
+test('Todos os canais reproduz exatamente a distribuição agregada publicada', () => {
+  const linhas = [
+    linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'PAP', meta: '10', realizado: '10' }),
+    linha({ hash_user: 'ana', vendedor: 'Ana', canal: 'LOJA', meta: '10', realizado: '0' }),
+    linha({ hash_user: 'bruno', vendedor: 'Bruno', canal: 'PAP', meta: '10', realizado: '16' }),
+    linha({ hash_user: 'sem-meta', vendedor: 'Carla', canal: 'PAP', indicador: 'Churn Safra - Banda Larga' }),
+  ];
+  const { registros, vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+  const agregado = registros.find((r) => r.tecnologia === 'ftth');
+  const recalculado = calcularQuintilVendedores(vendedores, 'ftth');
+
+  assert.deepEqual(
+    {
+      totalVendedores: recalculado.totalVendedores,
+      q1: recalculado.q1,
+      q2: recalculado.q2,
+      q3: recalculado.q3,
+      q4: recalculado.q4,
+      q5: recalculado.q5,
+      semMeta: recalculado.semMeta,
+      atingimentoMedio: recalculado.atingimentoMedio,
+      quintilCidade: recalculado.quintilCidade,
+    },
+    {
+      totalVendedores: agregado.totalVendedores,
+      q1: agregado.q1,
+      q2: agregado.q2,
+      q3: agregado.q3,
+      q4: agregado.q4,
+      q5: agregado.q5,
+      semMeta: agregado.semMeta,
+      atingimentoMedio: agregado.atingimentoMedio,
+      quintilCidade: agregado.quintilCidade,
+    },
+  );
+});
+
+test('filtro não mistura tecnologias do mesmo vendedor entre canais', () => {
+  const linhas = [
+    linha({ hash_user: 'h1', canal: 'PAP', meta: '10', realizado: '10' }),
+    linha({
+      hash_user: 'h1',
+      canal: 'LOJA',
+      indicador: 'Ativação 5G avulso',
+      meta: '10',
+      realizado: '10',
+    }),
+  ];
+  const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
+
+  assert.equal(calcularQuintilVendedores(vendedores, '5g', ['PAP']), null);
+  assert.equal(calcularQuintilVendedores(vendedores, 'ftth', ['LOJA']), null);
 });
 
 test('vendedor só com churn (sem linha de venda) entra em sem_meta e soma das faixas bate com o total', () => {
