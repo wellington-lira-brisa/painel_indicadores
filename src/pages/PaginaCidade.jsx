@@ -168,7 +168,7 @@ export default function PaginaCidade({ tecnologia = TECNOLOGIAS.ftth }) {
         </dl>
       </section>
 
-      {cidade.quintil && <CardQuintisCidade registro={cidade.quintil} />}
+      {cidade.quintil && <CardQuintisCidade registro={cidade.quintil} tecnologiaId={tecnologia.id} />}
       <CardDesvioPorCanal desvio={cidade.desvioPorCanal} unidade={unidadeIndicador} />
 
       <section aria-label="Média por período" className="space-y-3">

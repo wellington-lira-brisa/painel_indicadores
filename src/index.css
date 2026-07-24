@@ -14,6 +14,25 @@ body {
   @apply bg-slate-100 text-slate-800 antialiased;
 }
 
+@keyframes revelar-detalhe {
+  from {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animar-expansao {
+  animation: revelar-detalhe 160ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animar-expansao {
+    animation: none;
+  }
+}
+
 /**
  * Identidade visual do 5G: reescreve as mesmas variáveis --color-brand-*
  * dentro de qualquer subárvore com esta classe. Como todo componente já usa

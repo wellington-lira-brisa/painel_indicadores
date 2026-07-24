@@ -5,4 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/painel_indicadores/',
+  server: {
+    host: '0.0.0.0',
+    allowedHosts: ['terminal.local'],
+  },
 });

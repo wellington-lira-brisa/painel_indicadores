@@ -1,5 +1,13 @@
-import { useId, useState } from 'react';
-import { ArrowDownRight, ArrowRight, ArrowUpRight, CalendarRange, ChevronDown, Users } from 'lucide-react';
+import { useId, useMemo, useState } from 'react';
+import {
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  CalendarRange,
+  ChevronDown,
+  SlidersHorizontal,
+  Users,
+} from 'lucide-react';
 import {
   QUINTIL_COR_BADGE,
   QUINTIL_COR_BARRA,
@@ -9,9 +17,23 @@ import {
 } from '../utils/quintil';
 import { mesesConsecutivosAte, tendenciaEntreQuintis } from '../utils/historicoQuintil';
 import { formatarPercentual, formatarValor } from '../utils/format';
+import {
+  agruparVendedoresPorIndicador,
+  filtrarGruposQuintil,
+  listarIndicadoresDisponiveis,
+  ordenarGruposQuintil,
+} from '../utils/visaoQuintilVendedores';
 import IconeInfo from './IconeInfo';
 
 const MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+const DESCRICAO_QUINTIL = {
+  1: 'Q1 · melhor desempenho · atingimento de 100% ou mais',
+  2: 'Q2 · atingimento de 80% a 99,9%',
+  3: 'Q3 · atingimento de 60% a 79,9%',
+  4: 'Q4 · atingimento de 30% a 59,9%',
+  5: 'Q5 · desempenho mais baixo · atingimento abaixo de 30%',
+};
 
 /** "2026-07-01" -> "jul/2026" — só partes da string, sem Date (evita fuso). */
 function rotuloMes(mesRef) {
@@ -43,7 +65,11 @@ function BadgeQuintilVendedor({ quintil }) {
   }
 
   return (
-    <span className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-bold ${QUINTIL_COR_BADGE[quintil]}`}>
+    <span
+      className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-bold ${QUINTIL_COR_BADGE[quintil]}`}
+      title={DESCRICAO_QUINTIL[quintil]}
+      aria-label={DESCRICAO_QUINTIL[quintil]}
+    >
       {QUINTIL_ROTULOS_CURTOS[quintil]}
     </span>
   );
@@ -238,6 +264,11 @@ function rotuloIndicador(indicador) {
   return ROTULO_CURTO_INDICADOR_INSTALACAO[indicador] ?? indicador;
 }
 
+function nomeIndicador(indicador, tecnologiaId) {
+  if (indicador) return indicador;
+  return tecnologiaId === '5g' ? 'Ativação 5G avulso' : 'Indicador sem meta';
+}
+
 function HistoricoVendedores({ historico }) {
   const [expandido, setExpandido] = useState(false);
   const conteudoId = useId();
@@ -352,43 +383,139 @@ function HistoricoVendedores({ historico }) {
   );
 }
 
-/**
- * Agrupa o detalhamento plano (1 linha por vendedor×indicador) em 1
- * entrada por vendedor, preservando a lista de indicadores dele. Vendedor
- * de 5G (indicador null) sempre tem exatamente 1 entrada no grupo — nunca
- * junta indicadores diferentes na mesma linha (é exatamente o oposto do
- * bug que motivou o quintil por indicador: FTTH avulso e combo nunca
- * devem virar um número só).
- *
- * Grupos ordenados pelo MELHOR quintil entre os indicadores do vendedor
- * (Q1 primeiro) — mantém o contrato "melhor quintil para o que exige mais
- * atenção" já anunciado no cabeçalho, mesmo quando o vendedor tem vários
- * indicadores com quintis diferentes entre si.
- */
-function agruparPorVendedor(vendedores) {
-  const porVendedor = new Map();
-  for (const v of vendedores) {
-    const chave = v.vendedorId ?? v.vendedor;
-    if (!porVendedor.has(chave)) {
-      porVendedor.set(chave, { vendedorId: v.vendedorId, vendedor: v.vendedor, canais: v.canais, indicadores: [] });
-    }
-    porVendedor.get(chave).indicadores.push(v);
-  }
-  const grupos = [...porVendedor.values()];
-  for (const grupo of grupos) {
-    grupo.melhorQuintil = Math.min(...grupo.indicadores.map((i) => i.quintil ?? 99));
-    grupo.indicadores.sort((a, b) => (a.quintil ?? 99) - (b.quintil ?? 99));
-  }
-  grupos.sort(
-    (a, b) => a.melhorQuintil - b.melhorQuintil || a.vendedor.localeCompare(b.vendedor, 'pt-BR'),
+function DistribuicaoQuintis({ grupo, tecnologiaId }) {
+  const quintis = [1, 2, 3, 4, 5];
+
+  return (
+    <span className="flex flex-wrap items-center gap-1" aria-label="Distribuição dos quintis">
+      {quintis.map((quintil) => {
+        const quantidade = grupo.distribuicao[quintil];
+        if (!quantidade) return null;
+        const indicadores = grupo.indicadores
+          .filter((item) => item.quintil === quintil)
+          .map((item) => nomeIndicador(item.indicador, tecnologiaId))
+          .join(' · ');
+        return (
+          <span
+            key={quintil}
+            className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${QUINTIL_COR_BADGE[quintil]}`}
+            title={`${DESCRICAO_QUINTIL[quintil]} · ${indicadores}`}
+            aria-label={`${DESCRICAO_QUINTIL[quintil]}. ${quantidade} ${quantidade === 1 ? 'indicador' : 'indicadores'}: ${indicadores}`}
+          >
+            Q{quintil}
+            <span className="font-semibold opacity-70">×{quantidade}</span>
+          </span>
+        );
+      })}
+      {grupo.distribuicao.semMeta > 0 && (
+        <span
+          className="inline-flex rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600"
+          title={`${grupo.distribuicao.semMeta} indicador(es) sem meta`}
+        >
+          Sem meta ×{grupo.distribuicao.semMeta}
+        </span>
+      )}
+    </span>
   );
-  return grupos;
 }
 
-function TabelaVendedores({ vendedores = [] }) {
+function DetalheIndicadores({ grupo, tecnologiaId }) {
+  return (
+    <div className="animar-expansao border-t border-slate-200 bg-slate-50/60 p-2.5 sm:p-3">
+      <div className="hidden overflow-hidden rounded-lg border border-slate-200 bg-white sm:block">
+        <div className="grid grid-cols-[minmax(13rem,2fr)_5rem_6rem_7rem_5rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[9px] font-semibold uppercase tracking-wide text-slate-400">
+          <span>Indicador</span>
+          <span className="text-right">Meta</span>
+          <span className="text-right">Realizado</span>
+          <span className="text-right">Atingimento</span>
+          <span>Quintil</span>
+          <span>Evolução</span>
+        </div>
+        <ul className="divide-y divide-slate-100" aria-label={`Indicadores de ${grupo.vendedor}`}>
+          {grupo.indicadores.map((item, indice) => {
+            const nome = nomeIndicador(item.indicador, tecnologiaId);
+            return (
+              <li
+                key={`${item.indicador ?? 'sem-indicador'}-${indice}`}
+                className={`grid grid-cols-[minmax(13rem,2fr)_5rem_6rem_7rem_5rem_7rem] items-center gap-3 border-l-2 px-3 py-2.5 ${estiloLinha(item.quintil)}`}
+              >
+                <span
+                  className="min-w-0 whitespace-normal break-words text-xs font-semibold leading-4 text-slate-700"
+                  title={nome}
+                >
+                  {nome}
+                </span>
+                <span className="text-right"><ValorVendedor rotulo="Meta" valor={item.meta} /></span>
+                <span className="text-right"><ValorVendedor rotulo="Realizado" valor={item.realizado} /></span>
+                <span className="text-right">
+                  <ValorVendedor rotulo="Atingimento" valor={item.atingimento} percentual destaque />
+                </span>
+                <span><BadgeQuintilVendedor quintil={item.quintil} /></span>
+                <span><BadgeTendencia tendencia={item.tendencia} /></span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <ul className="space-y-2 sm:hidden" aria-label={`Indicadores de ${grupo.vendedor}`}>
+        {grupo.indicadores.map((item, indice) => {
+          const nome = nomeIndicador(item.indicador, tecnologiaId);
+          return (
+            <li
+              key={`${item.indicador ?? 'sem-indicador'}-${indice}`}
+              className={`rounded-lg border border-slate-200 border-l-2 bg-white p-3 ${estiloLinha(item.quintil)}`}
+            >
+              <div className="flex items-start justify-between gap-2">
+                <p className="min-w-0 whitespace-normal break-words text-xs font-semibold leading-4 text-slate-700" title={nome}>
+                  {nome}
+                </p>
+                <BadgeQuintilVendedor quintil={item.quintil} />
+              </div>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                <ValorVendedor rotulo="Meta" valor={item.meta} />
+                <ValorVendedor rotulo="Realizado" valor={item.realizado} />
+                <ValorVendedor rotulo="Atingimento" valor={item.atingimento} percentual destaque />
+              </div>
+              <div className="mt-2.5 flex items-center justify-between border-t border-slate-100 pt-2">
+                <span className="text-[10px] font-medium text-slate-400">Evolução no mês</span>
+                <BadgeTendencia tendencia={item.tendencia} />
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+function TabelaVendedores({ vendedores = [], historico = null, tecnologiaId }) {
   const [expandida, setExpandida] = useState(true);
+  const [grupoExpandido, setGrupoExpandido] = useState(null);
+  const [filtroIndicador, setFiltroIndicador] = useState('');
+  const [filtroQuintil, setFiltroQuintil] = useState('');
+  const [ordenacao, setOrdenacao] = useState('atencao');
   const conteudoId = useId();
-  const grupos = agruparPorVendedor(vendedores);
+  const idBaseGrupo = useId().replaceAll(':', '');
+  const grupos = useMemo(
+    () => agruparVendedoresPorIndicador(vendedores, historico),
+    [vendedores, historico],
+  );
+  const indicadoresDisponiveis = useMemo(
+    () => listarIndicadoresDisponiveis(grupos),
+    [grupos],
+  );
+  const gruposExibidos = useMemo(
+    () =>
+      ordenarGruposQuintil(
+        filtrarGruposQuintil(grupos, {
+          indicador: filtroIndicador,
+          quintil: filtroQuintil,
+        }),
+        ordenacao,
+      ),
+    [filtroIndicador, filtroQuintil, grupos, ordenacao],
+  );
 
   return (
     <div className="mt-4 border-t border-slate-100 pt-4">
@@ -398,12 +525,17 @@ function TabelaVendedores({ vendedores = [] }) {
             <Users className="size-3.5 text-slate-400" aria-hidden="true" />
             Colaboradores
           </h4>
-          <p className="mt-0.5 text-[11px] text-slate-500">Ordenados do melhor quintil para o que exige mais atenção.</p>
+          <p className="mt-0.5 text-[11px] text-slate-500">
+            Uma linha por colaborador. Abra para ver os quintis de cada indicador.
+          </p>
         </div>
         <div className="flex items-center gap-2">
           {grupos.length > 0 && (
             <span className="text-[11px] tabular-nums text-slate-400">
-              {grupos.length} {grupos.length === 1 ? 'vendedor' : 'vendedores'}
+              {gruposExibidos.length === grupos.length
+                ? grupos.length
+                : `${gruposExibidos.length} de ${grupos.length}`}{' '}
+              {grupos.length === 1 ? 'vendedor' : 'vendedores'}
             </span>
           )}
           <button
@@ -429,75 +561,190 @@ function TabelaVendedores({ vendedores = [] }) {
               Detalhamento individual ainda não disponível para este período.
             </p>
           ) : (
-            <div className="overflow-hidden rounded-lg border border-slate-200">
-              <div className="hidden grid-cols-[minmax(0,1.6fr)_6rem_5rem_6rem_6rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 sm:grid">
-                <span>Colaborador</span>
-                <span>Indicador</span>
-                <span>Quintil</span>
-                <span className="text-right">Meta</span>
-                <span className="text-right">Realizado</span>
-                <span className="text-right">Atingimento</span>
+            <>
+              <div className="mb-2.5 grid grid-cols-1 gap-2 rounded-lg border border-slate-200 bg-slate-50/70 p-2 sm:grid-cols-[minmax(10rem,1fr)_8rem_minmax(11rem,13rem)]">
+                <label className="min-w-0">
+                  <span className="sr-only">Filtrar por indicador</span>
+                  <select
+                    value={filtroIndicador}
+                    onChange={(evento) => setFiltroIndicador(evento.target.value)}
+                    className="min-h-9 w-full min-w-0 rounded-md border border-slate-300 bg-white px-2 text-xs font-medium text-slate-700 outline-none focus:border-brand-700 focus:ring-2 focus:ring-brand-100"
+                    title="Filtrar colaboradores por indicador"
+                  >
+                    <option value="">Todos os indicadores</option>
+                    {indicadoresDisponiveis.map((indicador) => (
+                      <option key={indicador} value={indicador}>{indicador}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <span className="sr-only">Filtrar por quintil</span>
+                  <select
+                    value={filtroQuintil}
+                    onChange={(evento) => setFiltroQuintil(evento.target.value)}
+                    className="min-h-9 w-full rounded-md border border-slate-300 bg-white px-2 text-xs font-medium text-slate-700 outline-none focus:border-brand-700 focus:ring-2 focus:ring-brand-100"
+                  >
+                    <option value="">Todos os quintis</option>
+                    {[1, 2, 3, 4, 5].map((quintil) => (
+                      <option key={quintil} value={quintil}>Q{quintil}</option>
+                    ))}
+                    <option value="sem-meta">Sem meta</option>
+                  </select>
+                </label>
+                <label className="relative">
+                  <span className="sr-only">Ordenar colaboradores</span>
+                  <SlidersHorizontal
+                    className="pointer-events-none absolute left-2 top-1/2 size-3.5 -translate-y-1/2 text-slate-400"
+                    aria-hidden="true"
+                  />
+                  <select
+                    value={ordenacao}
+                    onChange={(evento) => setOrdenacao(evento.target.value)}
+                    className="min-h-9 w-full rounded-md border border-slate-300 bg-white py-1 pl-7 pr-2 text-xs font-medium text-slate-700 outline-none focus:border-brand-700 focus:ring-2 focus:ring-brand-100"
+                  >
+                    <option value="atencao">Mais críticos primeiro</option>
+                    <option value="nome">Nome (A–Z)</option>
+                    <option value="q1">Maior quantidade em Q1</option>
+                    <option value="melhor">Melhor quintil</option>
+                    <option value="pior">Pior quintil</option>
+                    <option value="quedas">Mais indicadores em queda</option>
+                    <option value="atingimento-maior">Maior atingimento médio</option>
+                    <option value="atingimento-menor">Menor atingimento médio</option>
+                  </select>
+                </label>
               </div>
 
-              <ul className="divide-y divide-slate-100" aria-label="Desempenho dos colaboradores por quintil">
-                {grupos.map((grupo, indiceGrupo) =>
-                  grupo.indicadores.map((item, indiceItem) => {
-                    const rotulo = rotuloIndicador(item.indicador);
-                    // Nome e canal só aparecem na primeira linha do grupo — as
-                    // linhas seguintes do mesmo vendedor (2º, 3º indicador)
-                    // ficam visualmente agrupadas por proximidade + o mesmo
-                    // canto arredondado do bloco, sem repetir o nome.
-                    const primeiraLinhaDoGrupo = indiceItem === 0;
-                    return (
-                      <li
-                        key={`${grupo.vendedorId ?? grupo.vendedor}\u0001${item.indicador ?? indiceItem}-${indiceGrupo}`}
-                        className={`grid grid-cols-2 gap-x-3 gap-y-1.5 border-l-2 px-3 py-2.5 sm:grid-cols-[minmax(0,1.6fr)_6rem_5rem_6rem_6rem_7rem] sm:items-center sm:gap-3 ${estiloLinha(item.quintil)} ${
-                          !primeiraLinhaDoGrupo ? 'sm:border-t-0 sm:pt-1.5' : ''
-                        }`}
-                      >
-                        <span className="col-span-2 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 sm:col-span-1">
-                          {primeiraLinhaDoGrupo ? (
-                            <>
-                              <span className="min-w-0 truncate text-sm font-semibold text-slate-800" title={grupo.vendedor}>
+              {gruposExibidos.length === 0 ? (
+                <p className="rounded-lg border border-dashed border-slate-300 bg-slate-50 px-3 py-5 text-center text-xs text-slate-500">
+                  Nenhum colaborador corresponde aos filtros selecionados.
+                </p>
+              ) : (
+                <div className="rounded-lg border border-slate-200 bg-white sm:max-h-[36rem] sm:overflow-y-auto">
+                  <div
+                    className="sticky top-0 z-10 hidden grid-cols-[minmax(14rem,1.6fr)_6rem_minmax(12rem,1fr)_5rem_minmax(9rem,.8fr)_2.75rem] gap-3 border-b border-slate-200 bg-slate-50/95 px-3 py-2 text-[9px] font-semibold uppercase tracking-wide text-slate-400 backdrop-blur sm:grid"
+                    role="row"
+                  >
+                    <span>Colaborador</span>
+                    <span>Indicadores</span>
+                    <span>Distribuição</span>
+                    <span className="text-center">Em queda</span>
+                    <span>Mais crítico</span>
+                    <span className="sr-only">Detalhes</span>
+                  </div>
+
+                  <div className="divide-y divide-slate-100" role="table" aria-label="Quintis por colaborador">
+                    {gruposExibidos.map((grupo, indiceGrupo) => {
+                      const chaveGrupo = grupo.vendedorId ?? grupo.vendedor;
+                      const aberto = grupoExpandido === chaveGrupo;
+                      const detalheId = `${idBaseGrupo}-detalhe-${indiceGrupo}`;
+                      const critico = grupo.indicadorCritico;
+                      const nomeCritico = critico
+                        ? nomeIndicador(critico.indicador, tecnologiaId)
+                        : 'Sem indicador';
+
+                      return (
+                        <article
+                          key={chaveGrupo}
+                          className={`transition-colors ${aberto ? 'bg-brand-50/50 ring-1 ring-inset ring-brand-100' : 'bg-white'}`}
+                        >
+                          <div
+                            className="hidden grid-cols-[minmax(14rem,1.6fr)_6rem_minmax(12rem,1fr)_5rem_minmax(9rem,.8fr)_2.75rem] items-center gap-3 px-3 py-2.5 sm:grid"
+                            role="row"
+                          >
+                            <span className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1" role="cell">
+                              <span className="min-w-0 whitespace-normal break-words text-xs font-semibold leading-4 text-slate-800" title={grupo.vendedor}>
                                 {grupo.vendedor}
                               </span>
                               <CanaisVendedor canais={grupo.canais} />
-                            </>
-                          ) : (
-                            <>
-                              <span className="flex items-center gap-1 text-xs italic text-slate-400 sm:hidden">
-                                <span aria-hidden="true">↳</span> {grupo.vendedor}
+                            </span>
+                            <span className="text-xs font-semibold tabular-nums text-slate-600" role="cell">
+                              {grupo.quantidadeIndicadores}
+                            </span>
+                            <span role="cell">
+                              <DistribuicaoQuintis grupo={grupo} tecnologiaId={tecnologiaId} />
+                            </span>
+                            <span className={`text-center text-xs font-semibold tabular-nums ${grupo.emQueda > 0 ? 'text-red-700' : 'text-slate-400'}`} role="cell">
+                              {grupo.emQueda}
+                            </span>
+                            <span className="flex min-w-0 items-center gap-1.5" role="cell">
+                              {critico && <BadgeQuintilVendedor quintil={critico.quintil} />}
+                              <span className="min-w-0 truncate text-[11px] font-medium text-slate-600" title={nomeCritico}>
+                                {nomeCritico}
                               </span>
-                              <span className="hidden text-xs text-slate-300 sm:inline" aria-hidden="true">
-                                ↳
-                              </span>
-                            </>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setGrupoExpandido((atual) => (atual === chaveGrupo ? null : chaveGrupo))}
+                              aria-expanded={aberto}
+                              aria-controls={detalheId}
+                              aria-label={`${aberto ? 'Recolher' : 'Expandir'} indicadores de ${grupo.vendedor}`}
+                              className="inline-flex size-9 items-center justify-center justify-self-end rounded-lg border border-slate-200 bg-white text-slate-500 transition hover:border-brand-100 hover:bg-brand-50 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-1"
+                            >
+                              <ChevronDown
+                                className={`size-4 transition-transform duration-200 ${aberto ? 'rotate-180' : ''}`}
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </div>
+
+                          <div className="p-3 sm:hidden">
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="min-w-0">
+                                <h5 className="whitespace-normal break-words text-sm font-semibold leading-5 text-slate-800" title={grupo.vendedor}>
+                                  {grupo.vendedor}
+                                </h5>
+                                <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                                  <CanaisVendedor canais={grupo.canais} />
+                                  <span className="text-[10px] font-medium text-slate-400">
+                                    {grupo.quantidadeIndicadores} {grupo.quantidadeIndicadores === 1 ? 'indicador' : 'indicadores'}
+                                  </span>
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => setGrupoExpandido((atual) => (atual === chaveGrupo ? null : chaveGrupo))}
+                                aria-expanded={aberto}
+                                aria-controls={detalheId}
+                                aria-label={`${aberto ? 'Recolher' : 'Expandir'} indicadores de ${grupo.vendedor}`}
+                                className="inline-flex size-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
+                              >
+                                <ChevronDown
+                                  className={`size-4 transition-transform duration-200 ${aberto ? 'rotate-180' : ''}`}
+                                  aria-hidden="true"
+                                />
+                              </button>
+                            </div>
+                            <div className="mt-2.5">
+                              <DistribuicaoQuintis grupo={grupo} tecnologiaId={tecnologiaId} />
+                            </div>
+                            <div className="mt-2.5 flex items-start justify-between gap-3 rounded-md bg-slate-50 px-2.5 py-2">
+                              <div className="min-w-0">
+                                <span className="block text-[9px] font-semibold uppercase tracking-wide text-slate-400">Mais crítico</span>
+                                <span className="mt-0.5 block whitespace-normal break-words text-[11px] font-medium leading-4 text-slate-600" title={nomeCritico}>
+                                  {nomeCritico}
+                                </span>
+                              </div>
+                              <div className="shrink-0 text-right">
+                                {critico && <BadgeQuintilVendedor quintil={critico.quintil} />}
+                                <span className={`mt-1 block text-[10px] font-semibold ${grupo.emQueda > 0 ? 'text-red-700' : 'text-slate-400'}`}>
+                                  {grupo.emQueda} em queda
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {aberto && (
+                            <div id={detalheId}>
+                              <DetalheIndicadores grupo={grupo} tecnologiaId={tecnologiaId} />
+                            </div>
                           )}
-                        </span>
-                        <span className="text-xs font-semibold text-slate-600 sm:text-[11px]">
-                          <span className="block text-[9px] font-medium uppercase tracking-wide text-slate-400 sm:sr-only">
-                            Indicador
-                          </span>
-                          {rotulo ?? '—'}
-                        </span>
-                        <span className="justify-self-start">
-                          <BadgeQuintilVendedor quintil={item.quintil} />
-                        </span>
-                        <span className="sm:text-right">
-                          <ValorVendedor rotulo="Meta" valor={item.meta} />
-                        </span>
-                        <span className="sm:text-right">
-                          <ValorVendedor rotulo="Realizado" valor={item.realizado} />
-                        </span>
-                        <span className="sm:text-right">
-                          <ValorVendedor rotulo="Atingimento" valor={item.atingimento} percentual destaque />
-                        </span>
-                      </li>
-                    );
-                  }),
-                )}
-              </ul>
-            </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       )}
@@ -512,7 +759,7 @@ function TabelaVendedores({ vendedores = [] }) {
  * legenda pra soma sempre bater com o total de vendedores — nenhum
  * vendedor "some" da visão.
  */
-export default function CardQuintisCidade({ registro }) {
+export default function CardQuintisCidade({ registro, tecnologiaId }) {
   const faixas = [
     { chave: 1, qtd: registro.q1 },
     { chave: 2, qtd: registro.q2 },
@@ -559,7 +806,11 @@ export default function CardQuintisCidade({ registro }) {
       </ul>
 
       <HistoricoCidade registro={registro} />
-      <TabelaVendedores vendedores={registro.vendedores} />
+      <TabelaVendedores
+        vendedores={registro.vendedores}
+        historico={registro.historicoVendedores}
+        tecnologiaId={tecnologiaId}
+      />
       <HistoricoVendedores historico={registro.historicoVendedores} />
     </section>
   );
