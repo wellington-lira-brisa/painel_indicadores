@@ -5,6 +5,7 @@ import {
   QUINTIL_COR_BARRA,
   QUINTIL_ROTULOS_CURTOS,
   EXPLICACAO_QUINTIL_CIDADE,
+  ROTULO_CURTO_INDICADOR_INSTALACAO,
 } from '../utils/quintil';
 import { mesesConsecutivosAte, tendenciaEntreQuintis } from '../utils/historicoQuintil';
 import { formatarPercentual, formatarValor } from '../utils/format';
@@ -229,6 +230,14 @@ function ValorVendedor({ rotulo, valor, percentual = false, destaque = false }) 
   );
 }
 
+/** "Vendas instaladas Combo 1 Chip - FTTH" -> "Combo 1"; sem entrada no
+ * mapa (indicador novo ainda não catalogado) usa o nome completo — feio,
+ * nunca quebra. */
+function rotuloIndicador(indicador) {
+  if (!indicador) return null;
+  return ROTULO_CURTO_INDICADOR_INSTALACAO[indicador] ?? indicador;
+}
+
 function HistoricoVendedores({ historico }) {
   const [expandido, setExpandido] = useState(false);
   const conteudoId = useId();
@@ -270,56 +279,72 @@ function HistoricoVendedores({ historico }) {
               <span className="text-center">Tendência</span>
             </div>
             <ul className="divide-y divide-slate-100 bg-white" aria-label="Evolução mensal dos colaboradores">
-              {vendedores.map((vendedor) => (
-                <li
-                  key={vendedor.vendedorId}
-                  className="grid grid-cols-[minmax(12rem,1.8fr)_repeat(6,minmax(3.25rem,1fr))_6.5rem] items-center gap-2 px-3 py-2.5"
-                >
-                  <span className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
-                    <span className="min-w-0 truncate text-xs font-semibold text-slate-800" title={vendedor.vendedor}>
-                      {vendedor.vendedor}
+              {vendedores.map((vendedor) => {
+                const rotulo = rotuloIndicador(vendedor.indicador);
+                return (
+                  <li
+                    key={`${vendedor.vendedorId}\u0001${vendedor.indicador ?? ''}`}
+                    className="grid grid-cols-[minmax(12rem,1.8fr)_repeat(6,minmax(3.25rem,1fr))_6.5rem] items-center gap-2 px-3 py-2.5"
+                  >
+                    <span className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+                      <span className="min-w-0 truncate text-xs font-semibold text-slate-800" title={vendedor.vendedor}>
+                        {vendedor.vendedor}
+                      </span>
+                      {rotulo && (
+                        <span className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-slate-500">
+                          {rotulo}
+                        </span>
+                      )}
+                      <CanaisVendedor canais={vendedor.canais} />
                     </span>
-                    <CanaisVendedor canais={vendedor.canais} />
-                  </span>
-                  {meses.map((mesRef) => (
-                    <span key={mesRef} className="flex justify-center">
-                      <BadgeQuintilHistorico registro={vendedor.porMes[mesRef]} />
+                    {meses.map((mesRef) => (
+                      <span key={mesRef} className="flex justify-center">
+                        <BadgeQuintilHistorico registro={vendedor.porMes[mesRef]} />
+                      </span>
+                    ))}
+                    <span className="flex justify-center">
+                      <BadgeTendencia tendencia={vendedor.tendencia} />
                     </span>
-                  ))}
-                  <span className="flex justify-center">
-                    <BadgeTendencia tendencia={vendedor.tendencia} />
-                  </span>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
           <ul className="divide-y divide-slate-200 sm:hidden" aria-label="Evolução mensal dos colaboradores">
-            {vendedores.map((vendedor) => (
-              <li key={vendedor.vendedorId} className="bg-white px-3 py-3">
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="truncate text-xs font-semibold text-slate-800" title={vendedor.vendedor}>
-                      {vendedor.vendedor}
-                    </p>
-                    <span className="mt-1 block"><CanaisVendedor canais={vendedor.canais} /></span>
+            {vendedores.map((vendedor) => {
+              const rotulo = rotuloIndicador(vendedor.indicador);
+              return (
+                <li key={`${vendedor.vendedorId}\u0001${vendedor.indicador ?? ''}`} className="bg-white px-3 py-3">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="flex flex-wrap items-center gap-x-2 gap-y-1 truncate text-xs font-semibold text-slate-800" title={vendedor.vendedor}>
+                        {vendedor.vendedor}
+                        {rotulo && (
+                          <span className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-slate-500">
+                            {rotulo}
+                          </span>
+                        )}
+                      </p>
+                      <span className="mt-1 block"><CanaisVendedor canais={vendedor.canais} /></span>
+                    </div>
+                    <BadgeTendencia tendencia={vendedor.tendencia} />
                   </div>
-                  <BadgeTendencia tendencia={vendedor.tendencia} />
-                </div>
-                <ol className="mt-2.5 grid grid-cols-3 gap-1.5">
-                  {meses.map((mesRef) => (
-                    <li key={mesRef} className="rounded-md bg-slate-50 px-1.5 py-1.5 text-center">
-                      <span className="block text-[8px] font-semibold uppercase text-slate-400">
-                        {rotuloMesCompacto(mesRef)}
-                      </span>
-                      <span className="mt-1 flex justify-center">
-                        <BadgeQuintilHistorico registro={vendedor.porMes[mesRef]} />
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-            ))}
+                  <ol className="mt-2.5 grid grid-cols-3 gap-1.5">
+                    {meses.map((mesRef) => (
+                      <li key={mesRef} className="rounded-md bg-slate-50 px-1.5 py-1.5 text-center">
+                        <span className="block text-[8px] font-semibold uppercase text-slate-400">
+                          {rotuloMesCompacto(mesRef)}
+                        </span>
+                        <span className="mt-1 flex justify-center">
+                          <BadgeQuintilHistorico registro={vendedor.porMes[mesRef]} />
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
@@ -327,9 +352,43 @@ function HistoricoVendedores({ historico }) {
   );
 }
 
+/**
+ * Agrupa o detalhamento plano (1 linha por vendedor×indicador) em 1
+ * entrada por vendedor, preservando a lista de indicadores dele. Vendedor
+ * de 5G (indicador null) sempre tem exatamente 1 entrada no grupo — nunca
+ * junta indicadores diferentes na mesma linha (é exatamente o oposto do
+ * bug que motivou o quintil por indicador: FTTH avulso e combo nunca
+ * devem virar um número só).
+ *
+ * Grupos ordenados pelo MELHOR quintil entre os indicadores do vendedor
+ * (Q1 primeiro) — mantém o contrato "melhor quintil para o que exige mais
+ * atenção" já anunciado no cabeçalho, mesmo quando o vendedor tem vários
+ * indicadores com quintis diferentes entre si.
+ */
+function agruparPorVendedor(vendedores) {
+  const porVendedor = new Map();
+  for (const v of vendedores) {
+    const chave = v.vendedorId ?? v.vendedor;
+    if (!porVendedor.has(chave)) {
+      porVendedor.set(chave, { vendedorId: v.vendedorId, vendedor: v.vendedor, canais: v.canais, indicadores: [] });
+    }
+    porVendedor.get(chave).indicadores.push(v);
+  }
+  const grupos = [...porVendedor.values()];
+  for (const grupo of grupos) {
+    grupo.melhorQuintil = Math.min(...grupo.indicadores.map((i) => i.quintil ?? 99));
+    grupo.indicadores.sort((a, b) => (a.quintil ?? 99) - (b.quintil ?? 99));
+  }
+  grupos.sort(
+    (a, b) => a.melhorQuintil - b.melhorQuintil || a.vendedor.localeCompare(b.vendedor, 'pt-BR'),
+  );
+  return grupos;
+}
+
 function TabelaVendedores({ vendedores = [] }) {
   const [expandida, setExpandida] = useState(true);
   const conteudoId = useId();
+  const grupos = agruparPorVendedor(vendedores);
 
   return (
     <div className="mt-4 border-t border-slate-100 pt-4">
@@ -342,9 +401,9 @@ function TabelaVendedores({ vendedores = [] }) {
           <p className="mt-0.5 text-[11px] text-slate-500">Ordenados do melhor quintil para o que exige mais atenção.</p>
         </div>
         <div className="flex items-center gap-2">
-          {vendedores.length > 0 && (
+          {grupos.length > 0 && (
             <span className="text-[11px] tabular-nums text-slate-400">
-              {vendedores.length} {vendedores.length === 1 ? 'vendedor' : 'vendedores'}
+              {grupos.length} {grupos.length === 1 ? 'vendedor' : 'vendedores'}
             </span>
           )}
           <button
@@ -365,14 +424,15 @@ function TabelaVendedores({ vendedores = [] }) {
 
       {expandida && (
         <div id={conteudoId}>
-          {vendedores.length === 0 ? (
+          {grupos.length === 0 ? (
             <p className="rounded-lg bg-slate-50 px-3 py-2.5 text-xs text-slate-500">
               Detalhamento individual ainda não disponível para este período.
             </p>
           ) : (
             <div className="overflow-hidden rounded-lg border border-slate-200">
-              <div className="hidden grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 sm:grid">
+              <div className="hidden grid-cols-[minmax(0,1.6fr)_6rem_5rem_6rem_6rem_7rem] gap-3 bg-slate-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 sm:grid">
                 <span>Colaborador</span>
+                <span>Indicador</span>
                 <span>Quintil</span>
                 <span className="text-right">Meta</span>
                 <span className="text-right">Realizado</span>
@@ -380,31 +440,62 @@ function TabelaVendedores({ vendedores = [] }) {
               </div>
 
               <ul className="divide-y divide-slate-100" aria-label="Desempenho dos colaboradores por quintil">
-                {vendedores.map((vendedor, indice) => (
-                  <li
-                    key={vendedor.vendedorId ?? `${vendedor.vendedor}-${indice}`}
-                    className={`grid grid-cols-3 gap-x-3 gap-y-2 border-l-2 px-3 py-3 sm:grid-cols-[minmax(0,1.8fr)_5rem_6rem_6rem_7rem] sm:items-center sm:gap-3 sm:py-2.5 ${estiloLinha(vendedor.quintil)}`}
-                  >
-                    <span className="col-span-2 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 sm:col-span-1">
-                      <span className="min-w-0 truncate text-sm font-semibold text-slate-800" title={vendedor.vendedor}>
-                        {vendedor.vendedor}
-                      </span>
-                      <CanaisVendedor canais={vendedor.canais} />
-                    </span>
-                    <span className="justify-self-end sm:justify-self-start">
-                      <BadgeQuintilVendedor quintil={vendedor.quintil} />
-                    </span>
-                    <span className="sm:text-right">
-                      <ValorVendedor rotulo="Meta" valor={vendedor.meta} />
-                    </span>
-                    <span className="sm:text-right">
-                      <ValorVendedor rotulo="Realizado" valor={vendedor.realizado} />
-                    </span>
-                    <span className="sm:text-right">
-                      <ValorVendedor rotulo="Atingimento" valor={vendedor.atingimento} percentual destaque />
-                    </span>
-                  </li>
-                ))}
+                {grupos.map((grupo, indiceGrupo) =>
+                  grupo.indicadores.map((item, indiceItem) => {
+                    const rotulo = rotuloIndicador(item.indicador);
+                    // Nome e canal só aparecem na primeira linha do grupo — as
+                    // linhas seguintes do mesmo vendedor (2º, 3º indicador)
+                    // ficam visualmente agrupadas por proximidade + o mesmo
+                    // canto arredondado do bloco, sem repetir o nome.
+                    const primeiraLinhaDoGrupo = indiceItem === 0;
+                    return (
+                      <li
+                        key={`${grupo.vendedorId ?? grupo.vendedor}\u0001${item.indicador ?? indiceItem}-${indiceGrupo}`}
+                        className={`grid grid-cols-2 gap-x-3 gap-y-1.5 border-l-2 px-3 py-2.5 sm:grid-cols-[minmax(0,1.6fr)_6rem_5rem_6rem_6rem_7rem] sm:items-center sm:gap-3 ${estiloLinha(item.quintil)} ${
+                          !primeiraLinhaDoGrupo ? 'sm:border-t-0 sm:pt-1.5' : ''
+                        }`}
+                      >
+                        <span className="col-span-2 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 sm:col-span-1">
+                          {primeiraLinhaDoGrupo ? (
+                            <>
+                              <span className="min-w-0 truncate text-sm font-semibold text-slate-800" title={grupo.vendedor}>
+                                {grupo.vendedor}
+                              </span>
+                              <CanaisVendedor canais={grupo.canais} />
+                            </>
+                          ) : (
+                            <>
+                              <span className="flex items-center gap-1 text-xs italic text-slate-400 sm:hidden">
+                                <span aria-hidden="true">↳</span> {grupo.vendedor}
+                              </span>
+                              <span className="hidden text-xs text-slate-300 sm:inline" aria-hidden="true">
+                                ↳
+                              </span>
+                            </>
+                          )}
+                        </span>
+                        <span className="text-xs font-semibold text-slate-600 sm:text-[11px]">
+                          <span className="block text-[9px] font-medium uppercase tracking-wide text-slate-400 sm:sr-only">
+                            Indicador
+                          </span>
+                          {rotulo ?? '—'}
+                        </span>
+                        <span className="justify-self-start">
+                          <BadgeQuintilVendedor quintil={item.quintil} />
+                        </span>
+                        <span className="sm:text-right">
+                          <ValorVendedor rotulo="Meta" valor={item.meta} />
+                        </span>
+                        <span className="sm:text-right">
+                          <ValorVendedor rotulo="Realizado" valor={item.realizado} />
+                        </span>
+                        <span className="sm:text-right">
+                          <ValorVendedor rotulo="Atingimento" valor={item.atingimento} percentual destaque />
+                        </span>
+                      </li>
+                    );
+                  }),
+                )}
               </ul>
             </div>
           )}

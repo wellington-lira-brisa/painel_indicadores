@@ -84,3 +84,41 @@ test('sem meta ou mês anterior ausente não vira queda', () => {
   assert.equal(historico.movimentos.semComparacao, 1);
   assert.equal(historico.movimentos.cairam, 0);
 });
+
+// Achado real: quintil por indicador significa que o mesmo vendedorId
+// pode aparecer várias vezes no mesmo mês (Combo 1 Chip, Combo 2+ Chip,
+// avulso). Chavear só por vendedorId fazia a última linha processada
+// sobrescrever as anteriores, perdendo o histórico dos outros indicadores
+// em silêncio — sem erro, sem aviso, só um indicador "sumia".
+test('vendedor com múltiplos indicadores FTTH mantém histórico separado por indicador', () => {
+  const resultados = new Map([
+    [
+      '2026-06-01',
+      {
+        vendedores: [
+          { vendedorId: 'v1', vendedor: 'Guilherme', indicador: 'Vendas instaladas Combo 1 Chip - FTTH', canais: ['PAP'], atingimento: 0.9, quintil: 2 },
+          { vendedorId: 'v1', vendedor: 'Guilherme', indicador: 'Vendas instaladas avulso - FTHH', canais: ['PAP'], atingimento: 1.5, quintil: 1 },
+        ],
+      },
+    ],
+    [
+      '2026-07-01',
+      {
+        vendedores: [
+          { vendedorId: 'v1', vendedor: 'Guilherme', indicador: 'Vendas instaladas Combo 1 Chip - FTTH', canais: ['PAP'], atingimento: 0.5, quintil: 4 },
+          { vendedorId: 'v1', vendedor: 'Guilherme', indicador: 'Vendas instaladas avulso - FTHH', canais: ['PAP'], atingimento: 1.5, quintil: 1 },
+        ],
+      },
+    ],
+  ]);
+
+  const historico = montarHistoricoVendedores(resultados, '2026-07-01', 2);
+  assert.equal(historico.vendedores.length, 2); // nunca 1 — cada indicador é sua própria linha
+
+  const combo1 = historico.vendedores.find((v) => v.indicador === 'Vendas instaladas Combo 1 Chip - FTTH');
+  const avulso = historico.vendedores.find((v) => v.indicador === 'Vendas instaladas avulso - FTHH');
+  assert.ok(combo1);
+  assert.ok(avulso);
+  assert.equal(combo1.tendencia.tipo, 'caiu'); // Q2 -> Q4
+  assert.equal(avulso.tendencia.tipo, 'estavel'); // Q1 -> Q1, não deve ser afetado pela queda do Combo1
+});

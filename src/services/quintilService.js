@@ -83,6 +83,11 @@ function indexarQuintisVendedores(linhas) {
       vendedor: l.vendedor || 'Vendedor sem identificação',
       canal: l.canal || null,
       tecnologia: l.tecnologia,
+      // Vazio ('' do CSV) vira null — mesmo contrato de "sem indicador"
+      // usado por calcularQuintilVendedores (5G e a linha-neutra do
+      // vendedor ambíguo). String vazia e null nunca podem ser tratados
+      // como indicadores DIFERENTES entre si.
+      indicador: l.indicador || null,
       meta: l.meta,
       realizado: l.realizado,
     });

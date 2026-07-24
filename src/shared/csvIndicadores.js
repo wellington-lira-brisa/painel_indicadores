@@ -988,6 +988,15 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
   // Mesma soma, preservando o canal. É a fonte do recálculo exato quando
   // um ou vários canais são selecionados no painel.
   const somasPorVendedorCanal = new Map();
+  // Mesma soma de novo, agora também por INDICADOR (Combo 1 Chip, Combo
+  // 2+ Chip, avulso, agrupado — só pra categoria "instalacao"/FTTH; 5G
+  // continua sem essa dimensão, ver `indicadorParaQuintil`). É a fonte do
+  // quintil individual por indicador exibido na mini-tabela de
+  // colaboradores — nunca junta indicadores diferentes na mesma soma,
+  // ao contrário de somasPorVendedor/somasPorVendedorCanal acima, que
+  // continuam agregando por tecnologia inteira (usado só pelo card da
+  // cidade e pelo Ranking —ônibus intocado por essa mudança).
+  const somasPorVendedorCanalIndicador = new Map();
   // Nome de exibição do vendedor. A chave inclui cidade+mês porque a mesma
   // pessoa pode mudar de lotação ou ter o nome corrigido entre competências.
   const nomesPorVendedor = new Map();
@@ -1056,7 +1065,7 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     if (!vendedoresPorCidadeMes.has(chaveCidadeMes)) vendedoresPorCidadeMes.set(chaveCidadeMes, new Map());
     const vendedoresDoMes = vendedoresPorCidadeMes.get(chaveCidadeMes);
     if (!vendedoresDoMes.has(chaveVendedor)) {
-      vendedoresDoMes.set(chaveVendedor, { tecnologias: new Set(), canais: new Map() });
+      vendedoresDoMes.set(chaveVendedor, { tecnologias: new Set(), canais: new Map(), indicadoresPorCanal: new Map() });
     }
     if (!vendedorIdPorHash.has(chaveVendedor)) {
       vendedorIdPorHash.set(chaveVendedor, `v${vendedorIdPorHash.size + 1}`);
@@ -1121,6 +1130,22 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
     atualCanal.meta += meta * multiplicador;
     atualCanal.realizado += realizado;
     somasPorVendedorCanal.set(chaveCanal, atualCanal);
+
+    // Quintil por indicador (só FTTH-instalado, ver comentário na
+    // declaração de somasPorVendedorCanalIndicador): cada indicador
+    // (Combo 1 Chip, Combo 2+ Chip, avulso, agrupado) mantém sua própria
+    // soma, nunca combinada com a de outro indicador — é o oposto de
+    // somasPorVendedorCanal acima, que soma todo indicador FTTH junto.
+    if (categoria === 'instalacao') {
+      const chaveIndicador = chaveCanal + '\u0001' + l.indicador;
+      const atualIndicador = somasPorVendedorCanalIndicador.get(chaveIndicador) ?? { meta: 0, realizado: 0 };
+      atualIndicador.meta += meta * multiplicador;
+      atualIndicador.realizado += realizado;
+      somasPorVendedorCanalIndicador.set(chaveIndicador, atualIndicador);
+
+      if (!contextoVendedor.indicadoresPorCanal.has(canal)) contextoVendedor.indicadoresPorCanal.set(canal, new Set());
+      contextoVendedor.indicadoresPorCanal.get(canal).add(l.indicador);
+    }
   }
 
   // Agrega por cidade+tecnologia+mês
@@ -1187,33 +1212,80 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
       });
     }
 
-    // Duas linhas por vendedor×canal (FTTH e 5G). A ausência de soma fica
-    // explícita como null para o front poder distinguir "sem venda nesta
-    // tecnologia" de "venda só na outra tecnologia" depois de combinar
-    // qualquer subconjunto de canais.
+    // FTTH: uma linha POR INDICADOR que o vendedor tem meta (Combo 1
+    // Chip, Combo 2+ Chip, avulso, agrupado — nunca mais uma linha só
+    // agregando tudo). 5G: continua uma linha por tecnologia, sem
+    // indicador — separar por indicador ainda depende da regra de
+    // negócio de Ativação 5G ser fechada (chips de combo a partir do 2º,
+    // chips de migração — ver Dicionário de Indicadores), fora do
+    // escopo desta mudança.
     for (const [chaveVendedorLoop, contextoVendedor] of vendedoresDoMes) {
       const vendedorId = vendedorIdPorHash.get(chaveVendedorLoop);
       const vendedor = nomesPorVendedor.get(chaveVendedorLoop + '\u0001' + chaveCidadeMes) ?? 'Vendedor sem identificação';
 
       for (const canal of contextoVendedor.canais.keys()) {
-        for (const tecnologia of ['ftth', '5g']) {
-          const chaveCanal =
-            chaveVendedorLoop + '\u0001' + cidadeSlug + '\u0001' + tecnologia + '\u0001' + mesRef + '\u0001' + canal;
-          const somas = somasPorVendedorCanal.get(chaveCanal);
-          const atingimento = somas?.meta ? somas.realizado / somas.meta : null;
+        const indicadoresFtth = contextoVendedor.indicadoresPorCanal.get(canal);
+        if (indicadoresFtth && indicadoresFtth.size > 0) {
+          for (const indicador of indicadoresFtth) {
+            const chaveIndicador =
+              chaveVendedorLoop + '\u0001' + cidadeSlug + '\u0001' + 'ftth' + '\u0001' + mesRef + '\u0001' + canal + '\u0001' + indicador;
+            const somas = somasPorVendedorCanalIndicador.get(chaveIndicador);
+            const atingimento = somas?.meta ? somas.realizado / somas.meta : null;
+            vendedores.push({
+              cidadeSlug,
+              tecnologia: 'ftth',
+              indicador,
+              mesRef,
+              vendedorId,
+              vendedor,
+              canal,
+              meta: somas ? Math.round(somas.meta * 100) / 100 : null,
+              realizado: somas ? Math.round(somas.realizado * 100) / 100 : null,
+              atingimento: atingimento === null ? null : Math.round(atingimento * 10000) / 10000,
+              quintil: atingimento === null ? null : classificarQuintil(atingimento),
+            });
+          }
+        } else if (contextoVendedor.tecnologias.size === 0) {
+          // Vendedor genuinamente ambíguo: não vende NENHUMA tecnologia
+          // (mesmo critério de `registros`, ver comentário grande acima).
+          // Sem isso, ele desaparece de `vendedores` inteiramente e o
+          // recálculo de calcularQuintilVendedores (usado ao filtrar
+          // canal na tela) para de bater com o agregado publicado —
+          // achado real: teste "Todos os canais reproduz exatamente..."
+          // com Carla (só Churn, sem nenhuma venda) sumindo do "sem
+          // meta" ao recalcular.
           vendedores.push({
             cidadeSlug,
-            tecnologia,
+            tecnologia: 'ftth',
+            indicador: null,
             mesRef,
             vendedorId,
             vendedor,
             canal,
-            meta: somas ? Math.round(somas.meta * 100) / 100 : null,
-            realizado: somas ? Math.round(somas.realizado * 100) / 100 : null,
-            atingimento: atingimento === null ? null : Math.round(atingimento * 10000) / 10000,
-            quintil: atingimento === null ? null : classificarQuintil(atingimento),
+            meta: null,
+            realizado: null,
+            atingimento: null,
+            quintil: null,
           });
         }
+
+        // 5G: inalterado — uma linha por tecnologia, sem indicador.
+        const chaveCanal5g = chaveVendedorLoop + '\u0001' + cidadeSlug + '\u0001' + '5g' + '\u0001' + mesRef + '\u0001' + canal;
+        const somas5g = somasPorVendedorCanal.get(chaveCanal5g);
+        const atingimento5g = somas5g?.meta ? somas5g.realizado / somas5g.meta : null;
+        vendedores.push({
+          cidadeSlug,
+          tecnologia: '5g',
+          indicador: null,
+          mesRef,
+          vendedorId,
+          vendedor,
+          canal,
+          meta: somas5g ? Math.round(somas5g.meta * 100) / 100 : null,
+          realizado: somas5g ? Math.round(somas5g.realizado * 100) / 100 : null,
+          atingimento: atingimento5g === null ? null : Math.round(atingimento5g * 10000) / 10000,
+          quintil: atingimento5g === null ? null : classificarQuintil(atingimento5g),
+        });
       }
     }
   }
@@ -1226,10 +1298,26 @@ export function normalizarQuintisPorCidade(linhasFato, indiceMultiplicadores) {
  * canais selecionados. A classificação usa as mesmas faixas e a mesma
  * fórmula do agregado publicado: Σrealizado ÷ Σmeta por vendedor e média
  * simples dos atingimentos individuais.
+ *
+ * FTTH: agrupa por (vendedorId, indicador) — nunca por vendedorId sozinho.
+ * Antes desta função ser corrigida, ela somava toda linha FTTH do mesmo
+ * vendedor (Combo 1 Chip + Combo 2+ Chip + avulso), reintroduzindo aqui o
+ * mesmo bug de meta inflada já corrigido em normalizarQuintisPorCidade —
+ * como esta função é chamada de novo sempre que o usuário filtra canal na
+ * tela da cidade, ela sozinha já bastava pra recriar o problema mesmo com
+ * a fonte de dados correta. 5G continua agrupado só por vendedorId, sem
+ * indicador (mesmo escopo do resto desta mudança).
  */
 export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados = []) {
   const canais = new Set(canaisSelecionados);
-  const porVendedor = new Map();
+  const porChave = new Map(); // chave: vendedorId (5g) ou "vendedorId\u0001indicador" (ftth)
+  // Rastreio à parte de quais tecnologias cada vendedor tem meta em
+  // QUALQUER linha (independente de indicador) — a chave composta de FTTH
+  // (vendedorId+indicador) faz cada indicador virar uma entrada própria
+  // em `porChave`, então a presença em "ftth" e "5g" nunca convive no
+  // mesmo objeto ali; sem este mapa à parte, a regra "não conta se só
+  // vende a outra tecnologia" nunca dispara pra ninguém.
+  const tecnologiasPorVendedor = new Map(); // vendedorId -> Set('ftth'|'5g')
 
   for (const l of linhas) {
     if (canais.size > 0 && !canais.has(l.canal)) continue;
@@ -1237,25 +1325,35 @@ export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados
 
     const vendedorId = l.vendedorId || l.vendedor_id || l.vendedor;
     if (!vendedorId) continue;
-    if (!porVendedor.has(vendedorId)) {
-      porVendedor.set(vendedorId, {
-        vendedorId,
-        vendedor: l.vendedor || 'Vendedor sem identificação',
-        canais: new Set(),
-        ftth: { temMeta: false, meta: 0, realizado: 0 },
-        '5g': { temMeta: false, meta: 0, realizado: 0 },
-      });
-    }
-    if (l.canal) porVendedor.get(vendedorId).canais.add(l.canal);
 
     const meta = l.meta === null || l.meta === undefined || l.meta === '' ? null : paraNumero(String(l.meta));
     const realizado =
       l.realizado === null || l.realizado === undefined || l.realizado === ''
         ? null
         : paraNumero(String(l.realizado));
-    if (meta === null || Number.isNaN(meta) || meta === 0) continue;
+    const temMetaNestaLinha = meta !== null && !Number.isNaN(meta) && meta !== 0;
 
-    const acumulado = porVendedor.get(vendedorId)[l.tecnologia];
+    if (temMetaNestaLinha) {
+      if (!tecnologiasPorVendedor.has(vendedorId)) tecnologiasPorVendedor.set(vendedorId, new Set());
+      tecnologiasPorVendedor.get(vendedorId).add(l.tecnologia);
+    }
+
+    const chave = l.tecnologia === 'ftth' ? vendedorId + '\u0001' + (l.indicador || '') : vendedorId;
+    if (!porChave.has(chave)) {
+      porChave.set(chave, {
+        vendedorId,
+        vendedor: l.vendedor || 'Vendedor sem identificação',
+        indicador: l.tecnologia === 'ftth' ? l.indicador || null : null,
+        canais: new Set(),
+        temMeta: false,
+        meta: 0,
+        realizado: 0,
+      });
+    }
+    if (l.canal) porChave.get(chave).canais.add(l.canal);
+    if (!temMetaNestaLinha) continue;
+
+    const acumulado = porChave.get(chave);
     acumulado.temMeta = true;
     acumulado.meta += meta;
     acumulado.realizado += realizado === null || Number.isNaN(realizado) ? 0 : realizado;
@@ -1268,15 +1366,22 @@ export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados
   let somaAtingimentos = 0;
   let comAtingimento = 0;
 
-  for (const dados of porVendedor.values()) {
-    const alvo = dados[tecnologia];
-    if (!alvo.temMeta && dados[outraTecnologia].temMeta) continue;
+  for (const [chave, dados] of porChave) {
+    // Entradas da tecnologia "errada" nunca entram na saída — só
+    // decidem, via tecnologiasPorVendedor, se o vendedor correspondente
+    // deve ser tratado como "sem meta" ou "fora do bucket" lá embaixo.
+    const ehDaTecnologiaAlvo = tecnologia === 'ftth' ? chave.includes('\u0001') : !chave.includes('\u0001');
+    if (!ehDaTecnologiaAlvo) continue;
 
-    if (!alvo.temMeta) {
+    const tecnologiasDoVendedor = tecnologiasPorVendedor.get(dados.vendedorId) ?? new Set();
+    if (!dados.temMeta && tecnologiasDoVendedor.has(outraTecnologia)) continue;
+
+    if (!dados.temMeta) {
       semMeta += 1;
       vendedores.push({
         vendedorId: dados.vendedorId,
         vendedor: dados.vendedor,
+        indicador: dados.indicador,
         canais: [...dados.canais].sort((a, b) => a.localeCompare(b, 'pt-BR')),
         meta: null,
         realizado: null,
@@ -1286,7 +1391,7 @@ export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados
       continue;
     }
 
-    const atingimento = alvo.realizado / alvo.meta;
+    const atingimento = dados.realizado / dados.meta;
     const quintil = classificarQuintil(atingimento);
     contagem[quintil] += 1;
     somaAtingimentos += atingimento;
@@ -1294,9 +1399,10 @@ export function calcularQuintilVendedores(linhas, tecnologia, canaisSelecionados
     vendedores.push({
       vendedorId: dados.vendedorId,
       vendedor: dados.vendedor,
+      indicador: dados.indicador,
       canais: [...dados.canais].sort((a, b) => a.localeCompare(b, 'pt-BR')),
-      meta: Math.round(alvo.meta * 100) / 100,
-      realizado: Math.round(alvo.realizado * 100) / 100,
+      meta: Math.round(dados.meta * 100) / 100,
+      realizado: Math.round(dados.realizado * 100) / 100,
       atingimento: Math.round(atingimento * 10000) / 10000,
       quintil,
     });
@@ -1369,6 +1475,7 @@ export function paraCsvQuintis(registros) {
 const COLUNAS_SAIDA_QUINTIS_VENDEDORES = [
   'cidade_slug',
   'tecnologia',
+  'indicador',
   'mes_ref',
   'vendedor_id',
   'vendedor',
@@ -1379,12 +1486,16 @@ const COLUNAS_SAIDA_QUINTIS_VENDEDORES = [
   'quintil',
 ];
 
-/** Serializa o detalhamento usado apenas na página da cidade. */
+/** Serializa o detalhamento usado apenas na página da cidade. `indicador`
+ * vem preenchido só pra FTTH (Combo 1 Chip, Combo 2+ Chip, avulso,
+ * agrupado — depende do canal, ver dicionário); 5G publica vazio, ainda
+ * sem quintil por indicador (ver nota em normalizarQuintisPorCidade). */
 export function paraCsvQuintisVendedores(vendedores) {
   const linhas = vendedores.map((r) =>
     [
       r.cidadeSlug,
       r.tecnologia,
+      r.indicador ?? '',
       r.mesRef,
       r.vendedorId,
       r.vendedor,
