@@ -33,6 +33,14 @@ export function tendenciaEntreQuintis(quintilAnterior, quintilAtual) {
  * Monta o histórico apenas do time presente na competência atual.
  * Colaboradores novos ficam "sem comparação"; quem saiu do time não é
  * interpretado como queda de performance.
+ *
+ * Chave por (vendedorId, indicador): desde que o quintil de FTTH passou a
+ * ser por indicador (Combo 1 Chip, Combo 2+ Chip, avulso — um mesmo
+ * vendedor pode ter várias linhas no mesmo mês), chavear só por
+ * vendedorId fazia a última linha processada sobrescrever as anteriores
+ * na Map, perdendo o histórico dos outros indicadores dele em silêncio.
+ * 5G continua com indicador null — vira uma única entrada por vendedor,
+ * mesmo comportamento de antes.
  */
 export function montarHistoricoVendedores(resultadosPorMes, mesRefAtual, quantidade = MESES_PADRAO_HISTORICO_QUINTIL) {
   const meses = mesesConsecutivosAte(mesRefAtual, quantidade);
@@ -40,11 +48,15 @@ export function montarHistoricoVendedores(resultadosPorMes, mesRefAtual, quantid
   const vendedoresAtuais = resultadoAtual?.vendedores ?? [];
   const porVendedor = new Map();
 
+  function chaveVendedor(vendedor) {
+    return (vendedor.vendedorId || vendedor.vendedor) + '\u0001' + (vendedor.indicador ?? '');
+  }
+
   for (const vendedor of vendedoresAtuais) {
-    const vendedorId = vendedor.vendedorId || vendedor.vendedor;
-    porVendedor.set(vendedorId, {
-      vendedorId,
+    porVendedor.set(chaveVendedor(vendedor), {
+      vendedorId: vendedor.vendedorId || vendedor.vendedor,
       vendedor: vendedor.vendedor,
+      indicador: vendedor.indicador ?? null,
       canais: vendedor.canais ?? [],
       porMes: {},
     });
@@ -52,8 +64,7 @@ export function montarHistoricoVendedores(resultadosPorMes, mesRefAtual, quantid
 
   for (const mesRef of meses) {
     for (const vendedor of resultadosPorMes.get(mesRef)?.vendedores ?? []) {
-      const vendedorId = vendedor.vendedorId || vendedor.vendedor;
-      const historico = porVendedor.get(vendedorId);
+      const historico = porVendedor.get(chaveVendedor(vendedor));
       if (!historico) continue;
       historico.porMes[mesRef] = {
         meta: vendedor.meta,

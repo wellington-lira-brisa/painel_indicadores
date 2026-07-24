@@ -58,21 +58,36 @@ test('vendedor com Σreal/Σmeta = 100% cai no Q1; agrega múltiplas linhas de v
   assert.equal(ftth.quintilCidade, 1);
 });
 
-test('detalhamento individual reutiliza exatamente as somas do quintil agregado', () => {
+// Antes desta mudança, dois indicadores FTTH-instalado diferentes do
+// mesmo vendedor eram SOMADOS numa única linha "ftth" agregada. Agora o
+// quintil é por INDICADOR nomeado: cada indicador vira sua própria linha,
+// com sua própria meta/realizado — nunca mais somados entre si (é
+// exatamente o que a auditoria pediu: "ele poderá estar no quintil 1 em
+// vendas FTTH avulsas e no quintil 4 em vendas de combos").
+test('indicadores diferentes do mesmo vendedor geram linhas separadas, nunca somadas', () => {
   const linhas = [
-    linha({ vendedor: 'Ana Lima', meta: '10', realizado: '5' }),
+    linha({ vendedor: 'Ana Lima', meta: '10', realizado: '5' }), // indicador default: Combo 1 Chip
     linha({ vendedor: 'Ana Lima', indicador: 'Vendas instalada Combo - FTTH', meta: '10', realizado: '15' }),
   ];
   const { vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
-  const ana = vendedores.find((v) => v.tecnologia === 'ftth');
+  const linhasFtth = vendedores.filter((v) => v.tecnologia === 'ftth' && v.vendedor === 'Ana Lima');
 
-  assert.equal(ana.vendedor, 'Ana Lima');
-  assert.equal(ana.meta, 20);
-  assert.equal(ana.realizado, 20);
-  assert.equal(ana.atingimento, 1);
-  assert.equal(ana.quintil, 1);
-  assert.equal(ana.canal, 'LOJA');
-  assert.equal(ana.vendedorId, 'v1');
+  assert.equal(linhasFtth.length, 2); // duas linhas, uma por indicador
+
+  const combo1 = linhasFtth.find((v) => v.indicador === 'Vendas instaladas Combo 1 Chip - FTTH');
+  assert.equal(combo1.meta, 10);
+  assert.equal(combo1.realizado, 5);
+  assert.equal(combo1.atingimento, 0.5);
+  assert.equal(combo1.quintil, 4);
+
+  const comboAgrupado = linhasFtth.find((v) => v.indicador === 'Vendas instalada Combo - FTTH');
+  assert.equal(comboAgrupado.meta, 10);
+  assert.equal(comboAgrupado.realizado, 15);
+  assert.equal(comboAgrupado.atingimento, 1.5);
+  assert.equal(comboAgrupado.quintil, 1);
+
+  assert.equal(combo1.vendedorId, comboAgrupado.vendedorId); // mesma pessoa, mesmo id
+  assert.equal(combo1.canal, 'LOJA');
 });
 
 test('CSV individual preserva canal, nome e métricas sem publicar hash ou matrícula', () => {
@@ -398,17 +413,18 @@ test('quintil usa apenas a meta de Instalado, nunca soma Criado + Efetivado + In
 });
 
 // Vendedor que só tem linhas de Criado/Efetivado (sem Instalado ainda
-// publicado no mês) continua pertencendo ao bucket FTTH — mas sem meta de
-// Instalado, cai em "sem meta" (não silenciosamente ignorado, não usa
-// Criado/Efetivado como substituto). Como nenhum vendedor da cidade tem
-// atingimento calculável, a linha do agregado nem é publicada (mesmo
-// contrato de "meta 0 é descartada", já validado acima).
-test('vendedor com só Criado/Efetivado (sem Instalado) conta como sem_meta em FTTH', () => {
+// publicado no mês) NÃO gera nenhuma linha FTTH no detalhamento — o
+// quintil agora é por INDICADOR nomeado (Combo 1 Chip, avulso, etc.), e
+// sem nenhum indicador de Instalado não há o que nomear. Continua sem
+// usar Criado/Efetivado como substituto (mesma regra de antes). Como
+// nenhum vendedor da cidade tem atingimento calculável, a linha do
+// agregado nem é publicada (mesmo contrato de "meta 0 é descartada").
+test('vendedor com só Criado/Efetivado (sem Instalado) não gera linha FTTH no detalhamento', () => {
   const linhas = [
     linha({ indicador: 'Vendas criadas Combo 1 Chip - FTTH', meta: '12', realizado: '9' }),
     linha({ indicador: 'Vendas efetivadas Combo 1 Chip - FTTH', meta: '11', realizado: '9' }),
   ];
   const { registros, vendedores } = normalizarQuintisPorCidade(linhas, MULT_1);
   assert.equal(registros.find((r) => r.tecnologia === 'ftth'), undefined); // ninguém com atingimento: linha não publicada
-  assert.equal(vendedores.find((v) => v.tecnologia === 'ftth').meta, null); // detalhamento continua expondo o vendedor como sem_meta
+  assert.equal(vendedores.find((v) => v.tecnologia === 'ftth'), undefined); // sem indicador de Instalado, sem linha FTTH
 });
