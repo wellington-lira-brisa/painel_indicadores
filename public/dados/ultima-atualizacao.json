@@ -1,12 +1,12 @@
 {
-  "iniciadoEm": "2026-07-24T16:59:29.242Z",
-  "finalizadoEm": "2026-07-24T16:59:35.435Z",
+  "iniciadoEm": "2026-07-24T18:40:14.065Z",
+  "finalizadoEm": "2026-07-24T18:40:20.694Z",
   "status": "sucesso",
-  "linhasLidas": 275221,
-  "linhasPublicadas": 89527,
+  "linhasLidas": 275303,
+  "linhasPublicadas": 89553,
   "linhasSemCidade": 126,
   "metasInstalacaoProcessadas": 1932,
   "metasAtivacao5gProcessadas": 3972,
-  "cidadesOficiaisProcessadas": 161,
-  "commit": "b3f177a88330f45aa3ade0fd8c7d270e3461cb5a"
+  "cidadesOficiaisProcessadas": 377,
+  "commit": "b5cb89f58be2c163f8cd17951c23cbcf126ad713"
 }
